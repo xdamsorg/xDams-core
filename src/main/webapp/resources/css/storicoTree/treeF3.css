@@ -1,0 +1,79 @@
+
+
+.spr{background: url(../../img/tree/storicoTree/treesprite.png) no-repeat top left;}
+
+img{border:0}
+* {font-family:Trebuchet MS, Verdana, Arial;}
+.contentTree{top:0;overflow:auto;position:absolute;z-index:3;bottom:0;right:0;left:0;overflow-x:hidden;}
+* html .contentTree{border-top:1px solid #fff;border-bottom:1px solid #fff;top:0;left:0;right:0;bottom:0;margin-top:0px;height:100%;width:100%;position:absolute;overflow-x:hidden;overflow-y: auto;z-index:3;}
+*:first-child+html .contentTree{ padding-right:14px;}
+div.liv_sp a:hover,  div.liv_sp a:hover {text-decoration: underline;}
+div.liv_in a:hover,  div.liv_in a:hover {text-decoration: underline;}
+.contList{margin-top:10px;margin-left:5px;}
+.ndn{padding-left:24px;padding-top:12px;color:#0C1A3F;border-bottom: 1px dashed #C6CCE6;}
+.nl {width:100%;}
+.spck {display:block;position:relative;left:-24px;float:left;top:2px}
+.spck img {display:block;position:absolute;z-index:999;left:0;cursor: pointer;}
+.folder_href {font-size:10px;width:12px;height:12px;display:block;position:relative;left:-25px;float:left;}
+
+.link_scheda{display:block;position:relative;left:-12px;padding-left:12px;}
+.nl_nl {font-weight:normal;padding-left:24px;}
+
+
+
+
+
+div.liv_sp a {display:block;background: url(../../img/tree/sup.gif) no-repeat left;margin-left: 4px; padding: 4px 18px; text-decoration: none;color: #000; font-weight:bold;}
+div.liv_in a {display:block;background: url(../../img/tree/inf.gif) no-repeat left;margin-top:10px; margin-left: 4px; padding: 4px 18px; text-decoration: none;color: #000; font-weight:bold;}
+.ra{background: url(../../img/tree/folder_list_node.gif) no-repeat top left;}
+
+
+.nl_24 {background:url(../../img/tree/folder_list_blocco.gif) repeat-y left;font-weight:normal;margin-left:24px;}
+.nl_ln {background: url(../../img/tree/folder_list_blocco.gif) repeat-y left;}
+
+ 
+.new_dots{padding-top:7px;padding-left:48px;color:#0C1A3F;}
+
+
+
+
+/*
+.img_open{background: url(../img/tree/cartella_aperta2.gif) no-repeat top left;}
+.img_open_last{background: url(../img/tree/cartella_aperta3.gif) no-repeat top left;}
+.img_close{background: url(../img/tree/cartella_chiusa2.gif) no-repeat top left;}
+.img_close_last{background: url(../img/tree/cartella_chiusa3.gif) no-repeat top left;}
+.img_file{background: url(../img/tree/file2.gif) no-repeat top left;}
+.img_file_last{background: url(../img/tree/file1.gif) no-repeat top left;}
+*/
+
+
+.treeIcon{float: right;}
+a {color:#000;text-decoration: none;}
+a:link{text-decoration: none;border:0}
+a:visited{text-decoration: none;border:0}
+a:hover {text-decoration: none;}
+a:active{text-decoration: none;border:0}
+.sfTree{background-color:#eee}
+.sfEv{background-color:#ddd}
+
+
+
+.mrg{padding-left:17px}
+
+
+.file { background-position: 0 -30px; } 
+.fonds { background-position: 0 -75px; } 
+.img_close { background-position: 0 -121px; } 
+.img_close_last { background-position: 0 -180px; } 
+.img_file { background-position: 0 -239px; } 
+.img_file_last { background-position: 0 -298px; } 
+.img_open { background-position: 0 -357px; } 
+.img_open_last { background-position: 0 -416px; } 
+.item { background-position: 0 -475px; } 
+.otherlevel { background-position: 0 -516px; } 
+.recordgrp { background-position: 0 -561px; } 
+.series { background-position: 0 -606px; } 
+
+
+
+

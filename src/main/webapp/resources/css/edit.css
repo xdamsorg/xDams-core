@@ -1,0 +1,41 @@
+/* xDams edt style v. 0.1  */
+* {font-size:11px}
+* {font-family:Arial, Verdana;}
+table{border:0;padding: 0;margin: 0;border-collapse: collapse;border-spacing: 0; width: 85%}
+select,input,textarea{border:1px solid #8B8C8F;padding-left:2px;padding-right:2px:margin-top:3px;margin-bottom:3px;font-size: 12px;}
+.dcTSSD{border-bottom: 2px solid #CCC;font-size: 11px;font-weight: bold;text-transform: uppercase;padding:2px}
+.dcTSSSD{background-color: #EEE;font-size: 11px;font-weight: bold;border-bottom: 2px solid #CCC;text-transform: uppercase;padding:2px}
+ 
+a.doceditActionLink{margin-right: 5px;font-size:10px;float:left;display:block;background-color:#ddd;border:1px solid #8B8C8F;padding:2px 6px;color: #000;text-transform: uppercase;font-weight: normal;text-decoration:none; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+a.doceditActionLink:hover{text-decoration:none;border:1px solid #FFFFFF;}
+
+
+
+#textAreaBig, .blockPage textarea{
+padding:10px;border:1px solid #8B8C8F;
+}
+.blockPage input{
+	 border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px;cursor:pointer;
+}
+.dcTSS{} 
+
+.showdocTitoloElemento{background-color: #EEE;color:#000;}
+.doceditTitoloElemento{background-color: #EEE;}
+.showdocValue{background-color: #EEE; padding-bottom:15px;}
+.showdocLine{background-color: #EEE; width:100%;  margin-bottom:10px;}
+/* FINE DOCEDIT  */	
+/* STILI INPUT  */				
+.docEditTextArea{width:400px; }
+.docEditInput{font-size:11px;}
+.docEditInputShort{width:100px;  }
+.docEditInputMiddle{width:200px; }
+.docEditInputLong{width:250px; }
+.doceditInputLong{width:250px; }
+.doceditInputMiddle{width:200px; }
+.docEditInputExtraLong{width:300px;}
+.docEditInputTooLong{width:500px;}
+.doceditInputData{width:30px; }
+.doceditInputCheck{border:0px;}
+
+
+

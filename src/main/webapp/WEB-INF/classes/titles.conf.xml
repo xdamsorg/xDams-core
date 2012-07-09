@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="archive:getAlias">
+  <titleManager value="xDamsHist">
+   <file name="/storico-conf/titles.conf.xml"/>
+  </titleManager>
+  <titleManager value="xDamsPhoto">
+   <file name="/fotografico-conf/titles.conf.xml"/>
+  </titleManager>
+  <titleManager value="xDamsHGeo">
+   <file name="/auther-luoghi-conf/titles.conf.xml"/>
+  </titleManager>
+  <titleManager value="xDamsEACCPF">
+   <file name="/eac-cpf-conf/titles.conf.xml"/>
+  </titleManager>
+  <titleManager value="xDamsAV">
+   <file name="/audiovideo-conf/titles.conf.xml"/>
+  </titleManager>
+ </multiEditing>
+</root>

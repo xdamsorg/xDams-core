@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<connectedArchives>
+		<masterArchive name="xDamsEACCPF">
+			<workArchive name="xDamsEACCPF" pne="eac-cpf">
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/text()</elementToFind>
+				<elementToFind code="relationEntry/@localType" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']" query="[XML,/eac-cpf/cpfDescription/relations/cpfRelation/relationEntry/@localType]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/text()</elementToFind>
+			</workArchive>
+			<workArchive name="xDamsHist" pne="c">
+				<elementToFind code="authfilenumber" prefix="/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/corpname" query="[XML,/c/did/origination/corpname/@authfilenumber]">/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/corpname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/persname" query="[XML,/c/did/origination/persname/@authfilenumber]">/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/persname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/famname" query="[XML,/c/did/origination/famname/@authfilenumber]">/c/did/origination[@encodinganalog='ISAD 2 - 1 name of creator(s)']/famname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/controlaccess/corpname" query="[XML,/c/controlaccess/corpname/@authfilenumber]">/c/controlaccess/corpname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/controlaccess/persname" query="[XML,/c/controlaccess/persname/@authfilenumber]">/c/controlaccess/persname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/controlaccess/famname" query="[XML,/c/controlaccess/famname/@authfilenumber]">/c/controlaccess/famname/text()</elementToFind>
+			</workArchive>
+		</masterArchive>
+	</connectedArchives>
+	<preInsert suggestedRel="none" excludeRel="son,upperbrother,lowerbrother">
+		<macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+			<sezione name="Identificazione" opened="yes">
+				<elemento input_type="select" name="tipologia" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipologia']/opzione">/eac-cpf/cpfDescription/identity/entityType/text()</elemento>
+				<elemento type="multi" prefix="/eac-cpf/cpfDescription/description/functions/function" input_type="select" name="funzione" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='funzione']/opzione">/eac-cpf/cpfDescription/description/functions/function/text()</elemento>
+				<elemento name="forma/e autorizzata/e del nome" type="multi_group" prefix="/eac-cpf/cpfDescription/identity/nameEntry" opened="yes">
+					<elemento input_type="text" class="Long" name="nome (se persona)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='prime']/text()</elemento>
+					<elemento input_type="text" class="Long" name="denominazione/cognome (ordinamento)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ulterior']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma autorizzata">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='normal']/text()</elemento>
+					<elemento input_type="select" name="norma" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='norma']/opzione">/eac-cpf/cpfDescription/identity/nameEntry/authorizedForm/text()</elemento>
+					<elemento name="date di validità" input_type="text" class="Long">/eac-cpf/cpfDescription/identity/nameEntry/useDates/date/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+	</preInsert>
+	<docEdit>
+		<macroarea name="identificazione " layer="AREA" label="Area dell'identificazione">
+			<sezione name="Identificazione" opened="yes">
+				<elemento input_type="select" name="tipologia" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipologia']/opzione">/eac-cpf/cpfDescription/identity/entityType/text()</elemento>
+				<elemento type="multi" prefix="/eac-cpf/cpfDescription/description/functions/function" input_type="select" name="funzione" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='funzione']/opzione">/eac-cpf/cpfDescription/description/functions/function/text()</elemento>
+				<!-- <elemento type="custom" name="modifica forma autorizzata" id="modificaAuther" prefix="/eac-cpf/cpfDescription/identity/nameEntry[1]" /> -->
+				<elemento name="forma/e autorizzata/e del nome" type="multi_group" prefix="/eac-cpf/cpfDescription/identity/nameEntry" opened="yes">
+					<elemento input_type="text" class="Long" name="nome (se persona)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='prime']/text()</elemento>
+					<elemento input_type="text" class="Long" name="denominazione/cognome (ordinamento)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ulterior']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma autorizzata">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='normal']/text()</elemento>
+					<elemento input_type="select" name="norma" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='norma']/opzione">/eac-cpf/cpfDescription/identity/nameEntry/authorizedForm/text()</elemento>
+					<elemento name="date di validità" input_type="text" class="Long">/eac-cpf/cpfDescription/identity/nameEntry/useDates/date/text()</elemento>
+				</elemento>
+				<elemento name="forme parallele del nome" type="multi_group" prefix="/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry" opened="yes">
+					<elemento input_type="text" class="Long" name="nome (se persona)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='prime']/text()</elemento>
+					<elemento input_type="text" class="Long" name="denominazione/cognome (ordinamento)" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoceEACCPF(this)&quot;">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='ulterior']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma normalizzata">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='normal']/text()</elemento>
+					<elemento name="date di validità" input_type="text" class="Middle">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/useDates/date/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="datazione e descrizione " layer="RELAZIONIeac" label="Area della descrizione">
+			<sezione name="Date di esistenza" opened="yes">
+				<elemento name="forma normalizzata" type="custom" format="gg mese aaaa" showCentury="false" id="data" normal="@standardDate" prefix="/eac-cpf/cpfDescription/description/existDates/date" />
+			</sezione>
+			<sezione name="Storia" opened="yes">
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="4" cols="55">/eac-cpf/cpfDescription/description/biogHist/p/text()</elemento>
+				<elemento name="luoghi" type="multi_group" prefix="/eac-cpf/cpfDescription/description/places/place" opened="yes">
+					<elemento input_type="text" class="Long" name="denominazione" ajaxVoc="/eac-cpf/cpfDescription/description/places/place/placeEntry" vocType="double">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="tipo di relazione">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</elemento>
+					<elemento input_type="text" class="Long" name="data">/eac-cpf/cpfDescription/description/places/place/date/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="funzioni, occupazioni e attività" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="58">/eac-cpf/cpfDescription/description/functions/p/text()</elemento>
+			</sezione>
+			<sezione name="mandato/fonti normative" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="58">/eac-cpf/cpfDescription/description/mandates/p/text()</elemento>
+			</sezione>
+			<sezione name="contesto sociale e culturale" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="58">/eac-cpf/cpfDescription/description/generalContext/p/text()</elemento>
+				<elemento name="condizione giuridica" type="group" prefix="/eac-cpf/cpfDescription/description/legalStatus" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="condizione giuridica" ajaxVoc="/eac-cpf/cpfDescription/description/legalStatus/term" vocType="multi">/eac-cpf/cpfDescription/description/legalStatus/term/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="descrizione">/eac-cpf/cpfDescription/description/legalStatus/descriptiveNote/p/text()</elemento>
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/description/legalStatus/date/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="struttura amministrativa/genealogia" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="58">/eac-cpf/cpfDescription/description/structureOrGenealogy/p/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="rappresentazione grafica">/eac-cpf/cpfDescription/description/structureOrGenealogy/citation/@href</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="relazioni " layer="DESCR" label="Area delle relazioni">
+			<sezione name="Relazioni gerarchiche" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="superiore" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/descriptiveNote/p/text()</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="inferiore" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/descriptiveNote/p/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni cronologiche" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="predecessore" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/descriptiveNote/p/text()</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="successore" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/descriptiveNote/p/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni di appartenenza" opened="yes">
+				<elemento name="&lt;em&gt;fa parte dell'entità descritta...&lt;/em&gt;" input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="not([XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;)" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/descriptiveNote/p/text()</elemento>
+				</elemento>
+				<elemento name="&lt;em&gt;comprende l'entità descritta...&lt;/em&gt;" input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="not([XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;)" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/descriptiveNote/p/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni familiari" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="not([XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;)" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part  &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/descriptiveNote/p/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni associative" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" showcode="no" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']" code="relationEntry/@localType" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+					/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/text()
+					<elemento name="data" input_type="text" class="Long">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/date/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/descriptiveNote/p/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="risorse collegate" layer="RISORSE" label="Collegamento con la documentazione archivistica e con altre risorse">
+			<sezione name="complessi archivistici prodotti" opened="yes">
+				<elemento type="multi_group" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="denominazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="codice">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/@localType</elemento>
+					<elemento input_type="text" class="ExtraLong" name="natura della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/descriptiveNote/p/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="data della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/date/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="altre risorse collegate" opened="yes">
+				<elemento type="multi_group" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="denominazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="tipologia della risorsa">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/@localType</elemento>
+					<elemento input_type="text" class="ExtraLong" name="link alla risorsa">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/@href</elemento>
+					<elemento input_type="text" class="ExtraLong" name="natura della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/descriptiveNote/p/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="data della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/date/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="controllo " layer="CONTROL" label="Area di controllo">
+			<sezione name="codice" opened="yes">
+				<elemento input_type="liveText">/eac-cpf/control/recordId/text()</elemento>
+			</sezione>
+			<sezione name="condizioni della scheda" opened="yes">
+				<elemento input_type="select" name="stato" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='stato']/opzione" multiMod="true">/eac-cpf/control/maintenanceStatus/text()</elemento>
+				<elemento input_type="select" name="livello di completezza" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='dettaglio']/opzione" multiMod="true">/eac-cpf/control/localControl[@localType='detailLevel']/term/text()</elemento>
+				<elemento input_type="liveText" name="condizione della pubblicazione" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='condizioni']/opzione">/eac-cpf/control/publicationStatus/text()</elemento>
+				<elemento input_type="select" name="lingua della documentazione" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='lingua']/opzione">/eac-cpf/control/languageDeclaration/language/text()</elemento>
+			</sezione>
+			<sezione name="norme, convenzioni, fonti, informazioni redazionali" opened="yes">
+				<elemento name="norme e/o convenzioni" type="group" prefix="/eac-cpf/control/conventionDeclaration" opened="yes">
+					<elemento input_type="select" name="norma" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='norma']/opzione">/eac-cpf/control/conventionDeclaration/citation/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="58" name="nota">/eac-cpf/control/conventionDeclaration/descriptiveNote/p/text()</elemento>
+				</elemento>
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="3" cols="55" name="fonti" multiMod="true" opened="yes">/eac-cpf/control/sources/source/sourceEntry/text()</elemento>
+				<elemento input_type="textarea" rows="1" cols="58" name="informazioni redazionali" multiMod="true" opened="yes">/eac-cpf/control/sources/maintenanceAgency/descriptiveNote/p/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="revisioni " layer="REVISIONI" label="Revisioni">
+			<sezione name="revisioni" opened="yes">
+				<elemento type="custom" opened="no" id="processinfo" prefix="/eac-cpf/control/maintenanceHistory/maintenanceEvent" inline="no">
+					<elemento input_type="liveText" name="azione" actionValue="revised">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventType/text()</elemento>
+					<elemento input_type="liveText" name="data">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime/text()</elemento>
+					<elemento input_type="liveText" name="responsabile">/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent/text()</elemento>
+				</elemento>
+				<elemento input_type="liveText" name="Archivio d'origine">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDescription/text()</elemento>
+			</sezione>
+		</macroarea>
+		<sezione name="campiHidden">
+			<elemento>/eac-cpf/control/conventionDeclaration/abbreviation/text()</elemento>
+			<elemento>/eac-cpf/control/conventionDeclaration/citation/text()</elemento>
+			<elemento>/eac-cpf/control/publicationStatus/text()</elemento>
+		</sezione>
+	</docEdit>
+	<fixedValues>
+		<elemento value="created">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventType/text()</elemento>
+		<elemento value="@archivioDaCuiInserisce@">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDescription/text()</elemento>
+		<elemento value="@coluiCheInserisce@">/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent/text()</elemento>
+		<elemento value="@quandoColuiInserisce@">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime/text()</elemento>
+		<elemento value=".">/eac-cpf/control/recordId/text()</elemento>
+		<elemento value="IT-xDams">/eac-cpf/control/maintenanceAgency/agencyCode/text()</elemento>
+		<elemento value="xDams">/eac-cpf/control/conventionDeclaration/abbreviation/text()</elemento>
+		<elemento value="IT">/eac-cpf/control/languageDeclaration/language/text()</elemento>
+		<elemento value="inProcess">/eac-cpf/control/publicationStatus/text()</elemento>
+	</fixedValues>
+	<param>
+		<elemento id="codice_identificativo">/eac-cpf/control/recordId/text()</elemento>
+		<elemento id="campi_obbligatori">.eac-cpf.cpfDescription.identity.nameEntry[@localType='authorized'].part[@localType='normal'].text()</elemento>
+		<elemento id="escludi_appunti">.eac-cpf.cpfDescription.identity.nameEntry[@localType='authorized'].part[@localType='normal'].text()</elemento>
+	</param>
+</root>

@@ -1,0 +1,30 @@
+<fop version="1.0">
+	<renderers>
+		<renderer mime="application/pdf">
+			<fonts><!--
+				<font metrics-file="file:///E:/FrameWork/apps/jboss-4.0.5.GA/bin/arialuni.xml" embed-file="file:///E:/WINDOWS/Fonts/arialuni.ttf" kerning="yes">
+					<font-triplet name="arialuni" style="normal" weight="normal" />
+					<font-triplet name="arialuni" style="normal" weight="bold" />
+					<font-triplet name="arialuni" style="italic" weight="normal" />
+					<font-triplet name="arialuni" style="italic" weight="bold" />
+				</font>
+				
+				<font metrics-url="file:///E:/FrameWork/apps/jboss-4.0.5.GA/bin/arialuni.xml" kerning="yes" embed-url="file:///E:/WINDOWS/Fonts/arialuni.ttf">
+					<font-triplet name="arialuni" style="normal" weight="normal" />
+					<font-triplet name="arialuni" style="normal" weight="bold" />
+					<font-triplet name="arialuni" style="italic" weight="normal" />
+					<font-triplet name="arialuni" style="italic" weight="bold" />
+				</font>
+				-->
+				<!-- register all the fonts found in a directory
+       and all of its sub directories (use with care) 
+				<directory recursive="true">E:\WINDOWS\Fonts</directory>
+-->
+				<!-- automatically detect operating system installed fonts -->
+				<auto-detect />
+
+			</fonts>
+		</renderer>
+	</renderers>
+
+</fop>

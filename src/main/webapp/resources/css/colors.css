@@ -1,0 +1,141 @@
+html{ font-family:Arial, Verdana; font-size:11px; color:#000;text-align:left;}
+.body_scheda{background:#eee;}
+#headPageBig {background:#fff;}
+#menu{background:#949898; color:#fff;}
+
+.v_menu {font-size:11px;color:#fff;}
+a.v_menu:hover {color:#424242;}
+.v_menu_nav {color:#424242;}
+
+.v_menu_r {font-size:12px;color:#000;}
+a.v_menu_r:hover {font-size:12px;color:#7D7984;}
+
+.sub_menu{background:url(../img/edge.png) repeat-x 0 bottom;color:#fff; height:24px;line-height: 24px;}
+.sub_sub_menu{background:#949898;border-top:0px solid #8B8C8F; border-bottom:0px solid #8B8C8F; color:#fff;}
+
+.campoFoto .v_menu{color:#C65F1D;}
+
+#tit_arc{font-size:12px;}
+
+#data_agg{font-size:11px;}
+
+.briciole{margin-left:20px;font-size:11px;}
+
+.link1 {font-size:10px;color:#fff;text-transform: uppercase;}
+a.link1:hover {color:#424242;}
+.link2 {color:#fff;text-decoration:underline;}
+a.link2:hover {color:#C65F1D;text-decoration:none;}
+
+.cerca_menu{color:#fff;}
+a.cerca_menu:hover{color:#fff;}
+
+.cerca_b{color:#000;}
+a.cerca_b:hover{color:#000;}
+
+.long{border:1px solid #7D7984;font-size:11px;}
+
+.middle{border:1px solid #7D7984;font-size:11px;}
+.v_middle{border:1px solid #7D7984;font-size:11px;margin-left:4px;}
+
+.data{border:1px solid #7D7984;font-size:11px;}
+.anno{border:1px solid #7D7984;font-size:11px;}
+.sel{border:1px solid #7D7984;font-size:11px;}
+.bottone{border:1px solid #fff;background:#7D7984;color:#fff;}
+.ric{border:1px solid #fff;font-size:11px;}
+.divisorio{border-bottom:0px dotted #7D7984;}
+
+.num{color:#FFFFFF;font-weight:normal; font-size:12px; text-decoration:none;}
+a.num:hover{color:#fff;font-weight:normal; text-decoration:underline;}
+
+.num_select{font-size:12px;color:#FFFFFF; float:left;}
+
+/* .paginazione{
+	background:#7D7984;
+}
+*/
+
+.barrette{color:#dddddd;}
+.pulsantiera{border-top:4px solid #ddd;width:100%;}
+
+.label{background:#eee;}
+.campo{border-bottom:0px solid #eee;}
+
+
+.ele_tito{background:#fff;padding-top:2px; padding-right:2px; padding-bottom:2px; border-top:1px solid #fff; border-bottom:1px solid #fff;margin-left:10px;margin-bottom:5px;}
+.ele_tito_sel{background:#eee;padding-top:2px; padding-right:2px; padding-bottom:2px; border-top:1px solid #ddd; border-bottom:1px solid #ddd;margin-left:10px;margin-bottom:5px;}
+
+.pulsante {font-size:11px;color:#7D7984;text-decoration:none;margin-right:6px;}
+a.pulsante:hover {font-size:11px;color:#7D7984;text-decoration:underline;margin-right:6px;}
+.suggSpan{background: #FFFFC0;}
+.nomeArchivio{margin:40px 0 0 10px;font-size:24px;color:#7D7984;}
+
+.Tit_diz{color:#fff; font-size:16px;}
+.link_white{color:#fff; text-decoration:none;}
+a.link_white:hover{color:#fff; text-decoration:underline;}
+
+.sotto_head {background:#949898;} 
+.riga_tit_diz{background:#7D7984;}
+.titolo_arc{font-size:22px; letter-spacing:1px; color:#fff;}
+.cerca_but{background:url(../img/edge.png) repeat-x 0 bottom; height:24px;border:0px solid #fff;color:#fff;}
+a.cerca_but:hover{color:#424242;}
+
+.riga_tit_area{background:#7D7984; color:#fff; font-size:14px;}
+
+.riga_sch_bre{background: #C65F1D; color:#fff;}
+
+.riga_sch_breFoto{background:#C65F1D; color:#fff; font-size:14px;}
+
+
+.link_u_w{color:#fff;}
+a.link_u_w:hover{color:#fff;background:#7D7984;}
+.link_u_w_nav{background:#7D7984; color:#fff;}
+
+.statusLayerVisibile{background-color: #ddd;color:#7D7984; font-size:15px; }
+
+
+.evid{color:red}
+
+.attendere{background-color: #8B8C8F; border:1px dotted #fff;font-weight: bold;color: #fff;}
+
+
+.apri_chiudi{color:#C65F1D;}
+a.apri_chiudi:hover{color:#7D7984;}
+
+.arcPadre{background:#dcdee6; padding:2px; color:#000; text-transform:uppercase; letter-spacing:1px; padding-left:5px;}
+
+
+/*RIDEFINENDO DOJO STYLES*/
+
+.dijitComboBox{border:1px solid #7D7984;font-size:11px;}
+.dijitMenu {border:1px solid #7D7984;background-color:white;}
+.dijitMenuItemHover {background-color:#7D7984;}
+
+
+
+
+/* nuovo 9 novembre 2011 */
+
+input.cerca_b{background:url(../img/sfondoBt.png) no-repeat top left; width:12px; height:22px; border:0;}
+
+#footPage .sub_sub_menu{background:#949898;border-top:0px solid #8B8C8F; border-bottom:0px solid #8B8C8F; color:#fff;}
+
+.bottoneLink{color:#C65F1D;}
+
+.buttonRefresh{float:left; margin:2px 0 0 10px;}
+.buttonRefresh a{margin:3px 4px 0 0px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

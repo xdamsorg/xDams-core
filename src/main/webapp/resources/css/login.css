@@ -1,0 +1,20 @@
+.bodyLogin{ color:#28474F; font-size:14px; font-family:Georgia, Times New Roman;background:url(../img/login/sfondoWrapper.jpg) repeat-x top left;}
+#wrapLogin{margin:50px auto; width:500px;}
+.contLogoLogin{ text-align:center; margin:0 0 30px 0;}
+#filterinput{border:1px solid #ccc; border-radius: 25px;-moz-border-radius: 25px;-webkit-border-radius: 25px; font-size: 12px; width: 200px; padding-left:3px; height:20px;}
+legend{color:#28474F; font-size:14px; font-family:Georgia, Times New Roman;}
+.righeLogin{float:left; width:100%; margin: 0 0 15px 0;}
+.loginlabel {font-family:Georgia, Times New Roman; font-size:14px; float:left; width:200px;margin: 0 0 20px 0;}
+#filterinput{height:23px; font-size:14px; padding-left:6px;float:left; width:200px;}
+.bottoniLogin{text-align:center; margin:20px 0 0 0;}
+.btLogin{font-family:Arial, Sans Serif; color:#28474F; font-size:12px;}
+.compatibilitiLogin{margin:30px 0 0 0;}
+.compatibilitiLogin ul{list-style:none; margin:0; padding:0;}
+.compatibilitiLogin ul li{margin:0 0 10px 0;}
+.compatibilitiLogin ul li.compatOk{background:url(../img/login/ok.png) no-repeat center left; padding-left:25px;}
+.compatibilitiLogin ul li.compatAttention{background:url(../img/login/warning.png) no-repeat center left; padding-left:25px;}
+.compatibilitiLogin ul li.compatStop{background:url(../img/login/error.png) no-repeat center left; padding-left:25px;}
+.compatibilitiLogin ul li a{color:#28474F; }
+.compatibilitiLogin ul li a:hover{text-decoration:none;}
+*:focus {outline: none;}
+a{outline:none;}

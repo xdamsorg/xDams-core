@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<macroarea name="Area dell'identificazione" summary="yes" showdoc="yes">
+		<sezione name="Identificazione" summary="yes" showdoc="yes" opened="yes">
+			<elemento summary="yes" showdoc="yes" name="codice">/eac-cpf/control/recordId/text()</elemento>
+			<elemento summary="yes" showdoc="yes" input_type="select" name="tipologia" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="//elemento[@name='tipologia']/opzione">/eac-cpf/cpfDescription/identity/entityType/text()</elemento>
+			<elemento summary="yes" showdoc="yes" format_after="&lt;br/&gt;" input_type="select" name="funzione" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="//elemento[@name='funzione']/opzione">/eac-cpf/cpfDescription/description/functions/function/text()</elemento>
+			<elemento summary="yes" showdoc="yes" name="forma/e autorizzata/e del nome" type="multi_group" prefix="/eac-cpf/cpfDescription/identity/nameEntry">
+				<elemento summary="yes" showdoc="yes">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='normal']/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format_before=",&#160;date di validità:&#160;">/eac-cpf/cpfDescription/identity/nameEntry/useDates/date/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac-cpf/cpfDescription/identity/nameEntry/@null</elemento>
+			</elemento>
+			<elemento summary="yes" showdoc="yes" name="forme parallele" type="multi_group" prefix="/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry">
+				<elemento summary="yes" showdoc="yes" format_after="&lt;br/&gt;">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='normal']/text()</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area della descrizione " summary="yes" showdoc="yes">
+		<sezione name="Datazione e descrizione" summary="yes" showdoc="yes" opened="yes">
+			<elemento summary="yes" showdoc="yes" name="date di esistenza">/eac-cpf/cpfDescription/description/existDates/date/text()</elemento>
+			<elemento summary="yes" showdoc="yes" name="storia">/eac-cpf/cpfDescription/description/biogHist/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="luoghi" type="multi_group" prefix="/eac-cpf/cpfDescription/description/places/place" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="luogo:">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;tipo di relazione:">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;data:">/eac-cpf/cpfDescription/description/places/place/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/eac-cpf/cpfDescription/description/places/place/@null</elemento>
+			</elemento>
+			<elemento summary="yes" showdoc="no" name="luoghi" type="multi_group" prefix="/eac-cpf/cpfDescription/description/places/place" opened="yes">
+				<elemento summary="yes" showdoc="no">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</elemento>
+				<elemento summary="yes" showdoc="no" format_before=",&#160;">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</elemento>
+				<elemento summary="yes" showdoc="no" format_before=",&#160;">/eac-cpf/cpfDescription/description/places/place/date/text()</elemento>
+				<elemento summary="yes" showdoc="no" format="&lt;br/&gt;">/eac-cpf/cpfDescription/description/places/place/@null</elemento>
+			</elemento>
+			<elemento summary="yes" showdoc="yes" name="funzioni, occupazioni e attività">/eac-cpf/cpfDescription/description/functions/p/text()</elemento>
+			<elemento summary="yes" showdoc="yes" name="mandato/fonti normative">/eac-cpf/cpfDescription/description/mandates/p/text()</elemento>
+			<elemento summary="yes" showdoc="yes" name="contesto sociale e culturale">/eac-cpf/cpfDescription/description/generalContext/p/text()</elemento>
+			<elemento summary="yes" showdoc="yes" name="contesto sociale e culturale" type="group" prefix="/eac-cpf/cpfDescription/description/generalContext/p">/eac-cpf/cpfDescription/generalContext/p/text()</elemento>
+			<elemento summary="yes" showdoc="yes" format_after="&lt;br/&gt;" type="multi_group" prefix="eac-cpf/cpfDescription/description/legalStatus" name="condizione giuridica">
+				<elemento summary="no" showdoc="yes">/eac-cpf/cpfDescription/description/legalStatus/term/text()</elemento>
+				<elemento summary="no" showdoc="yes" name="descrizione">/eac-cpf/cpfDescription/description/legalStatus/descriptiveNote/p/text()</elemento>
+				<elemento name="data" summary="no" showdoc="yes">/eac-cpf/cpfDescription/description/legalStatus/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/eac-cpf/cpfDescription/description/legalStatus/@null</elemento>
+			</elemento>
+			<elemento summary="yes" showdoc="yes" format_after="&lt;br/&gt;" type="multi_group" prefix="/eac-cpf/cpfDescription/description/structureOrGenealogy" name="struttura amministrativa/genealogia">
+				<elemento summary="no" showdoc="yes">/eac-cpf/cpfDescription/description/structureOrGenealogy/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" name="rappresentazione grafica">/eac-cpf/cpfDescription/description/structureOrGenealogycitation/@href</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area delle relazioni " summary="yes" showdoc="no">
+		<sezione name="Relazioni" summary="yes" showdoc="no" opened="yes">
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni gerarchiche - superiore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni gerarchiche - inferiore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni cronologiche - predecessore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni cronologiche - successore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni di appartenenza - fa parte dell'entità descritta" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni di appartenenza - comprende l'entità descritta" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni familiari" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType=family']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/text()</elemento>
+			<elemento summary="yes" showdoc="no" format_after="&lt;br/&gt;" name="relazioni associative" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/text()</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area delle relazioni " summary="no" showdoc="yes">
+		<sezione name="Relazioni gerarchiche" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" name="superiore" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" name="superiore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/@null</elemento>
+			</elemento>
+			<elemento summary="no" showdoc="yes" name="inferiore" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" name="inferiore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione name="Relazioni cronologiche" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" name="predecessore" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" name="predecessore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/@null</elemento>
+			</elemento>
+			<elemento summary="no" showdoc="yes" name="successore" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" name="successore" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-later']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione name="Relazioni di appartenenza" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" name="fa parte dell'entità descritta" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/@null</elemento>
+			</elemento>
+			<elemento summary="no" showdoc="yes" name="comprende l'entità descritta" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione name="Relazioni familiari" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" name="persona" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType=family']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione name="Relazione associativa" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']">
+				<elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;" type="multi_auther" code="relationEntry/@localType" arch_ref="xDamsEACCPF" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']" query="[XML,/eac-cpf/control/recordId]">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="-&#160;&lt;em&gt;data&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;note sulla relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="risorse collegate" summary="yes" showdoc="yes">
+		<sezione summary="yes" showdoc="no" name="complessi archivistici prodotti" opened="yes">
+			<elemento summary="yes" showdoc="no" name="complessi archivistici prodotti" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']" opened="yes" inline="yes">
+				<elemento summary="yes" showdoc="no">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/text()</elemento>
+				<elemento summary="yes" showdoc="no" format_before="&#160;(" format_after=")">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/@localType</elemento>
+				<elemento summary="yes" showdoc="no" format_before=",&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/@localType</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="complessi archivistici prodotti" opened="yes">
+			<elemento summary="no" showdoc="yes" name="dati del complesso archivistico" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/@localType</elemento>
+				<elemento summary="no" showdoc="yes" format_before=",&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before=";&lt;em&gt;&#160;natura della relazione&lt;/em&gt;:">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/descriptiveNote/p/text()</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="altre risorse collegate" opened="yes">
+			<elemento summary="no" showdoc="yes" name="dati della risorsa" type="multi_group" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;tipologia della risorsa&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/@localType</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;link alla risorsa&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/@href</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;natura della relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/descriptiveNote/p/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;-&#160;&lt;em&gt;data della relazione&lt;/em&gt;:&#160;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;&lt;br/&gt;">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area informazioni di controllo" summary="yes" showdoc="yes">
+		<sezione name="condizioni della scheda" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" name="stato">/eac-cpf/control/maintenanceStatus/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="condizione della pubblicazione">/eac-cpf/control/publicationStatus/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="lingua della documentazione">/eac-cpf/control/languageDeclaration/language/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="norme e/o convenzioni" type="multi_group" prefix="/eac-cpf/control/conventionDeclaration" inline="yes">
+				<elemento summary="no" showdoc="yes">/eac-cpf/control/conventionDeclaration/citation/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;">/eac-cpf/control/conventionDeclaration/descriptiveNote/p/text()</elemento>
+			</elemento>
+			<elemento summary="no" showdoc="yes" name="fonti">/eac-cpf/control/sources/source/sourceEntry/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="informazioni redazionali">/eac-cpf/control/sources/maintenanceAgency/descriptiveNote/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="archivio d'origine" value="document:/eac-cpf-conf/valoriControllati.xml" externalPath="/root/elemento[@name='provenienza']/opzione">/eac-cpf/control/maintenanceHistory/maintenanceEvent[child::eventType/text()='created']/eventDescription/text()</elemento>
+		</sezione>
+		<sezione name="info compilazione" summary="yes" showdoc="yes">
+			<elemento summary="no" showdoc="yes" type="multi_group" name="" opened="no" id="processinfo" prefix="/eac-cpf/control/maintenanceHistory/maintenanceEvent" inline="no">
+				<elemento summary="no" showdoc="yes" name="azione" format_before="&lt;br/&gt;">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventType/text()</elemento>
+				<elemento summary="no" showdoc="yes" name="data">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime/text()</elemento>
+				<elemento summary="no" showdoc="yes" name="responsabile">/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&#160;-&#160;provenienza:&#160;">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDescription/text()</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+</root>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="archive:getAlias">
+  <query value="xDamsHist">
+   <file name="/storico-conf/query.conf.xml"/>
+  </query>
+  <query value="xDamsPhoto">
+   <file name="/fotografico-conf/query.conf.xml"/>
+  </query>
+  <query value="xDamsHGeo">
+   <file name="/auther-luoghi-conf/query.conf.xml"/>
+  </query>
+  <query value="xDamsEACCPF">
+   <file name="/eac-cpf-conf/query.conf.xml"/>
+  </query>
+  <query value="xDamsAV">
+   <file name="/audiovideo-conf/query.conf.xml"/>
+  </query>
+ </multiEditing>
+</root>

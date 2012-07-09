@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<titleManager>
+		<sezione name="title">
+			<elemento mode="html" html="em" format_after="&#160;">0-@[#]@</elemento>
+		</sezione>
+		<sezione name="hierTitle">
+			<elemento mode="html" format_after="&#160;">@[#]@-@[§]@</elemento>
+			<elemento mode="html" html="em" format_after="&#160;">-@[#]@</elemento>
+		</sezione>
+		<sezione name="titlePath">
+			<elemento mode="html" format_after="&#160;">@[#]@-@[§]@</elemento>
+			<elemento mode="html" html="em" format_after="&#160;">-@[#]@</elemento>
+		</sezione>
+		<sezione name="defaultTitle">
+			<elemento mode="html" format_after="&#160;">@[#]@-@[§]@</elemento>
+			<elemento mode="html" html="em" format_after="&#160;">0-@[#]@</elemento>
+		</sezione>
+	</titleManager>
+</root>

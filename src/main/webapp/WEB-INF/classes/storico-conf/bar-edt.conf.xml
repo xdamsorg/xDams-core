@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="INSERISCI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/preInsert.html" target="_new${workFlowBean.alias}">
+     <paramAnchor javaBean="viewBean" name="physDoc">getPhysDoc</paramAnchor>
+     <paramAnchor javaBean="viewBean" name="thePne">getRootElement</paramAnchor>
+    </anchor>
+   </element>
+   <element value="MODIFICA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html?physDoc=${viewBean.physDoc}&amp;thePne=${viewBean.rootElement}&amp;pos=${viewBean.pos}&amp;selid=${viewBean.selid}" target="_new${workFlowBean.alias}">
+    </anchor>
+   </element>
+   <element value="MODIFICA XML" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'editXml'</paramFunction>
+      <paramFunction>'Modifica XML'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="XML" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaXML" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'viewXml'</paramFunction>
+      <paramFunction>'Visualizza XML'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  </user>
+ </managing>
+</root>

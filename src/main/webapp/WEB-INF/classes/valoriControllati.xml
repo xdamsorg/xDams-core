@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="archive:getAlias">
+  <valoriControllati value="xDamsHist">
+   <file name="/storico-conf/valoriControllati.xml"/>
+  </valoriControllati>
+  <valoriControllati value="xDamsPhoto">
+   <file name="/fotografico-conf/valoriControllati.xml"/>
+  </valoriControllati>
+  <valoriControllati value="xDamsHGeo">
+   <file name="/auther-luoghi-conf/valoriControllati.xml"/>
+  </valoriControllati>
+  <valoriControllati value="xDamsEACCPF">
+   <file name="/eac-cpf-conf/valoriControllati.xml"/>
+  </valoriControllati>
+  <valoriControllati value="xDamsAV">
+   <file name="/audiovideo-conf/valoriControllati.xml"/>
+  </valoriControllati>
+ </multiEditing>
+</root>

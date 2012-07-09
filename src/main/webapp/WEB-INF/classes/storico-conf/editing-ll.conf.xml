@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<preInsert excludeRel="none" suggestedRel="lowerbrother">
+		<macroarea>
+			<sezione name="identificazione dell'unità" opened="yes">
+				<elemento input_type="select" name="visibilità della scheda" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+				<elemento input_type="select" name="livello di descrizione" extra="onchange=&quot;testaLevel(this,'.c')&quot;" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+				<elemento input_type="select" class="Middle" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='otherlevel']/opzione" name="altro livello">/c/@otherlevel</elemento>
+			</sezione>
+			<sezione name="denominazione dell'unità descritta" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55" name="titolo">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/text()</elemento>
+				<elemento input_type="text" class="Middle" name="titolario di classificazione (unità archivistiche)" opened="no">/c/descgrp[@type='codici e numerazioni']/fileplan/p/text()</elemento>
+			</sezione>
+			<sezione name="cronologia" opened="no">
+				<elemento type="custom" id="data" showCentury="false" name="estremi cronologici" format="gg mese aaaa" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']"/>
+				<elemento input_type="text" class="ExtraLong" name="integrazione alla data">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']/emph/text()</elemento>
+			</sezione>
+			<sezione name="descrizione fisica dell'unità (unità archivistiche)" opened="no">
+				<elemento input_type="select" name="tipologia" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='container']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='container']/genreform/text()</elemento>
+				<elemento input_type="select" name="supporto" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='supporto']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='container']/physfacet[@type='medium']/text()</elemento>
+				<elemento name="consistenza" inline="yes" type="multi_group" prefix="/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']" opened="no">
+					<elemento input_type="liveText" name="&lt;br/&gt;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/text()</elemento>
+					<elemento input_type="select" name="tipologia" HTMLextra="quantità" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genreform_Ua']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/genreform/text()</elemento>
+					<elemento input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/extent/text()</elemento>
+					<elemento input_type="liveText" name="&lt;strong&gt;altre caratteristiche fisiche&lt;/strong&gt;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/text()</elemento>
+					<elemento name="dimensioni: altezza X base" HTMLextra="X" input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/dimensions[@unit='mm']/dimensions[@type='altezza']/text()</elemento>
+					<elemento input_type="text" class="Short" HTMLextra="(mm)">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/dimensions[@unit='mm']/dimensions[@type='base']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="cromatismo">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='cromatismo']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="scala" HTMLextra="es. &quot;1:500&quot;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='scala']/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="integrazione alla descrizione" class="ExtraLong">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='note']/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="collocazione" opened="yes">
+				<elemento input_type="text" class="Long" opened="yes">/c/did/physloc/text()</elemento>
+			</sezione>
+		</macroarea>
+	</preInsert>
+	<hierValues level="0">
+		<macroarea layer="layerHier">
+			<sezione name="valori ereditati dalla scheda superiore" opened="no">
+				<elemento input_type="liveText" name="codice ente">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@repositorycode</elemento>
+				<elemento input_type="liveText" name="denominazione abbreviata dell'archivio">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/abbr/text()</elemento>
+				<elemento input_type="liveText" name="nome virtuale dell'archivio">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@identifier</elemento>
+				<elemento input_type="liveText" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+			</sezione>
+		</macroarea>
+	</hierValues>
+	<fixedValues>
+		<elemento value="inserimento">/c/processinfo/list/item/text()</elemento>
+		<elemento value="@coluiCheInserisce@">/c/processinfo/list/item/persname/text()</elemento>
+		<elemento value="@quandoColuiInserisce@">/c/processinfo/list/item/date/text()</elemento>
+		<elemento value=".">/c/@id</elemento>
+		<elemento value="IT">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
+	</fixedValues>
+	<param>
+		<elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='ISAD 3-1-2 title'].text()</elemento>
+		<elemento id="codice_identificativo">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/text()</elemento>
+		<elemento id="riordina">
+			<opzione value="/c/did/unitid">codice identificativo logico</opzione>
+			<opzione value="/c/did/unittitle">denominazione</opzione>
+			<opzione value="/c/did/unittitle/unitdate/@normal">data</opzione>
+			<opzione value="XML(xpart:/c/did/unittitle/unitdate/@normal)(part:9:8)">data (estremo finale)</opzione>
+			<opzione value="/c/did/unittitle/num/emph:n">numero ordinamento provvisorio (scheda unità)</opzione>
+			<opzione value="/c/did/unittitle/num:n">numero ordinamento definitivo (scheda unità)</opzione>
+			<opzione value="/c/descgrp/odd/p">altra segnatura (o antica o precedente)</opzione>
+			<opzione value="/c/descgrp/fileplan/p">titolario di classificazione (scheda unità)</opzione>
+			<opzione value="/c/did/physloc">collocazione</opzione>
+		</elemento>
+		<elemento id="clona">
+			<opzione action="delete" value="">/c/processinfo/list/item</opzione>
+			<opzione action="append" value="elemento copiato">/c/processinfo/list/item/text()</opzione>
+			<opzione action="append" value="systemdate">/c/processinfo/list/item/date/text()</opzione>
+			<opzione action="append" value="username">/c/processinfo/list/item/persname/text()</opzione>
+			<opzione action="append" value=" Clonato ">/c/clonato/text()</opzione>
+			<opzione action="replace" value=".">/c/@id</opzione>
+		</elemento>
+	</param>
+	<docEdit>
+		<macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+			<sezione name="identificazione dell'unità" opened="yes">
+				<elemento type="group" prefix="/c" inline="yes">
+					<elemento input_type="select" name="visibilità della scheda" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+					<elemento input_type="select" multiMod="true" name="livello di descrizione" HTMLextra="&#160;&#160;&#160;altro livello" extra="onchange=&quot;testaLevel(this,'.c')&quot;" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+					<elemento input_type="select" class="Middle" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='otherlevel']/opzione">/c/@otherlevel</elemento>
+					<elemento input_type="text" name="codice identificativo logico" class="ExtraLong">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/text()</elemento>
+				</elemento>
+				<elemento name="numero di ordinamento" opened="yes" type="group" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']">
+					<elemento input_type="text" multiMod="true" name="num. ord. definitivo" class="Short">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']/text()</elemento>
+					<elemento input_type="text" multiMod="true" class="Short" name="num. ord. provvisorio">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']/emph/text()</elemento>
+				</elemento>
+				<elemento multiMod="true" input_type="text" class="Middle" name="titolario di classificazione" opened="yes">/c/descgrp[@type='codici e numerazioni']/fileplan/p/text()</elemento>
+			</sezione>
+			<sezione name="altre segnature" opened="no">
+				<elemento multiMod="true" input_type="text" class="Middle" name="segnatura antica o originaria">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/p/text()</elemento>
+				<elemento multiMod="true" input_type="textarea" rows="1" cols="55" name="integrazione alla segnatura antica o originaria">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/note/p/text()</elemento>
+				<elemento input_type="liveText" HTMLextra="&lt;br /&gt;&lt;hr /&gt;">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/@null</elemento>
+				<elemento multiMod="true" input_type="text" class="Middle" name="segnatura precedente">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/p/text()</elemento>
+				<elemento multiMod="true" input_type="textarea" rows="1" cols="55" name="integrazione alla segnatura precedente">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/note/p/text()</elemento>
+			</sezione>
+			<sezione name="posizione attuale" opened="yes">
+				<elemento multiMod="true" name="posizione attuale (1ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][1]">
+					<elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][1]/@type</elemento>
+					<elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][1]/text()</elemento>
+				</elemento>
+				<elemento multiMod="true" name="posizione attuale (2ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][2]" opened="no">
+					<elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][2]/@type</elemento>
+					<elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][2]/text()</elemento>
+				</elemento>
+				<elemento multiMod="true" name="posizione attuale (3ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][3]" opened="no">
+					<elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][3]/@type</elemento>
+					<elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][3]/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="denominazione/oggetto dell'unità descritta" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55" name="titolo">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="integrazione al titolo">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/emph/text()</elemento>
+			</sezione>
+			<sezione name="cronologia" opened="yes">
+				<elemento type="custom" id="data" showCentury="false" name="estremi cronologici" format="gg mese aaaa" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']"/>
+				<elemento input_type="text" class="Middle" name="data topica" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="auther" arch_ref="xDamsHGeo" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/geogname" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/geogname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="integrazione alla data">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']/emph/text()</elemento>
+			</sezione>
+			<sezione name="descrizione fisica" opened="yes">
+				<elemento multiMod="true" input_type="select" name="tipologia dell'unità" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='container']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='container']/genreform/text()</elemento>
+				<elemento input_type="select" name="supporto" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='supporto']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='container']/physfacet[@type='medium']/text()</elemento>
+				<elemento name="consistenza" inline="yes" type="multi_group" prefix="/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']" opened="no">
+					<elemento input_type="liveText" name="&lt;br/&gt;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/text()</elemento>
+					<elemento input_type="select" name="tipologia" HTMLextra="quantità" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genreform_Ua']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/genreform/text()</elemento>
+					<elemento input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/extent/text()</elemento>
+					<elemento input_type="liveText" name="&lt;strong&gt;altre caratteristiche fisiche&lt;/strong&gt;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/text()</elemento>
+					<elemento name="dimensioni: altezza X base" HTMLextra="X" input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/dimensions[@unit='mm']/dimensions[@type='altezza']/text()</elemento>
+					<elemento input_type="text" class="Short" HTMLextra="(mm)">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/dimensions[@unit='mm']/dimensions[@type='base']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="cromatismo">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='cromatismo']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="scala" HTMLextra="es. &quot;1:500&quot;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='scala']/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="integrazione alla descrizione" class="ExtraLong">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/physfacet[@type='note']/text()</elemento>
+					<elemento input_type="liveText" HTMLextra="&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;hr /&gt;">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/@null</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="collocazione" opened="yes">
+				<elemento multiMod="true" input_type="text" class="ExtraLong" name="collocazione">/c/did/physloc/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="contesto" layer="CONTESTO" label="Area delle informazioni sul contesto di provenienza">
+			<sezione name="provenienza" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: ente" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/corpname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/corpname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: persona" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/persname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/persname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: famiglia" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/famname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@encodinganalog='ISAD 3-2-1 name of creator(s)']/famname/text()</elemento>
+			</sezione>
+			<sezione name="storia istituzionale/amministrativa, nota biografica" opened="yes">
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="3" cols="55" name="">/c/descgrp[@encodinganalog='ISAD 3-2 context area']/bioghist[@encodinganalog='ISAD 3-2-2 administrative - biographical history']/p/text()</elemento>
+			</sezione>
+			<sezione name="storia archivistica" opened="yes">
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="3" cols="55" name="">/c/descgrp[@encodinganalog='ISAD 3-2 context area']/custodhist[@encodinganalog='ISAD 3-2-3 archival history']/p/text()</elemento>
+			</sezione>
+			<sezione name="modalità di acquisizione" opened="yes">
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="3" cols="55" name="">/c/descgrp[@encodinganalog='ISAD 3-2 context area']/acqinfo[@encodinganalog='ISAD 3-2-4 immediate source of acquisition or transfer']/p/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="contenuto e struttura" layer="CONTENUTO" label="Area delle informazioni relative al contenuto e alla struttura">
+			<sezione name="ambiti e contenuto" opened="yes">
+				<elemento input_type="textarea" rich="yes" cdata="true" rows="6" cols="55" name=" ">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/p/text()</elemento>
+			</sezione>
+			<sezione name="allegati" opened="yes">
+				<elemento name="materiale a stampa allegato" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item" opened="no">
+					<elemento input_type="text" class="ExtraLong" name="autore" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/persname[@role='autore']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="curatore" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/persname[@role='curatore']/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="titolo" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/title/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="edito in (se articolo)" opened="no">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/edition/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="luogo di pubblicazione" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/geogname/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="editore" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/publisher/text()</elemento>
+					<elemento input_type="text" class="Long" name="data di pubblicazione" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/date/text()</elemento>
+					<elemento input_type="text" class="Long" name="pagine" opened="no">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/num/text()</elemento>
+					<elemento input_type="textarea" rows="2" cols="55" name="note">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/text()</elemento>
+				</elemento>
+				<elemento name="materiale cartografico allegato" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item" opened="no">
+					<elemento input_type="textarea" rows="1" cols="55" name="titolo" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/unittitle/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="descrizione del contenuto" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="data" opened="no">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/date/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="tipologia" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/genreform/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="quantità" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='quantità']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="dimensioni" HTMLextra="altezza (mm)" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='altezza']/text()</elemento>
+					<elemento input_type="text" class="Middle" name="dimensioni" HTMLextra="base (mm)" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='base']/text()</elemento>
+					<elemento input_type="textarea" rows="3" cols="55" name="note" opened="no">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/note/p/text()</elemento>
+				</elemento>
+				<elemento name="altri allegati" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item" inline="yes" opened="no">
+					<elemento input_type="textarea" rows="1" cols="55" name="titolo">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/unittitle/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="descrizione del contenuto">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/text()</elemento>
+					<elemento input_type="text" class="Middle" name="data">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/date/text()</elemento>
+					<elemento input_type="text" class="Middle" name="tipologia">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/genreform/text()</elemento>
+					<elemento input_type="text" class="Middle" name="quantità">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/num/text()</elemento>
+					<elemento input_type="textarea" rows="3" cols="55" name="note">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/scopecontent[@encodinganalog='ISAD 3-3-1 scope and content']/list[child::head/text()='Altri allegati']/item/note/p/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="procedure, tempi e criteri di valutazione e scarto" opened="no">
+				<elemento input_type="textarea" rows="4" cols="55">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/appraisal[@encodinganalog='ISAD 3-3-2 appraisal, destruction and scheduling information']/p/text()</elemento>
+			</sezione>
+			<sezione name="incrementi previsti" opened="no">
+				<elemento input_type="textarea" rows="4" cols="55">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/accruals[@encodinganalog='ISAD 3-3-3 accruals']/p/text()</elemento>
+			</sezione>
+			<sezione name="criteri di ordinamento" opened="no">
+				<elemento input_type="textarea" rows="4" cols="55" rich="yes" cdata="true">/c/descgrp[@encodinganalog='ISAD 3-3 content and structure area']/arrangement[@encodinganalog='ISAD 3-3-4 system of arrangement']/p/text()</elemento>
+			</sezione>
+			<sezione name="chiavi di accesso" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="enti e istituzioni" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/corpname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess/corpname/text()
+					<elemento input_type="text" class="ExtraLong" name="tipologia" ajaxVoc="/c/controlaccess/corpname/@role" vocType="multi">/c/controlaccess/corpname/@role</elemento>
+					<elemento input_type="liveText">/c/controlaccess/corpname/@id</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="persone" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/persname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess/persname/text()
+					<elemento input_type="text" class="ExtraLong" name="funzione / ruolo" ajaxVoc="/c/controlaccess/persname/@role" vocType="double">/c/controlaccess/persname/@role</elemento>
+					<elemento input_type="text" class="ExtraLong" name="pseudonimo / vedi anche" ajaxVoc="/c/controlaccess/persname/@altrender" vocType="double">/c/controlaccess/persname/@altrender</elemento>
+					<elemento input_type="liveText">/c/controlaccess/persname/@id</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="famiglie" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/famname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess/famname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="luoghi" type="multi_auther" arch_ref="xDamsHGeo" prefix="/c/controlaccess/geogname" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/controlaccess/geogname/text()
+					<elemento input_type="text" class="Long" name="integrazione">/c/controlaccess/geogname/emph/text()</elemento>
+					<elemento input_type="liveText">/c/controlaccess/geogname/@id</elemento>
+				</elemento>
+				<elemento name="soggetto/argomento" type="multi_group" prefix="/c/controlaccess/subject">
+					<elemento input_type="text" class="ExtraLong" ajaxVoc="/c/controlaccess/name" vocType="double">/c/controlaccess/subject/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="integrazione">/c/controlaccess/subject/emph/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="accesso" layer="ACCESSO" label="Area delle informazioni relative alle condizioni di accesso e utilizzazione">
+			<sezione name="condizioni che regolano l'accesso" opened="yes">
+				<elemento multiMod="true" input_type="textarea" rows="2" cols="55">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/accessrestrict[@encodinganalog='ISAD 3-4-1 conditions governing access']/p/text()</elemento>
+			</sezione>
+			<sezione name="condizioni di riproduzione e copyright" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/userestrict[@encodinganalog='ISAD 3-4-2 conditions governing reproduction']/p/text()</elemento>
+			</sezione>
+			<sezione name="lingua della documentazione" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55">/c/did/langmaterial[@encodinganalog='ISAD 3-4-3 language-scripts of material']/text()</elemento>
+			</sezione>
+			<sezione name="caratteristiche materiali e requisiti tecnici" opened="yes">
+				<elemento multiMod="true" input_type="select" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='phystech']/opzione" name="stato di conservazione">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/p/text()</elemento>
+				<elemento input_type="textarea" rows="2" cols="55" name="note">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/note/p/text()</elemento>
+				<elemento type="multi" name="danni" prefix="/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/phystech[@type='danno']" input_type="select" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='danno']/opzione">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/phystech[@type='danno']/p/text()</elemento>
+				<elemento type="multi" name="cause" prefix="/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/phystech[@type='causa']" input_type="select" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='causa']/opzione">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/phystech[@type='causa']/p/text()</elemento>
+			</sezione>
+			<sezione name="strumenti di ricerca" opened="no">
+				<elemento input_type="textarea" rows="2" cols="55">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 3-4-5 finding aids']/p/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="documentazione" layer="DOCUMENTAZIONE" label="Area delle informazioni relative alla documentazione collegata e complementare">
+			<sezione name="esistenza e localizzazione degli originali" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/originalsloc[@encodinganalog='ISAD 3-5-1 existence and location of originals']/p/text()</elemento>
+			</sezione>
+			<sezione name="esistenza e localizzazione dei copie" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/altformavail[@encodinganalog='ISAD 3-5-2 existence and location of copies']/p/text()</elemento>
+			</sezione>
+			<sezione name="unità di descrizione collegate" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/relatedmaterial[@encodinganalog='ISAD 3-5-3 related units of description']/p/text()</elemento>
+			</sezione>
+			<sezione name="unità di descrizione separate" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/separatedmaterial[@encodinganalog='ISAD 3-5-3 related units of description']/p/text()</elemento>
+			</sezione>
+			<sezione name="riferimenti bibliografici" opened="yes">
+				<elemento name="citazione bibliografica" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref">
+					<elemento input_type="text" class="ExtraLong" name="autore">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/persname[@role='autore']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="curatore">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/persname[@role='curatore']/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="titolo">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/title/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="edito in (se articolo)">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/edition/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="luogo di pubblicazione" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/imprint/geogname/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="editore" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/imprint/publisher/text()</elemento>
+					<elemento input_type="text" class="Long" name="data di pubblicazione" opened="yes">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/imprint/date/text()</elemento>
+					<elemento input_type="text" class="Long" name="pagine" opened="no">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/num/text()</elemento>
+					<elemento input_type="textarea" rows="2" cols="55" name="note">/c/descgrp[@encodinganalog='ISAD 3-5 allied materials area']/bibliography[@encodinganalog='ISAD 3-5-4 publication note']/bibref/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="note e compilazione" layer="NOTE" label="Area delle note e della compilazione">
+			<sezione name="note" opened="yes">
+				<elemento multiMod="true" input_type="textarea" rows="6" cols="55" name="">/c/note[@encodinganalog='ISAD 3-6-1 note']/p/text()</elemento>
+				<elemento multiMod="true" input_type="textarea" rows="6" cols="55" name="nota dell'archivista" opened="no">/c/processinfo/note[@encodinganalog='ISAD 3-7-1 archivist note']/p/text()</elemento>
+			</sezione>
+			<sezione name="informazioni sulla descrizione archivistica">
+				<elemento input_type="liveText" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+				<elemento name="" type="custom" id="processinfo" prefix="/c/processinfo/list/item" inline="no">
+					<elemento input_type="liveText" name="azione">/c/processinfo/list/item/text()</elemento>
+					<elemento input_type="liveText" name="data">/c/processinfo/list/item/date/text()</elemento>
+					<elemento input_type="liveText" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="allegati digitali" layer="ALLEGATI" label="Area degli allegati digitali">
+			<sezione name="lista allegati digitali" opened="yes">
+				<elemento opened="yes" type="multi_group" name="" inline="yes" prefix="/c/daogrp/daoloc">
+					<elemento input_type="text" class="ExtraLong" name="descrizione">/c/daogrp/daoloc/@title</elemento>
+					<elemento mode="uploadSimple" type="custom" id="upload" class="ExtraLong" name="url" externalPath="/c/@id" prefix="/c/daogrp/daoloc">/c/daogrp/daoloc/@href</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<sezione name="campiHidden">
+			<elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
+			<elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@repositorycode</elemento>
+			<elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/abbr/text()</elemento>
+			<elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@identifier</elemento>
+			<elemento>/c/@id</elemento>
+		</sezione>
+	</docEdit>
+</root>

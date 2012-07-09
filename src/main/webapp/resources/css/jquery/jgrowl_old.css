@@ -1,0 +1,68 @@
+
+div#jGrowl {
+	position: fixed;
+	padding: 10px;
+	z-index:999;
+	right:25px;
+	width: 235px;
+	height:150px;
+	top:25px;
+	/** Internet Explorer Hack **/
+	_position:absolute;
+	_top:expression(eval(document.body.scrollTop));
+}
+
+div#jGrowl > div {
+	background-color:#000;
+	color:#fff;
+	opacity: .95;
+	filter: alpha(opacity = 95);
+ 
+	padding: 10px;
+	margin:5px;
+	font-family:Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:left;
+	display: none;
+}
+
+div#jGrowl > div.jGrowl {
+	min-height:40px;
+}
+
+div#jGrowl > div.jGrowl > div.header {
+	font-weight: bold;
+	font-size:12px;
+}
+
+div#jGrowl > div.jGrowl > div.close {
+	float: right;
+	font-weight: bold;
+	font-size:12px;
+	cursor:pointer;
+}
+
+div#jGrowl > div.closer {
+	min-height:10px;
+	padding-top:4px;
+	padding-bottom:4px;
+	cursor:pointer;
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+}
+
+
+ 
+* html div.manilla{
+	border:5px solid #fff;
+	background-color:#A75947;
+	color:#fff;
+	padding: 10px;
+}
+div#jGrowl > div.manilla {
+	border:5px solid #fff;
+	background-color:#A75947;
+	color:#fff;
+		padding: 10px;
+}

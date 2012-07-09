@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<macroarea name="Area dell'identificazione" summary="yes" showdoc="yes" opened="yes">
+		<sezione name="identificazione" summary="yes" showdoc="yes" opened="yes">
+			<elemento name="codice" summary="yes" showdoc="yes">/eac/eacheader/eacid/text()</elemento>
+			<elemento name="forma autorizzata" summary="yes" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;">/eac/condesc/identity/conhead[@type='authorized']/@normal</elemento>
+			<elemento name="forma variante" summary="yes" showdoc="yes" type="multi_group" prefix="/eac/condesc/identity/conhead[@type='parallel']">
+				<elemento summary="yes" showdoc="yes">/eac/condesc/identity/conhead[@type='parallel']/@normal</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/identity/conhead[@type='parallel']/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area della descrizione e delle relazioni" summary="yes" showdoc="yes" opened="yes">
+		<sezione name="informazioni integrative" summary="yes" showdoc="yes">
+			<elemento name="informazioni integrative" summary="yes" showdoc="yes">/eac/condesc/desc/ocd/p/text()</elemento>
+		</sezione>
+		<sezione name="relazioni" summary="yes" showdoc="yes" opened="yes">
+			<elemento name="relazioni gerarchiche di luogo - superiore" type="multi_group" summary="yes" showdoc="yes" prefix="/eac/condesc/eacrels/eacrel[@reltype='superior']" arch_ref="xDamsHGeo" code="id" query="[XML,/eac/eacheader/eacid]">
+				<elemento summary="yes" showdoc="yes" name="luogo">/eac/condesc/eacrels/eacrel[@reltype='superior']/place/text()</elemento>
+				<elemento format_before=";&#160;&lt;em&gt;nota&#160;alla&#160;relazione&lt;/em&gt;:&#160;" summary="yes" showdoc="yes">/eac/condesc/eacrels/eacrel[@reltype='superior']/descnote/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/eacrels/eacrel[@reltype='superior']/@null</elemento>
+			</elemento>
+			<elemento name="relazioni gerarchiche di luogo - inferiore" type="multi_group" summary="yes" showdoc="yes" prefix="/eac/condesc/eacrels/eacrel[@reltype='subordinate']" arch_ref="xDamsHGeo" code="id" query="[XML,/eac/eacheader/eacid]">
+				<elemento summary="yes" showdoc="yes" name="luogo">/eac/condesc/eacrels/eacrel[@reltype='subordinate']/place/text()</elemento>
+				<elemento format_before=";&#160;&lt;em&gt;nota&#160;alla&#160;relazione&lt;/em&gt;:&#160;" summary="yes" showdoc="yes">/eac/condesc/eacrels/eacrel[@reltype='subordinate']/descnote/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/eacrels/eacrel[@reltype='subordinate']/@null</elemento>
+			</elemento>
+			<elemento name="relazioni cronologiche di luogo - predecessore" type="multi_group" summary="yes" showdoc="yes" prefix="/eac/condesc/eacrels/eacrel[@reltype='earlier']" arch_ref="xDamsHGeo" code="id" query="[XML,/eac/eacheader/eacid]">
+				<elemento summary="yes" showdoc="yes" name="luogo">/eac/condesc/eacrels/eacrel[@reltype='earlier']/place/text()</elemento>
+				<elemento format_before=";&#160;&lt;em&gt;nota&#160;alla&#160;relazione&lt;/em&gt;:&#160;" summary="yes" showdoc="yes">/eac/condesc/eacrels/eacrel[@reltype='earlier']/descnote/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/eacrels/eacrel[@reltype='earlier']/@null</elemento>
+			</elemento>
+			<elemento name="relazioni cronologiche di luogo - successore" type="multi_group" summary="yes" showdoc="yes" prefix="/eac/condesc/eacrels/eacrel[@reltype='later']" arch_ref="xDamsHGeo" code="id" query="[XML,/eac/eacheader/eacid]">
+				<elemento summary="yes" showdoc="yes" name="luogo">/eac/condesc/eacrels/eacrel[@reltype='later']/place/text()</elemento>
+				<elemento format_before=";&#160;&lt;em&gt;nota&#160;alla&#160;relazione&lt;/em&gt;:&#160;" summary="yes" showdoc="yes">/eac/condesc/eacrels/eacrel[@reltype='later']/descnote/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/eacrels/eacrel[@reltype='later']/@null</elemento>
+			</elemento>
+			<elemento name="relazioni associative di luogo" type="multi_group" summary="yes" showdoc="yes" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='associative']" code="id" query="[XML,/eac/eacheader/eacid]">
+				<elemento summary="yes" showdoc="yes" name="luogo">/eac/condesc/eacrels/eacrel[@reltype='associative']/place/text()</elemento>
+				<elemento format_before=";&#160;&lt;em&gt;nota&#160;alla&#160;relazione&lt;/em&gt;:&#160;" summary="yes" showdoc="yes">/eac/condesc/eacrels/eacrel[@reltype='associative']/descnote/text()</elemento>
+				<elemento summary="yes" showdoc="yes" format="&lt;br/&gt;">/eac/condesc/eacrels/eacrel[@reltype='associative']/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea name="Area del controllo" summary="no" showdoc="yes" opened="yes">
+		<sezione name="Informazioni di controllo" opened="yes" summary="no" showdoc="yes">
+			<elemento name="stato della scheda" summary="no" showdoc="yes" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='stato']/opzione">/eac/eacheader/@status</elemento>
+			<elemento name="livello di dettaglio" summary="no" showdoc="yes" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='dettaglio']/opzione">/eac/eacheader/@detaillevel</elemento>
+			<elemento name="lingua della documentazione" summary="no" showdoc="yes" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='lingua']/opzione" prefix="/eac/eacheader/languagedecl/language">/eac/eacheader/languagedecl/language/text()</elemento>
+			<elemento type="multi_group" summary="no" showdoc="yes" name="revisioni" opened="yes" prefix="/eac/eacheader/mainhistory/mainevent" inline="yes">
+				<elemento summary="no" showdoc="yes" name="azione">/eac/eacheader/mainhistory/mainevent/@maintype</elemento>
+				<elemento summary="no" showdoc="yes" format_before=",&#160;">/eac/eacheader/mainhistory/mainevent/maindate/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before=",&#160;utente&#160;">/eac/eacheader/mainhistory/mainevent/name/text()</elemento>
+				<elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/eac/eacheader/mainhistory/mainevent/@null</elemento>
+			</elemento>
+			<elemento name="Archivio d'origine" summary="no" showdoc="yes">/eac/eacheader/mainhistory/mainevent/maindesc/text()</elemento>
+		</sezione>
+	</macroarea>
+</root>

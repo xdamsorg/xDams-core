@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+  <primary_node ud_name="eac-cpf" ud_container="eacgrp">
+    <unique_rule search_rule="[XML,/eac-cpf/control/recordId]"/>
+    <key name="XML,/eac-cpf/control/recordId" key_style="one" serial_id="num_id"  empty_key="yes" />
+    <key name="XML,/eac-cpf/cpfDescription/identity/nameEntry/part" key_style="double" empty_key="yes"/>
+    <key name="XML,/eac-cpf/cpfDescription/description/places/place/placeEntry" key_style="double" empty_key="yes"/>
+    <key name="XML,/eac-cpf/cpfDescription/relations/resourceRelation/relationEntry" key_style="double" empty_key="yes"/>
+    <key name="XML,/eac-cpf/cpfDescription/biogHist/chronlist/chronitem/event" key_style="double" empty_key="yes"/>
+    <!-- SPECIFICHE INFO AMMINISTRATIVE -->
+    <key name="XML,/eac-cpf/control/maintenanceHistory/maintenanceEvent" instance="yes"/>
+    <key name="XML,/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent" key_style="double" empty_key="yes" />
+    <key name="XML,/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime" key_style="one" empty_key="yes" />
+    <!-- SPECIFICHE INFO AMMINISTRATIVE -->
+    <key name="XML,/eac-cpf/cpfDescription/description/existDates/date" attr_collate="#toyear:$@standardDate|p9-4,fn-4@$#fromyear:$@standardDate|p0-4,fn-4@$#from:$@standardDate|p0-8,fn-8,d@$#to:$@standardDate|p9-8,fn-8,d@$"/>
+    <key name="XML,/eac-cpf/cpfDescription/description/existDates/date/@standardDate"  key_style="one"/>
+ </primary_node>
+   <serials>
+    <serial id="num_id" mask="IT-xDams-EACCPF0001-######"/>
+  </serials>
+ <hw_fields>
+  <search_alias search_name="CODICE" search_key="XML,/eac-cpf/eacheader/eacid/"/>
+  <search_alias search_name="ENTI" search_key="XML,/eac-cpf/cpfDescription/identity/nameEntry/part"/>
+  <search_alias search_name="PERSONE" search_key="XML,/eac-cpf/cpfDescription/identity/nameEntry/part"/>
+  <search_alias search_name="FAMIGLIE" search_key="XML,/eac-cpf/cpfDescription/identity/nameEntry/part"/>
+ </hw_fields>
+ <file_location mode="day"/>
+ <expert_system_extension active="false"/>
+ <profile type="title" value="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;[@nome@]&quot; XML,/eac-cpf/cpfDescription/description/existDates/date &quot;[@data@]&quot;"/>
+ <profile type="title.separ" value="¢"/>
+ <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+ <profile type="catalog.strict" value="true"/>
+ <profile type="arc.allownonportable" value="true"/> 
+</xway_cfg>
+

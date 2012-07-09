@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<role value="1">ROLE_ADMIN</role>
+	<role value="2">ROLE_USER</role>
+	<role value="3">ROLE_READER</role>
+</root>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <titleManager>
+  <sezione name="title">
+  <!-- <titleRole>XML,/c/did/unittitle/num XML,/c/did/unittitle &quot;[@tit@]&quot; XML,/c/did/unittitle/unitdate &quot;[@data@][@arch@]&quot; XML,/c/@level &quot;[@lev@]&quot; XML,/c/daogrp/daoloc/@href &quot;[@titolario@]&quot; XML,/c/descgrp/fileplan/p</titleRole> -->
+   <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+   <elemento mode="html" html="" format_after=")&#160;" format_before="(">[@titolario@]-</elemento>
+   <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
+   <elemento flag="isAttach">[@lev@]-</elemento>
+  </sezione>
+  <sezione name="defaultTitle">
+   <titleRole></titleRole>
+   <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="hierBrowser">
+   <!-- <titleRole>XML,/c/did/unittitle/num XML,/c/did/unittitle &quot;[@tit@]&quot; XML,/c/did/unittitle/unitdate &quot;[@data@][@arch@]&quot; XML,/c/@level &quot;[@lev@]&quot; XML,/c/daogrp/daoloc/@href &quot;[@titolario@]&quot; XML,/c/descgrp/fileplan/p</titleRole> -->
+   <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+   <elemento mode="html" html="" format_after=")&#160;" format_before="(">[@titolario@]-</elemento>
+   <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
+   <elemento flag="isAttach">[@lev@]-</elemento>
+  </sezione>
+  <sezione name="hierTitle">
+   <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="titlePath">
+   <elemento mode="html" html="em" format_after="&#160;">||-Ð</elemento>
+  </sezione>
+  <sezione name="dataTitle">
+   <elemento>[@tit@]-[@data@]</elemento>
+  </sezione>
+ </titleManager>
+</root>

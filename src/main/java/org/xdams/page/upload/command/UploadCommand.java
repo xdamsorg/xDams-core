@@ -1,0 +1,243 @@
+package org.xdams.page.upload.command;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.transform.TransformerException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.StrBuilder;
+import org.apache.commons.lang3.text.StrSubstitutor;
+import org.springframework.ui.ModelMap;
+import org.xdams.conf.master.ConfBean;
+import org.xdams.manager.conf.MultiEditingManager;
+import org.xdams.page.upload.bean.UploadBean;
+import org.xdams.page.upload.bean.UploadCommandLine;
+import org.xdams.user.bean.UserBean;
+import org.xdams.utility.CompositionRule;
+import org.xdams.utility.request.MyRequest;
+import org.xdams.workflow.bean.WorkFlowBean;
+import org.xdams.xml.builder.XMLBuilder;
+import org.xdams.xmlengine.connection.manager.ConnectionManager;
+import org.xdams.xw.XWConnection;
+
+
+public class UploadCommand {
+	private Map<String, String[]> parameterMap = null;
+
+	private ModelMap modelMap = null;
+
+	public UploadCommand(Map<String, String[]> parameterMap, ModelMap modelMap) throws Exception {
+		this.parameterMap = parameterMap;
+		this.modelMap = modelMap;
+	}
+
+	public void execute() throws Exception {
+		XWConnection xwconn = null;
+		ConnectionManager connectionManager = new ConnectionManager();
+		ConfBean confBean = null;
+		String physDoc = MyRequest.getParameter("physDoc", parameterMap);
+		UploadBean uploadBean = (UploadBean) modelMap.get("uploadBean");
+		List<String> confControl = new ArrayList<String>();
+		confControl.add("upload");
+		try {
+			UserBean userBean = (UserBean) modelMap.get("userBean");
+			confBean = (ConfBean) modelMap.get("confBean");
+			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
+			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
+			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));
+			confBean = editingManager.rewriteMultipleConf(confControl);
+			loadUploadBean(uploadBean, confBean.getTheXMLConfUpload());
+			System.out.println(uploadBean);
+			// da prendere dentro workflowBean
+			String archiveName = workFlowBean.getAlias();
+			String domainName = userBean.getAccountRef();
+			for (int i = 0; i < uploadBean.getCommandLine().size(); i++) {
+				UploadCommandLine uploadCommandLine = uploadBean.getCommandLine().get(i);
+				try {
+					File fileUploadTempPath = new File(uploadCommandLine.getUploadTempPath());
+					if (!(fileUploadTempPath.exists())) {
+						fileUploadTempPath.mkdirs();
+					}
+					File uploadFile = new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName());
+					if (!uploadFile.exists()) {
+						uploadBean.getFiledata().transferTo(uploadFile);
+					}
+				} catch (Exception e) {
+					uploadBean.getResultError().append("errore nel copia nella cartella temporanea: " + e.getMessage());
+					throw e;
+				}
+
+				String numFile = "0001";
+				StringBuilder uploadPath = null;
+				try {
+					// controlli su filesystem se esiste la radice getUploadPath e la sua composizione
+					uploadPath = new StringBuilder(uploadCommandLine.getUploadPath().trim());
+					if (!uploadPath.toString().endsWith(System.getProperty("file.separator"))) {
+						uploadPath.append(System.getProperty("file.separator"));
+					}
+
+					uploadPath.append(domainName);
+					uploadPath.append(System.getProperty("file.separator"));
+					uploadPath.append(archiveName);
+					uploadPath.append(System.getProperty("file.separator"));
+					uploadPath.append(uploadCommandLine.getUploadNameDir());
+					uploadPath.append(System.getProperty("file.separator"));
+					// tolgo la punteggiatura
+					uploadBean.setIdRecord(CompositionRule.stripPunctuation(uploadBean.getIdRecord(), '\u0000'));
+					if (uploadBean.getRenameFile().equalsIgnoreCase("true")) {
+						uploadPath.append(CompositionRule.compose(uploadBean.getCompositionRuleDir(), uploadBean.getIdRecord(), System.getProperty("file.separator")));
+					}
+					File fileUploadPath = new File(uploadPath.toString());
+					System.out.println(uploadPath);
+					if (!(fileUploadPath.exists())) {
+						fileUploadPath.mkdirs();
+					} else {
+						if (fileUploadPath.listFiles().length == 0) {
+							numFile = StringUtils.leftPad("1", 4, "0");
+						} else {
+							numFile = StringUtils.leftPad("" + (fileUploadPath.listFiles().length + 1), 4, "0");
+						}
+					}
+					if (uploadBean.getRenameFile().equalsIgnoreCase("true") && !uploadBean.getCompositionReplaceName().trim().equals("")) {
+						uploadBean.setIdRecord(uploadBean.getIdRecord().replaceAll(uploadBean.getCompositionReplaceName(), ""));
+					}
+					if (uploadBean.getRenameFile().equalsIgnoreCase("true")) {
+						uploadPath.append(CompositionRule.compose(uploadBean.getCompositionRuleFile(), uploadBean.getIdRecord(), "."));
+						uploadPath.append(numFile);
+						uploadPath.append(".");
+						uploadPath.append(org.apache.commons.io.FilenameUtils.getExtension(uploadBean.getName()));
+					} else {
+						uploadPath.append(uploadBean.getName());
+					}
+
+				} catch (Exception e1) {
+					throw e1;
+				}
+					System.out.println("UploadCommand.execute() uploadPath.toString() "+uploadPath.toString());
+					
+				// verifico se devo lanciare un comando oppure no
+				if (!uploadCommandLine.getCommandLine().trim().equals("") && uploadBean.getUploadType().equalsIgnoreCase("resize")) {
+					Map<String, String> valuesMap = new HashMap<String, String>();
+					valuesMap.put("imgIn", "\"" + uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName() + "\"");
+					valuesMap.put("imgOut", "\"" + uploadPath.toString() + "\"");
+					StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
+					String cmd = strSubstitutor.replace(uploadCommandLine.getCommandLine());
+					System.out.println(cmd);
+					try {
+						Runtime runtime = Runtime.getRuntime();
+						Process process = runtime.exec(cmd);
+						process.waitFor();
+						if (process.exitValue() != 0) {
+							InputStream lsOut = process.getErrorStream();
+							InputStreamReader r = new InputStreamReader(lsOut);
+							BufferedReader in = new BufferedReader(r);
+							String line;
+							int maxLine = 0;
+							while ((line = in.readLine()) != null && maxLine < 10) {
+								uploadBean.getResultError().append(line);
+								maxLine++;
+							}
+							in.close();
+							r.close();
+							lsOut.close();
+							System.out.println(uploadBean.getResultError());
+						} else {
+							String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
+							resultName = StringUtils.remove(resultName, archiveName);
+							resultName = StringUtils.remove(resultName, domainName);
+							resultName = StringUtils.remove(resultName, uploadCommandLine.getUploadNameDir());
+							resultName = resultName.replaceAll("\\\\", "/");
+							resultName = resultName.replaceAll("[/]*(.*)", "/$1");
+							if (resultName.endsWith("/")) {
+								try {
+									resultName = resultName.substring(0, resultName.length() - 1);
+								} catch (Exception e) {
+									uploadBean.getResultError().append(e.getMessage());
+								}
+							}
+							uploadBean.setResult(new StringBuilder(resultName));
+							System.out.println("uploadPath resize: " + resultName);
+						}
+					} catch (Exception e) {
+						uploadBean.getResultError().append("errore nel processo di conversione file: " + e.getMessage());
+					}
+				} else {
+					try {
+						FileUtils.copyFile(new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName()), new File(uploadPath.toString()));
+						System.out.println("uploadPath.toString() " + uploadPath.toString());
+						String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
+						resultName = StringUtils.remove(resultName, archiveName);
+						resultName = StringUtils.remove(resultName, domainName);
+						resultName = StringUtils.remove(resultName, uploadCommandLine.getUploadNameDir());
+						resultName = resultName.replaceAll("\\\\", "/");
+						resultName = resultName.replaceAll("[/]*(.*)", "/$1");
+						if (resultName.endsWith("/")) {
+							try {
+								resultName = resultName.substring(0, resultName.length() - 1);
+							} catch (Exception e) {
+								uploadBean.getResultError().append(e.getMessage());
+							}
+						}
+						uploadBean.setResult(new StringBuilder(resultName));
+						System.out.println("uploadPath simple: " + resultName);
+					} catch (Exception e) {
+						uploadBean.getResultError().append("errore nella copia del file nella cartella di destinazione: " + e.getMessage());
+						throw e;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e.toString());
+		} finally {
+			connectionManager.closeConnection(xwconn);
+		}
+	}
+
+	public void loadUploadBean(UploadBean uploadBean, XMLBuilder theXMLConfUpload) throws UnsupportedEncodingException, TransformerException {
+		try {
+			// String prefixUpload = "/root/upload[@name='" + uploadBean.getUploadName() + "' and @type='" + uploadBean.getUploadType() + "']";
+			String prefixUpload = "/root/upload[@type='" + uploadBean.getUploadType() + "']";
+			int countUploadSection = theXMLConfUpload.contaNodi(prefixUpload);
+			if (countUploadSection == 0) {
+				uploadBean.getResultError().append("impostare configurazione upload correttamente upload type non presente");
+				throw new Exception("impostare configurazione upload correttamente upload type non presente");
+			}
+			for (int i = 0; i < countUploadSection; i++) {
+				uploadBean.setRenameFile(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/renameFile/text()"));
+				uploadBean.setCompositionRuleFile(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionRuleFile/text()"));
+				uploadBean.setCompositionRuleDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionRuleDir/text()"));
+				uploadBean.setCompositionReplaceName(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionReplaceName/text()"));
+				int countCommand = theXMLConfUpload.contaNodi(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command");
+				for (int j = 0; j < countCommand; j++) {
+					UploadCommandLine commandLine = new UploadCommandLine();
+					commandLine.setCommandLine(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/commandLine/text()"));
+					commandLine.setUploadTempPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadTempPath/text()"));
+					commandLine.setUploadMode(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadMode/text()"));
+					commandLine.setUploadPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadPath/text()"));
+					if(commandLine.getUploadPath().toLowerCase().contains("webapp")){
+						Map<String, String> valuesMap = new HashMap<String, String>();
+						valuesMap.put("webApp", (String)modelMap.get("realPath"));
+						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
+						commandLine.setUploadPath(strSubstitutor.replace(commandLine.getUploadPath()));
+					}
+					commandLine.setUploadNameDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadNameDir/text()"));
+					uploadBean.getCommandLine().add(commandLine);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

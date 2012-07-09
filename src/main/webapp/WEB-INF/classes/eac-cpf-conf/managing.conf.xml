@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<element multiMod="true" input_type="text" class="ExtraLong" name="forma autorizzata">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='normal']/text()</element>
+	<element multiMod="true" input_type="textarea" rows="4" cols="58" class="Long" name="storia">/eac-cpf/cpfDescription/description/biogHist/p/text()</element>
+	<element name="luoghi" type="multi_group" prefix="/eac-cpf/cpfDescription/description/places/place" opened="yes">
+		<element multiMod="true" input_type="text" class="Long" name="luoghi - denominazione">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</element>
+		<element multiMod="true" input_type="textarea" rows="1" cols="55" name="luoghi - tipo di relazione">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</element>
+	</element>
+	<element multiMod="true" input_type="textarea"  rows="4" cols="58" name="funzioni, occupazioni e attività">/eac-cpf/cpfDescription/description/functions/p/text()</element>
+	<element multiMod="true" input_type="textarea" rows="4" cols="58" name="mandato/fonti normative">/eac-cpf/cpfDescription/description/mandates/p/text()</element>
+	<element multiMod="true" input_type="textarea" rows="4" cols="58" name="contesto sociale e culturale">/eac-cpf/cpfDescription/description/generalContext/p/text()</element>
+	<element multiMod="true" input_type="textarea" rows="3" cols="58" name="nota alle norme e convenzioni">/eac-cpf/control/conventionDeclaration/descriptiveNote/p/text()</element>
+	<element multiMod="true" input_type="textarea" rows="3" cols="58" name="fonti">/eac-cpf/control/sources/source/sourceEntry/text()</element>
+	<element multiMod="true" input_type="textarea" rows="3" cols="58" name="informazioni redazionali">/eac-cpf/control/sources/maintenanceAgency/descriptiveNote/p/text()</element>
+</root>

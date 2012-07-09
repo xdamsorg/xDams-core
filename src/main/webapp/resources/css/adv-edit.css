@@ -1,0 +1,91 @@
+/* xDams edt style v. 0.1  */
+* {font-size:11px}
+* {font-family:'Trebuchet MS'}
+
+select,input,textarea{border:1px solid #8B8C8F;padding-left:2px;padding-right:2px:margin-top:3px;margin-bottom:3px;font-size: 12px;}
+
+.container{margin-left:105px;margin-top:10px;border:1px solid #999;}
+.macroArea{padding:0;margin:0;background-color:#EEE;border-bottom:1px solid #999;}
+.macroAreaLabel{background:#a75947; color:#fff; font-size:14px;display:block; padding:3px 0 3px 6px;}
+
+.section{padding-left:10px;margin-right:10px;padding-bottom:10px;padding-top:10px;}
+.subsection{border:1px inset;padding-top:15px;}
+.sectionLabel{font-size: 12px;font-weight: bold;text-transform: uppercase;border:1px inset;border-bottom:1px solid #EEE;padding-left:5px;padding-right:5px;padding-top:5px;}
+.sectionLabelClose{font-size: 12px;font-weight: bold;text-transform: uppercase;border:1px inset;border-bottom:1px dashed #CCC;padding-left:5px;padding-right:5px;padding-top:5px;width:99%;display:block;}
+
+
+.block{padding-left:10px;padding-right:10px;padding-bottom:10px;padding-top:8px;margin-left:10px;}
+.subblock{border:1px outset;padding-top:8px;}
+.blockLabel{font-size: 10px;font-weight: bold;text-transform: uppercase;border:1px outset;border-bottom:1px solid #EEE;padding-left:5px;padding-right:5px;padding-top:5px;}
+.blockLabelClose{font-size: 10px;font-weight: bold;text-transform: uppercase;border:1px outset;border-bottom:1px dashed #CCC;padding-left:5px;padding-right:5px;padding-top:5px;width:99%;display:block;}
+
+
+.element{padding-left:10px;padding-right:10px;padding-bottom:10px;padding-top:5px;}
+.subelement{border:1px inset;padding-top:15px;}
+.elementLabel{font-size: 10px;font-weight: bold;margin-top:0px;border:1px inset;border-bottom:1px solid #EEE;padding-left:5px;padding-right:5px;padding-top:5px;text-transform: uppercase;}
+.elementLabelClose{font-size: 10px;font-weight: bold;margin-top:0px;border:1px inset;border-bottom:1px dashed #CCC;padding-left:5px;padding-right:5px;padding-top:5px;text-transform: uppercase;width:99%;display:block;}
+
+ 
+a.buttonLink{
+    font-size:8px;
+    background-color:#ddd;
+    border:1px solid #8B8C8F;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: normal;
+    text-decoration:none;
+    text-align:center;
+    }
+a.buttonLink:hover{text-decoration:none;border:1px solid #FFFFFF;}
+
+a.actionButtonLink{
+    margin-bottom:2px;
+    font-size:10px;
+    background-color:#ddd;
+    border:1px solid #8B8C8F;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: normal;
+    text-decoration:none;
+    text-align:center;
+    padding-left:5px;padding-right:5px;
+    }
+a.actionButtonLink:hover{color: #A75947;text-decoration:none;border:1px solid #FFFFFF;border-bottom:0px solid #8B8C8F;padding-left:5px;padding-right:5px;}
+
+.item{margin-left:15px;border:0px solid #CCC;padding-top:0px;padding-bottom:20px;padding-left:5px;padding-right:0px;}
+* html .item{padding-top:0px;padding-bottom:10px;}
+
+
+.itemLabel{width:150px;margin-left:5px;float:left;}
+.itemObject{display:block;float:left;}
+a.itemLink{font-size:10px;background-color:#ddd;border:1px solid #8B8C8F;padding:2px;color: #000;text-transform: uppercase;font-weight: normal;text-decoration:none;}
+a.itemLink:hover{text-decoration:none;border:1px solid #FFFFFF;}
+
+a.buttonLinkItem{
+    font-size:10px;
+    background-color:#ddd;
+    border:1px solid #8B8C8F;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: normal;
+    text-decoration:none;
+    text-align:center; 
+    margin-left:4px;  
+    float:left;
+    display:block;
+    margin-top:-12px;
+    padding-left:5px;padding-right:5px;
+}
+a.buttonLinkItem:hover{color: #A75947;text-decoration:none;border:1px solid #FFFFFF;}
+
+/* STILI INPUT  */				
+.docEditTextArea{width:400px; }
+.docEditInput{font-size:11px;}
+.selectField{font-size:11px;}
+.textShort{width:100px;  }
+.textMiddle{width:200px; }
+.textLong{width:250px; }
+.textExtraLong{width:300px;  }
+.textData{width:30px; }
+.doceditInputCheck{border:0px;}
+

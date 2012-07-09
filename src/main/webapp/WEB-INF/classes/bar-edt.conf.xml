@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="archive:getAlias">
+  <managing value="xDamsHist">
+   <file name="/storico-conf/bar-edt.conf.xml"/>
+  </managing>
+  <managing value="xDamsPhoto">
+   <file name="/fotografico-conf/bar-edt.conf.xml"/>
+  </managing>
+  <managing value="xDamsHGeo">
+   <file name="/auther-luoghi-conf/bar-edt.conf.xml"/>
+  </managing>
+  <managing value="xDamsEACCPF">
+   <file name="/eac-cpf-conf/bar-edt.conf.xml"/>
+  </managing>
+  <managing value="xDamsAV">
+   <file name="/audiovideo-conf/bar-edt.conf.xml"/>
+  </managing>
+ </multiEditing>
+</root>

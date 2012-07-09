@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="SELEZIONA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="all">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxMultipleSelectionMode">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+     </functionName>
+     <functionName value="reloadLocation"></functionName>
+    </eventJavaScript>
+   </element>
+   <element value="ELIMINA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'erase'</paramFunction><!-- actionFlag servizio della servlet -->
+      <paramFunction>'ELIMINAZIONE MULTIPLA'</paramFunction><!-- commento alla finestra -->
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction><!-- documento -->
+      <paramFunction javaBean="viewBean">getSelid</paramFunction><!-- documento -->
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="COPIA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxSetSessionDocsToCut">
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction>'@@physDocToPaste@@'</paramFunction>
+      <paramFunction>'paste'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="STAMPA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="all">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'xml2pdf'</paramFunction>
+      <paramFunction>'Stampa PDF'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>{idXpath:'/eac-cpf/control/recordId/text()'}</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  </user>
+ </managing>
+</root>

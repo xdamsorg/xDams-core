@@ -1,0 +1,428 @@
+/* xDams stile v. 0.2.02  */ 
+form{margin:0;}
+label{font-weight:normal;}
+p{margin:0; padding:0;}
+
+.attenzione{margin:6px;text-align: left;background-color: red;color: white;border:1px solid darkred;padding:3px}
+.attenzione a{color:#FFF}
+.attenzione a:hover{text-decoration: none;}
+.attenzioneABS{position:absolute;z-index:1000;left:100px;}
+
+#footPage {height:26px; position:absolute; margin:0; margin-top:0px; bottom:0; left:0; display:block; width:100%;  z-index:5; overflow:hidden;}
+
+/*HEADER+CONTENT+FOOTER*/
+#headPageBig {height:130px; position:absolute; margin:0; top:0; left:0; display:block; width:100%; z-index:5; overflow:hidden;}
+
+#contentPage {top:132px;overflow:auto; position:absolute;  bottom:26px; right:0; left:0;font-weight:normal}
+* html #contentPage {border-top:132px solid #fff; border-bottom:26px solid #fff;top:0; left:0; right:0; bottom:0; margin-top:0px; height:100%; width:100%; overflow:auto; position:absolute;}
+
+#header{background: url(../img/header.gif) right 5px no-repeat;height:58px;overflow:hidden}
+.titolo_arc{margin:10px 0 0 0;float:left}
+
+/* STILI PER LOGIN */
+.cont_accesso{margin:10%;background-color:#CCC;  font-size:14px; border:0px solid #fff;}
+.accessi{margin:50px 0 30px 40px;}
+.short{width:150px; padding-left:2px; border:1px solid #000;}
+.all_loghi{text-align:center;}
+.checkList{margin:0; padding:0;}
+.checkList li{list-style-type:none; margin-top:10px;}
+.chekAtt{margin-left:5px;  }
+.tit_bold {text-decoration:none; text-transform:uppercase; letter-spacing:1px; font-weight:bold;}
+/* STILI PER LOGIN */
+
+/* STILI PER PAGINA CON SCHEDA BREVE */
+.contentPageSx {top:132px;overflow:auto; position:absolute; z-index:3; bottom:26px; right:0; left:0;width:48%}
+* html .contentPageSx {border-top:132px solid #fff; border-bottom:26px solid #fff;top:0; left:0; right:0; bottom:0; margin-top:0px; height:100%; width:48%; overflow:auto; position:absolute; z-index:3;}
+
+.contentPageSxEs {top:152px;overflow:auto; position:absolute; z-index:3; bottom:26px; right:0; left:0;width:48%}
+* html .contentPageSxEs {border-top:152px solid #fff; border-bottom:26px solid #fff;top:0; left:0; right:0; bottom:0; margin-top:0px; height:100%; width:48%; overflow:auto; position:absolute; z-index:3;}
+
+.schedaBreve {top:152px;overflow:auto; position:absolute; z-index:3; bottom:26px; right:0; left:50%;width:50%}
+* html .schedaBreve {border-top:152px solid #fff; border-bottom:26px solid #fff;top:0; left:50%; right:0; bottom:0; margin-top:0px; height:100%; width:48%; overflow:auto; position:absolute; z-index:3; }
+
+#contentSchedaBreve { top:62px;overflow:auto; position:absolute; z-index:3; bottom:72px; right:0; left:0;font-weight:normal}
+* html #contentSchedaBreve {border-top:60px solid #fff; border-bottom:70px solid #fff;top:0; left:0; right:0; bottom:0; margin-top:0px; height:100%; width:100%; overflow:auto; position:absolute; z-index:3; }
+
+#footSchedaBreve {height:70px; position:absolute; margin:0; bottom:0; left:0; display:block; z-index:5; overflow:auto; border-top:2px solid #fff;}
+* html #footSchedaBreve {height:70px; position:absolute; margin:0; bottom:0; left:0; display:block; z-index:5;  border-top:2px solid #fff;}
+
+#headSchedaBreve {border:0px solid;height:60px;position:absolute; margin:0;  display:block; z-index:5; overflow:auto; border-bottom:2px solid #ddd;}
+
+#contentSchedaBreveFull { top:5px;overflow:auto; position:absolute; z-index:9; bottom:62px; right:0; left:0;font-weight:normal}
+* html #contentSchedaBreveFull {border-top:5px solid #fff; border-bottom:0px solid #fff;top:0; left:0; right:0; bottom:0; margin-top:0px; height:100%; width:100%; overflow:auto; position:absolute; z-index:9; }
+/* STILI PER PAGINA CON SCHEDA BREVE */
+
+/* STILI PER MENU */
+#menu{float:left;margin-top:0px; width:100%; padding:0px 0 2px 0;}
+.v_menu {text-decoration:none; text-transform:uppercase;letter-spacing:1px}
+a.v_menu:hover {text-decoration:none;}
+.sub_menu{float:left;margin-top:2px;width:100%;}
+.sub_sub_menu{float:left;width:100%;margin-top:2px;}
+.raff{font-size: 11px;}
+.srcForm{ margin-top:2px;}
+* html .srcForm{margin-top:0}
+/* STILI PER MENU */
+
+
+
+#tit_arc{float:left; margin-left:20px; display:inline;}
+#data_agg{float:right; margin-right:10px; padding-top:2px;}
+
+.text{font-family:Trebuchet MS, Verdana; font-size:11px;}
+.button{font-family:Trebuchet MS, Verdana; font-size:11px;}
+
+/* STILI SPAZIATORI */
+.arrow_spacer{margin-left:4px;margin-right:10px;}
+.ml4_r{margin-left:4px;margin-right:6px;}
+.m10{margin:10px;}
+.ml10{margin-left:10px;}
+.ml15{margin-left:15px;}
+.ml20{margin-left:20px;}
+.left_top2{float:left;padding-left:20px;margin-top:2px;}
+.al_left{float:left; margin-top:2px;}
+.right{float:right; margin-right:10px;}
+.fl{float:left;width:100%;}
+.mlmt20{margin-left:20px; margin-top:10px;}
+.ml20mt30{margin-left:20px;margin-top:30px;}
+.mt10{margin-top:10px;}
+.mt30{margin-top:30px;}
+.multi_mar{margin:20px 10px 10px 20px;}
+.mar_centrale{margin:150px;}
+.fp20{float:right;}
+.mr5{margin-right:5px;}
+/* STILI SPAZIATORI */
+
+
+
+
+
+
+
+
+
+
+/*  PAGINAZIONE  */
+
+.link1 {text-decoration:none;}
+a.link1:hover {text-decoration:none;}
+
+.cerca_b{margin-left:10px;text-decoration:underline; text-transform:uppercase; letter-spacing:1px;} 
+a.cerca_b:hover{margin-left:10px;text-decoration:none; text-transform:uppercase; letter-spacing:1px;}
+input.cerca_b{height: 20px;margin:0;padding:0}
+.cont_campi{float:left;width:100%;}
+
+
+.long{width:80%;padding-left:2px;border:1px solid #000;}
+
+.middle{width:50%;padding-left:2px;}
+.data{width:50px;padding-left:2px;}
+.ric{width:150px;padding-left:2px;}
+.col_sx{text-align:left;float:left;width:48%;}
+.col_dx{text-align:left;float:right;width:48%;margin-right:1%} 
+
+.col_singola{float:left; width:100%;}
+
+.diz{width:20px; height:15px; margin-left:4px; background:url(../img/diz.gif);}
+
+.divisorio{margin-top:20px;margin-right:10px;height:1px;}
+
+.cont_butt{ float:left;width:100%; text-align:center;}
+
+.cont_div{float:left;width:100%;}
+
+.bold{font-weight:bold;}
+
+.ita{font-style:italic;}
+
+.dFloat{float:left;}
+
+.num_select{font-weight:bold;margin-right:5px;text-decoration:underline;}
+
+
+
+
+.paginazione{float:left;padding-top:1px;}
+.num_margin{margin-right:5px;}
+.num_margin_sx{margin-left:20px;margin-right:5px;}
+.prima{width:5px;height:6px;background:url(../img/prima.gif)}
+.prev{width:5px;height:6px;background:url(../img/prev.gif)}
+.next{width:5px;height:6px;background:url(../img/next.gif)}
+.last{width:5px;height:6px;background:url(../img/last.gif)}
+.prevPerPage{width:8px;height:6px;background:url(../img/prev_page.gif)}
+.nextPerPage{width:8px;height:6px;background:url(../img/next_page.gif)}
+
+.tot_pag{float:left;padding-left:20px;margin-top:1px;}
+.scelta_sel{font-size:9px;}
+
+/* FINE PAGINAZIONE  */
+
+
+
+
+
+
+
+.regesta{width:21px;height:21px;background:url(../img/regesta.gif);margin-right:20px;}
+.aggiornaPag{width:12px;height:15px;background:url(../img/aggiorna.gif);margin-top:3px;}
+.ele_tito{margin-left:10px;margin-bottom:5px;}
+
+.ele_tito a{color:#000; text-decoration:none;}
+.ele_tito a:hover{ color:#000; text-decoration:underline;}
+.ele_tito_sel a{color:#000;background:#eee; text-decoration:none;}
+
+.link{text-decoration:none; color:#000;}
+a.link:hover{text-decoration:underline; color:#000;}
+.link_bold{text-decoration:none; font-weight:bold;color:#000;}
+a.link_bold:hover{text-decoration:underline; font-weight:bold;color:#000;}
+.link_u{text-decoration:underline; color:#000;}
+a.link_u:hover{text-decoration:none; color:#000;}
+
+/* GIF SCHEDA BREVE */
+.agg{width:12px;height:15px;background:url(../img/aggiorna.gif);}
+.scheda{width:15px;height:15px;background:url(../img/scheda.gif);}
+.scheda_dig{width:15px;height:15px;background:url(../img/scheda_dig.gif)}
+.all_gen{width:15px;height:15px;background:url(../img/allegatoGenerico.gif)}
+.all_word{width:15px;height:15px;background:url(../img/allegatoWord.gif)}
+.all_expl{width:15px;height:15px;background:url(../img/allegatoExplorer.gif)}
+.all_pdf{width:15px;height:15px;background:url(../img/allegatoPdf.gif)}
+.folder_f{width:18px;height:15px;background:url(../img/folder_f.gif)}
+.folder_open_f{width:19px;height:15px;background:url(../img/folder_open_f.gif)}
+.folder{width:18px;height:15px;background:url(../img/folder.gif)}
+.folder_open{width:19px;height:15px;background:url(../img/folder_open.gif)}
+
+.pulsantiera{float:left;padding-left:10px;margin-top:4px}
+.nomi_puls{float:left;margin-top:3px;margin-right:5px;}
+.cut{width:15px;height:15px;background:url(../img/cut.gif);}
+.copy{width:15px;height:15px;background:url(../img/copy.gif);}
+.paste{width:15px;height:15px;background:url(../img/paste.gif);}
+.print{width:15px;height:15px;background:url(../img/print.gif);}
+
+.inserire{width:15px;height:15px;background:url(../img/inserire.gif);}
+.modifica{width:15px;height:15px;background:url(../img/modifica.gif);}
+
+.successivo{width:8px;height:15px;background:url(../img/successivo.gif);}
+.precedente{width:8px;height:15px;background:url(../img/precedente.gif);}
+.superiore{width:15px;height:15px;background:url(../img/superiore.gif);}
+.inferiore{width:15px;height:15px;background:url(../img/inferiore.gif);}
+
+
+/* GIF SCHEDA BREVE */
+
+
+
+
+
+/* SCHEDA BREVE */
+
+.scheda_b{float:left; overflow:auto; min-height:200px; height:100% !important; height:200px; width:90%;border-left:1px solid #eee;}
+* html .scheda_b{overflow:auto; min-height:height:100%; height:100% !important; height:100%; width:95%;border-left:1px solid #eee;}
+
+.label{font-weight:bold; margin-top:5px;padding-left:5px;}
+.campo{margin-bottom:4px;padding-left:10px;}
+
+
+.campoFoto{padding:10px;text-align:center;padding-bottom:10px;}
+.didaFoto{ padding:2px 6px 2px 6px;}
+.campoFoto img{border:1px solid #000}
+
+.riga_sch_breFoto{ position:relative; padding:2px 6px 2px 6px;font-weight:normal;margin-bottom:20px;}
+.box_sch_breFoto{ position:relative; background:#dcdee6; border-left:0px dotted #ccc; border-right:0px dotted #ccc; border-top:0px dotted #ccc; padding-top:0; margin-top:0; margin-bottom:0px;}
+
+
+
+.pulsante {text-align:left;text-decoration:none;}
+a.pulsante:hover {text-align:left;text-decoration:none;}
+
+#contentSchedaBreve div#textSc {padding:5px;text-align:justify;}
+
+.cont_ul2{float:left; width:100%;}
+
+.bottoniMenu{padding:0;margin:0;list-style-type:none;white-space:nowrap;overflow:hidden;}
+.bottoniMenu li {display:inline;}
+* html .bottoniMenu li {float:left;}
+.bottoniMenu li a {display: block;float:left;height:20px; padding:0 4px 0 4px; font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase;  letter-spacing:1px; background:#8B8C8F;border:1px solid #fff;color:#fff;}
+* html .bottoniMenu li a {font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase;  letter-spacing:1px; background:#8B8C8F;border:1px solid #fff;color:#fff;}
+.bottoniMenu li a:hover {font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase; letter-spacing:1px;  background:#fff;border:1px solid #8B8C8F; color:#8B8C8F;}
+
+
+.riga_sch_bre{ position:relative; padding:2px 0 2px 6px;font-weight:bold; text-transform:uppercase;letter-spacing:1px;}
+.box_sch_bre{ position:relative; background:#dcdee6; border-left:0px dotted #ccc; border-right:0px dotted #ccc; border-bottom:0px dotted #ccc; padding-left:4px; padding-right:10px; padding-top:3px; margin-bottom:10px;}
+
+/*.bottoniMenu a {font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase;  letter-spacing:1px; background:#8B8C8F;border:1px solid #fff;color:#fff;}*/
+
+.lista_menu_sx li a.hiddenButton del {color:#eee; background:inherit;}
+.bottoniMenu li a.hiddenButton del {color:#8b8c8f; background:inherit;}
+
+/* SCHEDA BREVE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#contenutoEdit {overflow:auto; position:absolute; top:80px; bottom:30px; right:0; left:0;}
+* html #contenutoEdit {top:0; left:0; right:0; bottom:0; margin-top:4px; height:100%; width:100%; overflow:auto; position:absolute; border-top:80px solid #fff; border-bottom:34px solid #fff;}
+
+#testa_edit {position:absolute; margin:0; top:0; left:0; display:block; width:100%; height:80px; z-index:5; overflow:hidden;}
+#foot_edit {position:absolute; margin:0; margin-top:40px; bottom:0; left:0; display:block; width:100%; height:30px; z-index:5; overflow:hidden; background:#8b8c8f;}
+
+.adoceditLayerVisibile{position:absolute;top:0;left: 0;visibility:visible ;z-index: 100; }
+.adoceditLayerNONVisibile{position:absolute;top:0;left: 0;visibility: hidden;z-index: 1;}
+
+.doceditLayerVisibile{position:absolute;top:0;left: 0;visibility:visible ;display: block;z-index: 100;width:100%}
+.doceditLayerNONVisibile{position:absolute;top:0;left: 0;visibility:visible ;display: none;z-index: 1;}
+
+
+.richTextArea{border:1px dashed #eee;float:left;width:100%};
+
+.statusLayerVisibile{position:absolute;top:0;left: 0;width: 100%;height: 100%;z-index: 9999; padding-top:100px; text-align:center;}
+.statusLayerNONVisibile{position:absolute;top:0;left: 0;width: 0;height:0;z-index: 0;overflow: hidden;display: none;visibility: hidden;}
+.attendere{position:absolute;top:120px;left: 50%;width: 100px;height: 20px;z-index: 9999;text-align:center;margin-left: -50px;}
+/* SCHEDA */
+
+
+#contenutoScheda {overflow:auto; position:absolute; z-index:3; top:70px; bottom:30px; right:0; left:0;}
+* html #contenutoScheda {top:0; left:0; right:0; bottom:0; margin-top:4px; height:100%; width:100%; overflow:auto; position:absolute; z-index:3; border-top:70px solid #fff; border-bottom:34px solid #fff;}
+#testa_scheda {position:absolute; margin:0; top:0; left:0; display:block; width:100%; height:70px; z-index:5; overflow:hidden;}
+#foot_scheda {position:absolute; margin:0; margin-top:40px; bottom:0; left:0; display:block; width:100%; height:30px; z-index:5; overflow:hidden; background:#8b8c8f;}
+
+.cont_menu{float:left; width:100%; margin-top:0;}
+
+.lista_menu_dx{list-style-type:none; margin:0; padding:0; float:right; display:block; margin-top:0px; margin-right:10px; text-align:center; display:inline;}
+.voce_menu{float:left; background:#eee; border:1px solid #fff; height:22px; line-height:22px;padding:3px;}
+* html .voce_menu{float:left; background:#eee; border:1px solid #fff; height:22px; line-height:22px;}
+.voce_menu_ho{background:#eee; padding:3px; color:#000; text-decoration:none; height:22px; line-height:22px;}
+a.voce_menu_ho:hover{background:#fff; padding:3px; color:#000; text-decoration:none; height:22px; line-height:22px;}
+
+
+.menu2 {padding:0;margin:0;list-style-type:none;white-space:nowrap;overflow:auto; }
+.menu2 li {display:table-cell;}
+* html .menu2 li {float:left}
+.menu2 a {width:auto;display:block;padding:4px 16px;color:#000;background:#dcdee6;border:1px solid #fff;text-decoration:none; width:50px;}
+* html .menu2 a {float:left}
+.menu2 a:hover {border:1px solid #8b8c8f;color:#000;background:#fff;}
+
+.cont_menu_sx{left:0;position:absolute; z-index:999;top:80px; width:100px; display:inline; margin-top:10px; border-right:1px solid #999; border-top:1px solid #999;}
+.lista_menu_sx{list-style-type:none; margin:0; padding:0; background:#eee;color:#eee;}
+.lista_menu_sx li{border-bottom:1px solid #999; width:100px; text-align:left;}
+.lista_menu_sx li a{display:block; line-height:20px; background:#eee; color:#000; text-decoration:none; padding-left:8px;}
+.lista_menu_sx li a:hover{background:#8B8C8F; border-right:3px solid #fff; color:#fff; text-decoration:none; padding-left:8px;}
+* html .lista_menu_sx li a{display:block; height:20px; line-height:20px; background:#eee; color:#000; text-decoration:none; padding-left:8px;}
+
+
+
+
+
+.cont_riga_dx{float:left; width:100%; background:#8B8C8F;}
+.riga_dx{margin:0px 10px 3px 0; color:#fff; float:right; display:inline;}
+.riga_sx{margin:0px 10px 3px 10px; color:#fff; float:left; display:inline;}
+
+.link_u_w{text-decoration:underline; text-transform:uppercase; padding:0 6px 0 6px;}
+a.link_u_w:hover{text-decoration:none; text-transform:uppercase; padding:0 6px 0 6px;}
+.link_u_w_nav{padding:0 6px 0 6px; text-transform:uppercase; text-decoration:none;}
+
+.barretta_div{margin:0 4px 0 4px; color:#fff;}
+.area{margin-left:110px; margin-top:10px; margin-right:5px;}
+.riga_tit_area{display:block; padding:3px 0 3px 6px;}
+.box_cont{background:#eee; border-left:1px dotted #ccc; border-right:1px dotted #ccc; border-bottom:1px dotted #ccc; padding-left:10px; padding-right:10px; padding-top:10px;}
+
+.riga{display:table-row; list-style:none; margin:0; padding:0;padding-bottom:6px;padding-top:6px;padding-left:10px;border-bottom:1px solid white}
+.etichetta{display:table-cell; width:300px; font-weight:bold;padding-left:15px;}
+* html .etichetta{width:90%}
+
+.valore{display:table-cell;}
+* html .valore{margin-left:120px;}
+
+.sezione{font-size:11px; text-transform:uppercase; font-weight:bold; display:block; border-bottom:1px dotted #999; margin-top:10px; margin-bottom:10px;}
+
+.apri_chiudi{font-size:11px;  text-decoration:none;}
+a.apri_chiudi:hover{font-size:11px;   text-decoration:none;}
+
+.contAllArea{float:left;width:100%; margin-bottom:50px;}
+
+
+
+.list_butt{display:inline; list-style-type:none; margin:0; padding:0; float:left; width:100%; margin-top:7px;}
+
+.prec{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:none; text-transform:uppercase; letter-spacing:2px;}
+a.prec:hover{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:underline; text-transform:uppercase;letter-spacing:2px;}
+
+.suc{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:none; text-transform:uppercase;letter-spacing:2px;}
+a.suc:hover{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:underline; text-transform:uppercase;letter-spacing:2px;}
+
+.inserisci{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:none; text-transform:uppercase;letter-spacing:2px;}
+a.inserisci:hover{margin:5px; margin-left:25px; font-family:Trebuchet MS, Verdana; font-size:12px; color:#000; text-decoration:underline; text-transform:uppercase;letter-spacing:2px;}
+
+.cerca_but{height:20px; padding:0 40px 0 40px; font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase;  letter-spacing:2px; background:#8B8C8F;border:1px solid #fff;color:#fff;}
+a.cerca_but:hover{height:20px; padding:0 40px 0 40px; font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase; letter-spacing:2px;  background:#fff;border:1px solid #8B8C8F; color:#8B8C8F;}
+
+.riga_tit_diz{width:100%; height:30px;}
+.Tit_diz{line-height:25px; padding-left:5px; float:left; text-transform:uppercase; margin-top:2px;}
+.butt_close{float:right; width:50px; margin-top:7px; text-transform:uppercase; font-size:10px;}
+
+.bodyTitoli{padding-left:5px;padding-top:5px;overflow:auto;background-color:#F2FAD7;}
+
+#textAreaBig{width:95%;height:380px}
+
+/* SCHEDA */
+
+
+
+
+
+
+
+
+
+.archivi_but{height:20px; width:300px;padding:0 40px 0 5px; font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase;  letter-spacing:2px; background:#8B8C8F;border:1px solid #fff;color:#fff;}
+
+a.archivi_but:hover{height:20px; width:300px;padding:0 40px 0 5px; font-family:Trebuchet MS, Verdana; font-size:12px; text-decoration:none; text-transform:uppercase; letter-spacing:2px;  background:#fff;border:1px solid #8B8C8F; color:#8B8C8F;}
+
+.archivi_but{background:#a75947;border:1px solid #fff;color:#fff;}
+
+a.archivi_but:hover{background:#fff;border:1px solid #a75947; color:#a75947;}
+
+
+
+.cerca_menu{margin-left:10px;text-decoration:underline;}
+a.cerca_menu:hover{margin-left:10px;text-decoration:none;}
+.boxLeft{float:left;width:48%; margin-top:20px;}
+.boxRight{float:right;width:48%; margin-top:20px;}
+
+.arcPadre{margin:10px; display:block; text-decoration:none;}
+.arcPadre:hover{margin:10px; display:block; text-decoration:none;}
+
+.elArc{list-style:none; margin:0; padding:0; margin-bottom:15px;}
+.elArc li{margin-left:15px;margin-top:3px; font-size:14px;}
+.elArc li a{text-decoration:none; color:#000;}
+.elArc li a:hover{text-decoration:underline; color:#000;}
+.icLista{margin-right:4px; margin-top:3px;}
+
+ 
+h1.msg{font-size: 12px}
+
+#tp{z-index:9999;position:absolute;border:1px solid #993300;background:#FFFFC0;padding:2px 5px;color:#000;display:none;font-size: 11px;}	
+a.tp img{border:0}
+
+.hierPath{padding-left:20px; background: url(../img/next.gif) top left no-repeat; background-position: 10px 5px;}
+.hierPath a {color:#000; text-decoration:none;}
+.hierPath a:hover {color:#000; text-decoration:underline;}
+.sfTree{background-color:#eee}
+.queryEleSub{display:none;width:80%;float:left}
+
+#myList {list-style: none;padding:5px}
+#myList li{display:block;border:1px dotted #ccc;margin-top:5px;padding:5px}
+
+.actionDoc {margin-left:0;padding-left:10px;white-space:no-wrap}
+.actionDoc li{display:inline;margin-left:5px;white-space:no-wrap;padding:0}
+.actionDoc li a{white-space:no-wrap;text-transform:uppercase;font-size:10px}
+.actionDoc li a.hiddenButton{display:none}
+.tag_start{display:block}

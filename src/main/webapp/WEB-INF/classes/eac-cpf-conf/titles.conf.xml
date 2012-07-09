@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<titleManager>
+		<sezione name="title">
+			<!-- <titleRole>XML,/eac-cpf/cpfDescription/identity/nameEntry/part "[@nome@]" XML,/eac-cpf/cpfDescription/description/existDates/date "[@data@]"</titleRole> -->
+			<elemento mode="html" html="strong" titleSepar="¢">0-[@nome@]</elemento>
+			<elemento mode="html">[@nome@]-[@data@]</elemento>
+		</sezione>
+		<sezione name="defaultTitle">
+			<!-- <titleRole>XML,/eac-cpf/cpfDescription/identity/nameEntry/part "[@nome@]" XML,/eac-cpf/cpfDescription/description/existDates/date "[@data@]"</titleRole> -->
+			<elemento mode="html" html="strong" titleSepar="¢">0-[@nome@]</elemento>
+			<elemento mode="html">[@nome@]-[@data@]</elemento>
+		</sezione>
+	</titleManager>
+</root>

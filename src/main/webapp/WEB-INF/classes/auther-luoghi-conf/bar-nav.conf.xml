@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<managing>
+		<user>
+			<element value="INDIETRO" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaIndietro" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/shortTab.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getPhysDocPrev</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="pos">getPosPrev</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="AVANTI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaAvanti" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/shortTab.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getPhysDocNext</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="pos">getPosNext</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+		</user>
+	</managing>
+</root>

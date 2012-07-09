@@ -1,0 +1,33 @@
+.jqac-menu{
+  background-color: white;
+  border: 1px solid #aaa;
+}
+.jqac-menu ul{
+  list-style: none;
+  margin: 1px;
+  padding: 1px;
+  overflow: hidden;
+}
+.jqac-menu .jqac-link {
+  cursor: hand;
+  cursor: pointer;
+  display: block;
+}
+.jqac-menu .jqac-highlight {
+  background-color: #ddf;
+}
+.jqac-menu .jqac-warning {
+  font-style: italic;
+}
+.jqac-menu em {
+    /*text-decoration: underline;*/
+}
+.jqac-menu .jqac-info {
+    text-align: right;
+    font-style: italic;
+    font-size: 12px;
+    color: #666;
+}
+.jqac-menu li{
+  border-bottom: 1px dotted #ccc;
+}

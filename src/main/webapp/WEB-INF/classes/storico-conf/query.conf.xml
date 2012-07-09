@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method noElements="insert">
+		<clipboard disabled="true"/>
+		<query active="yes" label="tutti i documenti">[UD,/xw/@UdType/]="c"</query>
+		<hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>
+		<query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
+	</access_method>
+	<query>
+		<element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/c/*</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione" firstIdx="a" typology="double">XML,/c/did/unittitle</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Descrizione del contenuto" firstIdx="a" typology="multi">XML,/c/descgrp/scopecontent/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Unità di conservazione (tipologia)" firstIdx=" " typology="multi">XML,/c/did/container/@type</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Unità di conservazione (identificazione)" firstIdx=" " typology="multi">XML,/c/did/container</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Collocazione" firstIdx=" " typology="double">XML,/c/did/physloc</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Bibliografia" firstIdx="a" typology="multi">XML,/c/descgrp/bibliography/bibref/title</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Note" firstIdx=" " typology="multi">XML,/c/note/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Codice del record" firstIdx="0" typology="multi">XML,/c/@id</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Indici nomi" firstIdx=" a" typology="double">XML,/c/controlaccess/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Indici luoghi" firstIdx=" a" typology="double">XML,/c/controlaccess/geogname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Indici enti" firstIdx=" a" typology="double">XML,/c/controlaccess/corpname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Altri indici" firstIdx=" a" typology="double">XML,/c/controlaccess/name</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Titolario di classificazione" firstIdx=" a" typology="multi">XML,/c/descgrp/fileplan/p</element>
+		<data>
+			<element ajaxKey="yes" label="Ricerca per data (da - a):">XML,/c/did/unittitle/unitdate/@normal</element>
+		</data>
+		<sort>
+			<element label="nessuno" checked="yes"/>
+			<element label="Inserimento">UD(xpart:/xw/UserId/@DateIns/)</element>
+			<element label="Modifica">UD(xpart:/xw/UserId/@DateMod/),UD(xpart:/xw/UserId/@TimeMod/)</element>
+			<element label="Collocazione">XML(xpart:/c/did/physloc)</element>
+			<element label="Data">XML(xpart:/c/did/unittitle/unitdate/@normal)</element>
+			<element label="Codice">XML(xpart:/c/did/unitid)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivista / catalogatore" firstIdx=" a" typology="double">XML,/c/processinfo/list/item/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Data inserimento / modifica" firstIdx="0" typology="one">XML,/c/processinfo/list/item/date</element>
+	</queryAdm>
+</root>

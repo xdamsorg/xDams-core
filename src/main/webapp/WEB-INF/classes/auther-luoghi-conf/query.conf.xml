@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method noElements="insert" withElements="insert">
+		<clipboard disabled="true"/>
+		<query active="yes" label="tutti i documenti">[UD,/xw/@UdType/]="eac"</query>
+		<query active="yes" label="i documenti draft">[XML,/eac/eacheader/@status]=draft</query>
+	</access_method>
+	<query>
+		<element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/*</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Codice" firstIdx="0" typology="one">XML,/eac/eacheader/eacid</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione" firstIdx="a" typology="double">XML,/eac/condesc/identity/conhead/@normal</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Note" firstIdx="a" typology="multi">XML,/eac/condesc/desc/ocd/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Stato" firstIdx="0" typology="multi">XML,/eac/eacheader/@status</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Relazioni" firstIdx="a" typology="multi">XML,/eac/condesc/eacrels/eacrel/place</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Codice di relazione" firstIdx="0" typology="multi">XML,/eac/condesc/eacrels/eacrel/place/@id</element>
+		<sort>
+			<element label="Inserimento" checked="yes"/>
+			<element label="Denominazione">XML(xpart:/eac/condesc/identity/conhead/@normal)</element>
+			<element label="Codice">XML(xpart:/eac/eacheader/eacid)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivista / Catalogatore" firstIdx=" a" typology="double">XML,/eac/eacheader/mainhist/mainevent/name</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Data inserimento / modifica" firstIdx="0" typology="one">XML,/eac/eacheader/mainhist/mainevent/maindate</element>
+	</queryAdm>
+</root>

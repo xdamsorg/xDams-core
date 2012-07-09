@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+<multiEditing method="xPath:/c/@level">
+<docEdit value="">
+<file name="/storico-conf/editing-ll.conf.xml" />
+</docEdit>
+<docEdit value="fonds">
+<file name="/storico-conf/editing-root.conf.xml" />
+</docEdit>
+<docEdit value="subfonds">
+<file name="/storico-conf/editing-hl.conf.xml" />
+</docEdit>
+<docEdit value="collection">
+<file name="/storico-conf/editing-hl.conf.xml" />
+</docEdit>
+<docEdit value="series">
+<file name="/storico-conf/editing-hl.conf.xml"/>
+</docEdit>
+<docEdit value="subseries">
+<file name="/storico-conf/editing-hl.conf.xml"/>
+</docEdit>
+<docEdit value="file">
+<file name="/storico-conf/editing-ll.conf.xml"/>
+</docEdit>
+<docEdit value="otherlevel">
+<file name="/storico-conf/editing-ll.conf.xml"/>
+</docEdit>
+<docEdit value="item">
+<file name="/storico-conf/editing-ll.conf.xml"/>
+</docEdit>
+</multiEditing>
+</root>

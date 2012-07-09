@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="archive:getAlias">
+  <media value="xDamsHist">
+   <file name="/storico-conf/media.conf.xml"/>
+  </media>
+  <media value="xDamsPhoto">
+   <file name="/fotografico-conf/media.conf.xml"/>
+  </media>
+  <media value="xDamsHGeo">
+   <file name="/auther-luoghi-conf/media.conf.xml"/>
+  </media>
+  <media value="xDamsEACCPF">
+   <file name="/eac-cpf-conf/media.conf.xml"/>
+  </media>
+  <media value="xDamsAV">
+   <file name="/audiovideo-conf/media.conf.xml"/>
+  </media>
+ </multiEditing>
+</root>

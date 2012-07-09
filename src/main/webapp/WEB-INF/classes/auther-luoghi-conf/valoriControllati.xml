@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<elemento name="stato">
+		<opzione value="draft">draft</opzione>
+		<opzione value="edited">edited</opzione>
+		<opzione value="deleted">deleted</opzione>
+	</elemento>
+	<elemento name="dettaglio">
+		<opzione value="minimal">minimal</opzione>
+		<opzione value="partial">partial</opzione>
+		<opzione value="full">full</opzione>
+	</elemento>
+	<elemento name="secolo">
+		<opzione value="">...</opzione>
+		<opzione value="XXI">XXI</opzione>
+		<opzione value="XX">XX</opzione>
+		<opzione value="XIX">XIX</opzione>
+		<opzione value="XVIII">XVIII</opzione>
+		<opzione value="XVII">XVII</opzione>
+		<opzione value="XVI">XVI</opzione>
+		<opzione value="XV">XV</opzione>
+		<opzione value="XIV">XIV</opzione>
+		<opzione value="XIII">XIII</opzione>
+		<opzione value="XII">XII</opzione>
+		<opzione value="XI">XI</opzione>
+		<opzione value="X">X</opzione>
+	</elemento>
+	<elemento name="lingua">
+		<opzione value="">...</opzione>
+		<opzione value="italiano">italiano</opzione>
+		<opzione value="francese">francese</opzione>
+		<opzione value="inglese">inglese</opzione>
+		<opzione value="spagnolo">spagnolo</opzione>
+		<opzione value="tedesco">tedesco</opzione>
+	</elemento>
+</root>

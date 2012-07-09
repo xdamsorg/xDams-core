@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<elemento name="stato">
+		<opzione value="new">new</opzione>
+		<opzione value="revised">revised</opzione>
+		<opzione value="deleted">deleted</opzione>
+		<opzione value="deletedSplit">deletedSplit</opzione>
+		<opzione value="deletedReplaced">deletedReplaced</opzione>
+		<opzione value="cancelled">cancelled</opzione>
+		<opzione value="derived">derived</opzione>
+	</elemento>
+	<elemento name="condizioni">
+		<opzione value="inProcess">non pubblicato</opzione>
+		<opzione value="approved">pubblicato</opzione>
+	</elemento>
+	<elemento name="tipologia">
+		<opzione value="corporateBody">ente</opzione>
+		<opzione value="person">persona</opzione>
+		<opzione value="family">famiglia</opzione>
+	</elemento>
+	<elemento name="lingua">
+		<opzione value="IT">italiano</opzione>
+		<opzione value="EN">inglese</opzione>
+		<opzione value="FR">francese</opzione>
+		<opzione value="DE">tedesco</opzione>
+		<opzione value="SP">spagnolo</opzione>
+	</elemento>
+	<elemento name="dettaglio">
+		<opzione value="minimal">minimal</opzione>
+		<opzione value="partial">partial</opzione>
+		<opzione value="full">full</opzione>
+	</elemento>
+	<elemento name="funzione">
+		<opzione value="">...</opzione>
+		<opzione value="soggetto produttore">soggetto produttore</opzione>
+		<opzione value="voce di indice">voce di indice</opzione>
+	</elemento>
+	<elemento name="norma">
+		<opzione value="">...</opzione>
+		<opzione value="NIERA EPF">Norme italiane per l'elaborazione dei record di autorità archivistici di enti, persone, famiglie</opzione>
+		<opzione value="ISDIAH">International Standard for Describing Institutions with Archival Holdings</opzione>
+		<opzione value="ISAAR(CPF)">International Standard of Archival Authority Records for Corporate Bodies, Persons and Families</opzione>
+	</elemento>
+	<elemento name="provenienza">
+		<opzione value="xDamsHist">Archivio storico (xDamsHist)</opzione>
+	</elemento>
+</root>

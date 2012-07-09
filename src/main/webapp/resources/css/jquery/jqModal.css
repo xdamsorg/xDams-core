@@ -1,0 +1,79 @@
+/* jqModal base Styling courtesy of;
+	Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+	the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+	can change this value by either;
+	  a) supplying one via CSS
+	  b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */ 
+	
+.jqmWindow {
+    display: none;
+    position: fixed;
+    top: 17%;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    background-color: #EEE;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+}
+
+.jqmOverlay { background-color: #000; }
+
+/* Background iframe styling for IE6. Prevents ActiveX bleed-through (<select> form elements, etc.) */
+* iframe.jqm {position:absolute;top:0;left:0;z-index:-1;
+	width: expression(this.parentNode.offsetWidth+'px');
+	height: expression(this.parentNode.offsetHeight+'px');
+}
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+* html .jqmWindow {
+     position: absolute;
+     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+}
+
+/* INFO BOX */
+
+div.jqmNotice img.jqResize {position: absolute; right: 2px; bottom: 2px;}
+ 	
+div.jqmNotice {
+    display: none;
+    position: absolute;
+    width: 320px;
+    background:#d8d8d8;
+    border: 1px solid #505050;
+    padding: 0;
+}
+
+.jqmnTitle{margin: 0 25px;}
+
+.jqmnTitle h1{
+  margin: 5px 0;
+  padding-left:5px;
+  width: 100%;
+  font-size:10px;
+  color:#FFF;
+  background-color:#505050;
+}
+
+div.jqmNotice .jqmClose {
+  position: absolute;
+  cursor: pointer;
+  right: 4px;
+  top: 6px;
+}
+
+.jqmnContent{
+  border-top:1px;
+  color:#000;
+  font:12px/18pt Trebuchet MS, Verdana, Arial;
+  padding:0 0px 5px;
+}
+
+.navContainer{
+  padding:0 0px 5px;
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+ <!-- @name filtra i comandi in base alla richiesta, da configurare all'interno dell'editing. @type gestisce il tipo di upload resize/simple -->
+ <upload type="resize">
+  <!-- <renameFile> gestisce il rename dei file, true/false -->
+  <renameFile>true</renameFile>
+  <!-- <compositionRuleFile> gestisce la regola di composizione del nome del file, il valore idRecord all'interno dell'editing -->
+  <compositionRuleFile>8-4-4</compositionRuleFile>
+  <!-- <compositionRuleFile> gestisce la regola di composizione della directory, il valore idRecord all'interno dell'editing -->
+  <compositionRuleDir>8-4-4</compositionRuleDir>
+  <!-- <compositionReplaceName> applica un replace del nome dopo aver applicato la compositionRuleFile -->
+  <compositionReplaceName></compositionReplaceName>
+  <commandList>
+   <command>
+    <!-- <commandLine> gestisce il comando esterno al server ImageMagic/IrfanView -->
+    <commandLine>
+    </commandLine>
+    <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
+    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
+    <uploadMode>filesystem</uploadMode>
+    <!-- <uploadPath> definisce il path della directory finale -->
+    <uploadPath>${webApp}attach</uploadPath>
+    <!-- <uploadPath> gestisce in nome della dir padre /account/alias/uploadNameDir/nomefile (non mettere c:\ o altro, solo path relativi) -->
+    <uploadNameDir>high</uploadNameDir>
+   </command>
+   <command>
+    <!-- <commandLine> gestisce il comando esterno al server ImageMagic/IrfanView -->
+    <commandLine>D:\Program Files (x86)\ImageMagick-6.7.6-Q16\convert -size 85x85 ${imgIn} -resize 85x85 +profile '*' ${imgOut}</commandLine>
+    <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
+    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
+    <uploadMode>filesystem</uploadMode>
+    <!-- <uploadPath> definisce il path della directory finale -->
+    <uploadPath>${webApp}attach</uploadPath>
+    <!-- <uploadPath> gestisce in nome della dir padre /account/alias/uploadNameDir/nomefile (non mettere c:\ o altro, solo path relativi) -->
+    <uploadNameDir>thumb</uploadNameDir>
+   </command>
+   <command>
+    <!-- <commandLine> gestisce il comando esterno al server ImageMagic/IrfanView -->
+    <commandLine>D:\Program Files (x86)\ImageMagick-6.7.6-Q16\convert -size 150x150 ${imgIn} -resize 150x150 +profile '*' ${imgOut}</commandLine>
+    <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
+    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
+    <uploadMode>filesystem</uploadMode>
+    <!-- <uploadPath> definisce il path della directory finale -->
+    <uploadPath>${webApp}attach</uploadPath>
+    <!-- <uploadPath> gestisce in nome della dir padre /account/alias/uploadNameDir/nomefile (non mettere c:\ o altro, solo path relativi) -->
+    <uploadNameDir>low</uploadNameDir>
+   </command>
+  </commandList>
+ </upload>
+ <upload type="simple">
+  <!-- <renameFile> gestisce il rename dei file, true/false -->
+  <renameFile>false</renameFile>
+  <!-- <compositionRuleFile> gestisce la regola di composizione del nome del file, il valore idRecord all'interno dell'editing -->
+  <compositionRuleFile>8-4-4</compositionRuleFile>
+  <!-- <compositionRuleFile> gestisce la regola di composizione della directory, il valore idRecord all'interno dell'editing -->
+  <compositionRuleDir>8-4-4</compositionRuleDir>
+  <!-- <compositionReplaceName> applica un replace del nome dopo aver applicato la compositionRuleFile -->
+  <compositionReplaceName></compositionReplaceName>
+  <commandList>
+   <command>
+    <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
+    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
+    <uploadMode>filesystem</uploadMode>
+    <!-- <uploadPath> definisce il path della directory finale ${webApp} per inserirlo parallelo a resources-->
+    <uploadPath>${webApp}attach</uploadPath>
+    <!-- <uploadPath> gestisce in nome della dir padre /account/alias/uploadNameDir/nomefile (non mettere c:\ o altro, solo path relativi) -->
+    <uploadNameDir>high</uploadNameDir>
+   </command>
+  </commandList>
+ </upload>
+</root>

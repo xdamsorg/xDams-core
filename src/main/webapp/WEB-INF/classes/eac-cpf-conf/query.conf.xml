@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method noElements="insert" withElements="insert">
+		<clipboard disabled="true"/>
+		<query active="yes" label="elenco complessivo">([UD,/xw/@UdType/]=eac-cpf)</query>
+		<query active="yes" label="elenco enti">[XML,/eac-cpf/cpfDescription/identity/entityType]="corporatebody"</query>
+		<query active="yes" label="elenco persone">[XML,/eac-cpf/cpfDescription/identity/entityType]="person"</query>
+		<query active="yes" label="elenco famiglie">[XML,/eac-cpf/cpfDescription/identity/entityType]="family"</query>
+		<hierbrowse active="no" label="accedi all'archivio">0</hierbrowse>
+	</access_method>
+	<query>
+		<element activeIdx="no" position="center" label="Ricerca libera">XML,/*</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="forma autorizzata del nome" firstIdx="a" typology="double">XML,/eac-cpf/cpfDescription/identity/nameEntry/part</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="luoghi" firstIdx="a" typology="double">XML,/eac-cpf/cpfDescription/description/places/place/placeEntry</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="complessi archivistici prodotti" firstIdx="a" typology="double">XML,/eac-cpf/cpfDescription/relations/resourceRelation/relationEntry</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="stato pubblicazione (approved o inProcess)" firstIdx="a" typology="multi">XML,/eac-cpf/control/publicationStatus</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="codice" firstIdx="a" typology="multi">XML,/eac-cpf/control/recordId</element>
+		<sort>
+			<element label="Inserimento">ud(xpart:/xw/UserId/@DateIns),ud(xpart:/xw/UserId/@TimeIns)</element>
+			<element label="forma autorizzata del nome">XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)</element>
+			<element label="Codice" checked="yes">XML(xpart:/eac-cpf/control/recordId)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Catalogatore" firstIdx="a" typology="double">XML,/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Data inserimento" firstIdx="0" typology="one">XML,/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime</element>
+	</queryAdm>
+</root>

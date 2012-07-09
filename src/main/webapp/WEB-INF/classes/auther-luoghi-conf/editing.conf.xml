@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<connectedArchives>
+		<masterArchive name="xDamsHGeo">
+	    		<workArchive name="xDamsHGeo" pne="eac">
+				<elementToFind query="[XML,/eac/condesc/eacrels/eacrel/place/@id]" prefix="/eac/condesc/eacrels/eacrel/place" code="authfilenumber">/eac/condesc/eacrels/eacrel/place/text()</elementToFind>
+			</workArchive>
+			<workArchive name="xDamsHist" pne="c">
+				<elementToFind code="authfilenumber" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/geogname" query="[XML,/c/did/unittitle/geogname/@authfilenumber]">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/geogname/text()</elementToFind>
+				<elementToFind code="authfilenumber" prefix="/c/controlaccess/geogname" query="[XML,/c/controlaccess/geogname/@authfilenumber]">/c/controlaccess/geogname/text()</elementToFind>
+			</workArchive>
+		</masterArchive>
+	</connectedArchives>
+	<preInsert excludeRel="son,upperbrother,lowerbrother" suggestedRel="none">
+		<macroarea name="identificazione e controllo" layer="DID" label="Area dell'identificazione e di controllo">
+			<sezione name="Informazioni di controllo" opened="yes">
+				<elemento name="condizioni della scheda" type="group" prefix="/eac/eacheader" opened="yes">
+					<elemento input_type="select" name="stato" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="//elemento[@name='stato']/opzione">/eac/eacheader/@status</elemento>
+					<elemento input_type="select" name="livello di dettaglio" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="//elemento[@name='dettaglio']/opzione">/eac/eacheader/@detaillevel</elemento>
+					<elemento input_type="select" name="lingua della documentazione" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='lingua']/opzione" prefix="/eac/eacheader/languagedecl/language">/eac/eacheader/languagedecl/language/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Identificazione" opened="yes">
+				<elemento name="Forma autorizzata" type="group" prefix="/eac/condesc/identity/conhead[@type='authorized']" opened="yes">
+					<elemento input_type="text" class="Long" name="denominazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='authorized']/part[@type='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='authorized']/part[@type='add']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma normalizzata">/eac/condesc/identity/conhead[@type='authorized']/@normal</elemento>
+				</elemento>
+				<elemento name="Forme varianti" type="multi_group" prefix="/eac/condesc/identity/conhead[@type='parallel']" opened="no">
+					<elemento input_type="text" class="Long" name="denominazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='parallel']/part[@type='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='parallel']/part[@type='add']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma normalizzata">/eac/condesc/identity/conhead[@type='parallel']/@normal</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+	</preInsert>
+	<docEdit>
+		<macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+			<sezione name="Identificazione" opened="yes">
+				<elemento input_type="liveText" name="tipologia">/eac/@type</elemento>
+				<!-- <elemento type="custom" name="modifica forma autorizzata" id="modificaAuther" prefix="/eac/condesc/identity/conhead[@type='authorized']"/> -->
+				<elemento name="Forma autorizzata" type="group" prefix="/eac/condesc/identity/conhead[@type='authorized']" opened="yes">
+					<elemento input_type="text" class="Long" name="denominazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='authorized']/part[@type='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='authorized']/part[@type='add']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma normalizzata">/eac/condesc/identity/conhead[@type='authorized']/@normal</elemento>
+				</elemento>
+				<elemento name="Forme varianti" type="multi_group" prefix="/eac/condesc/identity/conhead[@type='parallel']" opened="yes">
+					<elemento input_type="text" class="Long" name="denominazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='parallel']/part[@type='ord']/text()</elemento>
+					<elemento input_type="text" class="Long" name="integrazione" extra="onchange=&quot;return normalizzaVoce(this)&quot;">/eac/condesc/identity/conhead[@type='parallel']/part[@type='add']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="forma normalizzata">/eac/condesc/identity/conhead[@type='parallel']/@normal</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="descrizione e relazioni" layer="DESCR" label="Area della descrizione e delle relazioni">
+			<sezione name="Informazioni integrative" opened="yes">
+				<elemento input_type="textarea" rows="6" cols="58" class="Long">/eac/condesc/desc/ocd/text()</elemento>
+			</sezione>
+			<sezione name="Relazioni gerarchiche (di luogo)" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="superiore" type="multi_auther" showcode="no" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='superior']" code="id" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/eac/condesc/eacrels/eacrel[@reltype='superior']/place/text()
+					<elemento input_type="textarea" rows="1" cols="58" name="nota alla relazione">/eac/condesc/eacrels/eacrel[@reltype='superior']/descnote/text()</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="inferiore" type="multi_auther" showcode="no" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='subordinate']" code="id" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/eac/condesc/eacrels/eacrel[@reltype='subordinate']/place/text()
+					<elemento input_type="textarea" rows="1" cols="58" name="nota alla relazione">/eac/condesc/eacrels/eacrel[@reltype='subordinate']/descnote/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni cronologiche (di luogo)" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="predecessore" type="multi_auther" showcode="no" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='earlier']" code="id" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/eac/condesc/eacrels/eacrel[@reltype='earlier']/place/text()
+					<elemento input_type="textarea" rows="1" cols="58" name="nota alla relazione">/eac/condesc/eacrels/eacrel[@reltype='earlier']/descnote/text()</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="successore" type="multi_auther" showcode="no" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='later']" code="id" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/eac/condesc/eacrels/eacrel[@reltype='later']/place/text()
+					<elemento input_type="textarea" rows="1" cols="58" name="nota alla relazione">/eac/condesc/eacrels/eacrel[@reltype='later']/descnote/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="Relazioni associative (di luogo)" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="luogo" type="multi_auther" showcode="no" arch_ref="xDamsHGeo" prefix="/eac/condesc/eacrels/eacrel[@reltype='associative']" code="id" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/eac/condesc/eacrels/eacrel[@reltype='associative']/place/text()
+					<elemento input_type="textarea" rows="1" cols="58" name="nota alla relazione">/eac/condesc/eacrels/eacrel[@reltype='associative']/descnote/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="controllo" layer="PROCESSINFO" label="Area di controllo">
+			<sezione name="Informazioni di controllo" opened="yes">
+				<elemento name="codice" type="group" prefix="/eac" opened="yes" inline="yes">
+					<elemento input_type="hidden">/eac/@id</elemento>
+					<elemento input_type="liveText">/eac/eacheader/eacid/@countrycode</elemento>
+					<elemento input_type="liveText">/eac/eacheader/eacid/@ownercode</elemento>
+					<elemento input_type="liveText">/eac/eacheader/eacid/text()</elemento>
+				</elemento>
+				<elemento multiMod="true" name="condizioni della scheda" type="group" prefix="/eac/eacheader" opened="yes">
+					<elemento multiMod="true" input_type="select" name="stato" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='stato']/opzione">/eac/eacheader/@status</elemento>
+					<elemento multiMod="true" input_type="select" name="livello di dettaglio" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='dettaglio']/opzione">/eac/eacheader/@detaillevel</elemento>
+					<elemento multiMod="true" input_type="select" name="lingua della documentazione" value="document:/auther-luoghi-conf/valoriControllati.xml" externalPath="/root/elemento[@name='lingua']/opzione" prefix="/eac/eacheader/languagedecl/language">/eac/eacheader/languagedecl/language/text()</elemento>
+				</elemento>
+				<elemento type="custom" name="revisioni" opened="no" id="processinfo" prefix="/eac/eacheader/mainhistory/mainevent" inline="no">
+					<elemento input_type="liveText" name="azione">/eac/eacheader/mainhistory/mainevent/@maintype</elemento>
+					<elemento input_type="liveText" name="data">/eac/eacheader/mainhistory/mainevent/maindate/text()</elemento>
+					<elemento input_type="liveText" name="responsabile">/eac/eacheader/mainhistory/mainevent/name/text()</elemento>
+				</elemento>
+				<elemento input_type="liveText" name="Archivio d'origine">/eac/eacheader/mainhistory/mainevent/maindesc/text()</elemento>
+			</sezione>
+		</macroarea>
+	</docEdit>
+	<fixedValues>
+		<elemento value="inserimento">/eac/eacheader/mainhistory/mainevent/@maintype</elemento>
+		<elemento value="@archivioAbbreviatoDaCuiInserisce@">/eac/eacheader/mainhistory/mainevent/maindesc/abbr/text()</elemento>
+		<elemento value="@archivioDaCuiInserisce@">/eac/eacheader/mainhistory/mainevent/maindesc/text()</elemento>
+		<elemento value="@coluiCheInserisce@">/eac/eacheader/mainhistory/mainevent/name/text()</elemento>
+		<elemento value="@quandoColuiInserisce@">/eac/eacheader/mainhistory/mainevent/maindate/text()</elemento>
+		<elemento value="IT">/eac/eacheader/eacid/@countrycode</elemento>
+		<elemento value="place">/eac/@type</elemento>
+		<elemento value="xDamsPlaces">/eac/eacheader/eacid/@ownercode</elemento>
+		<elemento value=".">/eac/eacheader/eacid/text()</elemento>
+	</fixedValues>
+	<param>
+		<elemento id="campi_obbligatori">.eac.condesc.identity.conhead[@type='authorized'].@normal</elemento>
+		<elemento id="escludi_appunti">.eac.condesc.identity.conhead[@type='authorized'].@normal</elemento>
+		<elemento id="clona">
+			<opzione action="delete" value="">/eac/eacheader/mainhist/mainevent</opzione>
+			<opzione action="append" value="elemento copiato">/eac/eacheader/mainhist/mainevent/@maintype</opzione>
+			<opzione action="append" value="systemdate">/eac/eacheader/mainhist/mainevent/maindate/text()</opzione>
+			<opzione action="append" value="username">/eac/eacheader/mainhist/mainevent/name/text()</opzione>
+			<opzione action="replace" value=".">/eac/eacheader/eacid/text()</opzione>
+		</elemento>
+	</param>
+</root>
