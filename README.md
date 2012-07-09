@@ -1,4 +1,4 @@
-!(http://xdams.org/wp-content/uploads/2012/07/logo3.jpg)
+!(http://www.xdams.org/wp-content/uploads/2012/07/logo3.jpg)
 
 ## xDams Platform
 
@@ -44,7 +44,7 @@ Ciò significa che per accedere al Workspace di xDams è necessario:
 
 ## Installazione
 
-Per la versione Windows, procedere al download dell’ultima versione di **xDams Open Source** scaricabile dal sito [http://xdams.org/download/] (http://xdams.org/download/)
+Per la versione Windows, procedere al download dell’ultima versione di **xDams Open Source** scaricabile dal sito [http://www.xdams.org/download/] (http://www.xdams.org/download/)
 Scaricare poi l’ultima versione della piattaforma Extraway Open Platform dalla pagina di [source forge] (http://sourceforge.net/projects/extraway/files/eXtraWay%20OpenPlatform/1.0/), selezionando la versione corretta per il proprio sistema operativo.
 Verificare i requisiti client.
 
@@ -71,7 +71,7 @@ Ora il sistema xDams è pronto per l’utilizzo! Seguire i seguenti passi per avvia
 
 ## Autore
 
-[http://xdams.org](http://xdams.org)
+[http://www.xdams.org](http://www.xdams.org)
 
 
 ## Licenza
