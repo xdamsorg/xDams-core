@@ -1,4 +1,4 @@
-![](http://www.xdams.org/wp-content/uploads/2012/07/logo3.jpg)
+![http://www.xdams.org](http://www.xdams.org/wp-content/uploads/2012/07/logo3.jpg)
 
 ## xDams Platform
 
