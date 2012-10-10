@@ -77,8 +77,6 @@ public class xDamsController {
 	@Autowired
 	ServletContext servletContext;
 
-	
-	
 	@ModelAttribute
 	public void userLoad(Model model) throws Exception {
 		if (!model.containsAttribute("userBean")) {
@@ -100,7 +98,7 @@ public class xDamsController {
 	public void frontUrl(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		model.addAttribute("frontUrl", request.getContextPath() + "/resources");
 		model.addAttribute("contextPath", request.getContextPath());
- 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
+		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
 			response.addHeader("X-UA-Compatible", "IE=8");
 		}
@@ -119,7 +117,7 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute("userBean") UserBean userBean) throws Exception {
 		Map<String, List<Archive>> usersArchives = new LinkedHashMap<String, List<Archive>>();
 		serviceUser.loadArchives(userBean, usersArchives);
@@ -351,7 +349,7 @@ public class xDamsController {
 		return "upload/uploadResult";
 	}
 
-	@RequestMapping(value = { "/login", "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
 	}
