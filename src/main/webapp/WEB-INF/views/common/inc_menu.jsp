@@ -25,7 +25,7 @@ document.write('<div class="statusLayerNONVisibile" id="attendere"><blink>attend
 		<div class="al_left">
 			<span class="ml20"></span>
 			<a href="${contextPath}/search/<%=workFlowBean.getArchive().getAlias()%>/query.html" class="v_menu" title="ricerca">nuova ricerca</a><img src="${frontUrl}/img/arrow.gif" border="0" alt="accedi"  class="arrow_spacer" />
-			<a href="../../../help/help.jsp?idAccount=<%=userBean.getAccountRef()%>" class="v_menu" title="help" target="_blank">help</a><img src="${frontUrl}/img/arrow.gif" alt="accedi" border="0" class="arrow_spacer" />
+			<!-- <a href="../../../help/help.jsp?idAccount=<%=userBean.getAccountRef()%>" class="v_menu" title="help" target="_blank">help</a><img src="${frontUrl}/img/arrow.gif" alt="accedi" border="0" class="arrow_spacer" />-->
 		</div>
 		<div class="right"><%@include file="inc_ricercaSemplice.jsp"%></div>
 	</div>
