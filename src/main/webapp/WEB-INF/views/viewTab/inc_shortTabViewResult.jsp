@@ -299,6 +299,7 @@
 										}else if (((mediaBean.getViewMode()).toLowerCase()).indexOf("image") != -1) {
 											out.println("<div class=\"campoFoto\"><img alt=\""+strTitleFoto+"\" src=\""+urlFoto+"\"/></div>");
 										}
+										
 										%>	
 											
 											<%
@@ -314,12 +315,13 @@
 													
 												}
 										
-												
+												if(!theXML.valoreNodoHTML(suffixAppo).equals("")){
 											%>
 													<div class="didaFoto">
 															<em><%=mediaBuilder.valoreNodoHTML("/elemento/elemento["+(wa+1)+"]/@name") %></em> 
 															<%=theXML.valoreNodoHTML(suffixAppo,"<br />","&nbsp;") %>
 													</div>
+												<%} %>	
 										<%}%></div>	
 	   							  		<div class="riga_sch_breFoto" title="<%=mediaBean.getXPathPrefix()+"["+(w+1)+"]"%>"><%=strTitleFoto%></div><%
 									}

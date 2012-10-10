@@ -210,17 +210,19 @@
 					 							}else{
 													suffixAppo = mediaBuilder.valoreNodo("/elemento/elemento["+(wa+1)+"]/text()");
 												}
+ 												if(!theXML.valoreNodoHTML(suffixAppo).equals("")){
 											%>
 													<div class="didaFoto">
-															<em><%=mediaBuilder.valoreNodoHTML("/elemento/elemento["+(wa+1)+"]/@name") %></em> 
-															<%=theXML.valoreNodoHTML(suffixAppo,"<br />","&nbsp;") %>
+															<em><%=mediaBuilder.valoreNodoHTML("/elemento/elemento["+(wa+1)+"]/@name")%></em> 
+															<%=theXML.valoreNodoHTML(suffixAppo,"<br />","&nbsp;")%>
 													</div>
+													<%} %>
 										<%}%></div>	
 	   							  		<div class="riga_tit_area" title="<%=mediaBean.getXPathPrefix()+"["+(w+1)+"]"%>"><%=strTitleFoto%></div><%
 									}
 									
 								 %>
-									<xDamsJSTL:attachmentViewer attachMode="showdoc" mediaBuilder="<%=mediaBuilder%>" theXMLDoc="<%=theXML%>" physDoc="<%=viewBean.getPhysDoc()%>" presentationXpath="<%=xPathPres%>"/>
+								 	<xDamsJSTL:attachmentViewer attachMode="showdoc" mediaBuilder="<%=mediaBuilder%>" theXMLDoc="<%=theXML%>" physDoc="<%=viewBean.getPhysDoc()%>" presentationXpath="<%=xPathPres%>"/>
 								<%=part03%>
 								<%
 								}	
