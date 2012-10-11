@@ -337,7 +337,7 @@ public class xDamsController {
 				System.err.println("Error in uploading: " + error.getCode() + " - " + error.getDefaultMessage());
 			}
 			return "upload/uploadMenu";
-		}
+		} 
 		modelMap.put("realPath", WebUtils.getRealPath(servletContext, ""));
 		UploadCommand uploadCommand = new UploadCommand(request.getParameterMap(), modelMap);
 		uploadCommand.execute();
