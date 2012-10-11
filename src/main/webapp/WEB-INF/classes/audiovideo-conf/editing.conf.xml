@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<multiEditing method="xPath:/c/@level">
+		<docEdit value="">
+			<file name="/audiovideo-conf/editing-ll.conf.xml" />
+		</docEdit>
+		<docEdit value="fonds">
+			<file name="/audiovideo-conf/editing-root.conf.xml" />
+		</docEdit>
+		<docEdit value="collection">
+			<file name="/audiovideo-conf/editing-root.conf.xml" />
+		</docEdit>
+		<docEdit value="subfonds">
+			<file name="/audiovideo-conf/editing-hl.conf.xml" />
+		</docEdit>
+		<docEdit value="series">
+			<file name="/audiovideo-conf/editing-hl.conf.xml" />
+		</docEdit>
+		<docEdit value="subseries">
+			<file name="/audiovideo-conf/editing-hl.conf.xml" />
+		</docEdit>
+		<docEdit value="recordgrp">
+			<file name="/audiovideo-conf/editing-hl.conf.xml" />
+		</docEdit>
+		<docEdit value="file">
+			<file name="/audiovideo-conf/editing-ll.conf.xml" />
+		</docEdit>
+		<docEdit value="item">
+			<file name="/audiovideo-conf/editing-ll.conf.xml" />
+		</docEdit>
+	</multiEditing>
+</root>

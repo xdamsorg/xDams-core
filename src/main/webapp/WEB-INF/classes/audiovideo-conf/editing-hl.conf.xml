@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<preInsert excludeRel="none" suggestedRel="son">
+		<macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+			<sezione name="Identificazione" opened="yes">
+				<elemento input_type="select" name="livello" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+				<elemento input_type="select" name="tipologia" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='typology']/opzione">/c/did/materialspec[@label='typology']/text()</elemento>
+				<elemento input_type="select" name="genere" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genre']/opzione">/c/did/materialspec[@label='genre']/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="titolo testata/serie">/c/did/unittitle/bibseries/text()</elemento>
+				<elemento input_type="text" class="Short" name="numero testata/serie">/c/did/unittitle/bibseries/num/text()</elemento>
+				<elemento input_type="textarea" rows="3" cols="55" name="titolo proprio" multiMod="true">/c/did/unittitle/title[@type='proper']/text()</elemento>
+				<elemento input_type="textarea" rows="2" cols="55" name="complemento del titolo" multiMod="true">/c/did/unittitle/title[@type='proper']/emph/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="titolo attribuito" multiMod="true">/c/did/unittitle/text()</elemento>
+			</sezione>
+			<sezione name="chiavi di accesso" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="enti e istituzioni" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/corpname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/corpname/text()
+					<elemento input_type="text" class="ExtraLong" name="tipologia">/c/controlaccess[child::head/text()='access points']/corpname/@role</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="persone" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/persname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/persname/text()
+					<elemento input_type="text" class="ExtraLong" name="funzione / ruolo">/c/controlaccess[child::head/text()='access points']/persname/@role</elemento>
+					<elemento input_type="text" class="ExtraLong" name="pseudonimo / vedi anche" ajaxVoc="/c/controlaccess/persname/@altrender" vocType="double">/c/controlaccess[child::head/text()='access points']/persname/@altrender</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="famiglie" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/famname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/famname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="luoghi" type="multi_auther" arch_ref="xDamsHGeo" prefix="/c/controlaccess[child::head/text()='access points']/geogname" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/controlaccess[child::head/text()='access points']/geogname/text()
+					<elemento input_type="text" class="Long" name="integrazione">/c/controlaccess[child::head/text()='access points']/geogname/emph/text()</elemento>
+				</elemento>
+				<elemento name="soggetto/argomento" type="multi_group" prefix="/c/controlaccess[child::head/text()='access points']/subject">
+					<elemento input_type="text" class="ExtraLong" ajaxVoc="/c/controlaccess/name" vocType="double">/c/controlaccess[child::head/text()='access points']/subject/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="integrazione">/c/controlaccess[child::head/text()='access points']/subject/emph/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+	</preInsert>
+	<docEdit>
+		<macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+			<sezione name="identificazione" opened="yes">
+				<elemento input_type="select" name="specifiche di pubblicazione" multiMod="true" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+				<elemento input_type="select" name="livello" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+				<elemento type="group" prefix="/c" inline="yes" name="codici">
+					<elemento input_type="liveText" name="identificativo di sistema">/c/@id</elemento>
+					<elemento input_type="text" name="identificativo logico" class="Middle">/c/did/unitid/text()</elemento>
+				</elemento>
+				<elemento input_type="select" name="tipologia" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='typology']/opzione">/c/did/materialspec[@label='typology']/text()</elemento>
+				<elemento input_type="select" name="genere" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genre']/opzione">/c/did/materialspec[@label='genre']/text()</elemento>
+				<elemento input_type="select" name="stato" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='condition']/opzione">/c/did/materialspec[@label='genre']/emph/text()</elemento>
+				<elemento type="group" prefix="/c/did/unittitle/bibseries" name="testata/serie" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="titolo">/c/did/unittitle/bibseries/text()</elemento>
+					<elemento input_type="text" class="Short" name="numero">/c/did/unittitle/bibseries/num/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="titoli" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55" name="titolo proprio" multiMod="true">/c/did/unittitle/title[@type='proper']/text()</elemento>
+				<elemento input_type="textarea" rows="2" cols="55" name="complemento del titolo" multiMod="true">/c/did/unittitle/title[@type='proper']/emph/text()</elemento>
+				<elemento input_type="textarea" rows="3" cols="55" name="titolo attribuito" multiMod="true">/c/did/unittitle/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" name="fonte dell'attribuzione">/c/did/unittitle/@label</elemento>
+				<elemento name="Varianti del titolo" type="multi_group" prefix="/c/did/unittitle/title[@altrender='variant']" opened="no">
+					<elemento input_type="text" class="ExtraLong" name="variante">/c/did/unittitle/title[@altrender='variant']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="tipologia del titolo variante" opened="no">/c/did/unittitle/title[@altrender='variant']/@type</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="soggetto produttore" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="ente" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@label='creator']/corpname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@label='creator']/corpname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="persona" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@label='creator']/persname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@label='creator']/persname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="famiglia" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination[@label='creator']/famname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination[@label='creator']/famname/text()</elemento>
+			</sezione>
+			<sezione name="estremi cronologici" opened="yes">
+				<elemento showCentury="false" value="document:/audiovideo-conf/valoriControllati.xml" type="custom" id="data" format="aaaa mm. gg" name="forma normalizzata" prefix="/c/did/unittitle/unitdate"/>
+			</sezione>
+			<sezione name="consistenza" opened="yes">
+				<elemento type="multi_group" prefix="/c/did/physdesc">
+					<elemento input_type="select" name="tipologia del supporto" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='mediumType']/opzione">/c/did/physdesc/genreform/text()</elemento>
+					<elemento input_type="text" class="Short" name="quantità">/c/did/physdesc/extent/text()</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="collocazione" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/did/physloc/text()</elemento>
+			</sezione>
+			<sezione name="info edizione" opened="yes">
+				<elemento input_type="select" name="lingua principale" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='language']/opzione">/c/did/langmaterial/language[@altrender='main language']/text()</elemento>
+				<elemento input_type="select" name="nazionalità " value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
+				<elemento input_type="text" name="edizione / versione">/c/did/unittitle/edition/text()</elemento>
+				<elemento type="multi" prefix="/c/did/langmaterial/language[@altrender='other language']" input_type="select" name="altre lingue" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='language']/opzione">/c/did/langmaterial/language[@altrender='other language']/text()</elemento>
+			</sezione>
+			<sezione name="date e luoghi di produzione" opened="no">
+				<elemento name="data di produzione" opened="yes">/c/did/unitdate/date/@null</elemento>
+				<elemento showCentury="false" value="document:/audiovideo-conf/valoriControllati.xml" type="custom" id="data" name="forma normalizzata" format="aaaa mm. gg" prefix="/c/did/unittitle/date[@type='production']"/>
+				<elemento name="luogo di produzione" opened="yes">/c/did/unittitle/geogname[@role='production']/@null</elemento>
+				<elemento input_type="text" class="Long" opened="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="auther" arch_ref="xDamsHGeo" prefix="/c/did/unittitle/geogname[@role='production']" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/did/unittitle/geogname[@role='production']/text()</elemento>
+			</sezione>
+			<sezione name="info distribuzione" opened="no">
+				<elemento input_type="text" class="Short" name="data di distribuzione" opened="yes">/c/did/unittitle/date[@type='distribution']/text()</elemento>
+				<elemento input_type="text" class="Long" name="luogo di distribuzione" opened="yes">/c/did/unittitle/geogname[@role='distribution']/text()</elemento>
+				<elemento name="casa di distribuzione" opened="yes">/c/did/repository[@label='distributor']/@null</elemento>
+				<elemento input_type="text" class="ExtraLong" opened="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="auther" arch_ref="xDamsEACCPF" prefix="/c/did/repository[@label='distributor']" code="id" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/repository[@label='distributor']/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="contenuto e struttura" layer="contenuto" label="Area delle informazioni sul contenuto">
+			<sezione name="abstract" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55">/c/did/abstract/text()</elemento>
+			</sezione>
+			<sezione name="note biografiche" opened="yes">
+				<elemento input_type="textarea" rows="2" cols="55" rich="yes" cdata="true">/c/bioghist/p/text()</elemento>
+			</sezione>
+			<sezione name="criteri di ordinamento" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/arrangement/p/text()</elemento>
+			</sezione>
+			<sezione name="notizie storico-critiche" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55" multiMod="true" rich="yes" cdata="true">/c/scopecontent/p/text()</elemento>
+				<elemento name="data evento rappresentato" opened="yes">/c/scopecontent/p/date/@null</elemento>
+				<elemento value="document:/audiovideo-conf/valoriControllati.xml" type="custom" id="data" format="aaaa mm. gg" name="forma normalizzata" prefix="/c/scopecontent/p/date[@type='data evento rappresentato']"/>
+			</sezione>
+			<sezione name="chiavi di accesso" opened="yes">
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="enti e istituzioni" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/corpname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/corpname/text()
+					<elemento input_type="text" class="ExtraLong" name="tipologia">/c/controlaccess[child::head/text()='access points']/corpname/@role</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="persone" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/persname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/persname/text()
+					<elemento input_type="text" class="ExtraLong" name="funzione / ruolo">/c/controlaccess[child::head/text()='access points']/persname/@role</elemento>
+					<elemento input_type="text" class="ExtraLong" name="pseudonimo / vedi anche" ajaxVoc="/c/controlaccess/persname/@altrender" vocType="double">/c/controlaccess[child::head/text()='access points']/persname/@altrender</elemento>
+				</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="famiglie" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/controlaccess[child::head/text()='access points']/famname" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/controlaccess[child::head/text()='access points']/famname/text()</elemento>
+				<elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="luoghi" type="multi_auther" arch_ref="xDamsHGeo" prefix="/c/controlaccess[child::head/text()='access points']/geogname" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/controlaccess[child::head/text()='access points']/geogname/text()
+					<elemento input_type="text" class="Long" name="integrazione">/c/controlaccess[child::head/text()='access points']/geogname/emph/text()</elemento>
+				</elemento>
+				<elemento name="soggetto/argomento" type="multi_group" prefix="/c/controlaccess[child::head/text()='access points']/subject">
+					<elemento input_type="text" class="ExtraLong" ajaxVoc="/c/controlaccess/name" vocType="double">/c/controlaccess[child::head/text()='access points']/subject/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="integrazione">/c/controlaccess[child::head/text()='access points']/subject/emph/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="accesso" layer="Status" label="Area delle informazioni sulle condizioni di accesso e utilizzazione">
+			<sezione name="condizione giuridica" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/accessrestrict/legalstatus/text()</elemento>
+			</sezione>
+			<sezione name="acquisizione del materiale" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/acqinfo/p/text()</elemento>
+			</sezione>
+			<sezione name="modalità di consultazione" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/accessrestrict/p/text()</elemento>
+			</sezione>
+			<sezione name="storia archivistica" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/custodhist/p/text()</elemento>
+			</sezione>
+			<sezione name="copyright" opened="yes">
+				<elemento input_type="textarea" rows="3" cols="55">/c/userestrict/p/text()</elemento>
+			</sezione>
+			<sezione name="caratteristiche materiali e requisiti tecnici" opened="yes">
+				<elemento input_type="select" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='phystech']/opzione" name="stato di conservazione">/c/phystech/p/text()</elemento>
+				<elemento input_type="textarea" rows="2" cols="55" name="note">/c/phystech/note/p/text()</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="documentazione" layer="fonti" label="Area delle informazioni sulla documentazione collegata e complementare">
+			<sezione name="documentazione collegata" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/relatedmaterial/p/text()</elemento>
+			</sezione>
+			<sezione name="fonti archivistiche" opened="yes">
+				<elemento input_type="textarea" rows="1" cols="55">/c/bibliography/archref/text()</elemento>
+			</sezione>
+			<sezione name="bibliografia" opened="yes">
+				<elemento name="Monografie e periodici" type="multi_group" prefix="/c/bibliography/bibref">
+					<elemento input_type="text" class="ExtraLong" name="autore">/c/bibliography/bibref/persname[@role='author']/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="curatore">/c/bibliography/bibref/persname[@role='editor']/text()</elemento>
+					<elemento input_type="textarea" rows="1" cols="55" name="titolo">/c/bibliography/bibref/title/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="edito in (se articolo)">/c/bibliography/bibref/edition/text()</elemento>
+					<elemento input_type="text" class="Middle" name="luogo di pubblicazione" opened="yes">/c/bibliography/bibref/imprint/geogname/text()</elemento>
+					<elemento input_type="text" class="Middle" name="editore" opened="yes">/c/bibliography/bibref/imprint/publisher/text()</elemento>
+					<elemento input_type="text" class="Middle" name="data di pubblicazione" opened="yes">/c/bibliography/bibref/imprint/date/text()</elemento>
+					<elemento input_type="text" class="Middle" name="pagine" opened="no">/c/bibliography/bibref/num/text()</elemento>
+					<elemento input_type="textarea" rows="2" cols="55" name="note">/c/bibliography/bibref/text()</elemento>
+				</elemento>
+				<elemento name="bibliografia in rete" type="multi_group" prefix="/c/bibliography/extref" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="titolo/soggetto">/c/bibliography/extref/title/text()</elemento>
+					<elemento input_type="text" class="Short" name="data di consultazione">/c/bibliography/extref/date/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="URL">/c/bibliography/extref/@href</elemento>
+				</elemento>
+			</sezione>
+			<sezione name="mostre e rassegne" opened="yes">
+				<elemento name="evento" type="multi_group" prefix="/c/bibliography/list[child::head/text()='expositions']/item" opened="yes">
+					<elemento input_type="text" class="ExtraLong" name="titolo">/c/bibliography/list[child::head/text()='expositions']/item/title/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="luogo">/c/bibliography/list[child::head/text()='expositions']/item/geogname/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="sede espositiva">/c/bibliography/list[child::head/text()='expositions']/item/geogname/emph/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="data">/c/bibliography/list[child::head/text()='expositions']/item/date/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="ente organizzatore">/c/bibliography/list[child::head/text()='expositions']/item/corpname/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="note">/c/bibliography/list[child::head/text()='expositions']/item/note/p/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="note e compilazione" layer="NOTE" label="Area delle note e della compilazione">
+			<sezione name="note" opened="yes">
+				<elemento input_type="textarea" rows="6" cols="55">/c/note/p/text()</elemento>
+				<elemento input_type="textarea" rows="6" cols="55" name="nota dell'archivista">/c/processinfo/note/p/text()</elemento>
+			</sezione>
+			<sezione name="informazioni sulla descrizione archivistica" opened="yes">
+				<elemento input_type="text" class="Long" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+				<elemento type="custom" id="processinfo" prefix="/c/processinfo/list/item" inline="no">
+					<elemento input_type="liveText" name="azione">/c/processinfo/list/item/text()</elemento>
+					<elemento input_type="liveText" name="data">/c/processinfo/list/item/date/text()</elemento>
+					<elemento input_type="liveText" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<macroarea name="allegati digitali" layer="ALLEGATI" label="Area degli allegati digitali">
+			<sezione name="documenti digitali di corredo" opened="yes">
+				<elemento opened="yes" type="multi_group" name="allegati" prefix="/c/daogrp/extrefloc">
+					<elemento input_type="text" class="ExtraLong" name="titolo">/c/daogrp/extrefloc/@title</elemento>
+					<elemento input_type="text" class="ExtraLong" name="descrizione">/c/daogrp/extrefloc/text()</elemento>
+					<elemento input_type="text" class="ExtraLong" name="url oggetto digitale" mode="uploadSimple" type="custom" id="upload" externalPath="/c/@id" prefix="/c/daogrp/extrefloc" originalFileNameXpath="">/c/daogrp/extrefloc/@href</elemento>
+				</elemento>
+			</sezione>
+		</macroarea>
+		<sezione name="campiHidden">
+			<elemento>/c/@id</elemento>
+			<elemento>/c/did/unitid/@countrycode</elemento>
+			<elemento>/c/did/unitid/@repositorycode</elemento>
+			<elemento>/c/did/unitid/abbr/text()</elemento>
+			<elemento>/c/did/unitid/@identifier</elemento>
+		</sezione>
+	</docEdit>
+	<fixedValues>
+		<elemento value=".">/c/@id</elemento>
+		<elemento value="IT">/c/did/unitid/@countrycode</elemento>
+		<elemento value="inserimento">/c/processinfo/list/item/text()</elemento>
+		<elemento value="@coluiCheInserisce@">/c/processinfo/list/item/persname/text()</elemento>
+		<elemento value="@quandoColuiInserisce@">/c/processinfo/list/item/date/text()</elemento>
+	</fixedValues>
+	<hierValues level="0">
+		<macroarea layer="layerHier">
+			<sezione name="valori ereditati dalla scheda superiore" opened="no">
+				<elemento input_type="liveText" name="codice ente responsabile dell'accesso ai contenuti">/c/did/unitid/@repositorycode</elemento>
+				<elemento input_type="liveText" name="denominazione abbreviata dell'archivio">/c/did/unitid/abbr/text()</elemento>
+				<elemento input_type="liveText" name="nome virtuale dell'archivio">/c/did/unitid/@identifier</elemento>
+				<elemento input_type="liveText" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+				<elemento input_type="liveText" name="soggetto conservatore">/c/did/repository[@label='institution with archival holdings']/text()</elemento>
+			</sezione>
+		</macroarea>
+	</hierValues>
+	<param>
+		<elemento id="codice_identificativo">/c/did/unitid/text()</elemento>
+		<elemento id="campi_obbligatori">.c.did.unittitle.title[@type='proper'].text()|.c.did.unittitle.text()</elemento>
+		<elemento id="escludi_appunti">.c.processinfo</elemento>
+		<elemento id="riordina">
+			<opzione value="/c/@id">/c/@id (codice identificativo)</opzione>
+			<opzione value="/c/did/unitid">/c/did/unitid (codice)</opzione>
+			<opzione value="/c/did/unittitle">/c/did/unittitle (titolo attribuito)</opzione>
+			<opzione value="/c/did/unittitle/unitdate/@normal">/c/did/unittitle/unitdate (data di edizione)</opzione>
+			<opzione value="/c/did/unittitle/date">/c/did/unittitle/date (anno di produzione)</opzione>
+		</elemento>
+		<elemento id="clona">
+			<opzione action="delete" value="">/c/processinfo/list/item</opzione>
+			<opzione action="append" value="elemento copiato">/c/processinfo/list/item/text()</opzione>
+			<opzione action="append" value="systemdate">/c/processinfo/list/item/date/text()</opzione>
+			<opzione action="append" value="username">/c/processinfo/list/item/persname/text()</opzione>
+			<opzione action="append" value=" Clonato ">/c/clonato/text()</opzione>
+			<opzione action="replace" value=".">/c/@id</opzione>
+		</elemento>
+	</param>
+</root>

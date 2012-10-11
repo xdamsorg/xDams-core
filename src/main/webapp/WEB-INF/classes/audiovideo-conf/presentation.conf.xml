@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<multiEditing method="xPath:/c/@level">
+		<presentation value="">
+			<file name="/audiovideo-conf/presentation-ll.conf.xml"/>
+		</presentation>
+		<presentation value="fonds">
+			<file name="/audiovideo-conf/presentation-root.conf.xml"/>
+		</presentation>
+		<presentation value="collection">
+			<file name="/audiovideo-conf/presentation-fonds.conf.xml"/>
+		</presentation>
+		<presentation value="subfonds">
+			<file name="/audiovideo-conf/presentation-hl.conf.xml"/>
+		</presentation>
+		<presentation value="series">
+			<file name="/audiovideo-conf/presentation-hl.conf.xml"/>
+		</presentation>
+		<presentation value="subseries">
+			<file name="/audiovideo-conf/presentation-hl.conf.xml"/>
+		</presentation>
+		<presentation value="recordgrp">
+			<file name="/audiovideo-conf/presentation-hl.conf.xml"/>
+		</presentation>
+		<presentation value="file">
+			<file name="/audiovideo-conf/presentation-ll.conf.xml"/>
+		</presentation>
+		<presentation value="item">
+			<file name="/audiovideo-conf/presentation-ll.conf.xml"/>
+		</presentation>
+	</multiEditing>
+</root>

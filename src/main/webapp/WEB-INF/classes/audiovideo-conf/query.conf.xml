@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <access_method noElements="insert">
+  <clipboard disabled="true"/>
+  <query active="yes" label="tutti i documenti audiovisivi">[/c/@level]="item"</query>
+  <hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>
+  <query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
+ </access_method>
+ <query>
+  <element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/*</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="testata / Serie" firstIdx="a" typology="double">XML,/c/did/unittitle/bibseries</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="titolo attribuito" firstIdx="a" typology="multi">XML,/c/did/unittitle</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="titolo proprio e varianti" firstIdx="a" typology="multi">XML,/c/did/unittitle/title</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="responsabilità principali - persone" firstIdx=" a" typology="double">XML,/c/did/origination/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="responsabilità principali - enti" firstIdx=" a" typology="double">XML,/c/did/origination/corpname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="persone" firstIdx=" a" typology="double">XML,/c/controlaccess/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="enti" firstIdx=" a" typology="double">XML,/c/controlaccess/corpname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="luoghi" firstIdx=" a" typology="double">XML,/c/controlaccess/geogname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="temi" firstIdx=" a" typology="double">XML,/c/controlaccess/subject</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="sequenze" firstIdx="a" typology="multi">XML,/c/scopecontent/list/item</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="abstract" firstIdx="a" typology="multi">XML,/c/did/abstract</element>
+  <sort>
+   <element label="Nessun ordinamento" checked="yes"/>
+   <element label="Titolo">XML(xpart:/c/did/unittitle)</element>
+   <element label="Data">XML(xpart:/c/did/unittitle/unitdate/@normal)</element>
+  </sort>
+ </query>
+ <queryAdm>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivista / Catalogatore" firstIdx="a" typology="one">XML,/c/processinfo/list/item/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Data inserimento / modifica" firstIdx="0" typology="one">XML,/c/processinfo/list/item/date</element>
+ </queryAdm>
+</root>

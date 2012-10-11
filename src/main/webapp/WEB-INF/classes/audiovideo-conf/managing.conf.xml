@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo proprio"> /c/did/unittitle/title/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="2" cols="55" name="complemento del titolo"> /c/did/unittitle/title/emph/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo testata/Serie"> /c/did/unittitle/bibseries/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo attribuito"> /c/did/unittitle/text()
+ </element>
+ <element multiMod="true" input_type="text" class="Short" name="luogo di produzione"> /c/did/unittitle/geogname/text()
+ </element>
+ <element multiMod="true" input_type="text" class="Short" name="anno di produzione"> /c/did/unittitle/date/text()
+ </element>
+ <element multiMod="true" input_type="text" class="Short" name="identificativo della copia"> /c/did/physdesc[@label='copia di catalogazione']/@id
+ </element>
+ <element multiMod="true" input_type="text" class="Short" name="durata"> /c/did/materialspec[@label='durata']/text()
+ </element>
+ <element multiMod="true" input_type="text" class="Middle" name="URL allegato digitale"> /c/did/physdesc[@label='copia di catalogazione']/extptr/@href
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="abstract"> /c/did/abstract/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="notizie storico-critiche"> /c/odd/p/text()
+ </element>
+ <element name="Sequenze" type="multi_group" prefix="/c/scopecontent/list/item">
+  <element multiMod="true" input_type="textarea" rows="3" cols="55" name="descrizione sequenze"> /c/scopecontent/list/item/text()
+  </element>
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="condizione giuridica" opened="yes"> /c/descgrp/accessrestrict/legalstatus/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="acquisizione del materiale" opened="no"> /c/descgrp/acqinfo/p/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="restrizioni di accesso" opened="no"> /c/descgrp/accessrestrict/accessrestrict/p/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="storia della condizione" opened="no"> /c/descgrp/custodhist/p/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="copyright" opened="no"> /c/descgrp/userestrict/p/text()
+ </element>
+ <element multiMod="true" input_type="textarea" type="multi" rows="1" cols="55" name="fonti" prefix="/c/bibliography/archref" opened="no"> /c/bibliography/archref/text()
+ </element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="note"> /c/note/p/text()
+ </element>
+</root>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea name="Area dell'identificazione" summary="yes" showdoc="yes">
+  <sezione name="identificazione dell'unità" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="visibilità della scheda" value="document:/audiovideo-conf/valoriControllati.xml" summary="yes" showdoc="yes" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+   <elemento name="codice interno e livello" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c">
+    <elemento summary="yes" showdoc="no">/c/did/unitid/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+   </elemento>
+   <elemento summary="yes" showdoc="yes" name="tipologia">/c/did/materialspec[@label='genre']/@type</elemento>
+   <elemento summary="yes" showdoc="yes" name="genere">/c/did/materialspec[@label='genre']/text()</elemento>
+   <elemento summary="yes" showdoc="yes" name="stato">/c/did/materialspec[@label='genre']/emph/text()</elemento>
+   <elemento name="testata/serie" type="multi_group" inline="yes" summary="yes" showdoc="yes" prefix="/c/did/unittitle/bibseries">
+    <elemento summary="yes" showdoc="yes">/c/did/unittitle/bibseries/text()</elemento>
+    <elemento summary="yes" showdoc="yes" format_before="&#160;">/c/did/unittitle/bibseries/num/text()</elemento>
+   </elemento>
+   <elemento name="titolo e estremi cronologici" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c">
+    <elemento summary="yes" format_before="titolo proprio:&#160;&lt;em&gt;" format_after="&lt;/em&gt;&lt;br&gt;" showdoc="yes">/c/did/unittitle/title[@type='proper']/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;">/c/did/unittitle[child::text()!='']/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=";&#160;">/c/did/unittitle/title/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(fonte dell'attribuzione:&#160;" format_after=")">/c/did/unittitle/@label</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&lt;br/&gt;&lt;em&gt;" format_after="&lt;/em&gt;">/c/did/unittitle/unitdate/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;&lt;em&gt;" format_after="&lt;/em&gt;">/c/did/unittitle/unitdate/emph/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=";&#160;">/c/did/unittitle/emph/text()</elemento>
+   </elemento>
+   <elemento name="varianti del titolo" summary="yes" showdoc="no" type="multi_group" prefix="/c/did/unittitle/title[@altrender='variant']" inline="yes">
+    <elemento summary="yes" showdoc="no" format_after=":&#160;">/c/did/unittitle/title[@altrender='variant']/@type</elemento>
+    <elemento summary="yes" showdoc="no">/c/did/unittitle/title[@altrender='variant']/text()</elemento>
+    <elemento summary="yes" showdoc="no" format="&lt;br/&gt;">/c/did/unittitle/title[@altrender='variant']/@null</elemento>
+   </elemento>
+   <elemento summary="no" showdoc="yes" name="livello di descrizione" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+   <elemento name="identificativo di sistema" summary="no" showdoc="yes">/c/@id</elemento>
+   <elemento summary="no" showdoc="yes" name="identificativo logico">/c/did/unitid/text()</elemento>
+  </sezione>
+  <sezione name="responsabilità principali" summary="yes" showdoc="no" opened="yes">
+   <elemento type="multi_group" prefix="/c/did/origination[@label='main credits']/persname" summary="yes" showdoc="no" name="responsabilità principali" inline="yes">
+    <elemento code="authfilenumber" query="[XML,/eac-cpf/control/recordId]" arch_ref="xDamsEACCPF" summary="yes" showdoc="no">/c/did/origination[@label='main credits']/persname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/did/origination[@label='main credits']/persname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/did/origination[@label='main credits']/persname/@null</elemento>
+   </elemento>
+   <elemento type="multi_group" prefix="/c/did/origination[@label='main credits']/corpname" summary="yes" showdoc="no" inline="yes">
+    <elemento code="authfilenumber" query="[XML,/eac-cpf/control/recordId]" arch_ref="xDamsEACCPF" summary="yes" showdoc="no">/c/did/origination[@label='main credits']/corpname/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=",&#160;">/c/did/origination[@label='main credits']/corpname/@role</elemento>
+    <elemento summary="yes" showdoc="no" format="&lt;br/&gt;">/c/did/origination[@label='main credits']/corpname/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="responsabilità principali" summary="no" showdoc="yes" opened="yes">
+   <elemento type="multi_group" prefix="/c/did/origination[@label='main credits']/persname" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes">/c/did/origination[@label='main credits']/persname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/did/origination[@label='main credits']/persname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/did/origination[@label='main credits']/persname/@null</elemento>
+   </elemento>
+   <elemento type="multi_group" prefix="/c/did/origination[@label='main credits']/corpname" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes">/c/did/origination[@label='main credits']/corpname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/did/origination[@label='main credits']/corpname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/did/origination[@label='main credits']/corpname/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Info edizione" opened="yes" summary="yes" showdoc="no">
+   <elemento prefix="/c" type="multi_group" name="edizione" summary="yes" showdoc="no">
+    <elemento format_before="&lt;em&gt;lingua: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/langmaterial/language[@altrender='main language']/text()</elemento>
+    <elemento format_before="&lt;em&gt;nazionalità: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no" value="document:/conf-cinematografico/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
+    <elemento format_before="&lt;em&gt;edizione / versione: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/unittilte/edition/text()</elemento>
+    <elemento format_before="&lt;em&gt;altra lingua: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/langmaterial/language[@altrender='other language']/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Info edizione" opened="yes" summary="no" showdoc="yes">
+   <elemento name="lingua" summary="no" showdoc="yes">/c/did/langmaterial/language[@altrender='main language']/text()</elemento>
+   <elemento name="nazionalità" summary="no" showdoc="yes" value="document:/conf-cinematografico/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
+   <elemento name="edizione / versione" summary="no" showdoc="yes">/c/did/unittitle/edition/text()</elemento>
+   <elemento name="altre lingue" type="multi_group" prefix="/c/did/langmaterial/language[@altrender='other language']" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes">/c/did/langmaterial/language[@altrender='other language']/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Date e luoghi di produzione" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="data di produzione" summary="yes" showdoc="yes">/c/did/unittitle/date[@type='production']/text()</elemento>
+   <elemento name="luogo di produzione" summary="yes" showdoc="yes">/c/did/unittitle/geogname[@role='production']/text()</elemento>
+  </sezione>
+  <sezione name="Info distribuzione" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="luogo di distribuzione" summary="yes" showdoc="yes">/c/did/unittitle/geogname[@type='distribution']/text()</elemento>
+   <elemento name="anno di distribuzione" summary="yes" showdoc="yes">/c/did/unittitle/date[@type='distribution']/text()</elemento>
+   <elemento name="casa di distribuzione" summary="yes" showdoc="yes">/c/did/repository[@label='distributor']/text()</elemento>
+  </sezione>
+  <sezione name="Altre responsabilità" opened="yes" summary="yes" showdoc="no">
+   <elemento prefix="/c/did/origination[@label='production crew']" type="multi_group" name="altre responsabilità" summary="yes" showdoc="no">
+    <elemento summary="yes" showdoc="no">/c/did/origination[@label='production crew']/persname/text()</elemento>
+    <elemento format_before="&#160;(" format_after=")&lt;br&gt;" summary="yes" showdoc="no">/c/did/origination[@label='production crew']/persname/@role</elemento>
+    <elemento summary="yes" showdoc="no">/c/did/origination[@label='production crew']/corpname/text()</elemento>
+    <elemento format_before="&#160;(" format_after=")&lt;br&gt;" summary="yes" showdoc="no">/c/did/origination[@label='production crew']/corpname/@role</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Altre responsabilità" opened="yes" summary="no" showdoc="yes">
+   <elemento prefix="/c/did/origination[@label='production crew']" type="multi_group" summary="no" showdoc="yes" inline="yes">
+    <elemento format_before="&lt;em&gt;persona: &lt;/em&gt;" summary="no" showdoc="yes">/c/did/origination[@label='production crew']/persname/text()</elemento>
+    <elemento format_before="&#160;(" format_after=")&lt;br&gt;" summary="no" showdoc="yes">/c/did/origination[@label='production crew']/persname/@role</elemento>
+    <elemento format_before="&lt;em&gt;ente / società: &lt;/em&gt;" summary="no" showdoc="yes">/c/did/origination[@label='production crew']/corpname/text()</elemento>
+    <elemento format_before="&#160;(" format_after=")&lt;br&gt;" summary="no" showdoc="yes">/c/did/origination[@label='production crew']/corpname/@role</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area della descrizione fisica del materiale" summary="yes" showdoc="yes">
+  <sezione name="stato della digitalizzazione" opened="yes" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/altformavail/p/text()</elemento>
+  </sezione>
+  <sezione name="Magazzino" opened="no" type="multi" summary="yes" showdoc="yes">
+   <elemento summary="yes" showdoc="yes" alternativeLinkTitle="apri l'allegato" type="mediaBean" xPathPrefix="/c/did/physdesc[@label='digital object']" xPathHref="/c/did/physdesc[@label='digital object']/extref[@altrender='internal link']/@href" xPathTitle="" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides">
+    <elemento summary="no" showdoc="yes" format_after="&lt;br&gt;">/c/did/physdesc[@label='digital object']/@altrender</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;identificativo della copia: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='digital object']/@id</elemento>
+    <elemento name="url oggetto digitale su web" summary="no" showdoc="yes" format_before="&lt;a href=&quot;" format_after="&quot;&gt;accedi al video&lt;/a&gt;&lt;br&gt;">/c/did/physdesc[@label='digital object']/extref[@altrender='url web']/@href</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;generazione: &lt;/em&gt;">/c/did/physdesc[@label='digital object']/physfacet[@type='processing']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;tipologia di materiale:&#160;&lt;/em&gt;">/c/did/physdesc[@label='digital object']/genreform/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;">/c/did/physdesc[@label='digital object']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=");&#160;">/c/did/physdesc[@label='digital object']/genreform/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;byte&#160;">/c/did/physdesc[@label='digital object']/extent[@unit='bytes']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/physdesc[@label='digital object']/extent[@unit='bytes']/@label</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;time code: da&#160;">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/dimensions[@label='start']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;a&#160;" format_after="&lt;br/&gt;">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/dimensions[@label='end']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;pixel,&#160;">/c/did/physdesc[@label='digital object']/physfacet[@type='video-metrics']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;fps&#160;&lt;br&gt;">/c/did/physdesc[@label='digital object']/physfacet[@type='video-metrics']/genreform/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/physdesc[@label='digital object']/physfacet[@type='colour']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=");&#160;">/c/did/physdesc[@label='digital object']/physfacet[@type='colour']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="audio">/c/did/physdesc[@label='digital object']/physfacet[@type='sound']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=");&#160;&lt;br&gt;" name="tecnica suono">/c/did/physdesc[@label='digital object']/physfacet[@type='sound']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;numero inventario: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='digital object']/archref/unitid[@type='inventory']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;file location: &lt;/em&gt;">/c/did/physdesc[@label='digital object']/archref/physloc/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;note tecniche: &lt;/em&gt;">/c/did/physdesc[@label='digital object']/archref/note/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;titolo della copia: &lt;/em&gt;" name="titolo proprio della copia">/c/did/physdesc[@label='digital object']/archref/unittitle/title/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;edizione: &lt;/em&gt;">/c/did/physdesc[@label='digital object']/archref/unittitle/edition/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;hr&gt;">/c/did/physdesc[@label='digital object']/@null</elemento>
+   </elemento>
+   <elemento type="multi_group" name="digit" prefix="/c/did/physdesc[@label='digital object']" inline="no" opened="no" summary="no" showdoc="yes">
+   </elemento>
+   <elemento type="multi_group" name="pellicola" prefix="/c/did/physdesc[@label='film']" inline="no" opened="no" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;copia di catalogazione: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='film']/@altrender</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;identificativo della copia: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='film']/@id</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;materiali di lavorazione: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='film']/physfacet[@type='processing']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after=",&#160;" format_before="&lt;em&gt;tipologia di materiale: &lt;/em&gt;">/c/did/physdesc[@label='film']/genreform/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="">/c/did/physdesc[@label='film']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="">/c/did/physdesc[@label='film']/extent/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/physdesc[@label='film']/extent/@unit</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="completo / incompleto">/c/did/physdesc[@label='film']/extent/@label</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after="&#160;mt);&#160;" name="lunghezza mt">/c/did/physdesc[@label='film']/dimensions[@unit='mt']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;audio:&#160;" name="audio">/c/did/physdesc[@label='film']/physfacet[@type='sound']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")&#160;" name="tecnica suono">/c/did/physdesc[@label='film']/physfacet[@type='sound']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;&lt;em&gt;tipologia colonna:&#160;&lt;/em&gt;">/c/did/physdesc[@label='film']/physfacet[@type='sound']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;formato immagine:&#160;" format_after=";&#160;">/c/did/physdesc[@label='film']/physfacet[@type='aspectratio']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;cromatismo:&#160;&lt;/em&gt;" format_after="&#160;">/c/did/physdesc[@label='film']/physfacet[@type='colour']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")">/c/did/physdesc[@label='film']/physfacet[@type='colour']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br&gt;&lt;br&gt;" format_before="&lt;em&gt;numero inventario: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='film']/archref/unitid[@type='inventory']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;unità di conservazione: &lt;/em&gt;">/c/did/physdesc[@label='film']/archref/container/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;" format_after="&#160;">/c/did/physdesc[@label='film']/archref/container/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")" opened="no">/c/did/physdesc[@label='film']/archref/container/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;collocazione: &lt;/em&gt;">/c/did/physdesc[@label='film']/archref/physloc/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;note tecniche: &lt;/em&gt;">/c/did/physdesc[@label='film']/archref/note/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;titolo della copia: &lt;/em&gt;" name="titolo proprio della copia">/c/did/physdesc[@label='film']/archref/unittitle/title/text()</elemento>
+    <elemento summary="no" format_after="&lt;br&gt;" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;edizione: &lt;/em&gt;">/c/did/physdesc[@label='film']/archref/unittitle/edition/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;hr&gt;">/c/did/physdesc[@label='film']/@null</elemento>
+   </elemento>
+   <elemento type="multi_group" name="video" prefix="/c/did/physdesc[@label='video']" inline="no" opened="no" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;copia di catalogazione: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='video']/@altrender</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;identificativo della copia: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='video']/@id</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;materiali di lavorazione: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='video']/physfacet[@type='processing']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" format_before="&lt;em&gt;tipologia di materiale: &lt;/em&gt;">/c/did/physdesc[@label='video']/genreform/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;formato immagine:&#160;">/c/did/physdesc[@label='video']/genreform/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after="):&#160;">/c/did/physdesc[@label='video']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/physdesc[@label='video']/extent/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/physdesc[@label='video']/extent/@unit</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="completo / incompleto">/c/did/physdesc[@label='video']/extent/@label</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;time code: da&#160;">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/dimensions[@label='start']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;a&#160;">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/dimensions[@label='end']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br/&gt;&lt;em&gt;tipologia colonna:&#160;&lt;/em&gt;">/c/did/physdesc[@label='video']/physfacet[@type='sound']/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" name="audio">/c/did/physdesc[@label='video']/physfacet[@type='sound']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")&#160;" name="tecnica suono">/c/did/physdesc[@label='video']/physfacet[@type='sound']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_after="&#160;" format_before="&lt;br&gt;&lt;em&gt;cromatismo:&#160;&lt;/em&gt;">/c/did/physdesc[@label='video']/physfacet[@type='colour']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=");&#160;" name="sistema colore">/c/did/physdesc[@label='video']/physfacet[@type='colour']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br&gt;&lt;br&gt;" format_before="&lt;em&gt;numero inventario: &lt;/em&gt;" format_after="&lt;br&gt;">/c/did/physdesc[@label='video']/archref/unitid[@type='inventory']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;unità di conservazione: &lt;/em&gt;">/c/did/physdesc[@label='video']/archref/container/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;" format_after="&#160;">/c/did/physdesc[@label='video']/archref/container/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="(" format_after=")" opened="no">/c/did/physdesc[@label='video']/archref/container/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;collocazione: &lt;/em&gt;">/c/did/physdesc[@label='video']/archref/physloc/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;note tecniche: &lt;/em&gt;">/c/did/physdesc[@label='video']/archref/note/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;titolo della copia: &lt;/em&gt;" name="titolo proprio della copia">/c/did/physdesc[@label='video']/archref/unittitle/title/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;br&gt;&lt;em&gt;edizione: &lt;/em&gt;">/c/did/physdesc[@label='video']/archref/unittitle/edition/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;hr&gt;">/c/did/physdesc[@label='video']/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area delle informazioni relative al contenuto e alla struttura" summary="yes" showdoc="yes">
+  <sezione name="abstract" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/did/abstract/text()</elemento>
+  </sezione>
+  <sezione name="notizie storico-critiche" summary="no" showdoc="yes" opened="yes">
+   <elemento input_type="textarea" summary="no" showdoc="yes">/c/scopecontent/p/text()</elemento>
+   <elemento name="data evento rappresentato" summary="no" showdoc="yes">/c/scopecontent/p/date[@type='evento rappresentato']/text()</elemento>
+  </sezione>
+  <sezione name="personaggi e interpreti" opened="yes" summary="no" showdoc="yes">
+   <elemento type="multi_group" name="interprete" summary="no" showdoc="yes" prefix="/c/controlaccess[child::head/text()='cast']/persname">
+    <elemento summary="no" showdoc="yes">/c/controlaccess[child::head/text()='cast']/persname/text()</elemento>
+    <elemento format_before=",&#160;" summary="no" showdoc="yes">/c/controlaccess[child::head/text()='cast']/persname/@role</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="chiavi di accesso" summary="no" showdoc="yes" opened="no">
+   <elemento name="enti/istituzioni" summary="no" showdoc="yes" prefix="/c/controlaccess/corpname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsEACCPF" query="[XML,/eac-cpf/control/recordId]">
+    <elemento name="enti e istituzioni" summary="no" showdoc="yes">/c/controlaccess/corpname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/corpname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/corpname/@null</elemento>
+   </elemento>
+   <elemento name="persone" summary="no" showdoc="yes" prefix="/c/controlaccess/persname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsEACCPF" query="[XML,/eac-cpf/control/recordId]">
+    <elemento name="nome" summary="no" showdoc="yes">/c/controlaccess/persname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/persname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;&lt;em&gt;pseudonimo&#160;/&#160;vedi&#160;anche: &lt;/em&gt;">/c/controlaccess/persname/@altrender</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/persname/@null</elemento>
+   </elemento>
+   <elemento name="famiglie" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/famname" query="[XML,/eac-cpf/control/recordId]">/c/controlaccess/famname/text()</elemento>
+   <elemento name="nomi di luogo" summary="no" showdoc="yes" prefix="/c/controlaccess/geogname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsHGeo" query="[XML,/eac/eacheader/eacid]">
+    <elemento name="denominazione" summary="no" showdoc="yes">/c/controlaccess/geogname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/geogname/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/geogname/@null</elemento>
+   </elemento>
+   <elemento name="soggetto/argomento" summary="no" showdoc="yes" type="multi_group" prefix="/c/controlaccess/subject" inline="yes">
+    <elemento summary="no" showdoc="yes">/c/controlaccess/subject/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/subject/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/subject/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area di descrizione delle sequenze" summary="no" showdoc="yes" opened="yes">
+  <sezione name="descrizione delle sequenze" opened="yes" summary="no" showdoc="yes">
+   <elemento name="Sequenze" type="multi_group" summary="no" showdoc="yes" prefix="/c/scopecontent/list/item">
+    <elemento name="numero" format_after=".&#160;" summary="no" showdoc="yes">/c/scopecontent/list/item/num/text()</elemento>
+    <elemento format_before="&lt;em&gt;" summary="no" showdoc="yes">/c/scopecontent/list/item/extref[@role='start']/text()</elemento>
+    <elemento format_before="&#160;-&#160;" format_after="&lt;/em&gt;&#160;(hh:mm:ss)">/c/scopecontent/list/item/extref[@role='end']/text()</elemento>
+    <elemento format_before="&lt;br&gt;" summary="no" showdoc="yes">/c/scopecontent/list/item/text()</elemento>
+    <elemento format_before="&lt;br&gt;&lt;em&gt;note: &lt;/em&gt;" summary="no" showdoc="yes">/c/scopecontent/list/item/note/p/text()</elemento>
+    <elemento format="&lt;hr&gt;" summary="no" showdoc="yes">/c/scopecontent/list/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area delle informazioni sulle condizioni di accesso e utilizzazione" summary="no" showdoc="yes">
+  <sezione name="condizione giuridica e vincoli" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/accessrestrict/legalstatus/text()</elemento>
+  </sezione>
+  <sezione name="acquisizione del materiale" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/acqinfo/p/text()</elemento>
+  </sezione>
+  <sezione name="modalità di consultazione" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/accessrestrict/p/text()</elemento>
+  </sezione>
+  <sezione name="copyright" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/userestrict/p/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area delle informazioni relative alla documentazione collegata e complementare" summary="no" showdoc="yes">
+  <sezione name="documentazione collegata" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/relatedmaterial/p/text()</elemento>
+  </sezione>
+  <sezione name="fonti archivistiche" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/bibliography/archref/text()</elemento>
+  </sezione>
+  <sezione name="bibliografia" opened="yes" summary="no" showdoc="yes">
+   <elemento name="monografie e periodici" type="multi_group" summary="no" showdoc="yes" prefix="/c/bibliography/bibref">
+    <elemento format="&lt;ul&gt;&lt;li style=&quot;list-style:circle&quot;&gt;" summary="no" showdoc="yes">/c/bibliography/bibref/@nell</elemento>
+    <elemento format_before="&lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;, " summary="no" showdoc="yes" opened="yes">/c/bibliography/bibref/persname[@role='author']/text()</elemento>
+    <elemento format_before="&lt;em&gt;" summary="no" showdoc="yes" format_after="&lt;/em&gt;" name="">/c/bibliography/bibref/title/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;in&#160;«" format_after="»">/c/bibliography/bibref/edition/text()</elemento>
+    <elemento format_before=",&#160;a cura di &lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;" summary="no" showdoc="yes">/c/bibliography/bibref/persname[@role='editor']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/bibliography/bibref/imprint/geogname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/bibliography/bibref/imprint/publisher/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/bibliography/bibref/imprint/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/bibliography/bibref/num/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=".&#160;">/c/bibliography/bibref/text()</elemento>
+    <elemento format="&lt;/li&gt;&lt;/ul&gt;" summary="no" showdoc="yes">/c/bibliography/bibref/@null</elemento>
+   </elemento>
+   <elemento name="bibliografia in rete" type="multi_group" summary="no" showdoc="yes" prefix="/c/bibliography/extref" opened="yes">
+    <elemento name="" format_before="" format_after=",&#160;" summary="no" showdoc="yes">/c/bibliography/extref/title/text()</elemento>
+    <elemento name="" format_before="(" format_after=")" summary="no" showdoc="yes">/c/bibliography/extref/date/text()</elemento>
+    <elemento name="" format_before=";&#160;URL:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes">/c/bibliography/extref/@href</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Mostre e rassegne" summary="no" showdoc="yes" opened="yes">
+   <elemento name="eventi" type="multi_group" summary="no" showdoc="yes" prefix="/c/bibliography/list/item">
+    <elemento name="" format_before="&lt;em&gt;" format_after="&lt;/em&gt;,&#160;" summary="no" showdoc="yes">/c/bibliography/list/item/title/text()</elemento>
+    <elemento name="" format_before="" format_after=",&#160;" summary="no" showdoc="yes">/c/bibliography/list/item/geogname/text()</elemento>
+    <elemento name="" format_before="" format_after=",&#160;" summary="no" showdoc="yes">/c/bibliography/list/item/geogname/emph/text()</elemento>
+    <elemento name="" format_before="" format_after=";&#160;" summary="no" showdoc="yes">/c/bibliography/list/item/date/text()</elemento>
+    <elemento name="" format_before="organizzazione:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes">/c/bibliography/list/item/corpname/text()</elemento>
+    <elemento name="" format_before="&lt;i&gt;&lt;u&gt;note&lt;/u&gt;&lt;/i&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes">/c/bibliography/list/item/note/p/text()</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Allegati digitali" summary="yes" showdoc="yes">
+  <sezione name="Allegati" summary="yes" showdoc="yes" opened="yes">
+   <elemento summary="yes" showdoc="yes" alternativeLinkTitle="apri l'allegato" type="mediaBean" xPathPrefix="/c/daogrp/extrefloc" xPathHref="/c/daogrp/extrefloc/@href" xPathTitle="/c/daogrp/extrefloc/@title" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides"/>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area delle note e della compilazione" summary="yes" showdoc="yes">
+  <sezione name="note" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="note" summary="yes" showdoc="yes">/c/note/p/text()</elemento>
+   <elemento name="informazioni redazionali" summary="no" showdoc="yes">/c/processinfo/note/p/text()</elemento>
+  </sezione>
+  <sezione name="info compilazione" summary="yes" showdoc="yes" opened="no">
+   <elemento summary="no" showdoc="yes" type="multi_group" name="interventi xDams" prefix="/c/processinfo/list/item" inline="yes">
+    <elemento format_after=",&#160;" summary="no" showdoc="yes" name="azione">/c/processinfo/list/item/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="data">/c/processinfo/list/item/date/text()</elemento>
+    <elemento format_before=";&#160;utente" summary="no" showdoc="yes" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+    <elemento format="&lt;br/&gt;" summary="no" showdoc="yes">/c/processinfo/list/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+</root>
