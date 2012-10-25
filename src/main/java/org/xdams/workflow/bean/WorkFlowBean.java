@@ -3,6 +3,7 @@ package org.xdams.workflow.bean;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
 import org.xdams.user.bean.Archive;
 
 /**
