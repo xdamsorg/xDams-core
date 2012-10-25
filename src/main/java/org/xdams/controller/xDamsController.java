@@ -71,12 +71,15 @@ public class xDamsController {
 
 	@Autowired
 	ServiceUser serviceUser;
-
-	WorkFlowBean workFlowBean = new WorkFlowBean();
-
+	
 	@Autowired
 	ServletContext servletContext;
 
+	@ModelAttribute
+	public void workFlowBean(Model model) throws Exception {
+		model.addAttribute("workFlowBean", new WorkFlowBean());
+	}
+	
 	@ModelAttribute
 	public void userLoad(Model model) throws Exception {
 		if (!model.containsAttribute("userBean")) {
@@ -105,6 +108,7 @@ public class xDamsController {
 	}
 
 	public void common(ConfBean confBean, UserBean userBean, String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 		// SETTO IL WORKFLOW PER LA NAVIGAZIONE DI xDams
 		workFlowBean.setArchive(serviceUser.getArchive(userBean, archive));
 		workFlowBean.setRequest(request);
@@ -113,6 +117,7 @@ public class xDamsController {
 	}
 
 	public void common(ConfBean confBean, UserBean userBean, String archive, String archiveLookup, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 		workFlowBean.setArchiveLookup(serviceUser.getArchive(userBean, archiveLookup));
 		common(confBean, userBean, archive, modelMap, request, response);
 	}
@@ -131,6 +136,7 @@ public class xDamsController {
 		QueryPageCommand queryPageCommand = new QueryPageCommand(request.getParameterMap(), modelMap);
 		queryPageCommand.execute();
 		QueryPageView pageView = new QueryPageView();
+		WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 		pageView.generateView(workFlowBean, confBean, userBean, modelMap);
 		modelMap.put("positionMap", pageView.getPositionMap());
 		modelMap.put("positionAdminMap", pageView.getPositionAdminMap());
