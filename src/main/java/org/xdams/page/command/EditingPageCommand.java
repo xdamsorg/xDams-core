@@ -54,7 +54,8 @@ public class EditingPageCommand {
 		confControl.add("valoriControllati");
 		try {
 			UserBean userBean = (UserBean) modelMap.get("userBean");
-			confBean = (ConfBean) modelMap.get("confBean");
+			//confBean = (ConfBean) modelMap.get("confBean");
+			confBean = new ConfBean();
 			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 			if (physDoc.equals("")) {
 				physDoc = (String) workFlowBean.getRequest().getAttribute("physDoc");
