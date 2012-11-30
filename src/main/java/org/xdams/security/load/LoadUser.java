@@ -40,9 +40,10 @@ public class LoadUser {
 					archive.setPne(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@pne"));
 					archive.setPort(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@port"));
 					archive.setWebapp(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@webapp"));
+					archive.setType(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@type"));
 					userBean.putArchives(archAlias, archive);
 					userBean.addArchives(archive);
-				}
+				} 
 			}
 			Account accountBean = new Account();
 			accountBean.setDescrAccount(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/@descrAccount"));
