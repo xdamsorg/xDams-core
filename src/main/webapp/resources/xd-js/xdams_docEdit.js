@@ -119,20 +119,20 @@ function toIso(ilForm) {
 	return false
 }
 function valorizzaLevel(obj, thePrefix) {
-	if (obj.value == "servizio fotografico")
-		document.theForm[thePrefix].value = 'file';
-	else if (obj.value == "album")
-		document.theForm[thePrefix].value = 'file';
+	if (obj.value == "fondo")
+		document.theForm[thePrefix].value = 'fonds';
+	else if (obj.value == "raccolta")
+		document.theForm[thePrefix].value = 'collection';
 	else if (obj.value == "serie")
 		document.theForm[thePrefix].value = 'series';
+	else if (obj.value == "sottoserie")
+		document.theForm[thePrefix].value = 'subseries';
+	else if (obj.value == "album")
+		document.theForm[thePrefix].value = 'recordgrp';
+	else if (obj.value == "servizio fotografico")
+		document.theForm[thePrefix].value = 'file';
 	else if (obj.value == "singola foto")
 		document.theForm[thePrefix].value = 'item';
-	else if (obj.value == "fondo")
-		document.theForm[thePrefix].value = 'fonds'
-	else if (obj.value == "sottoserie")
-		document.theForm[thePrefix].value = 'subseries'
-	else if (obj.value == "gruppo")
-		document.theForm[thePrefix].value = 'file'
 	else if (obj.value == "scatola")
 		document.theForm[thePrefix].value = 'file';
 	else if (obj.value == "sottofondo")
@@ -143,9 +143,11 @@ function valorizzaLevel(obj, thePrefix) {
 		document.theForm[thePrefix].value = 'item';
 	else if (obj.value == "panorama")
 		document.theForm[thePrefix].value = 'file';
+	else if (obj.value == "raccolta")
+		document.theForm[thePrefix].value = 'collection';	
 	else
 		document.theForm[thePrefix].value = '';
-	return true
+	return true;
 }
 function testaLevel(obj, thePrefix) {
 	if (typeof (customTestaLevel) != 'undefined') {
