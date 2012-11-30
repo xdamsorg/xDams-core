@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <access_method noElements="insert">
+  <clipboard disabled="true"/>
+  <hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>
+  <query active="yes" label="tutti i servizi">[XML,/c/@level]="file"</query>
+  <query active="yes" label="tutte le singole foto">[XML,/c/@level]="item"</query>
+  <query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
+ </access_method>
+ <query>
+  <element label="Definizione dell'oggetto" position="sx" typology="select" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">XML,/c/did/materialspec</element>
+  <element activeIdx="no" position="center" label="Ricerca libera">XML,/*</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione/Titolo attribuito" firstIdx=" a" typology="multi">XML,/c/did/unittitle</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Titolo Proprio" firstIdx="a" typology="multi">XML,/c/did/unittitle/title/text()</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Fotografo (persona)" position="sx" firstIdx="a" typology="multi">XML,/c/did/origination/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Fotografo (ente)" position="sx" firstIdx="a" typology="multi">XML,/c/did/origination/corpname</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Descrittori - Persone" position="dx" firstIdx=" a" typology="double">XML,/c/controlaccess/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Descrittori - Enti" position="dx" firstIdx=" a" typology="double">XML,/c/controlaccess/corpname</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Descrittori - Luoghi" position="dx" firstIdx=" a" typology="double">XML,/c/controlaccess/geogname</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Descrittori - Temi" firstIdx=" a" position="dx" typology="double">XML,/c/controlaccess/subject</element>
+  <element activeIdx="yes" ajaxKey="yes" label="Allegato digitale" position="dx" firstIdx="0" typology="one">XML,/c/did/physdesc/extptr/@href</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Materia e tecnica" firstIdx="a" typology="multi">XML,/c/did/physdesc/genreform</element>
+  <data>
+   <element ajaxKey="yes" label="Ricerca per data (da - a):">XML,/c/did/unittitle/unitdate/@normal</element>
+  </data>
+  <sort>
+   <element label="Inserimento" checked="yes"/>
+   <element label="Denominazione">XML(xpart:/c/did/unittitle)</element>
+   <element label="Data">XML(xpart:/c/did/unittitle/unitdate/@normal)</element>
+   <element label="Codice">XML(xpart:/c/did/unitid)</element>
+  </sort>
+ </query>
+ <queryAdm>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivista / Catalogatore" firstIdx=" " typology="double">XML,/c/processinfo/list/item/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Data inserimento / modifica" firstIdx=" 0" typology="one">XML,/c/processinfo/list/item/date</element>
+ </queryAdm>
+</root>

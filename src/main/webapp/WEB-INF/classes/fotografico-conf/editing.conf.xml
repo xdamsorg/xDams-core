@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/c/@level">
+  <docEdit value="">
+   <file name="/fotografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="fonds">
+   <file name="/fotografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="collection">
+   <file name="/fotografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="series">
+   <file name="/fotografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="subseries">
+   <file name="/fotografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="recordgrp">
+   <file name="/fotografico-conf/editing-file.conf.xml"/>
+  </docEdit>
+  <docEdit value="file">
+   <file name="/fotografico-conf/editing-file.conf.xml"/>
+  </docEdit>
+  <docEdit value="item">
+   <file name="/fotografico-conf/editing-item.conf.xml"/>
+  </docEdit>
+ </multiEditing>
+</root>

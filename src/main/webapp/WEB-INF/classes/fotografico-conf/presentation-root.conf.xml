@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea name="Identificazione" summary="yes" showdoc="yes">
+  <sezione name="Altri  codici (AC)" opened="yes" showdoc="no" summary="yes">
+   <elemento showdoc="no" summary="yes" name="codice identificativo gerarchico">/c/did/unitid[@encodinganalog='ACC']/text()</elemento>
+  </sezione>
+  <sezione name="OG - Oggetto" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="Oggetto" type="multi_group" prefix="/c/did" inline="yes" summary="yes" showdoc="no">
+    <elemento summary="yes" format_after="&lt;br&gt;" showdoc="no">/c/did/materialspec[@encodinganalog='OGTS']/text()</elemento>
+    <elemento summary="yes" showdoc="no">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Oggetto (OG)" opened="yes" showdoc="yes" summary="no">
+   <elemento showdoc="yes" summary="no" name="specifiche di accesso ai dati (ADS)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+   <elemento showdoc="yes" summary="no" id="levelFotografico" name="forma specifica dell'oggetto (OGTS)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTS']/opzione">/c/did/materialspec[@encodinganalog='OGTS']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="definizione dell'oggetto (OGTD)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+  </sezione>
+  <sezione name="Altri  codici (AC)" opened="yes" showdoc="yes" summary="no">
+   <elemento showdoc="yes" summary="no" name="codice identificativo gerarchico">/c/did/unitid[@encodinganalog='ACC']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="codice ente responsabile dell'accesso ai contenuti">/c/did/unitid[@encodinganalog='ACC']/@repositorycode</elemento>
+   <elemento showdoc="yes" summary="no" name="denominazione abbreviata dell'archivio">/c/did/unitid[@encodinganalog='ACC']/abbr/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="nome virtuale dell'archivio">/c/did/unitid[@encodinganalog='ACC']/@identifier</elemento>
+  </sezione>
+  <sezione showdoc="yes" summary="yes" name="Denominazione" opened="yes">
+   <elemento showdoc="yes" summary="yes" name="denominazione">/c/did/unittitle[@encodinganalog='SGLA']/text()</elemento>
+   <elemento showdoc="yes" summary="yes" type="multi" name="altra denominazione" prefix="/c/did/unittitle[@encodinganalog='SGLA']/title[@type='altra denominazione']">/c/did/unittitle[@encodinganalog='SGLA']/title[@type='altra denominazione']/text()</elemento>
+  </sezione>
+  <sezione name="Cronologia (DT)" opened="yes" showdoc="yes" summary="yes">
+   <elemento showdoc="yes" summary="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione" id="data" format="gg mese aaaa" name="cronologia" prefix="/c/did/unitdate[@encodinganalog='DT']">/c/did/unitdate[@encodinganalog='DT']/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="note alla data">/c/did/unitdate[@encodinganalog='DT']/emph/text()</elemento>
+  </sezione>
+  <sezione name="soggetto produttore" showdoc="no" summary="yes" opened="yes">
+   <elemento name="soggetto produttore (persona)" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/persname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname/text()</elemento>
+   <elemento name="soggetto produttore (ente)" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/corpname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname/text()</elemento>
+   <elemento name="soggetto produttore (famiglia)" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/famname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/famname/text()</elemento>
+  </sezione>
+  <sezione name="provenienza" summary="no" showdoc="yes" opened="yes">
+   <elemento name="soggetto produttore: ente" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/corpname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname/text()</elemento>
+   <elemento name="soggetto produttore: persona" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/persname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname/text()</elemento>
+   <elemento name="soggetto produttore: famiglia" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="" prefix="/c/did/origination/famname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/famname/text()</elemento>
+  </sezione>
+  <sezione name="soggetto conservatore" showdoc="yes" summary="no" opened="yes">
+   <elemento showdoc="yes" summary="no" name="denominazione">/c/did/repository/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="indirizzo">/c/did/repository/address/addressline[1]/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="sito web">/c/did/repository/address/addressline[2]/text()</elemento>
+  </sezione>
+  <sezione name="collocazione specifica (LDC)" showdoc="no" summary="yes" opened="yes" inline="yes">
+   <elemento type="multi" name="collocazione specifica" prefix="/c/did/physloc" summary="yes" showdoc="no">/c/did/physloc/text()</elemento>
+  </sezione>
+  <sezione name="collocazione specifica (LDC)" showdoc="yes" summary="no" opened="yes" inline="yes">
+   <elemento type="multi" name="denominazione del contenitore (LDCN)" prefix="/c/did/physloc" summary="no" showdoc="yes">/c/did/physloc/text()</elemento>
+  </sezione>
+  <sezione name="consistenza" showdoc="no" summary="yes" opened="yes">
+   <elemento name="consistenza" type="multi_group" prefix="/c/did/physdesc" summary="yes" showdoc="no" opened="yes">
+    <elemento summary="yes" showdoc="no">/c/did/physdesc/genreform/text()</elemento>
+    <elemento summary="yes" showdoc="no" name="">/c/did/physdesc/extent/text()</elemento>
+    <elemento format="&lt;br&gt;" summary="yes" showdoc="no" name="">/c/did/physdesc/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione summary="yes" showdoc="no" name="Condizione giuridica e vincoli (TU)" opened="yes">
+   <elemento summary="yes" showdoc="no" name="condizione giuridica" opened="yes">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Descrizione" summary="no" showdoc="yes">
+  <sezione name="consistenza" showdoc="yes" summary="yes" opened="yes">
+   <elemento name="consistenza" type="multi_group" prefix="/c/did/physdesc" summary="yes" showdoc="yes" opened="yes">
+    <elemento summary="yes" showdoc="yes">/c/did/physdesc/genreform/text()</elemento>
+    <elemento summary="yes" showdoc="yes" name="">/c/did/physdesc/extent/text()</elemento>
+    <elemento format="&lt;br&gt;" summary="yes" showdoc="yes" name="">/c/did/physdesc/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Conservazione (CO)" opened="yes" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='STCC']/opzione" name="stato di conservazione (STCC)">/c/phystech[@encodinganalog='STCC']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="indicazioni specifiche (STCS)">/c/phystech[@encodinganalog='STCS']/p/text()</elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Descrizione del soggetto (SG)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="indicazioni sul soggetto (SGTD)" rich="yes" cdata="true">/c/scopecontent[@encodinganalog='SGTD']/p/text()</elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Dati analitici (DA)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="indicazioni sull'oggetto fotografico (DSO)" rich="yes" cdata="true">/c/odd[@encodinganalog='DSO']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="notizie storico-critiche (NSC)" rich="yes" cdata="true">/c/odd[@encodinganalog='NSC']/p/text()</elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Annotazioni (AN)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="osservazioni (OSS)" rich="yes" cdata="true">/c/odd[@encodinganalog='OSS']/p/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea summary="no" showdoc="yes" name="status" layer="Status" label="Area delle condizioni di accesso e utilizzazione">
+  <sezione summary="no" showdoc="yes" name="Condizione giuridica e vincoli (TU)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="condizione giuridica (CDG)" opened="yes">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="acquisizione del materiale (ACQ)" opened="yes">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="restrizioni di accesso (NVC)" opened="yes">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="storia della condizione (ALN-ESP)" opened="yes">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN-ESP']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="copyright (CPR)" opened="yes">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="documentazione" layer="fonti" summary="no" showdoc="yes" label="Fonti e documenti di riferimento">
+  <sezione summary="no" showdoc="yes" name="riferimento altre schede (RSE)" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/relatedmaterial[@encodinganalog='RSE']/p/text()</elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Fonti archivistiche (FNT)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="">/c/bibliography[@encodinganalog='FNT']/archref/text()</elemento>
+  </sezione>
+  <sezione name="Bibliografia (BIB)" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes" name="citazioni bibliografiche (testo libero)">/c/bibliography[@encodinganalog='BIB']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="monografie e periodici" type="multi_group" prefix="/c/bibliography[@encodinganalog='BIB']/bibref" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="genere (BIBX)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='BIBX']/opzione">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="autore (BIBA)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;curatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="curatore (BIBC)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo contributo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo contributo (BIBT)">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo libro o rivista&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo libro o rivista (BIBG)">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo di edizione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="luogo di edizione (BIBL)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;editore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="editore (BIBZ)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data (BIBD)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;volumi&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="volumi (BIBV)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;pagine/nn.&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="pagine / nn. (BIBP)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/@null</elemento>
+   </elemento>
+   <elemento summary="no" showdoc="yes" name="bibliografia in rete (BSE)" type="multi_group" prefix="/c/bibliography[@encodinganalog='BSE']/extref" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo-soggetto&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo-soggetto (BSET)">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data di consultazione (BSED)">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;indirizzo di rete&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="indirizzo di rete (BSEI)" HTMLextra="&lt;br /&gt;&lt;hr /&gt;&lt;br /&gt;">/c/bibliography[@encodinganalog='BSE']/extref/@href</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='BSE']/extref/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Mostre e rassegne (MST)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="eventi" type="multi_group" prefix="/c/bibliography[@encodinganalog='MST']/list/item" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo (MSTT)">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="luogo (MSTL)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;sede&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="sede espositiva (MSTS)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data (MSTD)">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;ente organizzatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="ente organizzatore (MSTO)">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='MST']/list/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="note e compilazione" layer="Compilazione" label="Area delle note e compilazione" summary="no" showdoc="yes">
+  <sezione name="Note e informazioni sull'archiviazione" opened="yes" summary="no" showdoc="yes">
+   <elemento name="note redazionali" opened="yes" summary="no" showdoc="yes">/c/processinfo/note/p/text()</elemento>
+   <elemento name="funzionario responsabile" summary="no" showdoc="yes">/c/processinfo/p/persname/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="informazioni sull'archiviazione" type="multi_group" id="processinfo" prefix="/c/processinfo/list/item" inline="no">
+    <elemento summary="no" showdoc="yes" name="azione" format_after="&lt;br&gt;">/c/processinfo/list/item/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="data" format_after="&lt;br&gt;">/c/processinfo/list/item/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="responsabile" format_after="&lt;br&gt;">/c/processinfo/list/item/persname/text()</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+</root>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <preInsert excludeRel="none" suggestedRel="son">
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="Oggetto (OG)" opened="yes">
+    <elemento input_type="select" name="specifiche di accesso ai dati (ADS)" multiMod="true" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+    <elemento type="custom" id="levelFotografico" name="forma specifica dell'oggetto (OGTS)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTS']/opzione" prefix="/c/did/materialspec[@encodinganalog='OGTS']"/>
+    <elemento input_type="select" name="definizione dell'oggetto (OGTD)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+   </sezione>
+   <sezione name="Altri  codici (AC)" opened="yes">
+    <elemento input_type="text" class="Long" name="codice identificativo gerarchico">/c/did/unitid[@encodinganalog='ACC']/text()</elemento>
+   </sezione>
+   <sezione name="Denominazione" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55" name="denominazione (scheda fondo) / titolo attribuito (SGLA)">/c/did/unittitle[@encodinganalog='SGLA']/text()</elemento>
+   </sezione>
+   <sezione name="Cronologia (DT)" opened="yes">
+    <elemento value="document:/fotografico-conf/valoriControllati.xml" showCentury="false" externalPath="/root/elemento[@name='secolo']/opzione" escapeSenzaData="true" type="custom" id="data" format="gg mese aaaa" name="cronologia" prefix="/c/did/unitdate[@encodinganalog='DT']"/>
+    <elemento input_type="select" name="motivazione cronologica (DTMM)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='DTMM']/opzione">/c/did/unitdate[@encodinganalog='DT']/emph/text()</elemento>
+   </sezione>
+   <sezione name="Collocazione specifica (LDC)" opened="yes">
+    <elemento input_type="textarea" rows="2" cols="58" name="denominazione del contenitore (LDCN)">/c/did/physloc[@encodinganalog='LDCN']/text()</elemento>
+   </sezione>
+  </macroarea>
+ </preInsert>
+ <docEdit>
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="Oggetto (OG)" opened="yes">
+    <elemento input_type="select" name="specifiche di accesso ai dati (ADS)" multiMod="true" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+    <elemento type="custom" id="levelFotografico" name="forma specifica dell'oggetto (OGTS)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTS']/opzione" prefix="/c/did/materialspec[@encodinganalog='OGTS']"/>
+    <elemento input_type="select" name="definizione dell'oggetto (OGTD)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+   </sezione>
+   <sezione name="Altri  codici (AC)" opened="yes">
+    <elemento input_type="text" class="Long" name="codice identificativo gerarchico" multiMod="true">/c/did/unitid[@encodinganalog='ACC']/text()</elemento>
+    <elemento type="group" prefix="/c/did" inline="yes" name="" opened="yes">
+     <elemento input_type="text" class="Short" name="codice ente responsabile dell'accesso ai contenuti">/c/did/unitid[@encodinganalog='ACC']/@repositorycode</elemento>
+     <elemento input_type="text" class="Long" name="denominazione abbreviata dell'archivio">/c/did/unitid[@encodinganalog='ACC']/abbr/text()</elemento>
+     <elemento input_type="text" class="Short" name="nome virtuale dell'archivio">/c/did/unitid[@encodinganalog='ACC']/@identifier</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="Denominazione" opened="yes">
+    <elemento input_type="textarea" rows="1" cols="55" name="">/c/did/unittitle[@encodinganalog='SGLA']/text()</elemento>
+    <elemento input_type="textarea" rows="1" cols="55" type="multi" name="altra denominazione" prefix="/c/did/unittitle[@encodinganalog='SGLA']/title[@type='altra denominazione']">/c/did/unittitle[@encodinganalog='SGLA']/title[@type='altra denominazione']/text()</elemento>
+   </sezione>
+   <sezione name="Cronologia (DT)" opened="yes">
+    <elemento value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione" escapeSenzaData="true" showCentury="false" type="custom" id="data" format="gg mese aaaa" name="cronologia" prefix="/c/did/unitdate[@encodinganalog='DT']"/>
+    <elemento input_type="select" name="motivazione cronologica (DTMM)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='DTMM']/opzione">/c/did/unitdate[@encodinganalog='DT']/emph/text()</elemento>
+   </sezione>
+   <sezione name="provenienza" opened="no">
+    <elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: ente" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination/corpname[@role='creator']" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination/corpname[@role='creator']/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: persona" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@role='creator']" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;person&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination/persname[@role='creator']/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="soggetto produttore: famiglia" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/c/did/origination/famname[@role='creator']" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;family&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/c/did/origination/famname[@role='creator']/text()</elemento>
+   </sezione>
+   <sezione name="soggetto conservatore" opened="no">
+    <elemento input_type="text" class="ExtraLong" name="denominazione">/c/did/repository/text()</elemento>
+    <elemento input_type="textarea" rows="1" cols="55" name="indirizzo">/c/did/repository/address/addressline[1]/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="sito web">/c/did/repository/address/addressline[2]/text()</elemento>
+   </sezione>
+   <sezione name="Collocazione specifica (LDC)" opened="yes">
+    <elemento input_type="textarea" rows="2" cols="58" name="denominazione del contenitore (LDCN)">/c/did/physloc[@encodinganalog='LDCN']/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="descrizione" layer="Physdesc" label="Area della descrizione del materiale">
+   <sezione name="consistenza" opened="yes">
+    <elemento name="" type="multi_group" prefix="/c/did/physdesc[@label='container']">
+     <elemento input_type="text" class="ExtraLong" name="tipologia">/c/did/physdesc[@label='container']/genreform/text()</elemento>
+     <elemento input_type="text" class="Short" name="quantità">/c/did/physdesc[@label='container']/extent/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="Conservazione (CO)" opened="yes">
+    <elemento input_type="select" class="Extralong" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='STCC']/opzione" name="stato di conservazione (STCC)" multiMod="true">/c/phystech[@encodinganalog='STCC']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="indicazioni specifiche (STCS)">/c/phystech[@encodinganalog='STCS']/p/text()</elemento>
+   </sezione>
+   <sezione name="Descrizione del soggetto (SG)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="58" name="indicazioni sul soggetto (SGTD)" multiMod="true" rich="yes" cdata="true">/c/scopecontent[@encodinganalog='SGTD']/p/text()</elemento>
+   </sezione>
+   <sezione name="Dati analitici (DA)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="58" name="indicazioni sull'oggetto fotografico (DSO)" rich="yes" cdata="true" multiMod="true">/c/odd[@encodinganalog='DSO']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="notizie storico critiche (NSC)" multiMod="true" rich="yes" cdata="true">/c/odd[@encodinganalog='NSC']/p/text()</elemento>
+   </sezione>
+   <sezione name="Annotazioni (AN)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="58" name="osservazioni (OSS)" multiMod="true" rich="yes" cdata="true">/c/odd[@encodinganalog='OSS']/p/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="status" layer="Status" label="Area delle condizioni di accesso e utilizzazione">
+   <sezione name="Condizione giuridica e vincoli (TU)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55" name="condizione giuridica (CDG)" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="acquisizione del materiale (ACQ)" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="restrizioni di accesso (NVC)" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="storia della condizione (ALN-ESP)" opened="yes">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN-ESP']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="copyright (CPR)" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="documentazione" layer="fonti" label="Area delle fonti e documenti di riferimento">
+   <sezione name="riferimento altre schede (RSE)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55">/c/relatedmaterial[@encodinganalog='RSE']/p/text()</elemento>
+   </sezione>
+   <sezione name="Fonti archivistiche (FNT)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55" name="">/c/bibliography[@encodinganalog='FNT']/archref/text()</elemento>
+   </sezione>
+   <sezione name="Bibliografia (BIB)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55" name="testo libero">/c/bibliography[@encodinganalog='BIB']/p/text()</elemento>
+    <elemento multiMod="true" name="monografie e periodici" type="multi_group" prefix="/c/bibliography[@encodinganalog='BIB']/bibref" opened="no">
+     <elemento multiMod="true" input_type="select" name="genere (BIBX)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='BIBX']/opzione">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</elemento>
+     <elemento input_type="text" class="ExtraLong" name="autore (BIBA)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="curatore (BIBC)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="titolo contributo (BIBT)">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="titolo libro o rivista (BIBG)">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="luogo di edizione (BIBL)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="editore (BIBZ)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="data (BIBD)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</elemento>
+     <elemento multiMod="true" input_type="text" class="Long" name="volumi (BIBV)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</elemento>
+     <elemento input_type="text" class="Long" name="pagine / nn. (BIBP)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</elemento>
+    </elemento>
+    <elemento name="bibliografia in rete (BSE)" type="multi_group" prefix="/c/bibliography[@encodinganalog='BSE']/extref" opened="no">
+     <elemento input_type="text" class="ExtraLong" name="titolo-soggetto (BSET)">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</elemento>
+     <elemento input_type="text" class="Short" name="data di consultazione (BSED)">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="indirizzo di rete (BSEI)" HTMLextra="&lt;br /&gt;&lt;hr /&gt;&lt;br /&gt;">/c/bibliography[@encodinganalog='BSE']/extref/@href</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="Mostre e rassegne (MST)" opened="no">
+    <elemento name="eventi" type="multi_group" prefix="/c/bibliography[@encodinganalog='MST']/list/item" opened="yes">
+     <elemento input_type="text" class="Long" name="titolo (MSTT)">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</elemento>
+     <elemento input_type="text" class="Long" name="luogo (MSTL)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</elemento>
+     <elemento input_type="text" class="Long" name="sede espositiva (MSTS)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</elemento>
+     <elemento input_type="text" class="Long" name="data (MSTD)">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</elemento>
+     <elemento input_type="text" class="Long" name="ente organizzatore (MSTO)">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="note e compilazione" layer="Compilazione" label="Area delle note e compilazione">
+   <sezione name="Note e informazioni sull'archiviazione" opened="yes">
+    <elemento input_type="textarea" rows="6" cols="55" name="note redazionali" opened="yes">/c/processinfo/note/p/text()</elemento>
+    <elemento input_type="liveText" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+    <elemento name="" type="custom" id="processinfo" prefix="/c/processinfo/list/item" inline="no">
+     <elemento input_type="liveText" name="azione">/c/processinfo/list/item/text()</elemento>
+     <elemento input_type="liveText" name="data">/c/processinfo/list/item/date/text()</elemento>
+     <elemento input_type="liveText" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/c/did/unitid[@encodinganalog='ACC']/@countrycode</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ACC']/@repositorycode</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ACC']/abbr/text()</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ACC']/@identifier</elemento>
+   <elemento>/c/@id</elemento>
+  </sezione>
+ </docEdit>
+ <fixedValues>
+  <elemento value=".">/c/@id</elemento>
+  <elemento value="inserimento">/c/processinfo/list/item/text()</elemento>
+  <elemento value="@coluiCheInserisce@">/c/processinfo/list/item/persname/text()</elemento>
+  <elemento value="@quandoColuiInserisce@">/c/processinfo/list/item/date/text()</elemento>
+  <elemento value="IT">/c/did/unitid[@encodinganalog='ACC']/@countrycode</elemento>
+ </fixedValues>
+ <param>
+  <elemento id="codice_identificativo">/c/did/unitid[@encodinganalog='ACC']/text()</elemento>
+  <elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='SGLA'].text()|.c.did.unittitle[@encodinganalog='SGLA'].title[@encodinganalog='SGLT'].text()</elemento>
+  <elemento id="escludi_appunti">.c.processinfo</elemento>
+  <elemento id="riordina">
+   <opzione value="/c/@id">/c/@id (codice identificativo)</opzione>
+   <opzione value="/c/did/unitid">/c/did/unitid (codice identificativo)</opzione>
+   <opzione value="/c/did/unittitle">/c/did/unittitle (titolo attribuito)</opzione>
+   <opzione value="/c/did/unittitle/title">/c/did/unittitle/title (titolo proprio)</opzione>
+   <opzione value="/c/did/unittitle/unitdate/@normal">/c/did/unittitle/unitdate (cronologia)</opzione>
+  </elemento>
+  <elemento id="clona">
+   <opzione action="delete" value="">/c/processinfo/list/item</opzione>
+   <opzione action="append" value="elemento copiato">/c/processinfo/list/item/text()</opzione>
+   <opzione action="append" value="systemdate">/c/processinfo/list/item/date/text()</opzione>
+   <opzione action="append" value="username">/c/processinfo/list/item/persname/text()</opzione>
+   <opzione action="append" value=" Clonato ">/c/clonato/text()</opzione>
+   <opzione action="replace" value=".">/c/@id</opzione>
+  </elemento>
+ </param>
+</root>

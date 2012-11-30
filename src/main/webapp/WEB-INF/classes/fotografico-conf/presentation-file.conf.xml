@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea name="Area dell'identificazione" layer="DID" showdoc="yes" summary="yes">
+  <sezione name="Oggetto (OG)" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="codice identificativo gerarchico" summary="yes" showdoc="no">/c/did/unitid/text()</elemento>
+   <elemento name="Oggetto" type="multi_group" prefix="/c/did" inline="yes" summary="yes" showdoc="no">
+    <elemento summary="yes" format_after="&lt;br&gt;" showdoc="no">/c/did/materialspec[@encodinganalog='OGTS']/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_after="&lt;br&gt;">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+    <elemento summary="yes" format_before="quantità:" showdoc="yes" format_after="&lt;br&gt;">/c/did/materialspec[@encodinganalog='OGTD']/num[@encodinganalog='QNTN']/text()</elemento>
+   </elemento>
+   <elemento name="Soggetto" type="multi_group" prefix="/c/did" inline="yes" summary="yes" showdoc="no">
+    <elemento name="" summary="yes" format_before="titolo&#160;proprio:&#160;&#34;" format_after="&#34;&lt;br&gt;" showdoc="yes">/c/did/unittitle/title/text()</elemento>
+    <elemento name="" summary="yes" format_before="titolo&#160;attribuito:&#160;" format_after="" showdoc="yes">/c/did/unittitle/text()</elemento>
+   </elemento>
+   <elemento name="forma specifica dell'oggetto (OGTS)" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTS']/opzione">/c/did/materialspec[@encodinganalog='OGTS']/text()</elemento>
+   <elemento name="quantità (QNTN)" summary="no" showdoc="yes">/c/did/materialspec[@encodinganalog='OGTD']/num[@encodinganalog='QNTN']/text()</elemento>
+   <elemento name="definizione dell'oggetto (OGTD)" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+  </sezione>
+  <sezione name="Inventario (INV)" opened="yes" summary="no" showdoc="yes">
+   <elemento type="group" inline="yes" name="Numeri di inventario: da - a (INVN)" prefix="/c/originalsloc[@encodinganalog='INVN']/p" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes" name="Da" format_before="" format_after="-">/c/originalsloc[@encodinganalog='INVN']/p/num[@type='from']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="A">/c/originalsloc[@encodinganalog='INVN']/p/num[@type='to']/text()</elemento>
+    <elemento name="" format="&lt;br /&gt;" summary="no" showdoc="yes">/c/originalsloc[@encodinganalog='INVN']/p/num/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="" opened="yes" summary="yes" showdoc="no">
+   <elemento type="multi_group" inline="yes" name="Numeri di inventario" prefix="/c/originalsloc[@encodinganalog='INVN']/p" summary="yes" showdoc="no">
+    <elemento summary="yes" showdoc="no" name="" format_before="" format_after="-">/c/originalsloc[@encodinganalog='INVN']/p/num[@type='from']/text()</elemento>
+    <elemento summary="yes" showdoc="no" name="">/c/originalsloc[@encodinganalog='INVN']/p/num[@type='to']/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Altri codici (AC)" summary="no" showdoc="yes" opened="yes">
+   <elemento name="codice identificativo gerarchico" summary="no" showdoc="yes">/c/did/unitid/text()</elemento>
+  </sezione>
+  <sezione name="Soggetto (SG)" summary="no" showdoc="yes" opened="yes">
+   <elemento name="titolo attribuito (SGLA)" summary="no" showdoc="yes">/c/did/unittitle/text()</elemento>
+   <elemento name="specifiche del titolo attribuito (SGLS)" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='SGLSA']/opzione">/c/did/unittitle[@encodinganalog='SGLA']/emph/text()</elemento>
+   <elemento name="titolo proprio (SGLT)" summary="no" showdoc="yes">/c/did/unittitle/title/text()</elemento>
+   <elemento name="specifiche del titolo proprio (SGLS)" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='SGLST']/opzione">/c/did/unittitle[@encodinganalog='SGLA']/title/emph/text()</elemento>
+  </sezione>
+  <sezione name="Cronologia (DT)" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="cronologia (DT)" summary="no" showdoc="yes">/c/did/unitdate/text()</elemento>
+   <elemento name="Cronologia" summary="yes" showdoc="no">/c/did/unitdate/text()</elemento>
+   <elemento name="motivazione cronologica (DTMM)" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='DTMM']/opzione">/c/did/unitdate/emph/text()</elemento>
+  </sezione>
+  <sezione name="Luogo della ripresa (LR)" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="" summary="no" showdoc="yes">/c/did/unittitle/geogname/text()</elemento>
+   <elemento name="Luogo della ripresa" summary="yes" showdoc="no">/c/did/unittitle/geogname/text()</elemento>
+  </sezione>
+  <sezione name="Autore della fotografia (AUF)" summary="no" showdoc="yes" opened="yes">
+   <elemento name="nome scelto (autore personale - AUFN)" type="multi_group" prefix="/c/did/origination/persname[@encodinganalog='AUFN']" inline="yes" summary="no" showdoc="yes">
+    <elemento name="" summary="no" showdoc="yes">/c/did/origination/persname[@encodinganalog='AUFN']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="/&lt;em&gt;" format_after="&lt;/em&gt;" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUFR']/opzione" opened="yes" name="ruolo">/c/did/origination/persname[@encodinganalog='AUFN']/@role</elemento>
+    <elemento name="AUFM - motivazione dell'attribuzione" format_before="(" format_after=")" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUFM']/opzione">/c/did/origination/persname[@encodinganalog='AUFN']/emph/text()</elemento>
+    <elemento name="" format="&lt;br /&gt;" summary="no" showdoc="yes">/c/did/origination/persname[@encodinganalog='AUFN']/@null</elemento>
+   </elemento>
+   <elemento name="nome scelto (ente collettivo - AUFB)" type="multi_group" prefix="/c/did/origination/corpname[@encodinganalog='AUFB']" inline="yes" summary="no" showdoc="yes">
+    <elemento name="" summary="no" showdoc="yes" code="authfilenumber">/c/did/origination/corpname[@encodinganalog='AUFB']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="/&lt;em&gt;" format_after="&lt;/em&gt;" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUFR']/opzione" opened="yes" name="ruolo">/c/did/origination/corpname[@encodinganalog='AUFB']/@role</elemento>
+    <elemento name="AUFM - motivazione dell'attribuzione" format_before="(" format_after=")" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUFM']/opzione">/c/did/origination/corpname[@encodinganalog='AUFB']/emph/text()</elemento>
+    <elemento name="" format="&lt;br /&gt;" summary="no" showdoc="yes">/c/did/origination/corpname[@encodinganalog='AUFB']/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Responsabilità produzione e diffusione (PDF)" summary="no" showdoc="yes" opened="yes">
+   <elemento name="nome scelto (persona - PDFN)" type="multi_group" prefix="/c/did/origination/persname[@encodinganalog='PDFN']" inline="yes" summary="no" showdoc="yes">
+    <elemento name="PDFN - nome scelto (persona)" summary="no" showdoc="yes">/c/did/origination/persname[@encodinganalog='PDFN'][not(@normal) or @normal='non attribuito']/text()</elemento>
+    <elemento name="PDFR - ruolo" format_before="/&lt;em&gt;" format_after="&lt;/em&gt;" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='PDFR']/opzione">/c/did/origination/persname[@encodinganalog='PDFN']/@role</elemento>
+    <elemento name="PDFM - motivazione dell'attribuzione" format_before="(" format_after=")" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='PDFM']/opzione">/c/did/origination/persname[@encodinganalog='PDFN']/emph/text()</elemento>
+    <elemento name="" format="&lt;br /&gt;" summary="no" showdoc="yes">/c/did/origination/persname[@encodinganalog='PDFN']/@null</elemento>
+   </elemento>
+   <elemento name="nome scelto (ente - PDFB)" type="multi_group" prefix="/c/did/origination/corpname[@encodinganalog='PDFB']" inline="yes" summary="no" showdoc="yes">
+    <elemento name="PDFB - nome scelto (ente)" summary="no" showdoc="yes">/c/did/origination/corpname[@encodinganalog='PDFB'][not(@normal) or @normal='non attribuito']/text()</elemento>
+    <elemento name="PDFR - ruolo" format_before="/&lt;em&gt;" format_after="&lt;/em&gt;" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='PDFR']/opzione">/c/did/origination/corpname[@encodinganalog='PDFB']/@role</elemento>
+    <elemento name="PDFM - motivazione dell'attribuzione" format_before="(" format_after=")" summary="no" showdoc="yes" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='PDFM']/opzione">/c/did/origination/corpname[@encodinganalog='PDFB']/emph/text()</elemento>
+    <elemento name="" format="&lt;br /&gt;" summary="no" showdoc="yes">/c/did/origination/corpname[@encodinganalog='PDFB']/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Autore della fotografia (AUF)" summary="yes" showdoc="no" opened="yes">
+   <elemento name="Fotografo (persona)" type="multi_auther" summary="yes" showdoc="no" code="authfilenumber" showcode="yes" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AUFN']" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname[@encodinganalog='AUFN']/text()</elemento>
+   <elemento name="Fotografo (ente)" type="multi_auther" summary="yes" showdoc="no" code="authfilenumber" showcode="yes" arch_ref="xDamsEACCPF" prefix="/c/did/origination/corpname[@encodinganalog='AUFB']" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname[@encodinganalog='AUFB']/text()</elemento>
+  </sezione>
+  <sezione name="immagini allegate" summary="yes" showdoc="no" opened="yes">
+   <elemento opened="yes" name="immagini allegate" summary="yes" showdoc="no" type="mediaBean" xPathPrefix="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']" xPathHref="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/extptr/@href" xPathTitle="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/subject/text()" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides">
+    <elemento name="colore: &#160;" summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@encodinganalog='MTX' and @type='colore']/text()</elemento>
+    <elemento name="formato: &#160;" summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/dimensions[@encodinganalog='FRM']/text()</elemento>
+    <elemento name="url: &#160; " summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/extptr/@href</elemento>
+   </elemento>
+   <elemento opened="yes" name="foto virtuali allegate" summary="yes" showdoc="no" type="mediaBean" xPathPrefix="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']" xPathHref="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']/extptr/@href" xPathTitle="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']/subject/text()" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides" >
+    <elemento name="formato di memorizzazione del file: &#160;" summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/genreform[@encodinganalog='FVCF']/text()</elemento>
+    <elemento name="profondità di colore: &#160;" summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/dimensions[@encodinganalog='FVCC']/text()</elemento>
+    <elemento summary="yes" showdoc="no" class="Middle" name="misure fotografia virtuale:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/dimensions[@encodinganalog='FVCM']/text()</elemento>
+    <elemento name="url: &#160; " summary="yes" showdoc="no">/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']/extptr/@href</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Collocazione specifica / ubicazione (LDC/UBF)" opened="yes" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes" name="denominazione del contenitore (LDCN)">/c/did/physloc[@encodinganalog='LDCN']/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="specifiche (LDCS)">/c/did/physloc[@encodinganalog='LDCS']/text()</elemento>
+   <elemento name="ubicazione (collocazione fisica - UBFC)" type="multi_group" prefix="/c/did/container[@encodinganalog='UBFC']" inline="yes" summary="no" showdoc="yes">
+    <elemento summary="no" showdoc="yes" name="unità di conservazione / numero o etichetta" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='container']/opzione">/c/did/container[@encodinganalog='UBFC']/@type</elemento>
+    <elemento summary="no" showdoc="yes" name="" format_after="">/c/did/container[@encodinganalog='UBFC']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="nota all'unità di conservazione" opened="yes" format_before="(" format_after=")&lt;br/&gt;">/c/did/container[@encodinganalog='UBFC']/emph/text()</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Area della descrizione del materiale" layer="Physdesc" showdoc="yes" summary="no" label="Area della descrizione">
+  <sezione name="Dati generali (MT, SGT, STC) del servizio / album" opened="yes" showdoc="yes" summary="no">
+   <elemento showdoc="yes" summary="no" name="indicazione del colore (MTX)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='colore']/opzione">/c/did/physdesc[@encodinganalog='MT' and @label='general']/physfacet[@type='colore']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="materia e tecnica (MTC)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='MTC']/opzione">/c/did/physdesc[@encodinganalog='MT' and @label='general']/genreform[@encodinganalog='MTC']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="formato (FRM)" value="document:/fotografico-conf/valoriControllati.xml" HTMLextra="&lt;em&gt;cm&lt;/em&gt;" externalPath="/root/elemento[@name='FRM']/opzione">/c/did/physdesc[@encodinganalog='MT' and @label='general']/dimensions[@encodinganalog='FRM' and @unit='cm']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="altezza e larghezza" HTMLextra="&lt;em&gt;cm&lt;/em&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='general']/dimensions[@encodinganalog='MIS' and @unit='cm']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="note tecniche (MTS)">/c/did/physdesc[@encodinganalog='MT' and @label='general']/physfacet[@encodinganalog='MTS' and @type='note']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="indicazioni generali sul soggetto (SGTD)">/c/did/physdesc[@encodinganalog='MT' and @label='general']/subject/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="stato di conservazione (STCC)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='STCC']/opzione">/c/did/physdesc[@encodinganalog='MT' and @label='general']/physfacet[@type='stato conservazione' and @encodinganalog='STCC']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="specifiche di conservazione (STCS)">/c/did/physdesc[@encodinganalog='MT' and @label='general']/physfacet[@type='specifiche conservazione' and @encodinganalog='STCS']/text()</elemento>
+  </sezione>
+  <sezione name="Dati specifici (MT, SGT, STC) delle foto del servizio / album" opened="yes" showdoc="yes" summary="no">
+   <elemento opened="yes" name="" summary="no" showdoc="yes" type="mediaBean" xPathPrefix="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']" xPathHref="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/extptr/@href" xPathTitle="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/subject" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides" >
+    <elemento summary="no" showdoc="yes" name="numero inventario:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/@altrender</elemento>
+    <elemento showdoc="yes" summary="no" name="numero dell'immagine:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/@id</elemento>
+    <elemento showdoc="yes" summary="no" name="colore:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@encodinganalog='MTX' and @type='colore']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="materia e tecnica:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/genreform[@encodinganalog='MTC']/text()</elemento>
+    <elemento showdoc="yes" summary="no" class="Short" name="formato:&#160;"> /c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/dimensions[@encodinganalog='FRM' and @unit='cm']/text()
+    </elemento>
+    <elemento showdoc="yes" summary="no" name="altezza e larghezza:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/dimensions[@encodinganalog='MIS' and @unit='cm']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="orientamento:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@type='scatto']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="inquadratura dell'immagine:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@type='inquadratura']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="note tecniche:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@encodinganalog='MTS' and @type='note']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="indicazioni sul soggetto:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/subject/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="stato di conservazione (STCC):&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@encodinganalog='STCC' and @type='stato conservazione']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="specifiche di conservazione STCS):&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/physfacet[@encodinganalog='STCS' and @type='specifiche conservazione']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="url:&#160;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and child::extptr/@href != '']/extptr/@href</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Dati specifici delle foto del servizio / album" opened="yes" showdoc="yes" summary="no">
+   <elemento name="" opened="yes" showdoc="yes" summary="no" type="multi_group" inline="yes" prefix="/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;numero inventario&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/@altrender</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;numero dell'immagine&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/@id</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;colore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@encodinganalog='MTX' and @type='colore']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;materia e tecnica&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/genreform[@encodinganalog='MTC']/text()</elemento>
+    <elemento showdoc="yes" summary="no" class="Short" format_before="&lt;em&gt;formato&lt;/em&gt;:&#160;" format_after="&lt;br&gt;"> /c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/dimensions[@encodinganalog='FRM' and @unit='cm']/text()
+    </elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;altezza e larghezza&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/dimensions[@encodinganalog='MIS' and @unit='cm']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;orientamento&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@type='scatto']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;inquadratura dell'immagine&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@type='inquadratura']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;note tecniche&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@encodinganalog='MTS' and @type='note']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;indicazioni sul soggetto&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">//c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/subject/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;stato di conservazione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@encodinganalog='STCC' and @type='stato conservazione']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;em&gt;specifiche di conservazione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;">/c/did/physdesc[@encodinganalog='MT' and @label='specific' and count(child::extptr/@href) = 0]/physfacet[@encodinganalog='STCS' and @type='specifiche conservazione']/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Caratteristiche specifiche delle fotografie virtuali" opened="no" summary="no" showdoc="yes">
+   <elemento opened="yes" name="" summary="no" showdoc="yes" type="mediaBean" xPathPrefix="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']" xPathHref="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']/extptr/@href" xPathTitle="/c/did/physdesc[@encodinganalog='FVC' and @label='specific' and child::extptr/@href != '']/subject" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides" >
+    <elemento summary="no" showdoc="yes" name="formato di memorizzazione del file:&#160;" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='FVCF']/opzione">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/genreform[@encodinganalog='FVCF']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="programma di memorizzazione:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/physfacet[@encodinganalog='FVCP']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="profondità di colore:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/dimensions[@encodinganalog='FVCC']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="unità di misura:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/dimensions[@encodinganalog='FVCU']/@unit</elemento>
+    <elemento summary="no" showdoc="yes" name="misure fotografia virtuale:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/dimensions[@encodinganalog='FVCM']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="note:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/physfacet[@encodinganalog='FVCN' and @type='note']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="memoria di massa:&#160;" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='FVM']/opzione">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/genreform[@encodinganalog='FVM']/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="indicazioni sul soggetto:&#160;">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/subject/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="url:&#160;" class="ExtraLong" originalFileNameXpath="/@id" mode="uploadSimple" type="custom" externalPath="/c/@id" id="upload" prefix="/c/did/physdesc[@encodinganalog='FVC' and @label='specific']">/c/did/physdesc[@encodinganalog='FVC' and @label='specific']/extptr/@href</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="Dati analitici (DA)" summary="no" showdoc="yes" opened="yes">
+   <elemento name="indicazioni sull'oggetto fotografico (DSO)" summary="no" showdoc="yes">/c/odd[@encodinganalog='DSO']/p/text()</elemento>
+   <elemento name="notizie storico-critiche (NSC)" summary="no" showdoc="yes">/c/odd[@encodinganalog='NSC']/p/text()</elemento>
+   <elemento name="osservazioni (OSS)" summary="no" showdoc="yes">/c/odd[@encodinganalog='OSS']/p/text()</elemento>
+  </sezione>
+  <sezione name="SGTI - Chiavi di accesso" opened="yes" summary="yes" showdoc="yes">
+   <elemento name="persone" summary="yes" showdoc="yes" type="multi_auther" code="authfilenumber" query="[XML,/eac-cpf/control/recordId]" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/persname">/c/controlaccess/persname/text()</elemento>
+   <elemento name="enti" summary="yes" showdoc="yes" type="multi_auther" code="authfilenumber" query="[XML,/eac-cpf/control/recordId]" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/corpname">/c/controlaccess/corpname/text()</elemento>
+   <elemento name="luoghi" summary="yes" showdoc="yes" type="multi_auther" code="authfilenumber" query="[XML,/eac/eacheader/eacid]" arch_ref="xDamsHGeo" prefix="/c/controlaccess/geogname">/c/controlaccess/geogname/text()</elemento>
+   <elemento name="temi" summary="yes" showdoc="yes" type="multi_auther" prefix="/c/controlaccess/subject">/c/controlaccess/subject/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea summary="no" showdoc="yes" name="status" layer="Status" label="Area delle condizioni di accesso e utilizzazione">
+  <sezione summary="no" showdoc="yes" name="Condizione giuridica e vincoli (TU)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="condizione giuridica (CDG)" opened="yes">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="acquisizione del materiale (ACQ)" opened="yes">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="restrizioni di accesso (NVC)" opened="yes">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="storia della condizione (ALN-ESP)" opened="yes">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN-ESP']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="copyright (CPR)" opened="yes">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="documentazione" layer="fonti" summary="no" showdoc="yes" label="Fonti e documenti di riferimento">
+  <sezione summary="no" showdoc="yes" name="riferimento altre schede (RSE)" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/relatedmaterial[@encodinganalog='RSE']/p/text()</elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Fonti archivistiche (FNT)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="">/c/bibliography[@encodinganalog='FNT']/archref/text()</elemento>
+  </sezione>
+  <sezione name="Bibliografia (BIB)" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes" name="citazioni bibliografiche (testo libero)">/c/bibliography[@encodinganalog='BIB']/p/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="monografie e periodici" type="multi_group" prefix="/c/bibliography[@encodinganalog='BIB']/bibref" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="genere (BIBX)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='BIBX']/opzione">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="autore (BIBA)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;curatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="curatore (BIBC)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo contributo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo contributo (BIBT)">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo libro o rivista&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo libro o rivista (BIBG)">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo di edizione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="luogo di edizione (BIBL)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;editore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="editore (BIBZ)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data (BIBD)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;volumi&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="volumi (BIBV)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;pagine/nn.&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="pagine / nn. (BIBP)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/@null</elemento>
+   </elemento>
+   <elemento summary="no" showdoc="yes" name="bibliografia in rete (BSE)" type="multi_group" prefix="/c/bibliography[@encodinganalog='BSE']/extref" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo-soggetto&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo-soggetto (BSET)">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data di consultazione (BSED)">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;indirizzo di rete&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="indirizzo di rete (BSEI)" HTMLextra="&lt;br /&gt;&lt;hr /&gt;&lt;br /&gt;">/c/bibliography[@encodinganalog='BSE']/extref/@href</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='BSE']/extref/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione summary="no" showdoc="yes" name="Mostre e rassegne (MST)" opened="yes">
+   <elemento summary="no" showdoc="yes" name="eventi" type="multi_group" prefix="/c/bibliography[@encodinganalog='MST']/list/item" opened="yes">
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="titolo (MSTT)">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="luogo (MSTL)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;sede&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="sede espositiva (MSTS)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="data (MSTD)">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;ente organizzatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="ente organizzatore (MSTO)">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" name="">/c/bibliography[@encodinganalog='MST']/list/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="note e compilazione" layer="Compilazione" label="Area delle note e compilazione" summary="no" showdoc="yes">
+  <sezione name="Note e informazioni sull'archiviazione" opened="yes" summary="no" showdoc="yes">
+   <elemento name="note redazionali" opened="yes" summary="no" showdoc="yes">/c/processinfo/note/p/text()</elemento>
+   <elemento name="funzionario responsabile" summary="no" showdoc="yes">/c/processinfo/p/persname/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="informazioni sull'archiviazione" type="multi_group" id="processinfo" prefix="/c/processinfo/list/item" inline="no">
+    <elemento summary="no" showdoc="yes" name="azione" format_after="&lt;br&gt;">/c/processinfo/list/item/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="data" format_after="&lt;br&gt;">/c/processinfo/list/item/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="responsabile" format_after="&lt;br&gt;">/c/processinfo/list/item/persname/text()</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+</root>

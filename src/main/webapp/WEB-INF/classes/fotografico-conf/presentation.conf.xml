@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/c/@level">
+  <presentation value="">
+   <file name="/fotografico-conf/presentation-file.conf.xml"/>
+  </presentation>
+  <presentation value="fonds">
+   <file name="/fotografico-conf/presentation-root.conf.xml"/>
+  </presentation>
+  <presentation value="collection">
+   <file name="/fotografico-conf/presentation-root.conf.xml"/>
+  </presentation>
+  <presentation value="series">
+   <file name="/fotografico-conf/presentation-root.conf.xml"/>
+  </presentation>
+  <presentation value="subseries">
+   <file name="/fotografico-conf/presentation-root.conf.xml"/>
+  </presentation>
+  <presentation value="recordgrp">
+   <file name="/fotografico-conf/presentation-file.conf.xml"/>
+  </presentation>
+  <presentation value="file">
+   <file name="/fotografico-conf/presentation-file.conf.xml"/>
+  </presentation>
+  <presentation value="item">
+   <file name="/fotografico-conf/presentation-item.conf.xml"/>
+  </presentation>
+ </multiEditing>
+</root>

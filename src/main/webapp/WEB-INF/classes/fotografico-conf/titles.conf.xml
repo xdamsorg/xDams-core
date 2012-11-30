@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <titleManager>
+  <sezione name="title">
+   <elemento mode="html" html="strong" format_after="&lt;br/&gt;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+   <elemento flag="isAttach">[@all@]-</elemento>
+  </sezione>
+  <sezione name="hierBrowser">
+   <elemento mode="html" html="strong" format_after="&lt;br/&gt;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+   <elemento flag="isAttach">[@all@]-</elemento>
+  </sezione>
+  <sezione name="hierTitle">
+   <elemento mode="html" html="strong" format_after="&lt;br/&gt;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+  </sezione>
+  <sezione name="titlePath">
+   <elemento mode="html" html="strong" format_after="&lt;br/&gt;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+  </sezione>
+  <sezione name="defaultTitle">
+   <elemento mode="html" html="strong" format_after="&lt;br/&gt;">0-[@tit@]</elemento>
+   <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+  </sezione>
+ </titleManager>
+</root>

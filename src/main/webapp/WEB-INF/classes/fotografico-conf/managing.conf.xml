@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <element multiMod="true" input_type="text" class="Long" name="INVN - numero di inventario">/c/originalsloc[@encodinganalog='INVN']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="55" name="SGLA - titolo attribuito">/c/did/unittitle[@encodinganalog='SGLA']/text()</element>
+ <element multiMod="true" input_type="text" class="ExtraLong" name="SGLT - titolo proprio">/c/did/unittitle[@encodinganalog='SGLA']/title[@encodinganalog='SGLT']/text()</element>
+ <element multiMod="true" input_type="text" class="Long" name="LRC - località">/c/did/unittitle[@encodinganalog='SGLA']/geogname[@encodinganalog='LRC']/text()</element>
+ <element multiMod="true" input_type="text" class="Extralong" name="CO-RS - condizioni del supporto" prefix="/c/phystech[@encodinganalog='CO-RS']">/c/phystech[@encodinganalog='CO-RS']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="58" name="SGTD - indicazioni sul soggetto">/c/scopecontent[@encodinganalog='SGTD']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="58" name="DSO - indicazioni sull'oggetto fotografico">/c/odd[@encodinganalog='DSO']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="58" name="NSC - notizie storico-critiche">/c/odd[@encodinganalog='NSC']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="3" cols="58" name="OSS - osservazioni">/c/odd[@encodinganalog='OSS']/p/text()</element>
+</root>
