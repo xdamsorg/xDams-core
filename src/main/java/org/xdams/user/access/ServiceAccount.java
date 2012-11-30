@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.xdams.user.bean.Archive;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.xml.builder.XMLBuilder;
@@ -50,6 +48,8 @@ public class ServiceAccount {
 					archive.setPne(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@pne"));
 					archive.setPort(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@port"));
 					archive.setWebapp(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@webapp"));
+					archive.setType(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@type"));
+					
 					archives.add(archive);
 				}
 			}
