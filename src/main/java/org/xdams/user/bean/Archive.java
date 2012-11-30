@@ -20,6 +20,8 @@ public class Archive {
 
 	private String groupName = null;
 
+	private String type = null;
+
 	public String getGroupName() {
 		return groupName;
 	}
@@ -39,7 +41,7 @@ public class Archive {
 	public String getArchiveDescr() {
 		return archiveDescr;
 	}
- 
+
 	public void setArchiveDescr(String archiveDescr) {
 		this.archiveDescr = archiveDescr;
 	}
@@ -90,6 +92,14 @@ public class Archive {
 
 	public void setWebapp(String webapp) {
 		this.webapp = webapp;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override
