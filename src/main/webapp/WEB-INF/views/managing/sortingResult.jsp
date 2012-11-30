@@ -8,6 +8,7 @@
 <%@ page errorPage="/error.jsp" %>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
+	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean)request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean)request.getAttribute("managingBean") ;

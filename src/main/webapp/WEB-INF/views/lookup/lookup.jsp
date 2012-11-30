@@ -11,6 +11,7 @@
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
+	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean)request.getAttribute("workFlowBean");
 	List<String> titleList = (ArrayList<String>)request.getAttribute("titleList");

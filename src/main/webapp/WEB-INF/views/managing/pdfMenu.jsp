@@ -9,6 +9,7 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
+	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	ManagingBean managingBean =(ManagingBean)request.getAttribute("managingBean") ;
 	WorkFlowBean workFlowBean = (WorkFlowBean) request.getAttribute("workFlowBean");
