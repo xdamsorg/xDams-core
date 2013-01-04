@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="org.xdams.utility.CommonUtils"%>
 <%@page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <%@page import="org.xdams.page.upload.bean.UploadBean"%>
@@ -35,6 +36,15 @@ loadJsBusiness('upload','${frontUrl}');
   	<script type="text/javascript">
   		top.$("input[name='<%=CommonUtils.escapeJqueryName(uploadResponse.getDestField())%>']").val('<%=StringEscapeUtils.escapeEcmaScript(uploadResponse.getResult().toString())%>');
   		//top.$("input[name='.c.did.dao\\[@type=\\'documenti grafici\\'\\]\\[1\\].resource.text()']").val('ciao');
+		<%if(uploadResponse.getFlagOriginalFileName()!=null && !uploadResponse.getFlagOriginalFileName().equals("") && !uploadResponse.getFlagOriginalFileName().equals("null")){
+			String hrefStandard = StringUtils.replace(uploadResponse.getDestField(),"/",".");
+			String xPathPrefix = StringUtils.replace(uploadResponse.getxPathPrefix(), "/", ".");
+		 	String indiceXPath = StringUtils.substringBefore(StringUtils.difference(xPathPrefix,hrefStandard), ".");
+		 	String destOriginalFileName = xPathPrefix + indiceXPath + StringUtils.replace(uploadResponse.getDestOriginalFileName(), "/", ".");
+		 %>top.$("input[name='<%=CommonUtils.escapeJqueryName(destOriginalFileName)%>']").val('<%=StringEscapeUtils.escapeEcmaScript(uploadResponse.getFiledata().getOriginalFilename())%>');
+		<%
+		}
+		%>
   	</script>
   <%}if(!uploadResponse.getResultError().toString().equals("")){%>
   	<h1>Errore in fase di upload <%=uploadResponse.getResultError()%></h1>

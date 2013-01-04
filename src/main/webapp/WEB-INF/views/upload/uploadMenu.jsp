@@ -73,6 +73,9 @@ $(document).ready(function(){
                     <form:input path="idRecord" type="hidden"/>
                     <form:input path="destField" type="hidden"/>
                     <form:input path="uploadType" type="hidden"/>
+                    <form:input path="flagOriginalFileName" type="hidden"/>
+                    <form:input path="destOriginalFileName" type="hidden"/>
+                  	<form:input path="xPathPrefix" type="hidden"/>
                     <input name="physDoc" type="hidden" value="<%=request.getParameter("physDoc")%>"/>
                     <span></span>
                 </p>

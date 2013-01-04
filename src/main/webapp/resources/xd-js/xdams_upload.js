@@ -26,7 +26,7 @@ function allega(theRecord, theField, thePrefix, theUploadMode, originalFileName,
 function dispatchUpload(nomeField, nomeSpan, thisObject, actionFlag, theRecord,	originalFileName, xPathPrefix, physDoc) {
 	var originalFileNameParam = "";
 	if (originalFileName != null) {
-		originalFileNameParam = "&flagOriginalFileName=true&destOriginalFileName=" + originalFileName + "&xPathPrefix=" + xPathPrefix;
+		originalFileNameParam = "&amp;flagOriginalFileName=true&amp;destOriginalFileName=" + originalFileName + "&amp;xPathPrefix=" + xPathPrefix;
 	} else {
 		originalFileNameParam = "";
 	}
@@ -38,7 +38,7 @@ function dispatchUpload(nomeField, nomeSpan, thisObject, actionFlag, theRecord,	
 }
 
 function uploadSimple(nomeField, nomeSpan, thisObject, actionFlag, theRecord, originalFileNameParam, physDoc) {
-	percorso =  globalOption.contextPath+"/upload/" + globalOption.theArch + "/uploadMenu.html?destField=" + escape(nomeField)+"&amp;idRecord="+theRecord+"&amp;physDoc="+physDoc+"&amp;uploadType=simple";
+	percorso =  globalOption.contextPath+"/upload/" + globalOption.theArch + "/uploadMenu.html?destField=" + escape(nomeField)+"&amp;idRecord="+theRecord+"&amp;physDoc="+physDoc+"&amp;uploadType=simple"+originalFileNameParam;
 	if($dialog!==null){chiudiDialog();}
  	$dialog = $('<div></div>').html('<iframe style="border: 0px; " src="' + percorso + '" width="100%" height="100%"></iframe>').dialog({autoOpen: false,modal: false,height: 280,width: 558});
  	$dialog.dialog({ modal: true });

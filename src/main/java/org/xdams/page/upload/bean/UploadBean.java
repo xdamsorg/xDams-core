@@ -19,6 +19,8 @@ public class UploadBean {
 	private String uploadType;
 
 	private String renameFile;
+	
+	private String renameDir;
 
 	private String compositionRuleFile;
 
@@ -30,7 +32,14 @@ public class UploadBean {
 
 	private StringBuilder result = new StringBuilder();
 	
+	@Deprecated
 	private StringBuilder resultOriginalFileName = new StringBuilder();
+	
+	String flagOriginalFileName;
+	
+	String destOriginalFileName;
+	
+	String xPathPrefix;
 	
 	private StringBuilder resultError = new StringBuilder();
 
@@ -124,8 +133,9 @@ public class UploadBean {
 
 	@Override
 	public String toString() {
-		return "UploadBean [filedata=" + filedata + ", name=" + name + ", idRecord=" + idRecord + ", destField=" + destField + ", uploadName=" + uploadName + ", uploadType=" + uploadType + ", renameFile=" + renameFile + ", compositionRuleFile=" + compositionRuleFile + ", compositionRuleDir="
-				+ compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", commandLine=" + commandLine + ", result=" + result + ", resultError=" + resultError + "]";
+		return "UploadBean [filedata=" + filedata + ", name=" + name + ", idRecord=" + idRecord + ", destField=" + destField + ", uploadName=" + uploadName + ", uploadType=" + uploadType + ", renameFile=" + renameFile + ", renameDir=" + renameDir + ", compositionRuleFile=" + compositionRuleFile
+				+ ", compositionRuleDir=" + compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", commandLine=" + commandLine + ", result=" + result + ", resultOriginalFileName=" + resultOriginalFileName + ", flagOriginalFileName=" + flagOriginalFileName
+				+ ", destOriginalFileName=" + destOriginalFileName + ", xPathPrefix=" + xPathPrefix + ", resultError=" + resultError + "]";
 	}
 
 	public StringBuilder getResult() {
@@ -142,5 +152,37 @@ public class UploadBean {
 
 	public void setResultError(StringBuilder resultError) {
 		this.resultError = resultError;
+	}
+
+	public String getRenameDir() {
+		return renameDir;
+	}
+
+	public void setRenameDir(String renameDir) {
+		this.renameDir = renameDir;
+	}
+
+	public String getFlagOriginalFileName() {
+		return flagOriginalFileName;
+	}
+
+	public void setFlagOriginalFileName(String flagOriginalFileName) {
+		this.flagOriginalFileName = flagOriginalFileName;
+	}
+
+	public String getDestOriginalFileName() {
+		return destOriginalFileName;
+	}
+
+	public void setDestOriginalFileName(String destOriginalFileName) {
+		this.destOriginalFileName = destOriginalFileName;
+	}
+
+	public String getxPathPrefix() {
+		return xPathPrefix;
+	}
+
+	public void setxPathPrefix(String xPathPrefix) {
+		this.xPathPrefix = xPathPrefix;
 	}
 }
