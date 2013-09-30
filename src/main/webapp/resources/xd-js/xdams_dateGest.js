@@ -647,8 +647,15 @@ if(anno_i != ''){
 		newData += mm+'.'
 	if(anno_i>0)
 		newData += aaaa
-	}
-	else{
+	}else if(ilFormato == 'gg/mm/aaaa'){
+		//alert('data singola')
+		if(giorno_i>0)
+			newData += gg+'/'
+		if(mese_i>0)
+			newData += mm+'/'
+		if(anno_i>0)
+			newData += aaaa
+	} else{
 	if(ilFormato == 'aaaa mese gg'){
 		if(anno_i>0)
 			newData += aaaa+' '

@@ -11,7 +11,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
-	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean) request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean) request.getAttribute("managingBean") ;

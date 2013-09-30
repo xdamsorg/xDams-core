@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.ui.ModelMap;
-import org.springframework.web.util.WebUtils;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.view.bean.HierBrowserBean;

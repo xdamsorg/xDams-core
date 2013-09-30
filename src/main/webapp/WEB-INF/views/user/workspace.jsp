@@ -145,7 +145,7 @@ jQuery(document).ready(function(){
 <body>
 <div id="headPageBig">
    	<div id="header">
-		<div class="allineaS"><img src="${frontUrl}/img/logo.gif"  border="0" align="left" alt="xDams"/><div class="titolo_arc"><%="userBean.getDescrAccount()"%></div></div>
+		<div class="allineaS"><img src="${frontUrl}/img/logo.gif"  border="0" align="left" alt="xDams"/><div class="titolo_arc"><%=userBean.getAccount().getDescrAccount()%></div></div>
 		<div class="allineaD"></div>
 	</div>	<div id="menu">
 		<div class="al_left">

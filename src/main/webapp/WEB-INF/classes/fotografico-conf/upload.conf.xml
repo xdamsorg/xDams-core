@@ -52,13 +52,14 @@
  </upload>
  <upload type="simple">
   <!-- <renameFile> gestisce il rename dei file, true/false -->
-  <renameFile>false</renameFile>
+  <renameFile>true</renameFile>
   <!-- <compositionRuleFile> gestisce la regola di composizione del nome del file, il valore idRecord all'interno dell'editing -->
-  <compositionRuleFile>8-4-4</compositionRuleFile>
+  <compositionRuleFile>2-5-6-10</compositionRuleFile>
+  
   <!-- <compositionRuleFile> gestisce la regola di composizione della directory, il valore idRecord all'interno dell'editing -->
-  <compositionRuleDir>8-4-4</compositionRuleDir>
+  <compositionRuleDir>2-5-6-10</compositionRuleDir>
   <!-- <compositionReplaceName> applica un replace del nome dopo aver applicato la compositionRuleFile -->
-  <compositionReplaceName></compositionReplaceName>
+  <compositionReplaceName>-</compositionReplaceName>
   <commandList>
    <command>
     <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->

@@ -29,8 +29,6 @@ function doApriWinProtoGest(theArchName, actionFlag, statusBar, physDoc, selId, 
 		}
 
 	}
-	// thePage = 'http://localhost:8080/xDamsFoundation/home.html';
-	// document.location.href=urlWin;
 	$('#aDialog').remove();
 	$('body').append('<div id="aDialog"></div>');
  
@@ -63,11 +61,16 @@ function chiudiThisWin() {
 	top.chiudiDialog();
 }
 function reloadLocation() {
-	if (top.leftArea != null && top.leftArea.location != null)
+	if (top.leftArea != null && top.leftArea.location != null){
 		top.leftArea.location.reload();
-	else
-		top.location.reload();
-
+	}else{
+		if(top.document["lookupForm"]){
+			top.document["lookupForm"].selId.value="";
+			top.document["lookupForm"].submit();
+		}else{
+			top.location.reload();
+		}
+	}
 }
 
 function openInfoDialog() {

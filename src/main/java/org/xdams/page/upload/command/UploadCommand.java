@@ -29,7 +29,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 public class UploadCommand {
 	private Map<String, String[]> parameterMap = null;
 
@@ -123,8 +122,8 @@ public class UploadCommand {
 				} catch (Exception e1) {
 					throw e1;
 				}
-					System.out.println("UploadCommand.execute() uploadPath.toString() "+uploadPath.toString());
-					
+				System.out.println("UploadCommand.execute() uploadPath.toString() " + uploadPath.toString());
+
 				// verifico se devo lanciare un comando oppure no
 				if (!uploadCommandLine.getCommandLine().trim().equals("") && uploadBean.getUploadType().equalsIgnoreCase("resize")) {
 					Map<String, String> valuesMap = new HashMap<String, String>();
@@ -154,7 +153,8 @@ public class UploadCommand {
 						} else {
 							String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
 							resultName = StringUtils.remove(resultName, archiveName);
-							resultName = StringUtils.remove(resultName, domainName);
+							// resultName = StringUtils.remove(resultName, domainName);
+							resultName = StringUtils.replaceOnce(resultName, domainName, "");
 							resultName = StringUtils.remove(resultName, uploadCommandLine.getUploadNameDir());
 							resultName = resultName.replaceAll("\\\\", "/");
 							resultName = resultName.replaceAll("[/]*(.*)", "/$1");
@@ -177,7 +177,8 @@ public class UploadCommand {
 						System.out.println("uploadPath.toString() " + uploadPath.toString());
 						String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
 						resultName = StringUtils.remove(resultName, archiveName);
-						resultName = StringUtils.remove(resultName, domainName);
+						// resultName = StringUtils.remove(resultName, domainName);
+						resultName = StringUtils.replaceOnce(resultName, domainName, "");
 						resultName = StringUtils.remove(resultName, uploadCommandLine.getUploadNameDir());
 						resultName = resultName.replaceAll("\\\\", "/");
 						resultName = resultName.replaceAll("[/]*(.*)", "/$1");
@@ -225,9 +226,9 @@ public class UploadCommand {
 					commandLine.setUploadTempPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadTempPath/text()"));
 					commandLine.setUploadMode(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadMode/text()"));
 					commandLine.setUploadPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadPath/text()"));
-					if(commandLine.getUploadPath().toLowerCase().contains("webapp")){
+					if (commandLine.getUploadPath().toLowerCase().contains("webapp")) {
 						Map<String, String> valuesMap = new HashMap<String, String>();
-						valuesMap.put("webApp", (String)modelMap.get("realPath"));
+						valuesMap.put("webApp", (String) modelMap.get("realPath"));
 						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
 						commandLine.setUploadPath(strSubstitutor.replace(commandLine.getUploadPath()));
 					}

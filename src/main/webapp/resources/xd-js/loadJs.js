@@ -208,7 +208,7 @@ function loadJsBusiness(target, prefix) {
 			'prefix' : prefix,
 			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
 		});
-	}else if (target === 'vocabulary') {
+	} else if (target === 'vocabulary') {
 		loadScripts({
 			'base' : base + "/jquery",
 			'prefix' : prefix,
@@ -218,6 +218,17 @@ function loadJsBusiness(target, prefix) {
 			'base' : base,
 			'prefix' : prefix,
 			'scripts' : [ 'xdams_jquery', 'xdams_idx' ]
+		});
+	} else if (target === 'modifyAuther') {
+		loadScripts({
+			'base' : base + "/jquery",
+			'prefix' : prefix,
+			'scripts' : [ 'jquery.blockUI','jquery-ui-last' ]
+		}); 
+		loadScripts({
+			'base' : base,
+			'prefix' : prefix,
+			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
 		});
 	}
 	

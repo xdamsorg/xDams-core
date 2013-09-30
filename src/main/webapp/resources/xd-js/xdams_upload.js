@@ -60,7 +60,7 @@ function uploadResize(nomeField, nomeSpan, thisObject, actionFlag, theRecord, or
 	alert("originalFileNameParam="+originalFileNameParam);
 	alert("physDoc="+physDoc);
 	*/
- 	percorso =  globalOption.contextPath+"/upload/" + globalOption.theArch + "/uploadMenu.html?destField=" + escape(nomeField)+"&amp;idRecord="+theRecord+"&amp;physDoc="+physDoc+"&amp;uploadType=resize";
+ 	percorso =  globalOption.contextPath+"/upload/" + globalOption.theArch + "/uploadMenu.html?destField=" + escape(nomeField)+"&amp;idRecord="+theRecord+"&amp;physDoc="+physDoc+"&amp;uploadType=resize"+originalFileNameParam;
 	if($dialog!==null){chiudiDialog();}
  	$dialog = $('<div></div>').html('<iframe style="border: 0px; " src="' + percorso + '" width="100%" height="100%"></iframe>').dialog({autoOpen: false,modal: false,height: 280,width: 558});
  	$dialog.dialog({ modal: true });

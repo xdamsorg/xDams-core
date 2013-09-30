@@ -8,17 +8,22 @@
  <version>1.0.0</version>
  <properties>
   <java-version>1.6</java-version>
-   <project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
+  <project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
   <org.springframework-version>3.0.6.RELEASE</org.springframework-version>
   <org.aspectj-version>1.6.9</org.aspectj-version>
   <org.slf4j-version>1.5.10</org.slf4j-version>
   <security>3.0.7.RELEASE</security>
- </properties> 
+ </properties>
  <dependencies>
- <dependency>
+  <dependency>
+   <groupId>org.apache.velocity</groupId>
+   <artifactId>velocity</artifactId>
+   <version>1.7</version>
+  </dependency>
+  <dependency>
    <groupId>it.highwaytech</groupId>
    <artifactId>hj</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.0</version> 
    <scope>system</scope>
    <systemPath>${project.basedir}/lib/hj-open.jar</systemPath>
   </dependency>

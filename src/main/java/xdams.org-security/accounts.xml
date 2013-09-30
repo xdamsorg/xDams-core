@@ -10,5 +10,8 @@
    <archive alias="xDamsEACCPF" host="127.0.0.1" ico="authority.gif" pne="eac-cpf" port="-1">Authority Enti/Famiglie/Persone EAC-CPF</archive>
    <archive alias="xDamsHGeo" host="127.0.0.1" ico="authority.gif" pne="eac" port="-1">Authority Luoghi</archive>
   </archiveGroup>
+  <archiveGroup name="Multi Archivio">
+   <archive alias="multiArchive" host="127.0.0.1" ico="authority.gif" pne="notPresent" port="-1">Ricerca Multi Archivio</archive>
+  </archiveGroup>
  </account>
 </root>

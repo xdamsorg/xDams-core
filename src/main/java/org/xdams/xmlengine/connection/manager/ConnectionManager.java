@@ -9,22 +9,22 @@ import org.xdams.xw.XWConnection;
 import org.xdams.xw.XWDriverManager;
 import org.xdams.xw.exception.XWException;
 
-
 @Component
 public class ConnectionManager {
 
 	private static final Logger logger = LoggerFactory.getLogger(ConnectionManager.class);
 
-	public ConnectionManager(){}
-	
+	public ConnectionManager() {
+	}
+
 	public XWConnection getConnection(Archive archive) throws ConnectionException {
 		XWConnection xwconn = null;
 		try {
-			System.out.println("ConnectionManager.getConnection() "+archive);
+			System.out.println("ConnectionManager.getConnection() " + archive);
 			xwconn = XWDriverManager.getConnection("org.xdams.xw.XWDriver", "regesta://" + archive.getHost() + ":" + archive.getPort() + "/" + archive.getAlias() + "/pne=" + archive.getPne() + ";", "lettore", "");
 		} catch (Exception e) {
 			logger.debug("ERROR getConnection error=" + e.getMessage(), xwconn);
-			throw new ConnectionException("ERROR getConnection error=" + e.getMessage());
+			throw new ConnectionException("ERROR getConnection error=" + e.getMessage() + "; archive:" + archive);
 		}
 		return xwconn;
 	}

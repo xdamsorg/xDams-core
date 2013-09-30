@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.query.bean.QueryBean;
-import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.UserBean;
 import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;

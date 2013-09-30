@@ -97,7 +97,7 @@ public class AjaxCutPasteCopyCommand {
 					azioneDescr = "copiato";
 				}
 
-				String contenitoreIni = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<div class=\"cont_ul2\"><ul class=\"bottoniMenu\">";
+				String contenitoreIni = "\n<div class=\"cont_ul2\"><ul class=\"bottoniMenu\">";
 				String string0 = "";
 				String string1 = "";
 				String string2 = "";

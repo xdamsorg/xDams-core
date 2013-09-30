@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method userValue="1;2">
+
+ </access_method>
+	<query>
+		<element activeIdx="no" position="center" label="Ricerca libera">XML,/*</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="denominazione" firstIdx="a" typology="multi">XML,/c/did/unittitle</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="testo dell'inventario" firstIdx=" a" typology="double">XML,/c/descgrp/scopecontent/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="data di versamento" firstIdx=" 0" typology="one">XML,/c/descgrp/acqinfo/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="collocazione" firstIdx=" a" typology="double">XML,/c/did/physloc</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="sogg.prod. persona" firstIdx=" a" typology="double">XML,/c/did/origination/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="sogg.prod. famiglia" firstIdx=" a" typology="multi">XML,/c/did/origination/famname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="sogg.prod. enti" firstIdx=" a" typology="double">XML,/c/did/origination/corpname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="stato di conservazione" firstIdx=" a" typology="double">XML,/c/descgrp/phystech/note/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="collocazione" firstIdx=" a" typology="double">XML,/c/did/physloc</element>
+		<!-- <hour> <element label="Ricerca per data messa in unithour:">XML,/c/descgrp/list/item/unithour/@normal</element> </hour> -->
+		<data>
+			<element label="Ricerca per data (range):">XML,/c/did/unittitle/unitdate/@normal</element>
+		</data>
+		<sort>
+			<element label="Inserimento" checked="yes"/>
+			<element label="Denominazione">XML(xpart:/c/did/unittitle)</element>
+			<element label="Data">XML(xpart:/c/did/unittitle/unitdate/@normal)</element>
+			<element label="Codice">XML(xpart:/c/did/unitid)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Catalogatore" firstIdx="a" typology="one">XML,/c/processinfo/list/item/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Data inserimento" firstIdx="0" typology="one">XML,/c/processinfo/list/item/date</element>
+	</queryAdm>
+</root>

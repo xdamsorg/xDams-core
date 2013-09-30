@@ -22,7 +22,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.xpath.XPathAPI;
 import org.dom4j.io.DOMReader;
 import org.dom4j.io.OutputFormat;
@@ -73,6 +72,24 @@ public class XMLBuilder {
 			throw new XMLException(e.getMessage());
 		}
 	}
+
+	public XMLBuilder(Node node) throws XMLException {
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setExpandEntityReferences(false);
+			dbf.setValidating(false);
+			dbf.setIgnoringComments(true);
+			DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
+			org.w3c.dom.Document newDomDocument = documentBuilder.newDocument();
+			Node importedNode = newDomDocument.importNode(node, true);
+			newDomDocument.appendChild(importedNode);
+			DomDocument = newDomDocument;
+			JDomDocument = new DOMBuilder().build(DomDocument);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new XMLException(e.getMessage());
+		}
+	} 
 
 	public XMLBuilder(String rootNode) throws XMLException {
 		/* AUTHOR SANDRO */
@@ -232,7 +249,7 @@ public class XMLBuilder {
 	public static void main(String[] args) throws UnsupportedEncodingException, TransformerException {
 
 		try {
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -366,6 +383,7 @@ public class XMLBuilder {
 						}
 						realName = realName.substring(0, realName.indexOf("["));
 					}
+
 					Node testNode = XPathAPI.selectSingleNode(DomDocument, currentXPath + "/" + nodeName);
 					if (testNode == null && !realName.equals(JDomDocument.getRootElement().getName())) {
 						if (realName.indexOf("@") == -1) {
@@ -987,14 +1005,14 @@ public class XMLBuilder {
 						ilValore = "";
 					}
 				} catch (Exception e) {
-
+					System.err.println("XMLBuilder.getValore().1 error: " + e.getMessage());
 				}
 			}
 			if (ilValore.equals(null)) {
 				ilValore = "";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("XMLBuilder.getValore().2 error: " + e.getMessage());
 		}
 
 		OutputFormat outputFormat = new OutputFormat();
@@ -1007,7 +1025,20 @@ public class XMLBuilder {
 			xmlWriter.flush();
 			xmlWriter.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("XMLBuilder.getValore().xmlWriter.1 error: " + e.getMessage());
+		} finally {
+			try {
+				xmlWriter.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.err.println("XMLBuilder.getValore().xmlWriter.2 error: " + e.getMessage());
+			}
+			try {
+				xmlWriter.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.err.println("XMLBuilder.getValore().xmlWriter.3 error: " + e.getMessage());
+			}
 		}
 		String returno = stringWriter.toString().replaceAll("&lt;", "<");
 		returno = returno.replaceAll("&gt;", ">");
@@ -1154,6 +1185,17 @@ public class XMLBuilder {
 		ilValore = ilValore.replaceAll(getSpanFine(), "");
 		ilValore = (ilValore.replaceAll("&amp;", "&"));
 		return (ilValore.replaceAll("\n", returnChar)).trim();
+	}
+
+	public String toString() {
+		try {
+			return getXML("ISO-8859-1");
+		} catch (XMLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 
 	private String parseAttribute(String xml) {

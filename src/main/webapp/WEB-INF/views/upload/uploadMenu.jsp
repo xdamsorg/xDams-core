@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
-	confBean.setPageContext(pageContext); 
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean) request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean) request.getAttribute("managingBean") ;
@@ -52,7 +51,7 @@ $(document).ready(function(){
     	  if(exts){
     	        var get_ext = file.split('.');
     	        get_ext = get_ext.reverse();  
-    	        if($.inArray(get_ext[0], exts)){
+    	        if($.inArray(get_ext[0].toLowerCase(), exts)){
     	            $("span").text("File non valido!").show().fadeOut(2000);
     	            return false;
     	        }    		  

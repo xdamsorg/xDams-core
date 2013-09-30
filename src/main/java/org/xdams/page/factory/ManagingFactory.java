@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.ui.ModelMap;
 import org.xdams.managing.command.EraseCommand;
 import org.xdams.managing.command.ManageXML;
+import org.xdams.managing.command.ModifyAuther;
 import org.xdams.managing.command.MultiModCommand;
 import org.xdams.managing.command.MultiModRenumberCommand;
 import org.xdams.managing.command.MultiMove;
@@ -88,8 +89,8 @@ public class ManagingFactory {
 				// MultiCopy multiCopy = new MultiCopy(aReq, servletContext);
 				// managingBean = multiCopy.execute();
 			} else if (actionFlag.equals("modifyAuther")) {
-				// ModifyAuther modifyAuther = new ModifyAuther(aReq, servletContext);
-				// managingBean = modifyAuther.execute();
+				ModifyAuther modifyAuther = new ModifyAuther(parameterMap, modelMap);
+				managingBean = modifyAuther.execute();
 			} else if (actionFlag.equals("uploadFile")) {
 				// UploadManaging uploadManaging = new UploadManaging(aReq, servletContext);
 				// managingBean = uploadManaging.execute();

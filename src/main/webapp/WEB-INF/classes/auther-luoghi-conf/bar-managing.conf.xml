@@ -44,10 +44,20 @@
       <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
       <paramFunction javaBean="viewBean">getSelid</paramFunction>
       <paramFunction>''</paramFunction>
-      <paramFunction>{idXpath:'/eac-cpf/control/recordId/text()'}</paramFunction>
+      <paramFunction>{idXpath:'/eac/eacheader/eacid/text()'}</paramFunction>
      </functionName>
     </eventJavaScript>
    </element>
+   <element value="TROVA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxSearchRelatedRecords">
+      <paramFunction javaBean="viewBean" paramValue="/eac/eacheader/eacid/text()" name="codeToFind">valoreNodo</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction>'scriviTrova'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>   
   </user>
  </managing>
 </root>

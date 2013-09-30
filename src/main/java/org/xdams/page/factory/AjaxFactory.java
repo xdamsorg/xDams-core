@@ -9,6 +9,7 @@ import org.xdams.ajax.command.AjaxCommandNotInHier;
 import org.xdams.ajax.command.AjaxCommandVocabolarioJson;
 import org.xdams.ajax.command.AjaxCutPasteCopyCommand;
 import org.xdams.ajax.command.AjaxDocInfoCommand;
+import org.xdams.ajax.command.AjaxSearchRelatedRecordsCommand;
 import org.xdams.ajax.command.AjaxSessionCommand;
 
 public class AjaxFactory {
@@ -51,6 +52,7 @@ public class AjaxFactory {
 			} else if (actionFlag.equals("cutPaste")) {
 				AjaxCutPasteCopyCommand ajaxCutPasteCopyCommand = new AjaxCutPasteCopyCommand(aReq, aRes, modelMap);
 				ajaxBean = ajaxCutPasteCopyCommand.execute();
+				//ajaxBean.setContentType("text/html; charset=iso-8859-1");
 			} else if (actionFlag.equals("cookieManager")) {
 				// AjaxCookieCommand ajaxCookieCommand = new AjaxCookieCommand(aReq, modelMap, aRes);
 				// ajaxBean = ajaxCookieCommand.execute();
@@ -58,8 +60,8 @@ public class AjaxFactory {
 				// AjaxEraseQueryBeanCommand ajaxEraseQueryBeanCommand = new AjaxEraseQueryBeanCommand(aReq, modelMap, aRes);
 				// ajaxBean = ajaxEraseQueryBeanCommand.execute();
 			} else if (actionFlag.equals("searchRelatedRecords")) {
-				// AjaxSearchRelatedRecordsCommand ajaxSearchRelatedRecordsCommand = new AjaxSearchRelatedRecordsCommand(aReq, modelMap, aRes);
-				// ajaxBean = ajaxSearchRelatedRecordsCommand.execute();
+				AjaxSearchRelatedRecordsCommand ajaxSearchRelatedRecordsCommand = new AjaxSearchRelatedRecordsCommand(aReq, aRes, modelMap);
+				ajaxBean = ajaxSearchRelatedRecordsCommand.execute();
 			} else if (actionFlag.equals("unlockRecord")) {
 				// AjaxUnLockRecord ajaxUnLockRecord = new AjaxUnLockRecord(aReq, modelMap, aRes);
 				// ajaxBean = ajaxUnLockRecord.execute();

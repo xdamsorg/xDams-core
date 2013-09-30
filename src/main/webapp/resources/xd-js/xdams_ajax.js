@@ -153,12 +153,35 @@ function controlledLookup(theElement,theTypology,theMode) {
 
 
 function dispatcherProcess(responseXML,responseAll,innerName){
- 	var vocKeys = responseXML.getElementsByTagName("keyList")[0];
- 	var optionKeys = responseXML.getElementsByTagName("optionList")[0];
-	var sessionList = responseXML.getElementsByTagName("sessionList")[0];
+	//alert("alert 00");
+ 	var vocKeys = null;
+ 	try{
+ 		vocKeys = responseXML.getElementsByTagName("keyList")[0];	
+ 	}catch(e){}
+ 	
+ 	//alert("alert 1");
+ 	var optionKeys = null;
+ 	try{
+ 		optionKeys = responseXML.getElementsByTagName("optionList")[0];
+ 	}catch(e){}
+ 	
+ 	//alert("alert 2");
+	var sessionList = null;
+	try{
+		sessionList = responseXML.getElementsByTagName("sessionList")[0];
+	}catch(e){}
+	// alert("alert 3");
 //	var cutList = responseXML.getElementsByTagName("div")[0];
-	var errorAjax = responseXML.getElementsByTagName("error")[0];
-	var succesAjax = responseXML.getElementsByTagName("succes")[0];
+	var errorAjax = null;
+	try{
+		errorAjax = responseXML.getElementsByTagName("error")[0];
+	}catch(e){}
+	//alert("alert 4");
+	var succesAjax = null;
+	try{
+		succesAjax = responseXML.getElementsByTagName("succes")[0];
+	}catch(e){}
+	//alert("alert 5");
 // alert(responseAll.responseText);
 	if(vocKeys!=null){
 		idxProcess(responseXML);
@@ -170,7 +193,7 @@ function dispatcherProcess(responseXML,responseAll,innerName){
 	}else if(!errorAjax && !succesAjax && responseAll.responseText!=null && innerName!=null){
 	//document.write(responseXML);
 		//sessionProcess(responseXML)
-		//alert(responseAll.responseText);
+		//alert("alert 00000");
 		if(document.getElementById(innerName)!=null){
 			document.getElementById(innerName).innerHTML = unescape((responseAll.responseText));		
 		}else{
@@ -383,7 +406,6 @@ return ajaxSessionValues(physDocNumber,actionToSend,'selectedDoc','',theArchName
 }
 
 function ajaxSetSessionDocsToCut(physDocNumber,physDocToPaste,actionType,theArchName){
-	//alert(theArchName); 
 	return ajaxSessionValues(physDocNumber, actionType, "cutPaste", physDocToPaste, theArchName);
 }
 

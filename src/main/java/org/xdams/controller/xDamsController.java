@@ -72,7 +72,7 @@ public class xDamsController {
 	@Autowired
 	ServiceUser serviceUser;
 	
-	@Autowired
+	@Autowired 
 	ServletContext servletContext;
 
 	@ModelAttribute
@@ -153,6 +153,9 @@ public class xDamsController {
 		vocabolarioMultiCommand.execute();
 		if (MyRequest.getParameter("isExport", request.getParameterMap()).equalsIgnoreCase("true")) {
 			return "search/vocabularyTxt";
+		}
+		if (!MyRequest.getParameter("jspOutPut", request.getParameterMap()).equalsIgnoreCase("")) {
+			return "search/" + StringUtils.remove(MyRequest.getParameter("jspOutPut", request.getParameterMap()), ".jsp");
 		}
 		return "search/vocabulary";
 	}

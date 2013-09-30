@@ -19,6 +19,8 @@ public class ConfBean {
 
 	private XMLBuilder theXMLConfQuery = ConfManager.getConfXML("query.conf.xml");
 
+	private XMLBuilder theXMLConfQueryMultiArchive = ConfManager.getConfXML("query-multiarchive.conf.xml");
+
 	private XMLBuilder theXMLConfTitle = ConfManager.getConfXML("titles.conf.xml");
 
 	private XMLBuilder theXMLConfPresentation = ConfManager.getConfXML("presentation.conf.xml");
@@ -51,11 +53,12 @@ public class ConfBean {
 
 	private XMLBuilder theXMLConfBarDocEdit = ConfManager.getConfXML("bar-docedit.conf.xml");
 
-	private PageContext pageContext = null;
+	//
+	// private PageContext pageContext = null;
 
 	public XMLBuilder getTheXMLConfBarVis() {
-		//return theXMLConfBarVis;
-		return evaluteXml(theXMLConfBarVis, getPageContext());
+		return theXMLConfBarVis;
+		// return evaluteXml(theXMLConfBarVis, getPageContext());
 	}
 
 	public void setTheXMLConfBarVis(XMLBuilder theXMLConfBarVis) {
@@ -63,8 +66,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarQuery() {
-		//return theXMLConfBarQuery;
-		return evaluteXml(theXMLConfBarQuery, getPageContext());
+		return theXMLConfBarQuery;
+		// return evaluteXml(theXMLConfBarQuery, getPageContext());
 	}
 
 	public void setTheXMLConfBarQuery(XMLBuilder theXMLConfBarQuery) {
@@ -72,8 +75,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarPreInsert() {
-		//return theXMLConfBarPreInsert;
-		return evaluteXml(theXMLConfBarPreInsert, getPageContext());
+		return theXMLConfBarPreInsert;
+		// return evaluteXml(theXMLConfBarPreInsert, getPageContext());
 	}
 
 	public void setTheXMLConfBarPreInsert(XMLBuilder theXMLConfBarPreInsert) {
@@ -81,8 +84,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarNav() {
-		//return theXMLConfBarNav;
-		return evaluteXml(theXMLConfBarNav, getPageContext());
+		return theXMLConfBarNav;
+		// return evaluteXml(theXMLConfBarNav, getPageContext());
 	}
 
 	public void setTheXMLConfBarNav(XMLBuilder theXMLConfBarNav) {
@@ -90,8 +93,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarManaging() {
-		//return theXMLConfBarManaging;
-		return evaluteXml(theXMLConfBarManaging, getPageContext());
+		return theXMLConfBarManaging;
+		// return evaluteXml(theXMLConfBarManaging, getPageContext());
 	}
 
 	public void setTheXMLConfBarManaging(XMLBuilder theXMLConfBarManaging) {
@@ -99,8 +102,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarEdt() {
-		//return theXMLConfBarEdt;
-		return evaluteXml(theXMLConfBarEdt, getPageContext());
+		return theXMLConfBarEdt;
+		// return evaluteXml(theXMLConfBarEdt, getPageContext());
 	}
 
 	public void setTheXMLConfBarEdt(XMLBuilder theXMLConfBarEdt) {
@@ -108,8 +111,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfBarDocEdit() {
-		//return theXMLConfBarDocEdit;
-		return evaluteXml(theXMLConfBarDocEdit, getPageContext());
+		return theXMLConfBarDocEdit;
+		// return evaluteXml(theXMLConfBarDocEdit, getPageContext());
 	}
 
 	public void setTheXMLConfBarDocEdit(XMLBuilder theXMLConfBarDocEdit) {
@@ -117,7 +120,6 @@ public class ConfBean {
 	}
 
 	public ConfBean() {
-
 	}
 
 	public String getKeyCountIDX() {
@@ -129,8 +131,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfTitle() {
-		//return theXMLConfTitle;
-		return evaluteXml(theXMLConfTitle, getPageContext());
+		return theXMLConfTitle;
+		// return evaluteXml(theXMLConfTitle, getPageContext());
 	}
 
 	public void setTheXMLConfTitle(XMLBuilder theXMLConfTitle) {
@@ -138,8 +140,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfQuery() {
-		//return theXMLConfQuery;
-		return evaluteXml(theXMLConfQuery, getPageContext());
+		return theXMLConfQuery;
+		// return evaluteXml(theXMLConfQuery, getPageContext());
 	}
 
 	public void setTheXMLConfQuery(XMLBuilder theXMLConfQuery) {
@@ -147,8 +149,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfPresentation() {
-		//return theXMLConfPresentation;
-		return evaluteXml(theXMLConfPresentation, getPageContext());
+		return theXMLConfPresentation;
+		// return evaluteXml(theXMLConfPresentation, getPageContext());
 	}
 
 	public void setTheXMLConfPresentation(XMLBuilder theXMLConfPresentation) {
@@ -156,8 +158,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfEditing() {
-		//return theXMLConfEditing;
-		return evaluteXml(theXMLConfEditing, getPageContext());
+		return theXMLConfEditing;
+		// return evaluteXml(theXMLConfEditing, getPageContext());
 	}
 
 	public void setTheXMLConfEditing(XMLBuilder theXMLConfEditing) {
@@ -173,8 +175,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLValControllati() {
-		//return theXMLValControllati;
-		return evaluteXml(theXMLValControllati, getPageContext());
+		return theXMLValControllati;
+		// return evaluteXml(theXMLValControllati, getPageContext());
 	}
 
 	public void setTheXMLValControllati(XMLBuilder theXMLValControllati) {
@@ -182,8 +184,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfUpload() {
-		//return theXMLConfUpload;
-		return evaluteXml(theXMLConfUpload, getPageContext());
+		return theXMLConfUpload;
+		// return evaluteXml(theXMLConfUpload, getPageContext());
 	}
 
 	public void setTheXMLConfUpload(XMLBuilder theXMLConfUpload) {
@@ -191,8 +193,8 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfMedia() {
-		//return theXMLConfMedia;
-		return evaluteXml(theXMLConfMedia, getPageContext());
+		return theXMLConfMedia;
+		// return evaluteXml(theXMLConfMedia, getPageContext());
 	}
 
 	public void setTheXMLConfMedia(XMLBuilder theXMLConfMedia) {
@@ -200,11 +202,20 @@ public class ConfBean {
 	}
 
 	public XMLBuilder getTheXMLConfManaging() {
-		return evaluteXml(theXMLConfManaging, getPageContext());
+		return theXMLConfManaging;
+		// return evaluteXml(theXMLConfManaging, getPageContext());
 	}
 
 	public void setTheXMLConfManaging(XMLBuilder theXMLConfManaging) {
 		this.theXMLConfManaging = theXMLConfManaging;
+	}
+
+	public XMLBuilder getTheXMLConfQueryMultiArchive() {
+		return theXMLConfQueryMultiArchive;
+	}
+
+	public void setTheXMLConfQueryMultiArchive(XMLBuilder theXMLConfQueryMultiArchive) {
+		this.theXMLConfQueryMultiArchive = theXMLConfQueryMultiArchive;
 	}
 
 	public String getSorting() {
@@ -251,12 +262,12 @@ public class ConfBean {
 		return theXMLconf;
 	}
 
-	public PageContext getPageContext() {
-		return pageContext;
-	}
-
-	public void setPageContext(PageContext pageContext) {
-		this.pageContext = pageContext;
-	}
+	// public PageContext getPageContext() {
+	// return pageContext;
+	// }
+	//
+	// public void setPageContext(PageContext pageContext) {
+	// this.pageContext = pageContext;
+	// }
 
 }

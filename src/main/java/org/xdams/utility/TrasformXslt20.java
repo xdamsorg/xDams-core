@@ -2,9 +2,7 @@ package org.xdams.utility;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Map;
@@ -17,7 +15,6 @@ import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.Configuration;
 import net.sf.saxon.Controller;
 import net.sf.saxon.PreparedStylesheet;
-import net.sf.saxon.om.NamePool;
 import net.sf.saxon.trans.CompilerInfo;
 import net.sf.saxon.trans.XPathException;
 

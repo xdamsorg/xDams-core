@@ -65,6 +65,7 @@ public class ConfManager {
 
 	// TODO: implementarlo usando un ConfLoader
 	public static XMLBuilder getConfXML(String fullPath) {
+		
 		try {
 			return getInstance().getConfigurationXML(fullPath);
 		} catch (Exception e) {

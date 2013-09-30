@@ -8,6 +8,8 @@
   <archive alias="xDamsPhoto" role="1">Archivio Fotografico</archive>
   <archive alias="xDamsEACCPF" role="1">Soggetti Produttori</archive>
   <archive alias="xDamsHGeo" role="1">Authority Luoghi</archive>
+  <archive alias="multiArchive" role="1">Multi Archivio</archive>
+  
  </user>
  <user language="IT" lastName="xDams - open source" account="xdams.org" email="mail@xdams.org" name="Guest" pwd="084e0343a0486ff05530df6c705c8bb4" id="guest" role="ROLE_READER">
   <archive alias="xDamsHist" role="3">Archivio Storico</archive>

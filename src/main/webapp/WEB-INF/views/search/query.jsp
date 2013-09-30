@@ -3,7 +3,6 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.Map"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
 <%@page import="org.xdams.utility.testing.TestingGeneric"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="org.xdams.xml.builder.XMLBuilder"%>
@@ -14,9 +13,10 @@
 <%@page import="org.xdams.page.query.bean.QueryBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
-	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean)request.getAttribute("workFlowBean");
 	QueryBean queryBean = (QueryBean)request.getAttribute("queryBean");
@@ -118,7 +118,7 @@ jQuery(document).ready(function(){
 				<input type="hidden" name="perpage" value="<%=perpage%>" />
 	  			<div  class="fl" >
 				<div class="cont_campi" >
-				<ul class="bottoniMenu" style="margin-right:20px;float:right;"><xDamsJSTL:menugestionejslt confFile="bar-query.conf.xml" /></ul>
+				<ul class="bottoniMenu" style="margin-right:20px;float:right;"><xDamsJSTL:menugestionejslt confFile="bar-query" /></ul>
 				<div class="cont_butt">
 						<div class="mt10"><a href="#" class="cerca_but" onclick="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')" onkeypress="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')">cerca</a>&nbsp;&nbsp;&nbsp;<a href="#" class="cerca_but" onclick="document.theForm.reset()">cancella</a></div>
 				</div>

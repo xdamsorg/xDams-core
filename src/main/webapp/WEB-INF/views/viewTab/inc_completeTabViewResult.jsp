@@ -169,7 +169,7 @@
 									String suffixHref = StringUtils.difference(mediaBean.getXPathPrefix(),mediaBean.getXPathHref());// mediaBean.getXPathHref().replaceAll(mediaBean.getXPathPrefix(),"");
 									for(int w = 0; w < numeroFoto; w++){
 										String strTitleFoto = theXML.valoreNodoHTML(mediaBean.getXPathPrefix()+"["+(w+1)+"]"+suffixTitle,"<br />","&nbsp;");
-										String strHrefFoto = theXML.valoreNodo(mediaBean.getXPathPrefix()+"["+(w+1)+"]"+suffixHref);
+										String strHrefFoto = theXML.valoreNodoNoHL(mediaBean.getXPathPrefix()+"["+(w+1)+"]"+suffixHref);
 										String prefixFoto = theXMLConfMedia.valoreNodo("/root/media[@type='"+mediaBean.getMediaType()+"']/@prefix");
 										if(mediaBean.getMediaType().indexOf("Alternative")!=-1){
 											int countAlternative = theXMLConfMedia.contaNodi("/root/media[@type='"+mediaBean.getMediaType()+"']/media");

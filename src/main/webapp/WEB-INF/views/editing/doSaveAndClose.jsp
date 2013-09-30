@@ -8,15 +8,13 @@
 			window.opener.xDamsMiniAlert('documento salvato con successo');
 		} catch (e) {
 			alert('documento salvato con successo');
-		};
-
+		}; 
 		try {
-			window.opener.reloadLocation();
+		  	window.opener.reloadLocation();
 		} catch (e) {
 		}
-
 		try {
-			window.opener.afterSave();
+		    window.opener.afterSave();
 		} catch (e) {
 		}
 		self.close();

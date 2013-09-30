@@ -24,20 +24,9 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 public class ManageXML {
 
-	// private HttpServletRequest aReq = null;
-	//
-	// private ServletContext servletContext = null;
-	//
 	public String xmlInteraction = "view";
-
-	//
-	// public ManageXML(HttpServletRequest req, ServletContext servletContext) throws FileNotFoundException, IOException {
-	// this.aReq = req;
-	// this.servletContext = servletContext;
-	// }
 
 	private Map<String, String[]> parameterMap = null;
 
@@ -49,15 +38,15 @@ public class ManageXML {
 	}
 
 	public ManagingBean execute() throws Exception {
-		XWConnection xwconn = null;
-		ConnectionManager connectionManager = new ConnectionManager();
-		ConfBean confBean = null;
-		ManagingBean managingBean = null;
 		String physDoc = MyRequest.getParameter("physDoc", parameterMap);
 		String makeAction = MyRequest.getParameter("makeAction", parameterMap);
 		String selid = MyRequest.getParameter("selid", parameterMap);
 		String pos = MyRequest.getParameter("pos", parameterMap);
 		String docXML = MyRequest.getParameter("docXML", parameterMap);
+		XWConnection xwconn = null;
+		ConnectionManager connectionManager = new ConnectionManager();
+		ConfBean confBean = null;
+		ManagingBean managingBean = null;
 		List<String> confControl = new ArrayList<String>();
 		confControl.add("titleManager");
 		try {
@@ -128,7 +117,7 @@ public class ManageXML {
 					outputFormat.setIndent(true);
 					outputFormat.setIndentSize(0);
 					outputFormat.setNewlines(true);
-//					outputFormat.setTrimText(true);
+					// outputFormat.setTrimText(true);
 					xwconn.executeUpdateByDocNumber(XMLCleaner.clearXwXML(xmlBuilder.getXML(outputFormat), false), managingBean.getPhysDoc());
 					processati++;
 				} catch (Exception e) {

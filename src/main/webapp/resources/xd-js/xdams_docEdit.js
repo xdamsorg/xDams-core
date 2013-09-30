@@ -102,8 +102,8 @@ function clearChar(theString, toTest, toSub) {
 }
 
 function toIso(ilForm) {
-	for (i = 0; i < ilForm.length; i++) {
-		ilTag = (ilForm.elements[i].tagName).toUpperCase()
+	for (var i = 0; i < ilForm.length; i++) {
+		ilTag = (ilForm.elements[i].tagName).toUpperCase();
 		if (ilTag == 'INPUT' || ilTag == 'TEXTAREA') {
 			appoggio = ilForm.elements[i].value;
 			appoggio = clearChar(appoggio, String.fromCharCode(8217), "'");
@@ -116,7 +116,7 @@ function toIso(ilForm) {
 			ilForm.elements[i].value = appoggio;
 		}
 	}
-	return false
+	return false;
 }
 function valorizzaLevel(obj, thePrefix) {
 	if (obj.value == "fondo")
@@ -603,23 +603,45 @@ function ritornaVoce(part01, part02, part03) {
 	}
 }
 function modificaFormaAutorizzata(prefix) {
-	obj = document.theForm[prefix + '.@normal']
-	if (obj == null) {
-		obj = document.theForm[prefix]
+	var obj = null;
+	if(prefix.indexOf('.eac.')!=-1){
+		obj = document.theForm[prefix + '.@normal'].value;
+	}else if(prefix.indexOf('.eac-cpf.')!=-1){
+		obj = document.theForm[prefix+'.part\[@localType=\'normal\'\].text()'].value;
+	}else{
+		obj = document.theForm[prefix].value;
 	}
-	var ilLemma = escape(escape(obj.value));
+	
+	var ilLemma = escape(escape(obj));
 	var ilLemmaCode = "";
 	try{
-	    ilLemmaCode = document.theForm['.eac.eacheader.eacid.text()'].value // TODO
+	    ilLemmaCode = document.theForm['.eac.eacheader.eacid.text()'].value; // TODO
 	}catch(ee){
-	    ilLemmaCode = document.theForm['.eac-cpf.control.recordId.text()'].value //TODO generalizzare
-	}
-	
-	
+		ilLemmaCode = document.theForm['.eac-cpf.control.recordId.text()'].value; //TODO generalizzare
+	} 
 	if(ilLemmaCode!=""){
-	var ilArchivio = document.theForm['theDb'].value
-	window.open('ManagingServlet?actionFlag=modifyAuther&codeToFind=' + ilLemmaCode + '&prefix=' + escape(prefix) + '&nameToFind=' + (ilLemma), 'theAuther', 'width=400,height=450,scrollbars=yes')		
-	}// generalizzare
+		urlWin =  globalOption.contextPath+ "/" + globalOption.theArch + "/managing.html?actionFlag=modifyAuther&codeToFind=" + ilLemmaCode + "&prefix=" + escape(prefix) + "&nameToFind=" + (ilLemma);
+		//window.open(percorso, 'theAuther', 'width=400,height=450,scrollbars=yes')
+	//	var jsonObject = eval('(' + jsonValues + ')');
+		var widthProto = "450";
+		var heightProto = "400";
+		var statusBar= "proietta modifica";
+
+		$('#aDialog').remove();
+		$('body').append('<div id="aDialog"></div>');
+	 
+		var anIframe = $('<iframe style="border: 0px;" width="100%" height="100%"></iframe>');
+		anIframe.attr('src', urlWin);
+		$('#aDialog').html(anIframe);
+		$('#aDialog').dialog({
+			autoOpen : true,
+			modal : false,
+			height : heightProto ? heightProto : 150,
+			width : widthProto ? widthProto : 250,
+			resizable : false,
+			title : statusBar ? statusBar : 'xDams dialog'
+		});
+	}
 
 	return false
 }

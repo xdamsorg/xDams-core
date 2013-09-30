@@ -8,7 +8,6 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
  <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
-	confBean.setPageContext(pageContext);
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean)request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean)request.getAttribute("managingBean") ;
@@ -51,7 +50,11 @@ function proiettaModifica(){
 						iParametri += ',';
 					iParametriTemp = document.optionForm.elements[i].value;
 					if(document.optionForm.elements[i+1].name.indexOf('verso') > 0 && document.optionForm.elements[i+1].value == '0'){
-						iParametri += iParametriTemp.replace('XML','xml');
+						if(iParametriTemp.indexOf('XML')!=-1){
+							iParametri += iParametriTemp.replace('XML','xml');
+						}else if(iParametriTemp.indexOf('XSL')!=-1){
+							iParametri += iParametriTemp.replace('XSL','xsl');
+						}
 					}
 					else
 						iParametri += iParametriTemp

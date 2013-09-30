@@ -18,17 +18,17 @@ public class CompositionRule {
 	}
 
 	public static String compose(String rule, String name, String separator) {
-		// System.out.println("regola : " + regola);
-		// System.out.println("stringaCompleta : " + stringaCompleta);
+		System.out.println("regola : " + rule);
+		System.out.println("stringaCompleta : " + name);
 		StringBuilder result = new StringBuilder();
 		String[] ruleSplit = rule.split("-");
 		int totRule = 0;
 		for (int i = 0; i < ruleSplit.length; i++) {
-			// System.out.println(regolaSplit[i]);
+			System.out.println(ruleSplit[i]);
 			totRule += Integer.parseInt(ruleSplit[i]);
 		}
-		// System.out.println(totaleRegola);
-		// System.out.println(stringaCompleta.length());
+		System.out.println(totRule);
+		 
 		if (totRule <= name.length()) {
 			int begin = 0;
 			int end = 0;

@@ -1,9 +1,14 @@
 package org.xdams.manager.conf;
 
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.request.MyRequest;
@@ -12,6 +17,8 @@ import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
 
 public class MultiEditingManager {
+
+	private static final Logger logger = LoggerFactory.getLogger(MultiEditingManager.class);
 
 	private XMLBuilder theXMLConf = null;
 
@@ -31,11 +38,19 @@ public class MultiEditingManager {
 
 	private WorkFlowBean workFlowBean = null;
 
+	private VelocityContext velocityContext = new VelocityContext();
+
 	public MultiEditingManager(Map<String, String[]> parameterMap, ConfBean confBean, UserBean userBean, WorkFlowBean workFlowBean) throws Exception {
 		this.parameterMap = parameterMap;
 		this.confBean = confBean;
 		this.userBean = userBean;
 		this.workFlowBean = workFlowBean;
+
+		velocityContext.put("parameterMap", this.parameterMap);
+		velocityContext.put("confBean", this.confBean);
+		velocityContext.put("workFlowBean", this.workFlowBean);
+		velocityContext.put("userBean", this.userBean);
+		velocityContext.put("theXML", this.theXML);
 	}
 
 	public ConfBean execute() throws Exception {
@@ -93,7 +108,7 @@ public class MultiEditingManager {
 					if (nomeFile.toLowerCase().endsWith("xsl") || nomeFile.toLowerCase().endsWith("xslt")) {
 						xslFile = ConfManager.getConfString(fullPath);
 					} else {
-						theXMLConf = ConfManager.getConfXML(fullPath);
+						theXMLConf = evaluateBuilder(ConfManager.getConfXML(fullPath));
 					}
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
@@ -113,6 +128,8 @@ public class MultiEditingManager {
 				// System.out.println("MultiEditingManager.execute() theXMLConf2222222222222222 " + theXMLConf.getXML("ISO-8859-1"));
 				if (getConfName().equals("query")) {
 					confBean.setTheXMLConfQuery(theXMLConf);
+				} else if (getConfName().equals("query-multiarchive")) {
+					confBean.setTheXMLConfQueryMultiArchive(theXMLConf);
 				} else if (getConfName().equals("docEdit")) {
 					confBean.setTheXMLConfEditing(theXMLConf);
 				} else if (getConfName().equals("valoriControllati")) {
@@ -166,6 +183,9 @@ public class MultiEditingManager {
 			String elementFind = confName;
 			if (confName.equals("query")) {
 				setTheXMLConf(confBean.getTheXMLConfQuery());
+			} else if (confName.equals("query-multiarchive")) {
+				setTheXMLConf(confBean.getTheXMLConfQueryMultiArchive());
+				elementFind = "query";
 			} else if (confName.equals("docEdit")) {
 				setTheXMLConf(confBean.getTheXMLConfEditing());
 			} else if (confName.equals("valoriControllati")) {
@@ -215,12 +235,23 @@ public class MultiEditingManager {
 		return confBean;
 	}
 
+	public XMLBuilder evaluateBuilder(XMLBuilder myXMLConf) throws Exception {
+		try {
+			StringWriter w = new StringWriter();
+			boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
+			return new XMLBuilder(w.toString(), "ISO-8859-1");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(" configuration error in  MultipleConf evaluateBuilder(" + e.getMessage() + ")");
+		}
+	}
+
 	public XMLBuilder getTheXMLConf() {
 		return theXMLConf;
 	}
 
-	public void setTheXMLConf(XMLBuilder theXMLConf) {
-		this.theXMLConf = theXMLConf;
+	public void setTheXMLConf(XMLBuilder theXMLConf) throws Exception {
+		this.theXMLConf = evaluateBuilder(theXMLConf);
 	}
 
 	public String getElementToFind() {
