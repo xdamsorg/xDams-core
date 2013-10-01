@@ -82,7 +82,7 @@ public class BuildElementToFindBean {
 					}
 					for (int z = 0; z < countElementAdv; z++) {
 						Node node = theXMLconf.getSingleNode(fixXpath + "/workArchive[" + (x + 1) + "]/root");
-						System.out.println(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
+						//System.out.println(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
 						final ConfigurationXMLReader configurationXMLReader = new ConfigurationXMLReader(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
 						System.out.println(configurationXMLReader.getObjects());
 						MappingAdv mappingAdv = new MappingAdv();

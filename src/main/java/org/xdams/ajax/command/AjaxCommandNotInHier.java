@@ -39,30 +39,7 @@ public class AjaxCommandNotInHier {
 	}
 
 	public AjaxBean execute() throws Exception {
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
-		System.out.println("AjaxCommandNotInHier.execute()");
+
 		AjaxBean ajaxBean = new AjaxBean();
 		String nameFileXml = MyRequest.getParameter("nameFileXml", req.getParameterMap());
 		// aReq.getParameter("nameFileXml");

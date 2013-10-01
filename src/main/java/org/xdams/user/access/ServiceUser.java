@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
 
 @Component
+//@Scope("prototype")
 public class ServiceUser {
-
-	// private XMLBuilder xmlUsers = ConfManager.getConfXML("users.xml");
-	//
-	// private XMLBuilder xmlArchives = ConfManager.getConfXML("accounts.xml");
 
 	//carico tutti gli archivi associati all'utente
 	public void loadArchives(UserBean userBean, Map<String, List<Archive>> map) throws Exception {

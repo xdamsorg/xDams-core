@@ -133,7 +133,7 @@ public class AjaxCommandVocabolarioJson {
 			ajaxBean.setStrXmlOutput("{\"items\": [" + valori + "]}");
 			connectionManager.closeConnection(xwconn);
 		}
-	    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "+valori);
+//	    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "+valori);
 
 		return ajaxBean;
 	}

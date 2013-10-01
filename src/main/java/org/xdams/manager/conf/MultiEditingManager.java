@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.slf4j.Logger;
@@ -108,7 +109,8 @@ public class MultiEditingManager {
 					if (nomeFile.toLowerCase().endsWith("xsl") || nomeFile.toLowerCase().endsWith("xslt")) {
 						xslFile = ConfManager.getConfString(fullPath);
 					} else {
-						theXMLConf = evaluateBuilder(ConfManager.getConfXML(fullPath));
+						//theXMLConf = evaluateBuilder(ConfManager.getConfXML(fullPath));
+						theXMLConf = evaluateBuilder(ConfManager.getConfString(fullPath));
 					}
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
@@ -237,9 +239,21 @@ public class MultiEditingManager {
 
 	public XMLBuilder evaluateBuilder(XMLBuilder myXMLConf) throws Exception {
 		try {
-			StringWriter w = new StringWriter();
-			boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
-			return new XMLBuilder(w.toString(), "ISO-8859-1");
+			 StringWriter w = new StringWriter();
+//			 boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
+//			 return new XMLBuilder(w.toString(), "ISO-8859-1");
+			 return myXMLConf;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(" configuration error in  MultipleConf evaluateBuilder(" + e.getMessage() + ")");
+		}
+	}
+	
+	public XMLBuilder evaluateBuilder(String xmlDoc) throws Exception {
+		try {
+			 StringWriter w = new StringWriter();
+	 		 boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", xmlDoc);
+			 return new XMLBuilder(w.toString(), false);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(" configuration error in  MultipleConf evaluateBuilder(" + e.getMessage() + ")");

@@ -123,7 +123,6 @@ public class XMLBuilder {
 			DocumentBuilder builder;
 			builder = dbf.newDocumentBuilder();
 			DomDocument = builder.parse(docXml);
-
 			JDomDocument = new DOMBuilder().build(DomDocument);
 		} catch (Exception e) {
 			throw new XMLException(e.getMessage());
@@ -161,8 +160,8 @@ public class XMLBuilder {
 			DocumentBuilder builder;
 			builder = dbf.newDocumentBuilder();
 			DomDocument = builder.parse(new InputSource(new StringReader(strDocXml)));
-
 			JDomDocument = new DOMBuilder().build(DomDocument);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new XMLException(e.getMessage());
@@ -674,12 +673,11 @@ public class XMLBuilder {
 			XMLWriter xmlWriter = new XMLWriter(stringWriter, outputFormat);
 			xmlWriter.setMaximumAllowedCharacter(255);
 			try {
-				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + xmlWriter.isEscapeText());
-				// xmlWriter.setEscapeText(false);
 				DOMReader xmlReader = new DOMReader();
-				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
-				xmlWriter.write(xmlReader.read(DomDocument));
+				
+ 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -713,12 +711,10 @@ public class XMLBuilder {
 			XMLWriter xmlWriter = new XMLWriter(stringWriter, outputFormat);
 			xmlWriter.setMaximumAllowedCharacter(255);
 			try {
-				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + xmlWriter.isEscapeText());
-				// xmlWriter.setEscapeText(false);
 				DOMReader xmlReader = new DOMReader();
-				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -744,6 +740,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -779,6 +776,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -831,6 +829,7 @@ public class XMLBuilder {
 				org.w3c.dom.Document doc = new XMLBuilder(xml, "ISO-8859-1").getDomDocument();
 				xmlWriter.write(xmlReader.read(doc));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 				throw new XMLException(e.getMessage());
@@ -870,6 +869,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
+				
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}

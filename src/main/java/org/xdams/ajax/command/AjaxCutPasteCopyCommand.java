@@ -77,7 +77,7 @@ public class AjaxCutPasteCopyCommand {
 
 			if (actionType.equals("cut") || actionType.equals("paste") || actionType.equals("no_rel") || actionType.equals("only_hier")) {
 				TitleManager titleManager = new TitleManager(confBean.getTheXMLConfTitle());
-				System.out.println("AjaxCutPasteCopyCommand.execute() getTheXMLConfTitle " + confBean.getTheXMLConfTitle().getXML("ISO-8859-1"));
+			//	System.out.println("AjaxCutPasteCopyCommand.execute() getTheXMLConfTitle " + confBean.getTheXMLConfTitle().getXML("ISO-8859-1"));
 				try {
 					managingBean.setCutPhysDoc(Integer.parseInt(physDoc));
 					String titoloDoc = xwconn.getTitleFromNumDoc(Integer.parseInt(physDoc));
