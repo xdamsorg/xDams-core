@@ -1,20 +1,22 @@
 package org.xdams.security;
 
+import java.util.Date;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.xdams.security.load.LoadUser;
+import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.xml.builder.XMLBuilder;
-
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	public static void main(String[] args) {
 		UserDetailsServiceImpl detailsServiceImpl = new UserDetailsServiceImpl();
-		detailsServiceImpl.loadUserByUsernameCompany("admin", "xdams.org");
+		detailsServiceImpl.loadUserByUsernameCompany("admin", "xdams.org", false);
 	}
 
 	private Assembler assembler;
@@ -30,16 +32,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 	}
 
-	public UserDetails loadUserByUsernameCompany(String username, String account) throws UsernameNotFoundException, DataAccessException {
+	public UserDetails loadUserByUsernameCompany(String username, String account, boolean loadUserSpeedUp) throws UsernameNotFoundException, DataAccessException {
 		try {
 			/*
 			 * Users users = (Users)service.getListFromSQL(Users.class, "SELECT * FROM users where username='"+username+"' and ref_id_company="+company+";").get(0); if (users == null) throw new UsernameNotFoundException("user not found");
 			 */
+			UserBean userBean = null;
 			try {
-				XMLBuilder xmlUsers = ConfManager.getConfXML(account+"-security/users.xml");
-				XMLBuilder xmlArchives = ConfManager.getConfXML(account+"-security/accounts.xml");
-				XMLBuilder xmlrole = ConfManager.getConfXML(account+"-security/role.xml");
-				UserBean userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, username, account);
+				if (loadUserSpeedUp) {
+					String xmlUsers = ConfManager.getConfString(account + "-security/users.xml");
+					String xmlArchives = ConfManager.getConfString(account + "-security/accounts.xml");
+					String xmlrole = ConfManager.getConfString(account + "-security/role.xml");
+					userBean = LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, xmlrole, username, account);
+				} else {
+					XMLBuilder xmlUsers = ConfManager.getConfXML(account + "-security/users.xml");
+					XMLBuilder xmlArchives = ConfManager.getConfXML(account + "-security/accounts.xml");
+					XMLBuilder xmlrole = ConfManager.getConfXML(account + "-security/role.xml");
+					userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, username, account);
+				}
+
 				if (userBean == null)
 					throw new UsernameNotFoundException("user not found");
 				return assembler.buildUserFromUserEntity(userBean);

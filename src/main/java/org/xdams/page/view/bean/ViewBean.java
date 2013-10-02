@@ -168,7 +168,7 @@ public class ViewBean {
 	}
 
 	public String getRootElement() {
-		System.out.println("ViewBean.getRootElement() xmlBuilder " + xmlBuilder);
+//		System.out.println("ViewBean.getRootElement() xmlBuilder " + xmlBuilder);
 		return xmlBuilder.getRootElement();
 	}
 

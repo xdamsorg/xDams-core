@@ -11,11 +11,6 @@ public class LoadUser {
 
 		UserBean userBean = new UserBean();
 		try {
-			// System.out.println(xmlUsers.getXML("ISO-8859-1"));
-			// System.out.println("********************************************");
-			// System.out.println(xmlArchives.getXML("ISO-8859-1"));
-			// System.out.println("��������������������������������������������");
-			// System.out.println(xmlrole.getXML("ISO-8859-1"));
 			userBean.setName(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@name"));
 			userBean.setLastName(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@lastName"));
 			userBean.setId(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@id"));

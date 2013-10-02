@@ -13,5 +13,5 @@
   <archiveGroup name="Multi Archivio">
    <archive alias="multiArchive" host="127.0.0.1" ico="authority.gif" pne="notPresent" port="-1">Ricerca Multi Archivio</archive>
   </archiveGroup>
- </account>
+ </account> 
 </root>

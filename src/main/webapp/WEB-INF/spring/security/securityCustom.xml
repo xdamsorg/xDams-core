@@ -14,8 +14,12 @@
   <custom-filter ref="formLoginFilter" position="FORM_LOGIN_FILTER"/>
   <remember-me/>
  </http>
+ <b:bean id="authenticationType" class="org.xdams.security.AuthenticationType">
+  <b:property name="loadUserSpeedUp" value="false"/>
+ </b:bean>
  <b:bean id="authenticationProvider" class="org.xdams.security.AuthenticationProvider">
   <b:property name="userDetailsService" ref="userDetailsService"/>
+  <b:property name="authenticationType" ref="authenticationType"/>
  </b:bean>
  <b:bean id="userDetailsService" class="org.xdams.security.UserDetailsServiceImpl">
   <b:property name="assembler" ref="assembler"/>

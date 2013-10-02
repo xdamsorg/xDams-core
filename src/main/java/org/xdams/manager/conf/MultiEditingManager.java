@@ -239,6 +239,7 @@ public class MultiEditingManager {
 
 	public XMLBuilder evaluateBuilder(XMLBuilder myXMLConf) throws Exception {
 		try {
+			//DEAD CODE
 			 StringWriter w = new StringWriter();
 //			 boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
 //			 return new XMLBuilder(w.toString(), "ISO-8859-1");

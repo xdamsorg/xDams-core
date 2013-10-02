@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.util.WebUtils;
 import org.xdams.ajax.bean.AjaxBean;
 import org.xdams.conf.master.ConfBean;
@@ -52,8 +51,10 @@ import org.xdams.page.upload.command.UploadCommand;
 import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.page.view.modeling.QueryPageView;
 import org.xdams.save.SaveDocumentCommand;
+import org.xdams.security.AuthenticationType;
 import org.xdams.security.UserDetails;
 import org.xdams.security.load.LoadUser;
+import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
@@ -71,26 +72,37 @@ public class xDamsController {
 
 	@Autowired
 	ServiceUser serviceUser;
-	
-	@Autowired 
+
+	@Autowired
 	ServletContext servletContext;
 
+	@Autowired
+	AuthenticationType authenticationType;
+
 	@ModelAttribute
-	public void workFlowBean(Model model) throws Exception {
+	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
 	}
-	
+
 	@ModelAttribute
-	public void userLoad(Model model) throws Exception {
+	public void userLoad(Model model) {
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
 				userDetails = (UserDetails) ((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
-				XMLBuilder xmlUsers = ConfManager.getConfXML(userDetails.getAccount() + "-security/users.xml");
-				XMLBuilder xmlArchives = ConfManager.getConfXML(userDetails.getAccount() + "-security/accounts.xml");
-				XMLBuilder xmlrole = ConfManager.getConfXML(userDetails.getAccount() + "-security/role.xml");
-				UserBean userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
-				model.addAttribute("userBean", userBean);
+				if (authenticationType.isLoadUserSpeedUp()) {
+					String xmlUsers = ConfManager.getConfString(userDetails.getAccount() + "-security/users.xml");
+					String xmlArchives = ConfManager.getConfString(userDetails.getAccount() + "-security/accounts.xml");
+					String xmlrole = ConfManager.getConfString(userDetails.getAccount() + "-security/role.xml");
+					UserBean userBean = LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
+					model.addAttribute("userBean", userBean);
+				} else {
+					XMLBuilder xmlUsers = ConfManager.getConfXML(userDetails.getAccount() + "-security/users.xml");
+					XMLBuilder xmlArchives = ConfManager.getConfXML(userDetails.getAccount() + "-security/accounts.xml");
+					XMLBuilder xmlrole = ConfManager.getConfXML(userDetails.getAccount() + "-security/role.xml");
+					UserBean userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
+					model.addAttribute("userBean", userBean);
+				}
 			} catch (Exception e) {
 
 			}
@@ -346,7 +358,7 @@ public class xDamsController {
 				System.err.println("Error in uploading: " + error.getCode() + " - " + error.getDefaultMessage());
 			}
 			return "upload/uploadMenu";
-		} 
+		}
 		modelMap.put("realPath", WebUtils.getRealPath(servletContext, ""));
 		UploadCommand uploadCommand = new UploadCommand(request.getParameterMap(), modelMap);
 		uploadCommand.execute();
