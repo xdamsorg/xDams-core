@@ -20,7 +20,6 @@ import org.xdams.xw.exception.XWException;
 import org.xdams.xw.utility.Key;
 import org.xdams.xw.utility.Xml_NumDoc;
 
-
 public class XWConnection extends Broker {
 	private String theHost = "";
 
@@ -1192,6 +1191,16 @@ public class XWConnection extends Broker {
 		String xDoc = doc.XML();
 		return xDoc;
 	}
+
+//	public String getSingleXMLFromNumDoc(int numDoc) throws SQLException, XWException {
+//		String ilComando = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"2\" bits=\"0\" d=\""+numDoc+"\"/></cmd>";
+//		System.out.println("ilComando: " + ilComando);
+//		String result = XMLCommand(connection, theDb, ilComando);
+//		System.out.println("PRIMA result: " + result);
+//		result = XMLCommand.getBstContent(result);
+//		System.out.println("DOPO result: " + result);
+//		return result;
+//	}
 
 	/*
 	 * (non-Javadoc)

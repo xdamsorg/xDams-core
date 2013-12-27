@@ -89,7 +89,7 @@ public class XMLBuilder {
 			e.printStackTrace();
 			throw new XMLException(e.getMessage());
 		}
-	} 
+	}
 
 	public XMLBuilder(String rootNode) throws XMLException {
 		/* AUTHOR SANDRO */
@@ -161,7 +161,7 @@ public class XMLBuilder {
 			builder = dbf.newDocumentBuilder();
 			DomDocument = builder.parse(new InputSource(new StringReader(strDocXml)));
 			JDomDocument = new DOMBuilder().build(DomDocument);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new XMLException(e.getMessage());
@@ -674,10 +674,10 @@ public class XMLBuilder {
 			xmlWriter.setMaximumAllowedCharacter(255);
 			try {
 				DOMReader xmlReader = new DOMReader();
-				
- 				xmlWriter.write(xmlReader.read(DomDocument));
+
+				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -700,7 +700,6 @@ public class XMLBuilder {
 			 * StreamResult(new StringWriter()); transformer.transform(source, streamResult); result = streamResult.getWriter().toString();
 			 */
 			OutputFormat outputFormat = new OutputFormat();
-			// outputFormat.setSuppressDeclaration(true);
 			if (indent) {
 				outputFormat.setNewlines(true);
 				outputFormat.setIndent(true);
@@ -714,7 +713,7 @@ public class XMLBuilder {
 				DOMReader xmlReader = new DOMReader();
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -740,7 +739,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -776,7 +775,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -829,7 +828,7 @@ public class XMLBuilder {
 				org.w3c.dom.Document doc = new XMLBuilder(xml, "ISO-8859-1").getDomDocument();
 				xmlWriter.write(xmlReader.read(doc));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 				throw new XMLException(e.getMessage());
@@ -869,7 +868,7 @@ public class XMLBuilder {
 				// System.out.println("QOQOQOQOQOQO xmlWriter.isEscapeText() QOOQOQOQOOQ " + DomDocument);
 				xmlWriter.write(xmlReader.read(DomDocument));
 				xmlWriter.flush();
-				
+
 			} catch (IOException e) {
 				throw new XMLException(e.getMessage());
 			}
@@ -1043,6 +1042,7 @@ public class XMLBuilder {
 		String returno = stringWriter.toString().replaceAll("&lt;", "<");
 		returno = returno.replaceAll("&gt;", ">");
 		return returno;
+		// return ilValore;
 	}
 
 	public String valoreNodoNoEscape(String xPath) throws TransformerException, UnsupportedEncodingException {

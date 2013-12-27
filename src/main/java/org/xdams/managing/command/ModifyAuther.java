@@ -63,10 +63,11 @@ public class ModifyAuther {
 			UserBean userBean = (UserBean) modelMap.get("userBean");
 			confBean = (ConfBean) modelMap.get("confBean");
 			workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
-
+			XWConnection xwconnone = connectionManager.getConnection(workFlowBean.getArchive());
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
+			editingManager.setTheXML(new XMLBuilder(xwconnone.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));
 			confBean = editingManager.rewriteMultipleConf(confControl);
-
+			connectionManager.closeConnection(xwconnone);
 			XMLBuilder theXMLconf = confBean.getTheXMLConfEditing();
 			if (!codeToFind.equals("") && makeAction.equals("")) {
 				

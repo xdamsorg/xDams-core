@@ -84,7 +84,7 @@ public class SaveDocumentCommand {
 				}
 			}
 			String theXML = builder.getXML("ISO-8859-1", false);
-			System.out.println(theXML);
+//			System.out.println(theXML);
 			xwconn.executeUpdateByDocNumber(XMLCleaner.clearXwXML(theXML, false), Integer.parseInt(request.getParameter("physDoc")));
 		} catch (Throwable e) {
 			e.printStackTrace();

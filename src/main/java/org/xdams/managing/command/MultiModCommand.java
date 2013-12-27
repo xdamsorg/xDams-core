@@ -19,7 +19,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 public class MultiModCommand {
 
 	private Map<String, String[]> parameterMap = null;
@@ -29,6 +28,7 @@ public class MultiModCommand {
 	public MultiModCommand(Map<String, String[]> parameterMap, ModelMap modelMap) throws Exception {
 		this.parameterMap = parameterMap;
 		this.modelMap = modelMap;
+
 	}
 
 	public ManagingBean execute() throws Exception {

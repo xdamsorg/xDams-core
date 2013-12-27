@@ -25,7 +25,6 @@ import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 import org.xdams.xw.paging.PagingTool;
 
-
 public class TitlePageCommand {
 
 	private Map<String, String[]> parameterMap = null;
@@ -87,11 +86,11 @@ public class TitlePageCommand {
 					workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
 					QueryBean queryBean = new QueryBean();
 					queryBean.setDb(workFlowBean.getAlias());
-					System.out.println("findDocumentCommand.getLaFrase() "+findDocumentCommand.getLaFrase());
-					System.out.println("findDocumentCommand.getLaFrase() "+findDocumentCommand.getLaFrase());
-					System.out.println("findDocumentCommand.getLaFrase() "+findDocumentCommand.getLaFrase());
-					System.out.println("findDocumentCommand.getLaFrase() "+findDocumentCommand.getLaFrase());
-					System.out.println("findDocumentCommand.getLaFrase() "+findDocumentCommand.getLaFrase());
+					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
 					queryBean.setQuery(findDocumentCommand.getLaFrase());
 					queryBean.setTot(String.valueOf(queryResult.elements));
 					queryBean.setTot(String.valueOf(queryResult.elements));
@@ -106,8 +105,8 @@ public class TitlePageCommand {
 						int indexQr = 0;
 						for (int i = 0; i < arrQueryBean.size(); i++) {
 							QueryBean ilBean = (QueryBean) arrQueryBean.get(i);
-							System.out.println("ilBean "+ilBean);
-							System.out.println("queryBean "+queryBean);
+//							System.out.println("ilBean " + ilBean);
+//							System.out.println("queryBean " + queryBean);
 							if (ilBean.getQuery().equals(queryBean.getQuery())) {
 								insert = false;
 								arrQueryBean.remove(i);
@@ -119,36 +118,21 @@ public class TitlePageCommand {
 							arrQueryBean.add(queryBean);
 							httpSession.setAttribute(workFlowBean.getQueryBeanName(), arrQueryBean);
 						}
-						System.out.println("arrQueryBean "+arrQueryBean);
 					}
 				} catch (Exception e) {
 					queryResult = new QueryResult();
 					workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
-					// throw new CommandException(e.toString());
 				}
-
 				System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-				// System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
-
 			} else {
 				queryResult = xwconn.getQRFromSelId(MyRequest.getParameter("qrId", parameterMap));
 				workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
 			}
 
-			// queryResult = xwconn.getQRfromPhrase("[XML,/c/did/container/@type]=Volume");
-
 			PagingTool pagingTool = new PagingTool(parameterMap, modelMap);
 			pagingTool.pagingTitleBean(queryResult, xwconn);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// aReq.setAttribute("confBean", null);
-			// aReq.setAttribute("userBean", null);
 			throw new Exception(e.toString());
 		} finally {
 			if (!titleRole.trim().equals("")) {

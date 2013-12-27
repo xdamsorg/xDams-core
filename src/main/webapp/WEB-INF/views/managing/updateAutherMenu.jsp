@@ -85,6 +85,7 @@ loadJsBusiness('modifyAuther','${frontUrl}');
 <form action="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html" name="theForm" method="post">
 <input type="hidden" name="actionFlag" value="<%=MyRequest.getParameter("actionFlag",request)%>" />
 <input type="hidden" name="makeAction" value="true" />
+<input type="hidden" name="physDoc" value="<%=MyRequest.getParameter("physDoc",request)%>" />
 <input type="hidden" name="codeToFind" value="<%=MyRequest.getParameter("codeToFind",request)%>" />
 <input type="hidden" value="" name=".action"/>
 <input type="hidden" value="" name=".data"/>

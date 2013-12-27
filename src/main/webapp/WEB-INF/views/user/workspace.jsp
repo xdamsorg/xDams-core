@@ -241,8 +241,10 @@ jQuery(document).ready(function(){
 </div>
 </div>
 <div id="footPage">
-	<div class="sub_sub_menu"><img src="${frontUrl}/img/spacer.gif" class="regesta" border="0" alt="regesta.exe" vspace="1" /></div>
-	<div class="sub_sub_menu"><img src="${frontUrl}/img/spacer.gif" class="regesta" border="0" alt="regesta.exe" vspace="1" /></div>
+ <div style="float:left; width:100%;" class="sub_sub_menu">
+ 	<div style="float:left"><img vspace="1" border="0" alt="regesta.exe" class="regesta" src="${frontUrl}/img/spacer.gif" /></div>
+ 	<div style="float:right; margin-right:30px;"><img vspace="1" border="0" class="regesta" src="${frontUrl}/img/spacer.gif" alt="regesta.exe" /></div>
+</div> 
 </div>
 </body>
 </html>

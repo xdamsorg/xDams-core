@@ -280,6 +280,8 @@
 										String urlFoto = "";
 										if (ExpressionEvaluationUtils.isExpressionLanguage(prefixFoto)) {
 											urlFoto = ExpressionEvaluationUtils.evaluateString(prefixFoto, prefixFoto, pageContext)+strHrefFoto;
+										}else if(strHrefFoto.contains("http://")){
+											urlFoto = strHrefFoto;	
 										}else{
 											urlFoto = prefixFoto+strHrefFoto;	
 										}

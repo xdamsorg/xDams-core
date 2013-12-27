@@ -619,8 +619,9 @@ function modificaFormaAutorizzata(prefix) {
 	}catch(ee){
 		ilLemmaCode = document.theForm['.eac-cpf.control.recordId.text()'].value; //TODO generalizzare
 	} 
+	var physDoc = document.theForm['physDoc'].value;
 	if(ilLemmaCode!=""){
-		urlWin =  globalOption.contextPath+ "/" + globalOption.theArch + "/managing.html?actionFlag=modifyAuther&codeToFind=" + ilLemmaCode + "&prefix=" + escape(prefix) + "&nameToFind=" + (ilLemma);
+		urlWin =  globalOption.contextPath+ "/" + globalOption.theArch + "/managing.html?actionFlag=modifyAuther&codeToFind=" + ilLemmaCode + "&prefix=" + escape(prefix) + "&nameToFind=" + (ilLemma)+"&physDoc="+physDoc;
 		//window.open(percorso, 'theAuther', 'width=400,height=450,scrollbars=yes')
 	//	var jsonObject = eval('(' + jsonValues + ')');
 		var widthProto = "450";

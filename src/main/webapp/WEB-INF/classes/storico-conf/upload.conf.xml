@@ -65,11 +65,16 @@
     <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
     <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
     <uploadMode>filesystem</uploadMode>
-    <!-- <uploadPath> definisce il path della directory finale ${webApp} per inserirlo parallelo a resources-->
+    <!-- <uploadPath> definisce il path della directory finale ${webApp} per inserirlo parallelo a resources -->
     <uploadPath>${webApp}attach</uploadPath>
     <!-- <uploadPath> gestisce in nome della dir padre /account/alias/uploadNameDir/nomefile (non mettere c:\ o altro, solo path relativi) -->
     <uploadNameDir>high</uploadNameDir>
    </command>
   </commandList>
+ </upload>
+ <upload type="associate">
+  <!-- dentro editing per attivare inserire mode="associateSimple" type="custom" id="associate" externalPath="/c/@id" -->
+  <!-- associatePathDir root per la lettura -->
+  <associatePathDir>D:\_APPOGGIO_</associatePathDir>
  </upload>
 </root>

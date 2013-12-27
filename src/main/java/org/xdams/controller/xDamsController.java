@@ -47,6 +47,7 @@ import org.xdams.page.factory.AjaxFactory;
 import org.xdams.page.factory.ManagingFactory;
 import org.xdams.page.form.bean.LookupBean;
 import org.xdams.page.upload.bean.UploadBean;
+import org.xdams.page.upload.command.AssociateCommand;
 import org.xdams.page.upload.command.UploadCommand;
 import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.page.view.modeling.QueryPageView;
@@ -54,6 +55,7 @@ import org.xdams.save.SaveDocumentCommand;
 import org.xdams.security.AuthenticationType;
 import org.xdams.security.UserDetails;
 import org.xdams.security.load.LoadUser;
+import org.xdams.security.load.LoadUserManager;
 import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.Archive;
@@ -86,23 +88,13 @@ public class xDamsController {
 
 	@ModelAttribute
 	public void userLoad(Model model) {
+
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
 				userDetails = (UserDetails) ((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
-				if (authenticationType.isLoadUserSpeedUp()) {
-					String xmlUsers = ConfManager.getConfString(userDetails.getAccount() + "-security/users.xml");
-					String xmlArchives = ConfManager.getConfString(userDetails.getAccount() + "-security/accounts.xml");
-					String xmlrole = ConfManager.getConfString(userDetails.getAccount() + "-security/role.xml");
-					UserBean userBean = LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
-					model.addAttribute("userBean", userBean);
-				} else {
-					XMLBuilder xmlUsers = ConfManager.getConfXML(userDetails.getAccount() + "-security/users.xml");
-					XMLBuilder xmlArchives = ConfManager.getConfXML(userDetails.getAccount() + "-security/accounts.xml");
-					XMLBuilder xmlrole = ConfManager.getConfXML(userDetails.getAccount() + "-security/role.xml");
-					UserBean userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
-					model.addAttribute("userBean", userBean);
-				}
+				UserBean userBean = LoadUserManager.executeLoad(userDetails, authenticationType);
+				model.addAttribute("userBean", userBean);
 			} catch (Exception e) {
 
 			}
@@ -186,7 +178,6 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		HierBrowserPageCommand hierBrowserPageCommand = new HierBrowserPageCommand(request.getParameterMap(), modelMap);
 		hierBrowserPageCommand.execute();
-
 		System.out.println("xDamsController.queryPage() pageName: " + pageName);
 		// System.out.println("xDamsController.queryPage() workFlowBean: " + workFlowBean);
 		return "hier/" + pageName;
@@ -341,13 +332,15 @@ public class xDamsController {
 		return new ResponseEntity<String>(ajaxBean.getStrXmlOutput(), responseHeaders, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/upload/{archive}/uploadMenu", method = RequestMethod.GET)
-	public String openFormUpload(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value = "/associate/{archive}/associateMenu")
+	public String associateFile(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		common(confBean, userBean, archive, modelMap, request, response);
-		System.out.println("request.getParameterMap() " + request.getParameterMap());
+		AssociateCommand associateCommand = new AssociateCommand(request.getParameterMap(), modelMap);
+		associateCommand.execute();
 		modelMap.addAttribute("uploadBean", uploadBean);
-		return "upload/uploadMenu";
+
+		return "upload/associateMenu";
 	}
 
 	@RequestMapping(value = "/upload/{archive}/execute", method = RequestMethod.POST)
@@ -373,6 +366,15 @@ public class xDamsController {
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
+	}
+
+	@RequestMapping(value = "/upload/{archive}/uploadMenu", method = RequestMethod.GET)
+	public String openFormUpload(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		common(confBean, userBean, archive, modelMap, request, response);
+		System.out.println("request.getParameterMap() " + request.getParameterMap());
+		modelMap.addAttribute("uploadBean", uploadBean);
+		return "upload/uploadMenu";
 	}
 
 	@RequestMapping(value = { "/test" }, method = RequestMethod.GET)

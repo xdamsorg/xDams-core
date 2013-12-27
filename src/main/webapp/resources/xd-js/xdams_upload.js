@@ -19,7 +19,7 @@ function allega(theRecord, theField, thePrefix, theUploadMode, originalFileName,
 		dispatchBrowseFTP(percorsoImg, thePrefix, theField, theUploadMode, theRecord, originalFileName, xPathPrefix, physDoc);
 	} else if (theUploadMode.indexOf('upload') != -1) {
 		dispatchUpload(percorsoImg, thePrefix, theField, theUploadMode, theRecord, originalFileName, xPathPrefix, physDoc);
-	}
+	} 
 	return false;
 }
 
@@ -117,7 +117,7 @@ function browseFTPMove(nomeField, nomeSpan, thisObject, actionFlag, theRecord,
 
 campoUpload = "";
 sezioneUpload = "";
-function sfoglia(theDb, theField, thePrefix) {
+/*function sfoglia(theDb, theField, thePrefix) {
 	percorsoImg = theField.parentNode.getElementsByTagName("input")[0];
 	campoUpload = percorsoImg.name;
 	sezioneUpload = thePrefix;
@@ -127,7 +127,78 @@ function sfoglia(theDb, theField, thePrefix) {
 	ftpNavigazione = window.open('', 'ftpNavigazione', '');
 	document.imgForm.submit();
 	return false;
+}*/
+
+function associate(theRecord, theField, thePrefix, theUploadMode, originalFileName, xPathPrefix, physDoc) {
+	percorsoImg = theField.parentNode.getElementsByTagName("input")[0].name;
+	if (isNaN(parseInt(physDoc, 10)) || parseInt(physDoc, 10) == 0
+			|| parseInt(physDoc, 10) == -1) {
+		alert("Attenzione physDoc non settato." + physDoc);
+		return false;
+	}
+	if (theUploadMode.indexOf('associate') != -1) {
+		dispatchAssociate(percorsoImg, thePrefix, theField, theUploadMode, theRecord, originalFileName, xPathPrefix, physDoc);
+	} 
 }
+
+function dispatchAssociate(nomeField, nomeSpan, thisObject, actionFlag, theRecord,	originalFileName, xPathPrefix, physDoc) {
+	var originalFileNameParam = "";
+	if (originalFileName != null) {
+		originalFileNameParam = "&amp;flagOriginalFileName=true&amp;destOriginalFileName=" + originalFileName + "&amp;xPathPrefix=" + xPathPrefix;
+	} else {
+		originalFileNameParam = "";
+	}
+	if (actionFlag.indexOf('Simple') != -1) {
+		associateSimple(nomeField, nomeSpan, thisObject, actionFlag, theRecord, originalFileNameParam, physDoc);
+	}  
+}
+
+function associateSimple(nomeField, nomeSpan, thisObject, actionFlag, theRecord, originalFileNameParam, physDoc) {
+	percorso =  globalOption.contextPath+"/associate/" + globalOption.theArch + "/associateMenu.html?destField=" + escape(nomeField)+"&amp;idRecord="+theRecord+"&amp;physDoc="+physDoc+"&amp;uploadType=associate"+originalFileNameParam;
+	if($dialog!==null){chiudiDialog();}
+	//devo cambiare la modalità di apertura, devo usare quella di vis xml.
+ 	  $dialog = $('<div></div>').html('<iframe style="border: 0px; " src="' + percorso + '" width="100%" height="100%"></iframe>').dialog({autoOpen: false,modal: false, height: 558,width: 558,resizable : true});
+ 	  $dialog.dialog({ modal: true,resizable : true });
+ 	  $dialog.dialog('open');
+ 	
+ 
+ 	
+ 	
+}
+try {
+	$(function() {
+		var old = $.ui.dialog.prototype._create;
+		$.ui.dialog.prototype._create = function(d) {
+			old.call(this, d);
+			var self = this, options = self.options, oldHeight = options.height, oldWidth = options.width, uiDialogTitlebarFull = $('<a href="#"></a>').addClass('ui-dialog-titlebar-full ' + 'ui-corner-all').attr('role', 'button').hover(function() {
+				uiDialogTitlebarFull.addClass('ui-state-hover');
+			}, function() {
+				uiDialogTitlebarFull.removeClass('ui-state-hover');
+			}).toggle(function() {
+				self._setOptions({
+					height : parseInt(window.innerHeight - 10, 10),
+					width : parseInt(window.innerWidth - 30, 10)
+				});
+				self._position('center');
+				return false;
+			}, function() {
+				self._setOptions({
+					height : parseInt(oldHeight, 10),
+					width : parseInt(oldWidth, 10)
+				});
+				self._position('center');
+				return false;
+			}).focus(function() {
+				uiDialogTitlebarFull.addClass('ui-state-focus');
+			}).blur(function() {
+				uiDialogTitlebarFull.removeClass('ui-state-focus');
+			}).appendTo(self.uiDialogTitlebar),
+
+			uiDialogTitlebarFullText = $('<span></span>').addClass('ui-icon ' + 'ui-icon-newwin').text(options.fullText).appendTo(uiDialogTitlebarFull)
+		};
+	})()
+} catch (e) {
+};
 function salvaFoto(theValue, thePath) {
 	for (var i = 0; i < document.theForm.length; i++) {
 		if (document.theForm.elements[i].name == thePath)
@@ -143,68 +214,6 @@ function salvaFoto(theValue, thePath) {
 			document.theForm[idElement].value = 'ID001';
 	}
 }
-/*
- * function salvaFotoMulti(fotoArray,thePath,spanId){ firstElementIdx = 0;
- * for(i=0;i<document.theForm.length;i++){ if(document.theForm.elements[i].name ==
- * thePath){ document.theForm.elements[i].value = fotoArray[0]; firstElementIdx =
- * i; } } contaArray = 1; prefix =
- * thePath.substring(0,thePath.lastIndexOf("[")+1); suffix =
- * thePath.substring(thePath.lastIndexOf("]"),thePath.length); ilNumero =
- * parseInt(thePath.substring(thePath.lastIndexOf("[")+1,thePath.lastIndexOf("]")),10);
- * ilNumero++; // alert(fotoArray) //alert(thePath) //alert(spanId)
- * //alert('prefix '+prefix + '\nsuffix '+ suffix + '\nilNumero '+ilNumero)
- * if(isNaN(ilNumero)){ salvaFoto(fotoArray[0],thePath); return; } for(i=1;i<fotoArray.length;i++){
- * found = false; for(a=firstElementIdx;a<document.theForm.length;a++){
- * if(document.theForm.elements[a].name == prefix+ilNumero+suffix){
- * if(document.theForm.elements[a].value == ''){
- * document.theForm.elements[a].value = fotoArray[contaArray]; contaArray++;
- * firstElementIdx = a; found = true; break; }else{ ilNumero++ a=firstElementIdx } } }
- * if(!found){ i--; if(spanId.indexOf('dao')>0){ addInstanceNastedDaoGrp(spanId,
- * 1, null) }else{ addInstance(spanId, 1, null) } }else{ //TODO: gestire pi?
- * gruppi if(spanId.indexOf('dao')>0){ idElement =
- * prefix.substring(0,prefix.indexOf("daoloc["))+'@id'
- * document.theForm[idElement].value = 'ID001' }
- *  } } }
- */
-/*
- * function
- * salvaFotoMultiAndOriginal(fotoArray,thePath,spanId,originalArray,thePathOriginal){
- * firstElementIdx = 0; for(i=0;i<document.theForm.length;i++){
- * if(document.theForm.elements[i].name == thePath){
- * document.theForm.elements[i].value = fotoArray[0]; firstElementIdx = i; }
- * if(document.theForm.elements[i].name == thePathOriginal){
- * document.theForm.elements[i].value = originalArray[0]; } } contaArray = 1;
- * prefix = thePath.substring(0,thePath.lastIndexOf("[")+1); suffix =
- * thePath.substring(thePath.lastIndexOf("]"),thePath.length); ilNumero =
- * parseInt(thePath.substring(thePath.lastIndexOf("[")+1,thePath.lastIndexOf("]")),10);
- * ilNumero++;
- * 
- * suffixOriginal =
- * thePathOriginal.substring(thePathOriginal.lastIndexOf("]"),thePathOriginal.length);
- * //ilNumeroOriginal =
- * parseInt(thePathOriginal.substring(thePathOriginal.lastIndexOf("[")+1,thePathOriginal.lastIndexOf("]")),10);
- * //ilNumeroOriginal++;
- * 
- * //alert(fotoArray) //alert(thePath) //alert(spanId) //alert('prefix '+prefix +
- * '\nsuffix '+ suffix + '\nilNumero '+ilNumero) if(isNaN(ilNumero)){
- * salvaFoto(fotoArray[0],thePath); return; } for(i=1;i<fotoArray.length;i++){
- * found = false; var indiceOriginal = -1; for(a=firstElementIdx;a<document.theForm.length;a++){
- * if(document.theForm.elements[a].name == prefix+(ilNumero)+suffixOriginal){
- * if(document.theForm.elements[a].value == ''){ indiceOriginal = a; } }
- * if(document.theForm.elements[a].name == prefix+ilNumero+suffix){
- * if(document.theForm.elements[a].value == ''){ //alert("a = "+a+" --->
- * indiceOriginal = "+indiceOriginal); document.theForm.elements[a].value =
- * fotoArray[contaArray]; document.theForm.elements[indiceOriginal].value =
- * originalArray[contaArray]; contaArray++; firstElementIdx = a; found = true;
- * break; }else{ ilNumero++ a=firstElementIdx } } }
- * 
- * if(!found){ i--; if(spanId.indexOf('dao')>0){ addInstanceNastedDaoGrp(spanId,
- * 1, null) } else{ addInstance(spanId, 1, null) } } else{
- * 
- * //TODO: gestire pi? gruppi if(spanId.indexOf('dao')>0){ idElement =
- * prefix.substring(0,prefix.indexOf("daoloc["))+'@id'
- * document.theForm[idElement].value = 'ID001' } } } }
- */
 
 function salvaFotoMulti(fotoArray, thePath, spanId) {
 	var generatedPath = $("[@name=\"" + thePath + "\"]:first");

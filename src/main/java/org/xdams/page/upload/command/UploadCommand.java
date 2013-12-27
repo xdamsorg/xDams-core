@@ -12,7 +12,10 @@ import java.util.Map;
 
 import javax.xml.transform.TransformerException;
 
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.StrSubstitutor;
@@ -21,7 +24,9 @@ import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.upload.bean.UploadBean;
 import org.xdams.page.upload.bean.UploadCommandLine;
+import org.xdams.page.upload.modeling.LoadUploadBean;
 import org.xdams.user.bean.UserBean;
+import org.xdams.utility.CommonUtils;
 import org.xdams.utility.CompositionRule;
 import org.xdams.utility.request.MyRequest;
 import org.xdams.workflow.bean.WorkFlowBean;
@@ -55,7 +60,7 @@ public class UploadCommand {
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));
 			confBean = editingManager.rewriteMultipleConf(confControl);
-			loadUploadBean(uploadBean, confBean.getTheXMLConfUpload());
+			LoadUploadBean.loadUploadBean(uploadBean, confBean.getTheXMLConfUpload(), modelMap);
 			System.out.println(uploadBean);
 			// da prendere dentro workflowBean
 			String archiveName = workFlowBean.getAlias();
@@ -67,7 +72,9 @@ public class UploadCommand {
 					if (!(fileUploadTempPath.exists())) {
 						fileUploadTempPath.mkdirs();
 					}
-					File uploadFile = new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName());
+					File uploadFile = new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName()));
+
+					uploadFile.setReadable(true);
 					if (!uploadFile.exists()) {
 						uploadBean.getFiledata().transferTo(uploadFile);
 					}
@@ -127,8 +134,16 @@ public class UploadCommand {
 				// verifico se devo lanciare un comando oppure no
 				if (!uploadCommandLine.getCommandLine().trim().equals("") && uploadBean.getUploadType().equalsIgnoreCase("resize")) {
 					Map<String, String> valuesMap = new HashMap<String, String>();
-					valuesMap.put("imgIn", "\"" + uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName() + "\"");
-					valuesMap.put("imgOut", "\"" + uploadPath.toString() + "\"");
+
+					if (CommonUtils.isWindows()) {
+						valuesMap.put("imgIn", "\"" + uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName()) + "\"");
+						valuesMap.put("imgOut", "\"" + uploadPath.toString() + "\"");
+					} else {
+						System.out.println("quiiiiiiiii");
+						valuesMap.put("imgIn", (uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName())));
+						System.out.println("spazi linux" + (uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName())));
+						valuesMap.put("imgOut", (uploadPath.toString()));
+					}
 					StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
 					String cmd = strSubstitutor.replace(uploadCommandLine.getCommandLine());
 					System.out.println(cmd);
@@ -173,7 +188,7 @@ public class UploadCommand {
 					}
 				} else {
 					try {
-						FileUtils.copyFile(new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + uploadBean.getName()), new File(uploadPath.toString()));
+						FileUtils.copyFile(new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName())), new File(uploadPath.toString()));
 						System.out.println("uploadPath.toString() " + uploadPath.toString());
 						String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
 						resultName = StringUtils.remove(resultName, archiveName);
@@ -202,42 +217,6 @@ public class UploadCommand {
 			throw new Exception(e.toString());
 		} finally {
 			connectionManager.closeConnection(xwconn);
-		}
-	}
-
-	public void loadUploadBean(UploadBean uploadBean, XMLBuilder theXMLConfUpload) throws UnsupportedEncodingException, TransformerException {
-		try {
-			// String prefixUpload = "/root/upload[@name='" + uploadBean.getUploadName() + "' and @type='" + uploadBean.getUploadType() + "']";
-			String prefixUpload = "/root/upload[@type='" + uploadBean.getUploadType() + "']";
-			int countUploadSection = theXMLConfUpload.contaNodi(prefixUpload);
-			if (countUploadSection == 0) {
-				uploadBean.getResultError().append("impostare configurazione upload correttamente upload type non presente");
-				throw new Exception("impostare configurazione upload correttamente upload type non presente");
-			}
-			for (int i = 0; i < countUploadSection; i++) {
-				uploadBean.setRenameFile(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/renameFile/text()"));
-				uploadBean.setCompositionRuleFile(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionRuleFile/text()"));
-				uploadBean.setCompositionRuleDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionRuleDir/text()"));
-				uploadBean.setCompositionReplaceName(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionReplaceName/text()"));
-				int countCommand = theXMLConfUpload.contaNodi(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command");
-				for (int j = 0; j < countCommand; j++) {
-					UploadCommandLine commandLine = new UploadCommandLine();
-					commandLine.setCommandLine(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/commandLine/text()"));
-					commandLine.setUploadTempPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadTempPath/text()"));
-					commandLine.setUploadMode(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadMode/text()"));
-					commandLine.setUploadPath(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadPath/text()"));
-					if (commandLine.getUploadPath().toLowerCase().contains("webapp")) {
-						Map<String, String> valuesMap = new HashMap<String, String>();
-						valuesMap.put("webApp", (String) modelMap.get("realPath"));
-						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
-						commandLine.setUploadPath(strSubstitutor.replace(commandLine.getUploadPath()));
-					}
-					commandLine.setUploadNameDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadNameDir/text()"));
-					uploadBean.getCommandLine().add(commandLine);
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 

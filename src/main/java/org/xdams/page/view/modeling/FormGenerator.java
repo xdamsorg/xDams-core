@@ -1259,6 +1259,9 @@ public class FormGenerator {
 
 	private void generaRichTextArea(String xpathCorrente, String xpathCorrenteDot, String nodoCorrente, String extraExtra, String theHTMLextra, javax.servlet.jsp.JspWriter out) throws TransformerException, IOException {
 		String theValue = (theXML.valoreNodo(xpathCorrente)).trim();
+		if(xpathCorrente.equalsIgnoreCase("/eac-cpf/control/sources/source/sourceEntry/text()")){
+			System.out.println("AAAAAAAAAAA "+theValue);
+		}
 		String extra = "rows=\"" + theXMLconf.valoreNodo(nodoCorrente + "/@rows") + "\" cols=\"" + theXMLconf.valoreNodo(nodoCorrente + "/@cols") + "\"";
 		extra += " " + extraExtra;
 		if (!xpathCorrenteDot.endsWith(".@cdata")) {
@@ -1532,7 +1535,7 @@ public class FormGenerator {
 								if (type.equals("upload")) {
 									generateCustomUpload(out, nodoCorrente, false, theXMLconf.valoreNodo(nodoCorrente + "/text()"), "single");
 								} else {
-									if (type.equals("sfoglia")) {
+									if (type.equals("sfoglia") || type.equals("associate")) {
 										generateCustomSfoglia(out, nodoCorrente, false, theXMLconf.valoreNodo(nodoCorrente + "/text()"), "single");
 									} else {
 										if (type.equals("dataSimple")) {
@@ -1641,9 +1644,14 @@ public class FormGenerator {
 			out.println(theName);
 			out.println(part02);
 		}
+		String idRef = theXMLconf.valoreNodo(nodoCorrente + "/@externalPath");
+
+		String resultIdRef =  theXML.valoreNodo(idRef);
+		String mode = theXMLconf.valoreNodo(nodoCorrente + "/@mode");
 		out.println(generateInput("text", xpathCorrenteDot, theXML.valoreNodo(xpathCorrente), theClass, " ", theHTMLextra));
-		out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return sfoglia(document.theForm.theDb.value,this,'" + xpathCorrenteSpan + "','" + originalFileNameXpath + "')\">associa</a>");
-		out.println("&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return visualizzaImg(this,'" + imagePath + "')\">visualizza</a>");
+		//out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return associate(document.theForm.theDb.value,this,'" + xpathCorrenteSpan + "','" + originalFileNameXpath + "')\">associa</a>");
+		out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return associate('" + resultIdRef + "',this,'" + xpathCorrenteSpan + "','" + mode + "','" + originalFileNameXpath + "','" + StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo(nodoCorrente + "/@prefix")) + "','"	+ getPhysDoc() + "')\">associa</a>");
+//		out.println("&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return visualizzaImg(this,'" + imagePath + "')\">visualizza</a>");
 		if (!noHTML) {
 			out.println("</td></tr>");
 		}

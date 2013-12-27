@@ -27,6 +27,8 @@ public class UploadBean {
 	private String compositionRuleDir;
 
 	private String compositionReplaceName;
+	
+	private String associatePathDir;
 
 	private List<UploadCommandLine> commandLine = new ArrayList<UploadCommandLine>();
 
@@ -134,8 +136,8 @@ public class UploadBean {
 	@Override
 	public String toString() {
 		return "UploadBean [filedata=" + filedata + ", name=" + name + ", idRecord=" + idRecord + ", destField=" + destField + ", uploadName=" + uploadName + ", uploadType=" + uploadType + ", renameFile=" + renameFile + ", renameDir=" + renameDir + ", compositionRuleFile=" + compositionRuleFile
-				+ ", compositionRuleDir=" + compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", commandLine=" + commandLine + ", result=" + result + ", resultOriginalFileName=" + resultOriginalFileName + ", flagOriginalFileName=" + flagOriginalFileName
-				+ ", destOriginalFileName=" + destOriginalFileName + ", xPathPrefix=" + xPathPrefix + ", resultError=" + resultError + "]";
+				+ ", compositionRuleDir=" + compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", associatePathDir=" + associatePathDir + ", commandLine=" + commandLine + ", result=" + result + ", resultOriginalFileName=" + resultOriginalFileName + ", flagOriginalFileName="
+				+ flagOriginalFileName + ", destOriginalFileName=" + destOriginalFileName + ", xPathPrefix=" + xPathPrefix + ", resultError=" + resultError + "]";
 	}
 
 	public StringBuilder getResult() {
@@ -184,5 +186,13 @@ public class UploadBean {
 
 	public void setxPathPrefix(String xPathPrefix) {
 		this.xPathPrefix = xPathPrefix;
+	}
+
+	public String getAssociatePathDir() {
+		return associatePathDir;
+	}
+
+	public void setAssociatePathDir(String associatePathDir) {
+		this.associatePathDir = associatePathDir;
 	}
 }

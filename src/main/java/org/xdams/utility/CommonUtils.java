@@ -19,27 +19,41 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrSubstitutor;
 
 //import static com.regesta.cms.utility.SimpleLogic.*;
-public class CommonUtils
-{
+public class CommonUtils {
 	public static final Pattern htmlTagPattern = Pattern.compile("<\\s*\\/?\\s*(\\w*?)((\\s+.*?)|(\\s*))\\/?\\s*>");
 
 	public static final Pattern titleUrlPattern = Pattern.compile("<\\s*\\/?\\s*(\\w*?)((\\s+.*?)|(\\s*))\\/?\\s*>");
 
 	public static final String escapeCharacters = "#;&,.+*~':\"!^$[]()=>|/";
+	
+	public static String OS = System.getProperty("os.name").toLowerCase();
 
 	public static void main(String[] args) {
 
 		System.out.println(CommonUtils.escapeJqueryName(".c.did.dao[@type='documenti grafici'][1].resource.text()"));
 	}
 
+	public static boolean isWindows() {
+		return (OS.indexOf("win") >= 0);
+	}
 
-	public static String escapeJqueryName(String value)
-	{
-		for(int i = 0; i<escapeCharacters.length(); i++)
-		{
+	public static boolean isMac() {
+		return (OS.indexOf("mac") >= 0);
+	}
+
+	public static boolean isUnix() {
+		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
+	}
+	
+	public static boolean isSolaris() {
+		return (OS.indexOf("sunos") >= 0);
+	}
+
+	public static String escapeJqueryName(String value) {
+		for (int i = 0; i < escapeCharacters.length(); i++) {
 			String replace = Character.toString(escapeCharacters.charAt(i));
-			if(value.contains(replace))
-				value = value.replace(replace, "\\\\"+replace);
+			if (value.contains(replace))
+				value = value.replace(replace, "\\\\" + replace);
 		}
 		return value;
 	}
@@ -57,16 +71,16 @@ public class CommonUtils
 		}
 
 		try {
-//		    System.out.println("1 "+urlStr);
-		    urlStr = StringEscapeUtils.unescapeXml(urlStr);
-//		    System.out.println("2 "+urlStr);
-		    urlStr = deleteHTMLTag(urlStr, "");
-//		    System.out.println("3 "+urlStr);
-		    urlStr = StringUtils.abbreviate(urlStr, maxChar);
-//		    System.out.println("4 "+urlStr);
-		    urlStr = stripPunctuation(urlStr, '-');
-//		    System.out.println("5 "+urlStr);
-		    return URLEncoder.encode(String.valueOf(urlStr), encodeType);
+			// System.out.println("1 "+urlStr);
+			urlStr = StringEscapeUtils.unescapeXml(urlStr);
+			// System.out.println("2 "+urlStr);
+			urlStr = deleteHTMLTag(urlStr, "");
+			// System.out.println("3 "+urlStr);
+			urlStr = StringUtils.abbreviate(urlStr, maxChar);
+			// System.out.println("4 "+urlStr);
+			urlStr = stripPunctuation(urlStr, '-');
+			// System.out.println("5 "+urlStr);
+			return URLEncoder.encode(String.valueOf(urlStr), encodeType);
 		} catch (Exception uee) {
 			return "";
 		}
@@ -80,7 +94,7 @@ public class CommonUtils
 				sb.append(cs[i]);
 			} else {
 				if (sb.length() > 1 && sb.charAt(sb.length() - 1) != separator) {
-					if(Character.isSpaceChar(cs[i])){
+					if (Character.isSpaceChar(cs[i])) {
 						sb.append(separator);
 					}
 
@@ -90,7 +104,7 @@ public class CommonUtils
 		return sb.toString();
 	}
 
- 	public static String deleteHTMLTag(String str, String replacement) {
+	public static String deleteHTMLTag(String str, String replacement) {
 		if (str == null) {
 			return "";
 		}
