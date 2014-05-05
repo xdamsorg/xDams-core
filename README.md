@@ -37,7 +37,7 @@ L'interfaccia dell'applicazione è fruibile ad una risoluzione minima di 1024x76
 Ciò significa che per accedere al Workspace di xDams è necessario:
 
 *	Abilitare JavaScript
-*	Consentire l�utilizzo di Popups
+*	Consentire l'utilizzo di Popups
 *	Abilitare Cookies
 *	Flash Player installato
 
@@ -48,7 +48,7 @@ Per la versione Windows, procedere al download dell'ultima versione di **xDams O
 Scaricare poi l'ultima versione della piattaforma Extraway Open Platform dalla pagina di [source forge] (http://sourceforge.net/projects/extraway/files/eXtraWay%20OpenPlatform/1.0/), selezionando la versione corretta per il proprio sistema operativo.
 Verificare i requisiti client.
 
-Seguire le indicazioni riportate nel paragrafo �Installazione su Server Windows del [documento di installazione] (https://github.com/downloads/xdamsorg/xDams-core/xDamsOSS_1.0.0_installation_guidelines.pdf)
+Seguire le indicazioni riportate nel paragrafo Installazione su Server Windows del [documento di installazione] (https://github.com/downloads/xdamsorg/xDams-core/xDamsOSS_1.0.0_installation_guidelines.pdf)
 
 
 ## Accesso al sistema 
@@ -57,7 +57,7 @@ Il sistema xDams è pronto per l'utilizzo! Seguire i seguenti passi per avviare 
 
 *	Riavviare il servizio extraway
 *	Riavviare Apache Tomcat
-*	Aprire un browser internet e digitare l�indirizzo: [http://localhost:8080/xDams/login.html] (http://localhost:8080/xDams/login.html)
+*	Aprire un browser internet e digitare l'indirizzo: [http://localhost:8080/xDams/login.html] (http://localhost:8080/xDams/login.html)
 *	Nel campo "Nome utente" digitare admin e nel campo Password il valore xdams.org
 
 
