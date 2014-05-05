@@ -121,7 +121,7 @@ public class FindDocumentCommand {
 				// qr = xwconn.find(xwconn.connection,xwconn,laFrase,sorting,it.highwaytech.broker.ServerCommand.find_SORT,-3,0,null);
 				System.out.println("FindDocumentCommand.execute() laFrase " + laFrase);
 				System.out.println("FindDocumentCommand.execute() sorting " + sorting);
-				qr = xwconn.selectQR(laFrase, sorting, it.highwaytech.broker.ServerCommand.find_SORT, -3);
+				qr = xwconn.selectQR(laFrase, sorting, it.highwaytech.broker.ServerCommand.find_SORT, -6);
 				System.out.println("FindDocumentCommand.execute() qr " + qr.id);
 			}
 		} catch (Exception e) {

@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+ 
 import org.springframework.security.web.util.TextEscapeUtils;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -33,7 +34,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 		}
 		if (company == null) {
 			company = "";
-		}
+		} 
+		
 		username = username.trim();
 		AuthenticationToken authenticationToken = new AuthenticationToken(username, password, company);
 		HttpSession session = arg0.getSession(false);

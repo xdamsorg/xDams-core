@@ -6,7 +6,7 @@
    <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
    <elemento mode="html" html="" format_after=")&#160;" format_before="(">[@titolario@]-</elemento>
    <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
-   <elemento flag="isAttach">[@lev@]-</elemento>
+   <elemento flag="isAttach">[@lev@]-[@titolario@]</elemento>
   </sezione>
   <sezione name="defaultTitle">
    <titleRole></titleRole>
@@ -18,7 +18,7 @@
    <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
    <elemento mode="html" html="" format_after=")&#160;" format_before="(">[@titolario@]-</elemento>
    <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
-   <elemento flag="isAttach">[@lev@]-</elemento>
+   <elemento flag="isAttach">[@lev@]-[@titolario@]</elemento>
   </sezione>
   <sezione name="hierTitle">
    <elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>

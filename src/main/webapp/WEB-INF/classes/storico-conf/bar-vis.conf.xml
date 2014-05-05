@@ -22,6 +22,10 @@
      </functionName>
     </eventJavaScript>
    </element>
+   <element value="Test">
+    <anchor value="${contextPath}/custom/${workFlowBean.archive.alias}/page.html?docToggle=${viewBean.physDoc}&amp;docStart=${viewBean.physDoc}" target="_top">
+    </anchor>
+   </element>   
   </user>
  </managing>
 </root>

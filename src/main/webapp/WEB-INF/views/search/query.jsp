@@ -23,7 +23,7 @@
 	System.out.println(queryBean);
   	String thePne = workFlowBean.getArchive().getPne();
 	XMLBuilder builderQuery = confBean.getTheXMLConfQuery();
-	String perpage = "10";
+	String perpage = "50";
 	try{
 		perpage = WebUtils.getCookie(request, "title"+workFlowBean.getAlias()+userBean.getId()).getValue();
 	}catch(Exception e){
@@ -101,8 +101,14 @@ jQuery(document).ready(function(){
 						} 
 							numeroSezione = builderQuery.contaNodi("/root/access_method/query[@active='yes']");
 							for(int i=0;i<numeroSezione;i++){
-					%><a class="link1" href="javascript:cerca('<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>',document.theForm)"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
-						}
+								String skipQuery = builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@skipQuery");
+								if(skipQuery.equals("true")){
+								%><a class="link1" href="<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+								}else{
+								%><a class="link1" href="javascript:cerca('<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>',document.theForm)"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+								}
+								
+							}
 							if(isUserMod && withElements.equals("insert")){
 					%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html">inserisci</a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
 						}
@@ -302,4 +308,3 @@ jQuery(document).ready(function(){
 </form>
 </body>
 </html>
-  

@@ -18,7 +18,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 public class InfoTabCommand {
 
 	private Map<String, String[]> parameterMap = null;
@@ -55,9 +54,15 @@ public class InfoTabCommand {
 			XMLBuilder theXMLDoc = null;
 			String idCode = MyRequest.getParameter("idCode", parameterMap);
 			String queryFix = MyRequest.getParameter("queryFix", parameterMap);
+			String physDoc = MyRequest.getParameter("physDoc", parameterMap);
 			queryFix = "" + queryFix + "=\"" + idCode + "\"";
-			int docNumber = xwconn.getNumDocFromQRElement(xwconn.getQRfromPhrase(queryFix), 0);
-			viewBean.setPhysDoc(docNumber);
+			if (!physDoc.equals("")) {
+				viewBean.setPhysDoc(Integer.parseInt(physDoc));
+			} else {
+				int docNumber = xwconn.getNumDocFromQRElement(xwconn.getQRfromPhrase(queryFix), 0);
+				viewBean.setPhysDoc(docNumber);
+			}
+
 			viewBean.setDocXml(XMLCleaner.clearXwXML(xwconn.getSingleXMLFromNumDoc(viewBean.getPhysDoc()), true));
 			theXMLDoc = new XMLBuilder(viewBean.getDocXml(), "ISO-8859-1");
 			viewBean.setXmlBuilder(theXMLDoc);

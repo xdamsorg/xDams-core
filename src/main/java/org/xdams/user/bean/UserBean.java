@@ -17,6 +17,8 @@ public class UserBean {
 
 	private String accountRef = null;
 
+	private String fatherAccountRef = null;
+
 	private String pwd = null;
 
 	private String email = null;
@@ -31,7 +33,7 @@ public class UserBean {
 
 	private Map<String, Archive> archivesMap = new LinkedHashMap<String, Archive>();
 
-	//private Archive workArchive = null;
+	// private Archive workArchive = null;
 
 	public Map<String, Archive> getArchivesMap() {
 		return archivesMap;
@@ -41,13 +43,13 @@ public class UserBean {
 		this.archivesMap = archivesMap;
 	}
 
-//	public Archive getWorkArchive() {
-//		return workArchive;
-//	}
-//
-//	public void setWorkArchive(Archive workArchive) {
-//		this.workArchive = workArchive;
-//	}
+	// public Archive getWorkArchive() {
+	// return workArchive;
+	// }
+	//
+	// public void setWorkArchive(Archive workArchive) {
+	// this.workArchive = workArchive;
+	// }
 
 	public String getRole() {
 		return role;
@@ -80,8 +82,6 @@ public class UserBean {
 	public void putArchives(String key, Archive archive) {
 		archivesMap.put(key, archive);
 	}
-
- 
 
 	public String getAccountRef() {
 		return accountRef;
@@ -149,8 +149,16 @@ public class UserBean {
 
 	@Override
 	public String toString() {
-		return "UserBean [active=" + active + ", name=" + name + ", lastName=" + lastName + ", id=" + id + ", accountRef=" + accountRef + ", pwd=" + pwd + ", email=" + email + ", language=" + language + ", role=" + role + ", account=" + account + ", archives=" + archives + ", archivesMap="
-				+ archivesMap + "]";
+		return "UserBean [active=" + active + ", name=" + name + ", lastName=" + lastName + ", id=" + id + ", accountRef=" + accountRef + ", fatherAccountRef=" + fatherAccountRef + ", pwd=" + pwd + ", email=" + email + ", language=" + language + ", role=" + role + ", account=" + account
+				+ ", archives=" + archives + ", archivesMap=" + archivesMap + "]";
+	}
+
+	public String getFatherAccountRef() {
+		return fatherAccountRef;
+	}
+
+	public void setFatherAccountRef(String fatherAccountRef) {
+		this.fatherAccountRef = fatherAccountRef;
 	}
 
 }

@@ -17,6 +17,7 @@ public class LoadUser {
 			userBean.setEmail(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@email"));
 			userBean.setLanguage(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@language"));
 			userBean.setAccountRef(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@account"));
+			userBean.setFatherAccountRef(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@fatherAccount"));
 			userBean.setPwd(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@pwd"));
 			userBean.setRole(xmlUsers.valoreNodo("/root/user[@id='" + username + "' and @account='" + account + "']/@role"));
 			int countArchiveUser = xmlUsers.contaNodi("/root/user[@id='" + username + "' and @account='" + account + "']/archive");
@@ -43,8 +44,10 @@ public class LoadUser {
 			Account accountBean = new Account();
 			accountBean.setDescrAccount(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/@descrAccount"));
 			accountBean.setId(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/@id"));
+			accountBean.setFatherAccount(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/@fatherAccount"));
 			userBean.setAccount(accountBean);
-
+			
+			
 			if (userBean.getAccount().equals("") || userBean.getId().equals("")) {
 				return null;
 			}

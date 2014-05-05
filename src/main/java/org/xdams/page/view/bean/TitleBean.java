@@ -20,6 +20,8 @@ public class TitleBean implements Serializable{
 	private String physDoc = "";
 	
 	private String archive = "";
+	
+	private String xmlDoc = "";
 	/**
 	 * @return Returns the firstSon. 
 	 */
@@ -92,6 +94,19 @@ public class TitleBean implements Serializable{
 	 */
 	public void setArchive(String archive) {
 		this.archive = archive;
+	}
+
+	public String getXmlDoc() {
+		return xmlDoc;
+	}
+
+	public void setXmlDoc(String xmlDoc) {
+		this.xmlDoc = xmlDoc;
+	}
+
+	@Override
+	public String toString() {
+		return "TitleBean [title=" + title + ", hierPath=" + hierPath + ", firstSon=" + firstSon + ", physDoc=" + physDoc + ", archive=" + archive + ", xmlDoc=" + xmlDoc + "]";
 	}
 
 }

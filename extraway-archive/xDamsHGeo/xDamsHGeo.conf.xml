@@ -29,8 +29,9 @@
   <file_location mode="day"/>
   <expert_system_extension active="false"/>
   <profile type="title" value="XML,/eac/condesc/identity/conhead/@normal &quot;@[#]@&quot; XML,/eac/eacheader/eacid  &quot;@[§]@&quot;"/>
-  <profile type="title.separ" value="¢"/>
-  <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
-  <profile type="catalog.strict" value="true"/>
-  <profile type="arc.allownonportable" value="true"/> 
+	<profile type="title.separ" value="¢"/>
+	<profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+	<profile type="catalog.strict" value="true"/>
+	<profile type="arc.allownonportable" value="true"/> 
+    <profile type="arc.test_encoding" value="false"/>  
 </xway_cfg> 

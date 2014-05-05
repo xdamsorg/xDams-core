@@ -46,8 +46,7 @@ public class TitlePageCommand {
 		List<String> confControl = new ArrayList<String>();
 		confControl.add("titleManager");
 		confControl.add("valoriControllati");
-		confControl.add("image");
-		confControl.add("plugin");
+		confControl.add("media");
 		confControl.add("query");
 		try {
 			UserBean userBean = (UserBean) modelMap.get("userBean");
@@ -87,12 +86,7 @@ public class TitlePageCommand {
 					QueryBean queryBean = new QueryBean();
 					queryBean.setDb(workFlowBean.getAlias());
 					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-//					System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
 					queryBean.setQuery(findDocumentCommand.getLaFrase());
-					queryBean.setTot(String.valueOf(queryResult.elements));
 					queryBean.setTot(String.valueOf(queryResult.elements));
 
 					if (httpSession.getAttribute(workFlowBean.getQueryBeanName()) == null) {
@@ -105,8 +99,6 @@ public class TitlePageCommand {
 						int indexQr = 0;
 						for (int i = 0; i < arrQueryBean.size(); i++) {
 							QueryBean ilBean = (QueryBean) arrQueryBean.get(i);
-//							System.out.println("ilBean " + ilBean);
-//							System.out.println("queryBean " + queryBean);
 							if (ilBean.getQuery().equals(queryBean.getQuery())) {
 								insert = false;
 								arrQueryBean.remove(i);
@@ -145,6 +137,5 @@ public class TitlePageCommand {
 			modelMap.put("confBean", confBean);
 			connectionManager.closeConnection(xwconn);
 		}
-
 	}
 }

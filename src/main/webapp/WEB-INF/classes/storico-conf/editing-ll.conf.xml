@@ -285,7 +285,7 @@
     </elemento>
    </sezione>
   </macroarea>
-  <!-- 
+  
   <macroarea name="allegati digitali" layer="ALLEGATI" label="Area degli allegati digitali">
    <sezione name="lista allegati digitali" opened="yes">
     <elemento opened="yes" type="multi_group" name="" inline="yes" prefix="/c/daogrp/daoloc">
@@ -294,7 +294,7 @@
     </elemento>
    </sezione>
   </macroarea>
-  -->
+ <!--
   <macroarea name="allegati ASSOCIA" layer="ASSOCIA" label="Area degli ASSOCIA digitali">
    <sezione name="lista /associa digitali" opened="yes">
     <elemento opened="yes" type="multi_group" name="" inline="yes" prefix="/c/daogrp/daoloc">
@@ -303,7 +303,7 @@
     </elemento>
    </sezione>
   </macroarea>
-
+  -->
   <sezione name="campiHidden">
    <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
    <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@repositorycode</elemento>

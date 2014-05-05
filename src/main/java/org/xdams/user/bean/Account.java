@@ -6,6 +6,8 @@ public class Account {
 	private String descrAccount = null;
 
 	private String id = null;
+	
+	private String fatherAccount = null;
 
 	public String getDescrAccount() {
 		return descrAccount;
@@ -25,7 +27,15 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [descrAccount=" + descrAccount + ", id=" + id + "]";
+		return "Account [descrAccount=" + descrAccount + ", id=" + id + ", fatherAccount=" + fatherAccount + "]";
+	}
+
+	public String getFatherAccount() {
+		return fatherAccount;
+	}
+
+	public void setFatherAccount(String fatherAccount) {
+		this.fatherAccount = fatherAccount;
 	}
 
 }

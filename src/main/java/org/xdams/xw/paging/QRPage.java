@@ -94,18 +94,23 @@ public class QRPage implements Serializable {
 		elements = new ArrayList();
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < indexes.size(); i++) {
-
+			TitleBean titleBean = new TitleBean();
 			int num = ((Integer) indexes.get(i)).intValue();
 			int numDoc = xwConn.getNumDoc(xwConn.connection, xwConn.getTheDb(), qr, num, buffer);
-			String titArch = xwConn.getSingleXMLFromNumDoc(numDoc);
-			if (i == 0) {
-				System.out.println("QRPage.loadElementsXML() indexes.size() " + indexes.size());
-				System.out.println("QRPage.loadElementsXML() iiiiiiiiiiiiii " + i);
-				System.out.println("QRPage.loadElementsXML() titArch " + titArch);
+			titleBean.setPhysDoc(String.valueOf(numDoc));
+			Title titArch = xwConn.getTitle(xwConn.connection, xwConn.getTheDb(), qr, num);
+			titleBean.setTitle(titArch.getTitle());
+			int firstSon = xwConn.getNumDocFirstSon(numDoc);
+			titleBean.setFirstSon(firstSon);
+			String xmlDoc = xwConn.getSingleXMLFromNumDoc(numDoc);
+			try {
+				it.highwaytech.db.HierPath thePath = xwConn.getHierPath(numDoc);
+				titleBean.setHierPath(thePath);
+			} catch (Exception e) {
 			}
-			elements.add(String.valueOf(numDoc) + "\260" + String.valueOf(i) + "@@position@@" + titArch);
+			titleBean.setXmlDoc(xmlDoc);
+			elements.add(titleBean);
 		}
-
 		return elements;
 	}
 

@@ -51,10 +51,11 @@ public class MultiEditingManager {
 		velocityContext.put("confBean", this.confBean);
 		velocityContext.put("workFlowBean", this.workFlowBean);
 		velocityContext.put("userBean", this.userBean);
-		velocityContext.put("theXML", this.theXML);
+		
 	}
 
 	public ConfBean execute() throws Exception {
+	 
 		String ilPath = "/" + getElementToFind();
 		// MyRequest myRequest = new MyRequest(aReq);
 		// System.out.println("MultiEditingManager.execute() conta xpath " + "/root/multiEditing[child::" + getIlPath() + "]");
@@ -298,6 +299,7 @@ public class MultiEditingManager {
 	}
 
 	public void setTheXML(XMLBuilder theXML) {
+		velocityContext.put("theXML",theXML);
 		this.theXML = theXML;
 	}
 

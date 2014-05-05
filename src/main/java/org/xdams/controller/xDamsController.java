@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.core.codec.Base64;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 import org.xdams.ajax.bean.AjaxBean;
 import org.xdams.conf.master.ConfBean;
+import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.command.EditingPageCommand;
 import org.xdams.page.command.HierBrowserPageCommand;
 import org.xdams.page.command.InfoTabCommand;
@@ -45,6 +47,7 @@ import org.xdams.page.command.ViewPageCommand;
 import org.xdams.page.command.VocabolarioMultiCommand;
 import org.xdams.page.factory.AjaxFactory;
 import org.xdams.page.factory.ManagingFactory;
+import org.xdams.page.form.bean.CustomPageBean;
 import org.xdams.page.form.bean.LookupBean;
 import org.xdams.page.upload.bean.UploadBean;
 import org.xdams.page.upload.command.AssociateCommand;
@@ -54,16 +57,16 @@ import org.xdams.page.view.modeling.QueryPageView;
 import org.xdams.save.SaveDocumentCommand;
 import org.xdams.security.AuthenticationType;
 import org.xdams.security.UserDetails;
-import org.xdams.security.load.LoadUser;
 import org.xdams.security.load.LoadUserManager;
-import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
+import org.xdams.utility.XMLCleaner;
 import org.xdams.utility.request.MyRequest;
-import org.xdams.utility.resource.ConfManager;
 import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
+import org.xdams.xmlengine.connection.manager.ConnectionManager;
+import org.xdams.xw.XWConnection;
 
 @Controller
 @SessionAttributes({ "userBean" })
@@ -81,6 +84,9 @@ public class xDamsController {
 	@Autowired
 	AuthenticationType authenticationType;
 
+	@Autowired
+	Boolean multiAccount;
+
 	@ModelAttribute
 	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
@@ -88,7 +94,6 @@ public class xDamsController {
 
 	@ModelAttribute
 	public void userLoad(Model model) {
-
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
@@ -102,8 +107,12 @@ public class xDamsController {
 	}
 
 	@ModelAttribute
-	public void frontUrl(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void frontUrl(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// model.addAttribute("frontUrl", request.getContextPath() + "/resources");
 		model.addAttribute("frontUrl", request.getContextPath() + "/resources");
+		if (multiAccount && model.get("userBean") != null) {
+			model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + ((UserBean) model.get("userBean")).getAccountRef());
+		}
 		model.addAttribute("contextPath", request.getContextPath());
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
@@ -169,6 +178,11 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		TitlePageCommand titlePageCommand = new TitlePageCommand(request.getParameterMap(), modelMap);
 		titlePageCommand.execute();
+		String pageName = MyRequest.getParameter("pageName", request);
+		if (!pageName.equals("")) {
+			modelMap.put("pageName", pageName);
+			return "search/" + pageName;
+		}
 		return "search/title";
 	}
 
@@ -357,14 +371,17 @@ public class xDamsController {
 		uploadCommand.execute();
 		modelMap.put("uploadResponse", uploadBean);
 
-		System.err.println("----------------uploadbean---------------------------" + uploadBean);
-		System.err.println("Test uploading file: " + uploadBean.getFiledata().getFileItem().getContentType());
-		System.err.println("-------------------------------------------");
+		System.out.println("----------------uploadbean---------------------------" + uploadBean);
+		System.out.println("uploading file: " + uploadBean.getFiledata().getFileItem().getContentType());
+		System.out.println("-------------------------------------------");
 		return "upload/uploadResult";
 	}
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(Model model, HttpServletRequest request) {
+		if (request.getParameter("tokenValue") != null && !request.getParameter("tokenValue").equals("")) {
+			return new String(Base64.decode(request.getParameter("tokenValue").getBytes()));
+		}
 		return "login";
 	}
 
@@ -372,7 +389,7 @@ public class xDamsController {
 	public String openFormUpload(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		common(confBean, userBean, archive, modelMap, request, response);
-		System.out.println("request.getParameterMap() " + request.getParameterMap());
+		// System.out.println("request.getParameterMap() " + request.getParameterMap());
 		modelMap.addAttribute("uploadBean", uploadBean);
 		return "upload/uploadMenu";
 	}
@@ -388,6 +405,32 @@ public class xDamsController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", MediaType.TEXT_PLAIN.toString());
 		return new ResponseEntity<String>(new Md5PasswordEncoder().encodePassword(request.getParameter("passwordField"), null), responseHeaders, HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/custom/{archive}/page")
+	public String customPage(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @ModelAttribute CustomPageBean customPageBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		common(confBean, userBean, archive, modelMap, request, response);
+		XWConnection xwconn = null;
+		ConnectionManager connectionManager = new ConnectionManager();
+		WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
+		List<String> confControl = customPageBean.getConfControl();
+		try {
+			MultiEditingManager editingManager = new MultiEditingManager(request.getParameterMap(), confBean, userBean, workFlowBean);
+			if (customPageBean.getPhysDoc() != null && !customPageBean.getPhysDoc().equals("")) {
+				xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+				customPageBean.setXmlBuilder(new XMLBuilder(XMLCleaner.clearXwXML(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(customPageBean.getPhysDoc())), true), "ISO-8859-1"));
+				editingManager.setTheXML(customPageBean.getXmlBuilder());
+			} else {
+				editingManager.setTheXML(new XMLBuilder("root"));
+			}
+
+			confBean = editingManager.rewriteMultipleConf(confControl);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			connectionManager.closeConnection(xwconn);
+		}
+		return customPageBean.getPageName();
 	}
 
 }

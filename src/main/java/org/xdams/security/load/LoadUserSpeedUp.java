@@ -72,7 +72,7 @@ public class LoadUserSpeedUp {
 				if (valueAttribute(accountAttribute, "id").equals(account)) {
 					accountBean.setId(valueAttribute(accountAttribute, "id"));
 					accountBean.setDescrAccount(valueAttribute(accountAttribute, "descrAccount"));
-					
+					accountBean.setFatherAccount(valueAttribute(accountAttribute, "fatherAccount"));
 					// System.out.println("accountStr: " + accountStr);
 //					System.out.println("accountAttribute: " + accountAttribute);
 					Matcher matcherArchiveGroup = patternArchiveGroup.matcher(accountStr);
@@ -151,6 +151,7 @@ public class LoadUserSpeedUp {
 			userBean.setEmail(valueAttribute(myUserAttribute, "email"));
 			userBean.setLanguage(valueAttribute(myUserAttribute, "language"));
 			userBean.setAccountRef(valueAttribute(myUserAttribute, "account"));
+			userBean.setFatherAccountRef(valueAttribute(myUserAttribute, "fatherAccount"));
 			userBean.setPwd(valueAttribute(myUserAttribute, "pwd"));
 			userBean.setRole(valueAttribute(myUserAttribute, "role"));
 

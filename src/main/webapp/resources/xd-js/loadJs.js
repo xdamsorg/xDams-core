@@ -179,12 +179,12 @@ function loadJsBusiness(target, prefix) {
 		loadScripts({
 			'base' : base + "/jquery",
 			'prefix' : prefix,
-			'scripts' : [ 'jquery-ui-last', 'jquery.blockUI', 'jquery.bgiframe.min', 'jquery.dimensions', 'jqModal', 'jquery.jgrowl_minimized', 'jquery.cookie','jquery.qtip.min' ]
+			'scripts' : [ 'jquery-ui-last', 'jquery.blockUI', 'jquery.bgiframe.min', 'jquery.dimensions', 'jqModal', 'jquery.jgrowl_minimized', 'jquery.cookie','jquery.qtip.min','jquery.jcarousel.min' ]
 		});
 		loadScripts({
 			'base' : base,
 			'prefix' : prefix,
-			'scripts' : [ 'xdams_gestione', 'xdams_document', 'xdams_query', 'xdams_ajax', 'xdams_tooltip', 'xdams_titoli', 'xdams_new_gestione', 'xdams_info', 'xdams_jquery', 'xdams_onload' ]
+			'scripts' : [ 'xdams_gestione', 'xdams_document', 'xdams_query', 'xdams_ajax', 'xdams_tooltip', 'xdams_titoli', 'xdams_new_gestione', 'xdams_info', 'xdams_jquery', 'xdams_onload', 'xdams_photo_title' ]
 		});
 	} else if (target === 'pdfPrint') {
 		loadScripts({

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <account descrAccount="xdams.org - xDams Foundation" id="xdams.org">
+ <account descrAccount="xdams.org - xDams open source" id="xdams.org">
   <archiveGroup name="Archivi">
-   <archive alias="xDamsHist" host="127.0.0.1" ico="storico.gif" pne="c" port="-1">Archivio Storico</archive>
-   <archive alias="xDamsAV" host="127.0.0.1" ico="video.gif" pne="c" port="-1">Archivio AudioVideo</archive>
-   <archive alias="xDamsPhoto" host="127.0.0.1" ico="fotografico.gif" pne="c" port="-1">Archivio Fotografico</archive>
+   <archive alias="xDamsHist" host="127.0.0.1" ico="storico.gif" pne="c" port="-1" type="xDamsHist">Archivio Storico</archive>
+   <archive alias="xDamsAV" host="127.0.0.1" ico="video.gif" pne="c" port="-1" type="xDamsAV">Archivio AudioVideo</archive>
+   <archive alias="xDamsPhoto" host="127.0.0.1" ico="fotografico.gif" pne="c" port="-1" type="xDamsPhoto">Archivio Fotografico</archive>
   </archiveGroup>
   <archiveGroup name="Authority">
-   <archive alias="xDamsEACCPF" host="127.0.0.1" ico="authority.gif" pne="eac-cpf" port="-1">Authority Enti/Famiglie/Persone EAC-CPF</archive>
-   <archive alias="xDamsHGeo" host="127.0.0.1" ico="authority.gif" pne="eac" port="-1">Authority Luoghi</archive>
+   <archive alias="xDamsEACCPF" host="127.0.0.1" ico="authority.gif" pne="eac-cpf" port="-1" type="xDamsEACCPF">Authority Enti/Famiglie/Persone EAC-CPF</archive>
+   <archive alias="xDamsHGeo" host="127.0.0.1" ico="authority.gif" pne="eac" port="-1" type="xDamsHGeo">Authority Luoghi</archive>
   </archiveGroup>
   <archiveGroup name="Multi Archivio">
-   <archive alias="multiArchive" host="127.0.0.1" ico="authority.gif" pne="notPresent" port="-1">Ricerca Multi Archivio</archive>
+   <archive alias="multiArchive" host="127.0.0.1" ico="authority.gif" pne="notPresent" port="-1" type="multiArchive">Ricerca Multi Archivio</archive>
   </archiveGroup>
  </account> 
 </root>
