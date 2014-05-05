@@ -2,8 +2,8 @@
 
 ## xDams Platform
 
-xDams è una piattaforma di gestione documentale XML interamente web-based che permette di conservare, organizzare, condividere e valorizzare i patrimoni archivistici attraverso l’applicazione di modelli dati elaborati sulla base di standard di descrizione archivistica nazionali ed internazionali. L’utilizzo del formato XML garantisce interoperabilità e condivisione delle risorse.
-E’ attualmente disponbile nella versione server **1.0.0**
+xDams ï¿½ una piattaforma di gestione documentale XML interamente web-based che permette di conservare, organizzare, condividere e valorizzare i patrimoni archivistici attraverso lï¿½applicazione di modelli dati elaborati sulla base di standard di descrizione archivistica nazionali ed internazionali. Lï¿½utilizzo del formato XML garantisce interoperabilitï¿½ e condivisione delle risorse.
+Eï¿½ attualmente disponbile nella versione server **2.0.0**
 
 
 ## Requisiti hardware minimi
@@ -20,7 +20,7 @@ Sono comunque consigliati:
 
 ## Ambienti software del server
 
-xDams è un sistema multipiattaforma funzionanante sui sistemi operativi GNU/Linux, Windows XP e superiori. Attualmente viene rilasciato con documentazione di installazione per la sola versione Windows.I requisiti software per l’installazione della piattaforma sono:
+xDams ï¿½ un sistema multipiattaforma funzionanante sui sistemi operativi GNU/Linux, Windows XP e superiori. Attualmente viene rilasciato con documentazione di installazione per la sola versione Windows.I requisiti software per lï¿½installazione della piattaforma sono:
 
 *	Java 2 SDK
 *	Apache Tomcat ver. 6.x o superiori
@@ -32,33 +32,33 @@ xDams è un sistema multipiattaforma funzionanante sui sistemi operativi GNU/Linu
 
 Le istruzioni di configurazione riportate in questa pagina riguardano il setup del browser necessarie per accedere al sistema di backoffice di xDams, denominta "Workspace".
 
-L’interfaccia dell’applicazione è fruibile ad una risoluzione minima di 1024x768 o superiore ed il Workspace di xDams è stato testato con Internet Explorer, Google Chrome e Firefox  (IE versione 8.0 o successive, Chrome versione 16.x o superiori, Firefox versione 3.0 o successive). Il Workspace fa utilizzo di JavaScript, con utilizzo di finestre popup e di cookie.
+Lï¿½interfaccia dellï¿½applicazione ï¿½ fruibile ad una risoluzione minima di 1024x768 o superiore ed il Workspace di xDams ï¿½ stato testato con Internet Explorer, Google Chrome e Firefox  (IE versione 8.0 o successive, Chrome versione 16.x o superiori, Firefox versione 3.0 o successive). Il Workspace fa utilizzo di JavaScript, con utilizzo di finestre popup e di cookie.
 
-Ciò significa che per accedere al Workspace di xDams è necessario:
+Ciï¿½ significa che per accedere al Workspace di xDams ï¿½ necessario:
 
 *	Abilitare JavaScript
-*	Consentire l’utilizzo di Popups
+*	Consentire lï¿½utilizzo di Popups
 *	Abilitare Cookies
 *	Flash Player installato
 
 
 ## Installazione
 
-Per la versione Windows, procedere al download dell’ultima versione di **xDams Open Source** scaricabile dal sito [http://www.xdams.org/download/] (http://www.xdams.org/download/)
-Scaricare poi l’ultima versione della piattaforma Extraway Open Platform dalla pagina di [source forge] (http://sourceforge.net/projects/extraway/files/eXtraWay%20OpenPlatform/1.0/), selezionando la versione corretta per il proprio sistema operativo.
+Per la versione Windows, procedere al download dellï¿½ultima versione di **xDams Open Source** scaricabile dal sito [http://www.xdams.org/download/] (http://www.xdams.org/download/)
+Scaricare poi lï¿½ultima versione della piattaforma Extraway Open Platform dalla pagina di [source forge] (http://sourceforge.net/projects/extraway/files/eXtraWay%20OpenPlatform/1.0/), selezionando la versione corretta per il proprio sistema operativo.
 Verificare i requisiti client.
 
-Seguire le indicazioni riportate nel paragrafo “Installazione su Server Windows” del [documento di installazione] (https://github.com/downloads/xdamsorg/xDams-core/xDamsOSS_1.0.0_installation_guidelines.pdf)
+Seguire le indicazioni riportate nel paragrafo ï¿½Installazione su Server Windowsï¿½ del [documento di installazione] (https://github.com/downloads/xdamsorg/xDams-core/xDamsOSS_1.0.0_installation_guidelines.pdf)
 
 
 ## Accesso al sistema 
 
-Ora il sistema xDams è pronto per l’utilizzo! Seguire i seguenti passi per avviare correttamente la web application di xDams.
+Ora il sistema xDams ï¿½ pronto per lï¿½utilizzo! Seguire i seguenti passi per avviare correttamente la web application di xDams.
 
 *	Riavviare il servizio extraway
 *	Riavviare Apache Tomcat
-*	Aprire un browser internet e digitare l’indirizzo: [http://localhost:8080/xDams/login.html] (http://localhost:8080/xDams/login.html)
-*	Nel campo “Nome utente” digitare admin e nel campo Password il valore xdams.org
+*	Aprire un browser internet e digitare lï¿½indirizzo: [http://localhost:8080/xDams/login.html] (http://localhost:8080/xDams/login.html)
+*	Nel campo ï¿½Nome utenteï¿½ digitare admin e nel campo Password il valore xdams.org
 
 
 ## Compilazione del sorgente 
@@ -76,4 +76,4 @@ Ora il sistema xDams è pronto per l’utilizzo! Seguire i seguenti passi per avvia
 
 ## Licenza
 
-Il codice sorgente di xDams viene rilasciato sotto licenza [GNU GPL3] (http://www.gnu.org/licenses/gpl-3.0.html), che prevede la modifica, la copia, la ridistribuzione e l’utilizzo del software anche a fini commerciali e non esclude la realizzazione di prodotti derivati a patto che ogni copia, modifica o prodotto derivato da questo software sia rilasciato sotto gli stessi termini d’uso. L’installazione e l’utilizzo della piattaforma comportano l’accettazione della licenza, si raccomanda perciò di leggerne il testo prima di effettuare il download.
+Il codice sorgente di xDams viene rilasciato sotto licenza [GNU GPL3] (http://www.gnu.org/licenses/gpl-3.0.html), che prevede la modifica, la copia, la ridistribuzione e lï¿½utilizzo del software anche a fini commerciali e non esclude la realizzazione di prodotti derivati a patto che ogni copia, modifica o prodotto derivato da questo software sia rilasciato sotto gli stessi termini dï¿½uso. Lï¿½installazione e lï¿½utilizzo della piattaforma comportano lï¿½accettazione della licenza, si raccomanda perciï¿½ di leggerne il testo prima di effettuare il download.
