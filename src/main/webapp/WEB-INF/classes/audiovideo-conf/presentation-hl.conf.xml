@@ -75,14 +75,14 @@
 		<sezione name="info edizione" opened="yes" summary="yes" showdoc="no">
 			<elemento prefix="/c" type="multi_group" name="edizione" summary="yes" showdoc="no">
 				<elemento format_before="&lt;em&gt;lingua: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/langmaterial/language[@altrender='main language']/text()</elemento>
-				<elemento format_before="&lt;em&gt;nazionalità: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no" value="document:/conf-cinematografico/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
+				<elemento format_before="&lt;em&gt;nazionalità: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
 				<elemento format_before="&lt;em&gt;edizione / versione: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/unittilte/edition/text()</elemento>
 				<elemento format_before="&lt;em&gt;altra lingua: &lt;/em&gt;" format_after="&lt;br&gt;" summary="yes" showdoc="no">/c/did/langmaterial/language[@altrender='other language']/text()</elemento>
 			</elemento>
 		</sezione>
 		<sezione name="info edizione" opened="yes" summary="no" showdoc="yes">
 			<elemento name="lingua" summary="no" showdoc="yes">/c/did/langmaterial/language[@altrender='main language']/text()</elemento>
-			<elemento name="nazionalità" summary="no" showdoc="yes" value="document:/conf-cinematografico/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
+			<elemento name="nazionalità" summary="no" showdoc="yes" value="document:/audiovideo-conf/valoriControllati.xml" externalPath="/root/elemento[@name='nationality']/opzione">/c/did/origination[@label='nationality']/text()</elemento>
 			<elemento name="edizione / versione" summary="no" showdoc="yes">/c/did/unittitle/edition/text()</elemento>
 			<elemento name="altre lingue" type="multi_group" prefix="/c/did/langmaterial/language[@altrender='other language']" summary="no" showdoc="yes">
 				<elemento summary="no" showdoc="yes">/c/did/langmaterial/language[@altrender='other language']/text()</elemento>
