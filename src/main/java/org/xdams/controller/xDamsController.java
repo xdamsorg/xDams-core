@@ -18,9 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
-import org.springframework.security.core.codec.Base64;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -78,7 +78,7 @@ public class xDamsController {
 	@Autowired
 	ServiceUser serviceUser;
 
-	@Autowired
+	@Autowired 
 	ServletContext servletContext;
 
 	@Autowired
@@ -328,7 +328,7 @@ public class xDamsController {
 	}
 
 	@RequestMapping(value = "/{archive}/ajax", method = RequestMethod.GET)
-	public ResponseEntity<String> ajaxCall(@PathVariable String archive, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("workFlowBean") WorkFlowBean workFlowBean, @ModelAttribute("confBean") ConfBean confBean, ModelMap modelMap, HttpServletRequest request,
+	public ResponseEntity<String> ajaxCall(@PathVariable String archive, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, ModelMap modelMap, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		common(confBean, userBean, archive, modelMap, request, response);
 
@@ -384,7 +384,7 @@ public class xDamsController {
 		}
 		return "login";
 	}
-
+  
 	@RequestMapping(value = "/upload/{archive}/uploadMenu", method = RequestMethod.GET)
 	public String openFormUpload(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
