@@ -5,17 +5,16 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.el.ELResolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.springframework.web.util.ExpressionEvaluationUtils;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.view.bean.EditingBean;
 import org.xdams.page.view.bean.ViewBean;
 import org.xdams.user.bean.UserBean;
+import org.xdams.utility.ExpressionEvaluationUtils;
 import org.xdams.utility.reflection.ReflectionUtil;
 import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
@@ -182,9 +181,12 @@ public class MenuGestioneJstl extends TagSupport {
 							if (anchor.indexOf("#") != -1 || contaParamAnchor == 0) {
 								interrogativo = "";
 							}
-							if (ExpressionEvaluationUtils.isExpressionLanguage(anchor)) {
-								anchor = ExpressionEvaluationUtils.evaluateString(anchor, anchor, pageContext);
-							}
+							// if (ExpressionEvaluationUtils.isExpressionLanguage(anchor)) {
+							// anchor = ExpressionEvaluationUtils.evaluateString(anchor, anchor, pageContext);
+							// }
+
+							anchor = (String) ExpressionEvaluationUtils.evaluate(anchor, String.class, pageContext);
+
 							anchorTxt += "href=\"" + anchor + interrogativo;
 							for (int k = 0; k < contaParamAnchor; k++) {
 								String paramNameAnchor = builderManaging.valoreNodo("/root/managing/user/element[" + (i + 1) + "]/anchor[" + (j + 1) + "]/paramAnchor[" + (k + 1) + "]/@name");
@@ -240,7 +242,7 @@ public class MenuGestioneJstl extends TagSupport {
 							anchorTxt += "\"";
 							String target = builderManaging.valoreNodo("/root/managing/user/element[" + (i + 1) + "]/anchor[" + (j + 1) + "]/@target");
 							if (!target.equals("")) {
-								targetTxt = "target=\"" + ExpressionEvaluationUtils.evaluateString(target, target, pageContext) + "\"";
+								targetTxt = "target=\"" + ExpressionEvaluationUtils.evaluate(target, String.class, pageContext) + "\"";
 							}
 
 						}
