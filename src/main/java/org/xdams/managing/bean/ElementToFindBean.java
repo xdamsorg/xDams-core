@@ -1,8 +1,10 @@
 package org.xdams.managing.bean;
 
+import java.io.Serializable;
+
 import org.xdams.adv.configuration.ConfigurationXMLReader;
 
-public class ElementToFindBean {
+public class ElementToFindBean implements Serializable {
 	String strQuery = "";
 
 	String strPrefix = "";
@@ -14,6 +16,8 @@ public class ElementToFindBean {
 	boolean advEditing = false;
 
 	String isTextNode = "";
+
+	String alias = "";
 
 	int numTotXPathToChange = 0;
 
@@ -88,6 +92,20 @@ public class ElementToFindBean {
 
 	public void setIsTextNode(String isTextNode) {
 		this.isTextNode = isTextNode;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	@Override
+	public String toString() {
+		return "ElementToFindBean [strQuery=" + strQuery + ", strPrefix=" + strPrefix + ", strCode=" + strCode + ", xPathToChange=" + xPathToChange + ", advEditing=" + advEditing + ", isTextNode=" + isTextNode + ", alias=" + alias + ", numTotXPathToChange=" + numTotXPathToChange
+				+ ", configurationXMLReader=" + configurationXMLReader + "]";
 	}
 
 }

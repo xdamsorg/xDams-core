@@ -1,10 +1,11 @@
 package org.xdams.managing.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.xdams.page.view.bean.ManagingBean;
 
-public class ModifyAutherBean extends ManagingBean {
+public class ModifyAutherBean extends ManagingBean implements Serializable{
 
 	private String jspDispatch = "";
 

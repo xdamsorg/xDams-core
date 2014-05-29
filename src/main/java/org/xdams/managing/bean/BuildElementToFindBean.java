@@ -3,6 +3,7 @@ package org.xdams.managing.bean;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ import org.xdams.xml.builder.XMLBuilder;
 public class BuildElementToFindBean {
 
 	public Map<String, List<ElementToFindBean>> buildElementToFindBean(XMLBuilder theXMLconf, String theArch) {
-		Map<String, List<ElementToFindBean>> mapDbToFind = new Hashtable<String, List<ElementToFindBean>>();
+		Map<String, List<ElementToFindBean>> mapDbToFind = new LinkedHashMap<String, List<ElementToFindBean>>();
 		List<ElementToFindBean> arrElementToFind = new ArrayList<ElementToFindBean>();
 		try {
 			String fixXpath = "/root/connectedArchives/masterArchive[@name='" + theArch + "']";
@@ -35,13 +36,13 @@ public class BuildElementToFindBean {
 					if (mapDbToFind.containsKey(dbToFind)) {
 						throw new Exception(fixXpath + "/workArchive[" + (x + 1) + "]/@name \"" + dbToFind + "\" multiplo");
 					}
-					System.out.println("dbToFind " + dbToFind + "<br>");
+//					System.out.println("dbToFind " + dbToFind + "<br>");
 					// is multi elementToFind
 					int countElementToFind = theXMLconf.contaNodi(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind");
 					int countElementAdv = theXMLconf.contaNodi(fixXpath + "/workArchive[" + (x + 1) + "]/root/element");
 
-					System.out.println("BuildElementToFindBean.buildElementToFindBean() countElementToFind " + countElementToFind);
-					System.out.println("BuildElementToFindBean.buildElementToFindBean() countElementAdv " + countElementAdv);
+//					System.out.println("BuildElementToFindBean.buildElementToFindBean() countElementToFind " + countElementToFind);
+//					System.out.println("BuildElementToFindBean.buildElementToFindBean() countElementAdv " + countElementAdv);
 
 					// System.out.println("countElementToFind "+countElementToFind+"<br>");
 					if (countElementToFind == 0 && countElementAdv == 0) {
@@ -55,36 +56,38 @@ public class BuildElementToFindBean {
 						}
 						elementToFindBean.setStrQuery(strQuery);
 
-						System.out.println("strQuery " + strQuery + "<br>");
+//						System.out.println("strQuery " + strQuery + "<br>");
 						String strPrefix = theXMLconf.valoreNodo(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/@prefix");
 						if (strPrefix.equals("")) {
 							throw new Exception(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/@prefix" + " obbligatorio");
 						}
 						elementToFindBean.setStrPrefix(strPrefix);
-						System.out.println("strPrefix " + strPrefix + "<br>");
+//						System.out.println("strPrefix " + strPrefix + "<br>");
 						String strCode = theXMLconf.valoreNodo(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/@code");
 						if (strCode.equals("")) {
 							throw new Exception(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/@code" + " obbligatorio");
 						}
 						elementToFindBean.setStrCode(strCode);
-						System.out.println("strCode " + strCode + "<br>");
+//						System.out.println("strCode " + strCode + "<br>");
 						String xPathToChange = theXMLconf.valoreNodo(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/text()");
 						if (xPathToChange.equals("")) {
 							throw new Exception(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/text()" + " obbligatorio");
 						}
 						elementToFindBean.setXPathToChange(xPathToChange);
-						System.out.println("xPathToChange " + xPathToChange + "<br>");
+//						System.out.println("xPathToChange " + xPathToChange + "<br>");
 						String isTextNode = theXMLconf.valoreNodo(fixXpath + "/workArchive[" + (x + 1) + "]/elementToFind[" + (z + 1) + "]/@isTextNode");
 						elementToFindBean.setIsTextNode(isTextNode);
-						System.out.println("isTextNode " + isTextNode + "<br>");
+//						System.out.println("isTextNode " + isTextNode + "<br>");
 
+						elementToFindBean.setAlias(dbToFind);
+						
 						arrElementToFind.add(elementToFindBean);
 					}
 					for (int z = 0; z < countElementAdv; z++) {
 						Node node = theXMLconf.getSingleNode(fixXpath + "/workArchive[" + (x + 1) + "]/root");
-						//System.out.println(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
+//						System.out.println(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
 						final ConfigurationXMLReader configurationXMLReader = new ConfigurationXMLReader(theXMLconf.getXMLFromNode(node, "ISO-8859-1"));
-						System.out.println(configurationXMLReader.getObjects());
+//						System.out.println(configurationXMLReader.getObjects());
 						MappingAdv mappingAdv = new MappingAdv();
 						List<Element> list = mappingAdv.extractMapping(configurationXMLReader.getObjects(), null, new HashMap<String, String>());
 						ArrayList<Element> arrayList = new ArrayList<Element>(list);
@@ -95,10 +98,10 @@ public class BuildElementToFindBean {
 							mappingAdv.buildXML(arrayListA, theXMLconf, null, null, new GenericInterface<XMLBuilder>() {
 								public void invoke(XMLBuilder builder, Element element) {
 									try {
-										System.out.println(element.getFieldXPath());
-										System.out.println(element.getFieldValue());
-										System.out.println(element.getQuery());
-										System.out.println(element.getPrefix());
+//										System.out.println(element.getFieldXPath());
+//										System.out.println(element.getFieldValue());
+//										System.out.println(element.getQuery());
+//										System.out.println(element.getPrefix());
 										elementToFindBean.setStrQuery(element.getQuery());
 										elementToFindBean.setAdvEditing(true);
 										elementToFindBean.setConfigurationXMLReader(configurationXMLReader);
@@ -112,7 +115,7 @@ public class BuildElementToFindBean {
 					}
 					mapDbToFind.put(dbToFind, arrElementToFind);
 					arrElementToFind = new ArrayList<ElementToFindBean>();
-					System.out.println("####################################################################");
+//					System.out.println("####################################################################");
 				}
 			}
 		} catch (Exception e) {
