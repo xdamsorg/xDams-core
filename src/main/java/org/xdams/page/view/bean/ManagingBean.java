@@ -1,10 +1,11 @@
 package org.xdams.page.view.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.xdams.xml.builder.XMLBuilder;
 
-public class ManagingBean {
+public class ManagingBean implements Serializable{
 
 	private ArrayList listPhysDoc = new ArrayList();
 
