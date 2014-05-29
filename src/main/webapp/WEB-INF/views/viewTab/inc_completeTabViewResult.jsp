@@ -1,6 +1,6 @@
 <%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="org.xdams.page.view.bean.MediaBean"%>
-<%@page import="org.springframework.web.util.ExpressionEvaluationUtils"%>
+<%@page import="org.xdams.utility.ExpressionEvaluationUtils"%>
 <%@page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <%@page import="org.xdams.utility.testing.TestingViewBean"%>
 <%
@@ -180,7 +180,7 @@
 										}
 										String urlFoto = "";
 										if (ExpressionEvaluationUtils.isExpressionLanguage(prefixFoto)) {
-											urlFoto = ExpressionEvaluationUtils.evaluateString(prefixFoto, prefixFoto, pageContext)+strHrefFoto;
+											urlFoto = ExpressionEvaluationUtils.evaluate(prefixFoto, String.class, pageContext)+strHrefFoto;
 										}else if(strHrefFoto.contains("http://")){
 											urlFoto = strHrefFoto;	
 										}else{
