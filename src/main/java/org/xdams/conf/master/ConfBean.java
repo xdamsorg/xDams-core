@@ -2,7 +2,7 @@ package org.xdams.conf.master;
 
 import javax.servlet.jsp.PageContext;
 
-import org.springframework.web.util.ExpressionEvaluationUtils;
+import org.xdams.utility.ExpressionEvaluationUtils;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.xml.builder.XMLBuilder;
 
@@ -253,7 +253,7 @@ public class ConfBean {
 		if (pageContext != null) {
 			try {
 				String xmlConfstr = theXMLconf.getXML("ISO-8859-1");
-				xmlConfstr = ExpressionEvaluationUtils.evaluateString(xmlConfstr, xmlConfstr, pageContext);
+				xmlConfstr = (String) ExpressionEvaluationUtils.evaluate(xmlConfstr, String.class, pageContext);
 				return new XMLBuilder(xmlConfstr, false);
 			} catch (Exception e) {
 				return theXMLconf;
