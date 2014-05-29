@@ -215,13 +215,13 @@ public class ModifyAuther {
 													if (isTextNode.equals("true")) {
 														newXpathCode = newXPathToChange.substring(0, newXPathToChange.lastIndexOf("/") + 1) + strCode;
 													} else {
-														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode.indexOf(strPrefix)!=-1 " + strPrefix.contains(strCode));
-														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strPrefix " + strPrefix);
-														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode " + strCode);
+//														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode.indexOf(strPrefix)!=-1 " + strPrefix.contains(strCode));
+//														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strPrefix " + strPrefix);
+//														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode " + strCode);
 														if (strCode.indexOf(strPrefix) != -1) {
-															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI");
+//															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI");
 															newXpathCode = strPrefix + "[" + (x + 1) + "]" + StringUtils.difference(strPrefix, strCode);
-															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI" + newXpathCode);
+//															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI" + newXpathCode);
 															// newXpathCode = newXPathToChange.substring(0, newXPathToChange.lastIndexOf("/") + 1) + "@" + strCode;
 														} else {
 															if (strCode.indexOf("@") != -1) {
@@ -233,19 +233,8 @@ public class ModifyAuther {
 														}
 
 													}
-													System.out.println("ModifyAuther.execute() newXpathCode " + newXpathCode);
 													String ilValoreCode = builder.valoreNodo(newXpathCode);
-													System.out.println("ModifyAuther.execute() ilValoreCode " + ilValoreCode);
-													System.out.println("ModifyAuther.execute() newXpathCode " + newXpathCode);
-													System.out.println("ModifyAuther.execute() newXpathCode " + newXpathCode);
-													System.out.println("ModifyAuther.execute() ilValoreCode " + ilValoreCode);
 													String ilValoreText = builder.valoreNodo(newXPathToChange);
-													System.out.println("ModifyAuther.execute() ilValoreText " + ilValoreText);
-													System.out.println("ModifyAuther.execute() ilValoreText " + ilValoreText);
-													System.out.println("ModifyAuther.execute() ilValoreText " + ilValoreText);
-													System.out.println("ModifyAuther.execute() ilValoreText " + ilValoreText);
-													System.out.println("ModifyAuther.execute() ilValoreText " + ilValoreText);
-
 													if (ilValoreCode.indexOf(codeToFind) != -1 && !ilValoreText.equals(nameToChange)) {
 														modificato = true;
 														builder.insertValueAt(newXPathToChange, nameToChange);
