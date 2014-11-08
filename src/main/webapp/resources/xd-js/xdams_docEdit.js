@@ -1,12 +1,21 @@
-//docEdit 1.004
-
 var doAfterSave;
 function afterSave(){
 	if(doAfterSave!=null){
 	 	doAfterSave();
 	}
 }
+function fillAllFieldForTest(){
+	$("input[type='text']").each(function(){
+		$(this).val("ciaooo");
+	});
+	$("select :last-child").each(function(){
+		$(this).attr("selected", "true");
+	});
 
+	$("textarea").each(function(){
+		$(this).val("ciaooo");
+	});
+}
 
 function spreadModSave(actionParam , elementName, codeToFind){
 	ritorno = false;
@@ -604,13 +613,18 @@ function ritornaVoce(part01, part02, part03) {
 }
 function modificaFormaAutorizzata(prefix) {
 	var obj = null;
-	if(prefix.indexOf('.eac.')!=-1){
-		obj = document.theForm[prefix + '.@normal'].value;
-	}else if(prefix.indexOf('.eac-cpf.')!=-1){
-		obj = document.theForm[prefix+'.part\[@localType=\'normal\'\].text()'].value;
-	}else{
-		obj = document.theForm[prefix].value;
-	}
+	try{
+		if(prefix.indexOf('.eac.')!=-1){
+			obj = document.theForm[prefix + '.@normal'].value;
+		}else if(prefix.indexOf('.eac-cpf.')!=-1){
+			obj = document.theForm[prefix+'.part\[@localType=\'normal\'\].text()'].value;
+		}else{
+			obj = document.theForm[prefix].value;
+		}
+		}catch(e){
+			//nel caso non sia contemplato
+			obj = document.theForm[prefix].value;
+		}
 	
 	var ilLemma = escape(escape(obj));
 	var ilLemmaCode = "";

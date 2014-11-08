@@ -16,5 +16,8 @@
   <presentation value="xDamsAV">
    <file name="/audiovideo-conf/presentation.conf.xml"/>
   </presentation>
+  <presentation value="xDamsUsers">
+   <file name="/users-conf/presentation.conf.xml"/>
+  </presentation>  
  </multiEditing>
 </root>

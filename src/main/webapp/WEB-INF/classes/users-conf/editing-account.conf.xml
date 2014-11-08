@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <preInsert excludeRel="son,lowerbrother,upperbrother" suggestedRel="none">
+  <macroarea>
+   <sezione name="account" opened="yes">
+    <elemento input_type="text" class="Long" name="account name">/account/@descrAccount</elemento>
+    <elemento input_type="text" class="Long" name="id">/account/@id</elemento>
+   </sezione>
+  </macroarea>
+ </preInsert>
+ <docEdit>
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="account" opened="yes">
+    <elemento input_type="text" class="Long" name="account name">/account/@descrAccount</elemento>
+    <elemento input_type="text" class="Long" name="id">/account/@id</elemento>
+   </sezione>
+   <sezione name="archiveGroup" opened="yes">
+    #foreach( $product in [0..$theXML.contaNodi("/account/archiveGroup")]) #set($firstFor=$velocityCount)
+    <elemento name="Gruppo Archivi" input_type="text" class="ExtraLong">/account/archiveGroup[${firstFor}]/@name</elemento>
+    <elemento name="" opened="yes" type="multi_group" prefix="/account/archiveGroup[${firstFor}]/archive">
+     <elemento input_type="text" name="Archive name" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/text()</elemento>
+     <elemento input_type="select" value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='pne']/opzione" name="pne" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@pne</elemento>
+     <elemento input_type="text" name="alias" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@alias</elemento>
+     <elemento input_type="text" name="host" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@host</elemento>
+     <elemento input_type="text" name="port" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@port</elemento>
+     <elemento input_type="text" name="type" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@type</elemento>
+     <elemento input_type="select" value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ico']/opzione" name="ico" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/@ico</elemento>
+    </elemento>
+    #end
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/account/@id</elemento>
+  </sezione>
+ </docEdit>
+ <param>
+  <elemento id="campi_obbligatori">.account.@descrAccount;.account.@id</elemento>
+  <elemento id="clona">
+   <opzione action="delete" value="">/account/processinfo/list/item</opzione>
+   <opzione action="append" value="elemento copiato">/account/processinfo/list/item/text()</opzione>
+   <opzione action="append" value="systemdate">/account/processinfo/list/item/date/text()</opzione>
+   <opzione action="append" value="username">/account/processinfo/list/item/persname/text()</opzione>
+   <opzione action="append" value=" Clonato ">/account/clonato/text()</opzione>
+   <opzione action="replace" value=".">/account/@id</opzione>
+  </elemento>
+ </param>
+ <fixedValues>
+  <elemento value="account">thePne</elemento>
+  <elemento value="inserimento">/account/processinfo/list/item/text()</elemento>
+  <elemento value="@coluiCheInserisce@">/account/processinfo/list/item/persname/text()</elemento>
+  <elemento value="@quandoColuiInserisce@">/account/processinfo/list/item/date/text()</elemento>
+ </fixedValues>
+</root>

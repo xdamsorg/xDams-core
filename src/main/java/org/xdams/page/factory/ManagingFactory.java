@@ -41,21 +41,21 @@ public class ManagingFactory {
 		 */
 		// MultiPartCommand multiPartCommand = new MultiPartCommand(aReq);
 		// multiPartCommand.multiPartDispatch();
-		System.out.println("--------------------------------------------------------------");
-		System.out.println("--------------------------------------------------------------");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()" + MyRequest.getParameter("actionFlag", parameterMap));
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("ManagingFactory.execute()");
-		System.out.println("##############################################################");
-		System.out.println("##############################################################");
+//		System.out.println("--------------------------------------------------------------");
+//		System.out.println("--------------------------------------------------------------");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()" + MyRequest.getParameter("actionFlag", parameterMap));
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("ManagingFactory.execute()");
+//		System.out.println("##############################################################");
+//		System.out.println("##############################################################");
 
 		String actionFlag = MyRequest.getParameter("actionFlag", parameterMap);
 		try {

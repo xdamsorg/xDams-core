@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <access_method noElements="insert">
+  <clipboard disabled="true"/>
+  <query active="yes" label="tutti gli utenti">[UD,/xw/@UdType/]="user"</query>
+  <query active="yes" label="tutti gli account">[UD,/xw/@UdType/]="account"</query>
+ </access_method>
+ <query>
+  <element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/*</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Nome utente" firstIdx="a" typology="double">XML,/user/@name</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Cognome utente" firstIdx="a" typology="double">XML,/user/@lastName</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Alias utente" firstIdx=" " typology="one">XML,/user/@id</element>
+  <sort>
+   <element label="nessuno" checked="yes"/>
+   <element label="Inserimento">UD(xpart:/xw/UserId/@DateIns/)</element>
+   <element label="Modifica">UD(xpart:/xw/UserId/@DateMod/),UD(xpart:/xw/UserId/@TimeMod/)</element>
+   <element label="nome utente">XML(xpart:/user/@name)</element>
+   <element label="cognome utente">XML(xpart:/user/@lastName)</element>
+   <element label="alias utente">XML(xpart:/user/@id)</element>
+  </sort>
+ </query>
+</root>

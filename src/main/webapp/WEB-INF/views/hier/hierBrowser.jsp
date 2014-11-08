@@ -15,7 +15,7 @@
 	String docStart = myRequest.getParameter("docStart");
 	String docToggle = myRequest.getParameter("docToggle");
 	String openDoc = myRequest.getParameter("openDoc");
-	String perpage = myRequest.getParameter("perpage","10");
+	String perpage = myRequest.getParameter("perpage","50");
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />

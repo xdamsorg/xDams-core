@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea summary="yes" showdoc="yes" name="Archivi disponibili" layer="DID" label="Archivi disponibili">
+  <sezione summary="yes" showdoc="yes" opened="yes" name="Gruppo Archivi">
+   #foreach( $product in [0..$theXML.contaNodi("/account/archiveGroup")]) #set($firstFor=$velocityCount)
+   <elemento summary="yes" showdoc="yes" name="$theXML.valoreNodo("/account/archiveGroup[${firstFor}]/@name")" type="multi_group" prefix="/account/archiveGroup[${firstFor}]/archive">
+    <elemento summary="yes" showdoc="yes" name="Archive name:">/account/archiveGroup[${firstFor}]/archive/text()</elemento>
+   </elemento>
+   #end   
+  </sezione>
+ </macroarea>
+</root>
+ 
+
+ 

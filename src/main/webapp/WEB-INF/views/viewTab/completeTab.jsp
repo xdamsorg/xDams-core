@@ -64,10 +64,7 @@
 var globalOption = {frontPath:'${frontUrl}',infoURLPrefix:'${contextPath}/infoTab/',infoURLSuffix:'/infoTab.html',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('completeTab','${frontUrl}');
 $(document).ready(function(){	
-	$('.apri_chiudi').click(function() {
-		console.debug($(this).parent("div").next("div").html());
-	});
-	
+
 	if(jQuery.trim(jQuery('#contenutoScheda').text())==''){
 		try{
 			window.opener.xDamsMiniAlert('documento salvato con successo');

@@ -16,5 +16,8 @@
   <docEdit value="xDamsAV">
    <file name="/audiovideo-conf/editing.conf.xml"/>
   </docEdit>
+  <docEdit value="xDamsUsers">
+   <file name="/users-conf/editing.conf.xml"/>
+  </docEdit>
  </multiEditing>
 </root>

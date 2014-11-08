@@ -21,22 +21,22 @@ public class ReflectionUtil {
 			for (int i = 0; i < m.length; i++) {
 				if (m[i].getName().equals(methodName)) {
 					objReturn = m[i].invoke(myobj, methodParam);
-					 System.out.println("1 objReturn " + objReturn);
-					 System.out.println("1 myobj " + myobj);
-					 System.out.println("1 strMethodExtr " + methodParam);
+//					 System.out.println("1 objReturn " + objReturn);
+//					 System.out.println("1 myobj " + myobj);
+//					 System.out.println("1 strMethodExtr " + methodParam);
 					break;
 				} else if (methodName.indexOf(m[i].getName()) > 0) {
 					String strMethodExtr = extractMethodName(methodName, m[i].getName());
-					 System.out.println("2 methodName " + methodName);
-					 System.out.println("2 m[i].getName() " + m[i].getName());
-					 System.out.println("2 strMethodExtr " + strMethodExtr);
+//					 System.out.println("2 methodName " + methodName);
+//					 System.out.println("2 m[i].getName() " + m[i].getName());
+//					 System.out.println("2 strMethodExtr " + strMethodExtr);
 					if (m[i].getName().equals(strMethodExtr)) {
-						 System.out.println("ReflectionUtil.invokeMethod()");
+//						 System.out.println("ReflectionUtil.invokeMethod()");
 						objReturn = m[i].invoke(myobj, methodParam);
-						 System.out.println("ReflectionUtil.invokeMethod() "+objReturn);
-						 System.out.println("ReflectionUtil.invokeMethod() "+objReturn.toString());
+//						 System.out.println("ReflectionUtil.invokeMethod() "+objReturn);
+//						 System.out.println("ReflectionUtil.invokeMethod() "+objReturn.toString());
 						 objReturn = mountResult(methodName, strMethodExtr, objReturn.toString());
-						 System.out.println("ReflectionUtil.invokeMethod() 2222222222222222"+objReturn);
+						//System.out.println("ReflectionUtil.invokeMethod() 2222222222222222"+objReturn);
 						break;
 					}
 				}

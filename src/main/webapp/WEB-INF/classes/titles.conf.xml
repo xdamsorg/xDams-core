@@ -16,5 +16,8 @@
   <titleManager value="xDamsAV">
    <file name="/audiovideo-conf/titles.conf.xml"/>
   </titleManager>
+  <titleManager value="xDamsUsers">
+   <file name="/users-conf/titles.conf.xml"/>
+  </titleManager>  
  </multiEditing>
 </root>

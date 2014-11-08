@@ -45,6 +45,7 @@ public class AjaxDocInfoCommand {
 		WorkFlowBean workFlowBean = null;
 		AjaxBean ajaxBean = new AjaxBean();
 		String valori = "";
+		String titleRole = "";
 		List<String> confControl = new ArrayList<String>();
 		confControl.add("titleManager");
 		confControl.add("query");
@@ -58,7 +59,19 @@ public class AjaxDocInfoCommand {
 			MultiEditingManager editingManager = new MultiEditingManager(req.getParameterMap(), confBean, userBean, workFlowBean);
 			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));
 			confBean = editingManager.rewriteMultipleConf(confControl);
-
+			
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
+ 			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}
+			
+			
 			if (MyRequest.getParameter("calcButtons", req.getParameterMap()).equals("true")) {
 				calcolaBottoni(xwconn, ajaxBean, physDoc);
 				return ajaxBean;
@@ -187,6 +200,7 @@ public class AjaxDocInfoCommand {
 			System.out.println("ECCOLO");
 			ajaxBean.setStrXmlOutput("<ul><li>attenzione e avvenuto un errore (" + e.getMessage() + ")</li></ul>");
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 

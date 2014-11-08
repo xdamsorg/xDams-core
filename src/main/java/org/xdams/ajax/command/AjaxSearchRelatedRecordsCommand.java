@@ -76,13 +76,15 @@ public class AjaxSearchRelatedRecordsCommand {
 			String string0 = "";
 			String contenitoreEnd = "</div>";
 			ModifyAutherBean modifyAutherBean = (ModifyAutherBean) modifyAuther.execute();
+//			System.out.println(modifyAutherBean);
 			boolean atLastOne = false;
 			for (int x = 0; x < modifyAutherBean.getArrModifyAutherBean().size(); x++) {
 				ModifyAutherBean autherBean = (ModifyAutherBean) (modifyAutherBean.getArrModifyAutherBean()).get(x);
 				if (autherBean.getNumElementi() > 0) {
 					atLastOne = true;
+//					System.out.println(autherBean.getQuery());
 					// string0 += "<div class=\"campo\"> archivio alias " + autherBean.getArchivioAlias() + "</div>\n";
-					string0 += "<strong>" + java.net.URLEncoder.encode(autherBean.getArchivioDescr().replaceAll(" ", "\\&nbsp;"), "iso-8859-1") + "</strong> numero elementi " + autherBean.getNumElementi() + "<br />";
+					string0 += "<strong><a class=\"cerca_b\" href=\""+modelMap.get("contextPath")+"/search/"+autherBean.getArchivioAlias()+"/title.html?qlphrase="+autherBean.getQuery()+"\" target=\""+autherBean.getArchivioAlias()+"\">" + java.net.URLEncoder.encode(autherBean.getArchivioDescr().replaceAll(" ", "\\&nbsp;"), "iso-8859-1") + "</a></strong> numero elementi " + autherBean.getNumElementi() + "<br />";
 					// string0 += "<div class=\"campo\"> descr. archivio " + (autherBean.getArchivioDescr()) + "</div>\n";
 					// string0 += "<div class=\"campo\"> descr. archivio escapeHtml " + StringEscapeUtils.escapeHtml(autherBean.getArchivioDescr()) + "</div>\n";
 					// string0 += "<div class=\"campo\"> descr. archivio escapeJavaScript " + StringEscapeUtils.escapeJavaScript(autherBean.getArchivioDescr()) + "</div>\n";

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <docEdit>
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="identificazione dell'unità" opened="yes">
+    <elemento input_type="select" name="visibilità della scheda" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+    <elemento input_type="select" name="livello di descrizione" multiMod="true" extra="onchange=&quot;testaLevel(this,'.c')&quot;" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+    <elemento input_type="select" class="Middle" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='otherlevel']/opzione" name="altro livello">/c/@otherlevel</elemento>
+    <elemento input_type="text" name="codice identificativo logico" class="ExtraLong">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/text()</elemento>
+   </sezione>
+   <sezione name="cronologiaMulti" opened="yes">
+    <elemento inline="yes" type="multi_group" prefix="/c/did/unittitleMulti[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']">
+     <elemento type="custom" id="data" showCentury="true" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione" name="estremi cronologici" format="gg mese aaaa" prefix="/c/did/unittitleMulti[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']">/c/did/unittitleMulti[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="integrazione alla data">/c/did/unittitleMulti[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']/emph/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="fa parte di" opened="yes">
+    <elemento name="fa parte di" type="multi_group" prefix="/c/relatedItem[@type='series']">
+     <elemento input_type="textarea" rows="1" cols="55" rich="yes" cdata="true" name="titolo collegato" multiMod="true">/c/relatedItem[@type='series']/titleInfo/title/text()</elemento>
+     <elemento input_type="text" class="Short" multiMod="true" name="numero">/c/relatedItem[@type='series']/part/detail/number/text()</elemento>
+     <elemento input_type="select" name="type" value="document:/biblioteca-conf/valoriControllati.xml" externalPath="/root/elemento[@name='numberDetail']/opzione">/c/relatedItem[@type='series']/part/detail/@type</elemento>
+     <!-- <elemento type="group" prefix="/c/relatedItem[@type='series']/part/extent[@unit='page']" name="pagine" inline="yes"> -->
+     <elemento input_type="text" class="Short" multiMod="true" name="da" HTMLextra="a">/c/relatedItem[@type='series']/part/extent[@unit='page']/start/text()</elemento>
+     <elemento input_type="text" class="Short" multiMod="true">/c/relatedItem[@type='series']/part/extent[@unit='page']/end/text()</elemento>
+     <!-- </elemento> -->
+     <elemento input_type="text" class="Long" multiMod="true" name="pagine">/c/relatedItem[@type='series']/part/extent[@unit='page']/list/text()</elemento>
+<!--      <elemento input_type="text" class="Long" name="forma visualizzata">/c/relatedItem[@type='series']/part/date/text()</elemento>
+     <elemento input_type="text" class="Long" name="forma normalizzata">/c/relatedItem[@type='series']/part/date/@normal</elemento> -->
+     <elemento type="custom" id="data" showCentury="false" normal="part/date/@normal" name="estremi cronologici" format="gg mese aaaa" prefix="/c/relatedItem[@type='series']">/c/relatedItem[@type='series']/part/date/text()</elemento>
+     <elemento input_type="select" name="tipo data" value="document:/biblioteca-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipoData']/opzione">/c/relatedItem[@type='series']/part/date/@qualifier</elemento>
+     <elemento input_type="text" class="Long" multiMod="true" name="luogo">/c/relatedItem[@type='series']/originInfo/place/placeTerm/text()</elemento>
+     <elemento input_type="text" class="Long" multiMod="true" name="editore">/c/relatedItem[@type='series']/originInfo/publisher/text()</elemento>
+     <elemento input_type="text" class="Short" multiMod="true" name="soggetto (hierarchical geographic)">/c/relatedItem[@type='series']/subject/hierarchicalGeographic/country/text()</elemento>
+     -->
+    </elemento>
+   </sezione>
+   <sezione name="Date di esistenza" opened="yes">
+    <elemento inline="yes" type="multi_group" prefix="/c/cpfDescriptionMulti/description/existDates/date">
+     <elemento name="forma normalizzata" type="custom" format="gg mese aaaa" showCentury="false" id="data" normal="@standardDate" prefix="/c/cpfDescriptionMulti/description/existDates/date">/c/cpfDescriptionMulti/description/existDates/date/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="Date di esistenza" opened="yes">
+    <elemento name="forma normalizzata" type="custom" format="gg mese aaaa" showCentury="false" id="data" normal="@standardDate" prefix="/c/cpfDescription/description/existDates/date"/>
+   </sezione>
+   <sezione name="lista allegati digitali" opened="yes">
+    <elemento opened="yes" type="multi_group" name="" inline="yes" prefix="/c/daogrp/daoloc">
+     <elemento input_type="text" class="ExtraLong" name="descrizione">/c/daogrp/daoloc/@title</elemento>
+     <elemento mode="uploadSimple" type="custom" id="upload" class="ExtraLong" name="url" externalPath="/c/@id" prefix="/c/daogrp/daoloc">/c/daogrp/daoloc/@href</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="cronologia" opened="yes">
+    <elemento type="custom" id="data" showCentury="true" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione" name="estremi cronologici" format="gg mese aaaa" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']"/>
+    <elemento input_type="text" class="ExtraLong" name="integrazione alla data">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/unitdate[@encodinganalog='ISAD 3-1-3 date(s)']/emph/text()</elemento>
+   </sezione>
+   <sezione name="consistenza" opened="yes">
+    <elemento inline="yes" type="multi_group" prefix="/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']">
+     <elemento input_type="select" name="&#160;" HTMLextra="quantità" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genreform_An']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/genreform/text()</elemento>
+     <elemento input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/extent/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@repositorycode</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/abbr/text()</elemento>
+   <elemento>/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@identifier</elemento>
+   <elemento>/c/@id</elemento>
+  </sezione>
+ </docEdit>
+</root>

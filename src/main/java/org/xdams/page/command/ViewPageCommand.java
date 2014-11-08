@@ -37,6 +37,7 @@ public class ViewPageCommand {
 		String selid = MyRequest.getParameter("selid", parameterMap);
 		String totSelid = MyRequest.getParameter("totSelid", parameterMap);
 		String pos = MyRequest.getParameter("pos", parameterMap);
+		String titleRole = "";
 		// HttpSession httpSession = aReq.getSession(false);
 		// questa lista può essere presa da un file di configurazione
 		List<String> confControl = new ArrayList<String>();
@@ -59,10 +60,7 @@ public class ViewPageCommand {
 			viewBean.setPhysDoc(Integer.parseInt(physDoc));
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 			viewBean.setPageName((String) modelMap.get("pageName"));
-			// String referer = aReq.getHeader("referer");
-			// if (referer != null && referer.indexOf("ServletQueryParser") != -1) {
-			// httpSession.setAttribute("physDoc", physDoc);
-			// }
+
 
 			XMLBuilder theXMLDoc = null;
 			if (!selid.equals("") && !pos.equals("")) {
@@ -107,7 +105,17 @@ public class ViewPageCommand {
 			editingManager.setTheXML(viewBean.getXmlBuilder());
 			// System.out.println("777777777777777777777777777777777777777777");
 			confBean = editingManager.rewriteMultipleConf(confControl);
-
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
+			System.out.println("QueryParserCommand.execute()" + titleRole);
+			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}
 			viewBean.setTitle((xwconn.getTitle(xwconn.connection, xwconn.getTheDb(), viewBean.getPhysDoc())).getTitle());
 			int docFather = xwconn.docRelNavigate(xwconn.connection, workFlowBean.getArchive().getAlias(), it.highwaytech.broker.ServerCommand.navigarel_FIGLIOPADRE, viewBean.getPhysDoc());
 			// se e 0 vuol dire che non e padre di nessuno e quindi e scollegato
@@ -146,16 +154,12 @@ public class ViewPageCommand {
 			viewBean.setTreePos(treePos);
 			viewBean.setHierPath(xwconn.getHierPath(viewBean.getPhysDoc()));
 			viewBean.setSelid(selid);
-			// viewBean.setHttpServletRequest(aReq);
-			// if (!confBean.getTheXMLConfPresentation().valoreNodo("/root/@jspDispatch").equals("")) {
-			// setJspDispatch(confBean.getTheXMLConfPresentation().valoreNodo("/root/@jspDispatch"));
-			// }
-			//
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e.toString());
 		} finally {
 			modelMap.put("viewBean", viewBean);
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 	}

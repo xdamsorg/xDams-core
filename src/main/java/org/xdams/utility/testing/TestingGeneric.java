@@ -66,7 +66,7 @@ public class TestingGeneric {
 	public boolean controllaLivello(Object workFlowBean, String[] userLevel) {
 		boolean isOk = false;
 		String archivioLivello = ((WorkFlowBean) workFlowBean).getArchive().getRole();
-		System.out.println("TestingGeneric.controllaLivello() archivioLivello " + archivioLivello);
+//		System.out.println("TestingGeneric.controllaLivello() archivioLivello " + archivioLivello);
 		for (int i = 0; i < userLevel.length; i++) {
 			String userToView = userLevel[i];
 			if (userToView.equals(archivioLivello) || userToView.toLowerCase().equals("all")) {

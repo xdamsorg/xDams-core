@@ -70,7 +70,6 @@ public class ModifyAuther {
 			connectionManager.closeConnection(xwconnone);
 			XMLBuilder theXMLconf = confBean.getTheXMLConfEditing();
 			if (!codeToFind.equals("") && makeAction.equals("")) {
-				
 				Map<String, List<ElementToFindBean>> hashDbToFind = buildElementToFindBean.buildElementToFindBean(theXMLconf, workFlowBean.getAlias());
 				System.out.println("ModifyAuther.execute() (hashDbToFind) " + (hashDbToFind));
 				int contaArchProc = 0;

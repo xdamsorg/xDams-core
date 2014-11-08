@@ -153,13 +153,416 @@ function Trim(strText) //Ver 1.0
 	return s;
  }
 
+
+
+function dataNormalMulti(thisObj, nomeForm, riempi, giorno_I, mese_I, anno_I, giorno_F, mese_F, anno_F, riempiTEXT, campoSEC, ilFormatoString) //Ver 1.3
+{
+ilFormato = "gg.mm.aaaa" //default
+//ilFormato = "aaaa mese gg" //default
+//alert($(thisObj).attr('name'));
+var indexToChange = $(thisObj).attr('name').substring($(thisObj).attr('name').lastIndexOf('['),$(thisObj).attr('name').lastIndexOf(']')+1);	
+//alert(indexToChange);
+
+riempi = riempi.replace(/\[1\]/g, indexToChange);
+giorno_I = giorno_I.replace(/\[1\]/g, indexToChange);
+mese_I = mese_I.replace(/\[1\]/g, indexToChange);
+anno_I = anno_I.replace(/\[1\]/g, indexToChange);
+giorno_F = giorno_F.replace(/\[1\]/g, indexToChange);
+mese_F = mese_F.replace(/\[1\]/g, indexToChange);
+anno_F = anno_F.replace(/\[1\]/g, indexToChange);
+riempiTEXT = riempiTEXT.replace(/\[1\]/g, indexToChange);
+campoSEC = campoSEC.replace(/\[1\]/g, indexToChange);
+
+
+//console.log('nomeForm '+nomeForm+'\nriempi '+riempi+'\ngiorno_I '+giorno_I+'\nmese_I '+mese_I+'\nanno_I '+anno_I+'\ngiorno_F '+giorno_F+'\nmese_F '+mese_F+'\nanno_F '+anno_F+'\nriempiTEXT '+riempiTEXT+'\ncampoSEC '+campoSEC+'\nilFormatoString '+ilFormatoString)
+var gg = ""
+var mm = ""
+var aaaa=""
+var ggF = ""
+var mmF = ""
+var aaaaF=""
+eval('ilForm = document.'+nomeForm+'')
+
+riempiInput = ilForm[riempi]
+
+ if(riempiInput==null){
+ riempiInput = riempi;
+ }
+
+if(ilForm[giorno_I] != null && giorno_I.length != 2){
+// alert(ilForm[giorno_I].name.length)
+giorno_i = Trim(ilForm[giorno_I].value)
+}else{
+giorno_i = giorno_I
+
+}
+if(ilForm[mese_I] != null && mese_I.length != 2){
+	mese_i = Trim(ilForm[mese_I].value)
+}else{
+	mese_i = mese_I
+}
+if(ilForm[anno_I] != null && anno_I.length != 4){
+	anno_i = Trim(ilForm[anno_I].value)
+}else{
+	anno_i = anno_I
+}
+
+
+giorno_f = "";
+mese_f = "";
+anno_f = "";
+
+if(giorno_F == null){
+	giorno_F = giorno_I
+	giorno_f = ""
+	ilFormatoString = campoSEC //i parametri slittano in caso di data singola
+}else{
+	if(ilForm[giorno_F] != null && giorno_F.length != 2){
+		giorno_f = Trim(ilForm[giorno_F].value)
+	}else{
+		giorno_f = giorno_F
+	}		
+	
+}
+if(mese_F == null){
+	mese_F = mese_I
+	mese_f = ""
+	ilFormatoString = campoSEC //i parametri slittano in caso di data singola
+}else{ 
+	if(ilForm[mese_F] != null && mese_F.length != 2){
+		mese_f = Trim(ilForm[mese_F].value)
+	}else{
+		mese_f = mese_F
+	}		
+}
+if(anno_F == null){
+	anno_F = anno_I
+	anno_f = ""		
+	ilFormatoString = campoSEC //i parametri slittano in caso di data singola
+}else{		
+	if(ilForm[anno_F] != null && anno_F.length != 4){
+		anno_f = Trim(ilForm[anno_F].value)
+	}else{
+		anno_f = anno_F
+	}	
+}
+if(ilFormatoString != "" && ilFormatoString != "undefined" && ilFormatoString != null && typeof(ilFormatoString) != "undefined"){
+	ilFormato = ilFormatoString
+}
+
+giorno_i_num=parseInt(giorno_i,10)
+giorno_f_num=parseInt(giorno_f,10)
+anno_i_num=parseInt(anno_i,10)
+anno_f_num=parseInt(anno_f,10)
+mese_i_num=parseInt(mese_i,10)
+mese_f_num=parseInt(mese_f,10)
+var bissInizio = false;
+monthstart=mese_i
+daystart=giorno_i
+bisstart=anno_i/4
+if(bisstart!=parseInt(bisstart,10)){
+   bissInizio = true;
+}
+if(daystart>28 && monthstart==2 && bisstart!=parseInt(bisstart,10))
+{alert("Attenzione anno inizio bisestile")
+ilForm[giorno_I].focus()
+return}
+var bissFine = false;
+monthend=mese_f
+dayend=giorno_f
+bisend=anno_f/4
+if(bisend!=parseInt(bisend,10)){
+   bissFine = true;
+}
+if(dayend>28 && monthend==2 && bisend!=parseInt(bisend,10))
+{alert("Attenzione anno fine bisestile")
+ilForm[giorno_F].focus()
+return}
+if((giorno_i.length == 1)||(giorno_f.length == 1))
+	{
+   	   if(giorno_i.length == 1){
+   	   	giorno_i = '0'+giorno_i
+   	    }
+	   if(giorno_f.length == 1){
+	   	giorno_f = '0'+giorno_f
+   	   }
+	}
+
+if((giorno_i > 31)||(giorno_f > 31))
+	{
+   	   alert('inserire un giorno compreso tra 1 e 31 a seconda del mese\n'+giorno_i+'\n'+giorno_f)
+   	  
+   	  return false
+   	}
+if((mese_i.length == 1)||(mese_f.length == 1))
+	{
+   	   if(mese_i.length == 1)
+   	   	mese_i = '0'+mese_i
+	   if(mese_f.length == 1)
+   	   	mese_f = '0'+mese_f
+	}
+if((mese_i > 12)||(mese_f > 12))
+	{
+		 
+	//  alert('inserire un mese compreso tra 1 e 12')
+	   return false
+	}
+if((anno_i.length == 1)||(anno_f.length == 1)||(anno_i.length == 2)||(anno_f.length == 2)||(anno_i.length == 3)||(anno_f.length == 3))
+	{
+	   alert('comporre l\'anno nella forma aaaa')
+	   return false
+	}
+//fine test di corretto inserimento
+//alert("anno_i "+anno_i+"\n"+"mese_i "+mese_i+"\n"+"giorno_i "+giorno_i+"\n"+"anno_f "+anno_f+"\n"+"mese_f "+mese_f+"\n"+"giorno_f "+giorno_f+"\n")
+if(anno_i != "")
+   {
+	aaaa = anno_i
+	if(mese_i >0)
+	   {
+	      mm = mese_i
+	      if( (mese_f=="" && giorno_f=="" && anno_f=="") ){
+	      		if((mese_i!="" && giorno_i!="" && anno_i!="")){
+	      		ggF = giorno_i;
+		      	mmF = mm;
+		      	aaaaF = aaaa;
+	      		}else{
+	      		ggF = "31";
+		      	mmF = mm;
+		      	aaaaF = aaaa;
+	      		}
+	        }
+	      if((giorno_i != "")&&(giorno_i != " ")){
+	      	gg = giorno_i
+	       }
+	      else{
+	   	gg = "01"
+	      }
+	   }
+	else{
+	    mm = "01"
+	    gg = "01"
+	}
+	if((mese_f=="" && giorno_f=="" && anno_f=="") && mese_i==""){
+	      	ggF = "31";
+	      	mmF = "12";
+	      	aaaaF = aaaa;
+	  }
+if(anno_f != "")
+   {
+	aaaaF = anno_f
+	if((mese_f != "")&&(giorno_f != " ") && (mmF!="" && ggF!=""))
+	 {
+	   mmF = mese_f
+	   if((giorno_f != "")&&(giorno_f != " ")){
+	      ggF = giorno_f
+	   }
+	   else{
+	      if((mmF == "11")||(mmF == "04")||(mmF == "06")||(mmF == "09")){
+	      	ggF = "30"
+	      }
+	      else
+	      	{
+	      	   if(mmF == "02"){
+	      	   	if(!bissFine){
+	      	   	  ggF = "29"
+	      	   	}else{
+	      	   	  ggF = "28"
+	      	   	 }
+	      	   }else{
+	      	   	ggF = "31"
+	      	    }
+	      	}
+	    }
+	}
+	else
+	 {
+	 if((mese_f!="" && giorno_f!="")){
+	   mmF = mese_f
+	   ggF = giorno_f
+	 }else{
+	 if((mese_f!="" && giorno_f=="")){
+	   mmF=mese_f
+	   ggF = "31"
+	 }else{
+	   mmF = "12"
+	   ggF = "31"
+	}
+	 }
+	 }
+	 if((mese_i=="" && giorno_i=="" && anno_i=="")){
+	      	gg = ggF;
+	      	mm = mmF;
+	      	aaaa = aaaaF;
+	  }
+   }
+if(giorno_f!="" && mese_f!="" && anno_f!=""){
+inDay=parseInt(giorno_i,10);
+fDay=parseInt(giorno_f,10);
+inMonth=mese_i;
+fMonth=parseInt(mese_f,10);
+inYear  = parseInt(anno_i,10);
+fYear  = parseInt(anno_f,10);
+var ok = true;
+if (inYear>fYear){
+   ok=false;
+if(ilForm[anno_F]!=null){
+	ilForm[anno_F].value  ="";
+	ilForm[anno_F].focus()
+}
+}
+else if (inYear<fYear) {
+	ok=true;
+}
+else{
+	if (inMonth > fMonth) {
+		ok=false;
+			ilForm[mese_F].value  ="";
+			ilForm[mese_F].focus()
+	}
+	else if (inMonth < fMonth) {ok=true;}
+		else{
+			if (inDay > fDay) {
+			   ok=false;
+			ilForm[giorno_F].value  ="";
+			ilForm[giorno_F].focus()
+			}
+			else ok=true;
+		}
+	}
+	if (!ok) {
+		//alert("La data fine deve essere successiva alla data inizio.");
+		aaaaF="";
+		mmF="";
+		ggF="";
+	}
+}
+   	/*
+	alert("giorno "+giorno_i+" --> "+giorno_f)
+	alert("mese "+mese_i+" --> "+mese_f)
+   	alert("anno "+anno_i+" --> "+anno_f)
+   	*/
+   /*if((aaaaF!="" && mmF=="12" && ggF=="31") && (aaaa=="" && mm=="" && gg=="")){
+   	aaaa=aaaaF;
+	mm="01";
+	gg="01";
+   }*/
+   if((anno_F=="" && mese_F=="" && giorno_F=="") && (aaaa!="" && mm!="" && gg!="")){
+        aaaaF=aaaa;
+	mmF=mm;
+	ggF=gg;
+   }
+   dataIniziale = aaaa+mm+gg;
+   dataFinale = aaaaF+mmF+ggF;
+   dataDefinitiva = "";
+    if(dataIniziale.length == 8)
+    {
+   	dataDefinitiva = dataIniziale
+   	if(dataIniziale.length == 8)
+   	{
+   		dataDefinitiva = dataIniziale
+		if(dataFinale.length == 8)
+		{
+			dataDefinitiva += "-"+dataFinale
+		}
+		else
+			dataDefinitiva += "-"+dataIniziale
+   	}
+			riempiInput.value  =dataDefinitiva;
+    }
+    else
+    	riempiInput.value  ="";
+    if(riempiTEXT != null){
+   	if(giorno_i_num == giorno_f_num && mese_i_num == mese_f_num && anno_i_num == anno_f_num)
+		{
+			newData="";
+			newData = calcolaDataSingola(giorno_i,mese_i,anno_i,ilFormato,gg,mm,aaaa);
+			try{
+ 				ilForm[riempiTEXT].value  = newData;
+ 			}catch(e){
+ 			riempiTEXT.value  = newData;
+ 			}
+		}
+   	else
+   		{
+			newDataIni="";
+			newDataFin="";
+   			//alert('data doppia')
+			if(anno_i>0)
+				{
+					newDataIni = calcolaDataSingola(giorno_i,mese_i,anno_i,ilFormato,gg,mm,aaaa);
+					if(giorno_f>0 || mese_f>0 || anno_f>0)
+					{
+						newDataFin = calcolaDataSingola(giorno_f,mese_f,anno_f,ilFormato,ggF,mmF,aaaaF)
+					}
+					newData = newDataIni;
+					if(newDataFin != "")
+						newData = newData + ' - ' + newDataFin
+						try{
+							ilForm[riempiTEXT].value  = newData;
+						}catch(e){
+						riempiTEXT.value  = newData;
+						}					//	alert(eval('document.'+nomeForm+'[\''+riempiTEXT+'\'].name'))
+				}
+			else{
+			try{
+ 				ilForm[riempiTEXT].value  = "";
+ 			}catch(e){
+ 			riempiTEXT.value  = "";
+ 			}
+				//alert(eval('document.'+nomeForm+'[\''+riempiTEXT+'\'].name') )
+			}
+   		}
+	}
+	}
+	else
+	{
+			try{
+ 				ilForm[riempiTEXT].value  = "";
+ 			}catch(e){
+ 			riempiTEXT.value  = "";
+ 			}
+		riempiInput.value  ="";
+	if(ilForm[campoSEC] != null)
+	{
+		secolo = ilForm[campoSEC].value ;
+		secoloVal = ""
+		if(secolo == "XXI")
+			secoloVal = '20000101-20991231'
+		if(secolo == "XX")
+			secoloVal = '19000101-19991231'
+		if(secolo == "XIX")
+			secoloVal = '18000101-18991231'
+		if(secolo == "XVIII")
+			secoloVal = '17000101-17991231'
+		if(secolo == "XVII")
+			secoloVal = '16000101-16991231'
+		if(secolo == "XVI")
+			secoloVal = '15000101-15991231'
+		if(secolo == "XV")
+			secoloVal = '14000101-14991231'
+		if(secolo == "XIV")
+			secoloVal = '13000101-13991231'
+		if(secolo == "XIII")
+			secoloVal = '12000101-12991231'
+		if(secolo == "XII")
+			secoloVal = '11000101-11991231'
+		if(secolo == "XI")
+			secoloVal = '10000101-10991231'
+		if(secolo == "X")
+			secoloVal = '09000101-09991231'
+		riempiInput.value =secoloVal;
+	}
+	}
+return true
+}
+
 /* ---- */
-function dataNormal(nomeForm,riempi,giorno_I,mese_I,anno_I,giorno_F,mese_F,anno_F,riempiTEXT,campoSEC,ilFormatoString) //Ver 1.3
+function dataNormal(nomeForm, riempi, giorno_I, mese_I, anno_I, giorno_F, mese_F, anno_F, riempiTEXT, campoSEC, ilFormatoString) //Ver 1.3
     {
 	ilFormato = "gg.mm.aaaa" //default
 	//ilFormato = "aaaa mese gg" //default
 	
-	//alert('nomeForm '+nomeForm+'\nriempi '+riempi+'\ngiorno_I '+giorno_I+'\nmese_I '+mese_I+'\nanno_I '+anno_I+'\ngiorno_F '+giorno_F+'\nmese_F '+mese_F+'\nanno_F '+anno_F+'\nriempiTEXT '+riempiTEXT+'\ncampoSEC '+campoSEC+'\nilFormatoString '+ilFormatoString)
+	// alert('nomeForm '+nomeForm+'\nriempi '+riempi+'\ngiorno_I '+giorno_I+'\nmese_I '+mese_I+'\nanno_I '+anno_I+'\ngiorno_F '+giorno_F+'\nmese_F '+mese_F+'\nanno_F '+anno_F+'\nriempiTEXT '+riempiTEXT+'\ncampoSEC '+campoSEC+'\nilFormatoString '+ilFormatoString)
    	var gg = ""
 	var mm = ""
 	var aaaa=""

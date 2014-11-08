@@ -16,5 +16,8 @@
   <upload value="xDamsAV">
    <file name="/audiovideo-conf/upload.conf.xml"/>
   </upload>
+  <upload value="xDamsUsers">
+   <file name="/users-conf/upload.conf.xml"/>
+  </upload>  
  </multiEditing>
 </root>

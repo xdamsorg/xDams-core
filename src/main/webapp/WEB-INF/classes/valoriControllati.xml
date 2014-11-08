@@ -16,5 +16,8 @@
   <valoriControllati value="xDamsAV">
    <file name="/audiovideo-conf/valoriControllati.xml"/>
   </valoriControllati>
+  <valoriControllati value="xDamsUsers">
+   <file name="/users-conf/valoriControllati.xml"/>
+  </valoriControllati>
  </multiEditing>
 </root>

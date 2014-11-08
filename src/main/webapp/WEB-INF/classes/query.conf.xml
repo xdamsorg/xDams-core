@@ -16,5 +16,8 @@
   <query value="xDamsAV">
    <file name="/audiovideo-conf/query.conf.xml"/>
   </query>
+  <query value="xDamsUsers">
+   <file name="/users-conf/query.conf.xml"/>
+  </query>
  </multiEditing>
 </root>

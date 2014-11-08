@@ -51,11 +51,11 @@ public class MultiEditingManager {
 		velocityContext.put("confBean", this.confBean);
 		velocityContext.put("workFlowBean", this.workFlowBean);
 		velocityContext.put("userBean", this.userBean);
-		
+
 	}
 
 	public ConfBean execute() throws Exception {
-	 
+
 		String ilPath = "/" + getElementToFind();
 		// MyRequest myRequest = new MyRequest(aReq);
 		// System.out.println("MultiEditingManager.execute() conta xpath " + "/root/multiEditing[child::" + getIlPath() + "]");
@@ -99,18 +99,18 @@ public class MultiEditingManager {
 		XMLBuilder theXMLConf = null;
 		String nomeFile = null;
 		String xslFile = null;
-		System.out.println("MultiEditingManager.execute() aaaaa " + getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name"));
+		// System.out.println("MultiEditingManager.execute() aaaaa " + getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name"));
 		if (!(getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name")).equals("")) {
 			try {
 				nomeFile = getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name");
-				System.out.println("MultiEditingManager.execute() nomeFile " + nomeFile);
+				// System.out.println("MultiEditingManager.execute() nomeFile " + nomeFile);
 				fullPath = "/" + nomeFile;
-				System.out.println("MultiEditingManager.execute() fullPath " + fullPath);
+				// System.out.println("MultiEditingManager.execute() fullPath " + fullPath);
 				try {
 					if (nomeFile.toLowerCase().endsWith("xsl") || nomeFile.toLowerCase().endsWith("xslt")) {
 						xslFile = ConfManager.getConfString(fullPath);
 					} else {
-						//theXMLConf = evaluateBuilder(ConfManager.getConfXML(fullPath));
+						// theXMLConf = evaluateBuilder(ConfManager.getConfXML(fullPath));
 						theXMLConf = evaluateBuilder(ConfManager.getConfString(fullPath));
 					}
 				} catch (Exception e) {
@@ -127,7 +127,7 @@ public class MultiEditingManager {
 					// ilPath = "/" + getIlPath();
 					return execute();
 				}
-				System.out.println("MultiEditingManager.execute() getElementToFind " + getElementToFind());
+				// System.out.println("MultiEditingManager.execute() getElementToFind " + getElementToFind());
 				// System.out.println("MultiEditingManager.execute() theXMLConf2222222222222222 " + theXMLConf.getXML("ISO-8859-1"));
 				if (getConfName().equals("query")) {
 					confBean.setTheXMLConfQuery(theXMLConf);
@@ -235,27 +235,30 @@ public class MultiEditingManager {
 				throw new Exception(" configuration error in  MultipleConf (" + e.getMessage() + ") for " + elementFind);
 			}
 		}
+
+		// System.out.println("confBean.getTheXMLConfEditing() " + confBean.getTheXMLConfEditing().getXML("ISO-8859-1"));
+
 		return confBean;
 	}
 
 	public XMLBuilder evaluateBuilder(XMLBuilder myXMLConf) throws Exception {
 		try {
-			//DEAD CODE
-			 StringWriter w = new StringWriter();
-//			 boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
-//			 return new XMLBuilder(w.toString(), "ISO-8859-1");
-			 return myXMLConf;
+			// DEAD CODE
+			StringWriter w = new StringWriter();
+			// boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", myXMLConf.getXML("ISO-8859-1", false, true));
+			// return new XMLBuilder(w.toString(), "ISO-8859-1");
+			return myXMLConf;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(" configuration error in  MultipleConf evaluateBuilder(" + e.getMessage() + ")");
 		}
 	}
-	
+
 	public XMLBuilder evaluateBuilder(String xmlDoc) throws Exception {
 		try {
-			 StringWriter w = new StringWriter();
-	 		 boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", xmlDoc);
-			 return new XMLBuilder(w.toString(), false);
+			StringWriter w = new StringWriter();
+			boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", xmlDoc);
+			return new XMLBuilder(w.toString(), false);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(" configuration error in  MultipleConf evaluateBuilder(" + e.getMessage() + ")");
@@ -278,14 +281,6 @@ public class MultiEditingManager {
 		this.elementToFind = elementToFind;
 	}
 
-	// public String getIlPath() {
-	// return ilPath;
-	// }
-	//
-	// public void setIlPath(String ilPath) {
-	// this.ilPath = ilPath;
-	// }
-
 	public String getMethodValue() {
 		return methodValue;
 	}
@@ -299,7 +294,7 @@ public class MultiEditingManager {
 	}
 
 	public void setTheXML(XMLBuilder theXML) {
-		velocityContext.put("theXML",theXML);
+		velocityContext.put("theXML", theXML);
 		this.theXML = theXML;
 	}
 
@@ -310,95 +305,5 @@ public class MultiEditingManager {
 	public void setConfName(String confName) {
 		this.confName = confName;
 	}
-
-	// @Deprecated
-	// public XMLBuilder genericMultipleConf(String confName, String pathName) throws Exception {
-	// XMLBuilder builder = null;
-	// XMLBuilder builderInitial = null;
-	// String newConfName = "";
-	// // MyRequest myRequest = new MyRequest(aReq);
-	// try {
-	// // System.out.println("confName " + confName);
-	//
-	// if (!confName.startsWith("/")) {
-	// newConfName = "/" + confName;
-	// } else {
-	// newConfName = confName;
-	// }
-	//
-	// System.out.println("newConfName newConfName " + newConfName);
-	// // carico lo XMLBuilder generico
-	// builderInitial = ConfManager.getConfXML(newConfName);
-	// // setto il setIlPath e il setTheXMLConf
-	// setIlPath(pathName);
-	// // System.out.println("pathName pathName " + pathName);
-	// setTheXMLConf(builderInitial);
-	// // controllo se per quel nome ho il multiEditing
-	// String ilPath = "/" + getIlPath();
-	// // se ho il multiEditing carico di nuovo il documento .
-	// if (getTheXMLConf().contaNodi("/root/multiEditing[child::" + getIlPath() + "]") > 0) {
-	// String ilMethod = getTheXMLConf().valoreNodo("/root/multiEditing[child::" + getIlPath() + "]/@method");
-	// String ilMethodValue = ilMethod.substring(ilMethod.indexOf(":") + 1);
-	// String pathTest = "";
-	// ilMethod = ilMethod.substring(0, ilMethod.indexOf(":"));
-	// if (ilMethod.equals("parameter")) {
-	// // pathTest = myRequest.getParameter(ilMethodValue);
-	// } else if (ilMethod.equals("xPath")) {
-	// if (getTheXML() == null) {
-	// throw new Exception("configuration error in  MultiEditingManager (02): xPath method");
-	// }
-	// pathTest = getTheXML().valoreNodo(ilMethodValue);
-	// } else if (ilMethod.equals("userBean")) {
-	// Class c = userBean.getClass();
-	// // System.out.println("ilMethodilMethodilMethodilMethod " + ilMethod);
-	// // System.out.println("ilMethodValueilMethodValueilMethodValue " + ilMethodValue);
-	// Method m = c.getMethod(ilMethodValue, null);
-	// Object methodValue = m.invoke(userBean, null);
-	// // System.out.println("methodValuemethodValuemethodValuemethodValuemethodValue " + methodValue);
-	// pathTest = (String) methodValue;
-	// }
-	// ilPath += "[@value='" + pathTest + "']";
-	// }
-	// // System.out.println("MultiEditingManager.execute() ilPath " + ilPath);
-	// /* GESTIONE MULTIFILE */
-	// String fullPath = "";
-	// String nomeFile = null;
-	// // System.out.println("MultiEditingManager.execute() aaaaa " + "/root/multiEditing" + ilPath + "/file/@name");
-	// if (!(getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name")).equals("")) {
-	// try {
-	// nomeFile = getTheXMLConf().valoreNodo("/root/multiEditing" + ilPath + "/file/@name");
-	// // System.out.println("MultiEditingManager.execute() nomeFile " + nomeFile);
-	// fullPath = "/" + nomeFile;
-	// // System.out.println("MultiEditingManager.execute() fullPath " + fullPath);
-	// builder = ConfManager.getConfXML(fullPath);
-	// // System.out.println("MultiEditingManager.execute() ilPath " + ilPath);
-	// // System.out.println("MultiEditingManager.execute() getIlPath " + getIlPath());
-	// // System.out.println("MultiEditingManager.execute() theXMLConf " + theXMLConf.getXML("ISO-8859-1"));
-	// if (builder.contaNodi("/root/multiEditing[child::" + getIlPath() + "]") > 0) {
-	// // System.out.println("MultiEditingManager.execute() theXMLConf1111111111111 " + builder.getXML("ISO-8859-1"));
-	// setTheXMLConf(builder);
-	// // ilPath = "/" + getIlPath();
-	// return genericMultipleConf(fullPath, pathName);
-	//
-	// }
-	// ilPath = "/" + getIlPath();
-	// // ilPath = "/docEdit";
-	// } catch (Exception ex) {
-	// throw new Exception("configuration error in  MultipleConf can't load (02): " + nomeFile);
-	// }
-	// } else {
-	// // se NON HO il multiEditing lasci quello che ho caricato per primo.
-	// builder = builderInitial;
-	// }
-	//
-	// } catch (Exception e) {
-	// if (newConfName.indexOf("query") == -1) {
-	// throw new Exception("configuration error in  MultipleConf can't load (03): " + confName + " " + e.getMessage());
-	// } else {
-	// builder = new XMLBuilder("root");
-	// }
-	// }
-	// return builder;
-	// }
 
 }

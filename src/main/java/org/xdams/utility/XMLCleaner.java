@@ -28,6 +28,29 @@ public class XMLCleaner {
 
 		return docXML;
 	}
+	
+	
+	public static String clearXwFullXML(String docXML, boolean fullMode) {
+		if (fullMode) {
+			docXML = docXML.replaceAll("<.xw-er.>", "");
+			docXML = docXML.replaceAll("<.xw-sr.>", "");
+		}
+		docXML = docXML.replaceAll("<\\?xw-crc [^>]*>", "");
+		docXML = docXML.replaceAll("<\\?xw-meta [^>]*>", "");
+		docXML = docXML.replaceAll(" xmlns:xw=\"http://www.3di.it/ns/xw-200303121136\"", "");
+
+		docXML = docXML.replaceAll("<xw_doc nrecord=\"\\d\\d*\">", "");
+		docXML = docXML.replaceAll("</xw_doc>", "");
+
+		docXML = docXML.replaceAll("<rsp>", "");
+		docXML = docXML.replaceAll("</rsp>", "");
+
+		docXML = docXML.replaceAll("<global_info .*/>", "");
+		docXML = docXML.replaceAll("<rsp ack=\"\\d\\d*\" e=\"\\d\\d*\">", "");
+
+		return docXML;
+	}
+	
 
 	public static String clearMultipleIso(String docXML) {
 		if (docXML.startsWith("<?xml")) {

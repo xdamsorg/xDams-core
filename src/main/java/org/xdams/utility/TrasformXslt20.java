@@ -83,9 +83,9 @@ public class TrasformXslt20 {
 			javax.xml.transform.Result result = new StreamResult(outWriter);
 			try {
 				controller.transform(sourceInput, result);
-				System.out.println(outWriter.getBuffer().toString());
+//				System.out.println(outWriter.getBuffer().toString());
 				strResult = outWriter.getBuffer().toString();
-				System.out.println("#################");
+//				System.out.println("#################");
 				/*
 				 * OutputFormat outputFormat = new OutputFormat(); // outputFormat.setSuppressDeclaration(true); outputFormat.setNewlines(true); outputFormat.setIndent(true); outputFormat.setIndentSize(4); XMLWriter xmlWriter = new XMLWriter(); xmlWriter.setMaximumAllowedCharacter(255);
 				 * xmlWriter.write(outWriter); xmlWriter.flush();

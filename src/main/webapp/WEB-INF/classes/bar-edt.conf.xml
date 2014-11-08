@@ -16,5 +16,8 @@
   <managing value="xDamsAV">
    <file name="/audiovideo-conf/bar-edt.conf.xml"/>
   </managing>
+  <managing value="xDamsUsers">
+   <file name="/users-conf/bar-edt.conf.xml"/>
+  </managing>  
  </multiEditing>
 </root>

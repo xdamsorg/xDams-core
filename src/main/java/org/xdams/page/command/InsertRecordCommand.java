@@ -64,6 +64,11 @@ public class InsertRecordCommand {
 
 			// String theArch = myRequest.getParameter("db");
 			String pne = workFlowBean.getArchive().getPne();
+
+			if (!(MyRequest.getParameter("thePne", parameterMap)).equals("")) {
+				pne = MyRequest.getParameter("thePne", parameterMap);
+			}
+//			System.out.println("InsertRecordCommand.execute() pne: " + pne);
 			String dataCompilatoreCMPN = DateUtil.getDataSystem("dd/MM/yyyy");
 			String nomeCompilatoreCMPN = userBean.getName() + " " + userBean.getLastName();
 
@@ -233,7 +238,7 @@ public class InsertRecordCommand {
 				theXML = theXML.replaceAll("@archivioDaCuiInserisce@", archivioDaCuiInserisce);
 				// inizio inserimento del record
 				try {
-					System.out.println("insert " + theXML);
+//					System.out.println("insert " + theXML);
 					newNrecord = xwconn.insert(theXML);
 					if (firstRecord == -1) {
 						firstRecord = newNrecord;

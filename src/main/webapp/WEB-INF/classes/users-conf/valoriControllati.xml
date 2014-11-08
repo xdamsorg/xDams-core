@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+ <elemento name="pne">
+  <opzione value=""></opzione>
+  <opzione value="c">EAD standard "c"</opzione>
+  <opzione value="eac">EAC standard "eac"</opzione>
+  <opzione value="eac-cpf">EAC standard "eac-cpf"</opzione>
+  <opzione value="user">Users "user"</opzione>
+  <opzione value="account">Account "account"</opzione>
+ </elemento>
+ <elemento name="ico">
+  <opzione value=""></opzione>
+  <opzione value="user.gif">user</opzione>
+  <opzione value="storico.gif">storico</opzione>
+  <opzione value="video.gif">video</opzione>
+  <opzione value="fotografico.gif">fotografico</opzione>
+  <opzione value="authority.gif">authority</opzione>
+ </elemento>
+</root>

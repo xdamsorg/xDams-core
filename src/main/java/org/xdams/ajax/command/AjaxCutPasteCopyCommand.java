@@ -78,6 +78,17 @@ public class AjaxCutPasteCopyCommand {
 			if (actionType.equals("cut") || actionType.equals("paste") || actionType.equals("no_rel") || actionType.equals("only_hier")) {
 				TitleManager titleManager = new TitleManager(confBean.getTheXMLConfTitle());
 			//	System.out.println("AjaxCutPasteCopyCommand.execute() getTheXMLConfTitle " + confBean.getTheXMLConfTitle().getXML("ISO-8859-1"));
+				XMLBuilder builder = confBean.getTheXMLConfTitle();
+				String titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
+				System.out.println("QueryParserCommand.execute()" + titleRole);
+				try {
+					if (!titleRole.trim().equals("")) {
+						xwconn.setTitleRole(titleRole);
+					}
+				} catch (Exception e) {
+					System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+					xwconn.restoreTitleRole();
+				}				
 				try {
 					managingBean.setCutPhysDoc(Integer.parseInt(physDoc));
 					String titoloDoc = xwconn.getTitleFromNumDoc(Integer.parseInt(physDoc));
@@ -237,6 +248,7 @@ public class AjaxCutPasteCopyCommand {
 			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml("Attenzione:\nimpossibile effettuare l'operazione, il documento selezionato potrebbe non essere più in gerarchia") + "\n" + e.getMessage() + "</error>");
 		} finally {
 			httpSession.setAttribute(workFlowBean.getManagingBeanName(), managingBean);
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 

@@ -16,5 +16,8 @@
   <media value="xDamsAV">
    <file name="/audiovideo-conf/media.conf.xml"/>
   </media>
+  <media value="xDamsUsers">
+   <file name="/users-conf/media.conf.xml"/>
+  </media>   
  </multiEditing>
 </root>

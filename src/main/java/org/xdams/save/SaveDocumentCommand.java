@@ -23,7 +23,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 /**
  * @author diego
  * 
@@ -66,6 +65,7 @@ public class SaveDocumentCommand {
 			}
 			String[] nomiRequest = MyRequest.ordinaRequest(request, "." + thePne + ".");
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+			System.out.println("SaveDocumentCommand.execute() thePne: " + thePne);
 			XMLBuilder builder = new XMLBuilder(thePne);
 			for (int i = 0; i < nomiRequest.length; i++) {
 				boolean isCDATA = false;
@@ -84,7 +84,7 @@ public class SaveDocumentCommand {
 				}
 			}
 			String theXML = builder.getXML("ISO-8859-1", false);
-//			System.out.println(theXML);
+			// System.out.println(theXML);
 			xwconn.executeUpdateByDocNumber(XMLCleaner.clearXwXML(theXML, false), Integer.parseInt(request.getParameter("physDoc")));
 		} catch (Throwable e) {
 			e.printStackTrace();

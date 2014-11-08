@@ -52,7 +52,7 @@
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">
      <functionName value="ajaxSearchRelatedRecords">
-      <paramFunction javaBean="viewBean" paramValue="/eac-cpf/control/recordId/text()" name="codeToFind">valoreNodo</paramFunction>
+      <paramFunction javaBean="viewBean" paramValue="/eac-cpf/control/recordId/text()" name="codeToFind">valoreNodoNoHL</paramFunction>
       <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
       <paramFunction>'scriviTrova'</paramFunction>
      </functionName>

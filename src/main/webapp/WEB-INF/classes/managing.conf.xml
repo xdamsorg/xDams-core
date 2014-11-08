@@ -16,5 +16,8 @@
   <managing value="xDamsAV">
    <file name="/audiovideo-conf/managing.conf.xml"/>
   </managing>
+  <managing value="xDamsUsers">
+   <file name="/users-conf/managing.conf.xml"/>
+  </managing>  
  </multiEditing>
 </root>

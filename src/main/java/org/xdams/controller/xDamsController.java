@@ -116,7 +116,7 @@ public class xDamsController {
 		model.addAttribute("contextPath", request.getContextPath());
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
-			response.addHeader("X-UA-Compatible", "IE=8");
+			response.addHeader("X-UA-Compatible", "IE=edge");
 		}
 	}
 
@@ -353,7 +353,6 @@ public class xDamsController {
 		AssociateCommand associateCommand = new AssociateCommand(request.getParameterMap(), modelMap);
 		associateCommand.execute();
 		modelMap.addAttribute("uploadBean", uploadBean);
-
 		return "upload/associateMenu";
 	}
 

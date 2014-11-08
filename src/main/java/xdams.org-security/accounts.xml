@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
  <account descrAccount="xdams.org - xDams open source" id="xdams.org">
+  <archiveGroup name="Gestione">
+   <archive alias="xDamsUsers" host="127.0.0.1" ico="user.gif" pne="account" port="-1" type="xDamsUsers">Gestione Utenti</archive>
+  </archiveGroup>
   <archiveGroup name="Archivi">
    <archive alias="xDamsHist" host="127.0.0.1" ico="storico.gif" pne="c" port="-1" type="xDamsHist">Archivio Storico</archive>
    <archive alias="xDamsAV" host="127.0.0.1" ico="video.gif" pne="c" port="-1" type="xDamsAV">Archivio AudioVideo</archive>

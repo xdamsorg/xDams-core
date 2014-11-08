@@ -18,13 +18,14 @@
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
 	WorkFlowBean workFlowBean = (WorkFlowBean)request.getAttribute("workFlowBean");
 	ManagingBean managingBean = (ManagingBean)session.getAttribute(workFlowBean.getManagingBeanName());
-
+	MyRequest myRequest = new MyRequest(request);
+	
 	String sorting = confBean.getSorting();
   	String accountId = userBean.getAccount().getId();
 	String theArch = workFlowBean.getAlias();
 	QRParser qRParser = (QRParser)session.getAttribute("QRParser");
 	org.xdams.xw.paging.QRPage qRPage = (org.xdams.xw.paging.QRPage)session.getAttribute("QRPage");
-	int perpage = 10;
+	int perpage = Integer.parseInt(myRequest.getParameter("perpage","10"));
 	int pageToShow = 1;
 
 	if(request.getParameter("pageToShow")!=null){
@@ -35,7 +36,7 @@
 	}else if(request.getParameter("perpage")!=null){
 		perpage = Integer.parseInt(request.getParameter("perpage"));
 	}else if(request.getParameter("perpage")==null){
-		 perpage = 10;
+		 perpage = Integer.parseInt(myRequest.getParameter("perpage","10"));
 	}
 
 	XMLBuilder theXMLconfTitle = confBean.getTheXMLConfTitle();
@@ -85,7 +86,7 @@ loadJsBusiness('title','${frontUrl}');
 	}%>
 	//alert('<%=queryStr%>');
 	
-	document.location.href='${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?sorting='+obj.value+'&qlphrase=<%=org.apache.commons.lang3.StringEscapeUtils.escapeEcmaScript(queryStr.replaceAll("&quot;","\""))%>';
+	document.location.href='${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?sorting='+obj.value+'&qlphrase=<%=org.apache.commons.lang3.StringEscapeUtils.escapeEcmaScript(queryStr.replaceAll("&quot;","\""))%>&perpage=<%=perpage%>';
 	
 	}catch(e){
 		alert("attenzione errore, segnalare");

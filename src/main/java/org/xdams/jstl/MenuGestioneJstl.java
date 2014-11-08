@@ -231,9 +231,9 @@ public class MenuGestioneJstl extends TagSupport {
 									endCom = "";
 								}
 								anchorTxt += paramNameAnchor + "=" + methodValue + endCom;
-								System.out.println("MenuGestioneJstl.doStartTag()anchorTxt anchorTxt " + anchorTxt);
+//								System.out.println("MenuGestioneJstl.doStartTag()anchorTxt anchorTxt " + anchorTxt);
 								if (anchorTxt.endsWith("?")) {
-									System.out.println("MenuGestioneJstl.doStartTag()AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+//									System.out.println("MenuGestioneJstl.doStartTag()AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 									anchorTxt = anchorTxt.substring(0, anchorTxt.length() - 1);
 
 								}
