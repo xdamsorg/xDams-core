@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+ <!-- Enables the Spring MVC @Controller programming model -->
+ <annotation-driven content-negotiation-manager="contentManager"/>
+ <beans:bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+  <beans:property name="favorPathExtension" value="true"/>
+  <beans:property name="ignoreAcceptHeader" value="true"/>
+  <beans:property name="defaultContentType" value="text/html"/>
+  <beans:property name="useJaf" value="false"/>
+  <beans:property name="mediaTypes">
+   <beans:map>
+    <beans:entry key="json" value="application/json"/>
+    <beans:entry key="html" value="text/html"/>
+    <beans:entry key="xml" value="application/xml"/>
+   </beans:map>
+  </beans:property>
+ </beans:bean>
+</beans:beans>
