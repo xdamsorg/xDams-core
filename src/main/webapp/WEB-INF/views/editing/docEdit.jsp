@@ -10,6 +10,7 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@page import="org.xdams.utility.request.MyRequest"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -42,6 +43,7 @@
 		<link rel="stylesheet" href="${frontUrl}/css/jquery/jgrowl.css" type="text/css"/>
 		<link rel="stylesheet" type="text/css" href="${frontUrl}/css/jquery/jqac.css" /> 
 		<script type="text/javascript">
+		<%=workFlowBean.getGlobalLangOption()%>
 		var globalOption = {frontPath:'${frontUrl}',lookupAction:'${contextPath}/lookup/<%=workFlowBean.getAlias()%>/',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 		loadJsBusiness('docEdit','${frontUrl}');
 			$(document).ready(function(){
@@ -50,7 +52,7 @@
 				setupZoom('${frontUrl}/img/jquery/zoom/');
  			});
 		</script>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		var arrLayer = new Array;
 		<%
 		for(int i=0;i < numeroMacroarea; i++){
@@ -69,13 +71,13 @@
 	</head>
 <body onload="self.focus();showHideLayers(arrLayer[0],'','show');return showAllSection();">
 <script type="text/javascript">
-xDamsModalMessage('caricamento in corso...');
+xDamsModalMessage('<spring:message code="caricamento_in_corso" text="caricamento in corso"/>...');
 </script>
 	<div id="testa_edit">
 		<div class="sotto_head">&nbsp;</div>
 		<div class="riga_tit_diz">
-			<div class="Tit_diz">modifica</div>
-			<div class="butt_close"><a  href="#nogo"  onmouseover="window.status=('Chiude la schermata corrente senza salvare le modifiche effettuate')" onmouseout="window.status=('')" onclick="return chiudiPagina('Attenzione:\nchiudendo la pagina corrente le modifiche effettuate andranno perse!')" class="link_white" title="chiudi finestra">chiudi x</a></div>
+			<div class="Tit_diz"><spring:message code="modifica" text="modifica"/></div>
+			<div class="butt_close"><a  href="#nogo"  onmouseover="window.status=('<spring:message code="Chiudere_la_schermata_corrente_senza_salvare_le_modifiche_effettuate" text="Chiudere la schermata corrente senza salvare le modifiche effettuate"/>')" onmouseout="window.status=('')" onclick="return chiudiPagina('<spring:message code="Attenzionenchiudendo_la_pagina_corrente_le_modifiche_effettuate_andranno_perse" text="Attenzione:\nchiudendo la pagina corrente le modifiche effettuate andranno perse!"/>')" class="link_white" title="<spring:message code="chiudi" text="chiudi"/>"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 		</div>
 			<div class="cont_riga_dx">
 				<div class="riga_sx">
@@ -88,7 +90,7 @@ xDamsModalMessage('caricamento in corso...');
 			</div>
 		</div>
 
-	<div id="SALVATAGGIO" class="statusLayerNONVisibile">Attendere: <strong>salvataggio record in corso...</strong></div>
+	<div id="SALVATAGGIO" class="statusLayerNONVisibile"><spring:message code="Attendere" text="Attendere"/>: <strong><spring:message code="salvataggio_record_in_corso" text="salvataggio record in corso"/>...</strong></div>
 	<form name="theForm" action="${contextPath}/save/<%=workFlowBean.getAlias()%>/document.html" method="post">
 	<div class="cont_menu_sx">
 		<ul  class="lista_menu_sx">
@@ -159,7 +161,7 @@ xDamsModalMessage('caricamento in corso...');
  <div id="textAreaBigLayer" class="statusLayerNONVisibile"></div>
 <script type="text/javascript">
 //<![CDATA[
-document.write('<div class="statusLayerNONVisibile" id="attendere"><blink>attendere...</blink><marquee>attendere...</marquee></div>');
+document.write('<div class="statusLayerNONVisibile" id="attendere"><blink><spring:message code="attendere" text="attendere"/>...</blink><marquee><spring:message code="attendere" text="attendere"/>...</marquee></div>');
 //]]>
 </script>
  </body>

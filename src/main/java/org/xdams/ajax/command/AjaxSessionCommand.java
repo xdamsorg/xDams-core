@@ -35,9 +35,10 @@ public class AjaxSessionCommand {
 		HttpSession httpSession = null;
 		ManagingBean managingBean = null;
 		String valori = "";
+		WorkFlowBean workFlowBean = null;
 		try {
 			UserBean userBean = (UserBean) modelMap.get("userBean");
-			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
+			workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 			httpSession = workFlowBean.getRequest().getSession(false);
 			if (httpSession.getAttribute(workFlowBean.getManagingBeanName()) == null) {
 				managingBean = new ManagingBean();
@@ -82,7 +83,7 @@ public class AjaxSessionCommand {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<sessionList>\n<sessionDoc><text>Errore Caricamento</text><value></value></sessionDoc>\n</sessionList>");
+			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<sessionList>\n<sessionDoc><text>" + workFlowBean.getLocalizedString("Errore_Caricamento", "Errore Caricamento") + "</text><value></value></sessionDoc>\n</sessionList>");
 		}
 		ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" + "<sessionList>\n" + valori + "</sessionList>");
 		// ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"http://localhost:8080//xdams-front/REGEXE/xslt/prova.xslt\"?>\n" + "<sessionList>\n" + valori + "</sessionList>");

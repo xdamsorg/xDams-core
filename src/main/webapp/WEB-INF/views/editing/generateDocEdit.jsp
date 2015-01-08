@@ -8,7 +8,7 @@
 for (int z = 0; z < numeroMacroarea; z++) {
 	String laSezione = theXMLconf.valoreNodo("/" + ilPath + "/macroarea[" + (z + 1) + "]/@label");
 	String macroArea = "/" + ilPath + "/macroarea[" + (z + 1) + "]";%>
-
+ 
  
 <div  <%if(request.getAttribute("showAll")==null){ %>class="statusLayerNONVisibile"<%} %> id="<%=theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+(z+1)+"]/@layer")%>">
 		<div class="area">

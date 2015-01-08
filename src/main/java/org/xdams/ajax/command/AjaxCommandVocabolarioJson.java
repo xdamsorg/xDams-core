@@ -124,11 +124,11 @@ public class AjaxCommandVocabolarioJson {
 				}
 
 			} else {
-				valori = "{\"value\":\"\", \"label\":\"nessun elemento\", \"frequency\":0}";
+				valori = "{\"value\":\"\", \"label\":\""+workFlowBean.getLocalizedString("nessun_elemento", "nessun elemento")+"\", \"frequency\":0}";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			valori = "{\"value\":\"\", \"label\":\"nessun elemento\", \"frequency\":0}";
+			valori = "{\"value\":\"\", \"label\":\""+workFlowBean.getLocalizedString("nessun_elemento", "nessun elemento")+"\", \"frequency\":0}";
 		} finally {
 			ajaxBean.setStrXmlOutput("{\"items\": [" + valori + "]}");
 			connectionManager.closeConnection(xwconn);

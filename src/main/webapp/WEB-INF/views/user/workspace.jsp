@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="org.xdams.user.bean.UserBean"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.Map.Entry"%>
@@ -133,6 +134,19 @@ jQuery(document).ready(function(){
 			  }
 			});
 	});
+	
+	$('#admincreateMessage').click(function(){
+		var dataField = "messageVal="+$('#messageVal').val();
+		//alert(dataField);
+		$.ajax({
+			  url: 'admin/createMessage.html',
+			  type: "GET",
+		      data: dataField,
+			  success: function(data) {
+			    $('#resultAdmincreateMessage').attr('value',data);
+			  }
+			});
+	});
 
 	//$('body').trigger("refresh");
 
@@ -153,7 +167,10 @@ jQuery(document).ready(function(){
 		<div class="right"></div>
 	</div>
 	<div class="sub_menu">
-		<div id="tit_arc">Benvenuto <%=userBean.getName()%> <%=userBean.getLastName()%></div>
+		<div id="tit_arc"><spring:message code="Benvenuto" text="Benvenuto"/> <%=userBean.getName()%> <%=userBean.getLastName()%><img src="${frontUrl}/img/arrow.gif" border="0" alt="<spring:message code="accedi" text="accedi"/>"  class="arrow_spacer" />		
+		<a href="?lang=it" class="v_menu" title="ricerca">italiano</a><img src="${frontUrl}/img/arrow.gif" border="0" alt="<spring:message code="accedi" text="accedi"/>"  class="arrow_spacer" />
+		<a href="?lang=en" class="v_menu" title="ricerca">english</a><img src="${frontUrl}/img/arrow.gif" border="0" alt="<spring:message code="accedi" text="accedi"/>"  class="arrow_spacer" />
+		</div>
 	</div>
 	<div class="sub_sub_menu">
 		<div class="left_top2"></div>
@@ -162,7 +179,7 @@ jQuery(document).ready(function(){
 </div>
 <div id="contentPage">
 <div style="float:left;margin-left: 20px;">
-<a class="arcPadre" href="#findInWorkSpace"  style="display:none">ricerca archivi</a>
+<a class="arcPadre" href="#findInWorkSpace"  style="display:none"><spring:message code="ricerca_archivi" text="ricerca archivi"/></a>
 <ul class="elArc" style="display:none">
 <li>
 <input type="text"  style="display:none"/>
@@ -171,13 +188,20 @@ jQuery(document).ready(function(){
 </div>
 <%if(userBean.getRole().equals("ROLE_ADMIN")){ %>
 <div style="float:left;">
-<a class="arcPadre" href="#generatePassword">genera password</a>
-<ul class="elArc" style="display:none">
-<li>
-<input type="text" id="passwordField"/><a href="#vai" id="generatePassword">invia</a>
-<span id="resultGeneratePassword"></span>
-</li>
-</ul>
+	<a class="arcPadre" href="#generatePassword"><spring:message code="generapassword" text="genera password"/></a>
+	<ul class="elArc" style="display:none">
+		<li>
+			<input type="text" id="passwordField"/><a href="#vai" id="generatePassword"><spring:message code="invia" text="invia"/></a>
+			<span id="resultGeneratePassword"></span>
+		</li>
+	</ul>
+	<a class="arcPadre" href="#admincreateMessage"><spring:message code="admincreateMessage" text="genera string"/></a>
+	<ul class="elArc" style="display:none">
+		<li>
+			<input type="text" id="messageVal" size="100"/><a href="#vai" id="admincreateMessage"><spring:message code="invia" text="invia"/></a>
+			<input type="text" id="resultAdmincreateMessage" size="100"/>
+		</li>
+	</ul>	
 </div> 
 <%}%>
 <!-- 
@@ -193,7 +217,7 @@ jQuery(document).ready(function(){
 		<div  class="fl" >
 	<div class="cont_campi" >
 		<div id ="contArchive" class="ml20mt30">
-		<span class="bold">LISTA DEGLI ARCHIVI</span>
+		<span class="bold"><spring:message code="LISTA_DEGLI_ARCHIVI" text="LISTA DEGLI ARCHIVI"/></span>
 			<div class="boxLeft">
 			
 			</div>
@@ -221,6 +245,19 @@ jQuery(document).ready(function(){
 										<a href="${contextPath}/search/<%=archive.getAlias()%>/query-multiarchive.html" target="<%=archive.getAlias()%>"><%=archive.getArchiveDescr()%></a>
 									</li>
 									<%	
+									} else if(archive.getType().equalsIgnoreCase("xDamsUsers")){
+										if(userBean.getRole().equals("ROLE_ADMIN")){
+										%><li>
+										<img src="${frontUrl}/img/workspace/<%=archive.getIco()%>" class="icLista" alt="<%=archive.getArchiveDescr()%>" />
+										<a href="${contextPath}/search/<%=archive.getAlias()%>/query.html" target="<%=archive.getAlias()%>"><%=archive.getArchiveDescr()%></a>
+										</li><%											
+										}else if(userBean.getRole().equals("ROLE_USER")){
+											%><li>
+											<img src="${frontUrl}/img/workspace/<%=archive.getIco()%>" class="icLista" alt="<%=archive.getArchiveDescr()%>" />
+											<a href="${contextPath}/editing/<%=archive.getAlias()%>/docEdit-myuser.html" target="<%=archive.getAlias()%>"><%=archive.getArchiveDescr()%></a>
+											</li>
+											<%
+										}									
 									}else{
 									%>
 									<li>

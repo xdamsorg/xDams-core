@@ -1,5 +1,5 @@
 function stampaRamo(numDoc,theArch,accountPath,theHost,mode,theGestWebApp){
-	alert('Questa funzionalità permette di creare una stampa in formato PDF del documento o di tutta la sua gerarchia.');
+	alert(getLocalizedString('Questa_funzionalita_permette_di_creare_una_stampa_in_formato_PDF_del_documento_o_di_tutta_la_sua_gerarchia','Questa funzionalità permette di creare una stampa in formato PDF del documento o di tutta la sua gerarchia')+'.');
 }
 /*function stampaRamo(numDoc,theArch,accountPath,theHost,mode,theGestWebApp){
 if(theGestWebApp == null || theGestWebApp == '')
@@ -15,7 +15,7 @@ if(theGestWebApp == null || theGestWebApp == '')
    	return false;
 }*/
 function PDFPrinter(theArch,theWebApp,level,numDoc_phrase,mail){
-	alert('Questa funzionalità permette di creare una stampa in formato PDF del documento o di tutta la sua gerarchia.');
+	alert(getLocalizedString('Questa_funzionalita_permette_di_creare_una_stampa_in_formato_PDF_del_documento_o_di_tutta_la_sua_gerarchia','Questa funzionalità permette di creare una stampa in formato PDF del documento o di tutta la sua gerarchia')+'.');
 }
 /*function PDFPrinter(theArch,theWebApp,level,numDoc_phrase,mail){
 
@@ -38,7 +38,7 @@ function PDFPrinter(theArch,theWebApp,level,numDoc_phrase,mail){
 
 
 function importaZip(numDoc,theArch,userPermis,accountPath){
-	alert("Questa funzionalità permette di importare nell'archivio corrente\n i documenti xml creati con il modulo xDams-offline");
+	alert(getLocalizedString('Questa_funzionalita_permette_di_importare_nellarchivio_correnten_i_documenti_xml_creati_con_il_modulo_xDamsoffline','Questa funzionalità permette di importare nell\'archivio corrente\n i documenti xml creati con il modulo xDams-offline'));
 }
 /*function importaZip(numDoc,theArch,userPermis,accountPath){
 	percorso = 'ZipUpload.jsp?theArch='+theArch+'&physDoc='+numDoc+'&accountPath='+accountPath+'&userPermis='+userPermis
@@ -164,7 +164,7 @@ if(theGestWebApp == null || theGestWebApp == '')
 	theGestWebApp = 'RegestaDAMS_JMSProducer';
 	percorso = "";
 	if(top.document.gestione['azione'].value == 'duplica'){
-		if(!confirm('Duplicare la scheda contenuta negli appunti?'))
+		if(!confirm(getLocalizedString('Duplicare_la_scheda_contenuta_negli_appunti','Duplicare la scheda contenuta negli appunti')+'?'))
 			return false
 		percorso = 'gestioneDuplica.jsp?';
 		}
@@ -308,7 +308,7 @@ function tagliaMultiplo(action,theElement,theRule,theWebApp,theGestWebApp){
 
 				if(action == 'svuota')
 				{
-					if(confirm('Svuotare gli appunti?'))
+					if(confirm(getLocalizedString('Svuotare_gli_appunti','Svuotare gli appunti')+'?'))
 					{
 						top.document.gestione.documentiTagliati.value = '~'
 						top.document.gestione.documentoPadre.value = ''

@@ -1,3 +1,4 @@
+<%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="org.xdams.page.view.bean.MediaBean"%>
 <%@page import="org.xdams.utility.ExpressionEvaluationUtils"%>
@@ -58,7 +59,7 @@
 		      	multiSezione = true;
 		      else
 		      	multiSezione = false;
-				%><div class="sezione" id="sezione_head_<%=idSezione%>"><a href="#nogo" id="sezione_link_<%=idSezione%>" onclick="openSection('sezione_<%=idSezione%>',this)" class="apri_chiudi"><img alt="apri/chiudi" src="${frontUrl}/img/apri.gif" border="0" /><%=nomeSezione%></a></div>
+				%><div class="sezione" id="sezione_head_<%=idSezione%>"><a href="#nogo" id="sezione_link_<%=idSezione%>" onclick="openSection('sezione_<%=idSezione%>',this)" class="apri_chiudi"><img alt="<spring:message code="apri_chiudi" text="apri/chiudi"/>" src="${frontUrl}/img/apri.gif" border="0" /><%=nomeSezione%></a></div>
 				<div id="sezione_<%=idSezione%>" style="display:none"><%
 			   boolean testSezione = false;
 			   boolean testSezioneOpen = false;
@@ -196,7 +197,7 @@
 												alternativeTitle = (theXMLConfMedia).valoreNodo("/elemento/@alternativeLinkTitle");
 											}
 											if (alternativeTitle.equals("")) {
-												alternativeTitle = "accedi all'allegato digitale";
+												alternativeTitle = workFlowBean.getLocalizedString("accedi_allallegato_digitale","accedi all'allegato digitale");
 											}
 											out.println("<div class=\"campoFoto\"><a href=\"" + urlFoto + "\" class=\"v_menu\" target=\"_blank\">" + alternativeTitle + "</a></div>\n");
 										}else if (((mediaBean.getViewMode()).toLowerCase()).indexOf("image") != -1) {
@@ -304,7 +305,7 @@
 											<%if(!skipInfo && !ilCodice.equals("")){
 												skipInfo = true;
 												%>
-		   										<a href="#nogo" onclick="return infoAuther('<%=ilCodice%>','<%=arch%>','<%=autherQuery%>')" class="cerca_b">info</a>&#160;&#160;&#160;
+		   										<a href="#nogo" onclick="return infoAuther('<%=ilCodice%>','<%=arch%>','<%=autherQuery%>')" class="cerca_b"><spring:message code="info" text="info"/></a>&#160;&#160;&#160;
 											 <%}%>											
 											<%=elementoPathGroupAfter[w]%><%
 												}
@@ -339,7 +340,7 @@
 											<%
 	   													String ilCodice=theXML.valoreNodoHTML(prefix+"["+(w+1)+"]/"+code);
 	   												if(!ilCodice.equals("")){%>
-		   												<%=ilCodice %> <a href="#nogo" onclick="return infoAuther('<%=ilCodice%>','<%=arch%>','<%=autherQuery%>')" class="cerca_b">info</a>&#160;&#160;&#160;
+		   												<%=ilCodice %> <a href="#nogo" onclick="return infoAuther('<%=ilCodice%>','<%=arch%>','<%=autherQuery%>')" class="cerca_b"><spring:message code="info" text="info"/></a>&#160;&#160;&#160;
 												   <%}%>												   
 													 
 	   											
@@ -521,7 +522,7 @@
 															<table align="right">
 															<tr>
 																<td valign="center" class="showdocTitoloElemento">
-																	<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=theArch%>','dao')" href="#nogo">accedi agli allegati digitali</a></center>
+																	<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=theArch%>','dao')" href="#nogo"><spring:message code="accedi_allallegato_digitale" text="accedi all'allegato digitale"/></a></center>
 																</td>
 															</tr>
 															</table>
@@ -617,7 +618,7 @@
 															<table align="right"> 
 															<tr>
 																<td valign="center" class="showdocTitoloElemento">
-																	<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=theArch%>','dao')" href="#nogo">accedi agli allegati digitali</a></center>
+																	<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=theArch%>','dao')" href="#nogo"><spring:message code="accedi_allallegato_digitale" text="accedi all'allegato digitale"/></a></center>
 																</td>
 															</tr>
 															</table>

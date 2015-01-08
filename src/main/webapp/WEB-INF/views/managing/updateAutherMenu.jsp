@@ -9,6 +9,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -36,6 +37,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}' ,theArch:'${workFlowBean.alias}', contextPath:'${contextPath}'};
 loadJsBusiness('modifyAuther','${frontUrl}');
 </script>
@@ -52,7 +54,7 @@ loadJsBusiness('modifyAuther','${frontUrl}');
 			}else{
 				// alert(serviceXPath)
 		 	}
-		    xDamsModalMessage('elaborazione in corso...');
+		    xDamsModalMessage('<spring:message code="elaborazione_in_corso" text="elaborazione in corso"/>...');
 		 	document.theForm.submit();
 		}
 		
@@ -66,10 +68,11 @@ loadJsBusiness('modifyAuther','${frontUrl}');
 				}
 			}
 			if(!isCheck){
-				alert("Attenzione:selezionare almeno un archivio!");
+				alert("<spring:message code="Attenzione_selezionare_almeno_un_archivio" text="Attenzione: selezionare almeno un archivio"/>!");
 				return;
 			}
- 			if(confirm('Attenzione:: la richiesta comporterà l\'immediata modifica di tutti i record associati al record negli archivi collegati')){
+			
+	 		if(confirm('<spring:message code="Attenzione_la_richiesta_comportera_limmediata_modifica_di_tutti_i_record_associati_al_record_negli_archivi_collegati" text="Attenzione: la richiesta comporterà l\\'immediata modifica di tutti i record associati al record negli archivi collegati"/>')){
  				objA.innerHTML = "";
  				//document.getElementById('STATO').className = 'statusLayerVisibile';
  				impostaAndGo("","");
@@ -98,10 +101,10 @@ loadJsBusiness('modifyAuther','${frontUrl}');
     		ModifyAutherBean autherBean = (ModifyAutherBean)(modifyAutherBean.getArrModifyAutherBean()).get(x);
 			if(autherBean.getNumElementi()>0)
 	    		almenoUno=true;
-		%><div class="m10" <%if(autherBean.getNumElementi()==0){%>style="display:none"<%} %> title="<%=autherBean.getQuery()%>"><span class="testoMain12"><input type="checkbox" name="theArchiveToProcess_<%=x%>" value="<%=autherBean.getArchivioAlias()%>"/><em class="testoMainBold12"><%=autherBean.getArchivioDescr()%></em><br /> trovate <strong><%=autherBean.getNumElementi()%></strong> occorrenze</span><br /></div><%	
+		%><div class="m10" <%if(autherBean.getNumElementi()==0){%>style="display:none"<%} %> title="<%=autherBean.getQuery()%>"><span class="testoMain12"><input type="checkbox" name="theArchiveToProcess_<%=x%>" value="<%=autherBean.getArchivioAlias()%>"/><em class="testoMainBold12"><%=autherBean.getArchivioDescr()%></em><br /> <spring:message code="trovate" text="trovate"/> <strong><%=autherBean.getNumElementi()%></strong> <spring:message code="occorrenze" text="occorrenze"/></span><br /></div><%	
     	}
     if(almenoUno==false){
-    	%><div class="m10">Nessun elemento associato</div><%
+    	%><div class="m10"><spring:message code="Nessun_elemento_associato" text="Nessun elemento associato"/></div><%
     }
     %></div>
 <textarea name="nameToChange" class="doceditInput" cols="57" style="display:none;visibility:hidden;" id="scriviQUA"><%=ilLemma%></textarea>
@@ -111,7 +114,7 @@ loadJsBusiness('modifyAuther','${frontUrl}');
 	<div class="margin_foot">
 	 	<div class="cont_ul2">	
 			<ul class="bottoniMenu" >
-	 			<%if(almenoUno){ %><li><a title="Esegui la richiesta"  class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaModifica(this);"  href="#">ESEGUI</a></li><%}%>
+	 			<%if(almenoUno){ %><li><a title="<spring:message code="ESEGUI" text="ESEGUI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica(this);"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a></li><%}%>
 			</ul>
 		</div>
 	</div>

@@ -197,7 +197,7 @@ function dispatcherProcess(responseXML,responseAll,innerName){
 		if(document.getElementById(innerName)!=null){
 			document.getElementById(innerName).innerHTML = unescape((responseAll.responseText));		
 		}else{
-			alert("Attenzione innerName non impostato >> "+innerName+" <<");
+			alert((getLocalizedString('Attenzione_innerName_non_impostato','Attenzione innerName non impostato' )+" >> "+innerName+" <<"));
 		}
 
 	}else if(errorAjax){
@@ -420,7 +420,7 @@ function ajaxSearchRelatedRecords(codeToFind,physDoc,innerName){
 
 function ajaxMultipleSelectionMode(theArchName) {
 var extraLink = "";
-if(confirm('Vuoi svuotare gli appunti?')){
+if(confirm(getLocalizedString('Vuoi_svuotare_gli_appunti','Vuoi svuotare gli appunti')+"?")){
 	extraLink = "&svuota=ok";
 }
 strURL  = "../../"+theArchName+"/ajax.html?actionFlag=selectedDoc&action=switch"+extraLink;
@@ -432,13 +432,13 @@ return true;
 
 
 function ajaxEraseQueryBean(theArch) {
- strURL  = "../../ajax.html?actionFlag=eraseQueryBean&theArch="+theArch;
+ strURL  = globalOption.contextPath+"/"+globalOption.theArch+"/ajax.html?actionFlag=eraseQueryBean&theArch="+theArch;
  //alert(strURL);
   var ajax = new AJAXInteraction(strURL);
   ajax.send();
   if(document.getElementById('queryBeanSelect')!=null){
 	  document.getElementById('queryBeanSelect').options.length=0;
-	  document.getElementById('queryBeanSelect').options[0]=new Option("nessuna ricerca effettuata", "", true, true);
+	  document.getElementById('queryBeanSelect').options[0]=new Option(getLocalizedString('nessuna_ricerca_effettuata','nessuna ricerca effettuata'), "", true, true);
   }
 return true;
 }

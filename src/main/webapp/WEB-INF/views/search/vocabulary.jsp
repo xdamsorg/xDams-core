@@ -9,6 +9,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -27,6 +28,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 loadJsBusiness('vocabulary','${frontUrl}');
 </script>
 <script type="text/javascript">
@@ -131,16 +133,15 @@ setVocParams('<%=StringEscapeUtils.escapeEcmaScript(toFillJ)%>','<%=vocabolarioT
 <div id="head">
 	<div class="sotto_head">&nbsp;</div>
 	<div class="riga_tit_diz">
-		<div class="Tit_diz">dizionario di campo</div>
-		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra">chiudi x</a></div>
+		<div class="Tit_diz"><spring:message code="dizionario_di_campo" text="dizionario di campo"/></div>
+		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="<spring:message code="chiudi" text="chiudi"/>"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 	</div>
-	<div class="riga_posiziona" ><span class="link">posiziona su</span><input type="text" class="middle" style="margin-left:4px;" name="valore_vocabolario" onchange="return toVoc(this);" onblur="return toVoc(this);" /><a href="#n" title="posiziona su" onclick="submitVocabolario();"><img src="${frontUrl}/img/posiziona.gif" alt="posiziona" border="0" hspace="3" /></a>
+	<div class="riga_posiziona" ><span class="link"><spring:message code="posiziona_su" text="posiziona su"/></span><input type="text" class="middle" style="margin-left:4px;" name="valore_vocabolario" onchange="return toVoc(this);" onblur="return toVoc(this);" /><a href="#n" title="<spring:message code="posiziona_su" text="posiziona su"/>" onclick="submitVocabolario();"><img src="${frontUrl}/img/posiziona.gif" alt="<spring:message code="posiziona_su" text="posiziona su"/>" border="0" hspace="3" /></a>
 	</div>
-	<div class="tot_pag_voc" style="">visualizza <select class="scelta_sel" id="selectVis" onchange="return toVocKeyCount(this);"><option value="<%=request.getAttribute("vocabolario_maxresult")%>"><%=request.getAttribute("vocabolario_maxresult")%></option><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="99999">tutte</option></select>  elementi per pagina</div>
+	<div class="tot_pag_voc" style=""><spring:message code="visualizza" text="visualizza"/> <select class="scelta_sel" id="selectVis" onchange="return toVocKeyCount(this);"><option value="<%=request.getAttribute("vocabolario_maxresult")%>"><%=request.getAttribute("vocabolario_maxresult")%></option><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="99999"><spring:message code="tutte" text="tutte"/></option></select>  <spring:message code="elementi_per_pagina" text="elementi per pagina"/></div>
 </div>
 <div id="content">
- 
-	<div class="m10">
+ 	<div class="m10">
 		 <form name="fillForm" action="">
 	         <%
 	         	int br=0;
@@ -202,12 +203,12 @@ setVocParams('<%=StringEscapeUtils.escapeEcmaScript(toFillJ)%>','<%=vocabolarioT
 		                  }
 		%>
                    <li>
-                    	<a href="#n" title="precedente" onclick="precedente('<%=StringEscapeUtils.escapeEcmaScript(vocFirst)%>');">precedente</a>
+                    	<a href="#n" title="<spring:message code="precedente" text="precedente"/>" onclick="precedente('<%=StringEscapeUtils.escapeEcmaScript(vocFirst)%>');"><spring:message code="precedente" text="precedente"/></a>
                    </li>
         		  <%
         		  	}else{
         		  %>
-        		  		<li><a class="hiddenButton"><del>precedente</del></a></li>
+        		  		<li><a class="hiddenButton"><del><spring:message code="precedente" text="precedente"/></del></a></li>
         		  <%
         		  	}
         		  %>
@@ -219,17 +220,17 @@ setVocParams('<%=StringEscapeUtils.escapeEcmaScript(toFillJ)%>','<%=vocabolarioT
 		                  }
 		%>
                      <li>
-                    	<a href="#n" onclick="successivo('<%=StringEscapeUtils.escapeEcmaScript(vocLast)%>');">successivo</a>
+                    	<a href="#n" onclick="successivo('<%=StringEscapeUtils.escapeEcmaScript(vocLast)%>');"><spring:message code="successivo" text="successivo"/></a>
                      </li>
                  <%
                  	}else{
                  %>
-        		  		<li><a class="hiddenButton"><del>successivo</del></a></li>
+        		  		<li><a class="hiddenButton"><del><spring:message code="successivo" text="successivo"/></del></a></li>
         		  <%
         		  	}
         		  %>
   		     <li>
-				<a href="#n" title="inserisci" onclick="submitForm('<%=request.getAttribute("vocabolario_return_id")%>');">INSERISCI</a>
+				<a href="#n" title="inserisci" onclick="submitForm('<%=request.getAttribute("vocabolario_return_id")%>');"><spring:message code="INSERISCI" text="INSERISCI"/></a>
 		     </li>
 		   	 <li>
 				<a href="javascript:submitFormExport();" title="export" >EXPORT</a>
@@ -258,10 +259,10 @@ setVocParams('<%=StringEscapeUtils.escapeEcmaScript(toFillJ)%>','<%=vocabolarioT
 <div id="head">
 	<div class="sotto_head">&nbsp;</div>
 	<div class="riga_tit_diz">
-		<div class="Tit_diz">dizionario di campo</div>
-		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra">chiudi x</a></div>
+		<div class="Tit_diz"><spring:message code="dizionario_di_campo" text="dizionario di campo"/></div>
+		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="<spring:message code="chiudi" text="chiudi"/>"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 	</div>
-	<div class="riga_posiziona"><span class="link">posiziona su</span><input type="text" class="middle" style="margin-left:4px;" name="valore_vocabolario" onkeyup="document.vocabolarioForm.vocabolario_start_param.value=this.value" /><a href="#n" title="posiziona su" onclick="submitVocabolario();"><img src="${frontUrl}/img/posiziona.gif" alt="posiziona" border="0" hspace="3" /></a>
+	<div class="riga_posiziona"><span class="link"><spring:message code="posiziona_su" text="posiziona su"/></span><input type="text" class="middle" style="margin-left:4px;" name="valore_vocabolario" onkeyup="document.vocabolarioForm.vocabolario_start_param.value=this.value" /><a href="#n" title="<spring:message code="posiziona_su" text="posiziona su"/>" onclick="submitVocabolario();"><img src="${frontUrl}/img/posiziona.gif" alt="<spring:message code="posiziona_su" text="posiziona su"/>" border="0" hspace="3" /></a>
 
 
 	</div>
@@ -269,7 +270,7 @@ setVocParams('<%=StringEscapeUtils.escapeEcmaScript(toFillJ)%>','<%=vocabolarioT
 <div id="content">
 	<div style="margin:10px;">
 		<div class="colonna_sx">
-			<div class="dFloat">Nessun termine trovato nel vocabolario</div>
+			<div class="dFloat"><spring:message code="Nessun_termine_trovato_nel_vocabolario" text="Nessun termine trovato nel vocabolario"/></div>
 			<div class="mt3"></div>
 		</div>
 	</div>

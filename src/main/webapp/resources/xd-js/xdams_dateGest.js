@@ -264,7 +264,7 @@ if(bisstart!=parseInt(bisstart,10)){
    bissInizio = true;
 }
 if(daystart>28 && monthstart==2 && bisstart!=parseInt(bisstart,10))
-{alert("Attenzione anno inizio bisestile")
+{alert(getLocalizedString('Attenzione_anno_inizio_bisestile','Attenzione anno inizio bisestile'))
 ilForm[giorno_I].focus()
 return}
 var bissFine = false;
@@ -275,7 +275,7 @@ if(bisend!=parseInt(bisend,10)){
    bissFine = true;
 }
 if(dayend>28 && monthend==2 && bisend!=parseInt(bisend,10))
-{alert("Attenzione anno fine bisestile")
+{alert(getLocalizedString('Attenzione_anno_fine_bisestile','Attenzione anno fine bisestile'))
 ilForm[giorno_F].focus()
 return}
 if((giorno_i.length == 1)||(giorno_f.length == 1))
@@ -290,7 +290,7 @@ if((giorno_i.length == 1)||(giorno_f.length == 1))
 
 if((giorno_i > 31)||(giorno_f > 31))
 	{
-   	   alert('inserire un giorno compreso tra 1 e 31 a seconda del mese\n'+giorno_i+'\n'+giorno_f)
+   	   alert(getLocalizedString('inserire_un_giorno_compreso_tra_1_e_31_a_seconda_del_mese','inserire un giorno compreso tra 1 e 31 a seconda del mese')+giorno_i+'\n'+giorno_f)
    	  
    	  return false
    	}
@@ -309,7 +309,7 @@ if((mese_i > 12)||(mese_f > 12))
 	}
 if((anno_i.length == 1)||(anno_f.length == 1)||(anno_i.length == 2)||(anno_f.length == 2)||(anno_i.length == 3)||(anno_f.length == 3))
 	{
-	   alert('comporre l\'anno nella forma aaaa')
+	   alert(getLocalizedString('comporre_lanno_nella_forma_aaaa','comporre l\'anno nella forma aaaa'))
 	   return false
 	}
 //fine test di corretto inserimento
@@ -652,7 +652,7 @@ if(ilForm[anno_I] != null && anno_I.length != 4){
 	   bissInizio = true;
 	}
 	if(daystart>28 && monthstart==2 && bisstart!=parseInt(bisstart,10))
-	{alert("Attenzione anno inizio bisestile")
+	{alert(getLocalizedString('Attenzione_anno_inizio_bisestile','Attenzione anno inizio bisestile'))
 	ilForm[giorno_I].focus()
 	return}
 	var bissFine = false;
@@ -663,7 +663,7 @@ if(ilForm[anno_I] != null && anno_I.length != 4){
 	   bissFine = true;
 	}
 	if(dayend>28 && monthend==2 && bisend!=parseInt(bisend,10))
-	{alert("Attenzione anno fine bisestile")
+	{alert(getLocalizedString('Attenzione_anno_fine_bisestile','Attenzione anno fine bisestile'))
 	ilForm[giorno_F].focus()
 	return}
 	if((giorno_i.length == 1)||(giorno_f.length == 1))
@@ -678,7 +678,7 @@ if(ilForm[anno_I] != null && anno_I.length != 4){
  
 	if((giorno_i > 31)||(giorno_f > 31))
 		{
-	   	   alert('inserire un giorno compreso tra 1 e 31 a seconda del mese\n'+giorno_i+'\n'+giorno_f)
+	   	   alert(getLocalizedString('inserire_un_giorno_compreso_tra_1_e_31_a_seconda_del_mese','inserire un giorno compreso tra 1 e 31 a seconda del mese')+giorno_i+'\n'+giorno_f)
 	   	  
 	   	  return false
 	   	}
@@ -697,7 +697,7 @@ if(ilForm[anno_I] != null && anno_I.length != 4){
 		}
 	if((anno_i.length == 1)||(anno_f.length == 1)||(anno_i.length == 2)||(anno_f.length == 2)||(anno_i.length == 3)||(anno_f.length == 3))
 		{
-		   alert('comporre l\'anno nella forma aaaa')
+		   alert((getLocalizedString('comporre_lanno_nella_forma_aaaa','comporre l\'anno nella forma aaaa')))
 		   return false
 		}
 // fine test di corretto inserimento
@@ -1213,10 +1213,10 @@ function normalizzaOra(campoImp) {
 		minutiInt = parseInt(minuti,10);
 		secondiInt =  parseInt(secondi,10);
 		if(minutiInt>59){
-			alert('Attenzione: "minuti" non validi!')
+			alert(getLocalizedString('Attenzione_minuti_non_validi','Attenzione: "minuti" non validi')+"!")
 		}else{
 			if(secondiInt>59){
-				alert('Attenzione: "secondi" non validi!')
+				alert(getLocalizedString('Attenzione_secondi_non_validi','Attenzione: "secondi" non validi')+"!")
 			}else{
 				tot=oreInt+minutiInt;
 				(findInput(1,campoImp,6)).value=tot;
@@ -1266,7 +1266,7 @@ function dataSep(campoImp) {
 			
 			if((mese > 12 || 1 > mese) && mese.length == 2)
 			{
-				alert('inserire un mese compreso tra 1 e 12!')
+				alert(getLocalizedString('inserire_un_mese_compreso_tra_1_e_12','inserire un mese compreso tra 1 e 12')+"!")
 				campoImp.value=campo.substr(0,campo.length-2);
 			}
 			else
@@ -1276,7 +1276,7 @@ function dataSep(campoImp) {
 				
 				if((giorno > maxGiorno || 1 > giorno) && giorno.length == 2)
 				{
-					alert('inserire un giorno compreso tra 1 e '+maxGiorno+'!')
+					alert(getLocalizedString('inserire_un_giorno_compreso_tra_1_e','inserire un giorno compreso tra 1 e ')+maxGiorno+'!')
 					campoImp.value=campo.substr(0,1);
 		
 				}

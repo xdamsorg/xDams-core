@@ -1,3 +1,6 @@
+jQuery(document).ready(function(){
+});
+
 function ajaxGetValues(theElement,theFile,thePath) {
  var ajaxSelect = $(theElement);
  if(ajaxSelect.find("option").length<2){
@@ -61,7 +64,7 @@ function makeAutocomplete(instance){
 		cache:false,
 		noresults:"nessuna chiave nel vocabolario"
 	});	
-	console.debug("FINO A QUAAAAA");
+	
 }
 
 function writeNextInput(data, target){
@@ -92,7 +95,7 @@ function callback(data, target){
 		}else if(callback_regexp.test(jQuery(target).attr("callback"))){
 			eval(jQuery(target).attr("callback"));
 		}else{
-			alert("errore di sintassi nella chiamata della funzione callback");
+			alert(getLocalizedString('errore_di_sintassi_nella_chiamata_della_funzione_callback','errore di sintassi nella chiamata della funzione callback'));
 		}
 	}
 }
@@ -130,7 +133,7 @@ function getAjaxData(key, cont, target){
 	addExtraParams(params, target);
 	var script_name = jQuery(target).attr("servlet") ? jQuery(target).attr("servlet") : jQuery(target).parents("[servlet]:first").attr("servlet"); //'http://localhost:8080/TestWeb/ServletTest';
     if(!script_name){
-    	alert("attributo 'servlet' non trovato");
+    	alert(getLocalizedString('attributo_servlet_non_trovato','attributo servlet non trovato'));
     	return false;
     }
     // console.debug("zaaaaaaaaaa");

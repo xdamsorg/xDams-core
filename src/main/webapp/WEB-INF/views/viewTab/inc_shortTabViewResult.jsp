@@ -116,7 +116,7 @@
 											}
 											if(!valoreNodo.equals("")){
 												if(!(theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"")).equals("") && !fieldArchRef.equals("")){
-													%><a href="#nogo" onclick="return infoAuther('<%=theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"")%>','<%=fieldArchRef%>','<%=fieldQuery%>')" class="cerca_b">info</a>&#160;&#160;&#160;<%
+													%><a href="#nogo" onclick="return infoAuther('<%=theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"")%>','<%=fieldArchRef%>','<%=fieldQuery%>')" class="cerca_b"><spring:message code="info" text="info"/></a>&#160;&#160;&#160;<%
 												}
 												if(!fieldAlternative.equals("")){
 													if(!theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/"+fieldAlternative,"").equals("")){
@@ -214,7 +214,7 @@
 												<%}else{%>
 												<%if(!skipInfo && !ilCodice.equals("")){
 													skipInfo = true;
-													String infoAuth = "<a href=\"#nogo\" onclick=\"return infoAuther('"+ilCodice+"','"+arch+"','"+autherQuery+"')\" class=\"cerca_b\">info</a>&#160;";
+													String infoAuth = "<a href=\"#nogo\" onclick=\"return infoAuther('"+ilCodice+"','"+arch+"','"+autherQuery+"')\" class=\"cerca_b\">"+workFlowBean.getLocalizedString("info","info")+"</a>&#160;";
 												%>
 													<%=fieldFormatBeforeArray[a]+valoreNodo+infoAuth+fieldFormatAfterArray[a]+fieldFormatArray[a]%>
 												<%}else{%>
@@ -295,7 +295,7 @@
 												alternativeTitle = (theXMLConfMedia).valoreNodo("/elemento/@alternativeLinkTitle");
 											}
 											if (alternativeTitle.equals("")) {
-												alternativeTitle = "accedi all'allegato digitale";
+												alternativeTitle = workFlowBean.getLocalizedString("accedi_allallegato_digitale","accedi all'allegato digitale");
 											}
 											out.println("<div class=\"campoFoto\"><a href=\"" + urlFoto + "\" class=\"v_menu\" target=\"_blank\">" + alternativeTitle + "</a></div>\n");
 										}else if (((mediaBean.getViewMode()).toLowerCase()).indexOf("image") != -1) {
@@ -488,7 +488,7 @@
 												<table align="right">
 												<tr>
 													<td valign="center" class="showdocTitoloElemento">
-														<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=workFlowBean.getArchive().getAlias()%>','dao')" href="#nogo">accedi agli allegati digitali</a></center>
+														<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=workFlowBean.getArchive().getAlias()%>','dao')" href="#nogo"><spring:message code="accedi_allallegato_digitale" text="accedi all'allegato digitale"/></a></center>
 													</td>
 												</tr>
 												</table>
@@ -584,7 +584,7 @@
 												<table align="right"> 
 												<tr>
 													<td valign="center" class="showdocTitoloElemento">
-														<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=workFlowBean.getArchive().getAlias()%>','dao')" href="#nogo">accedi agli allegati digitali</a></center>
+														<center><a class="cerca_b" onclick="return visualizzaImg(<%=docNumber%>,1,'<%=workFlowBean.getArchive().getAlias()%>','dao')" href="#nogo"><spring:message code="accedi_allallegato_digitale" text="accedi all'allegato digitale"/></a></center>
 													</td>
 												</tr>
 												</table>

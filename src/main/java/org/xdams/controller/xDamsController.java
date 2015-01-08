@@ -1,5 +1,8 @@
 package org.xdams.controller;
 
+import it.highwaytech.db.QueryResult;
+
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +16,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -78,7 +83,7 @@ public class xDamsController {
 	@Autowired
 	ServiceUser serviceUser;
 
-	@Autowired 
+	@Autowired
 	ServletContext servletContext;
 
 	@Autowired
@@ -86,6 +91,12 @@ public class xDamsController {
 
 	@Autowired
 	Boolean multiAccount;
+
+	@Value("#{mapExtraParam}")
+	HashMap mapExtraParam;
+	
+	@Autowired
+	ApplicationContext applicationContext;
 
 	@ModelAttribute
 	public void workFlowBean(Model model) {
@@ -126,6 +137,7 @@ public class xDamsController {
 		workFlowBean.setArchive(serviceUser.getArchive(userBean, archive));
 		workFlowBean.setRequest(request);
 		workFlowBean.setResponse(response);
+		workFlowBean.setApplicationContext(applicationContext);
 		modelMap.put("workFlowBean", workFlowBean);
 	}
 
@@ -250,7 +262,26 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		ManagingFactory managingFactory = new ManagingFactory(request.getParameterMap(), modelMap);
 		ManagingBean managingBean = managingFactory.execute();
-		// return "managing/" + managingBean.getDispatchView();
+	}
+
+	@RequestMapping(value = "/editing/{archive}/docEdit-myuser")
+	public String editingPageMyUser(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		common(confBean, userBean, archive, modelMap, request, response);
+		XWConnection xwconn = null;
+		ConnectionManager connectionManager = new ConnectionManager();
+		try {
+			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
+			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@pwd]=\"" + userBean.getPwd() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
+			QueryResult queryResult = xwconn.getQRfromPhrase(queryUser);
+			int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
+			modelMap.put("physDoc", String.valueOf(numDoc));
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connectionManager.closeConnection(xwconn);
+		}
+		return editingPage(userBean, confBean, archive, modelMap, request, response);
 	}
 
 	@RequestMapping(value = "/editing/{archive}/docEdit")
@@ -328,8 +359,7 @@ public class xDamsController {
 	}
 
 	@RequestMapping(value = "/{archive}/ajax", method = RequestMethod.GET)
-	public ResponseEntity<String> ajaxCall(@PathVariable String archive, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, ModelMap modelMap, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public ResponseEntity<String> ajaxCall(@PathVariable String archive, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		common(confBean, userBean, archive, modelMap, request, response);
 
 		AjaxFactory ajaxFactory = new AjaxFactory(request, response, modelMap);
@@ -383,7 +413,7 @@ public class xDamsController {
 		}
 		return "login";
 	}
-  
+
 	@RequestMapping(value = "/upload/{archive}/uploadMenu", method = RequestMethod.GET)
 	public String openFormUpload(@ModelAttribute("uploadBean") UploadBean uploadBean, @ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {

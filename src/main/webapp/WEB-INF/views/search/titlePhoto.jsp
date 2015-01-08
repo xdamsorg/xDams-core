@@ -12,6 +12,7 @@
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -62,6 +63,7 @@
 <link rel="stylesheet" href="${frontUrl}/css/jquery/jgrowl.css" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="${frontUrl}/css/jquery/jqac.css" /> 
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}',infoURLPrefix:'${contextPath}/infoTab/',infoURLSuffix:'/infoTab.html',theArch:'${workFlowBean.alias}',theExt:'.png',pageValue:'title${workFlowBean.alias}${userBean.id}',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('title','${frontUrl}');
     jQuery(document).ready(function(){
@@ -85,7 +87,7 @@ loadJsBusiness('title','${frontUrl}');
 	}%>
 	document.location.href='${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?sorting='+obj.value+'&qlphrase=<%=org.apache.commons.lang3.StringEscapeUtils.escapeEcmaScript(queryStr.replaceAll("&quot;","\""))%>&perpageChanged=true&viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&pageName=<%=request.getAttribute("pageName")%>';
 	}catch(e){
-		alert("attenzione errore, segnalare");
+		alert("<spring:message code="attenzione_errore" text="attenzione errore"/>");
 	}
 	}
 </script>
@@ -106,9 +108,9 @@ try{
 			<div class="left_top2">elementi trovati <span class="bold"> <%=qRParser.getQrElements()%></span></div>
 			<%if(qRParser.getQrElements()>0){%>
 			<div class="paginazione"><!-- inizio paginazione -->
-				<span class="num_margin_sx"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye" title="prima pagina"><img src="${frontUrl}/img/spacer.gif" class="prima" border="0" alt="prima pagina" vspace="1" /></a></span>
-				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before10=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="precedenti <%=perpage%> risultati"><img src="${frontUrl}/img/spacer.gif" class="prevPerPage" border="0" alt="precedenti <%=perpage%> risultati" vspace="1" /></a></span>
-				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="pagina precedente"><img src="${frontUrl}/img/spacer.gif" class="prev" border="0" alt="pagina precedente" vspace="1" /></a></span>
+				<span class="num_margin_sx"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye" title="<spring:message code="prima_pagina" text="prima pagina"/>"><img src="${frontUrl}/img/spacer.gif" class="prima" border="0" alt="<spring:message code="prima_pagina" text="prima pagina"/>" vspace="1" /></a></span>
+				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before10=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="precedenti" text="precedenti"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>"><img src="${frontUrl}/img/spacer.gif" class="prevPerPage" border="0" alt="<spring:message code="precedenti" text="precedenti"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>" vspace="1" /></a></span>
+				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="pagina_precedente" text="pagina precedente"/>"><img src="${frontUrl}/img/spacer.gif" class="prev" border="0" alt="<spring:message code="pagina_precedente" text="pagina precedente"/>" vspace="1" /></a></span>
 				<%
  						List pagesToShow = qRPage.getPageToShow();
 						String classhref ="";
@@ -124,20 +126,20 @@ try{
 								}
 	     				}
 				%>
-  				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;next=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="pagina successiva"><img src="${frontUrl}/img/spacer.gif" class="next" border="0" alt="pagina successiva" vspace="1" /></a></span>
-				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;next10=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="successivi <%=perpage%> risultati"><img src="${frontUrl}/img/spacer.gif" class="nextPerPage" border="0" alt="successivi <%=perpage%> risultati" vspace="1" /></a></span>
-				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;ultimo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="ultima pagina"><img src="${frontUrl}/img/spacer.gif" class="last" border="0" alt="ultima pagina" vspace="1" /></a></span>
+  				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;next=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="pagina_successiva" text="pagina successiva"/>"><img src="${frontUrl}/img/spacer.gif" class="next" border="0" alt="<spring:message code="pagina_successiva" text="pagina successiva"/>" vspace="1" /></a></span>
+				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;next10=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="successivi" text="successivi"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>"><img src="${frontUrl}/img/spacer.gif" class="nextPerPage" border="0" alt="<spring:message code="successivi" text="successivi"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>" vspace="1" /></a></span>
+				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;ultimo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="ultima_pagina" text="ultima pagina"/>"><img src="${frontUrl}/img/spacer.gif" class="last" border="0" alt="<spring:message code="ultima_pagina" text="ultima pagina"/>" vspace="1" /></a></span>
 			</div><!-- fine paginazione -->
 
-			<div class="tot_pag">visualizza <select class="scelta_sel" id="selectVis" onchange="lanciaPerpage('${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;perpageChanged=true&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>',this)"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="100">100</option></select>  elementi per pagina</div>
-			<div class="buttonRefresh"><a href="#" onclick="return reloadLocation()" title="aggiorna la pagina"><img src="${frontUrl}/img/aggiorna.gif" border="0" alt="aggiorna la pagina" /></a>&#160;&#160;<a href="#" title="salva elementi per pagina" onclick="addCookie(document.getElementById('selectVis').value)"><img src="${frontUrl}/img/save_as.gif" border="0" alt="salva elementi per pagina" vspace="2" /></a></div>
+			<div class="tot_pag"><spring:message code="visualizza" text="visualizza"/> <select class="scelta_sel" id="selectVis" onchange="lanciaPerpage('${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;perpageChanged=true&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>',this)"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="100">100</option></select>  <spring:message code="elementi_per_pagina" text="elementi per pagina"/></div>
+			<div class="buttonRefresh"><a href="#" onclick="return reloadLocation()" title="<spring:message code="aggiorna_la_pagina" text="aggiorna la pagina"/>"><img src="${frontUrl}/img/aggiorna.gif" border="0" alt="<spring:message code="aggiorna_la_pagina" text="aggiorna la pagina"/>" /></a>&#160;&#160;<a href="#" title="<spring:message code="salva_elementi_per_pagina" text="salva elementi per pagina"/>" onclick="addCookie(document.getElementById('selectVis').value)"><img src="${frontUrl}/img/save_as.gif" border="0" alt="<spring:message code="salva_elementi_per_pagina" text="salva elementi per pagina"/>" vspace="2" /></a></div>
 <script type="text/javascript">
 //<![CDATA[
 	document.getElementById('selectVis').value='<%=perpage%>';
 //]]>
 </script>
 			<%}%> 
-<div style="float:left; margin-left:10px;">ordina la ricerca per: <select class="scelta_sel" id="selectOrderBy" onchange="orderBy(this);"><%=extractSortValue(out, confBean.getTheXMLConfQuery())%></select></div>
+<div style="float:left; margin-left:10px;"><spring:message code="ordina_la_ricerca_per" text="ordina la ricerca per"/>: <select class="scelta_sel" id="selectOrderBy" onchange="orderBy(this);"><%=extractSortValue(out, confBean.getTheXMLConfQuery())%></select></div>
 <%if(!previewPrefix.equals("")){%><div style="float:left; margin-left:10px;"> preview&#160; <input type="checkbox" id="viewPreview" name="viewPreview" <%=(request.getParameter("viewInputPreview")==null || request.getParameter("viewInputPreview").equals("")) ? "" : "checked=\"true\""%>/></div><%}%>
 
 <script type="text/javascript">
@@ -188,17 +190,17 @@ try{
 						if(!icoArray[ks].equals("")){
 
 							if((icoArray[ks].toLowerCase()).indexOf("jpg")!=-1&& iconType.indexOf("jpg")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/jpg.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/jpg.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((valueArr.toLowerCase()).indexOf("pdf")!=-1&& iconType.indexOf("pdf")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("mp3")!=-1&& iconType.indexOf("mp3")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("wav")!=-1&& iconType.indexOf("wav")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("flv")!=-1 && iconType.indexOf("flv")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("wmv")!=-1 && iconType.indexOf("wmv")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}
 							/*
 							else {
@@ -260,8 +262,8 @@ if(skipNext){continue;}
 		<li><%=strTitoloManager%></li>
 	</ul> 	
 	 <ul class="btThumbOn">
-		<li><a href="${contextPath}/hier/${workFlowBean.archive.alias}/hierBrowser.html?docToggle=<%=physDoc %>&amp;docStart=<%=physDoc %>" title="vedi gerarchia"><img src="${frontUrl}/img/titlePhoto/btGerarchia.jpg" /></a></li>
-		<li><a href="#n" title="vedi scheda" onclick="return infoByNumDoc('<%=physDoc %>','${workFlowBean.alias}')"><img src="${frontUrl}/img/titlePhoto/btScheda.jpg" /></a></li>
+		<li><a href="${contextPath}/hier/${workFlowBean.archive.alias}/hierBrowser.html?docToggle=<%=physDoc %>&amp;docStart=<%=physDoc %>" title="<spring:message code="vedi_gerarchia" text="vedi gerarchia"/>"><img src="${frontUrl}/img/titlePhoto/btGerarchia.jpg" /></a></li>
+		<li><a href="#n" title="<spring:message code="apri_scheda_descrittiva" text="apri la scheda descrittiva"/>" onclick="return infoByNumDoc('<%=physDoc %>','${workFlowBean.alias}')"><img src="${frontUrl}/img/titlePhoto/btScheda.jpg" /></a></li>
 		<%
 		if(imageViewer){
 		%>
@@ -279,7 +281,7 @@ if(skipNext){continue;}
 <%
 	} //end for
 						if(v2.size()==0){%>
-							<div class="ele_tito">Nessun record trovato</div>
+							<div class="ele_tito"><spring:message code="Nessun_record_trovato" text="Nessun record trovato"/></div>
 						<%}
 
 					String hrefScheda = "";

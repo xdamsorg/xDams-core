@@ -2,13 +2,30 @@
 <root>
  <macroarea summary="yes" showdoc="yes" name="Archivi disponibili" layer="DID" label="Archivi disponibili">
   <sezione summary="yes" showdoc="yes" opened="yes" name="Gruppo Archivi">
+   <elemento summary="yes" showdoc="yes" name="account name">/account/@descrAccount</elemento>
+   <elemento summary="yes" showdoc="yes" name="id">/account/@id</elemento>
+   <elemento  summary="yes" showdoc="yes" name="father account">/account/@fatherAccount</elemento>  
    #foreach( $product in [0..$theXML.contaNodi("/account/archiveGroup")]) #set($firstFor=$velocityCount)
    <elemento summary="yes" showdoc="yes" name="$theXML.valoreNodo("/account/archiveGroup[${firstFor}]/@name")" type="multi_group" prefix="/account/archiveGroup[${firstFor}]/archive">
     <elemento summary="yes" showdoc="yes" name="Archive name:">/account/archiveGroup[${firstFor}]/archive/text()</elemento>
    </elemento>
    #end   
   </sezione>
- </macroarea>
+  <sezione summary="yes" showdoc="yes" opened="yes" name="user">
+   <elemento summary="yes" showdoc="yes" name="nome">/user/@name</elemento>
+   <elemento summary="yes" showdoc="yes" name="cognome">/user/@lastName</elemento>
+   <elemento summary="yes" showdoc="yes" name="account">/user/@account</elemento>
+   <elemento summary="yes" showdoc="yes" name="email">/user/@email</elemento>
+   <elemento summary="yes" showdoc="yes" name="user id">/user/@id</elemento>
+  </sezione>
+  <sezione summary="yes" showdoc="yes" opened="yes" name="Archivi">
+   <elemento summary="yes" showdoc="yes" name="archivi" type="multi_group" inline="no" prefix="/user/archive">
+    <elemento summary="yes" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;&lt;br /&gt;" name="archive name: ">/user/archive/text()</elemento>
+    <elemento summary="yes" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;&lt;br /&gt;" name="archive alias: ">/user/archive/@alias</elemento>
+    <elemento summary="yes" showdoc="yes" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;&lt;br /&gt;" name="archive role: " value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ROLE_ARCHIVE']/opzione" >/user/archive/@role</elemento>
+   </elemento>
+  </sezione>  
+ </macroarea> 
 </root>
  
 

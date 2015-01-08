@@ -7,6 +7,7 @@
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@page import="java.io.File"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -27,6 +28,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('upload','${frontUrl}');
 $(document).ready(function(){
@@ -73,7 +75,7 @@ $(document).ready(function(){
 </head> 
 <body>
 <div id="content_multi"> 
-<div class="riga_posiziona_multi"><span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "\\") %>">torna indietro</a></span></div>
+<div class="riga_posiziona_multi"><span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "\\") %>"><spring:message code="torna_indietro" text="torna indietro"/></a></span></div>
 
  	<form:form modelAttribute="uploadBean" id="associateForm" action="${contextPath}/associate/${workFlowBean.alias}/associateMenu.html" method="post" enctype="multipart/form-data">
           <fieldset>
@@ -90,7 +92,7 @@ $(document).ready(function(){
   					}  				
   				
   			}else{
-  				%><div style="padding:5px;">ATTENZIONE IMPOSSIBILE LEGGERE LA DIRECTORY</div><%
+  				%><div style="padding:5px;"><spring:message code="ATTENZIONE_IMPOSSIBILE_LEGGERE_LA_DIRECTORY" text="ATTENZIONE IMPOSSIBILE LEGGERE LA DIRECTORY"/></div><%
   			}
 
 			%>         

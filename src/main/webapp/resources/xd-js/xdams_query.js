@@ -131,7 +131,7 @@ function findDate(theForm,action,elemento,tipologia){
 			valoreInt = parseInt(valore,10);
 			if(tipologia == 'day'){
 				if(valoreInt > 31 || valoreInt < 1){
-					alert('Attenzione: data non valida!');
+					alert(getLocalizedString('Attenzione_data_non_valida','Attenzione: data non valida')+'!');
 					elemento.value = "";
 					elemento.focus();
 				}else{
@@ -142,7 +142,7 @@ function findDate(theForm,action,elemento,tipologia){
 			}else{
 				if(tipologia == 'month'){
 					if(valoreInt > 12 || valoreInt < 1){
-						alert('Attenzione: data non valida!');
+						alert(getLocalizedString('Attenzione_data_non_valida','Attenzione: data non valida')+'!');
 						elemento.value = "";
 						elemento.focus();
 					}else{
@@ -153,7 +153,7 @@ function findDate(theForm,action,elemento,tipologia){
 				}
 				else{
 					if(valore.length < 4){
-						alert('Attenzione: data non valida!');
+						alert(getLocalizedString('Attenzione_data_non_valida','Attenzione: data non valida')+'!');
 						elemento.value = "";
 						elemento.focus();
 					}					
@@ -249,7 +249,7 @@ function oraNormal(campoIni,campoFine,campoQuery) {
 	campoINIValue = campoIni.value;
 	campoFINValue = campoFine.value;
 	if(campoINIValue==""){
-		alert("Inserire ora iniziale");
+		alert(getLocalizedString('Inserire_ora_iniziale','Inserire ora iniziale'));
 		return;
 	}
 	if(campoINIValue.length < 2){

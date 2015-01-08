@@ -6,6 +6,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -25,13 +26,14 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('upload','${frontUrl}');
 </script>
 </head>
 <body>
   <%if(uploadResponse.getResultError().toString().equals("")){%>
-	<h1>Upload eseguito con successo</h1>
+	<h1><spring:message code="Upload_eseguito_con_successo" text="Upload eseguito con successo"/></h1>
   	<script type="text/javascript">
   		top.$("input[name='<%=CommonUtils.escapeJqueryName(uploadResponse.getDestField())%>']").val('<%=StringEscapeUtils.escapeEcmaScript(uploadResponse.getResult().toString())%>');
   		//top.$("input[name='.c.did.dao\\[@type=\\'documenti grafici\\'\\]\\[1\\].resource.text()']").val('ciao');
@@ -46,7 +48,7 @@ loadJsBusiness('upload','${frontUrl}');
 		%>
   	</script>
   <%}if(!uploadResponse.getResultError().toString().equals("")){%>
-  	<h1>Errore in fase di upload <%=uploadResponse.getResultError()%></h1>
+  	<h1><spring:message code="Errore_in_fase_di_upload" text="Errore in fase di upload"/> <%=uploadResponse.getResultError()%></h1>
   <%}%>
 </body>
 </html>

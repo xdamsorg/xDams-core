@@ -9,6 +9,7 @@
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%String useragent = request.getHeader("user-agent");
 if(useragent.indexOf("MSIE 7")==-1){%><!-- Put IE into quirks mode --><%}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,6 +46,7 @@ String extPng = ".png";
 if(useragent.indexOf("MSIE 6")!=-1){
 	extPng = ".gif";
 } %>
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}',theExt:'<%=extPng%>',theArchName:'<%=workFlowBean.getAlias()%>',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('tree','${frontUrl}');
 </script>
@@ -64,7 +66,7 @@ if(managingBean!=null){
 %><div id="contentTree" class="contentTree"><%try{
   java.util.Vector vectHierBrowserBean = treeBean.getVectHierBrowserBean();
   if(treeBean.isUpEnabled()){
-  %><div class="liv_sp"><a href="?hierStatus=<%=treeBean.getHierStatus()%>&amp;docStart=<%=treeBean.getFirstDocNumber()%>&amp;backward=1&amp;docCount=<%=treeBean.getDocCount()%>&amp;pageToShow=<%=myRequest.getParameter("pageToShow")%>&amp;perpage=<%=myRequest.getParameter("perpage")%>">precedente</a></div><%
+  %><div class="liv_sp"><a href="?hierStatus=<%=treeBean.getHierStatus()%>&amp;docStart=<%=treeBean.getFirstDocNumber()%>&amp;backward=1&amp;docCount=<%=treeBean.getDocCount()%>&amp;pageToShow=<%=myRequest.getParameter("pageToShow")%>&amp;perpage=<%=myRequest.getParameter("perpage")%>"><spring:message code="precedente" text="precedente"/></a></div><%
   }%>
 <div class="contList">
 	<%if(vectHierBrowserBean!=null){
@@ -95,17 +97,17 @@ if(managingBean!=null){
 						for(int ks=0;ks<icoArray.length;ks++){
 						if(!icoArray[ks].equals("")){
 							if(((icoArray[ks].toLowerCase()).indexOf("jpg")!=-1&& iconType.indexOf("jpg")==-1) || ((icoArray[ks].toLowerCase()).indexOf("jpeg")!=-1&& iconType.indexOf("jpeg")==-1)){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/jpg.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/jpg.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((valueArr.toLowerCase()).indexOf("pdf")!=-1&& iconType.indexOf("pdf")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("mp3")!=-1&& iconType.indexOf("mp3")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("wav")!=-1&& iconType.indexOf("wav")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("flv")!=-1 && iconType.indexOf("flv")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("wmv")!=-1 && iconType.indexOf("wmv")==-1){
-								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}
 							/*
 							else {
@@ -205,7 +207,7 @@ if(managingBean!=null){
 <%if(treeBean.isDownEnabled()){
 String andToggle = "";
 if(treeBean.getLastDocNumber() == treeBean.getDocToggle())andToggle=String.valueOf(treeBean.getDocToggle());%>
-<div class="liv_in" ><a href="?hierStatus=<%=treeBean.getHierStatus()%>&amp;docStart=<%=treeBean.getLastDocNumber()%>&amp;docToggle=<%=andToggle%>&amp;docCount=<%=treeBean.getDocCount()%>&amp;pageToShow=<%=myRequest.getParameter("pageToShow")%>&amp;perpage=<%=myRequest.getParameter("perpage")%>">successivo</a></div>
+<div class="liv_in" ><a href="?hierStatus=<%=treeBean.getHierStatus()%>&amp;docStart=<%=treeBean.getLastDocNumber()%>&amp;docToggle=<%=andToggle%>&amp;docCount=<%=treeBean.getDocCount()%>&amp;pageToShow=<%=myRequest.getParameter("pageToShow")%>&amp;perpage=<%=myRequest.getParameter("perpage")%>"><spring:message code="successivo" text="successivo"/></a></div>
 <%}%>
 <%}catch(Exception e){
 out.println(e.getMessage());

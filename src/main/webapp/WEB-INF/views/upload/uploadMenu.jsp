@@ -3,6 +3,7 @@
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -21,6 +22,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('upload','${frontUrl}');
 $(document).ready(function(){
@@ -52,7 +54,7 @@ $(document).ready(function(){
     	        var get_ext = file.split('.');
     	        get_ext = get_ext.reverse();  
     	        if($.inArray(get_ext[0].toLowerCase(), exts)){
-    	            $("span").text("File non valido!").show().fadeOut(2000);
+    	            $("span").text("<spring:message code="File_non_valido" text="File non valido"/>!").show().fadeOut(2000);
     	            return false;
     	        }    		  
     	  }
@@ -79,7 +81,7 @@ $(document).ready(function(){
                     <span></span>
                 </p>
  	              <p>
-                    <input type="submit" />
+                    <input type="submit" value="<spring:message code="Invia" text="Invia"/>"/>
                 </p>
           </fieldset>
 	</form:form>

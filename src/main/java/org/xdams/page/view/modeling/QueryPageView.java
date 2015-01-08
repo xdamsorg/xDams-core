@@ -70,7 +70,7 @@ public class QueryPageView {
 				String thisExternalPath = attrExternalPath;
 				int nodiOpzioni = theXMLconfTMP.contaNodi(thisExternalPath);
 				if (theXMLconfTMP.contaNodi(thisExternalPath + "[@value = '']") == 0 && (!selectAddEmptyValue.equals("") && selectAddEmptyValue.equals("yes"))) {
-					outputField = "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"\" checked=\"true\" />nessun valore";
+					outputField = "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"\" checked=\"true\" />"+workFlowBean.getLocalizedString("nessun_valore","nessun valore");
 				}
 				for (int a = 0; a < nodiOpzioni; a++) {
 					outputField += "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/@value") + "\" />" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/text()").replaceAll(" ", "&#160;");
@@ -82,7 +82,7 @@ public class QueryPageView {
 				int nodiOpzioni = theXMLconfTMP.contaNodi(thisExternalPath);
 				outputField = "<select class=\"text\" name=\"[" + nameValue + "]\" id=\"" + nameValueEncoded + "\">";
 				if (theXMLconfTMP.contaNodi(thisExternalPath + "[@value = '']") == 0 && (!selectAddEmptyValue.equals("") && selectAddEmptyValue.equals("yes"))) {
-					outputField += "<option value=\"\" selected=\"true\">nessun valore</option>";
+					outputField += "<option value=\"\" selected=\"true\">"+workFlowBean.getLocalizedString("nessun_valore","nessun valore")+"</option>";
 				}
 				for (int a = 0; a < nodiOpzioni; a++) {
 					outputField += "<option  value=\"" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/@value") + "\">" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/text()").replaceAll(" ", "&#160;") + "</option>";
@@ -94,7 +94,7 @@ public class QueryPageView {
 				String prefixSub = prefix + "[" + (i + 1) + "]/element";
 				int numFieldSub = theXMLconf.contaNodi(prefixSub);
 				outputField = "<div id=\"" + URLEncoder.encode(prefixSub, "iso-8859-1").replaceAll("%", "") + "\"><select onchange=\"return showInput(this.value)\" class=\"text\" style=\"float:left\"><option value=" + URLEncoder.encode(prefixSub, "iso-8859-1").replaceAll("%", "")
-						+ " selected=\"true\">scegli...</option>";
+						+ " selected=\"true\">"+workFlowBean.getLocalizedString("scegli","scegli")+"...</option>";
 				for (int a = 0; a < numFieldSub; a++) {
 					outputField += "<option value=\"" + URLEncoder.encode(prefixSub + (a + 1), "iso-8859-1").replaceAll("%", "") + "\">" + theXMLconf.valoreNodo(prefixSub + "[" + (a + 1) + "]/@label") + "</option>";
 				}
@@ -123,14 +123,14 @@ public class QueryPageView {
 							if (activeIdx.equals("yes")) {
 								outputField += "<a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'" + confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','"
 										+ attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\"" + modelMap.get("frontUrl")
-										+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\" /></a>";
+										+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\" /></a>";
 							}
 							outputField += "</div>";
 						} else {
 							outputField += "<div class=\"queryEleSub\" id=\"" + URLEncoder.encode(prefixSub + (a + 1), "iso-8859-1").replaceAll("%", "") + "\"><input name=\"[" + nameValue + "]\" type=\"text\" class=\"long\" id=\"" + nameValueEncoded + "\" " + ajaxStr
 									+ "/><a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'" + confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','"
 									+ attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\"" + modelMap.get("frontUrl")
-									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\" /></a></div>";
+									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\" /></a></div>";
 						}
 					} else {
 						outputField += "<div class=\"queryEleSub\" id=\"" + URLEncoder.encode(prefixSub + (a + 1), "iso-8859-1").replaceAll("%", "") + "\"><input name=\"[" + nameValue + "]\" type=\"text\" class=\"long\" id=\"" + nameValueEncoded + "\" /></div>";
@@ -151,12 +151,12 @@ public class QueryPageView {
 						if (activeIdx.equals("yes")) {
 							outputField += "<a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'" + confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','"
 									+ attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\"" + modelMap.get("frontUrl")
-									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\" /></a>";
+									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\" /></a>";
 						}
 					} else {
 						outputField = "<input name=\"[" + nameValue + "]\" type=\"text\" class=\"long\" id=\"" + nameValueEncoded + "\" " + ajaxStr + "/><a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'"
 								+ confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','" + attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\""
-								+ modelMap.get("frontUrl") + "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\" /></a>";
+								+ modelMap.get("frontUrl") + "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\" /></a>";
 					}
 				} else {
 					outputField = "<input name=\"[" + nameValue + "]\" type=\"text\" class=\"long\" id=\"" + nameValueEncoded + "\" />";
@@ -187,7 +187,7 @@ public class QueryPageView {
 			String attrLabel = theXMLconf.valoreNodo(prefix + "[" + (z + 1) + "]/@label");
 			String nameValueEncoded = URLEncoder.encode(nameValue, "iso-8859-1").replaceAll("%", "").replaceAll("\\*", "");
 			outputField += "<div class=\"ml20mt30\"><label>" + attrLabel + "</label></div>\n";
-			outputField += "<div class=\"ml20\"><input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'day')\" class=\"data\" size=\"3\" name=\"giorno_ini\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'month')\" class=\"data\"  size=\"3\" name=\"mese_ini\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'year')\" class=\"data\" name=\"anno_ini\" maxlength=\"4\" />&#160;-&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'day')\" class=\"data\"  size=\"3\"  name=\"giorno_fin\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'month')\" class=\"data\"  size=\"3\" name=\"mese_fin\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'year')\" class=\"data\" name=\"anno_fin\" maxlength=\"4\" />&#160;&#160;&#160;<input type=\"checkbox\" name=\"dataEsatta\" />esatta</div>\n";
+			outputField += "<div class=\"ml20\"><input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'day')\" class=\"data\" size=\"3\" name=\"giorno_ini\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'month')\" class=\"data\"  size=\"3\" name=\"mese_ini\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'year')\" class=\"data\" name=\"anno_ini\" maxlength=\"4\" />&#160;-&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'day')\" class=\"data\"  size=\"3\"  name=\"giorno_fin\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'month')\" class=\"data\"  size=\"3\" name=\"mese_fin\" maxlength=\"2\" />&#160;/&#160;<input type=\"text\" onblur=\"return findDate(document.theForm,'normalize',this,'year')\" class=\"data\" name=\"anno_fin\" maxlength=\"4\" />&#160;&#160;&#160;<input type=\"checkbox\" name=\"dataEsatta\" />"+workFlowBean.getLocalizedString("esatta","esatta")+"</div>\n";
 			getOutputDataField().add(outputField);
 		}
 		prefix = "/root/query/hour/element";
@@ -210,8 +210,8 @@ public class QueryPageView {
 		for (int z = 0; z < numField; z++) {
 			String outputField = "";
 			if (z == 0) {
-				outputField = "<div class=\"ml20mt30\"><label>Criteri di ordinamento:</label></div>";
-				outputField += "<div class=\"ml20\"><select class=\"text\" onchange=\"return cambiaCriterio(this.value,document.theForm)\" name=\"ordinaCrescenteDecsrescente\"><option value=\"XML\">crescente</option><option value=\"xml\">decrescente</option></select>";
+				outputField = "<div class=\"ml20mt30\"><label>"+workFlowBean.getLocalizedString("Criteri_di_ordinamento","Criteri di ordinamento")+":</label></div>";
+				outputField += "<div class=\"ml20\"><select class=\"text\" onchange=\"return cambiaCriterio(this.value,document.theForm)\" name=\"ordinaCrescenteDecsrescente\"><option value=\"XML\">"+workFlowBean.getLocalizedString("crescente","crescente")+"</option><option value=\"xml\">"+workFlowBean.getLocalizedString("decrescente","decrescente")+"</option></select>";
 			}
 			strChecked = "";
 			if ((theXMLconf.valoreNodo(prefix + "[" + (z + 1) + "]/@checked").equals("yes"))) {
@@ -256,7 +256,7 @@ public class QueryPageView {
 					String thisExternalPath = attrExternalPath;
 					int nodiOpzioni = theXMLconfTMP.contaNodi(thisExternalPath);
 					if (theXMLconfTMP.contaNodi(thisExternalPath + "[@value = '']") == 0 && (!selectAddEmptyValue.equals("") && selectAddEmptyValue.equals("yes"))) {
-						outputField = "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"\" checked=\"true\" >nessun valore";
+						outputField = "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"\" checked=\"true\" >"+workFlowBean.getLocalizedString("nessun_valore","nessun valore");
 					}
 					for (int a = 0; a < nodiOpzioni; a++) {
 						outputField += "<input type=\"radio\" name=\"[" + nameValue + "]\" value=\"" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/@value") + "\">" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/text()").replaceAll(" ", "&#160;");
@@ -268,7 +268,7 @@ public class QueryPageView {
 					int nodiOpzioni = theXMLconfTMP.contaNodi(thisExternalPath);
 					outputField = "<select class=\"text\" name=\"[" + nameValue + "]\">";
 					if (theXMLconfTMP.contaNodi(thisExternalPath + "[@value = '']") == 0 && (!selectAddEmptyValue.equals("") && selectAddEmptyValue.equals("yes"))) {
-						outputField += "<option value=\"\" selected=\"true\">nessun valore</option>";
+						outputField += "<option value=\"\" selected=\"true\">"+workFlowBean.getLocalizedString("nessun_valore","nessun valore")+"</option>";
 					}
 					for (int a = 0; a < nodiOpzioni; a++) {
 						outputField += "<option  value=\"" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/@value") + "\">" + theXMLconfTMP.valoreNodo(thisExternalPath + "[" + (a + 1) + "]/text()").replaceAll(" ", "&#160;") + "</option>";
@@ -287,11 +287,11 @@ public class QueryPageView {
 							outputField += "<input name=\"[" + nameValue + "]\" type=\"text\" class=\"long complete\" id=\"" + nameValueEncoded + "\"  servlet=\""+modelMap.get("contextPath")+"/"+workFlowBean.getAlias()+"/ajax.html?actionFlag=vocabolarioJson&key=" + nameValue + "&typology=" + attrTypologyAjax + "&attrFirstIdx=" + attrFirstIdx
 									+ "&numKeys=20\" /><a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'" + confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','"
 									+ attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\"" + modelMap.get("frontUrl")
-									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\" /></a>";
+									+ "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\" /></a>";
 						} else {
 							outputField = "<input name=\"[" + nameValue + "]\" type=\"text\" class=\"long\" id=\"" + nameValueEncoded + "\" " + ajaxStr + "/><a title=\"accedi al dizionario del campo\" href=\"#n\" onclick=\"return apriIdx(document.theForm['[" + nameValue + "]'],'"
 									+ confBean.getKeyCountIDX() + "','" + workFlowBean.getArchive().getAlias() + "','" + nameValue + "','" + attrTypology.replaceAll("Query", "").replaceAll("Reverse", "") + "','" + filteredKey + "','" + attrFirstIdx + "','" + filteredNumDocs + "');\"><img src=\""
-									+ modelMap.get("frontUrl") + "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\"apri dizionario di campo\"/></a>";
+									+ modelMap.get("frontUrl") + "/img/spacer.gif\" class=\"diz\" border=\"0\" alt=\""+workFlowBean.getLocalizedString("apri_dizionario_di_campo","apri dizionario di campo")+"\"/></a>";
 
 						}
 					} else {

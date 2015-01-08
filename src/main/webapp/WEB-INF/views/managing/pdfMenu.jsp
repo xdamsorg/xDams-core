@@ -7,6 +7,7 @@
 <%@page import="org.xdams.page.view.bean.ManagingBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -29,6 +30,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
 // 	<!--
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('pdfPrint','${frontUrl}');
 
@@ -53,12 +55,12 @@ function impostaAndGo(){
 	}
 	
 	if(!selectedRadio){
-		xDamsModalAlert('Specificare un\'azione!<br /><br />') 
+		xDamsModalAlert('<spring:message code="Specificare_unazione" text="Specificare un\\'azione"/>!<br /><br />');
 		return;		
 	}
 	
 	if(document.theForm.PDFXSLType.value==''){
-		xDamsModalAlert('Specificare template di stampa!<br /><br />') 
+		xDamsModalAlert('<spring:message code="Specify_print_template" text="Specificare template di stampa"/>!<br /><br />'); 
 		return;
 	} else  {
 		if($('#sendByMailCheck').is(':checked')){
@@ -73,7 +75,7 @@ function impostaAndGo(){
 			
 			$('#aForm').ajaxSubmit(formOptions);
 		}else{
-			document.theForm.submit()
+			document.theForm.submit();
 		}
 		
 	}
@@ -93,9 +95,9 @@ function proiettaModifica(sblocca){
 	</head>
 <body >
 <script type="text/javascript">xDamsModalMessage('analisi in corso...');</script>
-<div id="STATO" class="statusLayerNONVisibile">Attendere: <strong>modifica record in corso...</strong></div>
+<div id="STATO" class="statusLayerNONVisibile"><spring:message code="Attendere" text="Attendere"/>: <strong><spring:message code="modifica_record_in_corso" text="modifica record in corso"/>...</strong></div>
 <div id="content_multi">
-<div class="riga_posiziona_multi">elemento selezionato: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
+<div class="riga_posiziona_multi"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
 <form id="aForm" action="${contextPath}/<%=workFlowBean.getAlias() %>/pdfView.html" name="theForm" target="_blank" method="post">
 <input type="hidden" name="actionFlag" value="xml2pdf" />
 <input type="hidden" name="makeAction" value="true" />
@@ -119,38 +121,38 @@ function proiettaModifica(sblocca){
 <div class="m10">
 applica la stampa a:
 <br />
-<input type="radio" name="applyTo" value="this"> <strong>elemento selezionato</strong> <br />
-<%if((managingBean.getListPhysDoc())!=null && (managingBean.getListPhysDoc()).size()>0){ %><input type="radio" name="applyTo" value="selected"> <strong>seleziona multipla</strong> (<%=(managingBean.getListPhysDoc()).size()%>  elementi)<br /><%} %>
-<%if((managingBean.getNumElementi())>0){ %><input type="radio" name="applyTo" value="selid"> <strong>ricerca corrente</strong> (<%=( managingBean.getNumElementi())%> elementi)<br /><%} %>
+<input type="radio" name="applyTo" value="this"> <strong><spring:message code="elemento_selezionato" text="elemento selezionato"/></strong> <br />
+<%if((managingBean.getListPhysDoc())!=null && (managingBean.getListPhysDoc()).size()>0){ %><input type="radio" name="applyTo" value="selected"> <strong><spring:message code="seleziona_multipla" text="seleziona multipla"/></strong> (<%=(managingBean.getListPhysDoc()).size()%>  <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if((managingBean.getNumElementi())>0){ %><input type="radio" name="applyTo" value="selid"> <strong><spring:message code="ricerca_corrente" text="ricerca corrente"/></strong> (<%=( managingBean.getNumElementi())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
 
-<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong>fratelli precedenti</strong><br /><%} %>
-<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong>fratelli successivi</strong><br /><%} %>
+<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong><spring:message code="fratelli_precedenti" text="fratelli precedenti"/></strong><br /><%} %>
+<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong><spring:message code="fratelli_successivi" text="fratelli successivi"/></strong><br /><%} %>
 
-<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong>figli diretti</strong> (<%=(managingBean.getNumElementiSons())%> elementi)<br /><%} %>
-<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong>tutto il ramo</strong> (<%=(managingBean.getNumElementiHier())%> elementi)<br /><%} %>
+<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong><spring:message code="figli_diretti" text="figli diretti"/></strong> (<%=(managingBean.getNumElementiSons())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong><spring:message code="tutto_il_ramo" text="tutto il ramo"/></strong> (<%=(managingBean.getNumElementiHier())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
 <br /> 
- 		template di stampa:<br /> 
+ 		<spring:message code="template_di_stampa" text="template di stampa"/>:<br /> 
 		<span>
 		<select name="PDFXSLType" class="long"><%=theOptions%></select>
 		</span>
 	<br />
-	tipologia di output:<br /> 
+	<spring:message code="tipologia_di_output" text="tipologia di output"/>:<br /> 
 	<span>
         <select name="PrintType"  class="long">
-            <option value="pdf">PDF - non modificabile</option>
-            <option value="rtf">RTF - modificabile</option>
-            <option value="html">html - modificabile</option> 
-            <option value="jpg">jpg - non modificabile</option>
-            <option value="eps">eps - non modificabile</option>
-            <option value="tif">tif - non modificabile</option>
-            <option value="svg">svg - non modificabile</option>
-            <option value="csv">csv - non modificabile</option>
+            <option value="pdf">PDF - <spring:message code="non_modificabile" text="non modificabile"/></option>
+            <option value="rtf">RTF - <spring:message code="modificabile" text="modificabile"/></option>
+            <option value="html">html - <spring:message code="modificabile" text="modificabile"/></option> 
+            <option value="jpg">jpg - <spring:message code="non_modificabile" text="non modificabile"/></option>
+            <option value="eps">eps - <spring:message code="non_modificabile" text="non modificabile"/></option>
+            <option value="tif">tif - <spring:message code="non_modificabile" text="non modificabile"/></option>
+            <option value="svg">svg - <spring:message code="non_modificabile" text="non modificabile"/></option>
+            <option value="csv">csv - <spring:message code="non_modificabile" text="non modificabile"/></option>
        </select>	
 	</span>
  	<br />
 	<br />
 	<span>
-		<input id="formattedText" type="checkbox" name="formattedText" value="true"/>i documenti contengono elementi di formattazione (corsivo, grassetto, etc.)
+		<input id="formattedText" type="checkbox" name="formattedText" value="true"/><spring:message code="idocumenti_contengono_elementi_di_formattazione_corsivo_grassetto_etc" text="i documenti contengono elementi di formattazione (corsivo, grassetto, etc.)"/>
 		<br />
 	</span>	
 	<br />
@@ -175,8 +177,8 @@ applica la stampa a:
 	<div class="margin_foot">
  	<div class="cont_ul2">	
 		<ul class="bottoniMenu" >
- 			<li><a title="Esegui la richiesta"  class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#">ESEGUI</a></li>
- 			<li><a title="Chiude la pagina corrente"  class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#">CHIUDI</a></li>
+ 			<li><a title="<spring:message code="ESEGUI" text="ESEGUI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a></li>
+ 			<li><a title="<spring:message code="chiudi" text="chiudi"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="chiudi"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="chiudi" text="chiudi"/></a></li>
 		</ul>
 	</div>
 	</div>

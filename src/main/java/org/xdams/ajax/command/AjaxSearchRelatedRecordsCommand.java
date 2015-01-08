@@ -72,7 +72,7 @@ public class AjaxSearchRelatedRecordsCommand {
 			 * qui forse ho un problema, forse è meglio non estendere ModifyAutherBean a MangingBean, ma semplicemente metterci un addModifyAutherBean e quindi un get e set all'interno di ManaginBean.
 			 */
 
-			String contenitoreIni = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<div class=\"riga_sch_bre\">archivi collegati</div>\n<div class=\"box_sch_bre\">\n";
+			String contenitoreIni = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<div class=\"riga_sch_bre\">"+workFlowBean.getLocalizedString("archivi_collegati", "archivi collegati")+"</div>\n<div class=\"box_sch_bre\">\n";
 			String string0 = "";
 			String contenitoreEnd = "</div>";
 			ModifyAutherBean modifyAutherBean = (ModifyAutherBean) modifyAuther.execute();
@@ -84,7 +84,7 @@ public class AjaxSearchRelatedRecordsCommand {
 					atLastOne = true;
 //					System.out.println(autherBean.getQuery());
 					// string0 += "<div class=\"campo\"> archivio alias " + autherBean.getArchivioAlias() + "</div>\n";
-					string0 += "<strong><a class=\"cerca_b\" href=\""+modelMap.get("contextPath")+"/search/"+autherBean.getArchivioAlias()+"/title.html?qlphrase="+autherBean.getQuery()+"\" target=\""+autherBean.getArchivioAlias()+"\">" + java.net.URLEncoder.encode(autherBean.getArchivioDescr().replaceAll(" ", "\\&nbsp;"), "iso-8859-1") + "</a></strong> numero elementi " + autherBean.getNumElementi() + "<br />";
+					string0 += "<strong><a class=\"cerca_b\" href=\""+modelMap.get("contextPath")+"/search/"+autherBean.getArchivioAlias()+"/title.html?qlphrase="+autherBean.getQuery()+"\" target=\""+autherBean.getArchivioAlias()+"\">" + java.net.URLEncoder.encode(autherBean.getArchivioDescr().replaceAll(" ", "\\&nbsp;"), "iso-8859-1") + "</a></strong> "+workFlowBean.getLocalizedString("numero_elementi", "numero elementi")+" " + autherBean.getNumElementi() + "<br />";
 					// string0 += "<div class=\"campo\"> descr. archivio " + (autherBean.getArchivioDescr()) + "</div>\n";
 					// string0 += "<div class=\"campo\"> descr. archivio escapeHtml " + StringEscapeUtils.escapeHtml(autherBean.getArchivioDescr()) + "</div>\n";
 					// string0 += "<div class=\"campo\"> descr. archivio escapeJavaScript " + StringEscapeUtils.escapeJavaScript(autherBean.getArchivioDescr()) + "</div>\n";
@@ -102,13 +102,13 @@ public class AjaxSearchRelatedRecordsCommand {
 				String string = contenitoreIni + string0 + contenitoreEnd;
 				ajaxBean.setStrXmlOutput(string);
 			} else {
-				String string = contenitoreIni + "<strong>nessun elemento collegato</strong>" + contenitoreEnd;
+				String string = contenitoreIni + "<strong>"+workFlowBean.getLocalizedString("nessun_elemento_collegato", "nessun elemento collegato")+"</strong>" + contenitoreEnd;
 				ajaxBean.setStrXmlOutput(string);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml("Attenzione:\nimpossibile effettuare l'operazione, il documento selezionato potrebbe non essere più in gerarchia") + "\n" + e.getMessage() + "</error>");
+			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml(workFlowBean.getLocalizedString("Attenzione_impossibile_effettuare_loperazione_il_documento_selezionato_potrebbe_non_essere_piu_in_gerarchia", "Attenzione: impossibile effettuare l'operazione, il documento selezionato potrebbe non essere più in gerarchia")) + "\n" + e.getMessage() + "</error>");
 		} finally {
 			connectionManager.closeConnection(xwconn);
 		}

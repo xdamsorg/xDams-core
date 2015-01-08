@@ -16,4 +16,16 @@
   <opzione value="fotografico.gif">fotografico</opzione>
   <opzione value="authority.gif">authority</opzione>
  </elemento>
+ <elemento name="ROLE_ACCOUNT">
+  <opzione value=""></opzione>
+  <opzione value="ROLE_ADMIN">amministrazione di sistema</opzione>
+  <opzione value="ROLE_USER">utente di sistema</opzione>
+  <opzione value="ROLE_READER">lettore di sistema</opzione>
+ </elemento> 
+ <elemento name="ROLE_ARCHIVE">
+  <opzione value=""></opzione>
+  <opzione value="1">amministrazione archivio</opzione>
+  <opzione value="2">archivista</opzione>
+  <opzione value="3">lettore</opzione>
+ </elemento>  
 </root>

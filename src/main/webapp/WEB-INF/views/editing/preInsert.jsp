@@ -9,6 +9,8 @@
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -56,8 +58,10 @@
 		<link rel="stylesheet" href="${frontUrl}/css/jquery/jgrowl.css" type="text/css"/>
 		<link rel="stylesheet" href="${frontUrl}/css/jquery/jqac.css" type="text/css" />
   		<script type="text/javascript">
-		var globalOption = {frontPath:'${frontUrl}',lookupAction:'${contextPath}/lookup/<%=workFlowBean.getAlias()%>/'};
+  		<%=workFlowBean.getGlobalLangOption()%>
+		var globalOption = {frontPath:'${frontUrl}',lookupAction:'${contextPath}/lookup/<%=workFlowBean.getAlias()%>/',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 		loadJsBusiness('preInsert','${frontUrl}');
+		
 		</script>	
 		
 		<script type="text/javascript">
@@ -72,19 +76,19 @@
 	<div id="testa_edit">
 		<div class="sotto_head">&nbsp;</div>
 		<div class="riga_tit_diz">
-			<div class="Tit_diz">inserisci</div>
-			<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra">chiudi x</a></div>
+			<div class="Tit_diz"><spring:message code="INSERISCI" text="INSERISCI"/></div>
+			<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 		</div>
 			<div class="cont_riga_dx">
 				<div class="riga_sx">
   				  <%if(preInsertBean.getTitleSelected()!=null && !(preInsertBean.getTitleSelected().equals(""))){ %>
-					  è stata selezionata la scheda: <strong><%=titleManager.defaultParsedTitle(preInsertBean.getTitleSelected(), "defaultTitle")%></strong>
+					  <spring:message code="estata_selezionata_la_scheda" text="è stata selezionata la scheda"/>: <strong><%=titleManager.defaultParsedTitle(preInsertBean.getTitleSelected(), "defaultTitle")%></strong>
 				  <%} %>
 			</div>
 			</div>
 		</div>
 
-	<div id="SALVATAGGIO" class="statusLayerNONVisibile">Attendere: <strong>creazione record in corso...</strong></div>
+	<div id="SALVATAGGIO" class="statusLayerNONVisibile"><spring:message code="Attendere" text="Attendere"/>: <strong><spring:message code="creazione_record_in_corso" text="creazione record in corso"/>...</strong></div>
 
 	<form name="theForm" action="${contextPath}/editing/<%=workFlowBean.getAlias()%>/insert.html" method="post">
 	<div class="cont_menu_sx">
@@ -104,7 +108,7 @@
 				<table cellspacing="0" cellpadding="0" border="0" >
 					<tr class="doceditTitoloSottoSezione">
 						<td bgcolor="#B4B7BA" height="12" width="4"><img height="1" width="1" vspace="0" hspace="0" border="0" src="/dams_common/img/null.gif" alt="" /></td>
-						<td class="doceditTitoloSottoSezioneSfDark" height="12">&#160;&#160;informazioni di relazione</td>
+						<td class="doceditTitoloSottoSezioneSfDark" height="12">&#160;&#160;<spring:message code="informazioni_di_relazione" text="informazioni di relazione"/></td>
 					</tr>
 				</table>
 <table cellspacing="0" cellpadding="0" border="0" >
@@ -121,7 +125,7 @@
 			%>
 			<tr class="showdocLine">
 
-				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="1" /> figlio</td>
+				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="1" /> <spring:message code="figlio" text="figlio"/></td>
 				<td class="showdocValue"></td>
 			</tr>
 			<%}if(preInsertBean.getPhysDocRoot()!=preInsertBean.getPhysDocSelected() && excludeRel.indexOf("upperbrother")==-1){
@@ -132,7 +136,7 @@
 				}
 			%>
 			<tr class="showdocLine">
-				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="2" /> fratello precedente</td>
+				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="2" /> <spring:message code="fratello_precedente" text="fratello precedente"/></td>
 				<td class="showdocValue"></td>
 			</tr>
 			<%}if(preInsertBean.getPhysDocRoot()!=preInsertBean.getPhysDocSelected() && excludeRel.indexOf("lowerbrother")==-1){
@@ -143,7 +147,7 @@
 				}
 			%>
 			<tr class="showdocLine">
-				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="4" /> fratello successivo</td>
+				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="4" /> <spring:message code="fratello_successivo" text="fratello successivo"/></td>
 				<td class="showdocValue"></td>
 			</tr>
 			<%}if(excludeRel.indexOf("none")==-1 || preInsertBean.getPhysDocRoot()==-1){
@@ -154,7 +158,7 @@
 				}
 			%>
 			<tr class="showdocLine">
-				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="0" /> scheda scollegata</td>
+				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><input type="radio" name="relation" <%=strChecked%> value="0" /> <spring:message code="scheda_scollegata" text="scheda scollegata"/></td>
 				<td class="showdocValue"></td>
 			</tr>
 		<%}%>
@@ -174,7 +178,7 @@ if(true || preInsertBean.getPhysDocFather() > 0){ %>
 <table cellspacing="0" cellpadding="0" border="0">
 	<tr class="doceditTitoloSottoSezione">
 		<td bgcolor="#B4B7BA" height="12" width="4"><img height="1" width="1" vspace="0" hspace="0" border="0" src="/dams_common/img/null.gif" alt="" /></td>
-		<td class="doceditTitoloSottoSezioneSfDark" height="12"><a class="doceditActionLink" id="sezione_link_multiplo" onclick="openSection('sezione_multiplo',this)" href="javascript:void(0)">+</a>&#160;inserimento multiplo di schede</td>
+		<td class="doceditTitoloSottoSezioneSfDark" height="12"><a class="doceditActionLink" id="sezione_link_multiplo" onclick="openSection('sezione_multiplo',this)" href="javascript:void(0)">+</a>&#160;<spring:message code="inserimento_multiplo_di_schede" text="inserimento multiplo di schede"/></td>
 	</tr>
 </table></span>
 <span id="sezione_multiplo" style="display:none">
@@ -185,7 +189,7 @@ if(true || preInsertBean.getPhysDocFather() > 0){ %>
 
 		<table cellspacing="0" cellpadding="0" border="0" >
 			<tr class="showdocLine">
-				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px">numero di elementi da creare</td>
+				<td  class="showdocTitoloElemento" width="30%" valign="middle" style="padding-left:5px"><spring:message code="numero_di_elementi_da_creare" text="numero di elementi da creare"/></td>
 				<td class="showdocValue"><input type="text" class="docEditInputShort"  onfocus="setCurrInput(this)"   name="elementiMultipli" onkeypress="allowOnlyNumbers()" /></td>
 			</tr>
 

@@ -8,6 +8,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -38,6 +39,7 @@
 }
 </style>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('nativeXML','${frontUrl}');
 dp.SyntaxHighlighter.HighlightAll('code');
@@ -52,11 +54,11 @@ dp.SyntaxHighlighter.HighlightAll('code');
 				return true;
 			}		
 			function impostaAndGo(){
-				msg = "Eseguire la modifica del file xml?<br /><br />";
-				$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ conferma ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ annulla ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
+				msg = "<spring:message code="Eseguire_la_modifica_del_file_xml" text="Eseguire la modifica del file xml"/>?<br /><br />";
+				$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ <spring:message code="conferma" text="conferma"/> ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ <spring:message code="annulla" text="annulla"/> ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
 			      $('#yes').click(function() {	
 			    	 	 document.theForm.submit();
-						 xDamsModalMessage('modifica in corso...');
+						 xDamsModalMessage('<spring:message code="modifica_record_in_corso" text="modifica record in corso"/>...');
 			       }); 
 			       $('#no').click(function(){ 
 					  xDamsUnblock();
@@ -76,7 +78,7 @@ dp.SyntaxHighlighter.HighlightAll('code');
 
 <body onload="this.focus()">
 <div id="content_multi">
-<div class="riga_posiziona_multi">elemento selezionato: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
+<div class="riga_posiziona_multi"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
 <form action="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html" name="theForm" method="post"><input type="hidden" name="actionFlag" value="editXml" />
 <input type="hidden" name="makeAction" value="true" />
 <input type="hidden" name="physDoc" value="<%=managingBean.getPhysDoc()%>" />
@@ -103,40 +105,40 @@ dp.SyntaxHighlighter.HighlightAll('code');
 	<div class="cont_ul2" >	
 		<ul class="bottoniMenu">
 			<%if(xmlInteraction.equals("edt")){ %>
- 			<li><a title="Salva la modifica"  class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#">SALVA</a></li>
+ 			<li><a title="<spring:message code="SALVA" text="SALVA"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="SALVA" text="SALVA"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#"><spring:message code="SALVA" text="SALVA"/></a></li>
  			<%} %>
 			<%
 				//String ilLink ="ManagingServlet?actionFlag="+MyRequest.getParameter("actionFlag",request)+"&amp;selid="+managingBean.getSelid(); 
 			%>
 			
 			<%if(managingBean.getDocFather()>0){ %>
- 			<li><a title="Documento superiore"  class="bottoneLink" onmouseover="window.status='apri il documento superiore';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocFather()%>">SUPERIORE</a></li>
+ 			<li><a title="<spring:message code="SUPERIORE" text="SUPERIORE"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="SUPERIORE" text="SUPERIORE"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocFather()%>"><spring:message code="SUPERIORE" text="SUPERIORE"/></a></li>
  			<%} %>
 			<%if(managingBean.getDocUpperBrother()>0){ %> 			
- 			<li><a title="Documento precedente"  class="bottoneLink" onmouseover="window.status='apri il documento precedente';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocUpperBrother()%>">PRECEDENTE</a></li>
+ 			<li><a title="<spring:message code="PRECEDENTE" text="PRECEDENTE"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="PRECEDENTE" text="PRECEDENTE"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocUpperBrother()%>"><spring:message code="PRECEDENTE" text="PRECEDENTE"/></a></li>
  			<%} %>
 			<%if(managingBean.getDocLowerBrother()>0){ %> 			
- 			<li><a title="Documento successivo"  class="bottoneLink" onmouseover="window.status='apri il documento successivo';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocLowerBrother()%>">SUCCESSIVO</a></li>
+ 			<li><a title="<spring:message code="SUCCESSIVO" text="SUCCESSIVO"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="SUCCESSIVO" text="SUCCESSIVO"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocLowerBrother()%>"><spring:message code="SUCCESSIVO" text="SUCCESSIVO"/></a></li>
  			<%} %>
 			<%if(managingBean.getDocFirstSon()>0){ %> 			
- 			<li><a title="Documento inferiore"  class="bottoneLink" onmouseover="window.status='apri il documento inferiore';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocFirstSon()%>">INFERIORE</a></li> 			 			 			
+ 			<li><a title="<spring:message code="INFERIORE" text="INFERIORE"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="INFERIORE" text="INFERIORE"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocFirstSon()%>"><spring:message code="INFERIORE" text="INFERIORE"/></a></li> 			 			 			
  			<%} %>
 			<%if(managingBean.getDocPrev()>0){ %> 			
- 			<li><a title="Documento precendete in esito ricerca"  class="bottoneLink" onmouseover="window.status='apri il documento precedente in esito ricerca';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocPrev()%>&amp;pos=<%=(Integer.parseInt(managingBean.getPos())-1)%>">INDIETRO</a></li> 			 			 			
+ 			<li><a title="<spring:message code="INDIETRO" text="INDIETRO"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="INDIETRO" text="INDIETRO"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocPrev()%>&amp;pos=<%=(Integer.parseInt(managingBean.getPos())-1)%>"><spring:message code="INDIETRO" text="INDIETRO"/></a></li> 			 			 			
  			<%} %>
 			<%if(managingBean.getDocNext()>0){ %> 			
- 			<li><a title="Documento successivo in esito ricerca"  class="bottoneLink" onmouseover="window.status='apri il documento successivo in esito ricerca';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocNext()%>&amp;pos=<%=(Integer.parseInt(managingBean.getPos())+1)%>">AVANTI</a></li> 			 			 			
+ 			<li><a title="<spring:message code="AVANTI" text="AVANTI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="AVANTI" text="AVANTI"/>';return true" onmouseout="window.status=''"  href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=<%=MyRequest.getParameter("actionFlag",request)%>&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getDocNext()%>&amp;pos=<%=(Integer.parseInt(managingBean.getPos())+1)%>"><spring:message code="AVANTI" text="AVANTI"/></a></li> 			 			 			
  			<%} %>
 			<%
 			if(workFlowBean.getArchive().getRole().equals("1") || workFlowBean.getArchive().getRole().equals("2")){
 				if(xmlInteraction.equals("view")){
 				%>
-	 			<li><a title="Modifica il documento corrente"  class="bottoneLink" onmouseover="window.status='modifica';return true" onmouseout="window.status=''" href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=editXml&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getPhysDoc()%>&amp;pos=<%=managingBean.getPos() %>">MODIFICA</a></li>
+	 			<li><a title="<spring:message code="MODIFICA" text="MODIFICA"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="MODIFICA" text="MODIFICA"/>';return true" onmouseout="window.status=''" href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=editXml&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getPhysDoc()%>&amp;pos=<%=managingBean.getPos() %>"><spring:message code="MODIFICA" text="MODIFICA"/></a></li>
 				<%}else{%>
-	 			<li><a title="Visualizza il documento corrente"  class="bottoneLink" onmouseover="window.status='visualizza';return true" onmouseout="window.status=''" href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=viewXml&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getPhysDoc()%>&amp;pos=<%=managingBean.getPos() %>">VISUALIZZA</a></li>
+	 			<li><a title="<spring:message code="VISUALIZZA" text="VISUALIZZA"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="VISUALIZZA" text="VISUALIZZA"/>';return true" onmouseout="window.status=''" href="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html?actionFlag=viewXml&amp;selid=<%=managingBean.getSelid()%>&amp;physDoc=<%=managingBean.getPhysDoc()%>&amp;pos=<%=managingBean.getPos() %>"><spring:message code="VISUALIZZA" text="VISUALIZZA"/></a></li>
 				<%} 
 			}%>
-			 	<li><a title="Chiude la pagina corrente"  class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#">CHIUDI</a></li>
+			 	<li><a title="<spring:message code="chiudi" text="chiudi"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="chiudi"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="chiudi" text="chiudi"/></a></li>
  </ul>
 </div>	
 </div>

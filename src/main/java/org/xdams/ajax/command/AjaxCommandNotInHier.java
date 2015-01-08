@@ -72,11 +72,10 @@ public class AjaxCommandNotInHier {
 				if (queryResult.elements != 0) {
 					ajaxBean.setStrXmlOutput("" + queryResult.elements);
 				}
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<optionList><option><text>Errore Caricamento</text><value></value></option>\n</optionList>");
+			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<optionList><option><text>"+workFlowBean.getLocalizedString("Errore_Caricamento", "Errore Caricamento")+"</text><value></value></option>\n</optionList>");
 		} finally {
 			connectionManager.closeConnection(xwconn);
 		}

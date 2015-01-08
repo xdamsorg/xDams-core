@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page pageEncoding="iso-8859-1" contentType="text/html; charset=iso-8859-1" %>
 <%@ taglib prefix='c' uri='http://java.sun.com/jstl/core_rt' %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@page import="java.util.List"%>
 <html>
 <head>
@@ -138,7 +139,7 @@
 	    </c:if>		
 	    <form name="f" action="<c:url value='j_spring_security_check'/>" method="POST">
 			<div class="righeLogin">
-				<label class="loginlabel">Nome utente</label>
+				<label class="loginlabel"><spring:message code="Nome_utente" text="User Name"/></label>
 				<input type='text' id="filterinput" name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>'/>
 			</div>
 			<div class="righeLogin">

@@ -2,7 +2,7 @@
 <root>
  <multiEditing method="parameter:thePne">
   <docEdit value="">
-   <file name="/users-conf/editing-account.conf.xml"/>
+   <file name="/users-conf/editing-user.conf.xml"/>
   </docEdit>
   <docEdit value="user">
    <file name="/users-conf/editing-user.conf.xml"/>

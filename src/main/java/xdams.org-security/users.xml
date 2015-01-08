@@ -17,5 +17,6 @@
   <archive alias="xDamsPhoto" role="3">Archivio Fotografico</archive>
   <archive alias="xDamsEACCPF" role="3">Soggetti Produttori</archive>
   <archive alias="xDamsHGeo" role="3">Authority Luoghi</archive>
+  <archive alias="multiArchive" role="1">Multi Archivio</archive>
  </user>
 </root>

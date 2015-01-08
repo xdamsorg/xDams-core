@@ -17,18 +17,18 @@ while (enumeration.hasMoreElements()) {
 <%@page import="org.xdams.utility.testing.TestingViewBean"%>
 <script type="text/javascript">
 //<![CDATA[
-document.write('<div class="statusLayerNONVisibile" id="attendere"><blink>attendere...</blink><marquee>attendere...</marquee></div>');
+document.write('<div class="statusLayerNONVisibile" id="attendere"><blink><spring:message code="attendere" text="attendere..."/></blink><marquee><spring:message code="attendere" text="attendere..."/></marquee></div>');
 //]]>
 </script>
 	<%@include file="inc_header.jsp"%>
 	<div id="menu">
 		<div class="al_left">
 			<span class="ml20"></span>
-			<a href="${contextPath}/search/<%=workFlowBean.getArchive().getAlias()%>/query.html" class="v_menu" title="ricerca">nuova ricerca</a><img src="${frontUrl}/img/arrow.gif" border="0" alt="accedi"  class="arrow_spacer" />
+			<a href="${contextPath}/search/<%=workFlowBean.getArchive().getAlias()%>/query.html" class="v_menu" title="ricerca"><spring:message code="nuova_ricerca" text="nuova ricerca"/></a><img src="${frontUrl}/img/arrow.gif" border="0" alt="<spring:message code="accedi" text="accedi"/>"  class="arrow_spacer" />
 			<!-- <a href="../../../help/help.jsp?idAccount=<%=userBean.getAccountRef()%>" class="v_menu" title="help" target="_blank">help</a><img src="${frontUrl}/img/arrow.gif" alt="accedi" border="0" class="arrow_spacer" />-->
 		</div>
 		<div class="right"><%@include file="inc_ricercaSemplice.jsp"%></div>
 	</div>
 	<div class="sub_menu">
-		<div id="tit_arc">Benvenuto <%=userBean.getName()%> <%=userBean.getLastName()%> <%if(!(workFlowBean.getArchive().getRole()).equals("")){ %><em>(livello: <%=workFlowBean.getArchive().getRole()%>)</em><%} %> <span class="briciole">sei in:  <%=(workFlowBean.getArchive().getGroupName()).equals("")?workFlowBean.getArchive().getArchiveDescr():workFlowBean.getArchive().getGroupName()+"&#160;/&#160;"+workFlowBean.getArchive().getArchiveDescr()%></span></div>
+		<div id="tit_arc"><spring:message code="Benvenuto" text="Benvenuto"/> <%=userBean.getName()%> <%=userBean.getLastName()%> <%if(!(workFlowBean.getArchive().getRole()).equals("")){ %><em>(<spring:message code="livello" text="livello"/>: <%=workFlowBean.getArchive().getRole()%>)</em><%} %> <span class="briciole"><spring:message code="sei_in" text="sei in"/>:  <%=(workFlowBean.getArchive().getGroupName()).equals("")?workFlowBean.getArchive().getArchiveDescr():workFlowBean.getArchive().getGroupName()+"&#160;/&#160;"+workFlowBean.getArchive().getArchiveDescr()%></span></div>
 	</div>

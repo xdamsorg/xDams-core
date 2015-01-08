@@ -9,6 +9,7 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <%@page import="org.xdams.page.command.LookupCommand"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -61,6 +62,7 @@
 	<script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 	<script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 	<script type="text/javascript">
+		<%=workFlowBean.getGlobalLangOption()%>
 		var globalOption = {frontPath:'${frontUrl}',infoURLPrefix:'${contextPath}/infoTab/',infoURLSuffix:'/infoTab.html'};
 		loadJsBusiness('lookup','${frontUrl}');
  	</script>	
@@ -105,11 +107,11 @@
 <div id="head">
 	<div class="sotto_head">&nbsp;</div>
 	<div class="riga_tit_diz">
-		<div class="Tit_diz">LOOKUP</div>
-		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra">chiudi x</a></div>
+		<div class="Tit_diz"><spring:message code="LOOKUP" text="LOOKUP"/></div>
+		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="<spring:message code="chiudi" text="chiudi"/>"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 	</div>
-		<div class="riga_posiziona"><%if(workFlowBean.getArchiveLookup().getRole().equals("1") || workFlowBean.getArchiveLookup().getRole().equals("2")){%><a class="bottoneLink" href="#" onclick="return inserisciPopAuth()">NUOVO</a><%}%></div>
-		<div class="riga_posiziona" ><a class="bottoneLink" onclick="self.close()" href="#">ANNULLA</a></div>
+		<div class="riga_posiziona"><%if(workFlowBean.getArchiveLookup().getRole().equals("1") || workFlowBean.getArchiveLookup().getRole().equals("2")){%><a class="bottoneLink" href="#" onclick="return inserisciPopAuth()"><spring:message code="NUOVO" text="NUOVO"/></a><%}%></div>
+		<div class="riga_posiziona" ><a class="bottoneLink" onclick="self.close()" href="#"><spring:message code="ANNULLA" text="ANNULLA"/></a></div>
 </div>
 <%if(titleList!=null && (titleList).size()>0){%>
 <div style="display:none;visibility:hidden">
@@ -159,7 +161,7 @@
 				<div class="ele_tito">
 					<a href="javascript:void(0);" ><img src="${frontUrl}/img/spacer.gif" class="scheda" border="0" vspace="0"></a>
 					<a id="anchor<%=i%>" class="foldertree" TITLE="seleziona" onmouseover="window.status='seleziona';return true" onmouseout="window.status=''" href="javascript:void(0);" onclick="return confermaFieldQuery('<%=(theTitle.replaceAll("'","\\\\'")).replaceAll("\"","&#34;")%>','<%=theCode%>');"><%=theTitle%> <strong><%=theExtra%></strong> <em>(<%=theCode%>)</em> </a>
-					<%if(infoTest){%><span class="doceditActionLinkBorder">[</span><a href="javascript:void(0)" onclick="return infoAuther('<%=theCode%>','<%=workFlowBean.getArchiveLookup().getAlias()%>','<%=queryInfo%>')" class="doceditActionLink">info</a><span class="doceditActionLinkBorder">]</span><%}%>
+					<%if(infoTest){%><span class="doceditActionLinkBorder">[</span><a href="javascript:void(0)" onclick="return infoAuther('<%=theCode%>','<%=workFlowBean.getArchiveLookup().getAlias()%>','<%=queryInfo%>')" class="doceditActionLink"><spring:message code="info" text="info"/></a><span class="doceditActionLinkBorder">]</span><%}%>
 				</div>
 			</div>
 			<%}%>

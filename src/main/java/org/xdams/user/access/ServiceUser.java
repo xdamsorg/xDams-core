@@ -30,7 +30,9 @@ public class ServiceUser {
 	public static Archive getArchive(UserBean userBean, String alias) throws Exception {
 		Archive archive = userBean.getArchivesMap().get(alias);
 		if (archive == null) {
-			throw new Exception("utente non abilitato sull'archivio o archivio non presente");
+			//throw new Exception("utente non abilitato sull'archivio o archivio non presente");
+			throw new Exception("user is not enabled on the archive or is not present");
+
 		}
 		return archive;
 	}

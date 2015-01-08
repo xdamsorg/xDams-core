@@ -6,10 +6,6 @@
     <anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/completeTab.html?pos=${viewBean.pos}&amp;selid=${viewBean.selid}&amp;physDoc=${viewBean.physDoc}" target="_new${workFlowBean.alias}">
     </anchor>
    </element>
-   <element value="STRUTTURA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaStruttura" userValue="all">
-    <anchor value="${contextPath}/hier/${workFlowBean.archive.alias}/hierBrowser.html?docToggle=${viewBean.physDoc}&amp;docStart=${viewBean.physDoc}" target="_top">
-    </anchor>
-   </element>
    <element value="MODIFICA MULTIPLA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">

@@ -27,14 +27,14 @@ function spreadModSave(actionParam , elementName, codeToFind){
 				  cache: false,
 				  async: false,
 				  beforeSend: function(){
-				  		xDamsModalMessageParam('propagazione relazioni in corso','100px','180px');
+				  		xDamsModalMessageParam(getLocalizedString('propagazione_relazioni_in_corso','propagazione relazioni in corso'),'100px','180px');
 				  },success: function(data) {
-    					xDamsModalMessageParam('relazioni salvate con successo','100px','180px');
+    					xDamsModalMessageParam(getLocalizedString('relazioni_salvate_con_successo','relazioni salvate con successo'),'100px','180px');
     					$.unblockUI();
     					ritorno = true;
   				  },error: function(data) {
   				  		$.unblockUI();
-  				  		xDamsModalAlert('Attenzione, errore nel salvataggio delle relazioni');
+  				  		xDamsModalAlert(getLocalizedString('Attenzione_errore_nel_salvataggio_delle_relazioni','Attenzione, errore nel salvataggio delle relazioni'));
   				  		alert(data.responseText);
     					ritorno = false;
   				  } 
@@ -47,14 +47,14 @@ function spreadModSave(actionParam , elementName, codeToFind){
 				  cache: false,
 				  async: false,
 				  beforeSend: function(){
-				  		xDamsModalMessageParam('rimozione delle relazioni in corso','100px','180px')
+				  		xDamsModalMessageParam(getLocalizedString('rimozione_delle_relazioni_in_corso','rimozione delle relazioni in corso'),'100px','180px')
 				  },success: function(data) {
-    					xDamsModalMessageParam('relazioni rimosse con successo','100px','180px');
+    					xDamsModalMessageParam(getLocalizedString('relazioni_rimosse_con_successo','relazioni rimosse con successo'),'100px','180px');
 						$.unblockUI();
     					ritorno = true;
   				  },error: function(data) {
   				  		$.unblockUI();
-  				  		xDamsModalAlert('Attenzione, errore nella rimozione delle relazioni');
+  				  		xDamsModalAlert(getLocalizedString('Attenzione_errore_nella_rimozione_delle_relazioni','Attenzione, errore nella rimozione delle relazioni'));
   				  		alert(data.responseText);
   				  		ritorno = false;
   				  }    
@@ -67,14 +67,14 @@ function spreadModSave(actionParam , elementName, codeToFind){
 				  cache: false,
 				  async: false,
 				  beforeSend: function(){
-				  		xDamsModalMessageParam('rimozione delle relazioni in corso','100px','180px')
+				  		xDamsModalMessageParam(getLocalizedString('rimozione_delle_relazioni_in_corso','rimozione delle relazioni in corso'),'100px','180px')
 				  },success: function(data) {
-    					xDamsModalMessageParam('relazioni rimosse con successo','100px','180px');
+    					xDamsModalMessageParam(getLocalizedString('relazioni_rimosse_con_successo','relazioni rimosse con successo'),'100px','180px');
 						$.unblockUI();
     					ritorno = true;
   				  },error: function(data) {
   				  		$.unblockUI();
-  				  		xDamsModalAlert('Attenzione, errore nella rimozione delle relazioni');
+  				  		xDamsModalAlert(getLocalizedString('Attenzione_errore_nella_rimozione_delle_relazioni','Attenzione, errore nella rimozione delle relazioni'));
   				  		alert(data.responseText);
     					ritorno = false;
   				  }
@@ -342,7 +342,7 @@ function submitForm(theForm, toCheck, msg, ilTarget, postSave, goServlet,extraFu
 		});
 
 	} else {
-		xDamsModalMessage('salvataggio rapido in corso...');
+		xDamsModalMessage(getLocalizedString('salvataggio_rapido_in_corso','salvataggio rapido in corso')+'...');
 		doSubmitForm(true, theForm, toCheck, msg, ilTarget, postSave, goServlet,extraFunction);
 	}
  
@@ -395,7 +395,7 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 						}
 					}
 					if (!ritornoTemp) {
-						xDamsAlert("Attenzione: \n" + messaggio.replace(/\./gi, '/') + ' = ""')
+						xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""')
 						$.unblockUI();
 						return true
 					}
@@ -420,7 +420,7 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 							}
 						}
 						if (!ritornoTemp) {
-							xDamsAlert("Attenzione: \n" + messaggio.replace(/\./gi, '/') + ' = ""')
+							xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""')
 							$.unblockUI();
 							return true
 						}
@@ -428,7 +428,7 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 						if (theForm[toCheckArray[i]] != null) {
 							if (theForm[toCheckArray[i]].value == "") {
 								ritorno = false
-								xDamsAlert("Attenzione: \n" + toCheckArray[i].replace(/\./gi, '/') + ' = ""')
+								xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + toCheckArray[i].replace(/\./gi, '/') + ' = ""')
 								$.unblockUI();
 								break
 							}
@@ -836,7 +836,7 @@ function jremoveAttach(instance) {
 				// alert("QUI "+inputValue);
 				var tempArr = tempOnClick.split(",")[3];
 				tempArr = tempArr.replace(/'/gi, '');
-				msg = "attenzione si sta tentando di eliminare<br/> una sezione che contiente un allegato digitale, continuare ?";
+				msg = getLocalizedString('attenzione_si_sta_tentando_di_eliminarebr_una_sezione_che_contiente_un_allegato_digitale_continuare','attenzione si sta tentando di eliminare<br/> una sezione che contiente un allegato digitale, continuare' )+"?";
 				$.blockUI( {
 					message : '<div id="question" style="cursor: default"><h1>' + msg + '</h1><input type="button" id="yes" value=" [ si ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ no ]" /> </div> ',
 					css : {
@@ -851,7 +851,7 @@ function jremoveAttach(instance) {
 					 */
 					// alert(tempArr);
 						if (tempArr != null && (tempArr == 'uploadResize' || tempArr == 'uploadSimple' || tempArr == 'simple' || tempArr == 'browseFTPResize' || tempArr == 'browseFTPMove')) {
-							msg = "attendere rimozione in corso";
+							msg = getLocalizedString('attendere_rimozione_in_corso','attendere rimozione in corso');
 							$.blockUI( {
 								message : '<div id="question" style="cursor: default"><h1>' + msg + '</h1></div> ',
 								css : {
@@ -869,8 +869,8 @@ function jremoveAttach(instance) {
 								// alert(data);
 									if (textStatus == 'success' && data.indexOf("succes") != -1) {
 										removeElement(jelement);
-										xDamsModalAlert('allegato digitale eliminato correttamente<br /><br />');
-										msg = 'allegato digitale eliminato correttamente<br /><br />';
+										xDamsModalAlert(getLocalizedString('allegato_digitale_eliminato_correttamente','allegato digitale eliminato correttamente')+'<br /><br />');
+										msg = getLocalizedString('allegato_digitale_eliminato_correttamente','allegato digitale eliminato correttamente')+'<br /><br />';
 										$.blockUI( {
 											message : '<div id="question" style="cursor: default"><h1>' + msg + '</h1><input type="button" id="close" value=" [ chiudi ]" /></div> ',
 											css : {
@@ -883,7 +883,7 @@ function jremoveAttach(instance) {
 										});
 										salvaRapido();
 									} else {
-										msg = data + "<br/> eliminare ugualmente la sezione?";
+										msg = data + "<br/>" +getLocalizedString('eliminare_ugualmente_la_sezione','eliminare ugualmente la sezione')+"?";
 										$.blockUI( {
 											message : '<div id="question" style="cursor: default"><h1>' + msg + '</h1><input type="button" id="yes" value=" [ si ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ no ]" /> </div> ',
 											css : {
@@ -914,7 +914,7 @@ function jremoveAttach(instance) {
 		jelement.find("input,textarea,select").each(function() {
 			$(this).val('');
 		});
-		xDamsAlert("Almeno un'istanza deve rimanere!");
+		xDamsAlert(getLocalizedString('Almeno_unistanza_deve_rimanere','Almeno un\'istanza deve rimanere')+"!");
 	}
 }
 function salvaRapido() {
@@ -964,6 +964,25 @@ function fixBracketXPathIndex(str, newNumber) {
 	var lastOpenBracket = lastIndexOf(str, "[");
 	var lastCloseBracket = lastIndexOf(str, "]");
 
+	
+	//ADD 02/12/2014
+	if(str.split("[").length > 1 ){
+		result = str;
+		    while(result.indexOf('[')!=-1){
+				lastOpenBracket = result.indexOf("[");
+				lastCloseBracket = result.indexOf("]");
+				var toTest = result.substring(lastOpenBracket+1,lastCloseBracket);
+				if(!isNaN(toTest)){
+				    toTest = parseInt(toTest,10)+1;
+				    break;
+				}else{
+					result = result.substring(0,lastOpenBracket)+'~'+result.substring(lastOpenBracket+1,lastCloseBracket)+'~'+result.substring(lastCloseBracket+1,result.length);
+				}
+
+			}
+	}	
+	
+	
 	if (lastOpenBracket == -1 || lastCloseBracket == -1)
 		return str;
 
@@ -1191,7 +1210,7 @@ function jremoveSpread(instance,elementName,unRemove) {
 			}
 			$(this).val('');
 		});
-		xDamsAlert("Almeno un'istanza deve rimanere!");
+		xDamsAlert(getLocalizedString('Almeno_unistanza_deve_rimanere','Almeno un\'istanza deve rimanere')+"!");
 	}
 }
 
@@ -1205,7 +1224,7 @@ function jremove(instance) {
 		jelement.find("input,textarea,select").each(function() {
 			$(this).val('');
 		});
-		xDamsAlert("Almeno un'istanza deve rimanere!");
+		xDamsAlert(getLocalizedString('Almeno_unistanza_deve_rimanere','Almeno un\'istanza deve rimanere')+"!");
 	}
 }
 

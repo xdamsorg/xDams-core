@@ -7,6 +7,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page errorPage="/error.jsp" %>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -30,15 +31,16 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('nativeXML','${frontUrl}');
 </script>
 </head>
 <body onload="this.focus()">
 <div id="content_multi">
-	<div class="m10">elemento selezionato: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
-	<div class="m10">elementi modificati: <strong><%=elementiSuccessi%></strong></div>
-	<div class="m10">errori occorsi: <strong><%=elementiErrore%></strong></div>
+	<div class="m10"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
+	<div class="m10"><spring:message code="elementi_modificati" text="elementi modificati"/>: <strong><%=elementiSuccessi%></strong></div>
+	<div class="m10"><spring:message code="errori_occorsi" text="errori occorsi"/>: <strong><%=elementiErrore%></strong></div>
 <%
 List errorArray = managingBean.getErrorMsg();
 managingBean.setErrorMsg(null);
@@ -55,7 +57,7 @@ if(errorArray!=null && errorArray.size()>0){
 	<div class="margin_foot">
 	 	<div class="cont_ul2">	
 			<ul class="bottoniMenu" >
-	 			<li><a title="Chiude la pagina corrente"  class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#">CHIUDI</a></li>
+	 			<li><a title="<spring:message code="chiudi" text="chiudi"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="chiudi"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="chiudi" text="chiudi"/></a></li>
 			</ul>
 	    </div>
 	</div>

@@ -5,6 +5,7 @@
    <sezione name="account" opened="yes">
     <elemento input_type="text" class="Long" name="account name">/account/@descrAccount</elemento>
     <elemento input_type="text" class="Long" name="id">/account/@id</elemento>
+    <elemento input_type="text" class="Long" name="father account">/account/@fatherAccount</elemento>
    </sezione>
   </macroarea>
  </preInsert>
@@ -13,9 +14,10 @@
    <sezione name="account" opened="yes">
     <elemento input_type="text" class="Long" name="account name">/account/@descrAccount</elemento>
     <elemento input_type="text" class="Long" name="id">/account/@id</elemento>
+    <elemento input_type="text" class="Long" name="father account">/account/@fatherAccount</elemento>
    </sezione>
    <sezione name="archiveGroup" opened="yes">
-    #foreach( $product in [0..$theXML.contaNodi("/account/archiveGroup")]) #set($firstFor=$velocityCount)
+    #foreach( $accountValued in [0..$theXML.contaNodi("/account/archiveGroup")]) #set($firstFor=$velocityCount)
     <elemento name="Gruppo Archivi" input_type="text" class="ExtraLong">/account/archiveGroup[${firstFor}]/@name</elemento>
     <elemento name="" opened="yes" type="multi_group" prefix="/account/archiveGroup[${firstFor}]/archive">
      <elemento input_type="text" name="Archive name" class="ExtraLong">/account/archiveGroup[${firstFor}]/archive/text()</elemento>
@@ -29,12 +31,18 @@
     #end
    </sezione>
   </macroarea>
-  <sezione name="campiHidden">
-   <elemento>/account/@id</elemento>
-  </sezione>
+  <macroarea name="informazioni sulla modifica" layer="AREACOMPILAZIONE" label="Area delle compilazione">
+   <sezione name="informazioni sulla modifica">
+    <elemento name="" type="custom" id="processinfo" prefix="/account/processinfo/list/item" inline="no">
+     <elemento input_type="liveText" name="azione">/account/processinfo/list/item/text()</elemento>
+     <elemento input_type="liveText" name="data">/account/processinfo/list/item/date/text()</elemento>
+     <elemento input_type="liveText" name="responsabile">/account/processinfo/list/item/persname/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
  </docEdit>
  <param>
-  <elemento id="campi_obbligatori">.account.@descrAccount;.account.@id</elemento>
+  <elemento id="campi_obbligatori">.account.@id</elemento>
   <elemento id="clona">
    <opzione action="delete" value="">/account/processinfo/list/item</opzione>
    <opzione action="append" value="elemento copiato">/account/processinfo/list/item/text()</opzione>
@@ -46,6 +54,7 @@
  </param>
  <fixedValues>
   <elemento value="account">thePne</elemento>
+  <elemento value="preventBlankNode">/account/text()</elemento>
   <elemento value="inserimento">/account/processinfo/list/item/text()</elemento>
   <elemento value="@coluiCheInserisce@">/account/processinfo/list/item/persname/text()</elemento>
   <elemento value="@quandoColuiInserisce@">/account/processinfo/list/item/date/text()</elemento>

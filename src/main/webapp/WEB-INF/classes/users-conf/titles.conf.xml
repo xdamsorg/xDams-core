@@ -2,16 +2,28 @@
 <root>
  <titleManager>
   <sezione name="title">
-   <elemento mode="html" html="strong" format_after="&#160;">0-</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@descrArchive@]-[@userName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@userName@]-[@userLastName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@userLastName@]-[@idUser@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" format_before="&#160;">0-[@descrAccount@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@descrAccount@]-[@idAccount@]</elemento>
   </sezione>
   <sezione name="defaultTitle">
-   <elemento mode="html" html="em">[@tit@]-[@data@]</elemento>
-  </sezione>
+   <elemento mode="html" html="strong" format_after="&#160;">[@descrArchive@]-[@userName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@userName@]-[@userLastName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@userLastName@]-[@idUser@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" format_before="&#160;">0-[@descrAccount@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@descrAccount@]-[@idAccount@]</elemento>  </sezione>
   <sezione name="hierBrowser">
   </sezione>
   <sezione name="hierTitle">
   </sezione>
   <sezione name="titlePath">
+   <elemento mode="html" html="strong" format_after="&#160;">[@descrArchive@]-[@userName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@userName@]-[@userLastName@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@userLastName@]-[@idUser@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" format_before="&#160;">0-[@descrAccount@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;)" format_before="(&#160;">[@descrAccount@]-[@idAccount@]</elemento>  
   </sezione>
   <sezione name="dataTitle">
   </sezione>

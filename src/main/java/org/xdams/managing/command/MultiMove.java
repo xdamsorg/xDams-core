@@ -21,7 +21,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-
 public class MultiMove {
 	// private HttpServletRequest aReq = null;
 	//
@@ -95,7 +94,7 @@ public class MultiMove {
 							xwconn.cut_paste(physDocToCut, Integer.parseInt(physDoc), it.highwaytech.broker.ServerCommand.navigarel_FIGLIOPADRE);
 							managingBean.setDocSuccessi(managingBean.getDocSuccessi() + 1);
 						} catch (Exception e) {
-							managingBean.addErrorMsg("Errore in Sposta per il documento  " + arrayList.get(i) + " " + e.getMessage());
+							managingBean.addErrorMsg(workFlowBean.getLocalizedString("Errore_in_sposta_il_documento", "Errore in sposta il documento") + " " + arrayList.get(i) + " " + e.getMessage());
 							managingBean.setDocErrori(managingBean.getDocErrori() + 1);
 						}
 					}
@@ -111,7 +110,7 @@ public class MultiMove {
 							xwconn.cut_paste(physDocToCut, Integer.parseInt(physDoc), it.highwaytech.broker.ServerCommand.navigarel_MINOREMAGGIORE);
 							managingBean.setDocSuccessi(managingBean.getDocSuccessi() + 1);
 						} catch (Exception e) {
-							managingBean.addErrorMsg("Errore in Sposta per il documento  " + arrayList.get(i) + " " + e.getMessage());
+							managingBean.addErrorMsg(workFlowBean.getLocalizedString("Errore_in_sposta_il_documento", "Errore in sposta il documento") + " " + arrayList.get(i) + " " + e.getMessage());
 							managingBean.setDocErrori(managingBean.getDocErrori() + 1);
 						}
 					}
@@ -128,7 +127,7 @@ public class MultiMove {
 							xwconn.cut_paste(physDocToCut, Integer.parseInt(physDoc), it.highwaytech.broker.ServerCommand.navigarel_MAGGIOREMINORE);
 							managingBean.setDocSuccessi(managingBean.getDocSuccessi() + 1);
 						} catch (Exception e) {
-							managingBean.addErrorMsg("Errore in Sposta per il documento  " + arrayList.get(i) + " " + e.getMessage());
+							managingBean.addErrorMsg(workFlowBean.getLocalizedString("Errore_in_sposta_il_documento", "Errore in sposta il documento") + " " + arrayList.get(i) + " " + e.getMessage());
 							managingBean.setDocErrori(managingBean.getDocErrori() + 1);
 						}
 					}
@@ -149,7 +148,7 @@ public class MultiMove {
 							}
 
 						} catch (Exception e) {
-							managingBean.addErrorMsg("Errore in Sposta per il documento  " + physDocToCut + " " + e.getMessage());
+							managingBean.addErrorMsg(workFlowBean.getLocalizedString("Errore_in_sposta_il_documento", "Errore in sposta il documento") + " " + physDocToCut + " " + e.getMessage());
 							managingBean.setDocErrori(managingBean.getDocErrori() + 1);
 						}
 					}

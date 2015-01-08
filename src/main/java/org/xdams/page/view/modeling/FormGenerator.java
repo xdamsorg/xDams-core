@@ -791,7 +791,7 @@ public class FormGenerator {
 						}
 
 						if (showcode.equals("yes"))
-							out.println("<br />codice&#160;" + generateInput("text", campoCodiceDot, theXML.valoreNodo(campoCodice, ""), "docEditInputMiddle", " readonly ", theHTMLextra));
+							out.println("<br />"+workFlowBean.getLocalizedString("codice", "codice")+"&#160;" + generateInput("text", campoCodiceDot, theXML.valoreNodo(campoCodice, ""), "docEditInputMiddle", " readonly ", theHTMLextra));
 						else
 							out.println(generateInput("hidden", campoCodiceDot, theXML.valoreNodo(campoCodice, ""), "", "", theHTMLextra));
 						// GESTISCO ELEMENTI TIPO "ROLE"
@@ -1175,7 +1175,7 @@ public class FormGenerator {
 	private String generateLookupControl(String db_name, String theWebApp, String inputExtraQuery, String inputSort, String inputTitleRule, String inputUdType, String inputQuery, String campoDescr, String campiDaValorizzare, String titleRule, String flagXML, String outputJSP) {
 		String theReturn = "<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return performLookup('" + db_name + "','" + inputExtraQuery + "','" + inputSort + "','" + inputTitleRule + "','" + inputUdType + "','" + inputQuery + "','" + /** campoDescr + */
 		"','" + /** campiDaValorizzare + */
-		"','" + titleRule + "',this,'" + theWebApp + "','" + flagXML + "','" + outputJSP + "')\">LOOKUP</a>";
+		"','" + titleRule + "',this,'" + theWebApp + "','" + flagXML + "','" + outputJSP + "')\">"+workFlowBean.getLocalizedString("LOOKUP", "LOOKUP")+"</a>";
 		return theReturn;
 	}
 
@@ -1333,13 +1333,13 @@ public class FormGenerator {
 	}
 
 	private String generateTextAreaControl(String theName, String theFactor) {
-		String theReturn = "&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return openTextArea(this)\">apri</a>";
+		String theReturn = "&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return openTextArea(this)\">"+workFlowBean.getLocalizedString("apri", "apri")+"</a>";
 
 		return theReturn;
 	}
 
 	private String generateRichTextAreaControl(String theName, String theFactor) {
-		String theReturn = "&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return openRichTextArea(this)\">apri editor HTML</a>";
+		String theReturn = "&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return openRichTextArea(this)\">"+workFlowBean.getLocalizedString("apri_editor_HTML", "apri editor HTML")+"</a>";
 		return theReturn;
 	}
 
@@ -1477,7 +1477,7 @@ public class FormGenerator {
 		// }
 		// }
 		theReturn += "<a class=\"doceditActionLink\" href=\"#n\" ";
-		theReturn += "onclick=\"return addInstance(this)\">aggiungi</a>";
+		theReturn += "onclick=\"return addInstance(this)\">"+workFlowBean.getLocalizedString("aggiungi", "aggiungi")+"</a>";
 		theReturn += "</span>";
 		return theReturn;
 	}
@@ -1487,24 +1487,24 @@ public class FormGenerator {
 		theReturn += "<a class=\"doceditActionLink\" href=\"#n\" ";
 		// theReturn += "onclick=\"return addInstance('" + spanId +
 		// "',this)\">inserisci</a>";
-		theReturn += "onclick=\"return addInstance(this, true)\">inserisci</a>";
+		theReturn += "onclick=\"return addInstance(this, true)\">"+workFlowBean.getLocalizedString("inserisci", "inserisci")+"</a>";
 		if (flagCopia.equals("true")) {
 			theReturn += "<a class=\"doceditActionLink\" href=\"#n\" ";
 			// theReturn += "onclick=\"return addInstance('" + spanId +
 			// "',this)\">inserisci</a>";
-			theReturn += "onclick=\"return copyInstance(this, true)\">copia</a>";
+			theReturn += "onclick=\"return copyInstance(this, true)\">"+workFlowBean.getLocalizedString("copia", "copia")+"</a>";
 		}
 		if (removeAttach.equals("true")) {
 			theReturn += "&#160;<a class=\"doceditActionLink\" href=\"#n\" ";
-			theReturn += "onclick=\"return removeAttach(this)\">rimuovi allegato digitale</a>";
+			theReturn += "onclick=\"return removeAttach(this)\">"+workFlowBean.getLocalizedString("rimuovi_allegato_digitale", "rimuovi allegato digitale")+"</a>";
 			theReturn += "</span>";
 		} else if (!spreadMod.equals("")) {
 			theReturn += "&#160;<a class=\"doceditActionLink\" href=\"#n\" ";
-			theReturn += "onclick=\"return removeInstanceSpread(this,'" + spreadMod + "')\">rimuovi rel</a>";
+			theReturn += "onclick=\"return removeInstanceSpread(this,'" + spreadMod + "')\">"+workFlowBean.getLocalizedString("rimuovi_rel", "rimuovi rel")+"</a>";
 			theReturn += "</span>";
 		} else {
 			theReturn += "&#160;<a class=\"doceditActionLink\" href=\"#n\" ";
-			theReturn += "onclick=\"return removeInstance(this)\">rimuovi</a>";
+			theReturn += "onclick=\"return removeInstance(this)\">"+workFlowBean.getLocalizedString("rimuovi", "rimuovi")+"</a>";
 			theReturn += "</span>";
 		}
 
@@ -1628,7 +1628,7 @@ public class FormGenerator {
 
 		// if (!(originalFileNameXpath.trim()).equals("")) {
 		out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return allega('" + resultIdRef + "',this,'" + xpathCorrenteSpan + "','" + mode + "','" + originalFileNameXpath + "','" + StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo(nodoCorrente + "/@prefix")) + "','"
-				+ getPhysDoc() + "')\">allega</a>");
+				+ getPhysDoc() + "')\">"+workFlowBean.getLocalizedString("allega", "allega")+"</a>");
 		// } else {
 		// out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return allega(document.theForm.theDb.value,'"
 		// + theXML.valoreNodo(idRef) + "',this,'" + theMode + "','" +
@@ -1661,7 +1661,7 @@ public class FormGenerator {
 		out.println(generateInput("text", xpathCorrenteDot, theXML.valoreNodo(xpathCorrente), theClass, " ", theHTMLextra));
 		// out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return associate(document.theForm.theDb.value,this,'" + xpathCorrenteSpan + "','" + originalFileNameXpath + "')\">associa</a>");
 		out.println("<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return associate('" + resultIdRef + "',this,'" + xpathCorrenteSpan + "','" + mode + "','" + originalFileNameXpath + "','" + StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo(nodoCorrente + "/@prefix")) + "','"
-				+ getPhysDoc() + "')\">associa</a>");
+				+ getPhysDoc() + "')\">"+workFlowBean.getLocalizedString("associa", "associa")+"</a>");
 		// out.println("&#160;&#160;<a class=\"doceditActionLink\" href=\"#n\" onclick=\"return visualizzaImg(this,'" + imagePath + "')\">visualizza</a>");
 		if (!noHTML) {
 			out.println("</td></tr>");
@@ -1869,7 +1869,7 @@ public class FormGenerator {
 		if (theType.equals("simple")) {
 
 			out.println("<tr>");
-			out.println("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">componi data</td>" +
+			out.println("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">"+workFlowBean.getLocalizedString("componi_data", "componi data")+"</td>" +
 
 			"<td class=\"doceditTitoloElemento\"><input class=\"doceditInputData\" onkeypress=\"allowOnlyNumbers()\" onchange=\"" +
 
@@ -1897,12 +1897,12 @@ public class FormGenerator {
 				out.println(" onkeypress=\"allowOnly(" + allowOnly + ");\" ");
 			}
 			out.println(" name=\"" + prefixDot + ".text()\" class=\"doceditInputLong\" value=\"" + theXML.valoreNodo(prefix + "/text()") + "\"></td><td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return dataNormalMulti(this,'theForm','" + prefixDotSin + "." + customNormal + "','GIORNO_INI"
-					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "',null,null,null,'" + prefixDotSin + ".text()','" + format + "');\">applica</a></td>");
+					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "',null,null,null,'" + prefixDotSin + ".text()','" + format + "');\">"+workFlowBean.getLocalizedString("applica", "applica")+"</a></td>");
 			out.println("</tr>");
 
 			out.println("<tr>");
 			out.println("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" width=\"30%\" style=\"padding-left:5px\">");
-			out.println("forma normalizzata" + "&#160;");
+			out.println(workFlowBean.getLocalizedString("forma_normalizzata", "forma normalizzata")+"&#160;");
 			out.println("</td><td align=\"left\"><input readonly  type=\"text\" name=\"" + prefixDot + "." + customNormal + "\" class=\"doceditInputMiddle\" value=\"" + theXML.valoreNodo(prefixDot.replace('.', '/') + "/" + customNormal + "") + "\"></td>");
 			if (escapeSenzaData.equals("") || !escapeSenzaData.equalsIgnoreCase("true")) {
 				out.println("<td align=\"right\"><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return senzaData('" + prefixDotSin + "')\">senza&#160;data</a></td>");
@@ -1978,7 +1978,7 @@ public class FormGenerator {
 
 			if (!theCentury.equals("false")) {
 				out.println("<tr>");
-				out.println("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">secolo</td>");
+				out.println("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">"+workFlowBean.getLocalizedString("secolo", "secolo")+"</td>");
 				out.println("<td><select onchange=\"return dataNormalMulti(this,'theForm','" + prefixDotSin + "." + customNormal + "','GIORNO_INI" + prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "','GIORNO_FIN" + prefixDotSin + "','MESE_FIN" + prefixDotSin
 						+ "','ANNO_FIN" + prefixDotSin + "','" + (valueToFind.replace('/', '.')).replaceAll("'", "\\\\'") + "','" + prefixDotSin + ".date[1]','" + format + "');//valorizzaData();\"  name=\"" + prefixDot + ".date[1]\" class=\"doceditInput\">");
 				String valoreCorrente = theXMLconf.valoreNodo(nodoCorrente + "/@value");
@@ -2009,7 +2009,7 @@ public class FormGenerator {
 				out.println("</tr>");
 			}
 			out.println("<tr>");
-			out.print("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">forma visualizzata</td><td><input type=\"text\" ");
+			out.print("<!--<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td>--><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">"+workFlowBean.getLocalizedString("forma_visualizzata", "forma visualizzata")+"</td><td><input type=\"text\" ");
 
 			if (!allowOnly.equals("")) {
 				out.println(" onkeypress=\"allowOnly(" + allowOnly + ");\" ");
@@ -2017,7 +2017,7 @@ public class FormGenerator {
 
 			out.println(" name=\"" + valueToFind.replace('/', '.') + "\" class=\"doceditInputLong\" value=\"" + theXML.valoreNodo(valueToFind) + "\"></td><td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return dataNormalMulti(this,'theForm','" + prefixDotSin + "." + customNormal
 					+ "','GIORNO_INI" + prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "','GIORNO_FIN" + prefixDotSin + "','MESE_FIN" + prefixDotSin + "','ANNO_FIN" + prefixDotSin + "','" + (valueToFind.replace('/', '.')).replaceAll("'", "\\\\'") + "','" + prefixDotSin + ".date[1]','" + format
-					+ "');\">applica</a></td>");
+					+ "');\">"+workFlowBean.getLocalizedString("applica", "applica")+"</a></td>");
 			out.println("</tr>");
 
 			out.println("<tr>");
@@ -2065,7 +2065,7 @@ public class FormGenerator {
 		if (theType.equals("simple")) {
 
 			out.println("<tr>");
-			out.println("<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">componi data</td>" +
+			out.println("<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">"+workFlowBean.getLocalizedString("componi_data", "componi data")+"</td>" +
 
 			"<td class=\"doceditTitoloElemento\"><input class=\"doceditInputData\" onkeypress=\"allowOnlyNumbers()\" onchange=\"" +
 
@@ -2093,7 +2093,7 @@ public class FormGenerator {
 				out.println(" onkeypress=\"allowOnly(" + allowOnly + ");\" ");
 			}
 			out.println(" name=\"" + prefixDot + ".text()\" class=\"doceditInputLong\" value=\"" + theXML.valoreNodo(prefix + "/text()") + "\"></td><td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return dataNormal('theForm','" + prefixDotSin + "." + customNormal + "','GIORNO_INI"
-					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "',null,null,null,'" + prefixDotSin + ".text()','" + format + "');\">applica</a></td>");
+					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "',null,null,null,'" + prefixDotSin + ".text()','" + format + "');\">"+workFlowBean.getLocalizedString("applica", "applica")+"</a></td>");
 			out.println("</tr>");
 
 			out.println("<tr>");
@@ -2101,7 +2101,7 @@ public class FormGenerator {
 			out.println("forma normalizzata" + "&#160;");
 			out.println("</td><td align=\"left\"><input readonly  type=\"text\" name=\"" + prefixDot + "." + customNormal + "\" class=\"doceditInputMiddle\" value=\"" + theXML.valoreNodo(prefix + "/" + customNormal + "") + "\"></td>");
 			if (escapeSenzaData.equals("") || !escapeSenzaData.equalsIgnoreCase("true")) {
-				out.println("<td align=\"right\"><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return senzaData('" + prefixDotSin + "')\">senza&#160;data</a></td>");
+				out.println("<td align=\"right\"><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return senzaData('" + prefixDotSin + "')\">"+workFlowBean.getLocalizedString("senza_data", "senza data")+"</a></td>");
 			} else if (escapeSenzaData.equalsIgnoreCase("true")) {
 				out.println("<td align=\"right\"></td>");
 			}
@@ -2205,14 +2205,14 @@ public class FormGenerator {
 				out.println("</tr>");
 			}
 			out.println("<tr>");
-			out.print("<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">forma visualizzata</td><td><input type=\"text\" ");
+			out.print("<td width=\"4\" bgcolor=\"#B4B7BA\"><span style=\"font-size:1px\">&#160;</span></td><td class=\"doceditTitoloElemento\" style=\"padding-left:5px\">"+workFlowBean.getLocalizedString("forma_visualizzata", "forma visualizzata")+"</td><td><input type=\"text\" ");
 
 			if (!allowOnly.equals("")) {
 				out.println(" onkeypress=\"allowOnly(" + allowOnly + ");\" ");
 			}
 
 			out.println(" name=\"" + prefixDot + ".text()\" class=\"doceditInputLong\" value=\"" + theXML.valoreNodo(prefix + "/text()") + "\"></td><td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return dataNormal('theForm','" + prefixDotSin + "." + customNormal + "','GIORNO_INI"
-					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "','GIORNO_FIN" + prefixDotSin + "','MESE_FIN" + prefixDotSin + "','ANNO_FIN" + prefixDotSin + "','" + prefixDotSin + ".text()','" + prefixDotSin + ".date[1]','" + format + "');\">applica</a></td>");
+					+ prefixDotSin + "','MESE_INI" + prefixDotSin + "','ANNO_INI" + prefixDotSin + "','GIORNO_FIN" + prefixDotSin + "','MESE_FIN" + prefixDotSin + "','ANNO_FIN" + prefixDotSin + "','" + prefixDotSin + ".text()','" + prefixDotSin + ".date[1]','" + format + "');\">"+workFlowBean.getLocalizedString("applica", "applica")+"</a></td>");
 			out.println("</tr>");
 
 			out.println("<tr>");
@@ -2221,7 +2221,7 @@ public class FormGenerator {
 			out.println("</td>");
 			out.println("<td align=\"left\"><input readonly  type=\"text\" name=\"" + prefixDot + "." + customNormal + "\" class=\"doceditInputMiddle\" value=\"" + theXML.valoreNodo(prefix + "/" + customNormal + "") + "\"></td>");
 			if (escapeSenzaData.equals("") || !escapeSenzaData.equalsIgnoreCase("true")) {
-				out.println("<td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return senzaData('" + prefixDotSin + "')\">senza&#160;data</a></td>");
+				out.println("<td><a class=\"doceditActionLink\" href=\"#n\" onclick=\"return senzaData('" + prefixDotSin + "')\">"+workFlowBean.getLocalizedString("senza_data", "senza data")+"</a></td>");
 			} else if (escapeSenzaData.equalsIgnoreCase("true")) {
 				out.println("<td></td>");
 			}

@@ -24,7 +24,8 @@ function toVocKeyCount(/* input */obj) {
 	ilTest = true;
 	keyCount = obj.value;
 	if (keyCount == 99999) {
-		if (confirm('Attenzione: la richiesta potrebbe richiedere qualche minuto, confermare?')) {
+		if (confirm(getLocalizedString('Attenzione_la_richiesta_potrebbe_richiedere_qualche_minuto_confermare', 'Attenzione: la richiesta potrebbe richiedere qualche minuto, confermare')+"?")) {
+		 
 			start_param = '0';
 			if (start_param.indexOf(" ") != 0 && vocType == 'double') {
 				start_param = " " + start_param;
@@ -54,7 +55,7 @@ function setVocKeyCount(ilVal) {
 function submitFormExport(id) {
 	ilTest = true;
  
-	if (confirm('Attenzione: la richiesta potrebbe richiedere qualche minuto, confermare?')) {
+	if (confirm(getLocalizedString('Attenzione_la_richiesta_potrebbe_richiedere_qualche_minuto_confermare', 'Attenzione: la richiesta potrebbe richiedere qualche minuto, confermare')+"?")) {
 		start_param = '0';
 		if (start_param.indexOf(" ") != 0 && vocType == 'double') {
 			start_param = " " + start_param;
@@ -65,17 +66,13 @@ function submitFormExport(id) {
 		document.vocabolarioForm['isExport'].value = 'true';
 		document.vocabolarioForm['vocabolario_maxresult'].value = 99999;
 		document.vocabolarioForm.submit();
- self.close();
-		 
+		self.close();
 	} else {
-		 
+ 
 	} 
-	 
 }
 
 function submitForm(id) {
-
-	// alert(values);
 	var tocks = new Array;
 	if (values != '') {
 		tocks = values.split('~');

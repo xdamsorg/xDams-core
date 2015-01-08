@@ -11,29 +11,6 @@
      <functionName value="reloadLocation"></functionName>
     </eventJavaScript>
    </element>
-   <element value="SPOSTA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
-    <anchor value="#"></anchor>
-    <eventJavaScript value="onclick">
-     <functionName value="parent.apriWinProtoGest">
-      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-      <paramFunction>'multiMove'</paramFunction>
-      <paramFunction>'Sposta schede'</paramFunction>
-      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
-      <paramFunction javaBean="viewBean">getSelid</paramFunction>
-     </functionName>
-    </eventJavaScript>
-   </element>
-   <element value="RIORDINA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaInferiore" userValue="1;2">
-    <anchor value="#"></anchor>
-    <eventJavaScript value="onclick">
-     <functionName value="parent.apriWinProtoGest">
-      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-      <paramFunction>'sorting'</paramFunction>
-      <paramFunction>'Riordina elementi'</paramFunction>
-      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
-     </functionName>
-    </eventJavaScript>
-   </element>
    <element value="ELIMINA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">
@@ -46,17 +23,6 @@
      </functionName>
     </eventJavaScript>
    </element>
-   <element value="TAGLIA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
-    <anchor value="#"></anchor>
-    <eventJavaScript value="onclick">
-     <functionName value="ajaxSetSessionDocsToCut">
-      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
-      <paramFunction>'@@physDocToPaste@@'</paramFunction>
-      <paramFunction>'cut'</paramFunction>
-      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-     </functionName>
-    </eventJavaScript>
-   </element>
    <element value="COPIA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">
@@ -65,20 +31,6 @@
       <paramFunction>'@@physDocToPaste@@'</paramFunction>
       <paramFunction>'paste'</paramFunction>
       <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-     </functionName>
-    </eventJavaScript>
-   </element>
-   <element value="STAMPA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="all">
-    <anchor value="#"></anchor>
-    <eventJavaScript value="onclick">
-     <functionName value="parent.apriWinProtoGest">
-      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-      <paramFunction>'xml2pdf'</paramFunction>
-      <paramFunction>'Stampa PDF'</paramFunction>
-      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
-      <paramFunction javaBean="viewBean">getSelid</paramFunction>
-      <paramFunction>''</paramFunction>
-      <paramFunction>{idXpath:'/c/@id'}</paramFunction>
      </functionName>
     </eventJavaScript>
    </element>

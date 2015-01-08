@@ -6,6 +6,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -26,6 +27,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}'};
 loadJsBusiness('multiMod','${frontUrl}');
 </script>
@@ -98,33 +100,33 @@ loadJsBusiness('multiMod','${frontUrl}');
 		}
 		//return false;
 		if(!selectedRadio){
-				xDamsModalAlert('Specificare un\'azione!<br /><br />');
+				xDamsModalAlert('<spring:message code="Specificare_unazione" text="Specificare un\\'azione"/>!<br /><br />');
 				return;		
 		}
 		
 		if(theForm.theXpath != null && (ilval=="" || theForm.theXpath.value=="")){
 				if(typeHtml.indexOf('select')!=-1){
-					msg = "Attenzione!<br /><br />vuoi proiettare un valore vuoto? <br />";
-					$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ conferma ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ annulla ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
+					msg = "<spring:message code="Attenzione" text="Attenzione"/>!<br /><br /><spring:message code="vuoi_proiettare_un_valore_vuoto" text="vuoi proiettare un valore vuoto"/>? <br />";
+					$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ <spring:message code="conferma" text="conferma"/> ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ <spring:message code="annulla" text="annulla"/> ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
 				      $('#yes').click(function() {	
 							 theForm.submit();
-							 xDamsModalMessage('elaborazione in corso...');
+							 xDamsModalMessage('<spring:message code="elaborazione_in_corso" text="elaborazione in corso"/>...');
 				       }); 
 				       $('#no').click(function(){ 
 						  xDamsUnblock();
 						  return false;
 					  });					
 				}else{
-					xDamsModalAlert('Specificare valore e xpath!<br /><br />');
+					xDamsModalAlert('<spring:message code="Specificare_valore_e_xpath" text="Specificare valore e xpath"/>!<br /><br />');
 					return;
 				}
 		}
 		 else  {
-				msg = "Attenzione!<br /><br />Confermi la modifica? <br />";
-				$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ conferma ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ annulla ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
+				msg = "<spring:message code="Attenzione" text="Attenzione"/>!<br /><br /><spring:message code="Confermi_la_modifica" text="Confermi la modifica"/>? <br />";
+				$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ <spring:message code="conferma" text="conferma"/> ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ <spring:message code="annulla" text="annulla"/> ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
 			      $('#yes').click(function() {	
 						 theForm.submit();
-						 xDamsModalMessage('elaborazione in corso...');
+						 xDamsModalMessage('<spring:message code="elaborazione_in_corso" text="elaborazione in corso"/>...');
 			       }); 
 			       $('#no').click(function(){ 
 					  xDamsUnblock();
@@ -146,29 +148,29 @@ loadJsBusiness('multiMod','${frontUrl}');
 		</script>
 	</head>
 <body>
-<script type="text/javascript">xDamsModalMessage('analisi in corso...');</script>
+<script type="text/javascript">xDamsModalMessage('<spring:message code="analisi_in_corso" text="analisi in corso"/>...');</script>
 <div id="content_multi">
-<div class="riga_posiziona_multi">elemento selezionato: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
+<div class="riga_posiziona_multi"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
 <form action="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html" name="theForm">
 <input type="hidden" name="actionFlag" value="multiMod" />
 <input type="hidden" name="makeAction" value="true" />
 <input type="hidden" name="physDoc" value="<%=managingBean.getPhysDoc()%>" />
 <input type="hidden" name="selid" value="<%=managingBean.getSelid()%>" />
 <div class="m10">
-<strong>ASSEGNA VALORE</strong>, applica la modifica a:
+<strong><spring:message code="ASSEGNA_VALORE" text="ASSEGNA VALORE"/></strong>, <spring:message code="applica_la_modifica_a" text="applica la modifica a"/>:
 <br />
-<%if((managingBean.getListPhysDoc())!=null && (managingBean.getListPhysDoc()).size()>0){ %><input type="radio" name="applyTo" value="selected"> <strong>seleziona multipla</strong> (<%=(managingBean.getListPhysDoc()).size()%>  elementi)<br /><%} %>
-<%if(( managingBean.getNumElementi())>0){ %><input type="radio" name="applyTo" value="selid"> <strong>ricerca corrente</strong> (<%=( managingBean.getNumElementi())%> elementi)<br /><%} %>
-<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong>fratelli precedenti</strong><br /><%} %>
-<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong>fratelli successivi</strong><br /><%} %>
-<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong>figli diretti</strong> (<%=(managingBean.getNumElementiSons())%> elementi)<br /><%} %>
-<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong>tutto il ramo</strong> (<%=(managingBean.getNumElementiHier())%> elementi)<br /><%} %>
+<%if((managingBean.getListPhysDoc())!=null && (managingBean.getListPhysDoc()).size()>0){ %><input type="radio" name="applyTo" value="selected"> <strong><spring:message code="selezione_multipla" text="selezione multipla"/></strong> (<%=(managingBean.getListPhysDoc()).size()%>  <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if(( managingBean.getNumElementi())>0){ %><input type="radio" name="applyTo" value="selid"> <strong><spring:message code="ricerca_corrente" text="ricerca corrente"/></strong> (<%=( managingBean.getNumElementi())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong><strong><spring:message code="fratelli_precedenti" text="fratelli precedenti"/></strong><br /><%} %>
+<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong><spring:message code="fratelli_successivi" text="fratelli successivi"/></strong><br /><%} %>
+<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong><spring:message code="figli" text="figli"/></strong> (<%=(managingBean.getNumElementiSons())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong><spring:message code="tutto_il_ramo" text="tutto il ramo"/></strong> (<%=(managingBean.getNumElementiHier())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
 <br /> 
 	<% 
 	String externalPath = "/root/docEdit/macroarea";
 	String ilNome ="";
 	int nodiMacroAree = theXMLconf.contaNodi(externalPath);
-	String theOptions = "<option value=\"\">scegli...</option>";
+	String theOptions = "<option value=\"\">"+workFlowBean.getLocalizedString("scegli", "scegli")+"...</option>";
   	ArrayList theOptionsValContr = new ArrayList();
 	for (int i = 0; i < nodiMacroAree; i++) {
 		externalPath = "/root/docEdit/macroarea["+(i+1)+"]/sezione";
@@ -259,10 +261,10 @@ loadJsBusiness('multiMod','${frontUrl}');
  			}
 		%>		
 		<br /><br />
-		proietta su:<br /> 
-		<span><select id="theXpath" name="theXpath" class="long"><%=theOptions%></select><br /><a href="javascript:void(0)"  class="link"  onclick="return modAvanzata('theXpath')">modalità avanzata <img src="${frontUrl}/img/arrow.gif" border="0"/></a></span>
+		<spring:message code="proietta_su" text="proietta su"/>:<br /> 
+		<span><select id="theXpath" name="theXpath" class="long"><%=theOptions%></select><br /><a href="javascript:void(0)"  class="link"  onclick="return modAvanzata('theXpath')"><spring:message code="modalita_avanzata" text="modalità avanzata"/> <img src="${frontUrl}/img/arrow.gif" border="0"/></a></span>
 		<br />
-	    <a title="Esegui la richiesta"  class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#">ESEGUI</a>
+	    <a title="<spring:message code="ESEGUI" text="ESEGUI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a>
 <br /><br />
 </div>
 </form>
@@ -279,20 +281,20 @@ String codiceId=theXMLconf.valoreNodo("/root/param/elemento[@id='codice_identifi
 <input type="hidden" name="selid" value="<%=managingBean.getSelid()%>" />
 <input type="hidden" name="codiceId" value="<%=codiceId%>" />
 <div class="m10">
-<strong>RINUMERA ELEMENTI</strong>, applica la modifica a:
+<strong><spring:message code="RINUMERA_ELEMENTI" text="RINUMERA ELEMENTI"/></strong>, <spring:message code="applica_la_modifica_a" text="applica la modifica a"/>:
 <br />
-<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong>fratelli precedenti</strong><br /><%} %>
-<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong>fratelli successivi</strong><br /><%} %>
-<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong>figli diretti</strong> (<%=(managingBean.getNumElementiSons())%> elementi)<br /><%} %>
-<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong>tutto il ramo</strong> (<%=(managingBean.getNumElementiHier())%> elementi)<br /><%} %>
+<%if((managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong><spring:message code="fratelli_precedenti" text="fratelli precedenti"/></strong><br /><%} %>
+<%if((managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong><spring:message code="fratelli_successivi" text="fratelli successivi"/></strong><br /><%} %>
+<%if((managingBean.getNumElementiSons())>0){ %><input type="radio" name="applyTo" value="sons"> <strong><spring:message code="sons" text="figli diretti"/></strong> (<%=(managingBean.getNumElementiSons())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
+<%if((managingBean.getNumElementiHier())>0 && managingBean.getNumElementiHier()>managingBean.getNumElementiSons()){ %><input type="radio" name="applyTo" value="hier"> <strong><spring:message code="tutto_il_ramo" text="tutto il ramo"/></strong> (<%=(managingBean.getNumElementiHier())%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
 <br /> 
-			a partire da:<br /> 
+			<spring:message code="a_partire_da" text="a partire da"/>:<br /> 
 			<input type="text" name="theValue" class="long" value="<%=selectedDoc.valoreNodo(codiceId) %>" /> <br />
-			numero di cifre per blocco:<br />
+			<spring:message code="numero_di_cifre_per_blocco" text="numero di cifre per blocco"/>:<br />
 			<input type="text" name="numZeri" class="short" value="5" /><br />
-			<div style="display:none" id="countBlock">contrassegna blocchi in partenza: <input type="checkbox" name="countBlock" /></div>
+			<div style="display:none" id="countBlock"><spring:message code="contrassegna_blocchi_in_partenza" text="contrassegna blocchi in partenza"/>: <input type="checkbox" name="countBlock" /></div>
 	 	<br />
-	    <a title="Esegui la richiesta" class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaRinumera(false);"  href="#">ESEGUI</a>
+	    <a title="<spring:message code="ESEGUI" text="ESEGUI"/>" class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaRinumera(false);"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a>
 </div>
 </form>
 <%}catch(Exception e){}
@@ -302,7 +304,7 @@ String codiceId=theXMLconf.valoreNodo("/root/param/elemento[@id='codice_identifi
 	<div class="margin_foot">
  	<div class="cont_ul2">	
 		<ul class="bottoniMenu" >
- 			<li><a title="Chiude la pagina corrente"  class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#">CHIUDI</a></li>
+ 			<li><a title="<spring:message code="CHIUDI" text="CHIUDI"/>" class="bottoneLink" onmouseover="window.status='<spring:message code="CHIUDI" text="CHIUDI"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="CHIUDI" text="CHIUDI"/></a></li>
 		</ul>
 	</div>
 	</div>

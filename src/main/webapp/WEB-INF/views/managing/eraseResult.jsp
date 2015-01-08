@@ -3,6 +3,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -21,19 +22,20 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 loadJsBusiness('eraseMenu','${frontUrl}');
 </script>
 </head>
 <body onload="self.focus()" >
 <div id="content_multi">
-	<div class="m10">elementi processati: <strong><%=elementi%></strong></div>
+	<div class="m10"><spring:message code="elementi_processati" text="elementi processati"/>: <strong><%=elementi%></strong></div>
 		<%//il valore di defaulti è -100
 		if(elementiSuccessi!=-100){ %>
-		<div class="m10">elementi eliminati: <strong><%=elementiSuccessi%></strong></div>
+		<div class="m10"><spring:message code="elementi_eliminati" text="elementi eliminati"/>: <strong><%=elementiSuccessi%></strong></div>
 		<%} %>
 		<%//il valore di defaulti è -100
 		if(elementiErrore!=-100){ %>
-		<div class="m10">errori occorsi: <strong><%=elementiErrore%></strong></div>
+		<div class="m10"><spring:message code="errori_occorsi" text="errori occorsi"/>: <strong><%=elementiErrore%></strong></div>
 		<%} %>	
 		<%
 		List errorArray = managingBean.getErrorMsg();
@@ -50,7 +52,7 @@ loadJsBusiness('eraseMenu','${frontUrl}');
 	<div class="margin_foot">
 	 	<div class="cont_ul2">	
 			<ul class="bottoniMenu" >
-				<li><a title="Chiude la pagina corrente" class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="parent.reloadLocation();chiudiThisWin();" href="#">CHIUDI</a></li>
+				<li><a title="<spring:message code="chiudi" text="chiudi"/>" class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="chiudi"/>';return true" onmouseout="window.status=''" onclick="parent.reloadLocation();chiudiThisWin();" href="#"><spring:message code="chiudi" text="chiudi"/></a></li>
 			</ul>
 		</div>
 	</div>

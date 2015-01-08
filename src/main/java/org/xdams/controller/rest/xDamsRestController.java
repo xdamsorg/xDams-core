@@ -1,79 +1,36 @@
-package org.xdams.controller;
+package org.xdams.controller.rest;
 
 import it.highwaytech.broker.XMLCommand;
 import it.highwaytech.db.QueryResult;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Vector;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.util.WebUtils;
-import org.xdams.ajax.bean.AjaxBean;
-import org.xdams.conf.master.ConfBean;
-import org.xdams.manager.conf.MultiEditingManager;
-import org.xdams.page.command.EditingPageCommand;
-import org.xdams.page.command.HierBrowserPageCommand;
-import org.xdams.page.command.InfoTabCommand;
-import org.xdams.page.command.InsertRecordCommand;
-import org.xdams.page.command.LookupCommand;
-import org.xdams.page.command.PreInsertPageCommand;
-import org.xdams.page.command.QueryPageCommand;
-import org.xdams.page.command.TitlePageCommand;
-import org.xdams.page.command.ViewPageCommand;
-import org.xdams.page.command.VocabolarioMultiCommand;
-import org.xdams.page.factory.AjaxFactory;
-import org.xdams.page.factory.ManagingFactory;
-import org.xdams.page.form.bean.CustomPageBean;
-import org.xdams.page.form.bean.LookupBean;
-import org.xdams.page.upload.bean.UploadBean;
-import org.xdams.page.upload.command.AssociateCommand;
-import org.xdams.page.upload.command.UploadCommand;
-import org.xdams.page.view.bean.ManagingBean;
-import org.xdams.page.view.modeling.QueryPageView;
-import org.xdams.save.SaveDocumentCommand;
 import org.xdams.security.AuthenticationType;
-import org.xdams.security.UserDetails;
-import org.xdams.security.load.LoadUserManager;
 import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.Account;
 import org.xdams.user.bean.Archive;
-import org.xdams.user.bean.UserBean;
 import org.xdams.utility.XMLCleaner;
 import org.xdams.utility.request.MyRequest;
 import org.xdams.utility.resource.ConfManager;
-import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
@@ -97,55 +54,17 @@ public class xDamsRestController {
 
 	@Autowired
 	Boolean multiAccount;
-
-	// @ModelAttribute
-	// public void workFlowBean(Model model) {
-	// model.addAttribute("workFlowBean", new WorkFlowBean());
-	// }
-	//
-	// @ModelAttribute
-	// public void userLoad(Model model) {
-	// if (!model.containsAttribute("userBean")) {
-	// UserDetails userDetails = null;
-	// try {
-	// userDetails = (UserDetails) ((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
-	// UserBean userBean = LoadUserManager.executeLoad(userDetails, authenticationType);
-	// model.addAttribute("userBean", userBean);
-	// } catch (Exception e) {
-	//
-	// }
-	// }
-	// }
-	//
-	// @ModelAttribute
-	// public void frontUrl(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	// // model.addAttribute("frontUrl", request.getContextPath() + "/resources");
-	// model.addAttribute("frontUrl", request.getContextPath() + "/resources");
-	// if (multiAccount && model.get("userBean") != null) {
-	// model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + ((UserBean) model.get("userBean")).getAccountRef());
-	// }
-	// model.addAttribute("contextPath", request.getContextPath());
-	// String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
-	// if (userAgent.toLowerCase().contains("msie")) {
-	// response.addHeader("X-UA-Compatible", "IE=edge");
-	// }
-	// }
-	//
-	// public void common(ConfBean confBean, UserBean userBean, String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	// WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
-	// // SETTO IL WORKFLOW PER LA NAVIGAZIONE DI xDams
-	// workFlowBean.setArchive(serviceUser.getArchive(userBean, archive));
-	// workFlowBean.setRequest(request);
-	// workFlowBean.setResponse(response);
-	// modelMap.put("workFlowBean", workFlowBean);
-	// }
-	//
-	// public void common(ConfBean confBean, UserBean userBean, String archive, String archiveLookup, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	// WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
-	// workFlowBean.setArchiveLookup(serviceUser.getArchive(userBean, archiveLookup));
-	// common(confBean, userBean, archive, modelMap, request, response);
-	// }
-
+	
+//	@RequestMapping(value = "/springcontent", method = RequestMethod.GET, produces = {
+//			"application/xml", "application/json" })
+//	@ResponseStatus(HttpStatus.OK)
+//	public String getUser() throws UnsupportedEncodingException, TransformerException, XMLException {
+//		XMLBuilder builder = ConfManager.getConfXML("media.conf.xml");
+//		String validSecretKey = builder.valoreNodo("/root/secretKey/text()");	 
+//		return builder.getXML("ISO-8859-1");
+//	}
+	
+	
 	@RequestMapping(value = "/rest/{accountID}/{archive}/{secretKey}", method = RequestMethod.GET, produces = "text/xml")
 	public @ResponseBody
 	String restCall(@PathVariable String archive, @PathVariable String secretKey, @PathVariable String accountID, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {

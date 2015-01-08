@@ -7,9 +7,19 @@
  </access_method>
  <query>
   <element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/*</element>
-  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Nome utente" firstIdx="a" typology="double">XML,/user/@name</element>
-  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Cognome utente" firstIdx="a" typology="double">XML,/user/@lastName</element>
-  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Alias utente" firstIdx=" " typology="one">XML,/user/@id</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="user - name" firstIdx="a" typology="double">XML,/user/@name</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="user - lastname" firstIdx="a" typology="double">XML,/user/@lastName</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="user - id" firstIdx=" a" typology="one">XML,/user/@id</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="user - account" firstIdx=" a" typology="one">XML,/user/@account</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - descr" firstIdx="a" typology="double">XML,/account/@descrAccount</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - id" firstIdx="a" typology="one">XML,/account/@id</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - fatherAccount" firstIdx=" a" typology="one">XML,/account/@fatherAccount</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive group" firstIdx=" a" typology="double">XML,/account/archiveGroup/@name</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive descr" firstIdx=" a" typology="double">XML,/account/archiveGroup/archive</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive alias" firstIdx=" a" typology="one">XML,/account/archiveGroup/archive/@alias</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive host" firstIdx=" 0" typology="one">XML,/account/archiveGroup/archive/@host</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive port" firstIdx=" 0" typology="one">XML,/account/archiveGroup/archive/@port</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="account - archive type" firstIdx=" a" typology="one">XML,/account/archiveGroup/archive/@type</element>
   <sort>
    <element label="nessuno" checked="yes"/>
    <element label="Inserimento">UD(xpart:/xw/UserId/@DateIns/)</element>

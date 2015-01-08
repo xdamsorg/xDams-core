@@ -13,6 +13,7 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -61,15 +62,16 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}',infoURLPrefix:'${contextPath}/infoTab/',infoURLSuffix:'/infoTab.html',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('completeTab','${frontUrl}');
 $(document).ready(function(){	
 
 	if(jQuery.trim(jQuery('#contenutoScheda').text())==''){
 		try{
-			window.opener.xDamsMiniAlert('documento salvato con successo');
+			window.opener.xDamsMiniAlert('<spring:message code="documento_salvato_con_successo" text="documento salvato con successo"/>');
 		}catch(e){
-			alert('documento salvato con successo');
+			alert('<spring:message code="documento_salvato_con_successo" text="documento salvato con successo"/>');
 		};
 		
 		try{
@@ -93,11 +95,11 @@ function evidenziaFromLeft(){
 <div id="testa_scheda">
 	<div class="sotto_head">&nbsp;</div>
 	<div class="riga_tit_diz">
-		<div class="Tit_diz">scheda</div>
-		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="chiudi finestra">chiudi x</a></div>
+		<div class="Tit_diz"><spring:message code="scheda" text="scheda"/></div>
+		<div class="butt_close"><a href="javascript: self.close()" class="link_white" title="<spring:message code="chiudi" text="chiudi"/>"><spring:message code="chiudi" text="chiudi"/> x</a></div>
 	</div>
 	<div class="cont_riga_dx">
-		<div class="riga_dx"><a href="#" class="link_u_w" title="">Scheda</a><!--  <span class="barretta_div">|</span><a href="#" class="link_u_w" title="">Compilazione</a> --></div>
+		<div class="riga_dx"><a href="#" class="link_u_w" title=""><spring:message code="scheda" text="scheda"/></a><!--  <span class="barretta_div">|</span><a href="#" class="link_u_w" title="">Compilazione</a> --></div>
 	</div>
 </div>
 <div class="cont_menu_sx">
@@ -110,7 +112,7 @@ function evidenziaFromLeft(){
 	<div class="contAllArea">
 	<%if(laGerarchia!=null && laGerarchia.depth()>1){%>
 		<div class="area">
-			<span class="riga_tit_area">Struttura gerarchica</span>
+			<span class="riga_tit_area"><spring:message code="Struttura_gerarchica" text="Struttura gerarchica"/></span>
 			<div class="box_cont">
 	 			<div>
 					<ul class="riga">

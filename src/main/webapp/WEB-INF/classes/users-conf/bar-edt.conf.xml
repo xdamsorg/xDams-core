@@ -2,7 +2,7 @@
 <root>
  <managing>
   <user>
-   <element value="INSERISCI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+   <element value="INSERISCI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/preInsert.html" target="_new${workFlowBean.alias}">
      <paramAnchor javaBean="viewBean" name="physDoc">getPhysDoc</paramAnchor>
      <paramAnchor javaBean="viewBean" name="thePne">getRootElement</paramAnchor>
@@ -24,7 +24,7 @@
      </functionName>
     </eventJavaScript>
    </element>
-   <element value="XML" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaXML" userValue="1;2">
+   <element value="XML" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaXML" userValue="1">
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">
      <functionName value="parent.apriWinProtoGest">

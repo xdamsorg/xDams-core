@@ -5,7 +5,7 @@ function allega(theRecord, theField, thePrefix, theUploadMode, originalFileName,
 	// alert("thePrefix "+thePrefix);
 	if (isNaN(parseInt(physDoc, 10)) || parseInt(physDoc, 10) == 0
 			|| parseInt(physDoc, 10) == -1) {
-		alert("Attenzione physDoc non settato." + physDoc);
+		alert(getLocalizedString('Attenzione_physDoc_non_settato','Attenzione physDoc non settato')+"." + physDoc);
 		return false;
 	}
 
@@ -133,7 +133,7 @@ function associate(theRecord, theField, thePrefix, theUploadMode, originalFileNa
 	percorsoImg = theField.parentNode.getElementsByTagName("input")[0].name;
 	if (isNaN(parseInt(physDoc, 10)) || parseInt(physDoc, 10) == 0
 			|| parseInt(physDoc, 10) == -1) {
-		alert("Attenzione physDoc non settato." + physDoc);
+		alert(getLocalizedString('Attenzione_physDoc_non_settato','Attenzione physDoc non settato')+"." + physDoc);
 		return false;
 	}
 	if (theUploadMode.indexOf('associate') != -1) {

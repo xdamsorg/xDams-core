@@ -79,7 +79,8 @@ public class UploadCommand {
 						uploadBean.getFiledata().transferTo(uploadFile);
 					}
 				} catch (Exception e) {
-					uploadBean.getResultError().append("errore nel copia nella cartella temporanea: " + e.getMessage());
+					
+					uploadBean.getResultError().append(workFlowBean.getLocalizedString("errore_nel_copia_nella_cartella_temporanea", "errore nel copia nella cartella temporanea")+": " + e.getMessage());
 					throw e;
 				}
 
@@ -184,7 +185,7 @@ public class UploadCommand {
 							System.out.println("uploadPath resize: " + resultName);
 						}
 					} catch (Exception e) {
-						uploadBean.getResultError().append("errore nel processo di conversione file: " + e.getMessage());
+						uploadBean.getResultError().append(workFlowBean.getLocalizedString("errore_nel_processo_di_conversione_file", "errore nel processo di conversione file")+": " + e.getMessage());
 					}
 				} else {
 					try {
@@ -207,7 +208,7 @@ public class UploadCommand {
 						uploadBean.setResult(new StringBuilder(resultName));
 						System.out.println("uploadPath simple: " + resultName);
 					} catch (Exception e) {
-						uploadBean.getResultError().append("errore nella copia del file nella cartella di destinazione: " + e.getMessage());
+						uploadBean.getResultError().append(workFlowBean.getLocalizedString("errore_nella_copia_del_file_nella_cartella_di_destinazione", "errore nella copia del file nella cartella di destinazione")+": " + e.getMessage());
 						throw e;
 					}
 				}

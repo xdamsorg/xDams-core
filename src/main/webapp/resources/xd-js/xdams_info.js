@@ -1,6 +1,6 @@
 function infoAuther(ilLemmaCode,ilArchivio,queryFix){
 	if(queryFix==null || queryFix==""){
-		alert("Impossibile avviare info, query non presente.");
+		alert(getLocalizedString('Impossibile_avviare_info_query_non_presente','Impossibile avviare info, query non presente')+".");
 	}else{
 		//window.open('./ServletDocumentInfo?go=info.jsp&db_name='+ilArchivio+'&idCode='+ilLemmaCode+'&queryFix='+queryFix,'info');
 		//window.open(globalOption.infoURLPrefix+ilArchivio+globalOption.infoURLSuffix+'?idCode='+ilLemmaCode+'&queryFix='+queryFix,'schedaXdamsAuther','status=yes,resizable=yes,scrollbars=yes,width=760, height=540');
@@ -30,7 +30,7 @@ function infoAuther(ilLemmaCode,ilArchivio,queryFix){
 
 function infoByNumDoc(physDoc,ilArchivio){
 	if(physDoc==null || physDoc==""){
-		alert("Impossibile avviare info, physDoc non presente.");
+		alert(getLocalizedString('Impossibile_avviare_info_physDoc_non_presente','Impossibile avviare info, physDoc non presente')+".");
 	}else{
 		//window.open('./ServletDocumentInfo?go=info.jsp&db_name='+ilArchivio+'&idCode='+ilLemmaCode+'&queryFix='+queryFix,'info');
 		//window.open(globalOption.infoURLPrefix+ilArchivio+globalOption.infoURLSuffix+'?idCode='+ilLemmaCode+'&queryFix='+queryFix,'schedaXdamsAuther','status=yes,resizable=yes,scrollbars=yes,width=760, height=540');

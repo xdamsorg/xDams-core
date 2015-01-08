@@ -49,7 +49,7 @@ public class AuthenticationProvider extends AbstractUserDetailsAuthenticationPro
 	@Override
 	protected UserDetails retrieveUser(String arg0, UsernamePasswordAuthenticationToken arg1) throws AuthenticationException {
 		AuthenticationToken authenticationToken = (AuthenticationToken) arg1;
-		return ((UserDetailsServiceImpl) userDetailsService).loadUserByUsernameCompany(arg0, authenticationToken.getCompany().toString(), authenticationType.isLoadUserSpeedUp());
+		return ((UserDetailsServiceImpl) userDetailsService).loadUserByUsernameCompany(arg0, authenticationToken.getCompany().toString(), authenticationType);
 	}
 
 	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {

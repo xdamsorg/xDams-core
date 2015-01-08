@@ -5,6 +5,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -25,14 +26,15 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}' ,theArch:'${workFlowBean.alias}', contextPath:'${contextPath}'};
 loadJsBusiness('modifyAuther','${frontUrl}');
 </script>
 <body>
 <div id="content_multi">
 	<div class="riga_posiziona_multi"><%=MyRequest.getParameter("nameToChange", request).trim()%></div>	
-	<div class="m10">elementi processati: <strong><%=elementiSuccessi%></strong><br>
-	 errori occorsi: <strong><%=elementiErrore%></strong></div>
+	<div class="m10"><spring:message code="elementi_processati" text="elementi processati"/>: <strong><%=elementiSuccessi%></strong><br>
+	<spring:message code="errori_occorsi" text="errori occorsi"/>: <strong><%=elementiErrore%></strong></div>
 	<%
 	List errorArray = modifyAutherBean.getErrorMsg();
 	if(errorArray!=null && errorArray.size()>0){
@@ -52,7 +54,7 @@ loadJsBusiness('modifyAuther','${frontUrl}');
 		%>
 		<div class="riga_posiziona_multi">
 				<strong><%=autherBean.getArchivioDescr() %></strong><br/>
-				numero occorrenze modificate : <strong><%=autherBean.getElementToFindBean().getNumTotXPathToChange() %></strong><br/>
+				<spring:message code="numero_occorrenze_modificate" text="numero occorrenze modificate"/> : <strong><%=autherBean.getElementToFindBean().getNumTotXPathToChange() %></strong><br/>
 				<%=autherBean.getElementToFindBean().getXPathToChange() %><br/>
 		</div>
 		<%

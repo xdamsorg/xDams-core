@@ -22,7 +22,7 @@ function showHideLayers(nomeLayer){
 function lockDocEdit(show){
 
 	if(show == true){
-		$.blockUI({ message: '<h1><img src="'+globalOption.frontPath+'/img/busy.gif" /> salvataggio in corso...</h1>' });
+		$.blockUI({ message: '<h1><img src="'+globalOption.frontPath+'/img/busy.gif" />'+getLocalizedString('salvataggio_in_corso' ,'salvataggio in corso')+'...</h1>' });
 	}else{
 		$.unblockUI();
 	}

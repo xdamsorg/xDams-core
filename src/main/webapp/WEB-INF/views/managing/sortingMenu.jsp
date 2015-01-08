@@ -6,6 +6,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
  <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -28,6 +29,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 loadJsBusiness('sortingMenu','${frontUrl}');
 </script>
 <script type="text/javascript">
@@ -62,14 +64,14 @@ function proiettaModifica(){
 			}
 		}
 	if(iParametri == ''){
-		xDamsModalAlert('Scegliere almeno un parametro di riordinamento!<br /><br />');
+		xDamsModalAlert('<spring:message code="Scegliere_almeno_un_parametro_di_riordinamento" text="Scegliere almeno un parametro di riordinamento"/>!<br /><br />');
 		return;		
 	}
-	msg = "Attenzione!<br /><br />sta per essere effettuato il riordino del ramo<br />";
-	$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ conferma ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ annulla ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
+	msg = "<spring:message code="Attenzione" text="Attenzione"/>!<br /><br /><spring:message code="sta_per_essere_effettuato_il_riordino_del_ramo" text="sta per essere effettuato il riordino del ramo"/><br />";
+	$.blockUI({ message: '<div id="question" style="cursor: default"><h1 class="msg">'+msg+'</h1><input type="button" id="yes" value=" [ <spring:message code="conferma" text="conferma"/> ]" />&#160;&#160;&#160;<input type="button" id="no" value=" [ <spring:message code="annulla" text="annulla"/> ]" /> </div> ', css: { height:'200px',width: '400px' ,top:'15px',left:'15px'} });
 	$('#yes').click(function() {	
     	  impostaAndGo(iParametri);
-		 xDamsModalMessage('riordino in corso...');
+		 xDamsModalMessage('<spring:message code="riordino_in_corso" text="riordino in corso"/>...');
       }); 
 	  $('#no').click(function(){ 
 		  xDamsUnblock();
@@ -90,15 +92,15 @@ function proiettaModifica(){
 <input type="hidden" name="physDoc" value="<%=managingBean.getPhysDoc()%>" />
 </form>
 <div id="content_multi">
-	<div class="riga_posiziona_multi">elemento selezionato: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
-	<div class="riga_posiziona_multi">elementi da processare: <strong><%=elementi%></strong></div>
+	<div class="riga_posiziona_multi"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
+	<div class="riga_posiziona_multi"><spring:message code="elementi_da_processare" text="elementi da processare"/>: <strong><%=elementi%></strong></div>
 <div class="m10">
 <form name="optionForm" action="?">
-	riordina gli elementi per:<br/><br/><%
+	<spring:message code="riordina_gli_elementi_per" text="riordina gli elementi per"/>:<br/><br/><%
 
 	String externalPath = "/root/param/elemento[@id='riordina']/opzione";
 	int nodiOpzioni = theXMLconf.contaNodi(externalPath);
-	String theOptions = "<option value=\"\">scegli...</option>";
+	String theOptions = "<option value=\"\">"+workFlowBean.getLocalizedString("scegli", "scegli")+"...</option>";
 	for (int i = 0; i < nodiOpzioni; i++) {
 		
 		String ilPercorso = theXMLconf.valoreNodo("/root/param/elemento[@id='riordina']/opzione["+(i+1)+"]/@value");
@@ -112,7 +114,7 @@ function proiettaModifica(){
 	{
 		%>
 		<select name="ordina<%=i%>"><%=theOptions%></select>
-		<select name="ordina<%=i%>verso"><option value="1">crescente</option><option value="0">decrescente</option></select>
+		<select name="ordina<%=i%>verso"><option value="1"><spring:message code="crescente" text="crescente"/></option><option value="0"><spring:message code="decrescente" text="decrescente"/></option></select>
 		<br /><br />
 		<%
 	}
@@ -124,8 +126,8 @@ function proiettaModifica(){
 	<div class="margin_foot">
  	<div class="cont_ul2">	
 		<ul class="bottoniMenu" >
- 			<li><a title="Esegui la richiesta"  class="bottoneLink" onmouseover="window.status='esegui';return true" onmouseout="window.status=''" onclick="return proiettaModifica();"  href="#">ESEGUI</a></li>
- 			<li><a title="Chiude la pagina corrente"  class="bottoneLink" onmouseover="window.status='chiudi';return true" onmouseout="window.status=''" onclick="chiudiThisWin();" href="#">CHIUDI</a></li>
+ 			<li><a title="<spring:message code="ESEGUI" text="ESEGUI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica();"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a></li>
+ 			<li><a title="<spring:message code="chiudi" text="chiudi"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="chiudi"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin();" href="#"><spring:message code="chiudi" text="chiudi"/></a></li>
 		</ul>
 	</div>
 </div>

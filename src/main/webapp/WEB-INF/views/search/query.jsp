@@ -1,5 +1,7 @@
 <!-- Put IE into quirks mode -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.web.servlet.tags.MessageTag"%>
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.Map"%>
@@ -15,6 +17,7 @@
 <%@page import="org.xdams.conf.master.ConfBean"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
 	UserBean userBean = (UserBean)request.getAttribute("userBean");
@@ -40,7 +43,8 @@
 <link rel="stylesheet" type="text/css" href="${frontUrl}/css/jquery/jgrowl.css" />
 <link rel="stylesheet" type="text/css" href="${frontUrl}/css/jquery/jqac.css" />
 <script type="text/javascript">
-var globalOption = {frontPath:'${frontUrl}'};
+<%=workFlowBean.getGlobalLangOption()%>
+var globalOption = {frontPath:'${frontUrl}',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('query','${frontUrl}');
 </script>
 <script type="text/javascript"> 
@@ -54,7 +58,7 @@ jQuery(document).ready(function(){
 			multi:true,
 			multi_separators:[" and not ", " or not ", " o non ", " e non ", " and ", " or ", " o ", " e "],
 			cache:false,
-			noresults:"nessuna chiave nel vocabolario"
+			noresults:"<spring:message code="nessuna_chiave_nel_vocabolario" text="nessuna chiave nel vocabolario"/>"
 		});
 	});
 	<%String qlphrase = builderQuery.valoreNodo("/root/access_method/query[@ajaxCheck='notinhier']/text()");
@@ -65,7 +69,7 @@ jQuery(document).ready(function(){
 		async: false
 	}).responseText; 
 	if(html!="" && jQuery.trim(html)!="0"){
-		html = "Attenzione, l'archivio presenta "+html+" documenti scollegati dalla radice"; 
+		html = "<spring:message code="Attenzione_larchivio_presenta" text="Attenzione, l'archivio presenta"/> "+html+" <spring:message code="documenti_scollegati_dalla_radice" text="documenti scollegati dalla radice"/>"; 
 		xDamsModalAlert(html);
 		/*jQuery.jGrowl(html,{
 			sticky: true
@@ -92,30 +96,30 @@ jQuery(document).ready(function(){
 			isUserMod = testingGeneric.controllaLivello(workFlowBean,userValue.split(";"));
 		}
 		if(isUserMod && noElements.equals("insert") && queryBean.getTotNumDoc() == 0){
-	%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html">inserisci il primo documento</a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+	%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html"><spring:message code="inserisci_il_primo_documento" text="inserisci il primo documento"/></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
 		}else{
 			for(int i=0;i<numeroSezione;i++){
 			%>
-					  <a  class="link1" href="${contextPath}/hier/<%=workFlowBean.getArchive().getAlias()%>/hierBrowser.html?go=hierBrowser.jsp&amp;docToggle=<%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/text()")%>&amp;docStart=<%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/text()")%>"><%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" />
+					  <a  class="link1" href="${contextPath}/hier/<%=workFlowBean.getArchive().getAlias()%>/hierBrowser.html?go=hierBrowser.jsp&amp;docToggle=<%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/text()")%>&amp;docStart=<%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/text()")%>"><%=builderQuery.valoreNodo("/root/access_method/hierbrowse[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" />
 					<%
 						} 
 							numeroSezione = builderQuery.contaNodi("/root/access_method/query[@active='yes']");
 							for(int i=0;i<numeroSezione;i++){
 								String skipQuery = builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@skipQuery");
 								if(skipQuery.equals("true")){
-								%><a class="link1" href="<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+								%><a class="link1" href="<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
 								}else{
-								%><a class="link1" href="javascript:cerca('<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>',document.theForm)"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+								%><a class="link1" href="javascript:cerca('<%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/text()")%>',document.theForm)"><%=builderQuery.valoreNodo("/root/access_method/query[@active='yes']["+(i+1)+"]/@label")%></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
 								}
 								
 							}
 							if(isUserMod && withElements.equals("insert")){
-					%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html">inserisci</a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="accedi" /><%
+					%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html">inserisci</a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
 						}
 						}
 					%>
 		</div>
-			<div id="data_agg"><%=queryBean.getTotNumDoc()%> documenti, ultimo aggiornamento <%=queryBean.getLastUpdate()%></div>
+			<div id="data_agg"><%=queryBean.getTotNumDoc()%> <spring:message code="documenti_ultimo_aggiornamento" text="documenti, ultimo aggiornamento"/> <%=queryBean.getLastUpdate()%></div>
 		</div>
 </div>
 <div id="contentPage">
@@ -126,7 +130,7 @@ jQuery(document).ready(function(){
 				<div class="cont_campi" >
 				<ul class="bottoniMenu" style="margin-right:20px;float:right;"><xDamsJSTL:menugestionejslt confFile="bar-query" /></ul>
 				<div class="cont_butt">
-						<div class="mt10"><a href="#" class="cerca_but" onclick="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')" onkeypress="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')">cerca</a>&nbsp;&nbsp;&nbsp;<a href="#" class="cerca_but" onclick="document.theForm.reset()">cancella</a></div>
+						<div class="mt10"><a href="#" class="cerca_but" onclick="return query(document.theForm,'<spring:message code="Inserire_almeno_un_valore_nei_campi_di_ricerca" text="Inserire almeno un valore nei campi di ricerca"/>')" onkeypress="return query(document.theForm,'<spring:message code="Inserire_almeno_un_valore_nei_campi_di_ricerca" text="Inserire almeno un valore nei campi di ricerca"/>')"><spring:message code="cerca" text="cerca"/></a>&nbsp;&nbsp;&nbsp;<a href="#" class="cerca_but" onclick="document.theForm.reset()"><spring:message code="cancella" text="cancella"/></a></div>
 				</div>
 				<div class="cont_div"><div class="divisorio"><img src="${frontUrl}/img/spacer.gif" width="100" height="1" alt="" /></div></div>
 				<div class="mt30">
@@ -205,7 +209,7 @@ jQuery(document).ready(function(){
 					%>
 				</div>
 				<div class="cont_div">
-					<div class="ml20mt30">Ultime ricerche effettuate:</div><%
+					<div class="ml20mt30"><spring:message code="Ultime_ricerche_effettuate" text="Ultime ricerche effettuate"/>:</div><%
 						String ultimeRicerche = "";
 									/* creazione bean di ricerca */
 									boolean valorizzato = false;
@@ -225,14 +229,15 @@ jQuery(document).ready(function(){
 											}
 										}
 									}
+									 
 									/* fine creazione bean di ricerca*/
 									if(valorizzato)
-										ultimeRicerche = "<option value=\"\">scegli...</option>"+ultimeRicerche;
+										ultimeRicerche = "<option value=\"\">"+workFlowBean.getLocalizedString("scegli","scegli")+"...</option>"+ultimeRicerche;
 									else
-										ultimeRicerche = "<option value=\"\">nessuna ricerca effettuata</option>";
-					%><div class="ml20"><select class="button" id="queryBeanSelect" onchange="return findIt(this)"><%=ultimeRicerche %></select> <a title="svuota elenco" class="cerca_b" href="#n" onclick="return ajaxEraseQueryBean('<%=workFlowBean.getArchive().getAlias() %>');">svuota</a></div>
+										ultimeRicerche = "<option value=\"\">"+workFlowBean.getLocalizedString("nessuna_ricerca_effettuata","nessuna ricerca effettuata")+"</option>";
+					%><div class="ml20"><select class="button" id="queryBeanSelect" onchange="return findIt(this)"><%=ultimeRicerche %></select> <a title="<spring:message code="svuota" text="svuota"/>" class="cerca_b" href="#n" onclick="return ajaxEraseQueryBean('<%=workFlowBean.getArchive().getAlias() %>');"><spring:message code="svuota" text="svuota"/></a></div>
 					<div class="cont_div">
-					<div class="ml20mt30">Informazioni sulla descrizione archivistica:</div>
+					<div class="ml20mt30"><spring:message code="Informazioni_sulla_descrizione_archivistica" text="Informazioni sulla descrizione archivistica"/>:</div>
 	<%
 					for (Entry<String, List<Map<String, String>>> entry : positionAdminMap.entrySet()) {	
 						String positionDiv = entry.getKey();
@@ -282,7 +287,7 @@ jQuery(document).ready(function(){
 		  		</div>
 				<div class="cont_div"><div class="divisorio"><img src="${frontUrl}/img/spacer.gif" width="100" height="1" alt="" /></div></div>
 				<div class="cont_butt">
-						<div class="mt10"><a href="#" class="cerca_but" onclick="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')" onkeypress="return query(document.theForm,'Inserire almeno un valore nei campi di ricerca')">cerca</a>&nbsp;&nbsp;&nbsp;<a href="#" class="cerca_but" onclick="document.theForm.reset()">cancella</a></div>
+						<div class="mt10"><a href="#" class="cerca_but" onclick="return query(document.theForm,'<spring:message code="Inserire_almeno_un_valore_nei_campi_di_ricerca" text="Inserire almeno un valore nei campi di ricerca"/>')" onkeypress="return query(document.theForm,'<spring:message code="Inserire_almeno_un_valore_nei_campi_di_ricerca" text="Inserire almeno un valore nei campi di ricerca"/>')"><spring:message code="cerca" text="cerca"/></a>&nbsp;&nbsp;&nbsp;<a href="#" class="cerca_but" onclick="document.theForm.reset()"><spring:message code="cancella" text="cancella"/></a></div>
 				</div>
 			</div>
 		</div>

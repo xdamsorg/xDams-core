@@ -92,7 +92,7 @@ public class AjaxDocInfoCommand {
 
 			// ELEMENTI INFERIORI COLLEGATI
 			if (qr.elements > 0) { /* se ha dei figli */
-				valori += "<li>Elementi inferiori collegati: <strong>" + qr.elements + "</strong></li>";
+				valori += "<li>"+workFlowBean.getLocalizedString("Elementi_inferiori_collegati", "Elementi inferiori collegati")+": <strong>" + qr.elements + "</strong></li>";
 				// QueryResult queryResult = xwconn.getQRFromHier(Integer.parseInt(physDoc),false);
 				// // ELEMENTI INFERIORI COLLEGATI
 				// if (queryResult.elements > 0) { /* se ha dei figli */
@@ -110,7 +110,7 @@ public class AjaxDocInfoCommand {
 					++count;
 					numDocSon = xwconn.getNumDocNextBrother(numDocSon);
 				}
-				valori += "<li>Posizione all'interno del ramo: <strong>" + (count + 1) + "</strong></li>";
+				valori += "<li>"+workFlowBean.getLocalizedString("Posizione_allinterno_del_ramo", "Posizione all'interno del ramo")+": <strong>" + (count + 1) + "</strong></li>";
 
 				// LIVELLO DI PROFONDITA
 				int depthLevel = 1;
@@ -119,7 +119,7 @@ public class AjaxDocInfoCommand {
 					++depthLevel;
 				}
 
-				valori += "<li>Livello di profondit&agrave;: <strong>" + depthLevel + "</strong></li>";
+				valori += "<li>"+workFlowBean.getLocalizedString("Livello_di_profondit", "Livello di profondit&agrave;")+": <strong>" + depthLevel + "</strong></li>";
 			}
 
 			if (qr.elements > 0) { /*
@@ -184,10 +184,10 @@ public class AjaxDocInfoCommand {
 					}
 
 					if (!ilMinore.trim().equals("")) {
-						valori += "<li>Elemento collegato con data minore: <strong>" + ilMinore + "</strong></li>";
+						valori += "<li>"+workFlowBean.getLocalizedString("Elemento_collegato_con_data_minore", "Elemento collegato con data minore")+": <strong>" + ilMinore + "</strong></li>";
 					}
 					if (!ilMaggiore.trim().equals("")) {
-						valori += "<li>Elemento collegato con data maggiore: <strong>" + ilMaggiore + "</strong></li>";
+						valori += "<li>"+workFlowBean.getLocalizedString("Elemento_collegato_con_data_maggiore", "Elemento collegato con data maggiore")+": <strong>" + ilMaggiore + "</strong></li>";
 					}
 
 				} catch (Exception e) {
@@ -198,7 +198,7 @@ public class AjaxDocInfoCommand {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ECCOLO");
-			ajaxBean.setStrXmlOutput("<ul><li>attenzione e avvenuto un errore (" + e.getMessage() + ")</li></ul>");
+			ajaxBean.setStrXmlOutput("<ul><li>"+workFlowBean.getLocalizedString("attenzione_e_avvenuto_un_errore", "attenzione e avvenuto un errore")+" (" + e.getMessage() + ")</li></ul>");
 		} finally {
 			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
@@ -237,20 +237,20 @@ public class AjaxDocInfoCommand {
 
 			String href = contextPath + "/hier/" + workFlowBean.getAlias() + "/hierBrowser.html?docToggle=" + father + "&docStart=" + father;
 			returnValue += "<li>";
-			returnValue += "<a href=\"" + href + "\" target=\"_top\">Padre</a>";
+			returnValue += "<a href=\"" + href + "\" target=\"_top\">"+workFlowBean.getLocalizedString("Padre", "Padre")+"</a>";
 			returnValue += "</li>";
 
 			if (firstSon.length() > 0) {
 				href =  contextPath + "/hier/" + workFlowBean.getAlias() + "/hierBrowser.html?docToggle=" + firstSon + "&docStart=" + firstSon + "&go=hierBrowser.jsp";
 				returnValue += "<li>";
-				returnValue += "<a href=\"" + href + "\" target=\"_top\">Primo fratello</a>";
+				returnValue += "<a href=\"" + href + "\" target=\"_top\">"+workFlowBean.getLocalizedString("Primo_fratello", "Primo fratello")+"</a>";
 				returnValue += "</li>";
 			}
 
 			if (lastSon.length() > 0) {
 				href = contextPath + "/hier/" + workFlowBean.getAlias() + "/hierBrowser.html?docToggle=" + lastSon + "&docStart=" + lastSon + "&go=hierBrowser.jsp";
 				returnValue += "<li>";
-				returnValue += "<a href=\"" + href + "\" target=\"_top\">Ultimo fratello</a>";
+				returnValue += "<a href=\"" + href + "\" target=\"_top\">"+workFlowBean.getLocalizedString("Ultimo_fratello", "Ultimo fratello")+"</a>";
 				returnValue += "</li>";
 			}
 		}
@@ -266,7 +266,7 @@ public class AjaxDocInfoCommand {
 
 			String href = contextPath + "/hier/" + workFlowBean.getAlias() + "/hierBrowser.html?docToggle=" + ultimoFiglio + "&docStart=" + ultimoFiglio + "&go=hierBrowser.jsp";
 			returnValue += "<li>";
-			returnValue += "<a href=\"" + href + "\" target=\"_top\">Ultimo figlio</a>";
+			returnValue += "<a href=\"" + href + "\" target=\"_top\">"+workFlowBean.getLocalizedString("Ultimo_figlio", "Ultimo figlio")+"</a>";
 			returnValue += "</li>";
 
 		}

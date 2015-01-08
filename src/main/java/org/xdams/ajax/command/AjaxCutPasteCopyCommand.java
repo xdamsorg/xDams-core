@@ -113,19 +113,19 @@ public class AjaxCutPasteCopyCommand {
 				String string1 = "";
 				String string2 = "";
 				if (!actionType.equals("no_rel")) {
-					string0 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_son','" + workFlowBean.getAlias() + "');\" >INC.FIGLIO</a></li>";
-					string1 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_before','" + workFlowBean.getAlias() + "');\" >INC.PRIMA</a></li>";
-					string2 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_after','" + workFlowBean.getAlias() + "');\" >INC.DOPO</a></li>";
+					string0 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_son','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("INCFIGLIO", "INC.FIGLIO")+"</a></li>";
+					string1 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_before','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("INCPRIMA", "INC.PRIMA")+"</a></li>";
+					string2 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_after','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("INCDOPO", "INC.DOPO")+"</a></li>";
 				}
 
 				String string3 = "";
 				// if(actionType.equals("paste") || actionType.equals("no_rel")){
 				if (actionType.equals("no_rel")) {
 					actionType = "paste";
-					string3 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_norel','" + workFlowBean.getAlias() + "');\" >NO REL</a></li>";
+					string3 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_as_norel','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("NO_REL", "NO REL")+"</a></li>";
 				}
 
-				String string4 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_delete','" + workFlowBean.getAlias() + "');\" >ANNULLA</a></li>";
+				String string4 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_delete','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("ANNULLA", "ANNULLA")+"</a></li>";
 				String contenitoreEnd = "</ul></div><div class=\"cutPasteClazz\">elemento " + azioneDescr + " " + (titleManager.defaultParsedTitle(managingBean.getCutTitle(), "hierTitle")) + "</div>";
 				String string = contenitoreIni + string0 + string1 + string2 + string3 + string4 + contenitoreEnd;
 				ajaxBean.setStrXmlOutput(string);
@@ -152,7 +152,7 @@ public class AjaxCutPasteCopyCommand {
 			}
 
 			if (!cutTest) {
-				ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml("Attenzione:\nNon e possibile effettuare l'operazione richiesta") + "</error>");
+				ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml(workFlowBean.getLocalizedString("Attenzione_Non_e_possibile_effettuare_loperazione_richiesta", "Attenzione: Non e possibile effettuare l'operazione richiesta")) + "</error>");
 			}
 
 			if (actionType.equals("cut_as_son")) {
@@ -245,7 +245,7 @@ public class AjaxCutPasteCopyCommand {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml("Attenzione:\nimpossibile effettuare l'operazione, il documento selezionato potrebbe non essere più in gerarchia") + "\n" + e.getMessage() + "</error>");
+			ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<error>" + StringEscapeUtils.escapeXml(workFlowBean.getLocalizedString("Attenzione_impossibile_effettuare_loperazione_il_documento_selezionato_potrebbe_non_essere_piu_in_gerarchia", "Attenzione: impossibile effettuare l'operazione, il documento selezionato potrebbe non essere più in gerarchia")) + "\n" + e.getMessage() + "</error>");
 		} finally {
 			httpSession.setAttribute(workFlowBean.getManagingBeanName(), managingBean);
 			xwconn.restoreTitleRole();

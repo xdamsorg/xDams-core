@@ -3,30 +3,73 @@
  <preInsert excludeRel="son,lowerbrother,upperbrother" suggestedRel="none">
   <macroarea>
    <sezione name="identificazione account" opened="yes">
-    <elemento input_type="text" class="Long" name="nome">/user/@name</elemento>
-    <elemento input_type="text" class="Long" name="cognome">/user/@lastName</elemento>
-    <elemento input_type="text" class="Long" name="account">/user/@account</elemento>
-    <elemento input_type="text" class="Long" name="email">/user/@email</elemento>
-    <elemento input_type="text" class="Long" name="pwd">/user/@pwd</elemento>
-    <elemento input_type="text" class="Long" name="id">/user/@id</elemento>
-    <elemento input_type="text" class="Long" name="ruolo">/user/@role</elemento>
-   </sezione>
-   <sezione name="archivi" opened="yes">
-    <elemento type="multi_group" prefix="/user/archive">
-     <elemento input_type="text" class="Long" name="nome">/user/archive/text()</elemento>
-     <elemento input_type="text" class="Long" name="alias">/user/archive/@alias</elemento>
-     <elemento input_type="text" class="Long" name="ruolo">/user/archive/@role</elemento>
-    </elemento>
+   #if($userBean.role=='ROLE_ADMIN')
+    <elemento input_type="text" class="Long" name="nome" extra="id=&quot;nameField&quot;">/user/@name</elemento>
+    <elemento input_type="text" class="Long" name="cognome" extra="id=&quot;lastNameField&quot;">/user/@lastName</elemento>
+    <elemento input_type="text" class="Long" name="account" extra="id=&quot;accountField&quot;" ajaxVoc="XML,/account/@id" vocType="one">/user/@account</elemento>
+    <elemento input_type="text" class="Long" name="email"  extra="id=&quot;emailField&quot;">/user/@email</elemento>
+    <elemento input_type="text" class="Long" name="password" extra="id=&quot;passwordField&quot;">/user/@pwd</elemento>
+    <elemento input_type="text" class="Long" name="username" extra="id=&quot;userFieldVerify&quot;">/user/@id</elemento>
+   #end 
    </sezione>
   </macroarea>
  </preInsert>
+ <docEdit>
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="identificazione account" opened="yes">
+    <elemento input_type="text" class="Long" name="nome">/user/@name</elemento>
+    <elemento input_type="text" class="Long" name="cognome">/user/@lastName</elemento>
+      #if($userBean.role=='ROLE_ADMIN')
+    <elemento input_type="text" class="Long" name="account" ajaxVoc="XML,/account/@id" vocType="one">/user/@account</elemento>
+      #end
+    <elemento input_type="text" class="Long" name="email">/user/@email</elemento>
+    <elemento input_type="text" class="Long" name="password" extra="id=&quot;passwordField&quot;">/user/@pwd</elemento>
+    <elemento input_type="liveText" class="Long" name="username" extra="id=&quot;userFieldVerify&quot;">/user/@id</elemento>
+     #if($userBean.role=='ROLE_ADMIN')
+      <elemento input_type="select" class="Middle" value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ROLE_ACCOUNT']/opzione" name="ruolo">/user/@role</elemento>
+     #end
+   </sezione>
+   #if($userBean.role=='ROLE_ADMIN')
+   <sezione name="archivi" opened="yes">
+    <elemento jspOutPut="lookupArchives.jsp" flagXML="true" input_type="text" class="ExtraLong" name="denominazione archivio" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" arch_ref="${workFlowBean.alias}" prefix="/user/archive" code="alias" ud_type="account" extraQuery="[XML,/account/@id]=&quot;${theXML.valoreNodoNoHL("/user/@account")}&quot;" sort="XML(xpart:/account)" title_rule="XML,/account/@descrAccount &quot;[@archDescr]&quot; XML,/account/@id" title_format="descr:0-[@archDescr]code:[@archDescr]-" query="[XML,/account/archiveGroup/archive]">
+     /user/archive/text()
+     <elemento input_type="select" name="ruolo archivio" value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ROLE_ARCHIVE']/opzione" opened="yes">/user/archive/@role</elemento>
+    </elemento>
+   </sezione>   
+   #end
+  </macroarea>
+  <macroarea name="informazioni sulla modifica" layer="AREACOMPILAZIONE" label="Area delle compilazione">
+     <sezione name="informazioni sulla modifica">
+      <elemento name="" type="custom" id="processinfo" prefix="/user/processinfo/list/item" inline="no">
+       <elemento input_type="liveText" name="azione">/user/processinfo/list/item/text()</elemento>
+       <elemento input_type="liveText" name="data">/user/processinfo/list/item/date/text()</elemento>
+       <elemento input_type="liveText" name="responsabile">/user/processinfo/list/item/persname/text()</elemento>
+      </elemento>
+     </sezione>
+    </macroarea>  
+   <sezione name="campiHidden">
+    <elemento>/user/text()</elemento>
+    #if($userBean.role!='ROLE_ADMIN')
+    <elemento>/user/@role</elemento>
+    <elemento>/user/@account</elemento>
+    <elemento>/user/text()</elemento>
+     #foreach( $userValue in [0..$theXML.contaNodi("/user/archive")])
+      #set($firstFor=$velocityCount)
+      <elemento>/user/archive[${firstFor}]/text()</elemento>
+      <elemento>/user/archive[${firstFor}]/@alias</elemento>
+      <elemento>/user/archive[${firstFor}]/@role</elemento>
+     #end   
+    #end
+   </sezione> 
+</docEdit>
  <fixedValues>
   <elemento value="user">thePne</elemento>
   <elemento value="inserimento">/user/processinfo/list/item/text()</elemento>
   <elemento value="@coluiCheInserisce@">/user/processinfo/list/item/persname/text()</elemento>
   <elemento value="@quandoColuiInserisce@">/user/processinfo/list/item/date/text()</elemento>
   <elemento value=".">/user/@id</elemento>
-  <elemento value="IT">/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
+  <elemento value="preventBlankNode">/user/text()</elemento>
+  <elemento value="ROLE_READER">/user/@role</elemento>
  </fixedValues>
  <param>
   <elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='ISAD 3-1-2 title'].text()</elemento>
@@ -51,32 +94,4 @@
    <opzione action="replace" value=".">/user/@id</opzione>
   </elemento>
  </param>
- <docEdit>
-  <macroarea>
-   <sezione name="identificazione utente" opened="yes">
-    <elemento input_type="text" class="Long" name="nome">/user/@name</elemento>
-    <elemento input_type="text" class="Long" name="cognome">/user/@lastName</elemento>
-    <elemento input_type="text" class="Long" name="account">/user/@account</elemento>
-    <elemento input_type="text" class="Long" name="email">/user/@email</elemento>
-    <elemento input_type="text" class="Long" name="pwd">/user/@pwd</elemento>
-    <elemento input_type="text" class="Long" name="id">/user/@id</elemento>
-    <elemento input_type="text" class="Long" name="ruolo">/user/@role</elemento>
-    <!-- <user language="IT" lastName="xDams - open source" account="xdams.org" email="info@xdams.org" name="Admin" pwd="0938c220390110ae9ebf07445f07ee19" id="admin" role="ROLE_ADMIN"> -->
-   </sezione>
-   <sezione name="archivi" opened="yes">
-    <elemento type="multi_group" prefix="/user/archive">
-     <elemento input_type="text" class="Long" name="nome">/user/archive/text()</elemento>
-     <elemento input_type="text" class="Long" name="alias">/user/archive/@alias</elemento>
-     <elemento input_type="text" class="Long" name="ruolo">/user/archive/@role</elemento>
-    </elemento>
-   </sezione>
-  </macroarea>
-  <sezione name="campiHidden">
-   <elemento>/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
-   <elemento>/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@repositorycode</elemento>
-   <elemento>/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/abbr/text()</elemento>
-   <elemento>/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@identifier</elemento>
-   <elemento>/user/@id</elemento>
-  </sezione>
- </docEdit>
 </root>

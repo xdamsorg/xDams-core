@@ -53,7 +53,7 @@ function returnChar(theChar){
 			currInput.value = ilValore
 		}
 		}
-	else{alert('Attenzione: selezionare un campo')}
+	else{alert(getLocalizedString('Attenzione','Attenzione')+' :'+getLocalizedString('selezionare_un_campo','selezionare un campo'))}
 	return false
 }
 function generateSymbols(){
@@ -75,7 +75,7 @@ function returnTextArea(){
 		theTextArea.focus()
 	}
 	else{
-		alert('Errore: impossibile trovare la textArea.')
+		alert(getLocalizedString('Errore','Errore')+' : '+getLocalizedString('impossibile_trovare_la_textArea','impossibile trovare la textArea')+'.')
 	}	
 }
  

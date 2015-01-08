@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.ModelMap;
 import org.xdams.ajax.bean.AjaxBean;
 import org.xdams.ajax.command.AjaxCommandNotInHier;
+import org.xdams.ajax.command.AjaxCommandVerifyUserName;
 import org.xdams.ajax.command.AjaxCommandVocabolarioJson;
 import org.xdams.ajax.command.AjaxCutPasteCopyCommand;
 import org.xdams.ajax.command.AjaxDocInfoCommand;
@@ -31,7 +32,11 @@ public class AjaxFactory {
 	public AjaxBean execute() throws Exception {
 		String actionFlag = aReq.getParameter("actionFlag");
 		try {
-			if (actionFlag.equals("valoriControllatiJson")) {
+			if (actionFlag.equals("verifyUser")) {
+				AjaxCommandVerifyUserName ajaxCommandVerifyUserName = new AjaxCommandVerifyUserName(aReq, aRes, modelMap);
+				ajaxBean = ajaxCommandVerifyUserName.execute();
+				ajaxBean.setContentType("application/json; charset=iso-8859-1");
+ 			} else if (actionFlag.equals("valoriControllatiJson")) {
 				// AjaxCommandValoriControllatiJson ajaxCommandValoriControllati = new AjaxCommandValoriControllatiJson(aReq, modelMap, aRes);
 				// ajaxBean = ajaxCommandValoriControllati.execute();
 			} else if (actionFlag.equals("valoriControllati")) {

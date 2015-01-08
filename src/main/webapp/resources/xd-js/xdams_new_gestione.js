@@ -75,7 +75,7 @@ function reloadLocation() {
 
 function openInfoDialog() {
 	winDialog = Dialog;
-	top.winDialog.info("Attendere ", {
+	top.winDialog.info(getLocalizedString('Attendere','Attendere'), {
 		width : 250,
 		height : 100
 	});

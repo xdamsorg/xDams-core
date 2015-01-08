@@ -5,6 +5,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.utility.request.MyRequest"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%
 	ConfBean confBean = (ConfBean)request.getAttribute("confBean");
@@ -26,6 +27,7 @@
 <script type="text/javascript" src="${frontUrl}/xd-js/jquery/jquery-last.js"></script> 
 <script type="text/javascript" src="${frontUrl}/xd-js/loadJs.js"></script>
 <script type="text/javascript">
+<%=workFlowBean.getGlobalLangOption()%>
 var globalOption = {frontPath:'${frontUrl}',pageValue:'hier${workFlowBean.alias}${userBean.id}',theArch:'${workFlowBean.alias}',contextPath:'${contextPath}'};
 loadJsBusiness('hierBrowser','${frontUrl}');
 </script>
@@ -41,8 +43,8 @@ try{
 	<div id="headPageBig">
 		<%@include file="../common/inc_menu.jsp" %>
 		<div class="sub_sub_menu">
-			<div class="tot_pag">visualizza <select class="scelta_sel" id="selectVis" onchange="return lanciaPerpageHier('contentPageSx',this);"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="100">100</option></select>  elementi per pagina</div>
-			<div class="buttonRefresh"><a href="#n" onclick="return reloadLocation()" title="aggiorna la pagina"><img src="${frontUrl}/img/aggiorna.gif" border="0" alt="aggiorna la pagina" /></a>&#160;&#160;<a href="#" title="salva elementi per pagina" onclick="addCookie(document.getElementById('selectVis').value)"><img src="${frontUrl}/img/save_as.gif" border="0" alt="salva elementi per pagina" vspace="2" /></a></div>
+			<div class="tot_pag"><spring:message code="visualizza" text="visualizza"/> <select class="scelta_sel" id="selectVis" onchange="return lanciaPerpageHier('contentPageSx',this);"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="100">100</option></select>  <spring:message code="elementi_per_pagina" text="elementi per pagina"/></div>
+			<div class="buttonRefresh"><a href="#n" onclick="return reloadLocation()" title="<spring:message code="aggiorna_la_pagina" text="aggiorna la pagina"/>"><img src="${frontUrl}/img/aggiorna.gif" border="0" alt="<spring:message code="aggiorna_la_pagina" text="aggiorna la pagina"/>" /></a>&#160;&#160;<a href="#" title="<spring:message code="salva_elementi_per_pagina" text="salva elementi per pagina"/>" onclick="addCookie(document.getElementById('selectVis').value)"><img src="${frontUrl}/img/save_as.gif" border="0" alt="<spring:message code="salva_elementi_per_pagina" text="salva elementi per pagina"/>" vspace="2" /></a></div>
 			<script type="text/javascript">
 			//<![CDATA[
 				document.getElementById('selectVis').value='<%=perpage%>';

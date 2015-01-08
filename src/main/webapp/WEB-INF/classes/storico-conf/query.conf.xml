@@ -7,7 +7,7 @@
 		<query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
 	</access_method>
 	<query>
-		<element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">XML,/c/*</element>
+		<element activeIdx="no" ajaxKey="no" position="center" label="Ricerca libera">@</element>
 		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione" firstIdx="a" typology="double">XML,/c/did/unittitle</element>
 		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Descrizione del contenuto" firstIdx="a" typology="multi">XML,/c/descgrp/scopecontent/p</element>
 		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Unità di conservazione (tipologia)" firstIdx=" " typology="multi">XML,/c/did/container/@type</element>
