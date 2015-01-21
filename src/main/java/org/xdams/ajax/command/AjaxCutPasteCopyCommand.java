@@ -99,13 +99,13 @@ public class AjaxCutPasteCopyCommand {
 				}
 				String azioneDescr = "";
 				if (actionType.equals("cut")) {
-					azioneDescr = "tagliato";
+					azioneDescr = workFlowBean.getLocalizedString("elemento_tagliato", "elemento tagliato");
 				} else if (actionType.equals("paste")) {
-					azioneDescr = "copiato";
+					azioneDescr = workFlowBean.getLocalizedString("elemento_copiato", "elemento copiato");
 				} else if (actionType.equals("no_rel")) {
-					azioneDescr = "copiato";
+					azioneDescr = workFlowBean.getLocalizedString("elemento_copiato", "elemento copiato");
 				} else if (actionType.equals("only_hier")) {
-					azioneDescr = "copiato";
+					azioneDescr = workFlowBean.getLocalizedString("elemento_copiato", "elemento copiato");
 				}
 
 				String contenitoreIni = "\n<div class=\"cont_ul2\"><ul class=\"bottoniMenu\">";
@@ -126,7 +126,7 @@ public class AjaxCutPasteCopyCommand {
 				}
 
 				String string4 = "<li><a href=\"#\" target=\"\" onclick=\"ajaxSetSessionDocsToCut('" + managingBean.getCutPhysDoc() + "','@@physDocToPaste@@','" + actionType + "_delete','" + workFlowBean.getAlias() + "');\" >"+workFlowBean.getLocalizedString("ANNULLA", "ANNULLA")+"</a></li>";
-				String contenitoreEnd = "</ul></div><div class=\"cutPasteClazz\">elemento " + azioneDescr + " " + (titleManager.defaultParsedTitle(managingBean.getCutTitle(), "hierTitle")) + "</div>";
+				String contenitoreEnd = "</ul></div><div class=\"cutPasteClazz\">"+azioneDescr+ " " + (titleManager.defaultParsedTitle(managingBean.getCutTitle(), "hierTitle")) + "</div>";
 				String string = contenitoreIni + string0 + string1 + string2 + string3 + string4 + contenitoreEnd;
 				ajaxBean.setStrXmlOutput(string);
 				managingBean.setCutHtmlOutput(string);
