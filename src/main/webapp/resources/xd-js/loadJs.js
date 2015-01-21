@@ -146,12 +146,12 @@ function loadJsBusiness(target, prefix) {
 		loadScripts({
 			'base' : base + "/jquery",
 			'prefix' : prefix,
-			'scripts' : [ 'jquery-ui-last', 'jquery.autocomplete-1.4.2', 'jquery.bgiframe.min', 'jquery.url.packed', 'jquery.blockUI', 'jquery.jgrowl_minimized', 'FancyZoom', 'FancyZoomHTML', 'jquery.i18n.properties']
+			'scripts' : [ 'jquery-ui-last', 'jquery.mask.min', 'jquery.autocomplete-1.4.2', 'jquery.bgiframe.min', 'jquery.url.packed', 'jquery.blockUI', 'jquery.jgrowl_minimized', 'FancyZoom', 'FancyZoomHTML', 'jquery.i18n.properties']
 		});
 		loadScripts({
 			'base' : base,
 			'prefix' : prefix,
-			'scripts' : [ 'xdams_jquery', 'xdams_ajax', 'xdams_docEdit', 'xdams_dateGest', 'xdams_textAreaGest', 'xdams_upload', 'xdams_flashRTE', 'xdams_areaGest', 'tiny_mce/tiny_mce', 'tiny_mce/jquery.tinymce' ]
+			'scripts' : [ 'xdams_jquery', 'xdams_users','xdams_ajax', 'xdams_docEdit', 'xdams_dateGest', 'xdams_textAreaGest', 'xdams_upload', 'xdams_flashRTE', 'xdams_areaGest', 'tiny_mce/tiny_mce', 'tiny_mce/jquery.tinymce' ]
 		});
 	} else if (target === 'lookup') {
 		loadScripts({
