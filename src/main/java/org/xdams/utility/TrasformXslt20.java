@@ -17,14 +17,14 @@ import net.sf.saxon.Controller;
 import net.sf.saxon.PreparedStylesheet;
 import net.sf.saxon.trans.CompilerInfo;
 import net.sf.saxon.trans.XPathException;
-
+ 
 public class TrasformXslt20 {
 
 	private static Configuration configuration = Configuration.newConfiguration();
 
 	public TrasformXslt20() {
 
-	}
+	} 
 
 	public static void main(String[] args) {
 		if (args.length == 3) {
