@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<listof_user xmlns:xw="http://www.3di.it/ns/xw-200303121136">
+<user account="xdams.org" email="mail@xdams.org" id="guest" language="IT" lastName="xDams - open source" name="Guest" pwd="084e0343a0486ff05530df6c705c8bb4" role="ROLE_READER">
+  
+<archive alias="xDamsHist" role="3">Archivio Storico</archive>
+  
+<archive alias="xDamsAV" role="3">Archivio Audio Video</archive>
+  
+<archive alias="xDamsPhoto" role="3">Archivio Fotografico</archive>
+  
+<archive alias="xDamsEACCPF" role="3">Soggetti Produttori</archive>
+  
+<archive alias="xDamsHGeo" role="3">Authority Luoghi</archive>
+  
+<archive alias="multiArchive" role="1">Multi Archivio</archive>
+
+    
+<processinfo>
+        
+        
+<list>
+            
+            
+<item>
+                
+                
+<date>30/11/2014</date>
+                
+                
+<persname>Admin xDams - open source</persname>inserimento
+            
+            
+</item>
+        
+        
+</list>
+    
+    
+</processinfo>preventBlankNode
+<?xw-meta Dbms="ExtraWay" DbmsVer="23.0.3" OrgNam="3D Informatica" OrgVer="0.0" Classif="1.0" ManGest="1.0" ManTec="0.0.4" DocType="" InsUser="lettore" InsTime="20141130185931" ModUser="lettore" ModTime="20141204113147"?><?xw-crc md5=A732D7D001C1573FF6B2B32623D483E1?>                                                                                                              </user>
+</listof_user>
