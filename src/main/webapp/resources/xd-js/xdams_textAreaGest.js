@@ -90,7 +90,7 @@ function openTextArea(findIt){
 	}
 	hideAllLayers()
 
-       $.blockUI({ message: '<div id="question" style="cursor: default"><textarea name="textAreaBig" id="textAreaBig" style="margin-top:5px">'+theTextArea.value+'</textarea><div><input type="button" id="yes" value=" conferma" />&#160;&#160;&#160;<input type="button" id="no" value=" annulla" /></div></div>', allowBodyStretch: true, css: { left:'10%',top:'10%',height:'80%',width: '80%' } }); 
+       $.blockUI({ message: '<div id="question" style="cursor: default"><textarea name="textAreaBig" id="textAreaBig" style="margin-top:5px">'+theTextArea.value+'</textarea><div><input type="button" id="yes" value=" '+getLocalizedString('conferma', 'conferma')+'" />&#160;&#160;&#160;<input type="button" id="no" value=" '+getLocalizedString('annulla', 'annulla')+'" /></div></div>', allowBodyStretch: true, css: { left:'10%',top:'10%',height:'80%',width: '80%' } }); 
       $("textarea:first",'.blockPage').height($('.blockPage').height()-40);
 
 	 $('#yes').click(function() {	
