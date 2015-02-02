@@ -272,7 +272,9 @@ public class xDamsController {
 		try {
 			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
-			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@pwd]=\"" + userBean.getPwd() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
+//			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@pwd]=\"" + userBean.getPwd() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
+			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
+//			System.out.println("queryUser: "+queryUser);
 			QueryResult queryResult = xwconn.getQRfromPhrase(queryUser);
 			int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
 			modelMap.put("physDoc", String.valueOf(numDoc));

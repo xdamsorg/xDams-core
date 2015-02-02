@@ -18,6 +18,6 @@
   </media>
   <media value="xDamsUsers">
    <file name="/users-conf/media.conf.xml"/>
-  </media>   
+  </media>  
  </multiEditing>
 </root>
