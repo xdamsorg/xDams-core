@@ -18,6 +18,22 @@
      </functionName>
     </eventJavaScript>
    </element>
+   <element value="XML EXPORT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="top.newWinProtoGest">
+      <paramFunction>'${contextPath}/admin/${workFlowBean.archive.alias}/exportMenu.html?pos=${viewBean.pos}&amp;selid=${viewBean.selid}&amp;physDoc=${viewBean.physDoc}'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>''</paramFunction><!-- actionFlag -->
+      <paramFunction>'Export Archive'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+      <paramFunction javaBean="viewBean">getPos</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>'{}'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>    
   </user>
  </managing>
 </root>
