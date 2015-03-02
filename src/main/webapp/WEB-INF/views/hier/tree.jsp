@@ -98,21 +98,22 @@ if(managingBean!=null){
 						if(!icoArray[ks].equals("")){
 							if(((icoArray[ks].toLowerCase()).indexOf("jpg")!=-1&& iconType.indexOf("jpg")==-1) || ((icoArray[ks].toLowerCase()).indexOf("jpeg")!=-1&& iconType.indexOf("jpeg")==-1)){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/jpg.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
-							}else if((valueArr.toLowerCase()).indexOf("pdf")!=-1&& iconType.indexOf("pdf")==-1){
+							}else if(((valueArr.toLowerCase()).indexOf("pdf")!=-1 && iconType.indexOf("pdf")==-1)){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
-							}else if((icoArray[ks].toLowerCase()).indexOf("mp3")!=-1&& iconType.indexOf("mp3")==-1){
+							}else if((icoArray[ks].toLowerCase()).indexOf("mp3")!=-1 && iconType.indexOf("mp3")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
-							}else if((icoArray[ks].toLowerCase()).indexOf("wav")!=-1&& iconType.indexOf("wav")==-1){
+							}else if((icoArray[ks].toLowerCase()).indexOf("wav")!=-1 && iconType.indexOf("wav")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/mp3.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("flv")!=-1 && iconType.indexOf("flv")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							}else if((icoArray[ks].toLowerCase()).indexOf("wmv")!=-1 && iconType.indexOf("wmv")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
-							}
-							/*
-							else {
-							if(iconType.indexOf("generic")==-1){
-							iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";}}*/
+							}else if((valueArr.toLowerCase()).indexOf("pdf")!=-1&& iconType.indexOf("pdf")==-1){
+								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
+							} else {
+								if(iconType.indexOf("generic")==-1){
+									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";}
+								}
 						}} 
 
 					}
