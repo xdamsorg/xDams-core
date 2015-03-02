@@ -27,13 +27,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.util.WebUtils;
+import org.xdams.admin.command.AdminCommand;
 import org.xdams.conf.master.ConfBean;
+import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.security.AuthenticationType;
 import org.xdams.security.UserDetails;
 import org.xdams.security.load.LoadUserManager;
@@ -99,6 +103,8 @@ public class xDamsAdminController {
 		if (userAgent.toLowerCase().contains("msie")) {
 			response.addHeader("X-UA-Compatible", "IE=edge");
 		}
+
+		model.put("realPath", WebUtils.getRealPath(servletContext, ""));
 	}
 
 	public void common(ConfBean confBean, UserBean userBean, String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -122,13 +128,13 @@ public class xDamsAdminController {
 		Locale locale = RequestContextUtils.getLocale(request);
 		ResourceBundle bundle = ResourceBundle.getBundle("xdams_messages", locale);
 		Map<String, String> bundleMap = new LinkedHashMap<String, String>();
-		for (String key: bundle.keySet()) {
-	        String value = bundle.getString(key);
-	        bundleMap.put(key, value);
-	    }
+		for (String key : bundle.keySet()) {
+			String value = bundle.getString(key);
+			bundleMap.put(key, value);
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(bundleMap);
-		String globalLangOption = "var globalOption = "+json;
+		String globalLangOption = "var globalOption = " + json;
 		System.out.println(json);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", MediaType.APPLICATION_JSON.toString());
@@ -181,6 +187,14 @@ public class xDamsAdminController {
 
 	public static String removeAccents(String text) {
 		return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+	}
+
+	@RequestMapping(value = "/admin/{archive}/exportMenu", method = RequestMethod.GET, produces = "text/html")
+	public String consoleMenu(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		common(confBean, userBean, archive, modelMap, request, response);
+		AdminCommand adminCommand = new AdminCommand(request.getParameterMap(), modelMap);
+		ManagingBean managingBean = adminCommand.execute();
+ 		return "admin/"+managingBean.getDispatchView();
 	}
 
 }
