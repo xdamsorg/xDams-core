@@ -8,6 +8,7 @@
    <archive alias="xDamsHist" host="127.0.0.1" ico="storico.gif" pne="c" port="-1" type="xDamsHist">Archivio Storico</archive>
    <archive alias="xDamsAV" host="127.0.0.1" ico="video.gif" pne="c" port="-1" type="xDamsAV">Archivio AudioVideo</archive>
    <archive alias="xDamsPhoto" host="127.0.0.1" ico="fotografico.gif" pne="c" port="-1" type="xDamsPhoto">Archivio Fotografico</archive>
+   <archive alias="xDamsOA" host="127.0.0.1" ico="disegni.gif" pne="c" port="-1" type="xDamsOA">Iconografia</archive>
   </archiveGroup>
   <archiveGroup name="Authority">
    <archive alias="xDamsEACCPF" host="127.0.0.1" ico="authority.gif" pne="eac-cpf" port="-1" type="xDamsEACCPF">Authority Enti/Famiglie/Persone EAC-CPF</archive>
@@ -16,5 +17,5 @@
   <archiveGroup name="Multi Archivio">
    <archive alias="multiArchive" host="127.0.0.1" ico="authority.gif" pne="notPresent" port="-1" type="multiArchive">Ricerca Multi Archivio</archive>
   </archiveGroup>
- </account> 
+ </account>
 </root>
