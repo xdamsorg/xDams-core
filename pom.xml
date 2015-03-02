@@ -190,7 +190,7 @@
    <version>1.4.2</version>
   </dependency>
   <dependency>
-   <groupId>commons-net</groupId> 
+   <groupId>commons-net</groupId>
    <artifactId>commons-net</artifactId>
    <version>3.0.1</version>
   </dependency>
@@ -244,6 +244,11 @@
    <groupId>javax.mail</groupId>
    <artifactId>mail</artifactId>
    <version>1.4.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.commons</groupId>
+   <artifactId>commons-compress</artifactId>
+   <version>1.9</version>
   </dependency>
  </dependencies>
  <build>

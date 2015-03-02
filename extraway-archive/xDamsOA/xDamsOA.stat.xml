@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- DOCTYPE xway_arc SYSTEM "http://www.3di.it/extraway/xwayarc_20061018.dtd" -->
+<xway_arc attr="2011"
+          l_access="100"
+          l_erase="100"
+          l_config="100"
+          docs="0"
+          erased="0"
+          indexed="0"
+          keys="0"
+          main_serial="0"
+          timestamp="20150302110210.726">
+<data dtype="status" dval="0x980"/>
+<data dtype="idxver" dval="0x1"/>
+<crc global="8C5FB493C0F303DCD627A8D5D357FC6A"/>
+</xway_arc>

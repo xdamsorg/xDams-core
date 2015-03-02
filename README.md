@@ -10,19 +10,21 @@ E' attualmente disponbile nella versione server **2.0.0**
 
 * Processore Intel Xeon 2.00 Ghz compatibile
 * 2 GB di RAM
-* Spazio disco minimo: 100 GB
+* Spazio disco minimo: 100 GB (in funzione degli allegati digitali)
 
 Sono comunque consigliati:
 
 *	Processore multi Core
 *	RAM 4-8GB
-*	Spazio disco minimo: 300 GB (in funzione del volume archivi)
+*	Spazio disco minimo: 300 GB (in funzione degli allegati digitali)
 
 ## Ambienti software del server
 
-xDams è un sistema multipiattaforma funzionanante sui sistemi operativi GNU/Linux, Windows XP e superiori. Attualmente viene rilasciato con documentazione di installazione per la sola versione Windows.I requisiti software per l'installazione della piattaforma sono:
+xDams è un sistema multipiattaforma funzionanante sui sistemi operativi GNU/Linux, Windows XP e superiori. Attualmente viene rilasciato con documentazione di installazione per la versione Windows e Linux. 
 
-*	Java 2 SDK
+I requisiti software per l'installazione della piattaforma sono:
+
+*	JavaSE 1.6.x
 *	Apache Tomcat ver. 6.x o superiori
 *	ImageMagick (per la gestione di oggetti digitali)
 *	Extraway Open Platform (per la gestione del repository XML)
@@ -39,7 +41,6 @@ Ciò significa che per accedere al Workspace di xDams è necessario:
 *	Abilitare JavaScript
 *	Consentire l'utilizzo di Popups
 *	Abilitare Cookies
-*	Flash Player installato
 
 
 ## Installazione
