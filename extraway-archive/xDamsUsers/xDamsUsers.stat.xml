@@ -4,13 +4,13 @@
           l_access="100"
           l_erase="100"
           l_config="100"
-          docs="15"
-          erased="12"
-          indexed="15"
-          keys="3625"
-          main_serial="27"
-          timestamp="20141204113148.266">
+          docs="0"
+          erased="0"
+          indexed="0"
+          keys="0"
+          main_serial="0"
+          timestamp="20150224151654.248">
 <data dtype="status" dval="0x980"/>
 <data dtype="idxver" dval="0x1"/>
-<crc global="483999819F827F7969AC6B5F6FA0593D"/>
+<crc global="D236CB729855D62A73E3A60E7600B6E4"/>
 </xway_arc>

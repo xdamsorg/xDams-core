@@ -45,7 +45,7 @@
   <key name="XML,/c/titolo_full" key_style="multi"/>
  </primary_node>
  <serials>
-  <serial id="num_id" mask="IT-xDams-FT0001-##########"/>
+  <serial id="num_id" mask="IT-xDams-FT0001-######"/>
  </serials>
  <hw_fields>
   <!-- SPECIFICHE DEI DIZIONARI -->

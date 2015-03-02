@@ -1,47 +1,40 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
 <xway_cfg>
-
  <primary_node ud_name="user" ud_container="listof_user" hw_tab="TABELLA">
   <key name="XML,/user/@id" key_style="one"/>
   <key name="XML,/user/@account" key_style="one"/>
   <key name="XML,/user/@role" key_style="one"/>
   <key name="XML,/user/@lastName" key_style="double"/>
-  <key name="XML,/user/@email" key_style="double"/>  
-  <key name="XML,/user/@name" key_style="double"/>  
+  <key name="XML,/user/@email" key_style="double"/>
+  <key name="XML,/user/@name" key_style="double"/>
   <key name="XML,/user/archive" key_style="one"/>
   <key name="XML,/user/archive/@alias" key_style="one"/>
   <key name="XML,/user/archive/@role" key_style="one"/>
-  <unique_rule search_rule="[XML,/user/@id]"/>
+  <unique_rule search_rule="[XML,/user/@id] AND [XML,/account/@id]"/>
  </primary_node>
-
  <primary_node ud_name="account" ud_container="listof_user" hw_tab="TABELLAACCOUNTS">
-    <unique_rule search_rule="[XML,/account/@id]"/>
-    <key name="XML,/account/@id" key_style="one"/>
-    <key name="XML,/account/@fatherAccount" key_style="one"/>
-    <key name="XML,/account/@descrAccount" key_style="double"/>
-    <key name="XML,/account/archiveGroup/@name" key_style="double"/>
-    <key name="XML,/account/archiveGroup/archive/@alias" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive/@host" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive/@ico" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive/@pne" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive/@port" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive/@type" key_style="one"/>
-    <key name="XML,/account/archiveGroup/archive" key_style="double"/>
- </primary_node> 
-
+  <unique_rule search_rule="[XML,/account/@id]"/>
+  <key name="XML,/account/@id" key_style="one"/>
+  <key name="XML,/account/@fatherAccount" key_style="one"/>
+  <key name="XML,/account/@descrAccount" key_style="double"/>
+  <key name="XML,/account/archiveGroup/@name" key_style="double"/>
+  <key name="XML,/account/archiveGroup/archive/@alias" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive/@host" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive/@ico" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive/@pne" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive/@port" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive/@type" key_style="one"/>
+  <key name="XML,/account/archiveGroup/archive" key_style="double"/>
+ </primary_node>
  <hw_fields>
   <search_alias search_name="Utente" search_key="XML,/user/@id"/>
  </hw_fields>
-
  <expert_system_extension active="false"/>
- <profile type="title" value="XML,/account/@descrAccount &quot;[@descrAccount@]&quot; XML,/account/@id &quot;[@idAccount@]&quot; XML,/account/archive &quot;[@descrArchive@]&quot; XML,/user/@name &quot;[@userName@]&quot; XML,/user/@lastName &quot;[@userLastName@]&quot; XML,/user/@id &quot;[@idUser@]&quot;"/>
+ <profile type="title" value="XML,/account/@descrAccount &quot;[@descrAccount@]&quot; XML,/account/@id &quot;[@idAccount@]&quot; XML,/account/archive &quot;[@descrArchive@]&quot; XML,/user/@name &quot;[@userName@]&quot; XML,/user/@lastName &quot;[@userLastName@]&quot; XML,/user/@id &quot;[@idUser@]&quot; XML,/user/@account &quot;[@accountUser@]&quot;"/>
  <profile type="title.separ" value="¢"/>
  <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
  <profile type="catalog.strict" value="true"/>
  <profile type="arc.allownonportable" value="true"/>
  <profile type="arc.test_encoding" value="false"/>
- 
 </xway_cfg>
-
- 
