@@ -231,15 +231,17 @@ function loadJsBusiness(target, prefix) {
 			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
 		});
 	}
-	
-	
-	
+
 }
 
 
 function getLocalizedString(key, defaultKey) {
+	if(typeof globalLangOption  != 'undefined'){
 	if(typeof globalLangOption[key] != 'undefined'){
 		return globalLangOption[key];
+	}else{
+		return defaultKey;
+	}
 	}else{
 		return defaultKey;
 	}
