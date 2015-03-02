@@ -80,7 +80,7 @@ public class AjaxCutPasteCopyCommand {
 			//	System.out.println("AjaxCutPasteCopyCommand.execute() getTheXMLConfTitle " + confBean.getTheXMLConfTitle().getXML("ISO-8859-1"));
 				XMLBuilder builder = confBean.getTheXMLConfTitle();
 				String titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
-				System.out.println("QueryParserCommand.execute()" + titleRole);
+//				System.out.println("QueryParserCommand.execute()" + titleRole);
 				try {
 					if (!titleRole.trim().equals("")) {
 						xwconn.setTitleRole(titleRole);
