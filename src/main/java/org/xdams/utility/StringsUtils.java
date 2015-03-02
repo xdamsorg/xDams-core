@@ -28,6 +28,34 @@ public class StringsUtils {
 		return "\"" + s + "\"";
 	}
 
+	public static String trimAll(String input) {
+		try {
+			String outPut = input;
+			if (outPut.indexOf("  ") != -1 || outPut.indexOf(" \r ") != -1 || outPut.indexOf(" \n ") != -1 || outPut.indexOf(" \r") != -1 || outPut.indexOf(" \n") != -1) {
+				while (outPut.indexOf(" \r ") != -1) {
+					outPut = outPut.replaceAll(" \r ", "\r ");
+				}
+				while (outPut.indexOf(" \n ") != -1) {
+					outPut = outPut.replaceAll(" \n ", "\n ");
+				}
+				while (outPut.indexOf(" \r") != -1) {
+					outPut = outPut.replaceAll(" \r", "\r ");
+				}
+				while (outPut.indexOf(" \n") != -1) {
+					outPut = outPut.replaceAll(" \n", "\n ");
+				}
+				while (outPut.indexOf("  ") != -1) {
+					outPut = outPut.replaceAll("  ", " ");
+				}
+				return outPut.trim();
+			} else {
+				return outPut.trim();
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	public static String escapeSingleApex(String s) {
 		String result = "";
 		try {
