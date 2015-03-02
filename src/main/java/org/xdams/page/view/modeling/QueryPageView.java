@@ -231,7 +231,7 @@ public class QueryPageView {
 		// INIZIO /query/element per i dizionari AMMINISTRATIVI
 		Map<String, String> hashOutputFieldAdm = null;
 		List<Map<String, String>> arrLabelAdm = new ArrayList<Map<String, String>>();
-		if (userBean.getRole().equals("ROLE_ADMIN")) {
+		if (!userBean.getRole().equals("ROLE_READER")) {
 			prefix = "/root/queryAdm/element";
 			numField = theXMLconf.contaNodi(prefix);
 			for (int i = 0; i < numField; i++) {
