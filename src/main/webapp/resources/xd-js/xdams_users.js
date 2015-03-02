@@ -7,6 +7,7 @@ jQuery(document).ready(function(){
 	//passwordField.clone().attr('id', idPwd ).insertAfter( passwordField );
 	//$(passwordField).attr('type','password');
 	var accountField = $("#accountField");
+	
 	$(passwordField).focusout(function() {
 		if($(passwordField).val()!="" && $(passwordField).attr("data-password")!='crypted'){
 			var dataField = "passwordField="+$(passwordField).val();
@@ -29,13 +30,11 @@ jQuery(document).ready(function(){
 	});	
 	
 	$(passwordField).bind('keypress keyup keydown',function(e) {
-		
 		if($(this).attr("data-password")=='crypted'){
 			$('#passwordField').val("");
 			$("a[onclick*=submitForm]").hide();
 		}
 		$('#passwordField').removeAttr("data-password");
-		
 	});
  
 	
