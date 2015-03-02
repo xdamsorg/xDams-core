@@ -52,6 +52,42 @@ function apriWinGest(thePage, actionFlag, statusBar, physDoc, selId, pos, extraP
 	window.open(urlWin, 'edtWind', 'toolbar=yes,location=no,status=yes,scrollbars=yes,resizable=yes,width=400,height=400');
 }
 
+function newWinProtoGest(urlWin,theArchName, actionFlag, statusBar, physDoc, selId, pos, extraParams, jsonValues) {
+	var extraField = "";
+	if (extraParams != null && extraParams != "") {
+		extraField = extractParam(extraParams);
+	}
+	// alert("thePage " + theArchName);
+	//var urlWin = "../../" + theArchName + "/managing.html?actionFlag=" + actionFlag + "&physDoc=" + physDoc + "&selid=" + selId + "&pos=" + pos + extraField;
+	var jsonObject = eval('(' + jsonValues + ')');
+	var widthProto = "450";
+	var heightProto = "400";
+	if (jsonObject != null) {
+		if (jsonObject.width) {
+			widthProto = jsonObject.width;
+		}
+		if (jsonObject.height) {
+			heightProto = jsonObject.height;
+		}
+
+	}
+	$('#aDialog').remove();
+	$('body').append('<div id="aDialog"></div>');
+ 
+	// chiudiDialog();
+
+	var anIframe = $('<iframe style="border: 0px;" width="100%" height="100%"></iframe>');
+	anIframe.attr('src', urlWin);
+	$('#aDialog').html(anIframe);
+	$('#aDialog').dialog({
+		autoOpen : true,
+		modal : false,
+		height : heightProto ? heightProto : 150,
+		width : widthProto ? widthProto : 250,
+		resizable : false,
+		title : statusBar ? statusBar : 'xDams dialog'
+	});
+}
 function chiudiDialog() {
 	$('#aDialog').dialog('destroy');
 	$('#aDialog').remove();
