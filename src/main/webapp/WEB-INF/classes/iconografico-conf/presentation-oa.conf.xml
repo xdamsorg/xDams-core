@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<macroarea summary="yes" showdoc="yes" name="identificazione" layer="DID" label="Area dell'identificazione">
+		<sezione name="FTA - Documentazione Fotografica allegata" opened="yes" summary="yes" showdoc="no">
+			<elemento opened="yes" name="foto allegata" summary="yes" showdoc="no" type="mediaBean" xPathPrefix="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item[child::extptr/@href != '']" xPathHref="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item[child::extptr/@href != '']/extptr/@href" xPathTitle="" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides">
+   </elemento>
+			<elemento summary="yes" showdoc="no" input_type="select" class="Long" name="tipo scheda" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='TSK']/opzione">/c/did/unitid/@type</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="Codici e livelli" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="select" extra="onchange=&quot;testaLevel(this,'.c')&quot;" name="livello gerarchico di descrizione" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+			<elemento summary="no" showdoc="yes" input_type="select" class="Long" name="TSK - tipo scheda" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='TSK']/opzione">/c/did/unitid/@type</elemento>
+			<elemento summary="no" showdoc="yes" input_type="liveText" name="codice di sistema">/c/@id</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" name="codice identificativo gerarchia verticale" class="Long">/c/did/unitid/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="select" name="visibilità della scheda" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+		</sezione>
+		<sezione name="INV - Inventario" opened="yes" summary="no" showdoc="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" name="" type="multi_group" prefix="/c/originalsloc[@encodinganalog='INV']">
+				<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="INVN - numero" format_after="&lt;br&gt;" ajaxVoc="/c/originalsloc/p/num" vocType="one">/c/originalsloc[@encodinganalog='INV']/p/num[@encodinganalog='INVN']/text()</elemento>
+				<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="INVD - data" format_after="&lt;br&gt;">/c/originalsloc[@encodinganalog='INV']/p/date[@encodinganalog='INVD']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/originalsloc[@encodinganalog='INV']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="OGT - Oggetto" opened="yes">
+			<elemento summary="yes" showdoc="no" input_type="text" class="Long" multiMod="true" ajaxVoc="/c/did/materialspec" vocType="double" name="oggetto" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+			<elemento summary="yes" showdoc="yno" input_type="text" class="Long" name="denominazione dell'oggetto" multiMod="true">/c/did/materialspec[@encodinganalog='OGTD']/title[@encodinganalog='OGTN']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="OGT - Oggetto" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" multiMod="true" ajaxVoc="/c/did/materialspec" vocType="double" name="OGTD - definizione" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" name="OGTT - tipologia" ajaxVoc="/c/did/materialspec/materialspec" vocType="double" multiMod="true">/c/did/materialspec[@encodinganalog='OGTD']/materialspec[@encodinganalog='OGTT']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" name="OGTN - denominazione" multiMod="true">/c/did/materialspec[@encodinganalog='OGTD']/title[@encodinganalog='OGTN']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Short" name="QNTN - quantità" multiMod="true">/c/did/materialspec[@encodinganalog='OGTD']/num[@encodinganalog='QNTN']/text()</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="SGT - Soggetto" opened="yes">
+			<elemento summary="yes" showdoc="no" input_type="text" class="ExtraLong" ajaxVoc="/c/did/unittitle" vocType="double" name="Identificazione del soggetto" multiMod="true">/c/did/unittitle[@encodinganalog='SGTI']/text()</elemento>
+			<elemento summary="yes" showdoc="no" input_type="text" class="ExtraLong" name="Titolo" multiMod="true">/c/did/unittitle[@encodinganalog='SGTI']/title[@encodinganalog='SGTT']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="SGT - Soggetto" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="text" class="ExtraLong" ajaxVoc="/c/did/unittitle" vocType="double" name="SGTI - identificazione" multiMod="true">/c/did/unittitle[@encodinganalog='SGTI']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="ExtraLong" name="SGTT - titolo" multiMod="true">/c/did/unittitle[@encodinganalog='SGTI']/title[@encodinganalog='SGTT']/text()</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="DT - Cronologia" opened="yes">
+			<elemento summary="yes" showdoc="no" name="cronologia" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione">/c/did/unitdate[@encodinganalog='DT']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="DT - Cronologia" opened="yes">
+			<elemento summary="no" showdoc="yes" name="" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='secolo']/opzione">/c/did/unitdate[@encodinganalog='DT']/text()</elemento>
+			<elemento type="multi" summary="no" showdoc="yes" input_type="select" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='DTMM']/opzione" prefix="/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']" name="DTM - motivazione cronologica">/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']/text()</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="AUT - Autore" opened="yes">
+			<elemento summary="yes" showdoc="no" extra="onchange=&quot;return invalidaElementoAutherCustomOA(this)&quot;" name="Autore" type="multi_auther" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AUT']" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/control/recordId]"> /c/did/origination/persname[@encodinganalog='AUT']/text()
+   </elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="AUT - Autore" opened="yes">
+			<elemento summary="no" showdoc="yes" extra="onchange=&quot;return invalidaElementoAutherCustomOA(this)&quot;" name="" type="multi_group" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AUT']" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/control/recordId]">
+				<elemento format_before="&lt;em&gt;nome&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="select" name="AUTS - riferimento all'autore" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='riferimento']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/text()</elemento>
+				<elemento format_before="&lt;em&gt;rif. all'autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="select" name="AUTS - riferimento all'autore" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='riferimento']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/@altrender</elemento>
+				<elemento format_before="&lt;em&gt;ruolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="select" name="AUTR - riferimento all'intervento" ajaxVoc="/c/did/origination/persname/@role" vocType="one" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='ruolo']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/@role</elemento>
+				<elemento format_before="&lt;em&gt;motivazione dell'attribuzione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="select" name="AUTM - motivazione dell'attribuzione" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='AUTM']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/emph/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/did/origination[@encodinganalog='AUT']/persname/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="ATB - Ambito Culturale / di produzione" opened="yes">
+			<elemento summary="yes" showdoc="no" multiMod="true" input_type="text" name="Ambito culturale / di produzione" ajaxVoc="/c/did/origination/corpname" vocType="double" showcode="yes" class="Long">/c/did/origination/corpname[@encodinganalog='ATB']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="ATB - Ambito Culturale / di produzione" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" name="" type="multi_group" prefix="/c/did/origination/corpname[@encodinganalog='ATB']" opened="yes">
+				<elemento format_before="&lt;em&gt;nome&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" name="ATBD - denominazione" ajaxVoc="/c/did/origination/corpname" vocType="double" showcode="yes" class="Long">/c/did/origination/corpname[@encodinganalog='ATB']/text()</elemento>
+				<elemento format_before="&lt;em&gt;ruolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="select" name="ATBR - riferimento all'intervento" ajaxVoc="/c/did/origination/corpname/@role" vocType="one" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='ruolo']/opzione">/c/did/origination/corpname[@encodinganalog='ATB']/@role</elemento>
+				<elemento format_before="&lt;em&gt;motivazione dell'attribuzione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="select" rows="2" cols="58" name="ATBM - motivazione dell'attribuzione" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='AUTM']/opzione">/c/did/origination/corpname[@encodinganalog='ATB']/emph/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/did/origination/corpname[@encodinganalog='AUT']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="AAU - Altri autori" opened="yes">
+			<elemento summary="no" showdoc="yes" extra="onchange=&quot;return invalidaElementoAutherCustomOA(this)&quot;" name="" type="multi_group" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AAU']" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/control/recordId]">
+				<elemento format_before="&lt;em&gt;nome&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" name="AAUN - nome" showcode="yes" class="Long" ajaxVoc="/c/did/origination/persname" vocType="double">/c/did/origination/persname[@encodinganalog='AAU']/text()</elemento>
+				<elemento format_before="&lt;em&gt;ruolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" name="AAUR - ruolo" ajaxVoc="/c/did/origination/corpname/@role" vocType="one">/c/did/origination/persname[@encodinganalog='AAU']/@role</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="CMM - Committenza" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" name="CMMN - nome" multiMod="true" ajaxVoc="/c/bioghist/chronlist/chronitem/event/name" vocType="double">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/name/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" name="CMMD - data" multiMod="true">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/date/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="1" cols="58" name="CMMC - circostanza" multiMod="true">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/text()</elemento>
+		</sezione>
+		<sezione summary="yes" showdoc="no" name="LDC - Localizzazione / Collocazione specifica" opened="yes">
+			<elemento summary="yes" showdoc="no" name="contenitore" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" arch_ref="xDamsHGeo" prefix="/c/did/physloc[@encodinganalog='LDC']" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/eacheader/eacid]">/c/did/physloc[@encodinganalog='LDC']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="LDC - Localizzazione / Collocazione specifica" opened="yes">
+			<elemento summary="no" showdoc="yes" name="LDCN - denominazione del contenitore" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_auther" arch_ref="xDamsHGeo" prefix="/c/did/physloc[@encodinganalog='LDC']" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/eacheader/eacid]">/c/did/physloc[@encodinganalog='LDC']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Long" name="LDCS - specifiche">/c/did/physloc[@encodinganalog='LDC']/emph/text()</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea summary="no" showdoc="yes" name="descrizione" layer="Physdesc" label="Area della descrizione">
+		<sezione summary="no" showdoc="yes" name="MT - Dati tecnici e materiali" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" type="multi_group" class="Long" prefix="/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']" input_type="text" value="document:/oac-conf/valoriControllatiOac.xml" externalPath="/root/elemento[@name='MT']/opzione" name="">
+				<elemento format_before="&lt;em&gt;materie e tecniche&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" ajaxVoc="/c/did/physdesc/genreform" vocType="double" name="MTCI - materiali, tecniche, strumentazioni">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/text()</elemento>
+				<elemento format_before="&lt;em&gt;specifiche&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" class="Long" input_type="text" name="specifiche">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/emph/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="MTCZ-MTCV - allestimento/varianti" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="MTCZ - descrizione allestimento" multiMod="true">/c/did/physdesc[@encodinganalog='MT']/subject/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="1" cols="58" name="MTCV - varianti" multiMod="true">/c/did/physdesc[@encodinganalog='MT']/subject/emph/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="MIS - Misure" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="select" class="Short" name="unità di misura" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='UNIT']/opzione">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIS']/@unit</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISA - altezza ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISA']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISL - larghezza ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISL']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISP - profondità ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISP']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISD - diametro">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISD']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISN - lunghezza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISN']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISS - spessore">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISS']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Short" name="MISG - peso">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISG']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="MISV - varie">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISV']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="select" name="MISR - mancanza" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='MISR']/opzione">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISR']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Short" name="filigrana">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FIL']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="text" class="Short" name="FRM - formato">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FRM']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="MISH - durata" HTMLextra="&lt;em style=&quot;font-size:9px&quot;&gt;es. &quot;hh:mm:ss&quot;&lt;/em&gt;">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISH']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="MISB - memoria" HTMLextra="&lt;em style=&quot;font-size:9px&quot;&gt;es. &quot;byte&quot;&lt;/em&gt;">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISB']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="MISI - ingombro">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISI']/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="MIST - validità">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIST']/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="CO - Conservazione" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="select" name="STCC - stato di conservazione" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='STCC']/opzione">/c/phystech[@encodinganalog='STC']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="STCS - specifiche sullo stato di conservazione">/c/phystech[@encodinganalog='STC']/note/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="textarea" rows="3" cols="58" name="STCM - modalità di conservazione">/c/phystech[@encodinganalog='STC']/phystech[@encodinganalog='STCM']/p/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="RS - Restauri" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" name="" type="multi_group" prefix="/c/phystech[@encodinganalog='RST']/chronlist/chronitem">
+				<elemento format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="text" class="Short" name="RSTD - data">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/date[@encodinganalog='RSTD']/text()</elemento>
+				<elemento format_before="&lt;em&gt;situazione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="text" class="Short" name="RSTS - situazione">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/emph/text()</elemento>
+				<elemento format_before="&lt;em&gt;nome operatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" class="ExtraLong" name="RSTN - nome operatore">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/name[@encodinganalog='RSTN']/text()</elemento>
+				<elemento format_before="&lt;em&gt;descrizione intervento&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="textarea" rows="3" cols="58" class="ExtraLong" name="descrizione intervento">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="DA - Dati analitici" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="DESO - indicazioni sull'oggetto" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='DESO']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="DESS - indicazioni sul soggetto" multiMod="true">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='DESS']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="NSC - notizie storico-critiche" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='NSC']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="ISR - iscrizioni" multiMod="true">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='ISR']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="58" name="STM - stemmi, emblemi, marchi" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='STM']/p/text()</elemento>
+		</sezione>
+		<!--ex-novo -->
+		<sezione summary="no" showdoc="yes" name="STI - stima" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="1" cols="58" name="" multiMod="true">/c/odd[@encodinganalog='STI']/p/text()</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea summary="no" showdoc="yes" name="status" layer="Status" label="Area della condizione giuridica e vincoli">
+		<sezione name="TU - Condizione giuridica e vincoli" opened="yes" summary="no" showdoc="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="CDG - condizione giuridica" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="ACQ - acquisizione del materiale" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="NVC - provvedimenti di tutela" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="ALN - mutamenti della condizione giuridica o materiale" opened="yes">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="textarea" rows="3" cols="58" name="ESP - esportazioni" opened="yes">/c/descgrp[@encodinganalog='TU']/odd[@encodinganalog='ESP']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="CPR - copyright" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea summary="no" showdoc="yes" name="documentazione di riferimento" layer="fonti" label="Area della fonti, della documentazione di riferimento e degli allegati">
+		<sezione summary="no" showdoc="yes" name="RSE - Riferimento altre schede" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" name="" type="multi_group" prefix="/c/descgrp[@encodinganalog='RSE']/relatedmaterial" opened="yes">
+				<elemento format_before="&lt;em&gt;tipo scheda&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="text" class="Long" name="RSET - tipo scheda">/c/descgrp[@encodinganalog='RSE']/relatedmaterial/p/text()</elemento>
+				<elemento format_before="&lt;em&gt;codice scheda&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="text" class="Long" name="RSEC - codice scheda">/c/descgrp[@encodinganalog='RSE']/relatedmaterial/p/num/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/descgrp[@encodinganalog='RSE']/relatedmaterial/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="FTA - Documentazione fotografica" opened="yes">
+			<elemento opened="yes" name="" summary="yes" showdoc="yes" type="mediaBean" xPathPrefix="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item" xPathHref="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@href" xPathTitle="" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides">
+				<elemento format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="select" class="Long" name="FTAX - genere" ajaxVoc="/c/altformavail/list/item/genreform/@type" vocType="one" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='FTAX']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/@type</elemento>
+				<elemento format_before="&lt;em&gt;tipo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="select" class="Long" name="FTAP - tipo" ajaxVoc="/c/altformavail/list/item/genreform" vocType="double" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='FTAP']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/text()</elemento>
+				<elemento format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="text" class="Long" name="FTAA - autore">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/persname[@encodinganalog='FTAA']/text()</elemento>
+				<elemento format_before="&lt;em&gt;n.&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" name="FTAN - n." class="Long">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/num[@encodinganalog='FTAN']/text()</elemento>
+				<elemento format_before="&lt;em&gt;formato&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" input_type="select" name="FTAF - formato" value="document:/valoriControllati.xml" externalPath="/root/elemento[@name='formato']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/emph/text()</elemento>
+				<elemento format_before="&lt;em&gt;note&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="FTAT - note">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/note[@encodinganalog='FTAT']/p/text()</elemento>
+				<elemento format_before="&lt;em&gt;nome originale del file digitale&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="nome originale del file digitale">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@href</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="VDC - Documentazione video" opened="yes">
+			<elemento summary="no" showdoc="yes" name="" type="mediaBean" xPathPrefix="/c/altformavail[@encodinganalog='VDC']/list/item" xPathHref="/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@href" xPathTitle="" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides">
+				<elemento summary="no" showdoc="yes" input_type="select" format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="VDCX - genere" class="Long" value="document:/oac-conf/valoriControllatiOac.xml" externalPath="/root/elemento[@name='VDCX']/opzione">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/@type</elemento>
+				<elemento summary="no" showdoc="yes" input_type="select" format_before="&lt;em&gt;tipo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" name="VDCP - tipo" class="Long" value="document:/oac-conf/valoriControllatiOac.xml" externalPath="/root/elemento[@name='video']/opzione">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/text()</elemento>
+				<elemento summary="no" showdoc="yes" input_type="text" format_before="&lt;em&gt;durata&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" class="Long" name="durata (hh:mm:ss)">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/emph/text()</elemento>
+				<elemento summary="no" showdoc="yes" input_type="text" format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" class="Long" name="VDCR - autore">/c/altformavail[@encodinganalog='VDC']/list/item/persname[@encodinganalog='VDCR']/text()</elemento>
+				<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" format_before="&lt;em&gt;note&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" class="Long" name="VDCT - note">/c/altformavail[@encodinganalog='VDC']/list/item/note[@encodinganalog='VDCT']/p/text()</elemento>
+				<elemento format_before="&lt;em&gt;nome originale del file digitale&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="nome originale del file digitale">/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@href</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/altformavail[@encodinganalog='VDC']/list/item/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="ADM - Documentazione multimediale" opened="yes">
+			<elemento summary="no" showdoc="yes" name="" type="mediaBean" xPathPrefix="/c/altformavail[@encodinganalog='ADM']/list/item" xPathHref="/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@href" xPathTitle="" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="thumb">
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="select" name="ADMX - genere" ajaxVoc="/c/altformavail/list/item/genreform/@type" vocType="one" class="Long" value="document:/oac-conf/valoriControllatiOac.xml" externalPath="/root/elemento[@name='VDCX']/opzione">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/@type</elemento>
+				<elemento format_before="&lt;em&gt;tipo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" name="ADMP - tipo" ajaxVoc="/c/altformavail/list/item/genreform" vocType="one" class="Long">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="ADMA - autore">/c/altformavail[@encodinganalog='ADM']/list/item/persname[@encodinganalog='ADMA']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;note&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="ADMT - note">/c/altformavail[@encodinganalog='ADM']/list/item/note[@encodinganalog='ADMT']/p/text()</elemento>
+				<elemento format_before="&lt;em&gt;nome originale del file digitale&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" summary="no" showdoc="yes" multiMod="true" input_type="text" class="Long" name="nome originale del file digitale">/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@href</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/altformavail[@encodinganalog='ADM']/list/item/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="FNT - Fonti archivistiche" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" type="multi" rows="3" cols="55" name="fonti d'archivio" prefix="/c/bibliography[@encodinganalog='FNT']/archref" opened="yes">/c/bibliography[@encodinganalog='FNT']/archref/text()</elemento>
+		</sezione>
+		<sezione name="BIB - Bibliografia" summary="no" showdoc="yes" opened="yes">
+			<elemento summary="no" showdoc="yes" input_type="textarea" rows="3" cols="55" name="citazioni per esteso">/c/bibliography[@encodinganalog='BIB']/p/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" name="monografie e periodici" type="multi_group" prefix="/c/bibliography[@encodinganalog='BIB']/bibref" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;genere&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="select" name="genere (BIBX)" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='BIBX']/opzione">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;autore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="ExtraLong" name="autore (BIBA)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;curatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="ExtraLong" name="curatore (BIBC)">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo contributo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="titolo contributo (BIBT)">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo libro o rivista&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="titolo libro o rivista (BIBG)">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo di edizione&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="luogo di edizione (BIBL)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;editore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="editore (BIBZ)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="data (BIBD)">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;volumi&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" multiMod="true" input_type="text" class="Long" name="volumi (BIBV)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;pagine/nn.&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="pagine / nn. (BIBP)">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/@null</elemento>
+			</elemento>
+			<elemento summary="no" showdoc="yes" name="BSE - bibliografia in rete" type="multi_group" prefix="/c/bibliography[@encodinganalog='BSE']/extref" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo-soggetto&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="ExtraLong" name="titolo-soggetto (BSET)">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Short" name="data di consultazione (BSED)">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;indirizzo di rete&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="ExtraLong" name="indirizzo di rete (BSEI)" HTMLextra="&lt;br /&gt;&lt;hr /&gt;&lt;br /&gt;">/c/bibliography[@encodinganalog='BSE']/extref/@href</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/bibliography[@encodinganalog='BSE']/extref/@null</elemento>
+			</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="MST - Mostre" opened="yes">
+			<elemento summary="no" showdoc="yes" name="eventi" type="multi_group" prefix="/c/bibliography[@encodinganalog='MST']/list/item" opened="yes">
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;titolo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="titolo (MSTT)">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;luogo&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="luogo (MSTL)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;sede&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="sede espositiva (MSTS)">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;data&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="data (MSTD)">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="&lt;em&gt;ente organizzatore&lt;/em&gt;:&#160;" format_after="&lt;br&gt;" input_type="text" class="Long" name="ente organizzatore (MSTO)">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/bibliography[@encodinganalog='MST']/list/item/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea summary="no" showdoc="yes" name="chiavi di accesso" layer="accesso" label="Area delle chiavi di accesso">
+		<sezione summary="no" showdoc="yes" name="descrittori" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" showcode="yes" class="ExtraLong" prefix="/c/controlaccess/subject" name="soggetti / temi" type="multi">/c/controlaccess/subject/text()</elemento>
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="text" showcode="yes" class="ExtraLong" prefix="/c/controlaccess/name" name="classificazione oggetto" type="multi">/c/controlaccess/name/text()</elemento>
+		</sezione>
+	</macroarea>
+	<macroarea summary="no" showdoc="yes" name="annotazioni e compilazione" layer="NOTE" label="Area delle annotazioni e della compilazione">
+		<sezione summary="no" showdoc="yes" name="AN - annotazioni" opened="yes">
+			<elemento summary="no" showdoc="yes" multiMod="true" input_type="textarea" rows="6" cols="55" name="osservazioni">/c/note[@encodinganalog='AN']/p/text()</elemento>
+		</sezione>
+		<sezione summary="no" showdoc="yes" name="Informazioni sulla compilazione" opened="yes">
+			<elemento summary="no" showdoc="yes" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+			<elemento summary="no" showdoc="yes" name="" type="multi_group" id="processinfo" prefix="/c/processinfo/list/item" opened="no">
+				<elemento summary="no" showdoc="yes" input_type="liveText" name="azione">/c/processinfo/list/item/text()</elemento>
+				<elemento summary="no" showdoc="yes" input_type="liveText" name="data">/c/processinfo/list/item/date/text()</elemento>
+				<elemento summary="no" showdoc="yes" input_type="liveText" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+				<elemento summary="no" showdoc="yes" format_before="" format="&lt;br&gt;" input_type="text" class="Long" name="">/c/processinfo/list/item/@null</elemento>
+			</elemento>
+		</sezione>
+	</macroarea>
+</root>

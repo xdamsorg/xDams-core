@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+	<elemento name="level">
+		<opzione value="">...</opzione>
+		<opzione value="fonds">fondo</opzione>
+		<opzione value="collection">collezione</opzione>
+		<opzione value="recordgrp">raccolta</opzione>
+		<opzione value="file">oggetto complesso/seriale</opzione>
+		<opzione value="item">oggetto singolo</opzione>
+	</elemento>
+
+	<elemento name="audience">
+		<opzione value="">...</opzione>
+		<opzione value="internal">privata</opzione>
+		<opzione value="external">pubblica</opzione>
+	</elemento>
+	<elemento name="TSK">
+		<opzione value="">...</opzione>
+		<opzione value="OA">OA</opzione>
+		<opzione value="OAC">OAC</opzione>
+	</elemento>
+	<elemento name="ruolo">
+		<opzione value="">...</opzione>
+		<opzione value="disegnatore">disegnatore</opzione>
+		<opzione value="esecutore">esecutore</opzione>
+		<opzione value="progettista">progettista</opzione>
+	</elemento>
+	<elemento name="riferimento">
+		<opzione value="">...</opzione>
+		<opzione value="attr.">attr.</opzione>
+		<opzione value="bottega">bottega</opzione>
+		<opzione value="cerchia">cerchia</opzione>
+		<opzione value="e aiuti">e aiuti</opzione>
+		<opzione value="maniera">maniera</opzione>
+		<opzione value="scuola">scuola</opzione>
+	</elemento>
+	<elemento name="STCC">
+		<opzione value="">...</opzione>
+		<opzione value="buono">buono</opzione>
+		<opzione value="cattivo">cattivo</opzione>
+		<opzione value="discreto">discreto</opzione>
+		<opzione value="mediocre">mediocre</opzione>
+		<opzione value="ottimo">ottimo</opzione>
+	</elemento>
+
+	<elemento name="DTMM">
+				<opzione value="">...</opzione>
+				<opzione value="analisi dei referenti">analisi dei referenti</opzione>
+				<opzione value="analisi stilistica">analisi stilistica</opzione>
+				<opzione value="analisi storica">analisi storica</opzione>
+				<opzione value="analisi tecnico-formale">analisi tecnico-formale</opzione>
+				<opzione value="bibliografia">bibliografia</opzione>
+				<opzione value="comunicazione autore">comunicazione autore</opzione>
+				<opzione value="comunicazione orale">comunicazione orale</opzione>
+				<opzione value="confronto">confronto</opzione>
+				<opzione value="contesto">contesto</opzione>
+				<opzione value="copyright">copyright</opzione>
+				<opzione value="data">data</opzione>
+				<opzione value="data di acquisizione">data di acquisizione</opzione>
+				<opzione value="data di acquisto">data di acquisto</opzione>
+				<opzione value="documentazione">documentazione</opzione>
+				<opzione value="documentazione testuale interna">documentazione testuale interna</opzione>
+				<opzione value="esposizione">esposizione</opzione>
+				<opzione value="iscrizione">iscrizione</opzione>
+				<opzione value="marchio">marchio</opzione>
+				<opzione value="pubblicazione">pubblicazione</opzione>
+				<opzione value="punzone">punzone</opzione>
+				<opzione value="riferimenti biografici">riferimenti biografici</opzione>
+				<opzione value="sigla">sigla</opzione>
+				<opzione value="timbro">timbro</opzione>
+				<opzione value="tradizione orale">tradizione orale</opzione>
+	</elemento>
+	<elemento name="MISR">
+		<opzione value="">...</opzione>
+		<opzione value="MNR">MNR</opzione>
+	</elemento>
+	<elemento name="tipo_admp">
+		<opzione value="">...</opzione>
+		<opzione value="fotografia b/n">fotografia b/n</opzione>
+		<opzione value="fotografia colore">fotografia colore</opzione>
+		<opzione value="diapositiva b/n">diapositiva b/n</opzione>
+		<opzione value="diapositiva colore">diapositiva colore</opzione>
+		<opzione value="fotografia digitale">fotografia digitale</opzione>
+	</elemento>
+	<elemento name="formato">
+		<opzione value="">...</opzione>
+		<opzione value="6x6">6x6</opzione>
+		<opzione value="13x18">13x18</opzione>
+		<opzione value="18x24">18x24</opzione>
+		<opzione value="21x27">21x27</opzione>
+	</elemento>
+	<elemento name="UNIT">
+		<opzione value="">...</opzione>
+		<opzione value="mm.">mm.</opzione>
+		<opzione value="cm.">cm.</opzione>
+		<opzione value="m.">m.</opzione>
+		<opzione value="gr.">gr.</opzione>
+	</elemento>
+
+	<elemento name="AUTM">
+		<opzione value="">...</opzione>
+		<opzione value="analisi stilistica">analisi stilistica</opzione>
+		<opzione value="bibliografia">bibliografia</opzione>
+		<opzione value="documentazione">documentazione</opzione>
+		<opzione value="firma">firma</opzione>
+		<opzione value="iscrizione">iscrizione</opzione>
+		<opzione value="marchio">marchio</opzione>
+		<opzione value="punzone">punzone</opzione>
+		<opzione value="sigla">sigla</opzione>
+		<opzione value="tradizione orale">tradizione orale</opzione>
+	</elemento>
+	<elemento name="FTAX">
+		<opzione value="">...</opzione>
+		<opzione value="fotografia allegata">fotografia allegata</opzione>
+		<opzione value="fotografia esistente">fotografia esistente</opzione>
+	</elemento>
+	<elemento name="FTAP">
+		<opzione value="">...</opzione>
+		<opzione value="fotografia b/n">fotografia b/n</opzione>
+		<opzione value="fotografia colore">fotografia colore</opzione>
+		<opzione value="diapositiva b/n">dispositiva b/n</opzione>
+		<opzione value="diapositiva colore">diapositiva colore</opzione>
+		<opzione value="fotografia digitale">fotografia digitale</opzione>
+		<opzione value="fotografia a raggi infrarossi">fotografia a raggi infrarossi</opzione>
+		<opzione value="radiografia">radiografia</opzione>
+	</elemento>
+	<elemento name="BIBX">
+		<opzione value="">...</opzione>
+		<opzione value="bibliografia di confronto">bibliografia di confronto</opzione>
+		<opzione value="bibliografia specifica">bibliografia specifica</opzione>
+	</elemento>
+	<elemento name="video">
+				<opzione value="">...</opzione>
+				<opzione value="35 mm">35 mm</opzione>
+				<opzione value="16 mm">16 mm</opzione>
+				<opzione value="VHS">VHS</opzione>
+				<opzione value="U-MATIC">U-MATIC</opzione>
+				<opzione value="BVU">BVU</opzione>
+				<opzione value="Betacam">Betacam</opzione>
+			    <opzione value="1 pollice">1 pollice</opzione>
+
+	</elemento>
+	<elemento name="VDCX">
+			<opzione value="">...</opzione>
+			<opzione value="documentazione allegata">documentazione allegata</opzione>
+			<opzione value="documentazione esistente">documentazione esistente</opzione>
+		</elemento>
+
+</root>

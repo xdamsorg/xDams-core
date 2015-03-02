@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<root>
+
+
+
+
+    <element multiMod="true" input_type="textarea" rows="3"  cols="55" name="SGTI - identificazione">/c/did/unittitle[@encodinganalog='SGTI']/text()</element>
+	<element multiMod="true" input_type="text" class="ExtraLong" name="SGTT - titolo" >/c/did/unittitle[@encodinganalog='SGTT']/title/text()</element>
+
+
+
+  <element multiMod="true" input_type="text" class="Long" type="multi" name="MTCI - materiali e tecniche">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/text()</element>
+
+
+
+
+
+
+
+</root>
+

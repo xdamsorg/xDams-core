@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <preInsert excludeRel="none" suggestedRel="son">
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="Codici e livelli" opened="yes">
+    <elemento input_type="select" extra="onchange=&quot;testaLevel(this,'.c')&quot;" name="livello gerarchico di descrizione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+    <elemento input_type="text" name="codice identificativo gerarchia verticale" class="Long">/c/did/unitid/text()</elemento>
+    <elemento input_type="select" name="visibilità della scheda" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+   </sezione>
+   <sezione name="OGT - Oggetto" opened="yes">
+    <elemento input_type="text" class="Long" name="denominazione (livelli alti e oggetto/opera)">/c/did/materialspec[@encodinganalog='OGTD']/title[@encodinganalog='OGTN']/text()</elemento>
+    <elemento input_type="text" class="Long" name="OGTD - definizione (oggetto/opera)" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+   </sezione>
+   <sezione name="SGT - Soggetto" opened="yes">
+    <elemento input_type="text" class="ExtraLong" name="SGTI - identificazione">/c/did/unittitle[@encodinganalog='SGTI']/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="SGTT - titolo">/c/did/unittitle[@encodinganalog='SGTI']/title[@encodinganalog='SGTT']/text()</elemento>
+   </sezione>
+  </macroarea>
+ </preInsert>
+ <docEdit>
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="Codici e livelli" opened="yes">
+    <elemento input_type="select" extra="onchange=&quot;testaLevel(this,'.c')&quot;" name="livello gerarchico di descrizione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c/@level</elemento>
+    <elemento input_type="select" class="Long" name="TSK - tipo scheda" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='TSK']/opzione">/c/did/unitid/@type</elemento>
+    <elemento input_type="text" name="codice identificativo gerarchia verticale" class="Long">/c/did/unitid/text()</elemento>
+    <elemento multiMod="true" input_type="select" name="visibilità della scheda" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+   </sezione>
+   <sezione name="INV - Inventario" opened="yes">
+    <elemento name="Inventario" type="multi_group" prefix="/c/originalsloc[@encodinganalog='INV']">
+     <elemento input_type="text" class="Long" name="INVN - numero" ajaxVoc="/c/originalsloc/p/num" vocType="one">/c/originalsloc[@encodinganalog='INV']/p/num[@encodinganalog='INVN']/text()</elemento>
+     <elemento input_type="text" class="Long" name="INVD - data">/c/originalsloc[@encodinganalog='INV']/p/date[@encodinganalog='INVD']/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="OGT - Oggetto" opened="yes">
+    <elemento input_type="text" class="Long" ajaxVoc="/c/did/materialspec" vocType="double" name="OGTD - definizione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">/c/did/materialspec[@encodinganalog='OGTD']/text()</elemento>
+    <elemento input_type="text" class="Long" name="OGTT - tipologia" ajaxVoc="/c/did/materialspec/materialspec" vocType="double">/c/did/materialspec[@encodinganalog='OGTD']/materialspec[@encodinganalog='OGTT']/text()</elemento>
+    <elemento input_type="text" class="Long" name="OGTN - denominazione">/c/did/materialspec[@encodinganalog='OGTD']/title[@encodinganalog='OGTN']/text()</elemento>
+    <elemento input_type="text" class="Short" name="QNTN - quantità">/c/did/materialspec[@encodinganalog='OGTD']/num[@encodinganalog='QNTN']/text()</elemento>
+   </sezione>
+   <sezione name="SGT - Soggetto" opened="yes">
+    <elemento input_type="text" class="ExtraLong" ajaxVoc="/c/did/unittitle" vocType="double" name="SGTI - identificazione">/c/did/unittitle[@encodinganalog='SGTI']/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="SGTT - titolo">/c/did/unittitle[@encodinganalog='SGTI']/title[@encodinganalog='SGTT']/text()</elemento>
+   </sezione>
+   <sezione name="DT - Cronologia" opened="yes">
+    <elemento type="custom" id="data" name="forma normalizzata" showCentury="false" prefix="/c/did/unitdate[@encodinganalog='DT']"/>
+    <elemento type="multi" input_type="select" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='DTMM']/opzione" prefix="/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']" name="DTM - motivazione cronologica">/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']/text()</elemento>
+   </sezione>
+   <sezione name="AUT - Autore" opened="yes">
+    <elemento input_type="text" showcode="yes" class="Long" extra="onchange=&quot;return invalidaElementoAutherCustomOA(this)&quot;" name="AUTN - nome" type="multi_auther" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AUT']" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /c/did/origination/persname[@encodinganalog='AUT']/text()
+     <elemento input_type="select" name="AUTS - riferimento all'autore" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='riferimento']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/@altrender</elemento>
+     <elemento input_type="text" class="Long" name="AUTR - ruolo" ajaxVoc="/c/did/origination/persname/@role" vocType="one" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ruolo']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/@role</elemento>
+     <elemento input_type="select" name="AUTM - motivazione dell'attribuzione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUTM']/opzione">/c/did/origination/persname[@encodinganalog='AUT']/emph/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="ATB - Ambito Culturale / di produzione" opened="yes">
+    <elemento input_type="text" showcode="yes" class="Long" extra="onchange=&quot;return invalidaElementoAutherCustomOA(this)&quot;" name="" type="multi_auther" prefix="/c/did/origination/corpname[@encodinganalog='ATB']" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /c/did/origination/corpname[@encodinganalog='ATB']/text()
+     <elemento class="Long" input_type="text" name="ATBR - ruolo" ajaxVoc="/c/did/origination/corpname/@role" vocType="one" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ruolo']/opzione">/c/did/origination/corpname[@encodinganalog='ATB']/@role</elemento>
+     <elemento input_type="select" rows="2" cols="58" name="ATBM - motivazione dell'attribuzione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='AUTM']/opzione">/c/did/origination/corpname[@encodinganalog='ATB']/emph/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="AAU - Altri autori (OAC)" opened="yes">
+    <elemento input_type="text" name="AAUN - nome" showcode="yes" class="Long" type="multi_auther" code="authfilenumber" web_app="" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname[@encodinganalog='AAU']" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /c/did/origination/persname[@encodinganalog='AAU']/text()
+     <elemento class="Long" input_type="text" name="AAUR - ruolo" ajaxVoc="/c/did/origination/corpname/@role" vocType="one">/c/did/origination/persname[@encodinganalog='AAU']/@role</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="CMM - Committenza" opened="yes">
+    <elemento multiMod="true" input_type="text" class="Long" name="CMMN - nome" ajaxVoc="/c/bioghist/chronlist/chronitem/event/name" vocType="double">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/name/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="Long" name="CMMD - data">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/date/text()</elemento>
+    <elemento multiMod="true" input_type="textarea" rows="1" cols="58" name="CMMC - circostanza">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/text()</elemento>
+   </sezione>
+   <sezione name="LDC - Localizzazione / Collocazione specifica" opened="yes">
+    <elemento input_type="text" class="Long" name="LDCN - denominazione del contenitore" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="auther" arch_ref="xDamsHGeo" prefix="/c/did/physloc[@encodinganalog='LDC']" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/condesc/identity/conhead/@normal]">/c/did/physloc[@encodinganalog='LDC']/text()</elemento>
+    <elemento input_type="text" class="Long" name="LDCS - specifiche">/c/did/physloc[@encodinganalog='LDC']/emph/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="descrizione" layer="Physdesc" label="Area della descrizione">
+   <sezione name="MT - Dati tecnici e materiali" opened="yes">
+    <elemento type="multi_group" class="ExtraLong" prefix="/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']" input_type="text" name="MTC - materie e tecniche">
+     <elemento class="ExtraLong" input_type="text" ajaxVoc="/c/did/physdesc/genreform" vocType="double" name="materia e tecnica">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/text()</elemento>
+     <elemento class="Long" input_type="text" name="specifiche (OAC)">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/emph/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="MTCZ-MTCV - allestimento/varianti (OAC)" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="58" name="descrizione allestimento">/c/did/physdesc[@encodinganalog='MT']/subject/text()</elemento>
+    <elemento input_type="textarea" rows="1" cols="58" name="varianti">/c/did/physdesc[@encodinganalog='MT']/subject/emph/text()</elemento>
+   </sezione>
+   <sezione name="MIS - Misure" opened="yes">
+    <elemento input_type="select" class="Short" name="unità di misura" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='UNIT']/opzione">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIS']/@unit</elemento>
+    <elemento input_type="text" class="Short" name="MISA - altezza ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISA']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISL - larghezza ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISL']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISP - profondità ">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISP']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISD - diametro">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISD']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISN - lunghezza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISN']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISS - spessore">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISS']/text()</elemento>
+    <elemento input_type="text" class="Short" name="MISG - peso">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISG']/text()</elemento>
+    <elemento input_type="text" class="Long" name="MISV - varie">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISV']/text()</elemento>
+    <elemento input_type="select" name="MISR - mancanza" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='MISR']/opzione">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISR']/text()</elemento>
+    <elemento input_type="text" class="Long" name="MIST - validità">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIST']/text()</elemento>
+    <elemento input_type="text" class="Short" name="filigrana">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FIL']/text()</elemento>
+    <elemento input_type="text" class="Short" name="FRM - formato">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FRM']/text()</elemento>
+    <elemento input_type="text" class="Long" name="MISH - durata (OAC)" HTMLextra="&lt;em style=&quot;font-size:9px&quot;&gt;es. &quot;hh:mm:ss&quot;&lt;/em&gt;">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISH']/text()</elemento>
+    <elemento input_type="text" class="Long" name="MISB - memoria (OAC)" HTMLextra="&lt;em style=&quot;font-size:9px&quot;&gt;es. &quot;byte&quot;&lt;/em&gt;">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISB']/text()</elemento>
+    <elemento input_type="text" class="Long" name="MISI - ingombro (OAC)">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISI']/text()</elemento>
+   </sezione>
+   <sezione name="CO - Conservazione" opened="yes">
+    <elemento multiMod="true" input_type="select" name="STCC - stato di conservazione" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='STCC']/opzione">/c/phystech[@encodinganalog='STC']/p/text()</elemento>
+    <elemento multiMod="true" input_type="textarea" rows="3" cols="58" name="STCS - specifiche sullo stato di conservazione">/c/phystech[@encodinganalog='STC']/note/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="STCM - modalità di conservazione (OAC)">/c/phystech[@encodinganalog='STC']/phystech[@encodinganalog='STCM']/p/text()</elemento>
+   </sezione>
+   <sezione name="RS - Restauri" opened="yes">
+    <elemento name="RST - interventi di restauro " type="multi_group" prefix="/c/phystech[@encodinganalog='RST']/chronlist/chronitem">
+     <elemento input_type="text" class="Short" name="RSTD - data">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/date[@encodinganalog='RSTD']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="RSTS - situazione">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/emph/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="RSTN - nome operatore">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/name[@encodinganalog='RSTN']/text()</elemento>
+     <elemento input_type="textarea" rows="3" cols="58" class="ExtraLong" name="descrizione intervento">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="DA - Dati analitici" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="58" name="DESO - descrizione dell'oggetto" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='DESO']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="DESS - descrizione del soggetto" multiMod="true">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='DESS']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="NSC - notizie storico-critiche" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='NSC']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="ISR - iscrizioni" multiMod="true">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='ISR']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="58" name="STM - stemmi, emblemi, marchi" multiMod="true">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='STM']/p/text()</elemento>
+   </sezione>
+   <sezione name="STI - stima" opened="yes">
+    <elemento input_type="textarea" rows="1" cols="58" name="stima" multiMod="true">/c/odd[@encodinganalog='STI']/p/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="status" layer="Status" label="Area della condizione giuridica e vincoli">
+   <sezione name="TU - Condizione giuridica e vincoli" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55" name="CDG - condizione giuridica" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="ACQ - acquisizione del materiale" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="NVC - provvedimenti di tutela" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="ALN - mutamenti della condizione giuridica o materiale" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN']/p/text()</elemento>
+    <elemento multiMod="true" input_type="textarea" rows="3" cols="58" name="ESP - esportazioni" opened="yes">/c/descgrp[@encodinganalog='TU']/odd[@encodinganalog='ESP']/p/text()</elemento>
+    <elemento input_type="textarea" rows="3" cols="55" name="CPR - copyright" opened="yes" multiMod="true">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="documentazione di riferimento" layer="fonti" label="Area della fonti, della documentazione di riferimento e degli allegati">
+   <sezione name="RSE - Riferimento altre schede" opened="yes">
+    <elemento name="" type="multi_group" prefix="/c/relatedmaterial[@encodinganalog='RSE']" opened="yes">
+     <elemento input_type="text" class="Long" name="RSET - tipo scheda">/c/relatedmaterial[@encodinganalog='RSE']/p/text()</elemento>
+     <elemento input_type="text" class="Long" name="RSEC - codice scheda">/c/relatedmaterial[@encodinganalog='RSE']/p/num/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="FTA - Documentazione fotografica" opened="yes">
+    <elemento name="fotografie" type="multi_group" prefix="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item" opened="yes">
+     <elemento input_type="select" class="Long" name="FTAX - genere" ajaxVoc="/c/altformavail/list/item/genreform/@type" vocType="one" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='FTAX']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/@type</elemento>
+     <elemento input_type="select" class="Long" name="FTAP - tipo" ajaxVoc="/c/altformavail/list/item/genreform" vocType="double" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='FTAP']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/text()</elemento>
+     <elemento input_type="text" class="Long" name="FTAA - autore">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/persname[@encodinganalog='FTAA']/text()</elemento>
+     <elemento input_type="text" name="FTAN - n." class="Long">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/num[@encodinganalog='FTAN']/text()</elemento>
+     <elemento input_type="select" name="FTAF - formato" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='formato']/opzione">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/emph/text()</elemento>
+     <elemento input_type="text" class="Long" name="FTAT - note">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/note[@encodinganalog='FTAT']/p/text()</elemento>
+     <elemento input_type="text" class="Middle" name="nome originale del file digitale">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@altrender</elemento>
+     <elemento name="url oggetto digitale" mode="uploadSimple" class="ExtraLong" type="custom" externalPath="/c/@id" id="upload" prefix="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item" originalFileNameXpath="/extptr/@altrender">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@href</elemento>
+     
+    </elemento>
+   </sezione>
+   <sezione name="VDC - Documentazione video (OAC)" opened="yes">
+    <elemento name="video" type="multi_group" prefix="/c/altformavail[@encodinganalog='VDC']/list/item" opened="yes">
+     <elemento input_type="select" name="VDCX - genere" class="Long" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='VDCX']/opzione">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/@type</elemento>
+     <elemento input_type="select" name="VDCP - tipo" class="Long" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='video']/opzione">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/text()</elemento>
+     <elemento input_type="text" class="Long" name="durata (hh:mm:ss)">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/emph/text()</elemento>
+     <elemento input_type="text" class="Long" name="VDCR - autore">/c/altformavail[@encodinganalog='VDC']/list/item/persname[@encodinganalog='VDCR']/text()</elemento>
+     <elemento input_type="text" class="Long" name="VDCT - note">/c/altformavail[@encodinganalog='VDC']/list/item/note[@encodinganalog='VDCT']/p/text()</elemento>
+     <elemento input_type="text" class="Middle" name="nome originale del file digitale">/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@altrender</elemento>
+     <elemento type="custom" id="upload" mode="uploadSimple" class="ExtraLong" name="url oggetto digitale" originalFileNameXpath="/extptr/@altrender" externalPath="/c/@id" prefix="/c/altformavail[@encodinganalog='VDC']/list/item">/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@href</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="ADM - Documentazione multimediale (OAC)" opened="yes">
+    <elemento name="documenti digitali" type="multi_group" prefix="/c/altformavail[@encodinganalog='ADM']/list/item" opened="yes">
+     <elemento input_type="select" name="ADMX - genere" ajaxVoc="/c/altformavail/list/item/genreform/@type" vocType="one" class="Long" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='VDCX']/opzione">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/@type</elemento>
+     <elemento input_type="text" name="ADMP - tipo" ajaxVoc="/c/altformavail/list/item/genreform" vocType="one" class="Long">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/text()</elemento>
+     <elemento input_type="text" class="Long" name="ADMA - autore">/c/altformavail[@encodinganalog='ADM']/list/item/persname[@encodinganalog='ADMA']/text()</elemento>
+     <elemento input_type="text" class="Long" name="ADMT - note">/c/altformavail[@encodinganalog='ADM']/list/item/note[@encodinganalog='ADMT']/p/text()</elemento>
+     <elemento input_type="text" class="Middle" name="nome originale del file digitale">/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@altrender</elemento>
+     <elemento type="custom" id="upload" mode="uploadSimple" class="ExtraLong" name="url oggetto digitale" externalPath="/c/@id" originalFileNameXpath="/extptr/@altrender" prefix="/c/altformavail[@encodinganalog='ADM']/list/item">/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@href</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="FNT - Fonti archivistiche" opened="yes">
+    <elemento multiMod="true" input_type="textarea" rows="3" cols="55" name="Fonti archivistiche">/c/bibliography[@encodinganalog='FNT']/archref/text()</elemento>
+   </sezione>
+   <sezione name="BIB - Bibliografia" opened="yes">
+    <elemento multiMod="true" input_type="textarea" rows="3" cols="55" name="BIL - citazione completa">/c/bibliography[@encodinganalog='BIB']/p/text()</elemento>
+    <elemento name="monografie e periodici" type="multi_group" prefix="/c/bibliography[@encodinganalog='BIB']/bibref" opened="yes">
+     <elemento input_type="select" name="BIBX - genere" value="document:/iconografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='BIBX']/opzione">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</elemento>
+     <elemento input_type="text" class="ExtraLong" name="BIBA - autore" ajaxVoc="/c/bibliography/bibref/persname" vocType="double">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="BIBC - curatore" ajaxVoc="/c/bibliography/bibref/persname" vocType="double">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBT - titolo contributo">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBG - titolo libro o rivista">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBL - luogo di edizione">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBZ - editore">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBD - data">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBV - volume">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</elemento>
+     <elemento input_type="text" class="Long" name="BIBP - pagine / nn.">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</elemento>
+    </elemento>
+    <elemento name="BSE - bibliografia in rete" type="multi_group" prefix="/c/bibliography[@encodinganalog='BSE']/extref" opened="no">
+     <elemento input_type="text" class="ExtraLong" name="BSET - titolo-soggetto">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</elemento>
+     <elemento input_type="text" class="Short" name="BSED - data di consultazione">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="BSEI - indirizzo di rete">/c/bibliography[@encodinganalog='BSE']/extref/@href</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="MST - Mostre" opened="yes">
+    <elemento multiMod="true" name="eventi" type="multi_group" prefix="/c/bibliography[@encodinganalog='MST']/list/item" opened="yes">
+     <elemento input_type="text" class="Long" name="MSTT - titolo">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</elemento>
+     <elemento input_type="text" class="Long" name="MSTL - luogo" ajaxVoc="/c/bibliography/list/item/geogname" vocType="double">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</elemento>
+     <elemento input_type="text" class="Long" name="MSTS - sede espositiva">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</elemento>
+     <elemento input_type="text" class="Long" name="MSTD - data">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</elemento>
+     <elemento input_type="text" class="Long" name="MSTO - ente organizzatore">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="chiavi di accesso" layer="accesso" label="Area delle chiavi di accesso">
+   <sezione name="Chiavi di accesso (xDams)" opened="yes">
+    <elemento input_type="text" showcode="yes" class="ExtraLong" prefix="/c/controlaccess/subject" name="soggetti / temi" type="multi">/c/controlaccess/subject/text()</elemento>
+    <elemento input_type="text" showcode="yes" class="ExtraLong" prefix="/c/controlaccess/name" name="classificazione oggetto" type="multi">/c/controlaccess/name/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="annotazioni e compilazione" layer="NOTE" label="Area delle annotazioni e della compilazione">
+   <sezione name="AN - annotazioni" opened="yes">
+    <elemento multiMod="true" input_type="textarea" rows="6" cols="55" name="osservazioni">/c/note[@encodinganalog='AN']/p/text()</elemento>
+   </sezione>
+   <sezione name="Informazioni sulla compilazione" opened="yes">
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="funzionario responsabile">/c/processinfo/p/persname/text()</elemento>
+    <elemento name="" type="custom" id="processinfo" prefix="/c/processinfo/list/item" opened="no">
+     <elemento input_type="liveText" name="azione">/c/processinfo/list/item/text()</elemento>
+     <elemento input_type="liveText" name="data">/c/processinfo/list/item/date/text()</elemento>
+     <elemento input_type="liveText" name="responsabile">/c/processinfo/list/item/persname/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/c/did/unitid/@countrycode</elemento>
+   <elemento>/c/did/unitid/@repositorycode</elemento>
+   <elemento>/c/@id</elemento>
+  </sezione>
+ </docEdit>
+ <fixedValues>
+  <elemento value=".">/c/@id</elemento>
+  <elemento value="">/c/processinfo/p/persname/text()</elemento>
+  <elemento value="inserimento">/c/processinfo/list/item/text()</elemento>
+  <elemento value="@coluiCheInserisce@">/c/processinfo/list/item/persname/text()</elemento>
+  <elemento value="@quandoColuiInserisce@">/c/processinfo/list/item/date/text()</elemento>
+  <elemento value="IT">/c/did/unitid/@countrycode</elemento>
+  <elemento value="">/c/did/unitid/@repositorycode</elemento>
+ </fixedValues>
+ <param>
+  <!--elemento id="campi_obbligatori">.c.did.materialspec[@encodinganalog='OGTD'].emph.text()</elemento -->
+  <elemento id="codice_identificativo">/c/did/unitid/text()</elemento>
+  <!-- separati da ; -->
+  <elemento id="escludi_appunti">.c.processinfo</elemento>
+  <!-- separati da ; -->
+  <elemento id="riordina">
+   <opzione value="/c/@id">/c/@id (codice di sistema)</opzione>
+   <opzione value="/c/did/unittitle">/c/did/unittitle (SGTI)</opzione>
+   <opzione value="/c/did/unittitle/title">/c/did/unittitle/title (SGTT)</opzione>
+   <opzione value="/c/did/materialspec/title">/c/did/materialspec/title (OGTN)</opzione>
+   <opzione value="/c/did/unitdate">/c/did/unitdate (DT)</opzione>
+  </elemento>
+  <elemento id="clona">
+   <!-- PRIMA I DELETE E POI GLI APPEND/INSERT O REPLACE -->
+   <opzione action="delete" value="">/c/processinfo/list/item</opzione>
+   <opzione action="append" value="elemento copiato">/c/processinfo/list/item/text()</opzione>
+   <opzione action="append" value="systemdate">/c/processinfo/list/item/date/text()</opzione>
+   <opzione action="append" value="username">/c/processinfo/list/item/persname/text()</opzione>
+   <opzione action="append" value="(Clonato)">/c/did/unittitle[@encodinganalog='SGTI']/text()</opzione>
+   <opzione action="replace" value=".">/c/@id</opzione>
+  </elemento>
+ </param>
+</root>

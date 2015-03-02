@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <titleManager>
+  <sezione name="title">
+   <elemento mode="html" html="" format_after="&#160;">0-[@ogtd@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@ogtn@]-[@sgti@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" titleSepar="¢">[@ogtd@]-[@ogtn@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@sgti@]-[@sgtt@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@sgtt@]-[@all@]</elemento>
+   <elemento flag="isAttach">[@all@]-</elemento>
+  </sezione>
+  <sezione name="hierBrowser">
+   <elemento mode="html" html="" format_after="&#160;">0-[@ogtd@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@ogtn@]-[@sgti@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" titleSepar="¢">[@ogtd@]-[@ogtn@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@sgti@]-[@sgtt@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@sgtt@]-[@all@]</elemento>
+   <elemento flag="isAttach">[@all@]-</elemento>
+  </sezione>
+  <sezione name="hierTitle">
+   <elemento mode="html" html="" format_after="&#160;">0-[@ogtd@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@ogtn@]-[@sgti@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" titleSepar="¢">[@ogtd@]-[@ogtn@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@sgti@]-[@sgtt@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@sgtt@]-[@all@]</elemento>
+  </sezione>
+  <sezione name="titlePath">
+   <elemento mode="html" html="" format_after="&#160;">0-[@ogtd@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@ogtn@]-[@sgti@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" titleSepar="¢">[@ogtd@]-[@ogtn@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@sgti@]-[@sgtt@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@sgtt@]-[@all@]</elemento>
+  </sezione>
+  <sezione name="defaultTitle">
+   <elemento mode="html" html="" format_after="&#160;">0-[@ogtd@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@ogtn@]-[@sgti@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;" titleSepar="¢">[@ogtd@]-[@ogtn@]</elemento>
+   <elemento mode="html" html="em" format_after="&#160;" titleSepar="¢">[@sgti@]-[@sgtt@]</elemento>
+   <elemento mode="html" html="strong" format_after="&#160;">[@sgtt@]-[@all@]</elemento>
+  </sezione>  
+  <sezione name="dataTitle">
+   <elemento>[@tit@]-[@data@]</elemento>
+  </sezione>
+ </titleManager>
+</root>

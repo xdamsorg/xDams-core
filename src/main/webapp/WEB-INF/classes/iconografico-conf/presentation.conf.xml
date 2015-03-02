@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<multiEditing method="xPath:/c/@level">
+		<presentation value="">
+			<file name="/iconografico-conf/presentation-oa.conf.xml"/>
+		</presentation>
+		<presentation value="fonds">
+			<file name="/iconografico-conf/presentation-root.conf.xml"/>
+		</presentation>
+
+		<presentation value="recordgrp">
+			<file name="/iconografico-conf/presentation-root.conf.xml"/>
+		</presentation>
+		 <presentation value="collection">
+	   <file name="/iconografico-conf/presentation-root.conf.xml"/>
+	   </presentation>
+
+		<presentation value="file">
+			<file name="/iconografico-conf/presentation-oa.conf.xml"/>
+		</presentation>
+		<presentation value="item">
+			<file name="/iconografico-conf/presentation-oa.conf.xml"/>
+		</presentation>
+	</multiEditing>
+</root>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method noElements="insert">
+
+  <query active="yes" label="tutti gli oggetti">[XML,/c/@level]=file OR item</query>
+		<!-- text() = la query -->
+		<hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>
+		<query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
+		<!-- text() = documento iniziale -->
+	</access_method>
+	<query>
+		<element activeIdx="no" position="center" label="Ricerca libera">XML,/*</element>
+<element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione" firstIdx=" a" typology="multi">XML,/c/did/materialspec/title</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Oggetto" firstIdx=" a" typology="multi">XML,/c/did/materialspec</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Soggetto" firstIdx=" a" typology="multi">XML,/c/did/unittitle</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Titolo" firstIdx=" a" typology="multi">XML,/c/did/unittitle/title</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Numero inventario" firstIdx="" typology="one">XML,/c/originalsloc/p/num</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Autore/i" firstIdx=" a" typology="double">XML,/c/did/origination/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Ambito" firstIdx=" a" typology="double">XML,/c/did/origination/corpname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Materie e tecniche" firstIdx=" a" typology="multi">XML,/c/did/physdesc/genreform</element>
+
+
+		<data>
+			<element label="Ricerca per data (da - a):">XML,/c/did/unitdate/@normal</element>
+		</data>
+		<sort>
+			<element label="Inserimento" checked="yes"/>
+			<element label="Oggetto">XML(xpart:/c/did/materialspec)</element>
+			<element label="Denominazione">XML(xpart:/c/did/materialspec/title)</element>
+			<element label="Soggetto">XML(xpart:/c/did/unittitle)</element>
+			<element label="Titolo">XML(xpart:/c/did/unittitle/title)</element>
+			<element label="Data">XML(xpart:/c/did/unitdate/@normal)</element>
+			<element label="Codice">XML(xpart:/c/did/unitid)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" position="sx" label="responsabile inserimento / modifica" firstIdx=" a" typology="double">XML,/c/processinfo/list/item/persname</element>
+		<element activeIdx="yes" position="dx" label="data inserimento / modifica" firstIdx="0" typology="one">XML,/c/processinfo/list/item/date</element>
+	</queryAdm>
+</root>

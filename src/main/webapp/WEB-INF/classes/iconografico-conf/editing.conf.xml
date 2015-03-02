@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/c/@level">
+  <docEdit value="">
+   <file name="/iconografico-conf/editing-oa.conf.xml"/>
+  </docEdit>
+  <docEdit value="fonds">
+   <file name="/iconografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="recordgrp">
+   <file name="/iconografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="collection">
+   <file name="/iconografico-conf/editing-root.conf.xml"/>
+  </docEdit>
+  <docEdit value="file">
+   <file name="/iconografico-conf/editing-oa.conf.xml"/>
+  </docEdit>
+  <docEdit value="item">
+   <file name="/iconografico-conf/editing-oa.conf.xml"/>
+  </docEdit>
+ </multiEditing>
+</root>

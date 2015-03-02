@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="SCHEDA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaScheda" userValue="all">
+    <anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/completeTab.html?pos=${viewBean.pos}&amp;selid=${viewBean.selid}&amp;physDoc=${viewBean.physDoc}" target="_new${workFlowBean.alias}">
+    </anchor>
+   </element>
+   <element value="STRUTTURA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaStruttura" userValue="all">
+    <anchor value="${contextPath}/hier/${workFlowBean.archive.alias}/hierBrowser.html?docToggle=${viewBean.physDoc}&amp;docStart=${viewBean.physDoc}" target="_top">
+    </anchor>
+   </element>
+   <element value="MODIFICA MULTIPLA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'multiMod'</paramFunction>
+      <paramFunction>'Modifica gruppi di schede'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="XML EXPORT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="top.newWinProtoGest">
+      <paramFunction>'${contextPath}/admin/${workFlowBean.archive.alias}/exportMenu.html?pos=${viewBean.pos}&amp;selid=${viewBean.selid}&amp;physDoc=${viewBean.physDoc}'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>''</paramFunction><!-- actionFlag -->
+      <paramFunction>'Export Archive'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+      <paramFunction javaBean="viewBean">getPos</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>'{}'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>    
+  </user>
+ </managing>
+</root>
