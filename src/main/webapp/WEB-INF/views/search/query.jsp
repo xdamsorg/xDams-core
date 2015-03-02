@@ -84,7 +84,6 @@ jQuery(document).ready(function(){
 <div id="headPageBig">
 	<%@include file="../common/inc_menu.jsp" %>
 <div class="sub_sub_menu">
-
 	<div class="left_top2"><%
 		int numeroSezione = builderQuery.contaNodi("/root/access_method/hierbrowse[@active='yes']");
 		String noElements = builderQuery.valoreNodo("/root/access_method/@noElements");
@@ -114,7 +113,7 @@ jQuery(document).ready(function(){
 								
 							}
 							if(isUserMod && withElements.equals("insert")){
-					%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html">inserisci</a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
+					%><a class="link1" target="_new1" href="${contextPath}/editing/${workFlowBean.alias}/preInsert.html"><spring:message code="inserisci" text="inserisci"/></a><img src="${frontUrl}/img/arrow.gif" border="0" class="ml4_r" alt="<spring:message code="accedi" text="accedi"/>" /><%
 						}
 						}
 					%>
