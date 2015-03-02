@@ -5,6 +5,7 @@ import it.highwaytech.db.QueryResult;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.util.WebUtils;
 import org.xdams.ajax.bean.AjaxBean;
 import org.xdams.conf.master.ConfBean;
@@ -94,7 +96,7 @@ public class xDamsController {
 
 	@Value("#{mapExtraParam}")
 	HashMap mapExtraParam;
-	
+
 	@Autowired
 	ApplicationContext applicationContext;
 
@@ -129,6 +131,14 @@ public class xDamsController {
 		if (userAgent.toLowerCase().contains("msie")) {
 			response.addHeader("X-UA-Compatible", "IE=edge");
 		}
+		
+		try {
+			Locale locale = RequestContextUtils.getLocale(request);
+			((UserBean)model.get("userBean")).setLanguage(locale.getLanguage());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		model.put("realPath", WebUtils.getRealPath(servletContext, ""));
 	}
 
 	public void common(ConfBean confBean, UserBean userBean, String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -272,9 +282,9 @@ public class xDamsController {
 		try {
 			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
-//			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@pwd]=\"" + userBean.getPwd() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
+			// String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@pwd]=\"" + userBean.getPwd() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
 			String queryUser = "([XML,/user/@id]=\"" + userBean.getId() + "\") AND ([XML,/user/@account]=\"" + userBean.getAccountRef() + "\") AND ([XML,/user/@role]=\"" + userBean.getRole() + "\")";
-//			System.out.println("queryUser: "+queryUser);
+			// System.out.println("queryUser: "+queryUser);
 			QueryResult queryResult = xwconn.getQRfromPhrase(queryUser);
 			int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
 			modelMap.put("physDoc", String.valueOf(numDoc));
@@ -373,8 +383,8 @@ public class xDamsController {
 		}
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", ajaxBean.getContentType().equals("") ? "text/xml; charset=iso-8859-1" : ajaxBean.getContentType());
-		System.out.println("ajaxBean.getStrXmlOutput() " + ajaxBean.getStrXmlOutput());
-		System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType());
+//		System.out.println("ajaxBean.getStrXmlOutput() " + ajaxBean.getStrXmlOutput());
+//		System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType());
 		return new ResponseEntity<String>(ajaxBean.getStrXmlOutput(), responseHeaders, HttpStatus.CREATED);
 	}
 
@@ -397,7 +407,7 @@ public class xDamsController {
 			}
 			return "upload/uploadMenu";
 		}
-		modelMap.put("realPath", WebUtils.getRealPath(servletContext, ""));
+
 		UploadCommand uploadCommand = new UploadCommand(request.getParameterMap(), modelMap);
 		uploadCommand.execute();
 		modelMap.put("uploadResponse", uploadBean);
