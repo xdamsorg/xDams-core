@@ -306,6 +306,7 @@ public class MenuGestioneJstl extends TagSupport {
 
 								} else {
 									methodValue = methodBean;
+									methodValue = (String) ExpressionEvaluationUtils.evaluate((String)methodValue, String.class, pageContext);
 								}
 								String virgola = ",";
 								if (index == contaParamFunction - 1) {
