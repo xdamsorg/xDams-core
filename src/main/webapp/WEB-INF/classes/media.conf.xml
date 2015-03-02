@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <multiEditing method="archive:getAlias">
+ <multiEditing method="archive:getType">
   <media value="xDamsHist">
    <file name="/storico-conf/media.conf.xml"/>
   </media>
@@ -16,8 +16,11 @@
   <media value="xDamsAV">
    <file name="/audiovideo-conf/media.conf.xml"/>
   </media>
+  <media value="xDamsOA">
+   <file name="/iconografico-conf/media.conf.xml"/>
+  </media>
   <media value="xDamsUsers">
    <file name="/users-conf/media.conf.xml"/>
-  </media>  
+  </media>
  </multiEditing>
 </root>

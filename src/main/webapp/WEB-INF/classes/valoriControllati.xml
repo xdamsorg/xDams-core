@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <multiEditing method="archive:getAlias">
+ <multiEditing method="archive:getType">
   <valoriControllati value="xDamsHist">
    <file name="/storico-conf/valoriControllati.xml"/>
   </valoriControllati>
@@ -15,6 +15,9 @@
   </valoriControllati>
   <valoriControllati value="xDamsAV">
    <file name="/audiovideo-conf/valoriControllati.xml"/>
+  </valoriControllati>
+  <valoriControllati value="xDamsOA">
+   <file name="/iconografico-conf/valoriControllati.xml"/>
   </valoriControllati>
   <valoriControllati value="xDamsUsers">
    <file name="/users-conf/valoriControllati.xml"/>

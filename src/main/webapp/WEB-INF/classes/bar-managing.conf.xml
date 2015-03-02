@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <multiEditing method="archive:getAlias">
+ <multiEditing method="archive:getType">
   <managing value="xDamsHist">
    <file name="/storico-conf/bar-managing.conf.xml"/>
   </managing>
@@ -15,6 +15,9 @@
   </managing>
   <managing value="xDamsAV">
    <file name="/audiovideo-conf/bar-managing.conf.xml"/>
+  </managing>
+  <managing value="xDamsOA">
+   <file name="/iconografico-conf/bar-managing.conf.xml"/>
   </managing>
   <managing value="xDamsUsers">
    <file name="/users-conf/bar-managing.conf.xml"/>

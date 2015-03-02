@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <multiEditing method="archive:getAlias">
+ <multiEditing method="archive:getType">
   <docEdit value="xDamsHist">
    <file name="/storico-conf/editing.conf.xml"/>
   </docEdit>
@@ -15,6 +15,9 @@
   </docEdit>
   <docEdit value="xDamsAV">
    <file name="/audiovideo-conf/editing.conf.xml"/>
+  </docEdit>
+  <docEdit value="xDamsOA">
+   <file name="/iconografico-conf/editing.conf.xml"/>
   </docEdit>
   <docEdit value="xDamsUsers">
    <file name="/users-conf/editing.conf.xml"/>

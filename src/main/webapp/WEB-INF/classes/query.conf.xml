@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <multiEditing method="archive:getAlias">
+ <multiEditing method="archive:getType">
   <query value="xDamsHist">
    <file name="/storico-conf/query.conf.xml"/>
   </query>
@@ -15,6 +15,9 @@
   </query>
   <query value="xDamsAV">
    <file name="/audiovideo-conf/query.conf.xml"/>
+  </query>
+  <query value="xDamsOA">
+   <file name="/iconografico-conf/query.conf.xml"/>
   </query>
   <query value="xDamsUsers">
    <file name="/users-conf/query.conf.xml"/>
