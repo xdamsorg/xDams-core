@@ -289,8 +289,9 @@
   <macroarea name="allegati digitali" layer="ALLEGATI" label="Area degli allegati digitali">
    <sezione name="lista allegati digitali" opened="yes">
     <elemento opened="yes" type="multi_group" name="" inline="yes" prefix="/c/daogrp/daoloc">
+     <elemento input_type="text" class="ExtraLong" name="nome originale file">/c/daogrp/daoloc/@altrender</elemento>
      <elemento input_type="text" class="ExtraLong" name="descrizione">/c/daogrp/daoloc/@title</elemento>
-     <elemento mode="uploadSimple" type="custom" id="upload" class="ExtraLong" name="url" externalPath="/c/@id" prefix="/c/daogrp/daoloc">/c/daogrp/daoloc/@href</elemento>
+     <elemento mode="uploadSimple" type="custom" id="upload" class="ExtraLong" name="url" originalFileNameXpath="/@altrender" externalPath="/c/@id" prefix="/c/daogrp/daoloc">/c/daogrp/daoloc/@href</elemento>
     </elemento>
    </sezione>
   </macroarea>

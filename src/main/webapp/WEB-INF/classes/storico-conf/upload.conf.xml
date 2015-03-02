@@ -5,9 +5,9 @@
   <!-- <renameFile> gestisce il rename dei file, true/false -->
   <renameFile>true</renameFile>
   <!-- <compositionRuleFile> gestisce la regola di composizione del nome del file, il valore idRecord all'interno dell'editing -->
-  <compositionRuleFile>8-4-4</compositionRuleFile>
+  <compositionRuleFile>2-5-6-6</compositionRuleFile>
   <!-- <compositionRuleFile> gestisce la regola di composizione della directory, il valore idRecord all'interno dell'editing -->
-  <compositionRuleDir>8-4-4</compositionRuleDir>
+  <compositionRuleDir>2-5-6-6</compositionRuleDir>
   <!-- <compositionReplaceName> applica un replace del nome dopo aver applicato la compositionRuleFile -->
   <compositionReplaceName></compositionReplaceName>
   <commandList>
@@ -54,9 +54,9 @@
   <!-- <renameFile> gestisce il rename dei file, true/false -->
   <renameFile>false</renameFile>
   <!-- <compositionRuleFile> gestisce la regola di composizione del nome del file, il valore idRecord all'interno dell'editing -->
-  <compositionRuleFile>8-4-4</compositionRuleFile>
+  <compositionRuleFile>2-5-6-6</compositionRuleFile>
   <!-- <compositionRuleFile> gestisce la regola di composizione della directory, il valore idRecord all'interno dell'editing -->
-  <compositionRuleDir>8-4-4</compositionRuleDir>
+  <compositionRuleDir>2-5-6-6</compositionRuleDir>
   <!-- <compositionReplaceName> applica un replace del nome dopo aver applicato la compositionRuleFile -->
   <compositionReplaceName></compositionReplaceName>
   <commandList>

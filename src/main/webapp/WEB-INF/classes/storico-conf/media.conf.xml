@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- 	<media type="slides" prefix="${contextPath}/attach/xdams.org/${workFlowBean.alias}/high"></media>
+ 	<media type="slides" prefix="${contextPath}/attach/${userBean.accountRef}/${workFlowBean.alias}/high"></media>
+  <!-- gestione preview nell'esito di ricerca se si decommenta trovi un checkbox dentro l'esito dei titoli
+       se non si dispone di thumb si deve impostare l'upload resize 
+   -->
+    <!-- <media type="viewPreview" prefix="${contextPath}/attach/${userBean.accountRef}/${workFlowBean.alias}/high"></media> -->
 </root>
