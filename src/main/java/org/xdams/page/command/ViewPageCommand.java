@@ -107,7 +107,7 @@ public class ViewPageCommand {
 			confBean = editingManager.rewriteMultipleConf(confControl);
 			XMLBuilder builder = confBean.getTheXMLConfTitle();
 			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
-			System.out.println("QueryParserCommand.execute()" + titleRole);
+//			System.out.println("QueryParserCommand.execute()" + titleRole);
 			try {
 				if (!titleRole.trim().equals("")) {
 					xwconn.setTitleRole(titleRole);

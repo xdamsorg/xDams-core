@@ -59,14 +59,14 @@ public class TitlePageCommand {
 			confBean = editingManager.rewriteMultipleConf(confControl);
 
 			// mettere queryBean
-			System.out.println("QueryParserCommand.execute() workFlowBean.getAlias() " + workFlowBean.getAlias());
-			System.out.println("QueryParserCommand.execute() aReq.getParameter(\"fromId\") " + workFlowBean.getRequest().getParameter("fromId") + "aaaaaaa");
+//			System.out.println("QueryParserCommand.execute() workFlowBean.getAlias() " + workFlowBean.getAlias());
+//			System.out.println("QueryParserCommand.execute() aReq.getParameter(\"fromId\") " + workFlowBean.getRequest().getParameter("fromId") + "aaaaaaa");
 
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 
 			XMLBuilder builder = confBean.getTheXMLConfTitle();
 			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='title']/titleRole/text()", false);
-			System.out.println("QueryParserCommand.execute()" + titleRole);
+//			System.out.println("QueryParserCommand.execute()" + titleRole);
 			try {
 				if (!titleRole.trim().equals("")) {
 					xwconn.setTitleRole(titleRole);
@@ -115,7 +115,7 @@ public class TitlePageCommand {
 					queryResult = new QueryResult();
 					workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
 				}
-				System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
+//				System.out.println("QueryParserCommand.execute() " + findDocumentCommand.getLaFrase());
 			} else {
 				queryResult = xwconn.getQRFromSelId(MyRequest.getParameter("qrId", parameterMap));
 				workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
