@@ -204,10 +204,7 @@ public class XMLBuilder {
 	}
 
 	public XMLBuilder(String strDocXml, String strEncoding, String htmlTagClass) throws ParserConfigurationException, SAXException, IOException, XMLException {
-		// strDocXml=strDocXml.replaceAll("&", "&amp;");
 		strDocXml = parseAttribute(strDocXml);
-
-		// stem.out.println("EVIDDDDDDDDDDDDDDDDDDDDDDDDDD " + strDocXml);
 		strDocXml = strDocXml.replaceAll("<\\?xw-meta Dbms=\"ExtraWay\".*\\?><.xw-crc .*\\?>", "");
 		strDocXml = strDocXml.replaceAll("<\\?xw-meta DbmsVer=\"ExtraWay\".*\\?><.xw-crc .*\\?>", "");
 		strDocXml = strDocXml.replaceAll("<\\?xw-nest .*\\?>", "");
@@ -234,7 +231,7 @@ public class XMLBuilder {
 			if (isoPass) {
 				strDocXml = strIso + strDocXml;
 			}
-//			System.out.println("XMLBuilder.XMLBuilder()" + strDocXml);
+			// System.out.println("XMLBuilder.XMLBuilder()" + strDocXml);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			dbf.setValidating(false);
 			DocumentBuilder builder;
