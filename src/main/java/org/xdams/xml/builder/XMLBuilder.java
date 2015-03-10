@@ -213,6 +213,8 @@ public class XMLBuilder {
 		strDocXml = strDocXml.replaceAll("<\\?xw-nest .*\\?>", "");
 		strDocXml = strDocXml.replaceAll("<\\?xw-sr\\?>", "IniZioTagHtMlspan class=LeViRGoleTte" + htmlTagClass + "LeViRGoleTteFinETagHtMl");
 		strDocXml = strDocXml.replaceAll("<\\?xw-er\\?>", "IniZioTagHtMl/spanFinETagHtMl");
+		strDocXml = strDocXml.replaceAll("<\\?xw-sr on\\?>", "IniZioTagHtMlspan class=LeViRGoleTte" + htmlTagClass + "LeViRGoleTteFinETagHtMl");
+		strDocXml = strDocXml.replaceAll("<\\?xw-er off\\?>", "IniZioTagHtMl/spanFinETagHtMl");
 		strDocXml = strDocXml.replaceAll("<\\?xw-ar @", "<h name=\"");
 		strDocXml = strDocXml.replaceAll("\\?>", "\"/>");
 
@@ -232,7 +234,7 @@ public class XMLBuilder {
 			if (isoPass) {
 				strDocXml = strIso + strDocXml;
 			}
-			// System.out.println("XMLBuilder.XMLBuilder()" + strDocXml);
+//			System.out.println("XMLBuilder.XMLBuilder()" + strDocXml);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			dbf.setValidating(false);
 			DocumentBuilder builder;
