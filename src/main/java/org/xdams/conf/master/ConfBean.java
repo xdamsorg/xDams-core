@@ -262,12 +262,4 @@ public class ConfBean {
 		return theXMLconf;
 	}
 
-	// public PageContext getPageContext() {
-	// return pageContext;
-	// }
-	//
-	// public void setPageContext(PageContext pageContext) {
-	// this.pageContext = pageContext;
-	// }
-
 }
