@@ -1,6 +1,6 @@
 <%@page import="org.springframework.web.util.WebUtils"%>
 <%
-	String ricercaLibera = "[XML,*]";
+	String ricercaLibera = "[@]";
 	if(!confBean.getTheXMLConfQuery().valoreNodo("/root/query/element[@genericFind='true']/text()").equals("")){
 		ricercaLibera = "["+confBean.getTheXMLConfQuery().valoreNodo("/root/query/element[@genericFind='true']/text()")+"]";
 	}
