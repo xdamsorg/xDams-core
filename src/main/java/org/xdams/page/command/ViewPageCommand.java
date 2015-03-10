@@ -61,7 +61,8 @@ public class ViewPageCommand {
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 			viewBean.setPageName((String) modelMap.get("pageName"));
 
-
+		
+			
 			XMLBuilder theXMLDoc = null;
 			if (!selid.equals("") && !pos.equals("")) {
 				// httpSession.setAttribute("posInQr", new Integer(pos));
@@ -86,7 +87,6 @@ public class ViewPageCommand {
 				// System.out.println("1111111111111111111111111111111111111111");
 				// System.out.println("ViewPageCommand.execute() PRIMA" + docXML);
 				viewBean.setDocXml(XMLCleaner.clearXwXML(docXML, false));
-				// System.out.println("ViewPageCommand.execute() viewBean.getDocXml() DOPO" + viewBean.getDocXml());
 				// System.out.println("2222222222222222222222222222222");
 				theXMLDoc = new XMLBuilder(viewBean.getDocXml(), "ISO-8859-1", "evid");
 				// System.out.println("333333333333333333333333333333333333333333");
@@ -95,10 +95,11 @@ public class ViewPageCommand {
 			} else {
 				// System.out.println("4444444444444444444444444444444444444444444");
 				viewBean.setDocXml(XMLCleaner.clearXwXML(xwconn.getSingleXMLFromNumDoc(viewBean.getPhysDoc()), true));
+//				System.out.println("ViewPageCommand.execute() viewBean.getDocXml() BBB" + viewBean.getDocXml());
 				theXMLDoc = new XMLBuilder(viewBean.getDocXml(), "ISO-8859-1");
 				// System.out.println("555555555555555555555555555555555555555555");
 			}
-			// System.out.println("ViewPageCommand.execute() theXMLDoc "+theXMLDoc.getXML("ISO-8859-1"));
+			  
 			viewBean.setXmlBuilder(theXMLDoc);
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 			// System.out.println("66666666666666666666666666666666666666666");
