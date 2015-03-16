@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<access_method noElements="insert">
+		<clipboard disabled="true"/>
+		<query active="yes" label="List of all documents">[UD,/xw/@UdType/]="c"</query>
+		<hierbrowse active="yes" label="Enter archive">1</hierbrowse>
+		<query active="yes" label="Unlinked documents" ajaxCheck="notinhier">notinhier:1</query>
+	</access_method>
+	<query>
+		<element activeIdx="no" ajaxKey="no" position="center" label="Search">@</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Title" firstIdx="a" typology="double">XML,/c/did/unittitle</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Description of content" firstIdx="a" typology="multi">XML,/c/descgrp/scopecontent/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Container type" firstIdx=" " typology="multi">XML,/c/did/container/@type</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Container identifier" firstIdx=" " typology="multi">XML,/c/did/container</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Physical location" firstIdx=" " typology="double">XML,/c/did/physloc</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Bibliography" firstIdx="a" typology="multi">XML,/c/descgrp/bibliography/bibref/title</element>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Notes" firstIdx=" " typology="multi">XML,/c/note/p</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Identifier" firstIdx="0" typology="multi">XML,/c/@id</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Name" firstIdx=" a" typology="double">XML,/c/controlaccess/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Place" firstIdx=" a" typology="double">XML,/c/controlaccess/geogname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Corporate body" firstIdx=" a" typology="double">XML,/c/controlaccess/corpname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Other names" firstIdx=" a" typology="double">XML,/c/controlaccess/name</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="File plan" firstIdx=" a" typology="multi">XML,/c/descgrp/fileplan/p</element>
+		<data>
+			<element ajaxKey="yes" label="Search by date (from - to):">XML,/c/did/unittitle/unitdate/@normal</element>
+		</data>
+		<sort>
+			<element label="None" checked="yes"/>
+			<element label="Date record created">UD(xpart:/xw/UserId/@DateIns/)</element>
+			<element label="Date record modified">UD(xpart:/xw/UserId/@DateMod/),UD(xpart:/xw/UserId/@TimeMod/)</element>
+			<element label="Physical location">XML(xpart:/c/did/physloc)</element>
+			<element label="Date">XML(xpart:/c/did/unittitle/unitdate/@normal)</element>
+			<element label="Identifier">XML(xpart:/c/did/unitid)</element>
+		</sort>
+	</query>
+	<queryAdm>
+		<element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivist" firstIdx=" a" typology="double">XML,/c/processinfo/list/item/persname</element>
+		<element activeIdx="yes" ajaxKey="yes" position="dx" label="Date record created/modified" firstIdx="0" typology="one">XML,/c/processinfo/list/item/date</element>
+	</queryAdm>
+</root>

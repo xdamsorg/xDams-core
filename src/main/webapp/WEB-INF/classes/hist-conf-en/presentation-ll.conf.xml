@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea name="Identity statement area" summary="yes" showdoc="yes">
+  <sezione name="identification of descriptive unit" summary="yes" showdoc="yes" opened="yes">
+   <elemento name="audience" value="document:/storico-conf/valoriControllati.xml" summary="yes" showdoc="yes" externalPath="/root/elemento[@name='audience']/opzione">/c/@audience</elemento>
+   <elemento name="local identifier and level of description" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c">
+    <elemento summary="yes" showdoc="no">/c/did/unitid/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c[@level!='otherlevel']/@level</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='otherlevel']/opzione">/c[@level='otherlevel']/@otherlevel</elemento>
+   </elemento>
+   <elemento name="title and chronology" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c">
+    <elemento summary="yes" showdoc="no">/c/descgrp[@type='codici e numerazioni']/fileplan/p/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&lt;strong&gt;" format_after="&lt;/strong&gt;">/c/did/unittitle/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=",&#160;&lt;em&gt;" format_after="&lt;/em&gt;">/c/did/unittitle/unitdate/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;&lt;em&gt;" format_after="&lt;/em&gt;">/c/did/unittitle/unitdate/emph/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=",&#160;&lt;br /&gt;">/c/did/unittitle/emph/text()</elemento>
+   </elemento>
+   <elemento name="extent and medium" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c/did/physdesc">
+    <elemento showdoc="no" summary="yes">/c/did/physdesc[@label='container']/genreform/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_after="&lt;br/&gt;">/c/did/physdesc[@label='container']/physfacet[@type='medium']/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&#160;di&#160;">/c/did/physdesc[@label='content']/genreform/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&#160;" format_after="&lt;br/&gt;">/c/did/physdesc[@label='content']/extent/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&lt;em&gt;dimensions&lt;/em&gt;:&#160;" format_after="&#160;">/c/did/physdesc[@label='content']/dimensions[@unit='mm']/dimensions[@type='altezza']/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="x&#160;">/c/did/physdesc[@label='content']/dimensions[@unit='mm']/dimensions[@type='base']/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&lt;br/&gt;&lt;em&gt;color&lt;/em&gt;:&#160;" format_after="&#160;">/c/did/physdesc[@label='content']/physfacet[@type='cromatismo']/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&lt;br/&gt;&lt;em&gt;scale&lt;/em&gt;:&#160;" format_after="&#160;">/c/did/physdesc[@label='content']/physfacet[@type='scala']/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before="&lt;br/&gt;&lt;em&gt;physical description note&lt;/em&gt;:&lt;br/&gt;" format_after="&#160;">/c/did/physdesc[@label='content']/physfacet[@type='note']/text()</elemento>
+   </elemento>
+   <elemento name="unit identifiers" type="multi_group" inline="yes" summary="yes" showdoc="no" prefix="/c">
+    <elemento format_before="&lt;em&gt;provisional unit identifier&lt;/em&gt;:&#160;" summary="yes" showdoc="no" format_after="&lt;br/&gt;">/c/did/unittitle/num/emph/text()</elemento>
+    <elemento format_before="&lt;em&gt;permanent unit identifier&lt;/em&gt;:&#160;" summary="yes" showdoc="no" format_after="&lt;br/&gt;">/c/did/unittitle/num/text()</elemento>
+    <elemento type="multi" format_before="&lt;em&gt;physical location&lt;/em&gt;:&#160;" prefix="/c/did/physloc" summary="yes" showdoc="no">/c/did/physloc/text()</elemento>
+   </elemento>
+   <elemento summary="no" showdoc="yes" name="level of description" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='level']/opzione">/c[@level!='otherlevel']/@level</elemento>
+   <elemento summary="no" showdoc="yes" name="level of description" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='otherlevel']/opzione">/c[@level='otherlevel']/@otherlevel</elemento>
+   <elemento name="system identifier" summary="no" showdoc="yes">/c/@id</elemento>
+   <elemento summary="no" showdoc="yes" name="local identifier">/c/did/unitid/text()</elemento>
+   <elemento name="provisional unit identifier" summary="no" showdoc="yes">/c/did/unittitle/num/emph/text()</elemento>
+   <elemento name="permanent unit identifier" summary="no" showdoc="yes">/c/did/unittitle/num/text()</elemento>
+   <elemento name="container identifier" type="multi_group" summary="yes" showdoc="no" prefix="/c/did/container[@label='posizione fisica']" inline="yes">
+    <elemento summary="yes" showdoc="no" format_after="&#160;">/c/did/container[@label='posizione fisica'][1]/@type</elemento>
+    <elemento summary="yes" showdoc="no">/c/did/container[@label='posizione fisica'][1]/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=",&#160;">/c/did/container[@label='posizione fisica'][2]/@type</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;">/c/did/container[@label='posizione fisica'][2]/text()</elemento>
+    <elemento summary="yes" showdoc="no" format_before=",&#160;">/c/did/container[@label='posizione fisica'][3]/@type</elemento>
+    <elemento summary="yes" showdoc="no" format_before="&#160;">/c/did/container[@label='posizione fisica'][3]/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="title" summary="no" showdoc="yes" opened="yes">
+   <elemento name="title" summary="no" showdoc="yes">/c/did/unittitle/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="title note">/c/did/unittitle/emph/text()</elemento>
+   <elemento summary="no" showdoc="yes" name="file plan">/c/descgrp[@type='codici e numerazioni']/fileplan/p/text()</elemento>
+   <elemento name="protocol" type="multi_group" inline="yes" summary="no" showdoc="yes" prefix="/c/descgrp[@type='codici e numerazioni']/list[child::head/text()='protocollo']">
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/descgrp[@type='codici e numerazioni']/list[child::head/text()='protocollo']/item/date/text()</elemento>
+    <elemento summary="no" showdoc="yes">/c/descgrp[@type='codici e numerazioni']/list[child::head/text()='protocollo']/item/num/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="chronology" summary="no" showdoc="yes" opened="yes">
+   <elemento name="date range" summary="no" showdoc="yes">/c/did/unittitle/unitdate/text()</elemento>
+   <elemento name="place" summary="no" showdoc="yes">/c/did/unittitle/geogname/text()</elemento>
+   <elemento name="date note" summary="no" showdoc="yes">/c/did/unittitle/unitdate/emph/text()</elemento>
+  </sezione>
+  <sezione name="container identifier OR other identifier" showdoc="yes" summary="no" opened="yes">
+   <elemento name="container" summary="no" inline="yes" showdoc="yes" type="multi_group" prefix="/c/did/container[@label='posizione fisica']">
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/did/container[@label='posizione fisica'][1]/@type</elemento>
+    <elemento summary="no" showdoc="yes">/c/did/container[@label='posizione fisica'][1]/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/did/container[@label='posizione fisica'][2]/@type</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;">/c/did/container[@label='posizione fisica'][2]/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/did/container[@label='posizione fisica'][3]/@type</elemento>
+    <elemento summary="no" showdoc="yes">/c/did/container[@label='posizione fisica'][3]/text()</elemento>
+   </elemento>
+   <elemento name="original container identifier | segnatura antica o originaria" type="multi_group" inline="yes" summary="no" showdoc="yes" prefix="/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']">
+    <elemento summary="no" showdoc="yes" format_after="&#160;">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/p/text()</elemento>
+    <elemento summary="no" showdoc="yes">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/note/p/text()</elemento>
+   </elemento>
+   <elemento name="previous container identifier | segnatura precedente" type="multi_group" inline="yes" summary="no" showdoc="yes" prefix="/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']">
+    <elemento summary="no" showdoc="yes">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=".&#160;">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/note/p/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="name of creator" showdoc="no" summary="yes" opened="yes">
+   <elemento name="name of creator: person" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname/text()</elemento>
+   <elemento name="name of creator: corporate body" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/corpname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname/text()</elemento>
+   <elemento name="name of creator: family" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/famname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/famname/text()</elemento>
+  </sezione>
+  <sezione name="extent and medium" showdoc="yes" summary="no" opened="yes">
+   <elemento showdoc="yes" summary="no" name="type">/c/did/physdesc[@label='container']/genreform/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="support">/c/did/physdesc[@label='container']/physfacet[@type='medium']/text()</elemento>
+   <elemento type="multi_group" name="physical description details" prefix="/c/did/physdesc[@label='content']" summary="no" showdoc="yes">
+    <elemento showdoc="yes" summary="no" format_after="&#160;">/c/did/physdesc[@label='content']/genreform/text()</elemento>
+    <elemento showdoc="yes" summary="no">/c/did/physdesc[@label='content']/extent/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before=";&#160;" format_after="&#160;">/c/did/physdesc[@label='content']/dimensions[@unit='mm']/dimensions[@type='altezza']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="x&#160;" format_after="&#160;(mm)">/c/did/physdesc[@label='content']/dimensions[@unit='mm']/dimensions[@type='base']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before=";&#160;color:&#160;">/c/did/physdesc[@label='content']/physfacet[@type='cromatismo']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before=";&#160;scale&#160;" format_after="&#160;">/c/did/physdesc[@label='content']/physfacet[@type='scala']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before="&lt;br/&gt;&lt;em&gt;physical description notes:&lt;/em&gt;&lt;br/&gt;">/c/did/physdesc[@label='content']/physfacet[@type='note']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format="&lt;br/&gt;">/c/did/physdesc[@label='content']/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="name of creator" showdoc="no" summary="yes" opened="no">
+   <elemento name="name of creator: person" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname/text()</elemento>
+   <elemento name="name of creator: corporate body" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/corpname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname/text()</elemento>
+   <elemento name="name of creator: family" summary="yes" showdoc="no" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/famname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/famname/text()</elemento>
+  </sezione>
+  <sezione name="physical location" showdoc="no" summary="yes" opened="yes" inline="yes">
+   <elemento type="multi" name="physical location" prefix="/c/did/physloc" summary="yes" showdoc="no">/c/did/physloc/text()</elemento>
+  </sezione>
+  <sezione name="physical location" showdoc="yes" summary="no" opened="yes" inline="yes">
+   <elemento type="multi" prefix="/c/did/physloc" summary="no" showdoc="yes">/c/did/physloc/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Context area" summary="no" showdoc="yes">
+  <sezione name="name of creator" summary="no" showdoc="yes" opened="yes">
+   <elemento name="person" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/persname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/persname/text()</elemento>
+   <elemento name="corporate body" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/corpname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/corpname/text()</elemento>
+   <elemento name="family" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/did/origination/famname" query="[XML,/eac-cpf/control/recordId]">/c/did/origination/famname/text()</elemento>
+  </sezione>
+  <sezione name="administrative / biographical history" summary="no" showdoc="yes" opened="yes">
+   <elemento showdoc="yes">/c/descgrp/bioghist/p/text()</elemento>
+  </sezione>
+  <sezione name="archival history" summary="no" showdoc="yes" opened="yes">
+   <elemento showdoc="yes">/c/descgrp/custodhist/p/text()</elemento>
+  </sezione>
+  <sezione name="immediate source of acquisition" summary="no" showdoc="yes" opened="yes">
+   <elemento showdoc="yes">/c/descgrp/acqinfo/p/text()</elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Content and structure area" summary="yes" showdoc="yes">
+  <sezione name="scope and content" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/scopecontent/p/text()</elemento>
+  </sezione>
+  <sezione name="attachments" summary="no" showdoc="yes" opened="yes">
+   <elemento name="printed material" summary="no" showdoc="yes" type="multi_group" prefix="/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item" opened="no">
+    <elemento format_before="&lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;,&#160;" summary="no" showdoc="yes">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/persname[@role='autore']/text()</elemento>
+    <elemento format_before="&lt;em&gt;" summary="no" showdoc="yes" format_after="&lt;/em&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/title/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;in&#160;«" format_after="»">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/edition/text()</elemento>
+    <elemento format_before=",&#160;edited by &lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;" summary="no" showdoc="yes" opened="yes">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/persname[@role='curatore']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/geogname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/publisher/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/imprint/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/num/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=".&#160;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale a stampa allegato']/item/bibref/@null</elemento>
+   </elemento>
+   <elemento name="cartographic material" summary="no" showdoc="yes" type="multi_group" prefix="/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item" opened="no">
+    <elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/unittitle/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;description&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;date&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;type&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/genreform/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;quantity&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='quantità']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;width (mm)&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='base']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;height (mm)&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/num[@type='altezza']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;notes&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/note/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Materiale cartografico allegato']/item/@null</elemento>
+   </elemento>
+   <elemento name="other attachments" summary="no" showdoc="yes" type="multi_group" prefix="/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item" inline="yes" opened="no">
+    <elemento summary="no" showdoc="yes" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/unittitle/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&lt;em&gt;description&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/text()</elemento>
+    <elemento format_before="&lt;em&gt;date&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;" summary="no" showdoc="yes">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/date/text()</elemento>
+    <elemento format_before="&lt;em&gt;type&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;" summary="no" showdoc="yes">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/genreform/text()</elemento>
+    <elemento format_before="&lt;em&gt;quantity&lt;/em&gt;:&#160;" format_after="&lt;br/&gt;" summary="no" showdoc="yes">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/num/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="notes:&#160;" format_after="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/note/p/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/descgrp/scopecontent/list[child::head/text()='Altri allegati']/item/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="description of content" summary="yes" showdoc="no" opened="yes">
+   <elemento name="scope and content" summary="yes" showdoc="no">/c/descgrp/scopecontent/p/text()</elemento>
+  </sezione>
+  <sezione name="appraisal, destruction and scheduling information" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/appraisal/p/text()</elemento>
+  </sezione>
+  <sezione name="accruals" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/accruals/p/text()</elemento>
+  </sezione>
+  <sezione name="system of arrangement" summary="no" showdoc="yes" opened="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/arrangement/p/text()</elemento>
+  </sezione>
+  <sezione name="entities, places, and subjects" summary="no" showdoc="yes" opened="no">
+   <elemento name="corporate bodies" summary="no" showdoc="yes" prefix="/c/controlaccess/corpname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsEACCPF" query="[XML,/eac-cpf/control/recordId]">
+    <elemento name="corporate body name" summary="no" showdoc="yes">/c/controlaccess/corpname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/corpname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/corpname/@null</elemento>
+   </elemento>
+   <elemento name="people" summary="no" showdoc="yes" prefix="/c/controlaccess/persname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsEACCPF" query="[XML,/eac-cpf/control/recordId]">
+    <elemento name="person name" summary="no" showdoc="yes">/c/controlaccess/persname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/persname/@role</elemento>
+    <elemento summary="no" showdoc="yes" format_before=";&#160;&lt;em&gt;pseudonimo&#160;/&#160;vedi&#160;anche&lt;/em&gt;:&#160;">/c/controlaccess/persname/@altrender</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/persname/@null</elemento>
+   </elemento>
+   <elemento name="families" summary="no" showdoc="yes" type="multi_auther" code="authfilenumber" arch_ref="xDamsEACCPF" prefix="/c/controlaccess/famname" query="[XML,/eac-cpf/control/recordId]">/c/controlaccess/famname/text()</elemento>
+   <elemento name="places" summary="no" showdoc="yes" prefix="/c/controlaccess/geogname" inline="yes" type="multi_group" code="authfilenumber" arch_ref="xDamsHGeo" query="[XML,/eac/eacheader/eacid]">
+    <elemento name="place name" summary="no" showdoc="yes">/c/controlaccess/geogname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/geogname/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/geogname/@null</elemento>
+   </elemento>
+   <elemento name="subject" summary="no" showdoc="yes" type="multi_group" prefix="/c/controlaccess/subject" inline="yes">
+    <elemento summary="no" showdoc="yes">/c/controlaccess/subject/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before="&#160;(" format_after=")">/c/controlaccess/subject/emph/text()</elemento>
+    <elemento summary="no" showdoc="yes" format="&lt;br/&gt;">/c/controlaccess/subject/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Conditions of access and use area" summary="no" showdoc="yes">
+  <sezione name="conditions governing access" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/accessrestrict/p/text()</elemento>
+  </sezione>
+  <sezione name="conditions governing reproduction" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/userestrict/p/text()</elemento>
+  </sezione>
+  <sezione name="language / script of material" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/did/langmaterial/language/text()</elemento>
+  </sezione>
+  <sezione name="physical characteristics and technical requirements" summary="no" showdoc="yes">
+   <elemento name="physical condition" opened="no" summary="no" showdoc="yes" type="multi_group" prefix="/c/descgrp/phystech/p">
+    <elemento summary="no" showdoc="yes">/c/descgrp/phystech/p/text()</elemento>
+   </elemento>
+   <elemento name="notes" opened="no" summary="no" showdoc="yes" type="multi_group" prefix="/c/descgrp/phystech/note/p">
+    <elemento summary="no" showdoc="yes">/c/descgrp/phystech/note/p/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="other finding aids" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes" name="finding aid description (free text)">/c/descgrp/otherfindaid/p/text()</elemento>
+   <elemento name="web resources" type="multi_group" prefix="/c/descgrp/otherfindaid/archref" inline="yes" opened="no" summary="no" showdoc="yes">
+    <elemento name="" opened="yes" summary="no" showdoc="yes" format_before="&lt;em&gt;" format_after="&lt;/em&gt;">/c/descgrp/otherfindaid/archref/unittitle/text()</elemento>
+    <elemento name="" opened="yes" summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/otherfindaid/archref/abstract/text()</elemento>
+    <elemento name="" opened="yes" summary="no" showdoc="yes" format_before="&#160;&lt;" format_after="&gt;&lt;br/&gt;">/c/descgrp/otherfindaid/archref/@href</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Allied materials area" summary="no" showdoc="yes">
+  <sezione name="existence and location of originals" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/originalsloc/p/text()</elemento>
+  </sezione>
+  <sezione name="existence and location of copies" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/altformavail/p/text()</elemento>
+  </sezione>
+  <sezione name="related units of description (attached)" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/relatedmaterial/p/text()</elemento>
+  </sezione>
+  <sezione name="related units of description (separate)" summary="no" showdoc="yes">
+   <elemento summary="no" showdoc="yes">/c/descgrp/separatedmaterial/p/text()</elemento>
+  </sezione>
+  <sezione name="bibliography" opened="yes" summary="no" showdoc="yes">
+   <elemento name="citations (free text)" opened="yes" summary="no" showdoc="yes">/c/descgrp/bibliography/p/text()</elemento>
+   <elemento name="citations (structured)" type="multi_group" summary="no" showdoc="yes" prefix="/c/descgrp/bibliography/bibref">
+    <elemento format="&lt;ul&gt;&lt;li style=&quot;list-style:circle&quot;&gt;" summary="no" showdoc="yes">/c/descgrp/bibliography/bibref/@nell</elemento>
+    <elemento format_before="&lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;, " summary="no" showdoc="yes" opened="yes">/c/descgrp/bibliography/bibref/persname[@role='autore']/text()</elemento>
+    <elemento format_before="&lt;em&gt;" summary="no" showdoc="yes" format_after="&lt;/em&gt;" name="">/c/descgrp/bibliography/bibref/title/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;in&#160;«" format_after="»">/c/descgrp/bibliography/bibref/edition/text()</elemento>
+    <elemento format_before=",&#160;edited by &lt;span style=&quot;font-variant: small-caps&quot;&gt;" format_after="&lt;/span&gt;" summary="no" showdoc="yes">/c/descgrp/bibliography/bibref/persname[@role='curatore']/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/bibliography/bibref/imprint/geogname/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/bibliography/bibref/imprint/publisher/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/bibliography/bibref/imprint/date/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=",&#160;">/c/descgrp/bibliography/bibref/num/text()</elemento>
+    <elemento summary="no" showdoc="yes" format_before=".&#160;">/c/descgrp/bibliography/bibref/text()</elemento>
+    <elemento format="&lt;/li&gt;&lt;/ul&gt;" summary="no" showdoc="yes">/c/descgrp/bibliography/bibref/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+ <macroarea name="Digital assets" summary="yes" showdoc="yes">
+  <sezione name="Attachments" summary="yes" showdoc="yes" opened="yes">
+   <elemento summary="yes" showdoc="yes" alternativeLinkTitle="open attachment" type="mediaBean" xPathPrefix="/c/daogrp/daoloc" xPathHref="/c/daogrp/daoloc/@href" xPathTitle="/c/daogrp/daoloc/@title" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides"/>
+  </sezione>
+ </macroarea>
+ <macroarea name="Notes area" summary="yes" showdoc="yes">
+  <sezione name="notes" summary="yes" showdoc="yes">
+   <elemento name="notes" summary="yes" showdoc="yes">/c/note/p/text()</elemento>
+   <elemento name="archivist's note" summary="no" showdoc="yes">/c/processinfo/note/p/text()</elemento>
+  </sezione>
+  <sezione name="description control area" summary="yes" showdoc="yes">
+   <elemento summary="no" showdoc="yes" type="multi_group" name="xDams" prefix="/c/processinfo/list/item" inline="yes">
+    <elemento format_after=",&#160;" summary="no" showdoc="yes" name="maintenance event">/c/processinfo/list/item/text()</elemento>
+    <elemento summary="no" showdoc="yes" name="date">/c/processinfo/list/item/date/text()</elemento>
+    <elemento format_before=";&#160;user" summary="no" showdoc="yes" name="maintenance agent">/c/processinfo/list/item/persname/text()</elemento>
+    <elemento format="&lt;br/&gt;" summary="no" showdoc="yes">/c/processinfo/list/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+</root>

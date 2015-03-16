@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <element multiMod="true" input_type="text" name="permanent unit identifier (lower levels of description)" class="Short">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/num[@type='ordinamento']/text()</element>
+ <element multiMod="true" input_type="text" name="segnatura attuale - tipo" class="Short">/c/did/container[@label='posizione fisica']/@type</element>
+ <element multiMod="true" input_type="text" name="segnatura attuale - valore" class="Short">/c/did/container[@label='posizione fisica']/text()</element>
+ <element multiMod="true" input_type="text" class="ExtraLong" name="title">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/text()</element>
+ <element multiMod="true" input_type="text" class="ExtraLong" name="title note">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/emph/text()</element>
+ <element multiMod="true" input_type="text" class="Middle" name="file plan">/c/descgrp[@type='codici e numerazioni']/index[child::head/text()='titolario di classificazione']/indexentry/name/text()</element>
+ <element multiMod="true" input_type="text" class="Middle" name="place">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/geogname/text()</element>
+ <element type="multi" input_type="textarea" rows="1" cols="55" name="other title (higher levels of description)" prefix="/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/title[@type='altra denominazione']">
+  <element multiMod="true" type="multi" input_type="textarea" rows="1" cols="55" name="other title (higher levels of description)">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/title[@type='altra denominazione']/text()</element>
+ </element>
+ <element multiMod="true" input_type="text" class="ExtraLong" name="date note">/c/did/unittitle[@encodinganalog='ISAD 1 - 2 title']/unitdate[@encodinganalog='ISAD 1 - 3 date(s)']/emph/text()</element>
+ <element name="extent and medium" type="multi_group" prefix="/c/did/physdesc[@encodinganalog='ISAD 1 - 5 extent and medium of the unit of description' and @label='content']" opened="no">
+  <element multiMod="true" input_type="text" class="Short" name="quantity">/c/did/physdesc[@encodinganalog='ISAD 1 - 5 extent and medium of the unit of description' and @label='content']/extent/text()</element>
+  <element multiMod="true" input_type="textarea" rows="1" cols="55" name="physical description note (lower levels of description) | integrazione alla descrizione fisica (livelli inferiori)" class="ExtraLong">/c/did/physdesc[@encodinganalog='ISAD 1 - 5 extent and medium of the unit of description' and @label='content']/physfacet[@type='note']/text()</element>
+ </element>
+ <element input_type="text" class="Long" type="multi" name="physical location" opened="yes" prefix="/c/did/physloc">
+  <element multiMod="true" input_type="text" class="Long" name="physical location (1st instance)" opened="yes">/c/did/physloc[1]/text()</element>
+  <element multiMod="true" input_type="text" class="Long" name="physical location (2nd instance)" opened="yes">/c/did/physloc[2]/text()</element>
+ </element>
+ <element multiMod="true" input_type="textarea" name="archival history">/c/descgrp[@encodinganalog='ISAD 2 context area']/custodhist[@encodinganalog='ISAD 2 - 3 archival history']/p/text()</element>
+ <element multiMod="true" input_type="textarea" name="scope and content">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="4" cols="55" name="system of arrangement">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/arrangement[@encodinganalog='ISAD 3 - 4 system of arrangement']/p/text()</element>
+ <element name="printed material" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item" opened="no">
+  <element multiMod="true" input_type="textarea" rows="2" cols="55" name="printed material - notes">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Materiale a stampa allegato']/item/bibref/text()</element>
+ </element>
+ <element name="cartographic material" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item" opened="no">
+  <element multiMod="true" input_type="textarea" rows="1" cols="55" name="cartographic material - description" opened="yes">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/text()</element>
+  <element multiMod="true" input_type="textarea" rows="3" cols="55" name="cartographic material - notes" opened="no">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Materiale cartografico allegato']/item/note/p/text()</element>
+ </element>
+ <element name="other attachments" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Altri allegati']/item" opened="no">
+  <element multiMod="true" input_type="textarea" rows="1" cols="55" name="altri allegati - descrizione del contenuto">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Altri allegati']/item/text()</element>
+  <element multiMod="true" input_type="textarea" rows="3" cols="55" name="altri allegati - note">/c/descgrp[@encodinganalog='ISAD 3 content and structure area']/scopecontent[@encodinganalog='ISAD 3 - 1 scope and content']/list[child::head/text()='Altri allegati']/item/note/p/text()</element>
+ </element>
+ <element name="entities, places, and subjects" opened="yes">
+  <element type="multi_group" name="corporate bodies" prefix="/c/controlaccess/corpname">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - corporate body (name)">/c/controlaccess/corpname/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - corporate body (type)">/c/controlaccess/corpname/@role</element>
+  </element>
+  <element type="multi_group" name="people" prefix="/c/controlaccess/persname">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - person (name)">/c/controlaccess/persname/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - person (role)">/c/controlaccess/persname/@role</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - person (see also)">/c/controlaccess/persname/@altrender</element>
+  </element>
+  <element input_type="text" multiMod="true" class="ExtraLong" name="places" type="multi" prefix="/c/controlaccess/geogname">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - places" type="multi">/c/controlaccess/geogname/text()</element>
+   <element multiMod="true" input_type="text" class="Long" name="entities, places, and subjects - places (additions/notes)">/c/controlaccess/geogname/emph/text()</element>
+  </element>
+  <element name="notevole" type="multi_group" prefix="/c/controlaccess/name[@role='notevole']">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - notevole">/c/controlaccess/name[@role='notevole']/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="entities, places, and subjects - notevole (integrazione)">/c/controlaccess/name[@role='notevole']/emph/text()</element>
+  </element>
+ </element>
+ <element multiMod="true" input_type="textarea" rows="2" cols="55" name="physical characteristics and technical requirements - notes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/phystech[@encodinganalog='ISAD 4 - 4 physical characteristics and technical requirements']/note/p/text()</element>
+ <element name="other finding aids" opened="yes">
+  <element multiMod="true" input_type="textarea" rows="3" cols="55" name="other finding aids - free text">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/p/text()</element>
+  <element name="other finding aids - structured (root level) | pubblicato a stampa (livelli radice e di struttura)" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref" opened="no">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="other finding aids - author">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/persname/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="other finding aids - title">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/title/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="other finding aids - published in (if article)">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/edition/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="other finding aids - place of publication" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/imprint/geogname/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="other finding aids - publisher" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/imprint/publisher/text()</element>
+   <element multiMod="true" input_type="text" class="Long" name="other finding aids - date of publication" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/imprint/date/text()</element>
+   <element multiMod="true" input_type="text" class="Long" name="other finding aids - pages" opened="no">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/num/text()</element>
+   <element multiMod="true" input_type="textarea" rows="3" cols="55" name="other finding aids - notes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/bibref/text()</element>
+  </element>
+  <element name="web resources (root level)" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/archref" opened="no">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="web resources - title" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/archref/unittitle/text()</element>
+   <element multiMod="true" input_type="textarea" rows="2" cols="55" name="web resources - description" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/archref/abstract/text()</element>
+   <element multiMod="true" input_type="text" class="ExtraLong" name="web resources - link" opened="yes">/c/descgrp[@encodinganalog='ISAD 4 conditions of access and use area']/otherfindaid[@encodinganalog='ISAD 4 - 5 finding aids']/archref/@href</element>
+  </element>
+ </element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="existence and location of originals" opened="yes">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/originalsloc[@encodinganalog='ISAD 5 - 1 existence and location of originals']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="existence and location of copies" opened="no">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/altformavail[@encodinganalog='ISAD 5 - 2 existence and location of copies']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="related units of description (attached)" opened="no">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/relatedmaterial[@encodinganalog='ISAD 5 - 3 related units of description']/p/text()</element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="related units of description (separate)" opened="no">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/separatedmaterial[@encodinganalog='ISAD 5 - 3 related units of description']/p/text()</element>
+ <element name="bibliography" opened="yes">
+  <element multiMod="true" input_type="textarea" rows="1" cols="55" name="citations - free text">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/bibliography[@encodinganalog='ISAD 5 - 4 publication note']/p/text()</element>
+  <element name="" type="multi_group" prefix="/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/bibliography[@encodinganalog='ISAD 5 - 4 publication note']/bibref">
+   <element multiMod="true" input_type="text" class="ExtraLong" name="citations - author">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/bibliography[@encodinganalog='ISAD 5 - 4 publication note']/bibref/persname/text()</element>
+   <element multiMod="true" input_type="textarea" rows="1" cols="55" name="citations - title">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/bibliography[@encodinganalog='ISAD 5 - 4 publication note']/bibref/title/text()</element>
+   <element multiMod="true" input_type="textarea" rows="2" cols="55" name="citations - notes">/c/descgrp[@encodinganalog='ISAD 5 allied materials area']/bibliography[@encodinganalog='ISAD 5 - 4 publication note']/bibref/text()</element>
+  </element>
+ </element>
+ <element multiMod="true" input_type="textarea" rows="6" cols="55" name="note" opened="yes">/c/note[@encodinganalog='ISAD 6 - 1 note']/p/text()</element>
+</root>
+<!-- Numero di ordinamento definitivo (unità archivistiche) posizione fisica/tipo Titolo Integrazione al titolo Altra denominazione (livelli radice e di struttura) Integrazione alla data Integrazione alla descrizione fisica (unità archivistiche) Collocazione Storia archivistica Ambiti e contenuto Criteri di ordinamento Descrizione del contenuto in "Materiale cartografico allegato" e in "Altri allegati" (unità archivistiche) Note in "Materiale a stampa allegato", in "Materiale cartografico allegato" e in "Altri allegati" (unità archivistiche) Chiavi di accesso Note alle caratteristiche materiali e requisiti tecnici Strumenti di ricerca Esistenza e localizzazione degli originali Esistenza e localizzazione delle copie Unità di descrizione collegate Unità di descrizione separate Testo libero in "Riferimenti bibliografici" (livelli radice e di struttura) Note in "Riferimenti bibliografici" Note in "Note e compilazione" -->

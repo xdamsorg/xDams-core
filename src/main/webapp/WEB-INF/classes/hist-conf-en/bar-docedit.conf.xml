@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="PREVIOUS SIBLING" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaPredecente" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getDocUpperBrother</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor name="pos">-1</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <element value="NEXT SIBLING" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuccessivo" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getDocLowerBrother</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor name="pos">-1</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <element value="PARENT" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuperiore" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getDocFather</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor name="pos">-1</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <element value="CHILD" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaInferiore" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getDocSon</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor name="pos">-1</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <element value="PREVIOUS" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaIndietro" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocPrev</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="pos">getPosPrev</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <element value="NEXT" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaAvanti" userValue="1;5;2">
+    <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
+     <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocNext</paramAnchor>
+     <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="pos">getPosNext</paramAnchor>
+     <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
+    </anchor>
+   </element>
+   <!-- <element value="FILL ALL FIELD" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="editingControl" userValue="1;2"> <anchor value="#nogo"></anchor> <eventJavaScript value="onclick"> <functionName value="fillAllFieldForTest"> </functionName> </eventJavaScript> </element> -->
+   <element value="&#160;">
+    <anchor value="#nogo" target="_self"></anchor>
+   </element>
+   <element value="SAVE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Save'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="toIso">
+      <paramFunction>document.theForm</paramFunction>
+     </functionName>
+     <functionName value="return submitForm">
+      <paramFunction>document.theForm</paramFunction>
+      <paramFunction>document.theForm.campiObbligatori.value</paramFunction>
+      <paramFunction>null</paramFunction>
+      <paramFunction>'_blank'</paramFunction>
+      <paramFunction>'doSaveAndClose'</paramFunction>
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="SAVE AND CLOSE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Save and close'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="toIso">
+      <paramFunction>document.theForm</paramFunction>
+     </functionName>
+     <functionName value="return submitForm">
+      <paramFunction>document.theForm</paramFunction>
+      <paramFunction>document.theForm.campiObbligatori.value</paramFunction>
+      <paramFunction>'Save and close?'</paramFunction>
+      <paramFunction>'_self'</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>'completeTab'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="&#160;">
+    <anchor value="#nogo" target="_self"></anchor><!-- SEPARATORE -->
+   </element>
+   <element value="CLOSE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Close without save?'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="return chiudiPagina">
+      <paramFunction>'Attention:\nclosing the current page changes made will be lost!'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  </user>
+ </managing>
+</root>
