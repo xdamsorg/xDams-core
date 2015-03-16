@@ -80,7 +80,11 @@ $(document).ready(function(){
                     <input name="physDoc" type="hidden" value="<%=request.getParameter("physDoc")%>"/>
                     <span></span>
                 </p>
- 	              <p>
+                <p>
+                	<br /> <form:checkbox path="overWrite" /> <spring:message code="sovrascrivi_il_file_se_esiste" text="sovrascrivi il file se esiste"/>
+                </p>
+ 	            <p>
+ 	              <br />
                     <input type="submit" value="<spring:message code="Invia" text="Invia"/>"/>
                 </p>
           </fieldset>

@@ -19,7 +19,7 @@ public class UploadBean {
 	private String uploadType;
 
 	private String renameFile;
-	
+
 	private String renameDir;
 
 	private String compositionRuleFile;
@@ -27,22 +27,26 @@ public class UploadBean {
 	private String compositionRuleDir;
 
 	private String compositionReplaceName;
-	
+
 	private String associatePathDir;
+
+	private boolean overWrite = false;
+	
+	private boolean fileExist = false;
 
 	private List<UploadCommandLine> commandLine = new ArrayList<UploadCommandLine>();
 
 	private StringBuilder result = new StringBuilder();
-	
+
 	@Deprecated
 	private StringBuilder resultOriginalFileName = new StringBuilder();
-	
+
 	String flagOriginalFileName;
-	
+
 	String destOriginalFileName;
-	
+
 	String xPathPrefix;
-	
+
 	private StringBuilder resultError = new StringBuilder();
 
 	public CommonsMultipartFile getFiledata() {
@@ -136,8 +140,8 @@ public class UploadBean {
 	@Override
 	public String toString() {
 		return "UploadBean [filedata=" + filedata + ", name=" + name + ", idRecord=" + idRecord + ", destField=" + destField + ", uploadName=" + uploadName + ", uploadType=" + uploadType + ", renameFile=" + renameFile + ", renameDir=" + renameDir + ", compositionRuleFile=" + compositionRuleFile
-				+ ", compositionRuleDir=" + compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", associatePathDir=" + associatePathDir + ", commandLine=" + commandLine + ", result=" + result + ", resultOriginalFileName=" + resultOriginalFileName + ", flagOriginalFileName="
-				+ flagOriginalFileName + ", destOriginalFileName=" + destOriginalFileName + ", xPathPrefix=" + xPathPrefix + ", resultError=" + resultError + "]";
+				+ ", compositionRuleDir=" + compositionRuleDir + ", compositionReplaceName=" + compositionReplaceName + ", associatePathDir=" + associatePathDir + ", overWrite=" + overWrite + ", fileExist=" + fileExist + ", commandLine=" + commandLine + ", result=" + result
+				+ ", resultOriginalFileName=" + resultOriginalFileName + ", flagOriginalFileName=" + flagOriginalFileName + ", destOriginalFileName=" + destOriginalFileName + ", xPathPrefix=" + xPathPrefix + ", resultError=" + resultError + "]";
 	}
 
 	public StringBuilder getResult() {
@@ -195,4 +199,21 @@ public class UploadBean {
 	public void setAssociatePathDir(String associatePathDir) {
 		this.associatePathDir = associatePathDir;
 	}
+
+	public boolean isOverWrite() {
+		return overWrite;
+	}
+
+	public void setOverWrite(boolean overWrite) {
+		this.overWrite = overWrite;
+	}
+
+	public boolean isFileExist() {
+		return fileExist;
+	}
+
+	public void setFileExist(boolean fileExist) {
+		this.fileExist = fileExist;
+	}
+
 }

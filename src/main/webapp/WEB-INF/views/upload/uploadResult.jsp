@@ -13,7 +13,6 @@
 	WorkFlowBean workFlowBean = (WorkFlowBean) request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean) request.getAttribute("managingBean");
 	UploadBean uploadResponse =(UploadBean) request.getAttribute("uploadResponse");
-	
 %>
 <html>
 <head>
@@ -34,7 +33,12 @@ loadJsBusiness('upload','${frontUrl}');
 <body>
   <%if(uploadResponse.getResultError().toString().equals("")){%>
 	<h1><spring:message code="Upload_eseguito_con_successo" text="Upload eseguito con successo"/></h1>
-  	<script type="text/javascript">
+	<%if(uploadResponse.isFileExist() && !uploadResponse.isOverWrite() ){ %>
+		<p>file <%=uploadResponse.getName()%> <strong> <spring:message code="esiste_ma_non_e_stato_sovrascritto" text="esiste ma non è stato sovrascritto"/> </strong> </p>
+	<%} else if(uploadResponse.isFileExist() && uploadResponse.isOverWrite()) {%>
+		<p>file <%=uploadResponse.getName()%> <strong> <spring:message code="esiste_ma_e_stato_sovrascritto" text="esiste ma è stato sovrascritto"/> </strong></p>
+	<% } %>
+   	<script type="text/javascript">
   		top.$("input[name='<%=CommonUtils.escapeJqueryName(uploadResponse.getDestField())%>']").val('<%=StringEscapeUtils.escapeEcmaScript(uploadResponse.getResult().toString())%>');
   		//top.$("input[name='.c.did.dao\\[@type=\\'documenti grafici\\'\\]\\[1\\].resource.text()']").val('ciao');
 		<%if(uploadResponse.getFlagOriginalFileName()!=null && !uploadResponse.getFlagOriginalFileName().equals("") && !uploadResponse.getFlagOriginalFileName().equals("null")){
