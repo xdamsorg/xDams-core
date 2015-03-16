@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 	var userFieldVerify = $("#userFieldVerify");
-	var passwordField = $("#passwordField");
+//	var passwordField = $("#passwordField");
 	//var idPwd = $(passwordField).attr("id");
 	 
 	//$(passwordField).append("<input type=\"password\" value=\"\"/>")
@@ -8,38 +8,40 @@ jQuery(document).ready(function(){
 	//$(passwordField).attr('type','password');
 	var accountField = $("#accountField");
 	
-	$(passwordField).focusout(function() {
-		if($(passwordField).val()!="" && $(passwordField).attr("data-password")!='crypted'){
-			var dataField = "passwordField="+$(passwordField).val();
-			var urlHost = globalOption.contextPath + '/generatePassword.html';
-				if(confirm(getLocalizedString('Vuoi_generare_la_password','Vuoi generare la password')+"?")){
-					$.ajax({
-						  url: urlHost,
-						  type: "GET",
-					  data: dataField,
-					  success: function(data) {
-						  $(passwordField).val(data);
-						  $(passwordField).attr("data-password",'crypted');
-						  if( $(userFieldVerify).attr('data-verify')=='verified'){
-							  $("a[onclick*=submitForm]").show();
-						  }
-					  }
-					});			
-				}
-		}
-	});	
+//	$(passwordField).focusout(function() {
+//		if($(passwordField).val()!="" && $(passwordField).attr("data-password")!='crypted'){
+//			var dataField = "passwordField="+$(passwordField).val();
+//			var urlHost = globalOption.contextPath + '/generatePassword.html';
+//				if(confirm(getLocalizedString('Vuoi_generare_la_password','Vuoi generare la password')+"?")){
+//					$.ajax({
+//						  url: urlHost,
+//						  type: "GET",
+//					  data: dataField,
+//					  success: function(data) {
+//						  $(passwordField).val(data);
+//						  $(passwordField).attr("data-password",'crypted');
+//						  if( $(userFieldVerify).attr('data-verify')=='verified'){
+//							  $("a[onclick*=submitForm]").show();
+//						  }
+//					  }
+//					});			
+//				}
+//		}
+//	});	
 	
-	$(passwordField).bind('keypress keyup keydown',function(e) {
-		if($(this).attr("data-password")=='crypted'){
-			$('#passwordField').val("");
-			$("a[onclick*=submitForm]").hide();
-		}
-		$('#passwordField').removeAttr("data-password");
-	});
+//	$(passwordField).bind('keypress keyup keydown',function(e) {
+//		if($(this).attr("data-password")=='crypted'){
+//			$('#passwordField').val("");
+//			$("a[onclick*=submitForm]").hide();
+//		}
+//		$('#passwordField').removeAttr("data-password");
+//	});
  
 	
 	if(userFieldVerify.length>0){
 		$("a[onclick*=submitForm]").hide();
+	}else{
+		$("a[onclick*=submitForm]").show();
 	}	 
 	$(userFieldVerify).bind('keypress keyup keydown focus blur',function(e) {
 		verifyUserName($(this));
@@ -57,11 +59,11 @@ function verifyUserName(myOgj){
 			  type: "GET",
 		  data: dataField,
 		  success: function(data) {
-			  console.debug(data.result);
+			  //console.debug(data.result);
 			  if(data.result=='notExist'){
-				  if($('#passwordField').attr("data-password")=='crypted'){
+				  //if($('#passwordField').attr("data-password")=='crypted'){
 					  $("a[onclick*=submitForm]").show();
-				  }
+				  //}
 				  $(myOgj).attr('data-verify','verified');
 			  }else{
 				  $("a[onclick*=submitForm]").hide();
