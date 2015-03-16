@@ -6,7 +6,7 @@
   <archive alias="xDamsHist" role="1">Archivio Storico</archive>
   <archive alias="xDamsAV" role="1">Archivio Audio Video</archive>
   <archive alias="xDamsPhoto" role="1">Archivio Fotografico</archive>
-  <archive alias="xDamsOA" role="1">Iconografia</archive>  
+  <archive alias="xDamsOA" role="1">Iconografia</archive>
   <archive alias="xDamsEACCPF" role="1">Soggetti Produttori</archive>
   <archive alias="xDamsHGeo" role="1">Authority Luoghi</archive>
   <archive alias="xDamsUsers" role="1">Gestione Utenti</archive>
