@@ -13,9 +13,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.ui.ModelMap;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.user.bean.UserBean;
+import org.xdams.utility.CommonUtils;
 import org.xdams.utility.XMLCleaner;
 import org.xdams.utility.request.MyRequest;
 import org.xdams.workflow.bean.WorkFlowBean;
@@ -74,6 +76,19 @@ public class SaveDocumentCommand {
 				if (ilNome.endsWith("/@cdata")) {
 					ilNome = StringUtils.chomp(ilNome, "/@cdata");
 					isCDATA = true;
+				}
+				if (ilNome.endsWith("/@crypted")) {
+					ilNome = StringUtils.chomp(ilNome, "/@crypted");
+					if (!ilValore.equals("")) {
+						try {
+							if(!CommonUtils.isValidMD5(ilValore)){
+								ilValore = new Md5PasswordEncoder().encodePassword(ilValore, null);
+							}
+							
+						} catch (Exception e) {
+
+						}
+					}
 				}
 				if (!ilValore.equals("")) {
 					if (isCDATA) {
