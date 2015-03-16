@@ -132,7 +132,8 @@ public class XWConnection extends Broker {
 			String xDoc = XMLCommand(connection, theDb, theCommandLoad.toString());
 			theLock = XMLCommand.getLockCode(xDoc);
 		}
-
+		// encoding remove
+		xmlToInsert = xmlToInsert.replaceAll("\\<\\?xml(.+?)\\?\\>", "").trim();
 		XMLCommand theCommand = new XMLCommand(XMLCommand.SaveDocument, XMLCommand.SaveDocument_Save, docNumber, xmlToInsert, thePne, thePnce, theLock);
 		String result = "";
 		result = XMLCommand(connection, theDb, theCommand.toString());
@@ -150,6 +151,8 @@ public class XWConnection extends Broker {
 		QueryResult qr = null;
 		int docNumber = -1;
 		String theLock = "";
+		// encoding remove
+		xmlToInsert = xmlToInsert.replaceAll("\\<\\?xml(.+?)\\?\\>", "").trim();
 		XMLCommand theCommand = new XMLCommand(XMLCommand.SaveDocument, XMLCommand.SaveDocument_Save, docNumber, xmlToInsert, thePne, thePnce, theLock);
 		String result = "";
 		result = XMLCommand(connection, theDb, theCommand.toString());
@@ -172,7 +175,11 @@ public class XWConnection extends Broker {
 			String xDoc = XMLCommand(connection, theDb, theCommandLoad.toString());
 			theLock = XMLCommand.getLockCode(xDoc);
 		}
+		// encoding remove
+		xmlToInsert = xmlToInsert.replaceAll("\\<\\?xml(.+?)\\?\\>", "").trim();
+		// System.out.println("xmlToInsert: "+xmlToInsert);
 		XMLCommand theCommand = new XMLCommand(XMLCommand.SaveDocument, XMLCommand.SaveDocument_Save, docNumber, xmlToInsert, thePne, thePnce, theLock);
+		// System.out.println("theCommand: " + theCommand);
 		String result = "";
 		result = XMLCommand(connection, theDb, theCommand.toString());
 		if (result.indexOf("dtl") == -1) {
@@ -1192,15 +1199,15 @@ public class XWConnection extends Broker {
 		return xDoc;
 	}
 
-//	public String getSingleXMLFromNumDoc(int numDoc) throws SQLException, XWException {
-//		String ilComando = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"2\" bits=\"0\" d=\""+numDoc+"\"/></cmd>";
-//		System.out.println("ilComando: " + ilComando);
-//		String result = XMLCommand(connection, theDb, ilComando);
-//		System.out.println("PRIMA result: " + result);
-//		result = XMLCommand.getBstContent(result);
-//		System.out.println("DOPO result: " + result);
-//		return result;
-//	}
+	// public String getSingleXMLFromNumDoc(int numDoc) throws SQLException, XWException {
+	// String ilComando = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"2\" bits=\"0\" d=\""+numDoc+"\"/></cmd>";
+	// System.out.println("ilComando: " + ilComando);
+	// String result = XMLCommand(connection, theDb, ilComando);
+	// System.out.println("PRIMA result: " + result);
+	// result = XMLCommand.getBstContent(result);
+	// System.out.println("DOPO result: " + result);
+	// return result;
+	// }
 
 	/*
 	 * (non-Javadoc)
