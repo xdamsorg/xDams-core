@@ -106,7 +106,7 @@ public class PreInsertPageCommand {
 				}
 
 			} else {
-				// in caso di nuovo documento senza il phisDoc, come ad esempio un inserimento da lookup
+				// in caso di nuovo documento senza il physDoc, come ad esempio un inserimento da lookup
 				MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 				XMLBuilder builder = new XMLBuilder("root");
 				editingManager.setTheXML(builder);
