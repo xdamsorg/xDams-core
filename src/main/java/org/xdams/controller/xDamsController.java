@@ -263,7 +263,7 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		ManagingFactory managingFactory = new ManagingFactory(request.getParameterMap(), modelMap);
 		ManagingBean managingBean = managingFactory.execute();
-		System.out.println("xDamsController.managing() " + managingBean);
+//		System.out.println("xDamsController.managing() " + managingBean);
 		return "managing/" + managingBean.getDispatchView();
 	}
 
@@ -355,7 +355,7 @@ public class xDamsController {
 		} else {
 			return viewTab(userBean, confBean, archive, modelMap, MyRequest.getParameter("goServlet", request.getParameterMap()), request, response);
 		}
-	}
+	} 
 
 	@RequestMapping(value = "/lookup/{archive}/{archiveLookup}")
 	public String lookup(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, @PathVariable String archiveLookup, @ModelAttribute("lookupBean") LookupBean lookupBean, ModelMap modelMap, HttpServletRequest request,
