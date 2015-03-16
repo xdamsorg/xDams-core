@@ -221,6 +221,9 @@ public class FormGenerator {
 			if (inputType.equals("textarea") && theXMLconf.valoreNodo(macroArea + sezione + elemento + "/@cdata").equals("true")) {
 				xpathCorrenteDot += ".@cdata";
 			}
+			if (theXMLconf.valoreNodo(macroArea + sezione + elemento + "/@crypted").equals("true")) {
+				xpathCorrenteDot += ".@crypted";
+			}
 			String theVocKey = theXMLconf.valoreNodo(macroArea + sezione + elemento + "/@ajaxVoc", false);
 			String theVocType = theXMLconf.valoreNodo(macroArea + sezione + elemento + "/@vocType", false);
 			String theVocFilterQuery = theXMLconf.valoreNodo(macroArea + sezione + elemento + "/@filterQuery", false);
@@ -1267,6 +1270,8 @@ public class FormGenerator {
 		if (!xpathCorrenteDot.endsWith(".@cdata")) {
 			xpathCorrenteDot += ".@cdata";
 		}
+ 
+		
 		out.println(generateInput("textarea", xpathCorrenteDot, theValue, "docEditTextArea", extra, theHTMLextra));
 	}
 
