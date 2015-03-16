@@ -7,8 +7,9 @@
     <elemento input_type="text" class="Long" name="nome" extra="id=&quot;nameField&quot;">/user/@name</elemento>
     <elemento input_type="text" class="Long" name="cognome" extra="id=&quot;lastNameField&quot;">/user/@lastName</elemento>
     <elemento input_type="text" class="Long" name="account" extra="id=&quot;accountField&quot;" ajaxVoc="XML,/account/@id" vocType="one">/user/@account</elemento>
-    <elemento input_type="text" class="Long" name="email"  extra="id=&quot;emailField&quot;">/user/@email</elemento>
-    <elemento input_type="text" class="Long" name="password" extra="id=&quot;passwordField&quot;">/user/@pwd</elemento>
+    <elemento input_type="text" class="Long" name="email" extra="id=&quot;emailField&quot;">/user/@email</elemento>
+    <elemento input_type="text" class="Long" name="password" crypted="true">/user/@pwd</elemento>
+    <!-- <elemento input_type="text" class="Long" name="password" crypted="true" extra="id=&quot;passwordField&quot;">/user/@pwd</elemento> -->
     <elemento input_type="text" class="Long" name="username" extra="id=&quot;userFieldVerify&quot;">/user/@id</elemento>
    #end 
    </sezione>
@@ -23,7 +24,7 @@
     <elemento input_type="text" class="Long" name="account" ajaxVoc="XML,/account/@id" vocType="one">/user/@account</elemento>
       #end
     <elemento input_type="text" class="Long" name="email">/user/@email</elemento>
-    <elemento input_type="text" class="Long" name="password" extra="id=&quot;passwordField&quot;">/user/@pwd</elemento>
+    <elemento input_type="text" class="Long" name="password" crypted="true">/user/@pwd</elemento>
     <elemento input_type="liveText" class="Long" name="username" extra="id=&quot;userFieldVerify&quot;">/user/@id</elemento>
      #if($userBean.role=='ROLE_ADMIN')
       <elemento input_type="select" class="Middle" value="document:/users-conf/valoriControllati.xml" externalPath="/root/elemento[@name='ROLE_ACCOUNT']/opzione" name="ruolo">/user/@role</elemento>
@@ -72,18 +73,10 @@
   <elemento value="ROLE_READER">/user/@role</elemento>
  </fixedValues>
  <param>
-  <elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='ISAD 3-1-2 title'].text()</elemento>
+  <elemento id="campi_obbligatori">.user.@pwd.@crypted;.user.@id</elemento>
   <elemento id="codice_identificativo">/user/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/text()</elemento>
   <elemento id="riordina">
-   <opzione value="/user/did/unitid">codice identificativo logico</opzione>
-   <opzione value="/user/did/unittitle">denominazione</opzione>
-   <opzione value="/user/did/unittitle/unitdate/@normal">data (estremo iniziale)</opzione>
-   <opzione value="XML(xpart:/user/did/unittitle/unitdate/@normal)(part:9:8)">data (estremo finale)</opzione>
-   <opzione value="/user/did/unittitle/num/emph:n">numero ordinamento provvisorio (scheda unità)</opzione>
-   <opzione value="/user/did/unittitle/num:n">numero ordinamento definitivo (scheda unità)</opzione>
-   <opzione value="/user/descgrp/odd/p">altra segnatura (o antica o precedente)</opzione>
-   <opzione value="/user/descgrp/index/indexentry/name">titolario di classificazione (scheda unità)</opzione>
-   <opzione value="/user/did/physloc">collocazione</opzione>
+ 
   </elemento>
   <elemento id="clona">
    <opzione action="delete" value="">/user/processinfo/list/item</opzione>
