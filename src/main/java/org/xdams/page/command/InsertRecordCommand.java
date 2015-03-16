@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.ui.ModelMap;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
@@ -109,6 +110,16 @@ public class InsertRecordCommand {
 								ilNome = StringUtils.chomp(ilNome, "/@cdata");
 								builder.insertNode(ilNome, ilValore, true);
 							} else {
+								if (ilNome.endsWith("/@crypted")) {
+									ilNome = StringUtils.chomp(ilNome, "/@crypted");
+									if (!ilValore.equals("")) {
+										try {
+											ilValore = new Md5PasswordEncoder().encodePassword(ilValore, null);
+										} catch (Exception e) {
+
+										}
+									}
+								}
 								builder.insertNode(ilNome, ilValore); // QUI INSERISCO IL VERO VALORE
 							}
 
