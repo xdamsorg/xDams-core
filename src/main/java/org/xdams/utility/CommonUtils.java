@@ -25,7 +25,7 @@ public class CommonUtils {
 	public static final Pattern titleUrlPattern = Pattern.compile("<\\s*\\/?\\s*(\\w*?)((\\s+.*?)|(\\s*))\\/?\\s*>");
 
 	public static final String escapeCharacters = "#;&,.+*~':\"!^$[]()=>|/";
-	
+
 	public static String OS = System.getProperty("os.name").toLowerCase();
 
 	public static void main(String[] args) {
@@ -44,9 +44,17 @@ public class CommonUtils {
 	public static boolean isUnix() {
 		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
 	}
-	
+
 	public static boolean isSolaris() {
 		return (OS.indexOf("sunos") >= 0);
+	}
+
+	public static boolean isValidMD5(String s) {
+		return s.matches("[a-fA-F0-9]{32}");
+	}
+
+	public static boolean isValidSHA1(String s) {
+		return s.matches("[a-fA-F0-9]{40}");
 	}
 
 	public static String escapeJqueryName(String value) {
