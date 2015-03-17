@@ -7,9 +7,8 @@ release note
 4) NEW ENTRY - export documenti xml, con la possibilità di applicare il filtro sui pubblicati (audience=external)
 5) NEW ENTRY - xDams multilanguage 
 6) NEW ENTRY - gestione configurazioni rispetto alla tipologia d'archivio e non rispetto al nome.
-7) NEW ENTRY - autologin per utente guest per facilitare l'uso di xDams per la pubblicazione dei dati
-8) NEW ENTRY - restfull access (BETA) per invocare i documenti xml con o senza trasformazione xslt 
-9) ottimizzazione caricamento utenti per large number archivi e utenti
-10) FIX - esito fotografico
-11) gestione multiaccount 
+7) NEW ENTRY - restfull access (BETA) per invocare i documenti xml con o senza trasformazione xslt 
+8) ottimizzazione caricamento utenti per large number archivi e utenti
+9) FIX - esito fotografico
+10) gestione multiaccount 
   
