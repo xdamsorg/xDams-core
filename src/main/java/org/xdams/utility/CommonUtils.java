@@ -2,9 +2,12 @@ package org.xdams.utility;
 
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -28,9 +31,30 @@ public class CommonUtils {
 
 	public static String OS = System.getProperty("os.name").toLowerCase();
 
+	public static List<String> collectionExt = Arrays.asList(".doc", ".docx", ".log", ".msg", ".pages", ".rtf", ".txt", ".wpd", ".wps", ".csv", ".dat", ".efx", ".gbr", ".key", ".pps", ".ppt", ".pptx", ".sdf", ".tax2010", ".vcf", ".xml", ".aif", ".iff", ".m3u", ".m4a", ".mid", ".mp3", ".mpa", ".ra",
+			".wav", ".wma", ".3g2", ".3gp", ".asf", ".asx", ".avi", ".flv", ".mov", ".mp4", ".mpg", ".rm", ".swf", ".vob", ".wmv", ".3dm", ".max", ".bmp", ".gif", ".jpg", ".jpeg", ".png", ".psd", ".pspimage", ".thm", ".tif", ".tiff", ".yuv", ".ai", ".drw", ".eps", ".ps", ".svg", ".indd", ".pct",
+			".pdf", ".qxd", ".qxp", ".rels", ".xlr", ".xls", ".xlsx", ".accdb", ".db", ".dbf", ".mdb", ".pdb", ".sql", ".app", ".bat", ".cgi", ".com", ".exe", ".gadget", ".jar", ".pif", ".vb", ".wsf", ".gam", ".nes", ".rom", ".sav", ".dwg", ".dxf", ".gpx", ".kml", ".asp", ".cer", ".csr", ".css",
+			".htm", ".html", ".js", ".jsp", ".php", ".rss", ".xhtml", ".8bi", ".plugin", ".xll", ".fnt", ".fon", ".otf", ".ttf", ".cab", ".cpl", ".cur", ".dll", ".dmp", ".drv", ".lnk", ".sys", ".cfg", ".ini", ".keychain", ".prf", ".bin", ".hqx", ".mim", ".uue", ".7z", ".deb", ".gz", ".pkg", ".rar",
+			".rpm", ".sit", ".sitx", ".tar.gz", ".zip", ".zipx", ".dmg", ".iso", ".toast", ".vcd", ".c", ".class", ".cpp", ".cs", ".dtd", ".fla", ".java", ".m", ".pl", ".py", ".bak", ".gho", ".ori", ".tmp", ".dbx", ".msi", ".part", ".torrent");
+
 	public static void main(String[] args) {
 
-		System.out.println(CommonUtils.escapeJqueryName(".c.did.dao[@type='documenti grafici'][1].resource.text()"));
+		// System.out.println(CommonUtils.escapeJqueryName(".c.did.dao[@type='documenti grafici'][1].resource.text()"));
+		System.out.println(checkExt("<isattach>1ocse-progetti:attidellesessionidistudioedeigruppidilavoro.progetto6/02a-iii[@tit@][@data@][@arch@]file[@lev@]cicio.torrent</isattach>"));
+	}
+
+	static public boolean checkExt(String fileName) {
+		String extension = "." + StringUtils.substringAfterLast(fileName, ".");
+		if (!extension.equals("")) {
+			Iterator<String> itr = collectionExt.iterator();
+			while (itr.hasNext()) {
+				String element = itr.next();
+				if (extension.indexOf(element) != -1) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public static boolean isWindows() {

@@ -1,3 +1,4 @@
+<%@page import="org.xdams.utility.CommonUtils"%>
 <%@page import="org.springframework.util.TypeUtils"%>
 <%@page import="org.xdams.page.view.bean.HierBrowserBean"%>
 <%@page import="org.xdams.page.view.bean.ManagingBean"%>
@@ -112,9 +113,9 @@ if(managingBean!=null){
 							}else if((valueArr.toLowerCase()).indexOf("pdf")!=-1&& iconType.indexOf("pdf")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							} else {
-//								if(iconType.indexOf("generic")==-1){
-//									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
-//								}
+								if(CommonUtils.checkExt(icoArray[ks].toLowerCase())){
+									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								}
 							}
 						}} 
 

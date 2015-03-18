@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.xdams.utility.CommonUtils"%>
 <%@page import="org.xdams.xw.paging.QRParser"%>
 <%@page import="org.xdams.page.view.bean.TitleBean"%>
 <%@page import="org.xdams.utility.request.MyRequest"%>
@@ -203,9 +204,9 @@ try{
 							}else if((icoArray[ks].toLowerCase()).indexOf("wmv")!=-1 && iconType.indexOf("wmv")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							} else {
-//								if(iconType.indexOf("generic")==-1){
-//									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
-//								}
+								if(CommonUtils.checkExt(icoArray[ks].toLowerCase())){
+									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+								}
 							}
 						}}
 
