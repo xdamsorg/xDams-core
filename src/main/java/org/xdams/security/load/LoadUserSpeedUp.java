@@ -25,11 +25,25 @@ public class LoadUserSpeedUp {
 		while (matcherUser.find()) {
 			String myUser = matcherUser.group(1);
 			String myUserAttribute = matcherUser.group(2).replaceAll("\\s*=\\s*[^\\\"]", "=");
-			if (myUser.contains(username) && myUser.contains(account)) {
+//			System.out.println("LoadUserSpeedUp.extractUser() myUser:" + myUser);
+//			System.out.println("LoadUserSpeedUp.extractUser() myUserAttribute:" + myUserAttribute);
+			String myUsername = valueAttribute(myUserAttribute, "id");
+			String myUsernameAccount = valueAttribute(myUserAttribute, "account");
+//			System.out.println("LoadUserSpeedUp.extractUser() myUsername: "+myUsername);
+//			System.out.println("LoadUserSpeedUp.extractUser() myUsernameAccount: "+myUsernameAccount);
+//			System.out.println("LoadUserSpeedUp.extractUser() username: "+username);
+//			System.out.println("LoadUserSpeedUp.extractUser() account: "+account);
+//			System.out.println("LoadUserSpeedUp.extractUser() myUsername.equals(username) && myUsernameAccount.equals(account) " + (myUsername.equals(username) && myUsernameAccount.equals(account)));
+			if (myUsername.equals(username) && myUsernameAccount.equals(account)) {
 				myUserAndAttribute[0] = myUser;
 				myUserAndAttribute[1] = myUserAttribute;
 				break;
 			}
+//			 if (myUser.contains(username) && myUser.contains(account)) {
+//			 myUserAndAttribute[0] = myUser;
+//			 myUserAndAttribute[1] = myUserAttribute;
+//			 break;
+//			 }
 		}
 		return myUserAndAttribute;
 	}
@@ -47,7 +61,7 @@ public class LoadUserSpeedUp {
 				archive.setRole(valueAttribute(archiveAttribute, "role"));
 				// System.out.println("archive: " + archive);
 				archives.add(archive);
-//				System.out.println("#################################################");
+				// System.out.println("#################################################");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -74,23 +88,23 @@ public class LoadUserSpeedUp {
 					accountBean.setDescrAccount(valueAttribute(accountAttribute, "descrAccount"));
 					accountBean.setFatherAccount(valueAttribute(accountAttribute, "fatherAccount"));
 					// System.out.println("accountStr: " + accountStr);
-//					System.out.println("accountAttribute: " + accountAttribute);
+					// System.out.println("accountAttribute: " + accountAttribute);
 					Matcher matcherArchiveGroup = patternArchiveGroup.matcher(accountStr);
 					while (matcherArchiveGroup.find()) {
 						String archiveGroupStr = matcherArchiveGroup.group(1);
 						String archiveGroupAttributeStr = matcherArchiveGroup.group(2).replaceAll("\\s*=\\s*[^\\\"]", "=");
 						String groupName = valueAttribute(archiveGroupAttributeStr, "name");
-						
+
 						// System.out.println("matcherArchiveGroup.group(1): " + matcherArchiveGroup.group(1));
-//						System.out.println("archiveGroupStr: " + archiveGroupStr);
+						// System.out.println("archiveGroupStr: " + archiveGroupStr);
 						Matcher matcherArchive = patternArchive.matcher(archiveGroupStr);
 						while (matcherArchive.find()) {
 							Archive archive = new Archive();
-							
+
 							String archiveStr = matcherArchive.group(1);
 							String archiveAttributeStr = matcherArchive.group(2).replaceAll("\\s*=\\s*[^\\\"]", "=");
 							String archiveTextStr = matcherArchive.group(3);
-//							System.out.println("archiveTextStr: " + archiveTextStr);
+							// System.out.println("archiveTextStr: " + archiveTextStr);
 							archive.setGroupName(groupName);
 							archive.setAlias(valueAttribute(archiveAttributeStr, "alias"));
 							archive.setHost(valueAttribute(archiveAttributeStr, "host"));
@@ -101,10 +115,10 @@ public class LoadUserSpeedUp {
 							archive.setWebapp(valueAttribute(archiveAttributeStr, "webapp"));
 							archive.setType(valueAttribute(archiveAttributeStr, "type"));
 							archivesMap.put(archive.getAlias(), archive);
-//							System.out.println("archive: " + archive);
-							
+							// System.out.println("archive: " + archive);
+
 						}
-//						System.out.println("#################################################");
+						// System.out.println("#################################################");
 					}
 				}
 			}
@@ -137,14 +151,19 @@ public class LoadUserSpeedUp {
 
 			xmlUsers = xmlUsers.replaceAll("(?s)<!--.*?-->", "");
 			xmlArchives = xmlArchives.replaceAll("(?s)<!--.*?-->", "");
-
+			// System.out.println("LoadUserSpeedUp.loadUserByString() username:"+username);
+			// System.out.println("LoadUserSpeedUp.loadUserByString() account:"+account);
+			// System.out.println("LoadUserSpeedUp.loadUserByString() xmlUsers:"+xmlUsers);
+			// System.out.println("###########################################################################");
 			String myUser = extractUser(username, account, xmlUsers)[0];
+			// System.out.println("LoadUserSpeedUp.loadUserByString() myUser:"+myUser);
 			String myUserAttribute = extractUser(username, account, xmlUsers)[1];
+			// System.out.println("LoadUserSpeedUp.loadUserByString() myUserAttribute:"+myUserAttribute);
 			Account accountBean = new Account();
 			Map<String, Archive> archiveAllMap = extractArchiveList(account, xmlArchives, accountBean);
 			List<Archive> archiveUserList = extractArchiveUserList(username, account, myUser);
-//			System.out.println(myUser);
-//System.out.println(myUserAttribute);
+			// System.out.println(myUser);
+			// System.out.println(myUserAttribute);
 			userBean.setName(valueAttribute(myUserAttribute, "name"));
 			userBean.setLastName(valueAttribute(myUserAttribute, "lastName"));
 			userBean.setId(valueAttribute(myUserAttribute, "id"));
@@ -169,7 +188,7 @@ public class LoadUserSpeedUp {
 				return null;
 			}
 
-//			System.out.println(userBean);
+			// System.out.println(userBean);
 			return userBean;
 
 		} catch (Exception e) {
