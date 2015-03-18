@@ -115,7 +115,7 @@ if(managingBean!=null){
 //								if(iconType.indexOf("generic")==-1){
 //									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
 //								}
-								}
+							}
 						}} 
 
 					}
