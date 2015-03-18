@@ -1,14 +1,39 @@
-release note
-***** xDams 3.0.0
-1) NEW ENTRY - Gestione utenti su database
-2) NEW ENTRY - upload gestione sostituzione degli allegati   
-3) NEW ENTRY - funzionalità di associa puntuale per i documenti digitali, presenti su filesystem
-3) NEW ENTRY - archivio iconografico OA
-4) NEW ENTRY - export documenti xml, con la possibilità di applicare il filtro sui pubblicati (audience=external)
-5) NEW ENTRY - xDams multilanguage 
-6) NEW ENTRY - gestione configurazioni rispetto alla tipologia d'archivio e non rispetto al nome.
-7) NEW ENTRY - restfull access (BETA) per invocare i documenti xml con o senza trasformazione xslt 
-8) ottimizzazione caricamento utenti per large number archivi e utenti
-9) FIX - esito fotografico
-10) gestione multiaccount 
-  
+***** xDams Open Source Platform  *****
+*****
+*****   www.xdams.org       
+*****   version:  3.0.0         
+*****   date:     18.03.2015   
+************************************************************************************************
+
+Release Note (by regesta.exe)
+
+01) NEW ENTRY - Maschere per Gestione utenti  
+                Users management by user interface
+02) NEW ENTRY - Gestione sostituzione degli allegati mediante nuovo upload
+                Attached files change
+03) NEW ENTRY - Funzionalità per l'associazione puntuale di documenti digitali, presenti su filesystem 
+                Filesystem files linking 
+03) NEW ENTRY - Archivio opere e oggetti d'arte scheda ICCD OA
+                Artworks archive - compliant with ICCD OA description standard  
+04) NEW ENTRY - Export documenti xml, con la possibilità di applicare il filtro sui pubblicati (audience=external) 
+                XML data export, with publishing filtering (audience=external)
+05) NEW ENTRY - Multilingua
+                Multilanguages
+06) NEW ENTRY - Archivio documenti storici (EAD) in inglese - 
+                EAD standard archive for documents in english  
+07) NEW ENTRY - Gestione configurazioni rispetto alla tipologia d'archivio e non rispetto al nome 
+                Configuration management for different archives type
+08) NEW ENTRY - Autologin per utente guest per facilitare l'uso del back end xDams per la pubblicazione dei dati 
+                Gest user hidden login, to publish back end interface (read only) without requiring login by users
+09) NEW ENTRY - Restfull access (BETA) per invocare i documenti xml con o senza trasformazione XSLT
+                Restfull access (BETA) to require XML documents, it's possible to apply an XLST mapping 
+10) NEW ENTRY - Esito ricerca foto con preview immagini
+                Photos search results with preview
+11) ottimizzazione caricamento utenti multiplo 
+    multiple users generation (upgrade) 
+12) FIX - esito ricerca fotografico 
+    photos search result 
+13) gestione multiaccount 
+    multiaccount management
+************************************************************************************************
+    
