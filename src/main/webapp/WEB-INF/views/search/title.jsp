@@ -203,9 +203,9 @@ try{
 							}else if((icoArray[ks].toLowerCase()).indexOf("wmv")!=-1 && iconType.indexOf("wmv")==-1){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/flv.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							} else {
-								if(iconType.indexOf("generic")==-1){
-									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
-								}
+//								if(iconType.indexOf("generic")==-1){
+//									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+//								}
 							}
 						}}
 
