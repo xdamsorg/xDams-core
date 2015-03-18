@@ -44,7 +44,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			 */
 			UserBean userBean = null;
 			try {
-
+//				System.out.println("UserDetailsServiceImpl.loadUserByUsernameCompany() username:"+username);
+//				System.out.println("UserDetailsServiceImpl.loadUserByUsernameCompany() account:"+account);
 				if (authenticationType.getLoadUserType() == null || authenticationType.getLoadUserType().equals("xDams-basic")) {
 					if (authenticationType.isLoadUserSpeedUp()) {
 						String xmlUsers = ConfManager.getConfString(account + "-security/users.xml");

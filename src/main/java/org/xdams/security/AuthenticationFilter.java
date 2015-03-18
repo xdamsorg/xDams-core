@@ -28,6 +28,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 		String username = obtainUsername(arg0);
 		String password = obtainPassword(arg0);
 		String company = obtainCompany(arg0);
+		
+//		System.out.println("AuthenticationFilter.attemptAuthentication() username: "+username);
+//		System.out.println("AuthenticationFilter.attemptAuthentication() password: "+password);
+//		System.out.println("AuthenticationFilter.attemptAuthentication() company: "+company);
+		
 		if (username == null) {
 			username = "";
 		}

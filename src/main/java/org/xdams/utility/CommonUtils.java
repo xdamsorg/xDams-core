@@ -49,7 +49,7 @@ public class CommonUtils {
 			Iterator<String> itr = collectionExt.iterator();
 			while (itr.hasNext()) {
 				String element = itr.next();
-				if (extension.indexOf(element) != -1) {
+				if (extension.toLowerCase().indexOf(element) != -1) {
 					return true;
 				}
 			}
