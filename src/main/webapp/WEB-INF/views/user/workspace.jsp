@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.LinkedHashMap"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -219,7 +220,7 @@ jQuery(document).ready(function(){
 		<div id ="contArchive" class="ml20mt30">
 		<span class="bold"><spring:message code="LISTA_DEGLI_ARCHIVI" text="LISTA DEGLI ARCHIVI"/></span>
 			<div class="boxLeft">
-			
+ 
 			</div>
 			
 			<div class="boxRight">
