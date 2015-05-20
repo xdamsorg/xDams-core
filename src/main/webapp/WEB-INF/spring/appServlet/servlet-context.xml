@@ -10,7 +10,6 @@
  <resources mapping="/resources/**" location="/resources/"/>
  <resources mapping="/attach/**" location="/attach/"/>
  <resources mapping="/export/**" location="/export/"/>
- 
  <beans:bean id="multiAccount" class="java.lang.Boolean">
   <beans:constructor-arg>
    <beans:value>false</beans:value>
@@ -35,7 +34,7 @@
   <beans:property name="basename" value="WEB-INF/classes/xdams_messages"/>
   <beans:property name="defaultEncoding" value="UTF-8"/>
   <beans:property name="cacheSeconds" value="0"/>
-  <beans:property name="fallbackToSystemLocale" value="false" />
+  <beans:property name="fallbackToSystemLocale" value="false"/>
  </beans:bean>
  <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
   <beans:property name="defaultLocale" value="it"/>
