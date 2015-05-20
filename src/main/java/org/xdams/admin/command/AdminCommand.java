@@ -1,6 +1,7 @@
 package org.xdams.admin.command;
 
 import it.highwaytech.broker.XMLCommand;
+import it.highwaytech.db.QueryResult;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -123,6 +124,14 @@ public class AdminCommand {
 						queryResult = xwconn.getSonsFromNumDoc(managingBean.getPhysDoc());
 					} else if (applyTo.equals("hier")) {
 						queryResult = xwconn.getQRFromHier(managingBean.getPhysDoc(), false);
+					} else if (applyTo.equals("prevSibling") || applyTo.equals("nextSibling")) {
+						QueryResult queryResultColl = new QueryResult();
+						for (Object object : elementiNum) {
+							queryResult = xwconn.getQRfromPhrase("[NRECORD]=" + object);
+							xwconn.addToQueryResult(queryResultColl, queryResult);
+						}
+						queryResult = queryResultColl;
+
 					}
 					exportCmd = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export_Full) + "\" sel=\"" + queryResult.id + "\"></cmd>";
 				}
@@ -132,8 +141,8 @@ public class AdminCommand {
 				String realPath = (String) modelMap.get("realPath");
 				System.out.println("realPath: " + realPath);
 				System.out.println("flagAudience: " + flagAudience);
-				
-				if(flagAudience.equals("on")){
+
+				if (flagAudience.equals("on")) {
 					String xsltFiltra = ConfManager.getConfString("export-xsl/hierAudience.xsl");
 					xsltFiltra = xsltFiltra.replaceAll("rootElement", workFlowBean.getArchive().getPne());
 					result = TrasformXslt20.xslt(result, xsltFiltra);
