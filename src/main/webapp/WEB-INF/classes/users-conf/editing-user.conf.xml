@@ -68,7 +68,6 @@
   <elemento value="inserimento">/user/processinfo/list/item/text()</elemento>
   <elemento value="@coluiCheInserisce@">/user/processinfo/list/item/persname/text()</elemento>
   <elemento value="@quandoColuiInserisce@">/user/processinfo/list/item/date/text()</elemento>
-  <elemento value=".">/user/@id</elemento>
   <elemento value="preventBlankNode">/user/text()</elemento>
   <elemento value="ROLE_READER">/user/@role</elemento>
  </fixedValues>
