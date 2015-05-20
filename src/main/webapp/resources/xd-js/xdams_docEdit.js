@@ -383,21 +383,21 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 					ritornoTemp = false;
 					messaggio = "";
 					for (ia = 0; ia < toCheckArrayArray.length; ia++) {
-						messaggio += toCheckArrayArray[ia] + "\n"
+						messaggio += toCheckArrayArray[ia] + "\n";
 						if (theForm[toCheckArrayArray[ia]] != null) {
 							if (theForm[toCheckArrayArray[ia]].value != "") {
-								ritornoTemp = true
-								break
+								ritornoTemp = true;
+								break;
 							}
 						} else {
-							ritornoTemp = true
-							break
+							ritornoTemp = true;
+							break;
 						}
 					}
 					if (!ritornoTemp) {
-						xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""')
+						xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""');
 						$.unblockUI();
-						return true
+						return true;
 					}
 				} else {
 					if (nomeTmp.indexOf("?") > 0) {
@@ -405,32 +405,32 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 						ritornoTemp = false;
 						messaggio = "";
 						for (i = 0; i < toCheckArrayArray.length; i++) {
-							messaggio += toCheckArrayArray[i] + "\n"
+							messaggio += toCheckArrayArray[i] + "\n";
 							if (theForm[toCheckArrayArray[i]] != null) {
 								if (theForm[toCheckArrayArray[i]].value != "") {
-									ritornoTemp = true
+									ritornoTemp = true;
 
 								} else {
-									ritornoTemp = false
+									ritornoTemp = false;
 									break
 								}
 							} else {
-								ritornoTemp = true
+								ritornoTemp = true;
 								break
 							}
 						}
 						if (!ritornoTemp) {
-							xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""')
+							xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + messaggio.replace(/\./gi, '/') + ' = ""');
 							$.unblockUI();
-							return true
+							return true;
 						}
 					} else {
 						if (theForm[toCheckArray[i]] != null) {
 							if (theForm[toCheckArray[i]].value == "") {
-								ritorno = false
-								xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + toCheckArray[i].replace(/\./gi, '/') + ' = ""')
+								ritorno = false;
+								xDamsAlert(getLocalizedString('Attenzione','Attenzione')+": \n" + toCheckArray[i].replace(/\./gi, '/') + ' = ""');
 								$.unblockUI();
-								break
+								break;
 							}
 						}
 					}
@@ -473,7 +473,7 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 		// alert(extraFunction);
 
 		}
-		return true
+		return true;
 	} else {
 		$.unblockUI();
 		return false;
@@ -482,25 +482,25 @@ function doSubmitForm(ilTest, theForm, toCheck, msg, ilTarget, postSave, goServl
 
 function setResponsabile(azione, elementoText, elementoData, elementoPersname, msg, valAction, valName) {
 	ilNumero = elementoText.substring(elementoText.indexOf("[") + 1, elementoText.indexOf("]"));
-	ilNumeroInt = parseInt(ilNumero, 10)
-	ilNumeroInt--
+	ilNumeroInt = parseInt(ilNumero, 10);
+	ilNumeroInt--;
 
-	elementoDataPrecedente = elementoData.substring(0, elementoData.indexOf("[") + 1)
-	elementoDataPrecedente += ilNumeroInt + ''
-	elementoDataPrecedente += elementoData.substring(elementoData.indexOf("]"), elementoData.length)
+	elementoDataPrecedente = elementoData.substring(0, elementoData.indexOf("[") + 1);
+	elementoDataPrecedente += ilNumeroInt + '';
+	elementoDataPrecedente += elementoData.substring(elementoData.indexOf("]"), elementoData.length);
 
-	elementoPersnamePrecedente = elementoPersname.substring(0, elementoPersname.indexOf("[") + 1)
-	elementoPersnamePrecedente += ilNumeroInt + ''
-	elementoPersnamePrecedente += elementoPersname.substring(elementoPersname.indexOf("]"), elementoPersname.length)
+	elementoPersnamePrecedente = elementoPersname.substring(0, elementoPersname.indexOf("[") + 1);
+	elementoPersnamePrecedente += ilNumeroInt + '';
+	elementoPersnamePrecedente += elementoPersname.substring(elementoPersname.indexOf("]"), elementoPersname.length);
 
-	if (window.opener == null) {
-		if (window.opener.parent.frames.data == null) {
-			alert(msg)
-			self.close()
-			return
+//	if (window.opener == null) {
+//		if (window.opener.parent.frames.data == null) {
+//			alert(msg)
+//			self.close()
+//			return
 
-		}
-	} else {
+//		}
+//	} else {
 
 		laDataPrecedente = "";
 		if (document.theForm[elementoDataPrecedente] != null)
@@ -524,7 +524,7 @@ function setResponsabile(azione, elementoText, elementoData, elementoPersname, m
 			document.theForm[elementoData].value = laData;
 			document.theForm[elementoPersname].value = nomeCognome;
 		}
-	}
+//	}
 }
 
 function suggerisciLevel(ilLivello) {
@@ -533,31 +533,31 @@ function suggerisciLevel(ilLivello) {
 		if (ilLivello == 'otherlevel')
 			document.theForm['.c.@otherlevel'].disabled = '';
 	}
-	return false
+	return false;
 }
 
 function normalizzaVoce(obj) {
 
-	theName = obj.name
+	theName = obj.name;
 
 	if (theName.indexOf('.text()') != -1)
-		theName = theName.substring(0, lastIndexOf(theName, "."))
+		theName = theName.substring(0, lastIndexOf(theName, "."));
 
 	thePrefix = theName.substring(0, lastIndexOf(theName, "."));
 
 	listaElementi = obj.parentNode.parentNode.parentNode.getElementsByTagName("input");
 
-	part01 = ""
-	part02 = ""
-	part03 = ""
+	part01 = "";
+	part02 = "";
+	part03 = "";
 
 	for (i = 0; i < listaElementi.length; i++) {
 		if ((listaElementi[i].name).indexOf('@type=\'first\'') != -1)
-			part01 = listaElementi[i].value
+			part01 = listaElementi[i].value;
 		if ((listaElementi[i].name).indexOf('@type=\'ord\'') != -1)
-			part02 = listaElementi[i].value
+			part02 = listaElementi[i].value;
 		if ((listaElementi[i].name).indexOf('@type=\'add\'') != -1)
-			part03 = listaElementi[i].value
+			part03 = listaElementi[i].value;
 	}
 	for (i = 0; i < listaElementi.length; i++) {
 		if ((listaElementi[i].name).indexOf('normal') != -1) {
@@ -571,20 +571,20 @@ function normalizzaVoce(obj) {
 function normalizzaVoceEACCPF(obj) {
 	theName = obj.name
 	if (theName.indexOf('.text()') != -1)
-		theName = theName.substring(0, lastIndexOf(theName, "."))
+		theName = theName.substring(0, lastIndexOf(theName, "."));
 
 	thePrefix = theName.substring(0, lastIndexOf(theName, "."));
 	listaElementi = obj.parentNode.parentNode.parentNode.getElementsByTagName("input");
-	part01 = ""
-	part02 = ""
-	part03 = ""
+	part01 = "";
+	part02 = "";
+	part03 = "";
 	for (i = 0; i < listaElementi.length; i++) {
 		if ((listaElementi[i].name).indexOf('@localType=\'prime\'') != -1)
-			part01 = listaElementi[i].value
+			part01 = listaElementi[i].value;
 		if ((listaElementi[i].name).indexOf('@localType=\'ord\'') != -1)
-			part02 = listaElementi[i].value
+			part02 = listaElementi[i].value;
 		if ((listaElementi[i].name).indexOf('@localType=\'ulterior\'') != -1)
-			part03 = listaElementi[i].value
+			part03 = listaElementi[i].value;
 	}
 	for (i = 0; i < listaElementi.length; i++) {
 		if ((listaElementi[i].name).indexOf('normal') != -1) {
@@ -596,14 +596,14 @@ function normalizzaVoceEACCPF(obj) {
 function ritornaVoce(part01, part02, part03) {
 
 	if (typeof (customRitornaVoce) != 'undefined') {
-		laStringa = customRitornaVoce(part01, part02, part03)
-		return laStringa
+		laStringa = customRitornaVoce(part01, part02, part03);
+		return laStringa;
 	} else {
-		laStringa = part02
+		laStringa = part02;
 		if (laStringa != '' && part01 != '')
 			laStringa += ', ';
 
-		laStringa += part01
+		laStringa += part01;
 
 		if (laStringa != '' && part03 != '')
 			laStringa += ' (' + part03 + ')';
@@ -658,7 +658,7 @@ function modificaFormaAutorizzata(prefix) {
 		});
 	}
 
-	return false
+	return false;
 }
 
 /* ADD - REMOVE */
@@ -1009,7 +1009,7 @@ function fixBracketXPathIndex(str, newNumber) {
 			str = str.substring(0, lastOpenBracket + 1) + num + str.substring(lastCloseBracket);
 		} else {
 			lastOpenBracket = lastIndexOf(str, "[", lastOpenBracket - 1);
-			lastCloseBracket = lastIndexOf(str, "]", lastCloseBracket - 1)
+			lastCloseBracket = lastIndexOf(str, "]", lastCloseBracket - 1);
 			bracketsContent = str.substring(lastOpenBracket + 1, lastCloseBracket);
 		}
 	}
