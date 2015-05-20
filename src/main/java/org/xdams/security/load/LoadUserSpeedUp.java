@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,29 +26,30 @@ public class LoadUserSpeedUp {
 		while (matcherUser.find()) {
 			String myUser = matcherUser.group(1);
 			String myUserAttribute = matcherUser.group(2).replaceAll("\\s*=\\s*[^\\\"]", "=");
-//			System.out.println("LoadUserSpeedUp.extractUser() myUser:" + myUser);
-//			System.out.println("LoadUserSpeedUp.extractUser() myUserAttribute:" + myUserAttribute);
+			// System.out.println("LoadUserSpeedUp.extractUser() myUser:" + myUser);
+			// System.out.println("LoadUserSpeedUp.extractUser() myUserAttribute:" + myUserAttribute);
 			String myUsername = valueAttribute(myUserAttribute, "id");
 			String myUsernameAccount = valueAttribute(myUserAttribute, "account");
-//			System.out.println("LoadUserSpeedUp.extractUser() myUsername: "+myUsername);
-//			System.out.println("LoadUserSpeedUp.extractUser() myUsernameAccount: "+myUsernameAccount);
-//			System.out.println("LoadUserSpeedUp.extractUser() username: "+username);
-//			System.out.println("LoadUserSpeedUp.extractUser() account: "+account);
-//			System.out.println("LoadUserSpeedUp.extractUser() myUsername.equals(username) && myUsernameAccount.equals(account) " + (myUsername.equals(username) && myUsernameAccount.equals(account)));
+			// System.out.println("LoadUserSpeedUp.extractUser() myUsername: "+myUsername);
+			// System.out.println("LoadUserSpeedUp.extractUser() myUsernameAccount: "+myUsernameAccount);
+			// System.out.println("LoadUserSpeedUp.extractUser() username: "+username);
+			// System.out.println("LoadUserSpeedUp.extractUser() account: "+account);
+			// System.out.println("LoadUserSpeedUp.extractUser() myUsername.equals(username) && myUsernameAccount.equals(account) " + (myUsername.equals(username) && myUsernameAccount.equals(account)));
 			if (myUsername.equals(username) && myUsernameAccount.equals(account)) {
 				myUserAndAttribute[0] = myUser;
 				myUserAndAttribute[1] = myUserAttribute;
 				break;
 			}
-//			 if (myUser.contains(username) && myUser.contains(account)) {
-//			 myUserAndAttribute[0] = myUser;
-//			 myUserAndAttribute[1] = myUserAttribute;
-//			 break;
-//			 }
+			// if (myUser.contains(username) && myUser.contains(account)) {
+			// myUserAndAttribute[0] = myUser;
+			// myUserAndAttribute[1] = myUserAttribute;
+			// break;
+			// }
 		}
 		return myUserAndAttribute;
 	}
 
+	@Deprecated
 	public static List<Archive> extractArchiveUserList(String username, String account, String myUser) {
 		List<Archive> archives = new ArrayList<Archive>();
 		try {
@@ -61,6 +63,29 @@ public class LoadUserSpeedUp {
 				archive.setRole(valueAttribute(archiveAttribute, "role"));
 				// System.out.println("archive: " + archive);
 				archives.add(archive);
+				// System.out.println("#################################################");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return archives;
+	}
+
+	public static Map<String, Archive> extractArchiveUserListSimple(String username, String account, String myUser) {
+		// List<String> archives = new ArrayList<String>();
+		Map<String, Archive> archives = new LinkedHashMap<String, Archive>();
+		try {
+			Pattern patternArchive = Pattern.compile("((?i)<archive\\s*([^>]+)>(.+?)</archive>)", Pattern.DOTALL);
+			Matcher matcherArchive = patternArchive.matcher(myUser);
+			while (matcherArchive.find()) {
+				Archive archive = new Archive();
+				String archiveStr = matcherArchive.group(1);
+				String archiveAttribute = matcherArchive.group(2).replaceAll("\\s*=\\s*[^\\\"]", "=");
+				archive.setAlias(valueAttribute(archiveAttribute, "alias"));
+				archive.setRole(valueAttribute(archiveAttribute, "role"));
+				// System.out.println("archive: " + archive);
+				archives.put(valueAttribute(archiveAttribute, "alias"), archive);
 				// System.out.println("#################################################");
 			}
 		} catch (Exception e) {
@@ -161,7 +186,7 @@ public class LoadUserSpeedUp {
 			// System.out.println("LoadUserSpeedUp.loadUserByString() myUserAttribute:"+myUserAttribute);
 			Account accountBean = new Account();
 			Map<String, Archive> archiveAllMap = extractArchiveList(account, xmlArchives, accountBean);
-			List<Archive> archiveUserList = extractArchiveUserList(username, account, myUser);
+			Map<String, Archive> archiveUserMap = extractArchiveUserListSimple(username, account, myUser);
 			// System.out.println(myUser);
 			// System.out.println(myUserAttribute);
 			userBean.setName(valueAttribute(myUserAttribute, "name"));
@@ -174,15 +199,26 @@ public class LoadUserSpeedUp {
 			userBean.setPwd(valueAttribute(myUserAttribute, "pwd"));
 			userBean.setRole(valueAttribute(myUserAttribute, "role"));
 
-			for (Archive archive : archiveUserList) {
-				String archAlias = archive.getAlias();
-				if (archiveAllMap.containsKey(archAlias)) {
-					Archive archiveNew = archiveAllMap.get(archAlias);
-					archiveNew.setRole(archive.getRole());
+			for (Entry<String, Archive> entry : archiveAllMap.entrySet()) {
+				String archAlias = entry.getKey();
+				Archive archive = entry.getValue();
+				if (archiveUserMap.containsKey(archAlias)) {
+					Archive userArch = archiveUserMap.get(archAlias);
+					Archive archiveNew = archive;
+					archiveNew.setRole(userArch.getRole());
 					userBean.putArchives(archAlias, archiveNew);
 					userBean.addArchives(archiveNew);
 				}
 			}
+			// for (Archive archive : archiveUserList) {
+			// String archAlias = archive.getAlias();
+			// if (archiveAllMap.containsKey(archAlias)) {
+			// Archive archiveNew = archiveAllMap.get(archAlias);
+			// archiveNew.setRole(archive.getRole());
+			// userBean.putArchives(archAlias, archiveNew);
+			// userBean.addArchives(archiveNew);
+			// }
+			// }
 			userBean.setAccount(accountBean);
 			if (userBean.getAccount().equals("") || userBean.getId().equals("")) {
 				return null;
