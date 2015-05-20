@@ -49,7 +49,6 @@
    <opzione action="append" value="systemdate">/account/processinfo/list/item/date/text()</opzione>
    <opzione action="append" value="username">/account/processinfo/list/item/persname/text()</opzione>
    <opzione action="append" value=" Clonato ">/account/clonato/text()</opzione>
-   <opzione action="replace" value=".">/account/@id</opzione>
   </elemento>
  </param>
  <fixedValues>
