@@ -58,7 +58,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 						XMLBuilder xmlrole = ConfManager.getConfXML(account + "-security/role.xml");
 						userBean = LoadUser.loadUser(xmlUsers, xmlArchives, xmlrole, username, account);
 					}
-
 				} else if ((authenticationType.getLoadUserType() != null) && (authenticationType.getLoadUserType().equals("xDams-xway"))) {
 					XWConnection xwconn = null;
 					ConnectionManager connectionManager = new ConnectionManager();
@@ -80,7 +79,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					} catch (Exception e) {
 						e.printStackTrace();
 						throw new UsernameNotFoundException("user not found");
-					}finally {
+					} finally {
 						connectionManager.closeConnection(xwconn);
 					}
 					
