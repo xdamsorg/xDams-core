@@ -36,4 +36,16 @@ Release Note (by regesta.exe)
 13) gestione multiaccount 
     multiaccount management
 ************************************************************************************************
-    
+***** xDams Open Source Platform  *****
+*****
+*****   www.xdams.org       
+*****   version:  3.0.1         
+*****   date:     21.05.2015   
+************************************************************************************************
+1) FIX editing Users managemen
+2) FIX export prev/next sibling
+3) FIX function javascript in Chrome
+4) NEW ENTRY <util:map id="mapExtraParam" map-class="java.util.HashMap"....</util:map> in view
+
+
+
