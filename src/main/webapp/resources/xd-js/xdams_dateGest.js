@@ -155,26 +155,28 @@ function Trim(strText) //Ver 1.0
 
 
 
+function myReplaceAll(str,replaceWhat,replaceTo){
+    replaceWhat = replaceWhat.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    var re = new RegExp(replaceWhat, 'g');
+    return str.replace(re,replaceTo);
+}
+
 function dataNormalMulti(thisObj, nomeForm, riempi, giorno_I, mese_I, anno_I, giorno_F, mese_F, anno_F, riempiTEXT, campoSEC, ilFormatoString) //Ver 1.3
 {
 ilFormato = "gg.mm.aaaa" //default
 //ilFormato = "aaaa mese gg" //default
-//alert($(thisObj).attr('name'));
-var indexToChange = $(thisObj).attr('name').substring($(thisObj).attr('name').lastIndexOf('['),$(thisObj).attr('name').lastIndexOf(']')+1);	
-//alert(indexToChange);
+var indexToChange = $(thisObj).attr('name').substring($(thisObj).attr('name').lastIndexOf('['),$(thisObj).attr('name').lastIndexOf(']')+1);
+var lastIndexRec = giorno_I.substring(giorno_I.lastIndexOf('['),giorno_I.lastIndexOf(']')+1);
+riempi =myReplaceAll( riempi, lastIndexRec, indexToChange);
+giorno_I =myReplaceAll( giorno_I, lastIndexRec, indexToChange);
+mese_I =myReplaceAll( mese_I, lastIndexRec, indexToChange);
+anno_I =myReplaceAll( anno_I, lastIndexRec, indexToChange);
+giorno_F =myReplaceAll( giorno_F, lastIndexRec, indexToChange);
+mese_F =myReplaceAll( mese_F, lastIndexRec, indexToChange);
+anno_F =myReplaceAll( anno_F, lastIndexRec, indexToChange);
+riempiTEXT = myReplaceAll(riempiTEXT,lastIndexRec, indexToChange);
+campoSEC =myReplaceAll(campoSEC, lastIndexRec, indexToChange);
 
-riempi = riempi.replace(/\[1\]/g, indexToChange);
-giorno_I = giorno_I.replace(/\[1\]/g, indexToChange);
-mese_I = mese_I.replace(/\[1\]/g, indexToChange);
-anno_I = anno_I.replace(/\[1\]/g, indexToChange);
-giorno_F = giorno_F.replace(/\[1\]/g, indexToChange);
-mese_F = mese_F.replace(/\[1\]/g, indexToChange);
-anno_F = anno_F.replace(/\[1\]/g, indexToChange);
-riempiTEXT = riempiTEXT.replace(/\[1\]/g, indexToChange);
-campoSEC = campoSEC.replace(/\[1\]/g, indexToChange);
-
-
-//console.log('nomeForm '+nomeForm+'\nriempi '+riempi+'\ngiorno_I '+giorno_I+'\nmese_I '+mese_I+'\nanno_I '+anno_I+'\ngiorno_F '+giorno_F+'\nmese_F '+mese_F+'\nanno_F '+anno_F+'\nriempiTEXT '+riempiTEXT+'\ncampoSEC '+campoSEC+'\nilFormatoString '+ilFormatoString)
 var gg = ""
 var mm = ""
 var aaaa=""
@@ -184,7 +186,6 @@ var aaaaF=""
 eval('ilForm = document.'+nomeForm+'')
 
 riempiInput = ilForm[riempi]
-
  if(riempiInput==null){
  riempiInput = riempi;
  }
@@ -454,6 +455,7 @@ else{
    dataIniziale = aaaa+mm+gg;
    dataFinale = aaaaF+mmF+ggF;
    dataDefinitiva = "";
+   
     if(dataIniziale.length == 8)
     {
    	dataDefinitiva = dataIniziale
