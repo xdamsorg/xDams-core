@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,10 +62,12 @@ public class AssociateCommand {
  			if (!pathToView.equals("")) {
 				File file = new File(pathToView);
 				File[] files = file.listFiles();
+				Arrays.sort(files);
 				modelMap.put("files", files);
 			}else{
 				File file = new File(uploadBean.getAssociatePathDir());
 				File[] files = file.listFiles();
+				Arrays.sort(files);
 				modelMap.put("files", files);
 			}
 			
