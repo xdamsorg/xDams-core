@@ -15,7 +15,6 @@
 	WorkFlowBean workFlowBean = (WorkFlowBean) request.getAttribute("workFlowBean");
 	ManagingBean managingBean =(ManagingBean) request.getAttribute("managingBean") ;
 	UploadBean uploadBean =(UploadBean) request.getAttribute("uploadBean");
-	
 %>
 <html>
 <head>
@@ -50,11 +49,61 @@ $(document).ready(function(){
  	$( ".fileRouting" ).click(function() {
  		top.$("input[name='<%=CommonUtils.escapeJqueryName(uploadBean.getDestField())%>']").val($(this).attr("data-url"));
  		top.$dialog.dialog('close');
+ 	}); 
+ 	
+ 	$( ".selectAll" ).click(function() {
+ 		$("input:checkbox:not(:disabled)").attr("checked",true);
+ 	});   	
+ 	
+ 	$( ".deselectAll" ).click(function() {
+ 		$("input:checkbox:not(:disabled)").attr("checked",false);
  	});
-  
+ 	
+ 	$( ".associate" ).click(function() {		
+ 		var r = /\[\d+\]/g;
+ 		
+ 		var destField = "<%=request.getParameter("destField")%>";
+ 		var destFieldPath = destField.replace(r, "[@X@]"); 		 		
+ 		var titleSection = $(parent.document.getElementsByName(destField)[0]).closest("span").parent().parent().attr("id");
+
+ 		var currentNode = 1;
+ 		if(destField != destFieldPath){
+ 			currentNode = String(destField.match(r));			
+ 			currentNode = currentNode.replace("[","");
+ 			currentNode = currentNode.replace("]","");			
+ 		}
+ 		console.debug("destField: "+destField)
+ 		console.debug("destFieldPath: "+destFieldPath) 		
+ 		console.debug("titleSection: "+titleSection) 		
+ 		console.debug("currentNode: "+currentNode)
+ 				
+ 		var aTags = $(parent.document.getElementById(titleSection)).parent().find("a.doceditActionLink");
+ 		var addButton;
+ 		for (var i = 0; i < aTags.length; i++) {
+ 		  if (aTags[i].textContent == getLocalizedString('aggiungi' ,'aggiungi')) {
+ 			addButton = aTags[i];
+ 		    break;
+ 		  }
+ 		}		
+ 		
+ 		var counter = 0;
+ 		$("input:checkbox:checked").each(function()
+		{
+ 		   var currentPath = destFieldPath.replace("@X@", parseInt(counter) + parseInt(currentNode));
+ 		   if(counter>0 && typeof addButton != 'undefined'){
+			addButton.click();
+ 		   }
+ 		   console.debug("currentPath: "+currentPath+" --> "+$(this).attr("data-url"))
+		   //top.$("input[name='"+currentPath+"']").val($(this).attr("data-url"));  		   
+ 		   $(parent.document.getElementsByName(currentPath)[0]).val($(this).attr("data-url"));
+		   counter++;
+		});
+ 		top.$dialog.dialog('close');
+ 	});  	
 });
 </script>
-<style type="text/css">a.doceditActionLink {
+<style type="text/css">
+a.doceditActionLink {
     background-color: #DDDDDD;
     border: 1px solid #8B8C8F;
     border-radius: 5px;
@@ -75,27 +124,31 @@ $(document).ready(function(){
 </head> 
 <body>
 <div id="content_multi"> 
-<div class="riga_posiziona_multi"><span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "\\") %>"><spring:message code="torna_indietro" text="torna indietro"/></a></span></div>
+	<div class="riga_posiziona_multi">
+		<span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "/") %>"><spring:message code="torna_indietro" text="torna indietro"/></a></span>
+		<span><a href="#" class="doceditActionLink selectAll"><spring:message code="seleziona_tutti" text="seleziona tutti"/></a></span>
+		<span><a href="#" class="doceditActionLink deselectAll"><spring:message code="deseleziona_tutti" text="deseleziona tutti"/></a></span>
+		<span><a href="#" class="doceditActionLink associate"><spring:message code="associa" text="associa"/></a></span>		
+	</div>
 
  	<form:form modelAttribute="uploadBean" id="associateForm" action="${contextPath}/associate/${workFlowBean.alias}/associateMenu.html" method="post" enctype="multipart/form-data">
           <fieldset>
-  			<%
-  			if(request.getAttribute("files")!=null){
-  	  			File[] files = (File[])request.getAttribute("files");
-  					for (File file : files) {
-  						if(file.isDirectory()){
-  							%><div style="padding:5px;"><img src="${frontUrl}/img/tree/folder_node_chiuso.gif"/><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=file.getPath()%>"><%=file%></a></div><%	
-  						}else if(file.isFile()){
-  							String pathToView = (StringUtils.difference(uploadBean.getAssociatePathDir(), file.getAbsolutePath())).replaceAll("\\\\", "/");
-  							%><div style="padding:5px;"><img src="${frontUrl}/img/tree/file_node_chiuso.gif"/><a href="#nano" class="doceditActionLink fileRouting" data-url="<%=pathToView%>"><%=pathToView%></a></div><%
-  						}
-  					}  				
-  				
-  			}else{
-  				%><div style="padding:5px;"><spring:message code="ATTENZIONE_IMPOSSIBILE_LEGGERE_LA_DIRECTORY" text="ATTENZIONE IMPOSSIBILE LEGGERE LA DIRECTORY"/></div><%
-  			}
-
-			%>         
+	  			<%
+	  			if(request.getAttribute("files")!=null){
+	  	  			File[] files = (File[])request.getAttribute("files");
+	  					for (File file : files) {
+	  						if(file.isDirectory()){
+	  							%><div style="padding:5px;"><input type="checkbox" disabled="disabled"/><img src="${frontUrl}/img/tree/folder_node_chiuso.gif"/><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=file.getPath()%>"><%=file%></a></div><%	
+	  						}else if(file.isFile()){
+	  							String pathToView = (StringUtils.difference(uploadBean.getAssociatePathDir(), file.getAbsolutePath())).replaceAll("\\\\", "/");
+	  							%><div style="padding:5px;"><input type="checkbox" data-url="<%=pathToView%>"/><img src="${frontUrl}/img/tree/file_node_chiuso.gif"/><a href="#nano" class="doceditActionLink fileRouting" data-url="<%=pathToView%>"><%=pathToView%></a></div><%
+	  						}
+	  					}  				
+	  				
+	  			}else{
+	  				%><div style="padding:5px;"><spring:message code="ATTENZIONE_IMPOSSIBILE_LEGGERE_LA_DIRECTORY" text="ATTENZIONE IMPOSSIBILE LEGGERE LA DIRECTORY"/></div><%
+	  			}
+				%>         
                  <p> 
                     <form:input path="idRecord" type="hidden"/>
                     <form:input path="destField" type="hidden"/>
@@ -112,4 +165,3 @@ $(document).ready(function(){
 </div>	
 </body>
 </html>
- 
