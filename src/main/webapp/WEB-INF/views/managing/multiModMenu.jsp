@@ -151,7 +151,7 @@ loadJsBusiness('multiMod','${frontUrl}');
 <script type="text/javascript">xDamsModalMessage('<spring:message code="analisi_in_corso" text="analisi in corso"/>...');</script>
 <div id="content_multi">
 <div class="riga_posiziona_multi"><spring:message code="elemento_selezionato" text="elemento selezionato"/>: <strong><%=titleManager.defaultParsedTitle(managingBean.getTitle(),"defaultTitle")%></strong></div>
-<form action="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html" name="theForm">
+<form action="${contextPath}/<%=workFlowBean.getAlias() %>/managing.html" name="theForm" method="post">
 <input type="hidden" name="actionFlag" value="multiMod" />
 <input type="hidden" name="makeAction" value="true" />
 <input type="hidden" name="physDoc" value="<%=managingBean.getPhysDoc()%>" />
