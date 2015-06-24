@@ -138,13 +138,13 @@ public class xDamsRestController {
 				} else {
 					queryFind = "[" + xwQuery + "]=*";
 				}
-				qr = xwconn.getQRfromPhrase(queryFind);
-				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
+				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 			} else if (physDoc != null) {
 				qr = xwconn.getQRFromHier(Integer.parseInt(physDoc), true);
 				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
 			} else {
-				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage);
+				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage,null);
 				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 			}
 			String trasform = xwconn.XMLCommand(xwconn.connection, xwconn.getTheDb(), command);
@@ -182,8 +182,11 @@ public class xDamsRestController {
 		return outputBuilder.toString();
 	}
 
-	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage) throws SQLException, XWException {
-		String query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
+	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage,String query) throws SQLException, XWException {
+		if(query==null){
+			 query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
+		}
+		
 		QueryResult qr = new QueryResult();
 		QueryResult qrTemp = null;
 		qrTemp = xwConnection.getQRfromPhrase(query);

@@ -176,11 +176,11 @@
 			</elemento>
 		</sezione>
 	</macroarea>
-	<macroarea name="Allegati digitali" summary="yes" showdoc="yes">
-		<sezione name="Immagini allegate" summary="yes" showdoc="yes" opened="yes">
-			<elemento summary="yes" showdoc="yes" type="custom" id="daoGrp" prefix="/c/daogrp">/c/daogrp/daoloc/@href</elemento>
-		</sezione>
-	</macroarea>
+ <macroarea name="Allegati digitali" summary="yes" showdoc="yes">
+  <sezione name="Allegati" summary="yes" showdoc="yes" opened="yes">
+   <elemento summary="yes" showdoc="yes" alternativeLinkTitle="apri l'allegato" type="mediaBean" xPathPrefix="/c/daogrp/daoloc" xPathHref="/c/daogrp/daoloc/@href" xPathTitle="/c/daogrp/daoloc/@title" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides"/>
+  </sezione>
+ </macroarea>
 	<macroarea name="Area delle note e della compilazione" summary="yes" showdoc="yes">
 		<sezione name="note" summary="yes" showdoc="yes">
 			<elemento name="note" summary="yes" showdoc="yes">/c/note/p/text()</elemento>

@@ -46,6 +46,19 @@ Release Note (by regesta.exe)
 2) FIX export prev/next sibling
 3) FIX function javascript in Chrome
 4) NEW ENTRY <util:map id="mapExtraParam" map-class="java.util.HashMap"....</util:map> in view
+************************************************************************************************
+***** xDams Open Source Platform  *****
+*****
+*****   www.xdams.org       
+*****   version:  3.0.2         
+*****   date:     01.06.2015   
+************************************************************************************************
+1) NEW ENTRY - add sort file in associate list
+2) NEW ENTRY - add multiple file in associate
+3) FIX - data normal multi
+4) FIX - digital attach
+4) FIX - rest api
+
 
 
 
