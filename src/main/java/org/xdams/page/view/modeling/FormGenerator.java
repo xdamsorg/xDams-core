@@ -1294,7 +1294,7 @@ public class FormGenerator {
 		String nomeVarJS = xpathCorrente.replaceAll("/", "").replaceAll("'", "").replaceAll(" ", "").replaceAll("\\(", "").replaceAll("\\)", "").replaceAll("\\]", "").replaceAll("\\[", "").replaceAll("=", "").replaceAll("-", "").replaceAll("@", "");
 		extra += " " + extraExtra;
 		out.println("<script language=\"JavaScript\" type=\"text/javascript\">");
-		out.println("AC_FL_RunContent('src', '" + "" + "/flash/SimpleRTE','FlashVars', 'flashid=" + nomeVarJS + "-ID','width', '100%','height', '150','align', 'middle','id', '" + nomeVarJS + "-ID','quality', 'high','bgcolor', '#869ca7','name', '" + nomeVarJS
+		out.println("AC_FL_RunContent('src', '" + contextPath + "/resources/rte/flash/SimpleRTE','FlashVars', 'flashid=" + nomeVarJS + "-ID','width', '100%','height', '150','align', 'middle','id', '" + nomeVarJS + "-ID','quality', 'high','bgcolor', '#869ca7','name', '" + nomeVarJS
 				+ "-ID','allowScriptAccess','sameDomain','type', 'application/x-shockwave-flash','pluginspage', 'http://www.adobe.com/go/getflashplayer');");
 		// out.println("AC_FL_RunContent('src', '" + frontPath + "/flash/SimpleRTE','FlashVars', 'flashid=" + nomeVarJS + "-ID','width', '100%','height', '150','align', 'middle','id', '" + nomeVarJS + "-ID','quality', 'high','bgcolor', '#869ca7','name', '" + nomeVarJS
 		// + "-ID','allowScriptAccess','sameDomain','type', 'application/x-shockwave-flash','pluginspage', 'http://www.adobe.com/go/getflashplayer');");

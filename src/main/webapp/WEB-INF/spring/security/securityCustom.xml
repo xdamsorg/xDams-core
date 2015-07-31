@@ -3,6 +3,7 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  <global-method-security secured-annotations="enabled">
  </global-method-security>
+ <http pattern="/favicon.ico" security="none"/>
  <http auto-config="false" entry-point-ref="loginUrlAuthenticationEntryPoint" create-session="always">
   <!-- <intercept-url pattern="/pdf/printPdf.html" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
   <intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>

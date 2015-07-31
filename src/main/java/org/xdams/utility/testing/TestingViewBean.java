@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.xdams.page.view.bean.ViewBean;
 
-
 public class TestingViewBean extends TestingGeneric {
 
 	public TestingViewBean() {
@@ -75,7 +74,6 @@ public class TestingViewBean extends TestingGeneric {
 
 	public boolean visualizzaXML(Object viewBean, Object workFlowBean, String[] userLevel) {
 		boolean ritorno = controllaLivello(workFlowBean, userLevel);
-
 		return ritorno;
 	}
 
@@ -94,7 +92,7 @@ public class TestingViewBean extends TestingGeneric {
 			Object QRPage = httpSession.getAttribute("QRPage");
 			if ((QRParser != null && pageToShow != null && QRPage != null) && controllaLivello(workFlowBean, userLevel)) {
 				ritorno = true;
-			}			
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

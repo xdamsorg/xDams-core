@@ -72,10 +72,10 @@ $(document).ready(function(){
  			currentNode = currentNode.replace("[","");
  			currentNode = currentNode.replace("]","");			
  		}
- 		console.debug("destField: "+destField)
- 		console.debug("destFieldPath: "+destFieldPath) 		
- 		console.debug("titleSection: "+titleSection) 		
- 		console.debug("currentNode: "+currentNode)
+ 		//console.debug("destField: "+destField)
+ 		//console.debug("destFieldPath: "+destFieldPath) 		
+ 		//console.debug("titleSection: "+titleSection) 		
+ 		//console.debug("currentNode: "+currentNode)
  				
  		var aTags = $(parent.document.getElementById(titleSection)).parent().find("a.doceditActionLink");
  		var addButton;
@@ -93,7 +93,7 @@ $(document).ready(function(){
  		   if(counter>0 && typeof addButton != 'undefined'){
 			addButton.click();
  		   }
- 		   console.debug("currentPath: "+currentPath+" --> "+$(this).attr("data-url"))
+ 		   //console.debug("currentPath: "+currentPath+" --> "+$(this).attr("data-url"))
 		   //top.$("input[name='"+currentPath+"']").val($(this).attr("data-url"));  		   
  		   $(parent.document.getElementsByName(currentPath)[0]).val($(this).attr("data-url"));
 		   counter++;
@@ -125,7 +125,7 @@ a.doceditActionLink {
 <body>
 <div id="content_multi"> 
 	<div class="riga_posiziona_multi">
-		<span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "/") %>"><spring:message code="torna_indietro" text="torna indietro"/></a></span>
+		<span><a href="#nano" class="doceditActionLink folderRouting" data-url="<%=request.getParameter("pathToView")==null || request.getParameter("pathToView").equals(uploadBean.getAssociatePathDir()) ? uploadBean.getAssociatePathDir() : StringUtils.substringBeforeLast(request.getParameter("pathToView"), "\\") %>"><spring:message code="torna_indietro" text="torna indietro"/></a></span>
 		<span><a href="#" class="doceditActionLink selectAll"><spring:message code="seleziona_tutti" text="seleziona tutti"/></a></span>
 		<span><a href="#" class="doceditActionLink deselectAll"><spring:message code="deseleziona_tutti" text="deseleziona tutti"/></a></span>
 		<span><a href="#" class="doceditActionLink associate"><spring:message code="associa" text="associa"/></a></span>		
