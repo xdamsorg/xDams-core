@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.fop.apps.FOPException;
 import org.apache.fop.apps.FOUserAgent;
@@ -46,7 +48,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 import org.xdams.xw.exception.XWException;
-
 
 public class XML2PDF {
 
@@ -344,7 +345,65 @@ public class XML2PDF {
 		return managingBean;
 	}
 
+	@SuppressWarnings("unchecked")
 	private String findXSLPath(UserBean userBean, WorkFlowBean workFlowBean) {
+		String[] extensions = { "xsl", "xslt" };
+		String pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef() + "/" + workFlowBean.getArchive().getType() + "/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
+		System.out.println("XML2PDF.findXSLPath() 111 : " + pathPdfPrint);
+		File file = new File(pathPdfPrint);
+		System.out.println("XML2PDF.findXSLPath() 111aaaa : " + file);
+		Collection<File> files = null;
+		if (file.exists()) {
+			files = FileUtils.listFiles(file, extensions, false);
+		}
+		if (!file.exists() || (files != null && files.size() == 0)) {
+			pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef() + "/" + workFlowBean.getArchive().getType())).replaceAll("\\\\", "/");
+			file = new File(pathPdfPrint);
+			if (file.exists()) {
+				files = FileUtils.listFiles(file, extensions, false);
+			}
+			if (!file.exists() || (files != null && files.size() == 0)) {
+				System.out.println("XML2PDF.findXSLPath() 222 : " + pathPdfPrint);
+				pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef())).replaceAll("\\\\", "/");
+				file = new File(pathPdfPrint);
+				if (file.exists()) {
+					files = FileUtils.listFiles(file, extensions, false);
+				}
+				if (!file.exists() || (files != null && files.size() == 0)) {
+					System.out.println("XML2PDF.findXSLPath() 333 : " + pathPdfPrint);
+					pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
+					file = new File(pathPdfPrint);
+					if (file.exists()) {
+						files = FileUtils.listFiles(file, extensions, false);
+					}
+					if (!file.exists() || (files != null && files.size() == 0)) {
+						System.out.println("XML2PDF.findXSLPath() 444 : " + pathPdfPrint);
+						pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getType())).replaceAll("\\\\", "/");
+						file = new File(pathPdfPrint);
+						if (file.exists()) {
+							files = FileUtils.listFiles(file, extensions, false);
+						}
+						if (!file.exists() || (files != null && files.size() == 0)) {
+							System.out.println("XML2PDF.findXSLPath() 555 : " + pathPdfPrint);
+							pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint")).replaceAll("\\\\", "/");
+							file = new File(pathPdfPrint);
+							if (file.exists()) {
+								files = FileUtils.listFiles(file, extensions, false);
+							}
+							if (!file.exists() || (files != null && files.size() == 0)) {
+								System.out.println("XML2PDF.findXSLPath() 666 : " + pathPdfPrint);
+								pathPdfPrint = null;
+							}
+						}
+					}
+				}
+			}
+		}
+		return pathPdfPrint;
+	}
+
+	@Deprecated
+	private String findXSLPathOLD(UserBean userBean, WorkFlowBean workFlowBean) {
 		/*
 		 * String pathPdfPrint = (servletContext.getRealPath("/WEB-INF/classes/pdfPrint")).replaceAll("\\\\", "/"); System.out.println("XML2PDF.execute() "+pathPdfPrint); pathPdfPrint = (servletContext.getRealPath("/WEB-INF/classes/pdfPrint/"+userBean.getIdAccount())).replaceAll("\\\\", "/");
 		 * System.out.println("XML2PDF.execute() "+pathPdfPrint); pathPdfPrint = (servletContext.getRealPath("/WEB-INF/classes/pdfPrint/"+userBean.getIdAccount()+"/"+userBean.getTheArch())).replaceAll("\\\\", "/"); System.out.println("XML2PDF.execute() "+pathPdfPrint);
