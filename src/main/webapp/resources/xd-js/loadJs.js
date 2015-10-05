@@ -142,7 +142,29 @@ function loadJsBusiness(target, prefix) {
 			'prefix' : prefix,
 			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
 		});
-	} else if (target === 'docEdit') {
+	}else if (target === 'multiCopy') {
+		loadScripts({
+			'base' : base + "/jquery",
+			'prefix' : prefix,
+			'scripts' : [ 'jquery.blockUI','jquery-ui-last', 'jquery.i18n.properties' ]
+		});
+		loadScripts({
+			'base' : base,
+			'prefix' : prefix,
+			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
+		});
+	}else if (target === 'advFindReplace') {
+		loadScripts({
+			'base' : base + "/jquery",
+			'prefix' : prefix,
+			'scripts' : [ 'jquery.blockUI','jquery-ui-last', 'jquery.i18n.properties' ]
+		});
+		loadScripts({
+			'base' : base,
+			'prefix' : prefix,
+			'scripts' : [ 'xdams_jquery', 'xdams_new_gestione' ]
+		});
+	}  else if (target === 'docEdit') {
 		loadScripts({
 			'base' : base + "/jquery",
 			'prefix' : prefix,
