@@ -77,8 +77,9 @@ public class xDamsAdminController {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
 	}
 
-	@ModelAttribute
-	public void userLoad(Model model) {
+	//@ModelAttribute
+	public void userLoad(ModelMap model) {
+//		System.out.println("xDamsController.userLoad() model.containsAttribute(\"userBean\"): " + model.containsAttribute("userBean"));
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
@@ -94,16 +95,27 @@ public class xDamsAdminController {
 	@ModelAttribute
 	public void frontUrl(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// model.addAttribute("frontUrl", request.getContextPath() + "/resources");
+		userLoad(model);
 		model.addAttribute("frontUrl", request.getContextPath() + "/resources");
+//		System.out.println("xDamsController.frontUrl() multiAccount: " + multiAccount);
+//		System.out.println("xDamsController.frontUrl() model.get(\"userBean\"): " + model.get("userBean"));
 		if (multiAccount && model.get("userBean") != null) {
 			model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + ((UserBean) model.get("userBean")).getAccountRef());
 		}
+
+//		System.out.println("xDamsController.frontUrl() model.get(\"frontUrl\"): " + model.get("frontUrl"));
 		model.addAttribute("contextPath", request.getContextPath());
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
 			response.addHeader("X-UA-Compatible", "IE=edge");
 		}
 
+		try {
+			Locale locale = RequestContextUtils.getLocale(request);
+			((UserBean) model.get("userBean")).setLanguage(locale.getLanguage());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		model.put("realPath", WebUtils.getRealPath(servletContext, ""));
 	}
 
