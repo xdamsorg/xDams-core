@@ -74,6 +74,8 @@ import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
+import org.xdams.xw.paging.QRPage;
+import org.xdams.xw.paging.QRParser;
 
 @Controller
 @SessionAttributes({ "userBean" })
@@ -100,13 +102,14 @@ public class xDamsController {
 	@Autowired
 	ApplicationContext applicationContext;
 
-	@ModelAttribute 
+	@ModelAttribute
 	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
 	}
 
-	@ModelAttribute
-	public void userLoad(Model model) {
+	// @ModelAttribute
+	public void userLoad(ModelMap model) {
+		// System.out.println("xDamsController.userLoad() model.containsAttribute(\"userBean\"): " + model.containsAttribute("userBean"));
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
@@ -122,19 +125,24 @@ public class xDamsController {
 	@ModelAttribute
 	public void frontUrl(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// model.addAttribute("frontUrl", request.getContextPath() + "/resources");
+		userLoad(model);
 		model.addAttribute("frontUrl", request.getContextPath() + "/resources");
+		// System.out.println("xDamsController.frontUrl() multiAccount: " + multiAccount);
+		// System.out.println("xDamsController.frontUrl() model.get(\"userBean\"): " + model.get("userBean"));
 		if (multiAccount && model.get("userBean") != null) {
 			model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + ((UserBean) model.get("userBean")).getAccountRef());
 		}
+
+		// System.out.println("xDamsController.frontUrl() model.get(\"frontUrl\"): " + model.get("frontUrl"));
 		model.addAttribute("contextPath", request.getContextPath());
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
 			response.addHeader("X-UA-Compatible", "IE=edge");
 		}
-		
+
 		try {
 			Locale locale = RequestContextUtils.getLocale(request);
-			((UserBean)model.get("userBean")).setLanguage(locale.getLanguage());
+			((UserBean) model.get("userBean")).setLanguage(locale.getLanguage());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -159,7 +167,7 @@ public class xDamsController {
 
 	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute("userBean") UserBean userBean) throws Exception {
-		//Map<String, List<Archive>> usersArchives = new LinkedHashMap<String, List<Archive>>();
+		// Map<String, List<Archive>> usersArchives = new LinkedHashMap<String, List<Archive>>();
 		Map<String, List<Archive>> usersArchives = new TreeMap<String, List<Archive>>();
 		serviceUser.loadArchives(userBean, usersArchives);
 		model.addAttribute("usersArchives", usersArchives);
@@ -201,6 +209,7 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		TitlePageCommand titlePageCommand = new TitlePageCommand(request.getParameterMap(), modelMap);
 		titlePageCommand.execute();
+
 		String pageName = MyRequest.getParameter("pageName", request);
 		if (!pageName.equals("")) {
 			modelMap.put("pageName", pageName);
@@ -264,7 +273,7 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		ManagingFactory managingFactory = new ManagingFactory(request.getParameterMap(), modelMap);
 		ManagingBean managingBean = managingFactory.execute();
-//		System.out.println("xDamsController.managing() " + managingBean);
+		// System.out.println("xDamsController.managing() " + managingBean);
 		return "managing/" + managingBean.getDispatchView();
 	}
 
@@ -356,7 +365,7 @@ public class xDamsController {
 		} else {
 			return viewTab(userBean, confBean, archive, modelMap, MyRequest.getParameter("goServlet", request.getParameterMap()), request, response);
 		}
-	} 
+	}
 
 	@RequestMapping(value = "/lookup/{archive}/{archiveLookup}")
 	public String lookup(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, @PathVariable String archiveLookup, @ModelAttribute("lookupBean") LookupBean lookupBean, ModelMap modelMap, HttpServletRequest request,
@@ -384,8 +393,8 @@ public class xDamsController {
 		}
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", ajaxBean.getContentType().equals("") ? "text/xml; charset=iso-8859-1" : ajaxBean.getContentType());
-//		System.out.println("ajaxBean.getStrXmlOutput() " + ajaxBean.getStrXmlOutput());
-//		System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType());
+		// System.out.println("ajaxBean.getStrXmlOutput() " + ajaxBean.getStrXmlOutput());
+		// System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType());
 		return new ResponseEntity<String>(ajaxBean.getStrXmlOutput(), responseHeaders, HttpStatus.CREATED);
 	}
 
@@ -422,7 +431,9 @@ public class xDamsController {
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest request) {
 		if (request.getParameter("tokenValue") != null && !request.getParameter("tokenValue").equals("")) {
-			return new String(Base64.decode(request.getParameter("tokenValue").getBytes()));
+			String tokenValue = new String(Base64.decode(request.getParameter("tokenValue").getBytes()));
+			model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + tokenValue);
+			return tokenValue;
 		}
 		return "login";
 	}
