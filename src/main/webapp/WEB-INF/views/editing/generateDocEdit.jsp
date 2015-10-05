@@ -109,12 +109,16 @@ for (int z = 0; z < numeroMacroarea; z++) {
 if(true){
 int numeroCampiHidden = theXMLconf.contaNodi("/"+ilPath+"/sezione[@name='campiHidden']/elemento");
 if(numeroCampiHidden>0){
-	for(int i = 0;i<numeroCampiHidden;i++){
-		String nomeNodo = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/text()");
-		String valoreNodo = theXML.valoreNodo(nomeNodo,"");
-		%><input type="hidden" name="<%=nomeNodo.replace('/','.')%>" value="<%=valoreNodo%>" /><%
-	}
-
+	   for(int i = 0;i<numeroCampiHidden;i++){
+	        String nomeNodo = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/text()");
+	        String forceValue = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/@forceValue");
+	        //out.println("forceValue: "+forceValue);
+	        String valoreNodo = theXML.valoreNodo(nomeNodo,"");
+	        if(valoreNodo.equals("")){
+	        	valoreNodo = forceValue;
+	        }
+	        %><input type="hidden" name="<%=nomeNodo.replace('/','.')%>" value="<%=valoreNodo%>" /><%
+	    }
 }}
 		%>
   
