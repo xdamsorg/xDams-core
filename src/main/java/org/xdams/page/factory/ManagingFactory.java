@@ -3,9 +3,11 @@ package org.xdams.page.factory;
 import java.util.Map;
 
 import org.springframework.ui.ModelMap;
+import org.xdams.managing.command.AdvFindReplace;
 import org.xdams.managing.command.EraseCommand;
 import org.xdams.managing.command.ManageXML;
 import org.xdams.managing.command.ModifyAuther;
+import org.xdams.managing.command.MultiCopy;
 import org.xdams.managing.command.MultiModCommand;
 import org.xdams.managing.command.MultiModRenumberCommand;
 import org.xdams.managing.command.MultiMove;
@@ -86,8 +88,8 @@ public class ManagingFactory {
 				MultiMove multiMove = new MultiMove(parameterMap, modelMap);
 				managingBean = multiMove.execute();
 			} else if (actionFlag.equals("multiCopy")) {
-				// MultiCopy multiCopy = new MultiCopy(aReq, servletContext);
-				// managingBean = multiCopy.execute();
+				 MultiCopy multiCopy = new MultiCopy(parameterMap, modelMap);
+				managingBean = multiCopy.execute();
 			} else if (actionFlag.equals("modifyAuther")) {
 				ModifyAuther modifyAuther = new ModifyAuther(parameterMap, modelMap);
 				managingBean = modifyAuther.execute();
@@ -101,8 +103,8 @@ public class ManagingFactory {
 				// AdminXwFactory adminXwFactory = new AdminXwFactory(aReq, aRes, servletContext, multiPartCommand);
 				// managingBean = adminXwFactory.execute();
 			} else if (actionFlag.equals("findReplace")) {
-				// AdvFindReplace advFindReplace = new AdvFindReplace(aReq, servletContext);
-				// managingBean = advFindReplace.execute();
+				 AdvFindReplace advFindReplace = new AdvFindReplace(parameterMap, modelMap);
+				 managingBean = advFindReplace.execute();
 			} else if (actionFlag.equals("advMultiMod")) {
 				// AdvMultiModCommand advMultiModCommand = new AdvMultiModCommand(aReq, servletContext);
 				// managingBean = advMultiModCommand.execute();
