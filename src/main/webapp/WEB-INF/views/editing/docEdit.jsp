@@ -101,7 +101,7 @@ xDamsModalMessage('<spring:message code="caricamento_in_corso" text="caricamento
 	<div class="contAllArea">
 	<% 
 	System.out.println("---- INFO ---- editing page: "+userBean.getAccount().getDescrAccount()+" | "+workFlowBean.getAlias() +" / "+userBean.getName()+" "+userBean.getLastName());
-	FormGenerator generatoreForm = new FormGenerator(theXML,theXMLconf,workFlowBean,(String)request.getAttribute("contextPath"));
+	FormGenerator generatoreForm = new FormGenerator(theXML,theXMLconf,workFlowBean,(String)request.getAttribute("contextPath"), (String)request.getAttribute("frontUrl"));
 	//generatoreForm.setUserBean(userBean); 
 	generatoreForm.setPhysDoc(editingBean.getPhysDoc());
   	boolean testaRigaSepara = false;
