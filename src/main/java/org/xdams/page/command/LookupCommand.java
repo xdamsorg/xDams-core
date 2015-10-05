@@ -60,18 +60,18 @@ public class LookupCommand {
 
 			if (!(MyRequest.getParameter("selId", parameterMap).trim()).equals("")) {
 				qr = xwconn.getQRFromSelId(MyRequest.getParameter("selId", parameterMap));
-				System.out.println("Lookup.execute()1111" + qr);
+//				System.out.println("Lookup.execute()1111" + qr);
 			} else {
 				// System.out.println("ENTRATO QUA " + getQrSelId());
 				qr = find(xwconn, "singoloTermine", keyCountQuery, lookupBean);
-				System.out.println("Lookup.execute()2222" + qr);
+//				System.out.println("Lookup.execute()2222" + qr);
 			}
-			System.out.println("Lookup.execute() " + qr);
+//			System.out.println("Lookup.execute() " + qr);
 			if (!MyRequest.getParameter("flagXML", parameterMap).equals("true")) {
 				if (!lookupBean.getInputTitleRule().trim().equals("")) {
 					xwconn.setTitleRule(xwconn.connection, workFlowBean.getArchiveLookup().getAlias(), lookupBean.getInputTitleRule());
 				}
-				System.out.println("Lookup.execute()333333" + qr);
+//				System.out.println("Lookup.execute()333333" + qr);
 				int totElements = qr.elements;
 				// setQrSelId(qr.id);
 				// System.out.println("PIPPETTO " + qr.elements + " FINE");
@@ -91,9 +91,9 @@ public class LookupCommand {
 						titleList.add(titolo.getTitle());
 					}
 				}
-				System.out.println("Lookup.execute()44444" + qr);
+//				System.out.println("Lookup.execute()44444" + qr);
 				modelMap.put("selId", qr.id);
-				System.out.println("Lookup.execute()6666666" + qr);
+//				System.out.println("Lookup.execute()6666666" + qr);
 			} else if (MyRequest.getParameter("flagXML", parameterMap).equals("true")) {
 				lookupBean.setInputTitleRule("");
 				int totElements = qr.elements;
