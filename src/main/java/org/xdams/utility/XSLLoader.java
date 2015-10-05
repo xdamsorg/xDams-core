@@ -17,7 +17,7 @@ public class XSLLoader {
 	public static List<XSLBean> loadXSL(String xslDir) {
 		List<XSLBean> result = null;
 		File file = new File(xslDir);
-		System.out.println(xslDir);
+//		System.out.println(xslDir);
 		if (file.isDirectory()) {
 			result = new ArrayList();
 			File[] files = file.listFiles();
