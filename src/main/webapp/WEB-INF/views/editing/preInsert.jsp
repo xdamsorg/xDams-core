@@ -25,7 +25,7 @@
 	XMLBuilder theXMLconfTitle = confBean.getTheXMLConfTitle();
 	TitleManager titleManager = new TitleManager(theXMLconfTitle);
  
-	FormGenerator generatoreForm = new FormGenerator(theXMLconf,theXMLconf,workFlowBean,(String)request.getAttribute("contextPath"));
+	FormGenerator generatoreForm = new FormGenerator(theXMLconf,theXMLconf,workFlowBean, (String)request.getAttribute("contextPath"), (String)request.getAttribute("frontUrl"));
 	boolean testaRigaSepara = false;
 	String rigaSeparaMiddle = "<tr class=\"showdocLine\" ><td  width=\"4\" bgcolor=\"#B4B7BA\" height=\"4\" ><img height=\"1\" width=\"4\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td><td colspan=\"3\" width=\"100%\"><img height=\"1\" width=\"1\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td></tr>";
   	String rigaSepara="<table><tr><td height=\"10\" colspan=\"4\" width=\"4\"><img height=\"1\" width=\"1\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td></tr></table>";
@@ -209,7 +209,7 @@ theXML = preInsertBean.getXmlBuilderFather();
 numeroMacroarea = theXMLconf.contaNodi("/root"+preInsertBean.getXPathHierValues()+"/macroarea");
 ilPath = "/root"+preInsertBean.getXPathHierValues();
 if(theXML !=null){
-	generatoreForm = new FormGenerator(theXML,theXMLconf,workFlowBean,(String)request.getAttribute("contextPath"));
+	generatoreForm = new FormGenerator(theXML,theXMLconf,workFlowBean,(String)request.getAttribute("contextPath"), (String)request.getAttribute("frontUrl"));
 	testaRigaSepara = false;
 	rigaSeparaMiddle = "<tr class=\"showdocLine\" ><td  width=\"4\" bgcolor=\"#B4B7BA\" height=\"4\" ><img height=\"1\" width=\"4\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td><td colspan=\"3\" width=\"100%\"><img height=\"1\" width=\"1\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td></tr>";
 	rigaSepara="<table><tr><td height=\"10\" colspan=\"4\" width=\"4\"><img height=\"1\" width=\"1\" vspace=\"0\" hspace=\"0\" border=\"0\" src=\""+request.getAttribute("frontUrl")+"/img/null.gif\"></td></tr></table>";
