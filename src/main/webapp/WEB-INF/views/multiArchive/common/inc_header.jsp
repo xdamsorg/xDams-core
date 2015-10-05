@@ -1,0 +1,1 @@
+<div id="header"><img src="${frontUrl}/img/logo.gif"  border="0" align="left" alt="xDams"/><div class="titolo_arc"><%=userBean.getAccount().getDescrAccount()%></div></div>
