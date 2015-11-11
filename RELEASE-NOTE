@@ -1,5 +1,5 @@
 ***** xDams Open Source Platform  *****
-*****
+*****   by simvox
 *****   www.xdams.org       
 *****   version:  3.0.0         
 *****   date:     18.03.2015   
@@ -35,20 +35,21 @@ Release Note (by regesta.exe)
     photos search result 
 13) gestione multiaccount 
     multiaccount management
+    
 ************************************************************************************************
 ***** xDams Open Source Platform  *****
-*****
+*****   by simvox
 *****   www.xdams.org       
 *****   version:  3.0.1         
 *****   date:     21.05.2015   
 ************************************************************************************************
-1) FIX editing Users managemen
+1) FIX editing Users management
 2) FIX export prev/next sibling
 3) FIX function javascript in Chrome
 4) NEW ENTRY <util:map id="mapExtraParam" map-class="java.util.HashMap"....</util:map> in view
 ************************************************************************************************
 ***** xDams Open Source Platform  *****
-*****
+*****   by simvox
 *****   www.xdams.org       
 *****   version:  3.0.2         
 *****   date:     01.06.2015   
@@ -58,7 +59,17 @@ Release Note (by regesta.exe)
 3) FIX - data normal multi
 4) FIX - digital attach
 4) FIX - rest api
-
-
-
+************************************************************************************************
+***** xDams Open Source Platform  *****
+*****   by simvox
+*****   www.xdams.org       
+*****   version:  3.0.3         
+*****   date:     11.11.2015   
+************************************************************************************************
+1) NEW ENTRY - find/replace
+2) NEW ENTRY - attribute hidden in editing macroarea 
+3) NEW ENTRY - xDamsBiblio mods 
+4) FIX - common modelAttribute
+5) FIX - backward compatibility rich textarea for ancien xDams platform
+6) FIX - .gitignore multiarchive
 
