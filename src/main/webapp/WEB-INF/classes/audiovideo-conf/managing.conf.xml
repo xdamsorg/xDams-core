@@ -1,43 +1,250 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo proprio"> /c/did/unittitle/title/text()
+ <element multiMod="true" name="specifiche di pubblicazione">/c/@audience</element>
+ <element multiMod="" name="livello">/c/@level</element>
+ <element multiMod="" name="identificativo di sistema">/c/@id</element>
+ <element multiMod="" name="identificativo logico">/c/did/unitid/text()</element>
+ <element multiMod="" name="tipologia">/c/did/materialspec[@label='typology']/text()</element>
+ <element multiMod="" name="genere">/c/did/materialspec[@label='genre']/text()</element>
+ <element multiMod="" name="stato">/c/did/materialspec[@label='genre']/emph/text()</element>
+ <element multiMod="" name="titolo">/c/did/unittitle/bibseries/text()</element>
+ <element multiMod="" name="numero">/c/did/unittitle/bibseries/num/text()</element>
+ <element multiMod="true" name="titolo proprio">/c/did/unittitle/title[@type='proper']/text()</element>
+ <element multiMod="true" name="complemento del titolo">/c/did/unittitle/title[@type='proper']/emph/text()</element>
+ <element multiMod="true" name="titolo attribuito">/c/did/unittitle/text()</element>
+ <element multiMod="" name="fonte dell'attribuzione">/c/did/unittitle/@label</element>
+ <element name="Varianti del titolo" prefix="/c/did/unittitle/title[@altrender='variant']">
+  <element multiMod="" name="variante">/c/did/unittitle/title[@altrender='variant']/text()</element>
+  <element multiMod="" name="tipologia del titolo variante">/c/did/unittitle/title[@altrender='variant']/@type</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="2" cols="55" name="complemento del titolo"> /c/did/unittitle/title/emph/text()
+ <element multiMod="" name="forma normalizzata">/c/did/unittitle/unitdate/@normal</element>
+ <element multiMod="" name="forma normalizzata">/c/did/unittitle/unitdate/text()</element>
+ <element multiMod="" name="lingua principale">/c/did/langmaterial/language[@altrender='main language']/text()</element>
+ <element multiMod="" name="nazionalità">/c/did/origination[@label='nationality']/text()</element>
+ <element multiMod="" name="edizione / versione">/c/did/unittitle/edition/text()</element>
+ <element prefix="/c/did/langmaterial/language[@altrender='other language']">
+  <element multiMod="" name="altre lingue">/c/did/langmaterial/language[@altrender='other language']/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo testata/Serie"> /c/did/unittitle/bibseries/text()
+ <element multiMod="" name="forma normalizzata">/c/did/unittitle/date[@type='production']/@normal</element>
+ <element multiMod="" name="forma normalizzata">/c/did/unittitle/date[@type='production']/text()</element>
+ <element multiMod="" name="date e luoghi di produzione">/c/did/unittitle/geogname[@role='production']/text()</element>
+ <element multiMod="" name="data di distribuzione">/c/did/unittitle/date[@type='distribution']/text()</element>
+ <element multiMod="" name="luogo di distribuzione">/c/did/unittitle/geogname[@role='distribution']/text()</element>
+ <element multiMod="" name="info distribuzione">/c/did/repository[@label='distributor']/text()</element>
+ <element name="persone" prefix="/c/did/origination[@label='main credits']/persname">
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/persname/@role</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/persname/@authfilenumber</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/persname/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="titolo attribuito"> /c/did/unittitle/text()
+ <element name="enti / società" prefix="/c/did/origination[@label='main credits']/corpname">
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/corpname/@role</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/corpname/@authfilenumber</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='main credits']/corpname/text()</element>
  </element>
- <element multiMod="true" input_type="text" class="Short" name="luogo di produzione"> /c/did/unittitle/geogname/text()
+ <element name="persone" prefix="/c/did/origination[@label='production crew']/persname">
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/persname/@role</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/persname/@authfilenumber</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/persname/text()</element>
  </element>
- <element multiMod="true" input_type="text" class="Short" name="anno di produzione"> /c/did/unittitle/date/text()
+ <element name="enti / società" prefix="/c/did/origination[@label='production crew']/corpname">
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/corpname/@role</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/corpname/@authfilenumber</element>
+  <element multiMod="" name="ruolo">/c/did/origination[@label='production crew']/corpname/text()</element>
  </element>
- <element multiMod="true" input_type="text" class="Short" name="identificativo della copia"> /c/did/physdesc[@label='copia di catalogazione']/@id
+ <element multiMod="" name="stato della digitalizzazione">/c/altformavail/p/text()</element>
+ <element multiMod="" name="copia di catalogazione">/c/did/physdesc[@label='digital object']/@altrender</element>
+ <element multiMod="" name="identificativo della copia/nome del file">/c/did/physdesc[@label='digital object']/@id</element>
+ <element multiMod="" name="link oggetto digitale">/c/did/physdesc[@label='digital object']/extref[@altrender='internal link']/@href</element>
+ <element multiMod="" name="url oggetto digitale su web">/c/did/physdesc[@label='digital object']/extref[@altrender='url web']/@href</element>
+ <element multiMod="" name="generazione">/c/did/physdesc[@label='digital object']/physfacet[@type='processing']/text()</element>
+ <element multiMod="" name="tipologia di materiale">/c/did/physdesc[@label='digital object']/genreform/@type</element>
+ <element multiMod="" name="formato file">/c/did/physdesc[@label='digital object']/genreform/text()</element>
+ <element multiMod="" name="mime">/c/did/physdesc[@label='digital object']/genreform/emph[@altrender='mime']/text()</element>
+ <element multiMod="" name="filesize">/c/did/physdesc[@label='digital object']/extent[@unit='bytes']/text()</element>
+ <element multiMod="" name="completo / incompleto">/c/did/physdesc[@label='digital object']/extent[@unit='bytes']/@label</element>
+ <element multiMod="" name="durata">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/text()</element>
+ <element multiMod="" name="time code: iniziale / finale">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/dimensions[@label='start']/text()</element>
+ <element multiMod="" name="file digitale">/c/did/physdesc[@label='digital object']/dimensions[@unit='hh:mm:ss']/dimensions[@label='end']/text()</element>
+ <element multiMod="" name="audio">/c/did/physdesc[@label='digital object']/physfacet[@type='sound']/text()</element>
+ <element multiMod="" name="tecnica suono">/c/did/physdesc[@label='digital object']/physfacet[@type='sound']/emph[@altrender='audio technology']/text()</element>
+ <element multiMod="" name="cromatismo">/c/did/physdesc[@label='digital object']/physfacet[@type='colour']/text()</element>
+ <element multiMod="" name="sistema colore">/c/did/physdesc[@label='digital object']/physfacet[@type='colour']/emph[@altrender='colour system']/text()</element>
+ <element multiMod="" name="formato immagine">/c/did/physdesc[@label='digital object']/physfacet[@type='video-metrics']/text()</element>
+ <element multiMod="" name="videosize">/c/did/physdesc[@label='digital object']/physfacet[@type='video-metrics']/genreform/text()</element>
+ <element multiMod="" name="framerate">/c/did/physdesc[@label='digital object']/physfacet[@type='video-metrics']/genreform/emph[@altrender='framerate']/text()</element>
+ <element multiMod="" name="file location">/c/did/physdesc[@label='digital object']/archref/physloc/text()</element>
+ <element multiMod="" name="numero inventario">/c/did/physdesc[@label='digital object']/archref/unitid[@type='inventory']/text()</element>
+ <element multiMod="" name="note tecniche">/c/did/physdesc[@label='digital object']/archref/note/p/text()</element>
+ <element multiMod="" name="titolo proprio della copia">/c/did/physdesc[@label='digital object']/archref/unittitle/title/text()</element>
+ <element multiMod="" name="edizione">/c/did/physdesc[@label='digital object']/archref/unittitle/edition/text()</element>
+ <element name="pellicola" prefix="/c/did/physdesc[@label='film']">
+  <element multiMod="" name="copia di catalogazione">/c/did/physdesc[@label='film']/@altrender</element>
+  <element multiMod="" name="identificativo della copia">/c/did/physdesc[@label='film']/@id</element>
+  <element multiMod="" name="materiali di lavorazione">/c/did/physdesc[@label='film']/physfacet[@type='processing']/text()</element>
+  <element multiMod="" name="tipologia di materiale">/c/did/physdesc[@label='film']/genreform/@type</element>
+  <element multiMod="" name="base / supporto">/c/did/physdesc[@label='film']/genreform/emph[@altrender='film format']/text()</element>
+  <element multiMod="" name="formato">/c/did/physdesc[@label='film']/genreform/text()</element>
+  <element multiMod="" name="unità fisica">/c/did/physdesc[@label='film']/extent/@unit</element>
+  <element multiMod="" name="pellicola">/c/did/physdesc[@label='film']/extent/text()</element>
+  <element multiMod="" name="completo / incompleto">/c/did/physdesc[@label='film']/extent/@label</element>
+  <element multiMod="" name="lunghezza">/c/did/physdesc[@label='film']/dimensions[@unit='mt']/text()</element>
+  <element multiMod="" name="audio">/c/did/physdesc[@label='film']/physfacet[@type='sound']/text()</element>
+  <element multiMod="" name="tecnica suono">/c/did/physdesc[@label='film']/physfacet[@type='sound']/emph[@altrender='audio technology']/text()</element>
+  <element multiMod="" name="tipologia colonna">/c/did/physdesc[@label='film']/physfacet[@type='sound']/genreform/text()</element>
+  <element multiMod="" name="formato immagine">/c/did/physdesc[@label='film']/physfacet[@type='aspectratio']/text()</element>
+  <element multiMod="" name="cromatismo">/c/did/physdesc[@label='film']/physfacet[@type='colour']/text()</element>
+  <element multiMod="" name="sistema colore">/c/did/physdesc[@label='film']/physfacet[@type='colour']/emph[@altrender='colour system']/text()</element>
+  <element multiMod="" name="numero inventario">/c/did/physdesc[@label='film']/archref/unitid[@type='inventory']/text()</element>
+  <element multiMod="" name="tipo e identificativo unità di conservazione">/c/did/physdesc[@label='film']/archref/container/@type</element>
+  <element multiMod="" name="pellicola">/c/did/physdesc[@label='film']/archref/container/text()</element>
+  <element multiMod="" name="nota all'unità di conservazione">/c/did/physdesc[@label='film']/archref/container/emph[@altrender='note']/text()</element>
+  <element multiMod="" name="collocazione">/c/did/physdesc[@label='film']/archref/physloc/text()</element>
+  <element multiMod="" name="note tecniche">/c/did/physdesc[@label='film']/archref/note/p/text()</element>
+  <element multiMod="" name="titolo proprio della copia">/c/did/physdesc[@label='film']/archref/unittitle/title/text()</element>
+  <element multiMod="" name="edizione">/c/did/physdesc[@label='film']/archref/unittitle/edition/text()</element>
  </element>
- <element multiMod="true" input_type="text" class="Short" name="durata"> /c/did/materialspec[@label='durata']/text()
+ <element name="supporto video" prefix="/c/did/physdesc[@label='video']">
+  <element multiMod="" name="copia di catalogazione">/c/did/physdesc[@label='video']/@altrender</element>
+  <element multiMod="" name="identificativo della copia">/c/did/physdesc[@label='video']/@id</element>
+  <element multiMod="" name="materiali di lavorazione">/c/did/physdesc[@label='video']/physfacet[@type='processing']/text()</element>
+  <element multiMod="" name="tipologia di materiale">/c/did/physdesc[@label='video']/genreform/@type</element>
+  <element multiMod="" name="tipologia di supporto">/c/did/physdesc[@label='video']/genreform/text()</element>
+  <element multiMod="" name="formato immagine">/c/did/physdesc[@label='video']/genreform/emph[@altrender='format']/text()</element>
+  <element multiMod="" name="unità fisica">/c/did/physdesc[@label='video']/extent/@unit</element>
+  <element multiMod="" name="supporto video">/c/did/physdesc[@label='video']/extent/text()</element>
+  <element multiMod="" name="completo / incompleto">/c/did/physdesc[@label='video']/extent/@label</element>
+  <element multiMod="" name="durata">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/text()</element>
+  <element multiMod="" name="time code: iniziale / finale">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/dimensions[@label='start']/text()</element>
+  <element multiMod="" name="supporto video">/c/did/physdesc[@label='video']/dimensions[@unit='hh:mm:ss']/dimensions[@label='end']/text()</element>
+  <element multiMod="" name="tipologia colonna">/c/did/physdesc[@label='video']/physfacet[@type='sound']/genreform/text()</element>
+  <element multiMod="" name="audio">/c/did/physdesc[@label='video']/physfacet[@type='sound']/text()</element>
+  <element multiMod="" name="tecnica suono">/c/did/physdesc[@label='video']/physfacet[@type='sound']/emph[@altrender='audio technology']/text()</element>
+  <element multiMod="" name="formato immagine">/c/did/physdesc[@label='video']/physfacet[@type='aspectratio']/text()</element>
+  <element multiMod="" name="cromatismo">/c/did/physdesc[@label='video']/physfacet[@type='colour']/text()</element>
+  <element multiMod="" name="sistema colore">/c/did/physdesc[@label='video']/physfacet[@type='colour']/emph[@altrender='colour system']/text()</element>
+  <element multiMod="" name="numero inventario">/c/did/physdesc[@label='video']/archref/unitid[@type='inventory']/text()</element>
+  <element multiMod="" name="tipo e identificativo unità di conservazione">/c/did/physdesc[@label='video']/archref/container/@type</element>
+  <element multiMod="" name="supporto video">/c/did/physdesc[@label='video']/archref/container/text()</element>
+  <element multiMod="" name="nota all'unità di conservazione">/c/did/physdesc[@label='video']/archref/container/emph[@altrender='note']/text()</element>
+  <element multiMod="" name="collocazione">/c/did/physdesc[@label='video']/archref/physloc/text()</element>
+  <element multiMod="" name="note tecniche">/c/did/physdesc[@label='video']/archref/note/p/text()</element>
+  <element multiMod="" name="titolo proprio della copia">/c/did/physdesc[@label='video']/archref/unittitle/title/text()</element>
+  <element multiMod="" name="edizione">/c/did/physdesc[@label='video']/archref/unittitle/edition/text()</element>
  </element>
- <element multiMod="true" input_type="text" class="Middle" name="URL allegato digitale"> /c/did/physdesc[@label='copia di catalogazione']/extptr/@href
+ <element multiMod="" name="abstract">/c/did/abstract/text()</element>
+ <element multiMod="true" name="notizie storico-critiche">/c/scopecontent/p/text()</element>
+ <element multiMod="" name="forma normalizzata">/c/scopecontent/p/date[@type='evento rappresentato']/@normal</element>
+ <element multiMod="" name="forma normalizzata">/c/scopecontent/p/date[@type='evento rappresentato']/text()</element>
+ <element name="personaggi e interpreti" prefix="/c/controlaccess[child::head/text()='cast']/persname">
+  <element multiMod="" name="interprete">/c/controlaccess[child::head/text()='cast']/persname/text()</element>
+  <element multiMod="" name="ruolo">/c/controlaccess[child::head/text()='cast']/persname/@role</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="abstract"> /c/did/abstract/text()
+ <element name="enti e istituzioni" prefix="/c/controlaccess[child::head/text()='access points']/corpname">
+  <element multiMod="" name="tipologia">/c/controlaccess[child::head/text()='access points']/corpname/@role</element>
+  <element multiMod="" name="tipologia">/c/controlaccess[child::head/text()='access points']/corpname/@authfilenumber</element>
+  <element multiMod="" name="tipologia">/c/controlaccess[child::head/text()='access points']/corpname/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="notizie storico-critiche"> /c/odd/p/text()
+ <element name="persone" prefix="/c/controlaccess[child::head/text()='access points']/persname">
+  <element multiMod="" name="funzione / ruolo">/c/controlaccess[child::head/text()='access points']/persname/@role</element>
+  <element multiMod="" name="funzione / ruolo">/c/controlaccess[child::head/text()='access points']/persname/@authfilenumber</element>
+  <element multiMod="" name="pseudonimo / vedi anche">/c/controlaccess[child::head/text()='access points']/persname/@altrender</element>
+  <element multiMod="" name="pseudonimo / vedi anche">/c/controlaccess[child::head/text()='access points']/persname/text()</element>
  </element>
- <element name="Sequenze" type="multi_group" prefix="/c/scopecontent/list/item">
-  <element multiMod="true" input_type="textarea" rows="3" cols="55" name="descrizione sequenze"> /c/scopecontent/list/item/text()
-  </element>
+ <element prefix="/c/controlaccess[child::head/text()='access points']/famname">
+  <element multiMod="" name="famiglie">/c/controlaccess[child::head/text()='access points']/famname/text()</element>
+  <element multiMod="" name="famiglie">/c/controlaccess[child::head/text()='access points']/famname/@authfilenumber</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="condizione giuridica" opened="yes"> /c/descgrp/accessrestrict/legalstatus/text()
+ <element name="luoghi" prefix="/c/controlaccess[child::head/text()='access points']/geogname">
+  <element multiMod="" name="integrazione">/c/controlaccess[child::head/text()='access points']/geogname/emph/text()</element>
+  <element multiMod="" name="integrazione">/c/controlaccess[child::head/text()='access points']/geogname/@authfilenumber</element>
+  <element multiMod="" name="integrazione">/c/controlaccess[child::head/text()='access points']/geogname/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="acquisizione del materiale" opened="no"> /c/descgrp/acqinfo/p/text()
+ <element name="soggetto/argomento" prefix="/c/controlaccess[child::head/text()='access points']/subject">
+  <element multiMod="" name="soggetto/argomento">/c/controlaccess[child::head/text()='access points']/subject/text()</element>
+  <element multiMod="" name="integrazione">/c/controlaccess[child::head/text()='access points']/subject/emph/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="restrizioni di accesso" opened="no"> /c/descgrp/accessrestrict/accessrestrict/p/text()
+ <element name="Sequenze" prefix="/c/scopecontent/list/item">
+  <element multiMod="" name="numero">/c/scopecontent/list/item/num/text()</element>
+  <element multiMod="" name="descrizione">/c/scopecontent/list/item/text()</element>
+  <element multiMod="" name="note">/c/scopecontent/list/item/note/p/text()</element>
+  <element multiMod="" name="time code: iniziale / finale">/c/scopecontent/list/item/extref[@role='start']/text()</element>
+  <element multiMod="" name="Sequenze">/c/scopecontent/list/item/extref[@role='end']/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="storia della condizione" opened="no"> /c/descgrp/custodhist/p/text()
+ <element multiMod="" name="condizione giuridica">/c/accessrestrict/legalstatus/text()</element>
+ <element multiMod="" name="acquisizione del materiale">/c/acqinfo/p/text()</element>
+ <element multiMod="" name="modalità di consultazione">/c/accessrestrict/p/text()</element>
+ <element multiMod="" name="copyright">/c/userestrict/p/text()</element>
+ <element multiMod="" name="documentazione collegata">/c/relatedmaterial/p/text()</element>
+ <element multiMod="" name="fonti archivistiche">/c/bibliography/archref/text()</element>
+ <element name="Monografie e periodici" prefix="/c/bibliography/bibref">
+  <element multiMod="" name="autore">/c/bibliography/bibref/persname[@role='author']/text()</element>
+  <element multiMod="" name="curatore">/c/bibliography/bibref/persname[@role='editor']/text()</element>
+  <element multiMod="" name="titolo">/c/bibliography/bibref/title/text()</element>
+  <element multiMod="" name="edito in (se articolo)">/c/bibliography/bibref/edition/text()</element>
+  <element multiMod="" name="luogo di pubblicazione">/c/bibliography/bibref/imprint/geogname/text()</element>
+  <element multiMod="" name="editore">/c/bibliography/bibref/imprint/publisher/text()</element>
+  <element multiMod="" name="data di pubblicazione">/c/bibliography/bibref/imprint/date/text()</element>
+  <element multiMod="" name="pagine">/c/bibliography/bibref/num/text()</element>
+  <element multiMod="" name="note">/c/bibliography/bibref/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="3" cols="55" name="copyright" opened="no"> /c/descgrp/userestrict/p/text()
+ <element name="bibliografia in rete" prefix="/c/bibliography/extref">
+  <element multiMod="" name="titolo/soggetto">/c/bibliography/extref/title/text()</element>
+  <element multiMod="" name="data di consultazione">/c/bibliography/extref/date/text()</element>
+  <element multiMod="" name="URL">/c/bibliography/extref/@href</element>
  </element>
- <element multiMod="true" input_type="textarea" type="multi" rows="1" cols="55" name="fonti" prefix="/c/bibliography/archref" opened="no"> /c/bibliography/archref/text()
+ <element name="evento" prefix="/c/bibliography/list[child::head/text()='expositions']/item">
+  <element multiMod="" name="titolo">/c/bibliography/list[child::head/text()='expositions']/item/title/text()</element>
+  <element multiMod="" name="luogo">/c/bibliography/list[child::head/text()='expositions']/item/geogname/text()</element>
+  <element multiMod="" name="sede espositiva">/c/bibliography/list[child::head/text()='expositions']/item/geogname/emph/text()</element>
+  <element multiMod="" name="data">/c/bibliography/list[child::head/text()='expositions']/item/date/text()</element>
+  <element multiMod="" name="ente organizzatore">/c/bibliography/list[child::head/text()='expositions']/item/corpname/text()</element>
+  <element multiMod="" name="note">/c/bibliography/list[child::head/text()='expositions']/item/note/p/text()</element>
  </element>
- <element multiMod="true" input_type="textarea" rows="6" cols="55" name="note"> /c/note/p/text()
+ <element multiMod="" name="note">/c/note/p/text()</element>
+ <element multiMod="" name="nota dell'archivista">/c/processinfo/note/p/text()</element>
+ <element multiMod="" name="funzionario responsabile">/c/processinfo/p/persname/text()</element>
+ <element name="informazioni sulla descrizione archivistica" prefix="/c/processinfo/list/item">
+  <element multiMod="" name="azione">/c/processinfo/list/item/text()</element>
+  <element multiMod="" name="data">/c/processinfo/list/item/date/text()</element>
+  <element multiMod="" name="responsabile">/c/processinfo/list/item/persname/text()</element>
  </element>
+ <element name="allegati" prefix="/c/daogrp/extrefloc">
+  <element multiMod="" name="titolo">/c/daogrp/extrefloc/@title</element>
+  <element multiMod="" name="descrizione">/c/daogrp/extrefloc/text()</element>
+  <element multiMod="" name="url oggetto digitale">/c/daogrp/extrefloc/@href</element>
+ </element>
+ <element multiMod="true" name="">/c/did/unitid/@countrycode</element>
+ <element multiMod="true" name="">/c/did/unitid/@repositorycode</element>
+ <element multiMod="true" name="">/c/did/unitid/abbr/text()</element>
+ <element multiMod="true" name="">/c/did/unitid/@identifier</element>
+ <element prefix="/c/did/origination[@label='creator']/corpname">
+  <element multiMod="" name="ente">/c/did/origination[@label='creator']/corpname/text()</element>
+  <element multiMod="" name="ente">/c/did/origination[@label='creator']/corpname/@authfilenumber</element>
+ </element>
+ <element prefix="/c/did/origination[@label='creator']/persname">
+  <element multiMod="" name="persona">/c/did/origination[@label='creator']/persname/text()</element>
+  <element multiMod="" name="persona">/c/did/origination[@label='creator']/persname/@authfilenumber</element>
+ </element>
+ <element prefix="/c/did/origination[@label='creator']/famname">
+  <element multiMod="" name="famiglia">/c/did/origination[@label='creator']/famname/text()</element>
+  <element multiMod="" name="famiglia">/c/did/origination[@label='creator']/famname/@authfilenumber</element>
+ </element>
+ <element name="consistenza" prefix="/c/did/physdesc">
+  <element multiMod="" name="tipologia del supporto">/c/did/physdesc/genreform/text()</element>
+  <element multiMod="" name="quantità">/c/did/physdesc/extent/text()</element>
+ </element>
+ <element multiMod="" name="collocazione">/c/did/physloc/text()</element>
+ <element multiMod="" name="note biografiche">/c/bioghist/p/text()</element>
+ <element multiMod="" name="criteri di ordinamento">/c/arrangement/p/text()</element>
+ <element multiMod="" name="forma normalizzata">/c/scopecontent/p/date[@type='data evento rappresentato']/@normal</element>
+ <element multiMod="" name="forma normalizzata">/c/scopecontent/p/date[@type='data evento rappresentato']/text()</element>
+ <element multiMod="" name="storia archivistica">/c/custodhist/p/text()</element>
+ <element multiMod="" name="stato di conservazione">/c/phystech/p/text()</element>
+ <element multiMod="" name="note">/c/phystech/note/p/text()</element>
+ <element prefix="/c/did/repository[@label='institution with archival holdings']">
+  <element multiMod="" name="denominazione">/c/did/repository[@label='institution with archival holdings']/text()</element>
+  <element multiMod="" name="denominazione">/c/did/repository[@label='institution with archival holdings']/@id</element>
+ </element>
+ <element multiMod="" name="indirizzo">/c/did/repository[@label='institution with archival holdings']/address/addressline[1]/text()</element>
+ <element multiMod="" name="sito web">/c/did/repository[@label='institution with archival holdings']/address/addressline[2]/text()</element>
 </root>

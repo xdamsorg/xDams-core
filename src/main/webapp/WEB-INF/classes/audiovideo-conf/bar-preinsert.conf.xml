@@ -2,7 +2,7 @@
 <root>
  <managing>
   <user>
-   <element value="SALVA E CHIUDI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+   <element value="SALVA E CHIUDI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#nogo"></anchor>
     <eventJavaScript value="onmouseover">
      <functionName value="window.status=">
@@ -28,7 +28,7 @@
      </functionName>
     </eventJavaScript>
    </element>
-   <element value="SALVA E CONTINUA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+   <element value="SALVA E CONTINUA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#nogo"></anchor>
     <eventJavaScript value="onmouseover">
      <functionName value="window.status=">
@@ -54,7 +54,7 @@
      </functionName>
     </eventJavaScript>
    </element>
-   <element value="CHIUDI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+   <element value="CHIUDI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#nogo"></anchor>
     <eventJavaScript value="onmouseover">
      <functionName value="window.status=">
