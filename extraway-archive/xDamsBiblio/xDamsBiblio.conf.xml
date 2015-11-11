@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+	<primary_node ud_name="mods" ud_container="dsc">
+		<key name="XML,/mods/@ID" serial_id="num_id" key_style="one"  empty_key="yes" />
+		<key name="XML,/mods/unittitle" key_style="double" empty_key="yes"/>
+ 		<key name="XML,/mods/hierpath" key_style="one"  empty_key="yes" />
+ 		
+ 		<key name="XML,/mods/segnatura" key_style="double"  empty_key="yes" />
+ 		<key name="XML,/mods/numeroScheda" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/identifier" key_style="double">
+			<k_choose>
+				<k_when test="@type = 'referenceCode'" mode="alias" key_style="double" key="XML,/mods/segnatura"/>
+				<k_when test="@type = 'sequenceNumber'" mode="alias" key_style="double" key="XML,/mods/numeroScheda"/>
+			</k_choose>
+		</key> 		
+		<key name="XML,/mods/lettura" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/utilizzo" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/area" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/publicNote" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/internalNote" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/searchType" key_style="double"  empty_key="yes" />
+		<key name="XML,/mods/note" key_style="double">
+			<k_choose>
+				<k_when test="@type = 'reading'" mode="alias" key_style="double" key="XML,/mods/lettura"/>
+				<k_when test="@type = 'use'" mode="alias" key_style="double" key="XML,/mods/utilizzo"/>
+				<k_when test="@type = 'area'" mode="alias" key_style="double" key="XML,/mods/area"/>
+				<k_when test="@type = 'publicNote'" mode="alias" key_style="double" key="XML,/mods/publicNote"/>
+				<k_when test="@type = 'internalNote'" mode="alias" key_style="double" key="XML,/mods/internalNote"/>
+				<k_when test="@type = 'searchType'" mode="alias" key_style="double" key="XML,/mods/searchType"/>
+			</k_choose>
+		</key>
+		<key name="XML,/mods/name/namePart" key_style="double" empty_key="yes" />
+		<key name="XML,/mods/titleInfo/title" key_style="double" empty_key="yes" />
+		<key name="XML,/mods/relatedItem/titleInfo/title" key_style="double" empty_key="yes" />
+		<key name="XML,/mods/originInfo/dateIssued" key_style="double" empty_key="yes" />
+		<key name="XML,/mods/recordInfo/recordCreationDate" key_style="one" empty_key="yes" />
+		<key name="XML,/mods/recordInfo/item/recordCreationDate" key_style="one" empty_key="yes" />
+		<key name="XML,/mods/subject/topic" key_style="double" empty_key="yes" />
+	</primary_node>
+
+	<serials>
+		<serial id="num_id" mask="IT-xDams-BIB001-######"/>
+	</serials>
+
+ <hw_fields>
+
+ </hw_fields>
+	<file_location mode="day"/>
+ 	<expert_system_extension active="false"/>
+ 	<profile type="title" value="XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;"/>
+	<profile type="title.separ" value="¢"/>
+	<profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+	<profile type="catalog.strict" value="true"/>
+	<profile type="arc.allownonportable" value="true"/>
+	<profile type="arc.test_encoding" value="false"/>
+</xway_cfg> 
