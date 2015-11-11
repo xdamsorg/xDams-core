@@ -2,7 +2,7 @@
 <root>
  <managing>
   <user>
-   <element value="INDIETRO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaIndietro" userValue="1;5;2">
+   <element value="INDIETRO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaIndietro" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocPrev</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -10,7 +10,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="AVANTI" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaAvanti" userValue="1;5;2">
+   <element value="AVANTI" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaAvanti" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocNext</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
