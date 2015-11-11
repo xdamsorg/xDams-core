@@ -86,8 +86,9 @@ public class xDamsAdminController {
 				userDetails = (UserDetails) ((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
 				UserBean userBean = LoadUserManager.executeLoad(userDetails, authenticationType);
 				model.addAttribute("userBean", userBean);
-			} catch (Exception e) {
+				
 
+			} catch (Exception e) {
 			}
 		}
 	}
