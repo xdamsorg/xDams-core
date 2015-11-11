@@ -95,7 +95,7 @@
    <sezione name="consistenza" opened="yes">
     <elemento inline="yes" type="multi_group" prefix="/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']">
      <elemento input_type="select" name="&#160;" HTMLextra="quantità" value="document:/storico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='genreform_An']/opzione">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/genreform/text()</elemento>
-     <elemento input_type="text" class="Short">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/extent/text()</elemento>
+     <elemento input_type="text" class="Short" multiMod="true">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='content']/extent/text()</elemento>
     </elemento>
    </sezione>
    <sezione name="collocazione" opened="yes">
@@ -249,54 +249,5 @@
     </elemento>
    </sezione>
   </macroarea>
-  <!-- 
-  <macroarea name="" layer="DID" label="">
-   <sezione name="identificazione dell'unità" opened="yes">
-    <elemento name="numero di ordinamento" opened="yes" type="group" prefix="/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']">
-     <elemento input_type="text" multiMod="true" name="num. ord. definitivo" class="Short">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']/text()</elemento>
-     <elemento input_type="text" multiMod="true" class="Short" name="num. ord. provvisorio">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/num[@type='ordinamento']/emph/text()</elemento>
-    </elemento>
-    <elemento multiMod="true" input_type="text" class="Middle" name="titolario di classificazione" opened="yes">/c/descgrp[@type='codici e numerazioni']/fileplan/p/text()</elemento>
-   </sezione>
-   <sezione name="posizione attuale" opened="no">
-    <elemento multiMod="true" name="segnatura attuale (1ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][1]">
-     <elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][1]/@type</elemento>
-     <elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][1]/text()</elemento>
-    </elemento>
-    <elemento multiMod="true" name="segnatura attuale (2ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][2]" opened="no">
-     <elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][2]/@type</elemento>
-     <elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][2]/text()</elemento>
-    </elemento>
-    <elemento multiMod="true" name="segnatura attuale (3ª occorrenza)" type="group" inline="yes" prefix="/c/did/container[@label='posizione fisica'][3]" opened="no">
-     <elemento multiMod="true" input_type="text" name="tipo" class="Short" ajaxVoc="/c/did/container/@type" vocType="one">/c/did/container[@label='posizione fisica'][3]/@type</elemento>
-     <elemento multiMod="true" input_type="text" name="valore" class="Short">/c/did/container[@label='posizione fisica'][3]/text()</elemento>
-    </elemento>
-   </sezione>
-   <sezione name="altre segnature" opened="no">
-    <elemento multiMod="true" input_type="text" class="Middle" name="segnatura antica o originaria">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/p/text()</elemento>
-    <elemento multiMod="true" input_type="textarea" rows="1" cols="55" name="integrazione alla segnatura antica o originaria">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/note/p/text()</elemento>
-    <elemento input_type="liveText" HTMLextra="&lt;br /&gt;&lt;hr /&gt;">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura antica o originaria']/@null</elemento>
-    <elemento multiMod="true" input_type="text" class="Middle" name="segnatura precedente">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/p/text()</elemento>
-    <elemento multiMod="true" input_type="textarea" rows="1" cols="55" name="integrazione alla segnatura precedente">/c/descgrp[@type='codici e numerazioni']/odd[@type='segnatura precedente']/note/p/text()</elemento>
-   </sezione>
-   <sezione name="cronologia" opened="yes">
-    <elemento multiMod="true" name="data topica">/c/did/unittitle[@encodinganalog='ISAD 3-1-2 title']/geogname/text()</elemento>
-   </sezione>
-   <sezione name="descrizione fisica" opened="yes">
-    <elemento multiMod="true" name="tipologia dell'unità">/c/did/physdesc[@encodinganalog='ISAD 3-1-5 extent and medium of the unit of description' and @label='container']/genreform/text()</elemento>
-   </sezione>
-   <sezione name="condizioni di accesso" opened="yes">
-    <elemento multiMod="true" name="condizioni che regolano l'accesso" opened="no">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/accessrestrict[@encodinganalog='ISAD 3-4-1 conditions governing access']/p/text()</elemento>
-   </sezione>
-   <sezione name="caratteristiche materiali e requisiti tecnici" opened="yes">
-    <elemento multiMod="true" name="stato di conservazione">/c/descgrp[@encodinganalog='ISAD 3-4 conditions of access and use area']/phystech[@encodinganalog='ISAD 3-4-4 physical characteristics and technical requirements']/p/text()</elemento>
-   </sezione>
-   <sezione name="note" opened="yes">
-    <elemento multiMod="true" name="note" opened="yes">/c/note[@encodinganalog='ISAD 3-6-1 note']/p/text()</elemento>
-    <elemento multiMod="true" name="nota dell'archivista" opened="no">/c/processinfo/note[@encodinganalog='ISAD 3-7-1 archivist note']/p/text()</elemento>
-   </sezione>
-  </macroarea>
-  
-  -->
  </docEdit>
 </root>

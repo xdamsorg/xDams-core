@@ -2,7 +2,7 @@
 <root>
  <managing>
   <user>
-   <element value="PRECEDENTE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaPredecente" userValue="1;5;2">
+   <element value="PRECEDENTE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaPredecente" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getDocUpperBrother</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -10,7 +10,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="SUCCESSIVO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuccessivo" userValue="1;5;2">
+   <element value="SUCCESSIVO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuccessivo" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getDocLowerBrother</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -18,7 +18,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="SUPERIORE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuperiore" userValue="1;5;2">
+   <element value="SUPERIORE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaSuperiore" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getDocFather</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -26,7 +26,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="INFERIORE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaInferiore" userValue="1;5;2">
+   <element value="INFERIORE" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaInferiore" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getDocSon</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -34,7 +34,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="INDIETRO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaIndietro" userValue="1;5;2">
+   <element value="INDIETRO" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaIndietro" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocPrev</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
@@ -42,7 +42,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
-   <element value="AVANTI" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaAvanti" userValue="1;5;2">
+   <element value="AVANTI" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="visualizzaAvanti" userValue="1;2">
     <anchor value="${contextPath}/editing/${workFlowBean.alias}/docEdit.html" target="_self">
      <paramAnchor javaBean="editingBean" name="physDoc">getPhysDocNext</paramAnchor>
      <paramAnchor javaBean="request" name="thePne">thePne</paramAnchor>
