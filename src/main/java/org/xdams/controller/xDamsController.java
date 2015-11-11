@@ -394,7 +394,7 @@ public class xDamsController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", ajaxBean.getContentType().equals("") ? "text/xml; charset=iso-8859-1" : ajaxBean.getContentType());
 		// System.out.println("ajaxBean.getStrXmlOutput() " + ajaxBean.getStrXmlOutput());
-		// System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType());
+		// System.out.println("ajaxBean.getContentType() " + ajaxBean.getContentType()); 
 		return new ResponseEntity<String>(ajaxBean.getStrXmlOutput(), responseHeaders, HttpStatus.CREATED);
 	}
 
