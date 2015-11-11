@@ -1,115 +1,22 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
- <element multiMod="" name="tipologia">/eac-cpf/cpfDescription/identity/entityType/text()</element>
- <element prefix="/eac-cpf/cpfDescription/description/functions/function">
-  <element multiMod="" name="funzione">/eac-cpf/cpfDescription/description/functions/function/text()</element>
- </element>
- <element name="forma/e autorizzata/e del nome" prefix="/eac-cpf/cpfDescription/identity/nameEntry">
-  <element multiMod="" name="nome (se persona)">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='prime']/text()</element>
-  <element multiMod="" name="denominazione/cognome (ordinamento)">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ord']/text()</element>
-  <element multiMod="" name="integrazione">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='ulterior']/text()</element>
-  <element multiMod="" name="forma autorizzata">/eac-cpf/cpfDescription/identity/nameEntry/part[@localType='normal']/text()</element>
-  <element multiMod="" name="norma">/eac-cpf/cpfDescription/identity/nameEntry/authorizedForm/text()</element>
-  <element multiMod="" name="date di validità">/eac-cpf/cpfDescription/identity/nameEntry/useDates/date/text()</element>
- </element>
- <element name="forme parallele del nome" prefix="/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry">
-  <element multiMod="" name="nome (se persona)">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='prime']/text()</element>
-  <element multiMod="" name="denominazione/cognome (ordinamento)">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='ord']/text()</element>
-  <element multiMod="" name="integrazione">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='ulterior']/text()</element>
-  <element multiMod="" name="forma normalizzata">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@localType='normal']/text()</element>
-  <element multiMod="" name="date di validità">/eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/useDates/date/text()</element>
- </element>
- <element multiMod="" name="forma normalizzata">/eac-cpf/cpfDescription/description/existDates/date/@standardDate</element>
- <element multiMod="" name="forma normalizzata">/eac-cpf/cpfDescription/description/existDates/date/text()</element>
- <element multiMod="" name="Storia">/eac-cpf/cpfDescription/description/biogHist/p/text()</element>
+ <element multiMod="true" name="Storia">/eac-cpf/cpfDescription/description/biogHist/p/text()</element>
  <element name="luoghi" prefix="/eac-cpf/cpfDescription/description/places/place">
-  <element multiMod="" name="denominazione">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</element>
-  <element multiMod="" name="tipo di relazione">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/description/places/place/date/text()</element>
+  <element multiMod="true" name="luogo - denominazione">/eac-cpf/cpfDescription/description/places/place/placeEntry/text()</element>
+  <element multiMod="true" name="luogo - tipo di relazione">/eac-cpf/cpfDescription/description/places/place/descriptiveNote/p/text()</element>
+  <element multiMod="true" name="luogo - data">/eac-cpf/cpfDescription/description/places/place/date/text()</element>
  </element>
- <element multiMod="" name="funzioni, occupazioni e attività">/eac-cpf/cpfDescription/description/functions/p/text()</element>
- <element multiMod="" name="mandato/fonti normative">/eac-cpf/cpfDescription/description/mandates/p/text()</element>
- <element multiMod="" name="contesto sociale e culturale">/eac-cpf/cpfDescription/description/generalContext/p/text()</element>
- <element multiMod="" name="condizione giuridica">/eac-cpf/cpfDescription/description/legalStatus/term/text()</element>
- <element multiMod="" name="descrizione">/eac-cpf/cpfDescription/description/legalStatus/descriptiveNote/p/text()</element>
- <element multiMod="" name="data">/eac-cpf/cpfDescription/description/legalStatus/date/text()</element>
- <element multiMod="" name="struttura amministrativa/genealogia">/eac-cpf/cpfDescription/description/structureOrGenealogy/p/text()</element>
- <element multiMod="" name="rappresentazione grafica">/eac-cpf/cpfDescription/description/structureOrGenealogy/citation/@href</element>
- <element name="superiore" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-parent']/relationEntry/text()</element>
- </element>
- <element name="inferiore" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='hierarchical-child']/relationEntry/text()</element>
- </element>
- <element name="predecessore" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-earlier']/relationEntry/text()</element>
- </element>
- <element name="successore" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='temporal-later']/relationEntry/text()</element>
- </element>
- <element name="&lt;em&gt;fa parte dell'entità descritta...&lt;/em&gt;" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='belongingTo']/relationEntry/text()</element>
- </element>
- <element name="&lt;em&gt;comprende l'entità descritta...&lt;/em&gt;" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='ownedBy']/relationEntry/text()</element>
- </element>
- <element name="Relazioni familiari" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='family']/relationEntry/text()</element>
- </element>
- <element name="Relazioni associative" prefix="/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']">
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/date/text()</element>
-  <element multiMod="" name="data">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/@localType</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="note sulla relazione">/eac-cpf/cpfDescription/relations/cpfRelation[@cpfRelationType='associative']/relationEntry/text()</element>
- </element>
- <element name="complessi archivistici prodotti" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']">
-  <element multiMod="" name="denominazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/text()</element>
-  <element multiMod="" name="codice">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/relationEntry/@localType</element>
-  <element multiMod="" name="natura della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="data della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='creatorOf']/date/text()</element>
- </element>
- <element name="altre risorse collegate" prefix="/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']">
-  <element multiMod="" name="denominazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/text()</element>
-  <element multiMod="" name="tipologia della risorsa">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/relationEntry/@localType</element>
-  <element multiMod="" name="link alla risorsa">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/@href</element>
-  <element multiMod="" name="natura della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/descriptiveNote/p/text()</element>
-  <element multiMod="" name="data della relazione">/eac-cpf/cpfDescription/relations/resourceRelation[@resourceRelationType='other']/date/text()</element>
- </element>
- <element multiMod="" name="codice">/eac-cpf/control/recordId/text()</element>
+ <element multiMod="true" name="funzioni, occupazioni e attività">/eac-cpf/cpfDescription/description/functions/p/text()</element>
+ <element multiMod="true" name="mandato/fonti normative">/eac-cpf/cpfDescription/description/mandates/p/text()</element>
+ <element multiMod="true" name="contesto sociale e culturale">/eac-cpf/cpfDescription/description/generalContext/p/text()</element>
+ <element multiMod="true" name="condizione giuridica">/eac-cpf/cpfDescription/description/legalStatus/term/text()</element>
+ <element multiMod="true" name="condizione giuridica - descrizione">/eac-cpf/cpfDescription/description/legalStatus/descriptiveNote/p/text()</element>
+ <element multiMod="true" name="condizione giuridica - data">/eac-cpf/cpfDescription/description/legalStatus/date/text()</element>
+ <element multiMod="true" name="struttura amministrativa/genealogia">/eac-cpf/cpfDescription/description/structureOrGenealogy/p/text()</element>
  <element multiMod="true" name="stato">/eac-cpf/control/maintenanceStatus/text()</element>
  <element multiMod="true" name="livello di completezza">/eac-cpf/control/localControl[@localType='detailLevel']/term/text()</element>
- <element multiMod="" name="condizione della pubblicazione">/eac-cpf/control/publicationStatus/text()</element>
- <element multiMod="" name="lingua della documentazione">/eac-cpf/control/languageDeclaration/language/text()</element>
- <element multiMod="" name="norma">/eac-cpf/control/conventionDeclaration/citation/text()</element>
- <element multiMod="" name="nota">/eac-cpf/control/conventionDeclaration/descriptiveNote/p/text()</element>
+ <element multiMod="true" name="norma">/eac-cpf/control/conventionDeclaration/citation/text()</element>
+ <element multiMod="true" name="nota norma">/eac-cpf/control/conventionDeclaration/descriptiveNote/p/text()</element>
  <element multiMod="true" name="fonti">/eac-cpf/control/sources/source/sourceEntry/text()</element>
  <element multiMod="true" name="informazioni redazionali">/eac-cpf/control/sources/maintenanceAgency/descriptiveNote/p/text()</element>
- <element name="revisioni" prefix="/eac-cpf/control/maintenanceHistory/maintenanceEvent">
-  <element multiMod="" name="azione">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventType/text()</element>
-  <element multiMod="" name="data">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDateTime/text()</element>
-  <element multiMod="" name="responsabile">/eac-cpf/control/maintenanceHistory/maintenanceEvent/agent/text()</element>
- </element>
- <element multiMod="" name="Archivio d'origine">/eac-cpf/control/maintenanceHistory/maintenanceEvent/eventDescription/text()</element>
- <element multiMod="true" name="">/eac-cpf/control/conventionDeclaration/abbreviation/text()</element>
 </root>
