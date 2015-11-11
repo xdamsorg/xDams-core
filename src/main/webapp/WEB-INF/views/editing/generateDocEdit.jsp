@@ -21,6 +21,7 @@ for (int z = 0; z < numeroMacroarea; z++) {
  
 					String sezione = "/sezione[" + (i + 1) + "]";
 					String nomeSezione = theXMLconf.valoreNodo(macroArea + sezione + "/@name");
+					String isHiddenSezione = theXMLconf.valoreNodo(macroArea + sezione + "/@hidden");
 					//out.println("nomeSezione "+nomeSezione);
 					//String idSezione = StringEscapeUtils.escapeEcmaScript(((((nomeSezione.replace('/', '.')).replace('\'', '_')).replace(']', '-')).replace('[', '-')).replace(' ', '-').replace('@', '-').replace('=', '-').replace('(', '-').replace(')', '-')).replaceAll("\\\\","");
 					// String idSezione = StringEscapeUtils.escapeEcmaScript(((((nomeSezione.replace('/', '.')).replace('\'', '_')).replace(']', '-')).replace('[', '-')).replace(' ', '-').replace('@', '-').replace('=', '-').replace('(', '-').replace(')', '-'));
@@ -38,7 +39,7 @@ for (int z = 0; z < numeroMacroarea; z++) {
 							generatoreForm.setValues(elemento, sezione, macroArea);
 							generatoreForm.generateSection(out, theXMLconf.valoreNodo(macroArea + sezione + "/@id"));
 						}
-					} else {%><span <%=extra%>><span id="sezione_head_<%=idSezione%>"><table cellspacing="0" cellpadding="0" border="0" >
+					} else {%><span <%=extra%>><span id="sezione_head_<%=idSezione%>" <%if(isHiddenSezione.equals("true")){%>style="display:none"<%}%>><table cellspacing="0" cellpadding="0" border="0" >
 	<tr class="dcTSS">
 		<td bgcolor="#B4B7BA" height="12" width="4"><span style="font-size:1px">&#160;</span></td>
 		<td class="dcTSSSD" height="12" width="12"><a class="doceditActionLink" id="sezione_link_<%=idSezione%>" onclick="openSection('sezione_<%=idSezione%>',this)" href="#no">+</a></td><td class="dcTSSSD" ><%=nomeSezione%></td>
