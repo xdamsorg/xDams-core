@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <access_method noElements="insert" userValue="1;2">
+  <hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>
+  <query active="yes" label="tutte le unità bibliografiche">[XML,/mods/extension/level]="item"</query>
+  <query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
+ </access_method>
+ <query>
+  <element activeIdx="no" position="center" label="Ricerca libera">XML,/mods/*</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="titolo" firstIdx=" a" typology="double">XML,/mods/titleInfo/title</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="autore" firstIdx=" a" typology="double">XML,/mods/name/namePart</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="fa parte di" firstIdx=" a" typology="double">XML,/mods/relatedItem/titleInfo/title</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="luogo" firstIdx=" a" typology="one">XML,/mods/originInfo/place/placeTerm</element><!--creare un alias specifico-->
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="editore" firstIdx=" a" typology="one">XML,/mods/originInfo/publisher</element><!--creare un alias specifico-->
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="note" firstIdx=" a" typology="double">XML,/mods/publicNote</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="soggetto" firstIdx=" a" typology="double">XML,/mods/subject/topic</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="ID xDams" firstIdx=" a" typology="one">XML,/mods/@ID</element>
+  <data>
+   <element label="Ricerca per data (range):">XML,/mods/originInfo/dateIssued/@normal</element>
+  </data>
+  <sort>
+   <element label="Titolo" checked="yes">XML(xpart:/mods/titleInfo/title)</element>
+   <element label="autore">XML(xpart:/mods/name/namePart)</element>
+   <element label="data">XML(xpart:/mods/originInfo/dateIssued)</element>
+   <element label="segnatura">XML(xpart:/mods/identifier)</element>
+   <element label="inserimento in xDams">ud(xpart:/xw/UserId/@DateIns/)</element>
+  </sort>
+ </query>
+ <!--
+ <queryAdm>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Catalogatore" firstIdx="a" typology="one">XML,/mods/processinfo/list/item/persname</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Data inserimento" firstIdx="0" typology="one">XML,/mods/processinfo/list/item/date</element>
+ </queryAdm>
+ -->
+</root>

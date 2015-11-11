@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<elemento name="genere">
+		<opzione value="">...</opzione>
+		<opzione value="archivio">archivio</opzione>
+		<opzione value="manifesti">manifesti</opzione>
+		<opzione value="programmi">programmi</opzione>
+	</elemento>
+	<elemento name="natura">
+		<opzione value="">...</opzione>
+		<opzione value="testo a stampa">testo a stampa</opzione>
+		<opzione value="testo manoscritto">testo manoscritto</opzione>
+		<opzione value="musica a stampa">musica a stampa</opzione>
+		<opzione value="musica notata">musica notata</opzione>
+		<opzione value="cartografia a stampa">cartografia a stampa</opzione>
+		<opzione value="cartografia manoscritta">cartografia manoscritta</opzione>
+		<opzione value="materiale video e da proiezione">materiale video e da proiezione</opzione>
+		<opzione value="registrazione sonora non musicale">registrazione sonora non musicale</opzione>
+		<opzione value="registrazione sonora musicale">registrazione sonora musicale</opzione>
+		<opzione value="grafica">grafica</opzione>
+		<opzione value="risorsa elettronica">risorsa elettronica</opzione>
+		<opzione value="materiale multimediale">materiale multimediale</opzione>
+		<opzione value="oggetto a tre dimensioni">oggetto a tre dimensioni</opzione>
+	</elemento>
+	<elemento name="tipoSupporto">
+		<opzione value="">...</opzione>
+		<opzione value="a">materiale a stampa</opzione>
+		<opzione value="b">materiale manoscritto</opzione>
+		<opzione value="c">partiture musicali a stampa</opzione>
+		<opzione value="d">partiture musicali manoscritte</opzione>
+		<opzione value="e">materiale cartografico a stampa</opzione>
+		<opzione value="f">materiale cartografico manoscritto</opzione>
+		<opzione value="g">materiali video e proiettato (film, filmine, diapositive, trasparenti, videoregistrazioni)</opzione>
+		<opzione value="i">registrazioni sonore non musicali</opzione>
+		<opzione value="j">registrazioni sonore musicali</opzione>
+		<opzione value="k">grafica bidimensionale (dipinti, disegni etc.)</opzione>
+		<opzione value="l">risorsa elettronica</opzione>
+		<opzione value="m">materiale misto</opzione>
+		<opzione value="r">manufatti tridimensionali o oggetti presenti in natura</opzione>
+	</elemento>
+	<elemento name="livelloBibliografico">
+		<opzione value="">...</opzione>
+		<opzione value="a">analitico (parte componente)</opzione>
+		<opzione value="i">risorsa integrativa</opzione>
+		<opzione value="m">monografia</opzione>
+		<opzione value="s">risorsa in continuazione</opzione>
+		<opzione value="c">collezione</opzione>
+	</elemento>
+	<elemento name="tipoData">
+		<opzione value="">...</opzione>
+		<opzione value="a">risorsa in continuazione in corso di pubblicazione</opzione>
+		<opzione value="b">risorsa in continuazione correntemente non più pubblicata</opzione>
+		<opzione value="c">risorsa in continauzione di status incerto</opzione>
+		<opzione value="d">monografia completa quando pubblicata o pubblicata in parti ma nello stesso anno solare</opzione>
+		<opzione value="e">riproduzione di un documento</opzione>
+		<opzione value="f">monografia, data di pubblicazione incerta</opzione>
+		<opzione value="g">monografia la cui pubblicazione dura più di un anno</opzione>
+		<opzione value="h">monografia con sia data di pubblicazione e di copyright/privilegio</opzione>
+		<opzione value="i">monografia con sia data di produzione e di distribuzione</opzione>
+		<opzione value="j">documento con data di pubblicazione dettagliata</opzione>
+		<opzione value="data/e di pubblicazione sconosciuta/e">data/e di pubblicazione sconosciuta/e</opzione>
+	</elemento>
+	<elemento name="tipoBiblio">
+		<opzione value="">...</opzione>
+		<opzione value="monografia">monografia</opzione>
+		<opzione value="atti di convegno">atti di convegno</opzione>
+		<opzione value="tesi di laurea">tesi di laurea</opzione>
+		<opzione value="pubblicazione in serie">pubblicazione in serie</opzione>
+		<opzione value="collezione">collezione</opzione>
+		<opzione value="periodico">periodico</opzione>
+		<opzione value="spoglio">spoglio</opzione>
+		<opzione value="rivista aziendale">rivista aziendale</opzione>
+	</elemento>
+	<elemento name="livello">
+		<opzione value="">...</opzione>
+		<opzione value="collection">collezione</opzione>
+		<!--opzione value="series">collana/serie</opzione-->
+		<opzione value="item">unità bibliografica</opzione>
+	</elemento>
+	<elemento name="audience">
+		<opzione value="">...</opzione>
+		<opzione value="external">pubblico</opzione>
+		<opzione value="internal">privato</opzione>
+		<opzione value="restricted">riservato</opzione>
+	</elemento>
+	<elemento name="audienceDigit">
+		<opzione value="">...</opzione>
+		<opzione value="external">pubblico</opzione>
+		<opzione value="internal">privato</opzione>
+	</elemento>
+	<elemento name="container">
+		<opzione value="">...</opzione>
+		<opzione value="busta">busta</opzione>
+		<opzione value="cartella">cartella</opzione>
+		<opzione value="fascicolo">fascicolo</opzione>
+		<opzione value="registro">registro</opzione>
+		<opzione value="sottounità">sottounità</opzione>
+		<opzione value="sottunità">sottounità</opzione>
+		<opzione value="unità">unità</opzione>
+		<opzione value="volume">volume</opzione>
+	</elemento>
+	<elemento name="responsTipo">
+		<opzione value="">...</opzione>
+		<opzione value="personal">autore personale</opzione>
+		<opzione value="corporate">autore collettivo</opzione>
+	</elemento>
+	<elemento name="responsRoot">
+		<opzione value="">...</opzione>
+		<opzione value="autore della descrizione">autore della descrizione</opzione>
+		<opzione value="autore della collezione">autore della collezione</opzione>
+	</elemento>
+	<elemento name="respons">
+		<opzione value="">...</opzione>
+		<!--opzione value="attore">attore</opzione>
+		<opzione value="autore di un singolo intervento">autore di un singolo intervento</opzione>
+		<opzione value="autore">autore</opzione>
+		<opzione value="curatore">curatore</opzione>
+		<opzione value="introduzione">introduzione</opzione>
+		<opzione value="prefazione">prefazione</opzione>
+		<opzione value="traduzione">traduzione</opzione>
+		<opzione value="ente di ricerca">ente di ricerca</opzione>
+		<opzione value="fotografie">fotografie</opzione>
+		<opzione value="illustrazioni">illustrazioni</opzione>
+		<opzione value="intervistato">intervistato</opzione>
+		<opzione value="organizzazione di meeting">organizzazione di meeting</opzione>
+		<opzione value="regista">regista</opzione>
+		<opzione value="relatore">relatore</opzione>
+		<opzione value="revisione">revisione</opzione-->
+		<opzione value="responsabilità principale">responsabilità principale</opzione>
+		<opzione value="responsabilità alternativa">responsabilità alternativa</opzione>
+		<opzione value="responsabilità secondaria">responsabilità secondaria</opzione>
+	</elemento>
+	<elemento name="acqinfo">
+		<opzione value="">...</opzione>
+		<opzione value="acquisto">acquisto</opzione>
+		<opzione value="donazione">donazione</opzione>
+		<opzione value="giustificativo">giustificativo</opzione>
+		<opzione value="non conosciuta">non conosciuta</opzione>
+		<opzione value="realizzazione interna">realizzazione interna</opzione>
+	</elemento>
+	<elemento name="colore">
+		<opzione value="">...</opzione>
+		<opzione value="bianco e nero">bianco e nero</opzione>
+		<opzione value="colore">colore</opzione>
+		<opzione value="misto">misto</opzione>
+	</elemento>
+	<elemento name="suono">
+		<opzione value="">...</opzione>
+		<opzione value="muto">muto</opzione>
+		<opzione value="sonoro">sonoro</opzione>
+	</elemento>
+	<elemento name="secolo">
+		<opzione value="">...</opzione>
+		<opzione value="XXI">XXI</opzione>
+		<opzione value="XX">XX</opzione>
+		<opzione value="XIX">XIX</opzione>
+		<opzione value="XVIII">XVIII</opzione>
+		<opzione value="XVII">XVII</opzione>
+		<opzione value="XVI">XVI</opzione>
+		<opzione value="XV">XV</opzione>
+		<opzione value="XIV">XIV</opzione>
+		<opzione value="XIII">XIII</opzione>
+		<opzione value="XII">XII</opzione>
+		<opzione value="XI">XI</opzione>
+		<opzione value="X">X</opzione>
+	</elemento>
+	<elemento name="lingua">
+		<opzione value="">...</opzione>
+		<opzione value="ITA">italiano</opzione>
+		<opzione value="FRE ">francese</opzione>
+		<opzione value="ENG">inglese</opzione>
+		<opzione value="SPA">spagnolo</opzione>
+		<opzione value="GER">tedesco</opzione>
+	</elemento>
+	<elemento name="label">
+		<opzione value="">...</opzione>
+		<opzione value="showimage">showimage</opzione>
+	</elemento>
+	<elemento name="type">
+		<opzione value="">...</opzione>
+		<opzione value="busta">busta</opzione>
+		<opzione value="fascicolo">fascicolo</opzione>
+		<opzione value="registro">registro</opzione>
+		<opzione value="volume">volume</opzione>
+	</elemento>
+	<elemento name="tipologiaallegato">
+		<opzione value="">...</opzione>
+		<opzione value="programmi di sala">programmi di sala</opzione>
+		<opzione value="altra documentazione">altra documentazione</opzione>
+	</elemento>
+</root>

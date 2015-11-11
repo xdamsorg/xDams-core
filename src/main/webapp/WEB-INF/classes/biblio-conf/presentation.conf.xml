@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <macroarea showdoc="yes" summary="yes" name="identificazione e descrizione" layer="DID" label="Identificazione e Descrizione">
+  <sezione showdoc="yes" summary="yes" name="identificazione" opened="yes">
+   <elemento showdoc="yes" summary="yes" name="identificatore">/mods/identifier/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="accesso" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/mods/accessCondition/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="ID xDams e livello" type="multi_group" prefix="/mods">
+    <elemento showdoc="yes" summary="yes">/mods/@ID</elemento>
+    <elemento showdoc="yes" summary="yes" format_before="&#160;(" format_after=")&lt;br&gt;" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='livello']/opzione">/mods/extension/level/text()</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="yes" name="tipo di risorsa/supporto" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipoSupporto']/opzione">/mods/typeOfResource/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="emissione/livello bibliografico" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='livelloBibliografico']/opzione">/mods/originInfo/issuance/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="titolo e formulazione di responsabilità" type="multi_group" prefix="/mods">
+    <elemento showdoc="yes" summary="yes">/mods/titleInfo[@type='uniform']/title/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before="&#160;:&#160;">/mods/titleInfo[@type='uniform']/subTitle/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before="/&#160;">/mods/note[@type='first statement of responsibility']/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=";&#160;">/mods/note[@type='following statement of responsibility']/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=",&#160;">/mods/note[@type='statement of responsibility'][2]/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=",&#160;">/mods/note[@type='statement of responsibility'][3]/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=",&#160;">/mods/note[@type='statement of responsibility'][4]/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=",&#160;">/mods/note[@type='statement of responsibility'][5]/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before=",&#160;">/mods/note[@type='statement of responsibility'][6]/text()</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="yes" name="segnatura">/mods/identifier[@type='referenceCode']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="segnature precedenti">/mods/identifier[@type='otherCode']/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="fa parte di" type="multi_group" prefix="/mods/relatedItem[@type='series']/titleInfo">
+    <elemento showdoc="yes" summary="yes">/mods/relatedItem[@type='series']/titleInfo/title/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione showdoc="yes" summary="yes" name="descrizione" opened="yes">
+   <elemento showdoc="yes" summary="yes" name="data" type="multi_group" prefix="/mods/originInfo/dateIssued">
+    <elemento showdoc="yes" summary="yes">/mods/originInfo/dateIssued/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before="&#160;(" format_after=")" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipoData']/opzione">/mods/originInfo/dateIssued/@qualifier</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="yes" name="data di messa online">/mods/originInfo/dateOther[@type='web publication']/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="lingua">/mods/language/languageTerm/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="luogo">/mods/originInfo/place/placeTerm/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="editore">/mods/originInfo/publisher/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="numerazione">/mods/part/detail[@type='numbering']/number/text()</elemento>
+   <elemento showdoc="no" summary="yes" name="descrizione fisica" type="multi_group" prefix="/mods" inline="yes">
+    <elemento showdoc="no" summary="yes">/mods[child::extension/level/text()='item']/physicalDescription/form[@type='material']/text()</elemento>
+    <elemento showdoc="no" summary="yes">/mods[child::extension/level/text()='item']/physicalDescription/note/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before=",&#160;">/mods[child::extension/level/text()='item']/physicalDescription/extent/text()</elemento>
+    <elemento showdoc="no" summary="yes" format_before=",&#160;">/mods[child::extension/level/text()='item']/physicalDescription/form[@type='attachments']/text()</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="no" name="descrizione fisica" type="multi_group" prefix="/mods" inline="yes">
+    <elemento showdoc="yes" summary="no" name="indicazione specifica del materiale ed estensione del documento">/mods[child::extension/level/text()='item']/physicalDescription/form[@type=material']/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="altre particolarità fisiche">/mods[child::extension/level/text()='item']/physicalDescription/note/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="dimensioni">/mods[child::extension/level/text()='item']/physicalDescription/extent/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="materiale allegato">/mods[child::extension/level/text()='item']/physicalDescription/form[@type=material']/text()</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="yes" name="descrizione">/mods/genre/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="abstract">/mods/abstract/text()</elemento>
+   <!--elemento showdoc="yes" summary="yes" name="accesso">/mods/accessCondition/text()</elemento -->
+   <elemento showdoc="yes" summary="yes" name="authority/legami" type="multi_group" prefix="/mods/name" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="valueURI" ud_type="eac-cpf" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/control/recordId]">
+    <elemento showdoc="yes" summary="yes" format_after=":&#160;">/mods/name/role/roleTerm/text()</elemento>
+    <elemento showdoc="yes" summary="yes">/mods/name/namePart/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format_before="&#160;(" format_after=")" input_type="select" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='responsTipo']/opzione">/mods/name/@type</elemento>
+    <elemento showdoc="yes" summary="yes" format="&lt;br&gt;">/mods/name/@null</elemento>
+   </elemento>
+   <elemento showdoc="yes" summary="yes" name="soggetto" type="multi_group" prefix="/mods/subject/topic" inline="yes">
+    <elemento showdoc="yes" summary="yes">/mods/subject/topic/text()</elemento>
+    <elemento showdoc="yes" summary="yes" format="&lt;br/&gt;">/mods/subject/topic/@null</elemento>
+   </elemento>
+   <elemento name="classificazione Dewey" type="multi_group" prefix="/mods/classification[@authority='ddc']" showdoc="yes" summary="yes" inline="yes">
+    <elemento showdoc="yes" summary="yes">/mods/classification[@authority='ddc']/text()</elemento>
+    <elemento format_before="ed." showdoc="yes" summary="yes">/mods/classification[@authority='ddc']/@edition</elemento>
+    <!--elemento showdoc="yes" summary="yes">/mods/classification[@authority='ddc']/@lang</elemento -->
+    <elemento showdoc="yes" summary="yes">/mods/classification[@authority='ddc']/@displayLabel</elemento>
+   </elemento>
+   <!--elemento showdoc="yes" summary="yes" name="classificazione Dewey">/mods/classification[@authority='ddc']/text()</elemento -->
+   <elemento showdoc="yes" summary="yes" name="note">/mods[child::extension/level/text()!='item']/physicalDescription/note/text()</elemento>
+   <elemento showdoc="yes" summary="yes" name="note">/mods/note[@type='general notes']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="edizione">/mods/originInfo/edition/text()</elemento>
+  </sezione>
+  <sezione summary="yes" showdoc="yes" name="localizzazione" opened="yes">
+   <elemento summary="yes" showdoc="yes" name="localizzazione">/mods/location/physicalLocation/text()</elemento>
+   <!--elemento summary="yes" showdoc="yes" name="fonte">/mods/recordInfo/recordContentSource/text()</elemento -->
+   <elemento summary="yes" showdoc="yes" name="copertura" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" type="multi_group" arch_ref="xDamsHGeo" prefix="/mods/subject/geographic" code="valueURI" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="" title_format="descr:0-@[#]@code:@[#]@-@[§]@" query="[XML,/eac/eacheader/eacid]">
+    <elemento summary="yes" showdoc="yes" input_type="text" class="Long" name="denominazione" format_after="&lt;br&gt;">/mods/subject/geographic/text()</elemento>
+   </elemento>
+  </sezione>
+  <sezione name="allegati digitali (preview)" summary="yes" showdoc="yes" opened="yes">
+   <elemento opened="yes" name="" summary="yes" showdoc="yes" type="mediaBean" xPathPrefix="/mods/location/url[@access='preview']" xPathHref="/mods/location/url[@access='preview']/text()" xPathTitle="/mods/location/url[@access='preview']/@displayLabel" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides"/>
+  </sezione>
+  <sezione name="allegati digitali (TIFF)" summary="yes" showdoc="yes" opened="yes">
+   <elemento opened="yes" name="" summary="yes" showdoc="yes" type="mediaBean" xPathPrefix="/mods/location/url[@access='raw object']" xPathHref="/mods/location/url[@access='raw object']/text()" xPathTitle="/mods/location/url[@access='raw object']/@displayLabel" xPathGroupPrefix="" xPathGroupDescr="" viewMode="viewDigital" mediaTypeHigh="high" mediaType="slides"/>
+  </sezione>
+ </macroarea>
+ <macroarea showdoc="yes" summary="no" name="altre informazioni e redazione" layer="PROCESSINFO" label="Info gestionali e redazionali">
+  <sezione showdoc="yes" summary="no" name="gestionale" opened="yes">
+   <elemento showdoc="yes" summary="no" name="modalità di acquisizione">/mods[child::typeOfResource/@displayLabel!='item']/extension/acqinfo/p/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="provenienza">/mods[child::typeOfResource/@displayLabel='item']/extension/acqinfo/p/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="modalità di acquisizione">/mods[child::typeOfResource/@displayLabel='item']/extension/acqinfo/@type</elemento>
+   <elemento showdoc="yes" summary="no" name="appunti di lavoro">/mods[child::typeOfResource/@displayLabel!='item']/note[@type='internalNote']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="note interne">/mods[child::typeOfResource/@displayLabel='item']/note[@type='internalNote']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="num. di ingresso copia di catalogazione">/mods/note[@type='accessionNumber']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="data di ingresso copia di catalogazione">/mods/originInfo/dateOther[@type='accessionDate']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="numero di copie">/mods/location/holdingSimple/copyInformation/note[@type='copiesCount']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="valore">/mods/location/holdingSimple/copyInformation/note[@type='monetaryValuation']/text()</elemento>
+   <elemento showdoc="yes" summary="no" name="altri numeri di ingresso" type="multi_group" prefix="/mods/relatedItem[@type='otherCopy']" inline="yes">
+    <elemento showdoc="yes" summary="no" name="num. di ingresso (singolo, da - a)">/mods/relatedItem[@type='otherCopy']/identifier[@type='accessionNumber']/text()</elemento>
+    <elemento showdoc="yes" summary="no" format_before=",&#160;">/mods/relatedItem[@type='otherCopy']/identifier[@type='accessionNumber']/@displayLabel</elemento>
+    <elemento showdoc="yes" summary="no" format="&lt;br/&gt;">/mods/relatedItem[@type='otherCopy']/@null</elemento>
+   </elemento>
+  </sezione>
+  <sezione showdoc="yes" summary="no" name="compilazione" opened="no">
+   <elemento showdoc="yes" summary="no" type="multi_group" prefix="/mods/recordInfo/item" inline="no">
+    <elemento showdoc="yes" summary="no" name="azione">/mods/recordInfo/item/recordOrigin/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="data">/mods/recordInfo/item/recordChangeDate/text()</elemento>
+    <elemento showdoc="yes" summary="no" name="responsabile">/mods/recordInfo/item/recordContentSource/text()</elemento>
+    <elemento showdoc="yes" summary="no" format="&lt;br/&gt;">/mods/recordInfo/item/@null</elemento>
+   </elemento>
+  </sezione>
+ </macroarea>
+</root>

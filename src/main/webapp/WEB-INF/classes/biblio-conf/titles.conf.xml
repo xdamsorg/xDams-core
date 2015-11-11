@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<titleManager>
+		<sezione name="title">
+			<!--titleRole>XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;</titleRole-->
+			<elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+			<elemento mode="html" max_length="100" format_before=":&#160;">[@tit@]-[@comptit@]</elemento>
+			<elemento mode="html" format_before="&#160;/&#160;">[@comptit@]-[@author@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@author@]-[@luogo@]</elemento>
+			<elemento mode="html" format_before="&#160;-&#160;">[@luogo@]-[@editore@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@editore@]-[@data@]</elemento>
+		</sezione>
+		<sezione name="defaultTitle">
+			<!--titleRole>XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;</titleRole-->
+			<elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+			<elemento mode="html" max_length="100" format_before=":&#160;">[@tit@]-[@comptit@]</elemento>
+			<elemento mode="html" format_before="&#160;/&#160;">[@comptit@]-[@author@]
+			<substitutor>
+					<regex>¢</regex>
+					<replacement>&#160;;&#160;</replacement>
+				</substitutor>
+			</elemento>
+			<elemento mode="html" format_before=",&#160;">[@author@]-[@luogo@]</elemento>
+			<elemento mode="html" format_before="&#160;-&#160;">[@luogo@]-[@editore@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@editore@]-[@data@]</elemento>
+		</sezione>
+		<sezione name="hierBrowser">
+			<!--titleRole>XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;</titleRole-->
+			<elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+			<elemento mode="html" max_length="100" format_before=":&#160;">[@tit@]-[@comptit@]</elemento>
+			<elemento mode="html" format_before="&#160;/&#160;">[@comptit@]-[@author@]
+			<substitutor>
+					<regex>¢</regex>
+					<replacement>&#160;;&#160;</replacement>
+				</substitutor>
+			</elemento>
+			<elemento mode="html" format_before=",&#160;">[@author@]-[@luogo@]</elemento>
+			<elemento mode="html" format_before="&#160;-&#160;">[@luogo@]-[@editore@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@editore@]-[@data@]</elemento>
+		</sezione>
+		<sezione name="hierTitle">
+			<!--titleRole>XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;</titleRole-->
+			<elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+			<elemento mode="html" max_length="100" format_before=":&#160;">[@tit@]-[@comptit@]</elemento>
+			<elemento mode="html" format_before="&#160;/&#160;">[@comptit@]-[@author@]
+			<substitutor>
+					<regex>¢</regex>
+					<replacement>&#160;;&#160;</replacement>
+				</substitutor>
+			</elemento>
+			<elemento mode="html" format_before=",&#160;">[@author@]-[@luogo@]</elemento>
+			<elemento mode="html" format_before="&#160;-&#160;">[@luogo@]-[@editore@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@editore@]-[@data@]</elemento>
+		</sezione>
+		<sezione name="titlePath">
+			<!--titleRole>XML,/mods/titleInfo/title &quot;[@tit@]&quot; XML,/mods/titleInfo/subTitle &quot;[@comptit@]&quot; XML,/mods/note &quot;[@author@]&quot; XML,/mods/originInfo/place/placeTerm &quot;[@luogo@]&quot; XML,/mods/originInfo/publisher &quot;[@editore@]&quot; XML,/mods/originInfo/dateIssue &quot;[@data@]&quot;</titleRole-->
+			<elemento mode="html" html="strong" format_after="&#160;">0-[@tit@]</elemento>
+			<elemento mode="html" max_length="100" format_before=":&#160;">[@tit@]-[@comptit@]</elemento>
+			<elemento mode="html" format_before="&#160;/&#160;">[@comptit@]-[@author@]
+			<substitutor>
+					<regex>¢</regex>
+					<replacement>&#160;;&#160;</replacement>
+				</substitutor>
+			</elemento>
+			<elemento mode="html" format_before=",&#160;">[@author@]-[@luogo@]</elemento>
+			<elemento mode="html" format_before="&#160;-&#160;">[@luogo@]-[@editore@]</elemento>
+			<elemento mode="html" format_before=",&#160;">[@editore@]-[@data@]</elemento>
+		</sezione>
+	</titleManager>
+</root>

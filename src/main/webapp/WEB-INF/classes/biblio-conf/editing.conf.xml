@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/mods/extension/level/text()">
+  <docEdit value="">
+   <file name="/biblio-conf/editing-biblioitem.conf.xml"/>
+  </docEdit>
+  <docEdit value="collection">
+   <file name="/biblio-conf/editing-biblioroot.conf.xml"/>
+  </docEdit>
+  <docEdit value="item">
+   <file name="/biblio-conf/editing-biblioitem.conf.xml"/>
+  </docEdit>
+ </multiEditing>
+</root>

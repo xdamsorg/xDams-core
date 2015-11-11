@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<element multiMod="true" input_type="text" class="ExtraLong" name="SGTLA - titolo attribuito">/c/did/container[@label='posizione fisica']/@type</element>
+	<element spreadMod="true" input_type="text" class="ExtraLong" name="SGTLA - titolo attribuito">/c/did/container[@label='posizione fisica']/@type</element>
+</root>

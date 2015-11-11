@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <preInsert suggestedRel="son" excludeRel="none">
+  <macroarea name="identificazione" layer="DID" label="Area dell'identificazione">
+   <sezione name="identificazione" opened="yes">
+    <elemento input_type="select" name="livello" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='livello']/opzione">/mods/extension/level/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="titolo">/mods/titleInfo/title[@type='uniform']/text()</elemento>
+   </sezione>
+   <sezione name="data" opened="yes">
+    <elemento type="custom" id="data" showCentury="false" name="forma normalizzata" prefix="/mods/originInfo/dateIssued"/>
+   </sezione>
+  </macroarea>
+ </preInsert>
+ <docEdit>
+  <macroarea name="identificazione e descrizione" layer="DID" label="Identificazione e Descrizione">
+   <sezione name="identificazione" opened="yes">
+    <elemento input_type="liveText" class="Long" name="identificatore">/mods/identifier/text()</elemento>
+    <elemento input_type="liveText" class="Long" name="id xDams">/mods/@ID</elemento>
+    <elemento input_type="select" name="livello" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='livello']/opzione">/mods/extension/level/text()</elemento>
+    <elemento input_type="select" name="tipo di risorsa/supporto" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipoSupporto']/opzione">/mods/typeOfResource/text()</elemento>
+    <elemento input_type="select" name="visibilità" multiMod="true" class="Middle" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione">/mods/@audience</elemento>
+    <elemento input_type="textarea" rows="2" cols="55" name="titolo">/mods/titleInfo[@type='uniform']/title/text()</elemento>
+    <elemento input_type="textarea" rows="2" cols="55" name="complemento del titolo">/mods/titleInfo[@type='uniform']/subTitle/text()</elemento>
+    <elemento opened="yes" input_type="text" class="ExtraLong" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" name="autore" type="multi_auther" arch_ref="xDamsEACCPF" prefix="/mods/name" code="valueURI" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /mods/name/namePart/text()
+     <elemento input_type="select" name="ruolo" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='responsRoot']/opzione">/mods/name/role/roleTerm/text()</elemento>
+    </elemento>
+    <elemento opened="yes" input_type="textarea" rows="1" cols="55" name="descrizione fisica">/mods/physicalDescription/note/text()</elemento>
+    <elemento opened="yes" input_type="textarea" rows="3" cols="55" name="descrizione">/mods/abstract/text()</elemento>
+   </sezione>
+   <sezione name="data" opened="yes">
+    <elemento type="custom" id="data" showCentury="false" name="forma normalizzata" prefix="/mods/originInfo/dateIssued"/>
+    <elemento input_type="select" name="tipo di data" value="document:/biblio-conf/valoriControllati.xml" externalPath="/root/elemento[@name='tipoData']/opzione">/mods/originInfo/dateIssued/@qualifier</elemento>
+   </sezione>
+   <sezione name="info pubblicazione" opened="yes">
+    <elemento input_type="text" class="Long" multiMod="true" name="luogo">/mods/originInfo/place/placeTerm/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" multiMod="true" name="editore">/mods/originInfo/publisher/text()</elemento>
+    <elemento input_type="text" class="Middle" name="numerazione">/mods/part/detail[@type='numbering']/number/text()</elemento>
+    <elemento opened="yes" name="classificazione Dewey" type="multi_group" prefix="/mods/classification[@authority='ddc']" inline="yes">
+     <elemento name="edizione" input_type="text" class="Short" HTMLextra="lingua">/mods/classification[@authority='ddc']/@edition</elemento>
+     <elemento input_type="text" class="Short">/mods/classification[@authority='ddc']/@lang</elemento>
+     <elemento name="codice" input_type="text" class="Middle" HTMLextra="testo">/mods/classification[@authority='ddc']/text()</elemento>
+     <elemento name="" input_type="text" class="ExtraLong">/mods/classification[@authority='ddc']/@displayLabel</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="note" opened="yes">
+    <elemento input_type="textarea" rows="3" cols="55">/mods/note/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="info redazionali" layer="PROCESSINFO" label="info redazionali">
+   <sezione name="responsabilità" opened="yes">
+    <elemento name="" type="custom" id="processinfo" prefix="/mods/recordInfo/item" inline="no">
+     <elemento input_type="liveText" name="azione">/mods/recordInfo/item/recordOrigin/text()</elemento>
+     <elemento input_type="liveText" name="data">/mods/recordInfo/item/recordChangeDate/text()</elemento>
+     <elemento input_type="liveText" name="responsabile">/mods/recordInfo/item/recordContentSource/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/mods/@ID</elemento>
+   <elemento>/mods/recordInfo/recordContentSource/text()</elemento>
+  </sezione>
+ </docEdit>
+ <fixedValues>
+  <!-- da scrivere su una riga per elemento !!!!! -->
+  <elemento value="inserimento">/mods/recordInfo/item/recordOrigin/text()</elemento>
+  <elemento value="@coluiCheInserisce@">/mods/recordInfo/item/recordContentSource/text()</elemento>
+  <elemento value="@quandoColuiInserisce@">/mods/recordInfo/item/recordChangeDate/text()</elemento>
+  <elemento value=".">/mods/@ID</elemento>
+  <elemento value="IT-Banca Sella">/mods/recordInfo/recordContentSource/text()</elemento>
+ </fixedValues>
+ <param>
+  <!--elemento id="codice_identificativo">/mods/f14/text()</elemento -->
+  <elemento id="campi_obbligatori">.mods.titleInfo[@type='uniform'].title.text()</elemento>
+  <!-- separati da ; -->
+  <elemento id="escludi_appunti">.mods.recordInfo</elemento>
+  <!-- separati da ; -->
+  <elemento id="clona">
+   <!-- PRIMA I DELETE E POI GLI APPEND/INSERT O REPLACE value="systemdate" o SYSTEMDATE per mettere la data di copia value="username" o USERNAME per mettere il nome di chi fa la copia -->
+   <!-- opzione action="delete" value="">/mods/processinfo/list/item</opzione -->
+   <opzione action="append" value="(Clonato)">/mods/titleInfo[@type='uniform']/title/text()</opzione>
+   <opzione action="replace" value=".">/mods/@ID</opzione>
+  </elemento>
+  <elemento id="riordina">
+   <opzione value="XML,/mods/segnatura">segnatura attuale</opzione>
+   <opzione value="XML,/mods/titleInfo/title">titolo</opzione>
+   <opzione value="XML,/mods/originInfo/dateIssued">data</opzione>
+  </elemento>
+ </param>
+</root>
