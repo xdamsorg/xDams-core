@@ -9,6 +9,7 @@
   <archive alias="xDamsOA" role="1">Iconografia</archive>
   <archive alias="xDamsEACCPF" role="1">Soggetti Produttori</archive>
   <archive alias="xDamsHGeo" role="1">Authority Luoghi</archive>
+  <archive alias="xDamsBiblio" role="1">Biblioteca CNR</archive>
   <archive alias="xDamsUsers" role="1">Gestione Utenti</archive>
   <archive alias="multiArchive" role="1">Multi Archivio</archive>
  </user>
@@ -16,9 +17,10 @@
   <archive alias="xDamsHist" role="3">Archivio Storico</archive>
   <archive alias="xDamsAV" role="3">Archivio Audio Video</archive>
   <archive alias="xDamsPhoto" role="3">Archivio Fotografico</archive>
-  <archive alias="xDamsOA" role="1">Iconografia</archive>
+  <archive alias="xDamsOA" role="3">Iconografia</archive>
   <archive alias="xDamsEACCPF" role="3">Soggetti Produttori</archive>
   <archive alias="xDamsHGeo" role="3">Authority Luoghi</archive>
+  <archive alias="xDamsBiblio" role="3">Biblioteca CNR</archive>
   <archive alias="multiArchive" role="1">Multi Archivio</archive>
  </user>
 </root>
