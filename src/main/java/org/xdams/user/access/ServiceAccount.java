@@ -1,13 +1,14 @@
 package org.xdams.user.access;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.xdams.user.bean.Archive;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.xml.builder.XMLBuilder;
-
 
 public class ServiceAccount {
 
@@ -26,6 +27,21 @@ public class ServiceAccount {
 				map.put(archive.getGroupName(), list);
 			}
 		}
+	}
+
+	public Map<String, List<Archive>> getArchiveByGroup(Map<String, Archive> archivesMap) throws Exception {
+		Map<String, List<Archive>> archiveByGroup = new LinkedHashMap<String, List<Archive>>();
+		for (Entry<String, Archive> entry : archivesMap.entrySet()) {
+			if (archiveByGroup.containsKey(entry.getValue().getGroupName())) {
+				archiveByGroup.get(entry.getValue().getGroupName()).add(entry.getValue());
+			} else {
+				List<Archive> list = new ArrayList<Archive>();
+				list.add(entry.getValue());
+				archiveByGroup.put(entry.getValue().getGroupName(), list);
+			}
+		}
+
+		return archiveByGroup;
 	}
 
 	public List<Archive> getArchives(String username, String account) throws Exception {
@@ -49,7 +65,7 @@ public class ServiceAccount {
 					archive.setPort(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@port"));
 					archive.setWebapp(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@webapp"));
 					archive.setType(xmlArchives.valoreNodo("/root/account[@id='" + account + "']/archiveGroup/archive[@alias='" + archAlias + "']/@type"));
-					
+
 					archives.add(archive);
 				}
 			}
