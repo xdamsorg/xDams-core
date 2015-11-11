@@ -22,5 +22,8 @@
   <valoriControllati value="xDamsUsers">
    <file name="/users-conf/valoriControllati.xml"/>
   </valoriControllati>
+  <valoriControllati value="xDamsBiblio">
+   <file name="/biblio-conf/valoriControllati.xml"/>
+  </valoriControllati>
  </multiEditing>
 </root>

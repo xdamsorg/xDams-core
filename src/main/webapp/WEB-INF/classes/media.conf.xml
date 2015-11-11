@@ -22,5 +22,8 @@
   <media value="xDamsUsers">
    <file name="/users-conf/media.conf.xml"/>
   </media>
+  <media value="xDamsBiblio">
+   <file name="/biblio-conf/media.conf.xml"/>
+  </media>
  </multiEditing>
 </root>

@@ -22,5 +22,8 @@
   <presentation value="xDamsUsers">
    <file name="/users-conf/presentation.conf.xml"/>
   </presentation>
+  <presentation value="xDamsBiblio">
+   <file name="/biblio-conf/presentation.conf.xml"/>
+  </presentation>
  </multiEditing>
 </root>

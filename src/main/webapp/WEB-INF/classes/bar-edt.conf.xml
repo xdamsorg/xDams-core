@@ -22,5 +22,8 @@
   <managing value="xDamsUsers">
    <file name="/users-conf/bar-edt.conf.xml"/>
   </managing>
+  <managing value="xDamsBiblio">
+   <file name="/biblio-conf/bar-edt.conf.xml"/>
+  </managing>
  </multiEditing>
 </root>

@@ -22,5 +22,8 @@
   <managing value="xDamsUsers">
    <file name="/users-conf/managing.conf.xml"/>
   </managing>
+  <managing value="xDamsBiblio">
+   <file name="/biblio-conf/managing.conf.xml"/>
+  </managing>
  </multiEditing>
 </root>

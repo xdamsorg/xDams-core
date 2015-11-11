@@ -22,5 +22,8 @@
   <docEdit value="xDamsUsers">
    <file name="/users-conf/editing.conf.xml"/>
   </docEdit>
+  <docEdit value="xDamsBiblio">
+   <file name="/biblio-conf/editing.conf.xml"/>
+  </docEdit>
  </multiEditing>
 </root>

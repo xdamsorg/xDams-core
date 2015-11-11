@@ -22,5 +22,8 @@
   <titleManager value="xDamsUsers">
    <file name="/users-conf/titles.conf.xml"/>
   </titleManager>
+  <titleManager value="xDamsBiblio">
+   <file name="/biblio-conf/titles.conf.xml"/>
+  </titleManager>
  </multiEditing>
 </root>
