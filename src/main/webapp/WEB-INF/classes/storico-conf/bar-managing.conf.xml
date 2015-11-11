@@ -82,18 +82,6 @@
      </functionName>
     </eventJavaScript>
    </element>
-   <element value="DUPLICA" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
-    <anchor value="#"></anchor>
-    <eventJavaScript value="onclick">
-     <functionName value="parent.apriWinProtoGest">
-      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
-      <paramFunction>'multiCopy'</paramFunction><!-- actionFlag servizio della servlet -->
-      <paramFunction>'Duplica schede'</paramFunction><!-- commento alla finestra -->
-      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction><!-- documento -->
-      <paramFunction javaBean="viewBean">getSelid</paramFunction><!-- documento -->
-     </functionName>
-    </eventJavaScript>
-   </element>
    <element value="Find\Replace" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#"></anchor>
     <eventJavaScript value="onclick">
