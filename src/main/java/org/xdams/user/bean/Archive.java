@@ -104,7 +104,7 @@ public class Archive {
 
 	@Override
 	public String toString() {
-		return "Archive [archiveDescr=" + archiveDescr + ", alias=" + alias + ", host=" + host + ", ico=" + ico + ", pne=" + pne + ", port=" + port + ", webapp=" + webapp + ", role=" + role + ", groupName=" + groupName + "]";
+		return "Archive [archiveDescr=" + archiveDescr + ", alias=" + alias + ", host=" + host + ", ico=" + ico + ", pne=" + pne + ", port=" + port + ", webapp=" + webapp + ", role=" + role + ", groupName=" + groupName + ", type=" + type + "]";
 	}
 
 }
