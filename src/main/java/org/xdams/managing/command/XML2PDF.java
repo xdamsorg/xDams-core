@@ -535,7 +535,7 @@ public class XML2PDF {
 
 			xwconn.close();
 			result = ProblematicCharactersFilter.replaceCharacters(result);
-			System.out.println("QUI RESULT " + result + "QUI RESUTL");
+		//	System.out.println("QUI RESULT " + result + "QUI RESUTL");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (XWException e) {
