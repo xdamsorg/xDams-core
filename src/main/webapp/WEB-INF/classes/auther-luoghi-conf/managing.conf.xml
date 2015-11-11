@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <element multiMod="true" name="Informazioni integrative">/eac/condesc/desc/ocd/text()</element>
+ <element multiMod="true" name="stato">/eac/eacheader/@status</element>
+ <element multiMod="true" name="livello di dettaglio">/eac/eacheader/@detaillevel</element>
+ <element multiMod="true" name="lingua della documentazione">/eac/eacheader/languagedecl/language/text()</element>
+</root>
