@@ -82,11 +82,16 @@ xDamsModalMessage('<spring:message code="caricamento_in_corso" text="caricamento
 			<div class="cont_riga_dx">
 				<div class="riga_sx">
 					<a title="<%=theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+1+"]/@label")%>" class="link_u_w_nav" onclick="evidenziaLI(this,'link_u_w');this.className='link_u_w_nav';return  showHideLayers('<%=StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+1+"]/@layer"))%>','','show')" href="#nogo"><%=StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+1+"]/@name"))%></a>
-					<%for(int i=1;i < numeroMacroarea; i++){%>
+					<%for(int i=1;i < numeroMacroarea; i++){
+						String isHidden = theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+(i+1)+"]/@hidden"); 
+						if(isHidden.equals("") || isHidden.equals("false")){
+					%>
 						<span class="barretta_div">|</span>
 						<a title="<%=theXMLconf.valoreNodoHTML("/"+ilPath+"/macroarea["+(i+1)+"]/@label")%>" class="link_u_w" onclick="evidenziaLI(this,'link_u_w');this.className='link_u_w_nav';return  showHideLayers('<%=StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+(i+1)+"]/@layer"))%>','','show')" href="#nogo"><%=StringEscapeUtils.escapeEcmaScript(theXMLconf.valoreNodo("/"+ilPath+"/macroarea["+(i+1)+"]/@name"))%></a>
-					<%}%>
-			</div>
+					<%
+						}
+					}%>
+			</div> 
 			</div>
 		</div>
 
