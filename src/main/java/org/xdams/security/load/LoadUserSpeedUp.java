@@ -13,7 +13,7 @@ import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
 
 /*
- * NOT TESTED
+ * TESTED
  * 
  * */
 public class LoadUserSpeedUp {
