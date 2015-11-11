@@ -1,22 +1,186 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <root>
-
-
-
-
-    <element multiMod="true" input_type="textarea" rows="3"  cols="55" name="SGTI - identificazione">/c/did/unittitle[@encodinganalog='SGTI']/text()</element>
-	<element multiMod="true" input_type="text" class="ExtraLong" name="SGTT - titolo" >/c/did/unittitle[@encodinganalog='SGTT']/title/text()</element>
-
-
-
-  <element multiMod="true" input_type="text" class="Long" type="multi" name="MTCI - materiali e tecniche">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/text()</element>
-
-
-
-
-
-
-
+ <element multiMod="" name="livello gerarchico di descrizione">/c/@level</element>
+ <element multiMod="" name="TSK - tipo scheda">/c/did/unitid/@type</element>
+ <element multiMod="" name="codice identificativo gerarchia verticale">/c/did/unitid/text()</element>
+ <element multiMod="true" name="visibilità della scheda">/c/@audience</element>
+ <element name="Inventario" prefix="/c/originalsloc[@encodinganalog='INV']">
+  <element multiMod="" name="INVN - numero">/c/originalsloc[@encodinganalog='INV']/p/num[@encodinganalog='INVN']/text()</element>
+  <element multiMod="" name="INVD - data">/c/originalsloc[@encodinganalog='INV']/p/date[@encodinganalog='INVD']/text()</element>
+ </element>
+ <element multiMod="" name="OGTD - definizione">/c/did/materialspec[@encodinganalog='OGTD']/text()</element>
+ <element multiMod="" name="OGTT - tipologia">/c/did/materialspec[@encodinganalog='OGTD']/materialspec[@encodinganalog='OGTT']/text()</element>
+ <element multiMod="" name="OGTN - denominazione">/c/did/materialspec[@encodinganalog='OGTD']/title[@encodinganalog='OGTN']/text()</element>
+ <element multiMod="" name="QNTN - quantità">/c/did/materialspec[@encodinganalog='OGTD']/num[@encodinganalog='QNTN']/text()</element>
+ <element multiMod="" name="SGTI - identificazione">/c/did/unittitle[@encodinganalog='SGTI']/text()</element>
+ <element multiMod="" name="SGTT - titolo">/c/did/unittitle[@encodinganalog='SGTI']/title[@encodinganalog='SGTT']/text()</element>
+ <element multiMod="" name="forma normalizzata">/c/did/unitdate[@encodinganalog='DT']/@normal</element>
+ <element multiMod="" name="forma normalizzata">/c/did/unitdate[@encodinganalog='DT']/text()</element>
+ <element prefix="/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']">
+  <element multiMod="" name="DTM - motivazione cronologica">/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='motivazione']/text()</element>
+ </element>
+ <element name="AUTN - nome" prefix="/c/did/origination/persname[@encodinganalog='AUT']">
+  <element multiMod="" name="AUTS - riferimento all'autore">/c/did/origination/persname[@encodinganalog='AUT']/@altrender</element>
+  <element multiMod="" name="AUTS - riferimento all'autore">/c/did/origination/persname[@encodinganalog='AUT']/@authfilenumber</element>
+  <element multiMod="" name="AUTR - ruolo">/c/did/origination/persname[@encodinganalog='AUT']/@role</element>
+  <element multiMod="" name="AUTM - motivazione dell'attribuzione">/c/did/origination/persname[@encodinganalog='AUT']/emph/text()</element>
+  <element multiMod="" name="AUTM - motivazione dell'attribuzione">/c/did/origination/persname[@encodinganalog='AUT']/text()</element>
+ </element>
+ <element name="ATB - Ambito Culturale / di produzione" prefix="/c/did/origination/corpname[@encodinganalog='ATB']">
+  <element multiMod="" name="ATBR - ruolo">/c/did/origination/corpname[@encodinganalog='ATB']/@role</element>
+  <element multiMod="" name="ATBR - ruolo">/c/did/origination/corpname[@encodinganalog='ATB']/@authfilenumber</element>
+  <element multiMod="" name="ATBM - motivazione dell'attribuzione">/c/did/origination/corpname[@encodinganalog='ATB']/emph/text()</element>
+  <element multiMod="" name="ATBM - motivazione dell'attribuzione">/c/did/origination/corpname[@encodinganalog='ATB']/text()</element>
+ </element>
+ <element name="AAUN - nome" prefix="/c/did/origination/persname[@encodinganalog='AAU']">
+  <element multiMod="" name="AAUR - ruolo">/c/did/origination/persname[@encodinganalog='AAU']/@role</element>
+  <element multiMod="" name="AAUR - ruolo">/c/did/origination/persname[@encodinganalog='AAU']/@authfilenumber</element>
+  <element multiMod="" name="AAUR - ruolo">/c/did/origination/persname[@encodinganalog='AAU']/text()</element>
+ </element>
+ <element multiMod="true" name="CMMN - nome">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/name/text()</element>
+ <element multiMod="true" name="CMMD - data">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/date/text()</element>
+ <element multiMod="true" name="CMMC - circostanza">/c/bioghist[@encodinganalog='CMM']/chronlist/chronitem/event/text()</element>
+ <element multiMod="" name="LDCN - denominazione del contenitore">/c/did/physloc[@encodinganalog='LDC']/text()</element>
+ <element multiMod="" name="LDCS - specifiche">/c/did/physloc[@encodinganalog='LDC']/emph/text()</element>
+ <element name="MTC - materie e tecniche" prefix="/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']">
+  <element multiMod="" name="materia e tecnica">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/text()</element>
+  <element multiMod="" name="specifiche (OAC)">/c/did/physdesc[@encodinganalog='MT']/genreform[@encodinganalog='MTC']/emph/text()</element>
+ </element>
+ <element multiMod="" name="descrizione allestimento">/c/did/physdesc[@encodinganalog='MT']/subject/text()</element>
+ <element multiMod="" name="varianti">/c/did/physdesc[@encodinganalog='MT']/subject/emph/text()</element>
+ <element multiMod="" name="unità di misura">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIS']/@unit</element>
+ <element multiMod="" name="MISA - altezza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISA']/text()</element>
+ <element multiMod="" name="MISL - larghezza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISL']/text()</element>
+ <element multiMod="" name="MISP - profondità">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISP']/text()</element>
+ <element multiMod="" name="MISD - diametro">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISD']/text()</element>
+ <element multiMod="" name="MISN - lunghezza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISN']/text()</element>
+ <element multiMod="" name="MISS - spessore">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISS']/text()</element>
+ <element multiMod="" name="MISG - peso">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISG']/text()</element>
+ <element multiMod="" name="MISV - varie">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISV']/text()</element>
+ <element multiMod="" name="MISR - mancanza">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISR']/text()</element>
+ <element multiMod="" name="MIST - validità">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MIST']/text()</element>
+ <element multiMod="" name="filigrana">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FIL']/text()</element>
+ <element multiMod="" name="FRM - formato">/c/did/physdesc[@encodinganalog='MT']/physfacet[@encodinganalog='FRM']/text()</element>
+ <element multiMod="" name="MISH - durata (OAC)">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISH']/text()</element>
+ <element multiMod="" name="MISB - memoria (OAC)">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISB']/text()</element>
+ <element multiMod="" name="MISI - ingombro (OAC)">/c/did/physdesc[@encodinganalog='MT']/dimensions[@encodinganalog='MISI']/text()</element>
+ <element multiMod="true" name="STCC - stato di conservazione">/c/phystech[@encodinganalog='STC']/p/text()</element>
+ <element multiMod="true" name="STCS - specifiche sullo stato di conservazione">/c/phystech[@encodinganalog='STC']/note/p/text()</element>
+ <element multiMod="" name="STCM - modalità di conservazione (OAC)">/c/phystech[@encodinganalog='STC']/phystech[@encodinganalog='STCM']/p/text()</element>
+ <element name="RST - interventi di restauro" prefix="/c/phystech[@encodinganalog='RST']/chronlist/chronitem">
+  <element multiMod="" name="RSTD - data">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/date[@encodinganalog='RSTD']/text()</element>
+  <element multiMod="" name="RSTS - situazione">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/emph/text()</element>
+  <element multiMod="" name="RSTN - nome operatore">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/name[@encodinganalog='RSTN']/text()</element>
+  <element multiMod="" name="descrizione intervento">/c/phystech[@encodinganalog='RST']/chronlist/chronitem/event/text()</element>
+ </element>
+ <element multiMod="true" name="DESO - descrizione dell'oggetto">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='DESO']/p/text()</element>
+ <element multiMod="true" name="DESS - descrizione del soggetto">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='DESS']/p/text()</element>
+ <element multiMod="true" name="NSC - notizie storico-critiche">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='NSC']/p/text()</element>
+ <element multiMod="true" name="ISR - iscrizioni">/c/descgrp[@encodinganalog='DA']/scopecontent[@encodinganalog='ISR']/p/text()</element>
+ <element multiMod="true" name="STM - stemmi, emblemi, marchi">/c/descgrp[@encodinganalog='DA']/odd[@encodinganalog='STM']/p/text()</element>
+ <element multiMod="true" name="stima">/c/odd[@encodinganalog='STI']/p/text()</element>
+ <element multiMod="true" name="CDG - condizione giuridica">/c/descgrp[@encodinganalog='TU']/accessrestrict/legalstatus[@id='CDG']/text()</element>
+ <element multiMod="true" name="ACQ - acquisizione del materiale">/c/descgrp[@encodinganalog='TU']/acqinfo[@encodinganalog='ACQ']/p/text()</element>
+ <element multiMod="true" name="NVC - provvedimenti di tutela">/c/descgrp[@encodinganalog='TU']/accessrestrict/accessrestrict[@encodinganalog='NVC']/p/text()</element>
+ <element multiMod="true" name="ALN - mutamenti della condizione giuridica o materiale">/c/descgrp[@encodinganalog='TU']/custodhist[@encodinganalog='ALN']/p/text()</element>
+ <element multiMod="true" name="ESP - esportazioni">/c/descgrp[@encodinganalog='TU']/odd[@encodinganalog='ESP']/p/text()</element>
+ <element multiMod="true" name="CPR - copyright">/c/descgrp[@encodinganalog='TU']/userestrict[@encodinganalog='CPR']/p/text()</element>
+ <element name="RSE - Riferimento altre schede" prefix="/c/relatedmaterial[@encodinganalog='RSE']">
+  <element multiMod="" name="RSET - tipo scheda">/c/relatedmaterial[@encodinganalog='RSE']/p/text()</element>
+  <element multiMod="" name="RSEC - codice scheda">/c/relatedmaterial[@encodinganalog='RSE']/p/num/text()</element>
+ </element>
+ <element name="fotografie" prefix="/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item">
+  <element multiMod="" name="FTAX - genere">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/@type</element>
+  <element multiMod="" name="FTAP - tipo">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/text()</element>
+  <element multiMod="" name="FTAA - autore">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/persname[@encodinganalog='FTAA']/text()</element>
+  <element multiMod="" name="FTAN - n.">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/num[@encodinganalog='FTAN']/text()</element>
+  <element multiMod="" name="FTAF - formato">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/genreform/emph/text()</element>
+  <element multiMod="" name="FTAT - note">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/note[@encodinganalog='FTAT']/p/text()</element>
+  <element multiMod="" name="nome originale del file digitale">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@altrender</element>
+  <element multiMod="" name="url oggetto digitale">/c/altformavail[@encodinganalog='FTA']/list[@type='simple']/item/extptr/@href</element>
+ </element>
+ <element name="video" prefix="/c/altformavail[@encodinganalog='VDC']/list/item">
+  <element multiMod="" name="VDCX - genere">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/@type</element>
+  <element multiMod="" name="VDCP - tipo">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/text()</element>
+  <element multiMod="" name="durata (hh:mm:ss)">/c/altformavail[@encodinganalog='VDC']/list/item/genreform/emph/text()</element>
+  <element multiMod="" name="VDCR - autore">/c/altformavail[@encodinganalog='VDC']/list/item/persname[@encodinganalog='VDCR']/text()</element>
+  <element multiMod="" name="VDCT - note">/c/altformavail[@encodinganalog='VDC']/list/item/note[@encodinganalog='VDCT']/p/text()</element>
+  <element multiMod="" name="nome originale del file digitale">/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@altrender</element>
+  <element multiMod="" name="url oggetto digitale">/c/altformavail[@encodinganalog='VDC']/list/item/extptr/@href</element>
+ </element>
+ <element name="documenti digitali" prefix="/c/altformavail[@encodinganalog='ADM']/list/item">
+  <element multiMod="" name="ADMX - genere">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/@type</element>
+  <element multiMod="" name="ADMP - tipo">/c/altformavail[@encodinganalog='ADM']/list/item/genreform/text()</element>
+  <element multiMod="" name="ADMA - autore">/c/altformavail[@encodinganalog='ADM']/list/item/persname[@encodinganalog='ADMA']/text()</element>
+  <element multiMod="" name="ADMT - note">/c/altformavail[@encodinganalog='ADM']/list/item/note[@encodinganalog='ADMT']/p/text()</element>
+  <element multiMod="" name="nome originale del file digitale">/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@altrender</element>
+  <element multiMod="" name="url oggetto digitale">/c/altformavail[@encodinganalog='ADM']/list/item/extptr/@href</element>
+ </element>
+ <element multiMod="true" name="Fonti archivistiche">/c/bibliography[@encodinganalog='FNT']/archref/text()</element>
+ <element multiMod="true" name="BIL - citazione completa">/c/bibliography[@encodinganalog='BIB']/p/text()</element>
+ <element name="monografie e periodici" prefix="/c/bibliography[@encodinganalog='BIB']/bibref">
+  <element multiMod="" name="BIBX - genere">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/@type</element>
+  <element multiMod="" name="BIBA - autore">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBA']/text()</element>
+  <element multiMod="" name="BIBC - curatore">/c/bibliography[@encodinganalog='BIB']/bibref/persname[@encodinganalog='BIBC']/text()</element>
+  <element multiMod="" name="BIBT - titolo contributo">/c/bibliography[@encodinganalog='BIB']/bibref/title[@encodinganalog='BIBT']/text()</element>
+  <element multiMod="" name="BIBG - titolo libro o rivista">/c/bibliography[@encodinganalog='BIB']/bibref/edition[@encodinganalog='BIBG']/text()</element>
+  <element multiMod="" name="BIBL - luogo di edizione">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/geogname[@encodinganalog='BIBL']/text()</element>
+  <element multiMod="" name="BIBZ - editore">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/publisher[@encodinganalog='BIBZ']/text()</element>
+  <element multiMod="" name="BIBD - data">/c/bibliography[@encodinganalog='BIB']/bibref/imprint/date[@encodinganalog='BIBD']/text()</element>
+  <element multiMod="" name="BIBV - volume">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBV']/text()</element>
+  <element multiMod="" name="BIBP - pagine / nn.">/c/bibliography[@encodinganalog='BIB']/bibref/num[@encodinganalog='BIBP']/text()</element>
+ </element>
+ <element name="BSE - bibliografia in rete" prefix="/c/bibliography[@encodinganalog='BSE']/extref">
+  <element multiMod="" name="BSET - titolo-soggetto">/c/bibliography[@encodinganalog='BSE']/extref/title[@encodinganalog='BSET']/text()</element>
+  <element multiMod="" name="BSED - data di consultazione">/c/bibliography[@encodinganalog='BSE']/extref/date[@encodinganalog='BSED']/text()</element>
+  <element multiMod="" name="BSEI - indirizzo di rete">/c/bibliography[@encodinganalog='BSE']/extref/@href</element>
+ </element>
+ <element name="eventi" prefix="/c/bibliography[@encodinganalog='MST']/list/item">
+  <element multiMod="" name="MSTT - titolo">/c/bibliography[@encodinganalog='MST']/list/item/title[@encodinganalog='MSTT']/text()</element>
+  <element multiMod="" name="MSTL - luogo">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/text()</element>
+  <element multiMod="" name="MSTS - sede espositiva">/c/bibliography[@encodinganalog='MST']/list/item/geogname[@encodinganalog='MSTL']/emph/text()</element>
+  <element multiMod="" name="MSTD - data">/c/bibliography[@encodinganalog='MST']/list/item/date[@encodinganalog='MSTD']/text()</element>
+  <element multiMod="" name="MSTO - ente organizzatore">/c/bibliography[@encodinganalog='MST']/list/item/corpname[@encodinganalog='MSTO']/text()</element>
+ </element>
+ <element prefix="/c/controlaccess/subject">
+  <element multiMod="" name="soggetti / temi">/c/controlaccess/subject/text()</element>
+  <element multiMod="" name="soggetti / temi">/c/controlaccess/subject/@authfilenumber</element>
+ </element>
+ <element prefix="/c/controlaccess/name">
+  <element multiMod="" name="classificazione oggetto">/c/controlaccess/name/text()</element>
+ </element>
+ <element multiMod="true" name="osservazioni">/c/note[@encodinganalog='AN']/p/text()</element>
+ <element multiMod="true" name="funzionario responsabile">/c/processinfo/p/persname/text()</element>
+ <element name="Informazioni sulla compilazione" prefix="/c/processinfo/list/item">
+  <element multiMod="" name="azione">/c/processinfo/list/item/text()</element>
+  <element multiMod="" name="data">/c/processinfo/list/item/date/text()</element>
+  <element multiMod="" name="responsabile">/c/processinfo/list/item/persname/text()</element>
+ </element>
+ <element multiMod="true" name="">/c/did/unitid/@countrycode</element>
+ <element multiMod="true" name="">/c/did/unitid/@repositorycode</element>
+ <element multiMod="true" name="">/c/@id</element>
+ <element multiMod="" name="note alla data">/c/did/unitdate[@encodinganalog='DT']/emph[@altrender='note']/text()</element>
+ <element prefix="/c/did/origination/corpname[@role='creator']">
+  <element multiMod="" name="soggetto produttore: ente">/c/did/origination/corpname[@role='creator']/text()</element>
+  <element multiMod="" name="soggetto produttore: ente">/c/did/origination/corpname[@role='creator']/@authfilenumber</element>
+ </element>
+ <element prefix="/c/did/origination/persname[@role='creator']">
+  <element multiMod="" name="soggetto produttore: persona">/c/did/origination/persname[@role='creator']/text()</element>
+  <element multiMod="" name="soggetto produttore: persona">/c/did/origination/persname[@role='creator']/@authfilenumber</element>
+ </element>
+ <element prefix="/c/did/origination/famname[@role='creator']">
+  <element multiMod="" name="soggetto produttore: famiglia">/c/did/origination/famname[@role='creator']/text()</element>
+  <element multiMod="" name="soggetto produttore: famiglia">/c/did/origination/famname[@role='creator']/@authfilenumber</element>
+ </element>
+ <element multiMod="" name="denominazione">/c/did/repository/text()</element>
+ <element multiMod="" name="indirizzo">/c/did/repository/address/addressline[1]/text()</element>
+ <element multiMod="" name="sito web">/c/did/repository/address/addressline[2]/text()</element>
+ <element name="LDC - Localizzazione / Collocazione specifica" prefix="/c/did/physloc[@encodinganalog='LDC']">
+  <element multiMod="" name="LDCS - specifiche">/c/did/physloc[@encodinganalog='LDC']/@authfilenumber</element>
+ </element>
+ <element name="consistenza" prefix="/c/did/physdesc[@label='container']">
+  <element multiMod="" name="tipologia">/c/did/physdesc[@label='container']/genreform/text()</element>
+  <element multiMod="" name="quantità">/c/did/physdesc[@label='container']/extent/text()</element>
+ </element>
+ <element multiMod="" name="riferimento">/c/relatedmaterial[@encodinganalog='RSE']/p/note/text()</element>
 </root>
-
