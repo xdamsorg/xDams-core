@@ -54,24 +54,23 @@ public class xDamsRestController {
 
 	@Autowired
 	Boolean multiAccount;
-	
-//	@RequestMapping(value = "/springcontent", method = RequestMethod.GET, produces = {
-//			"application/xml", "application/json" })
-//	@ResponseStatus(HttpStatus.OK)
-//	public String getUser() throws UnsupportedEncodingException, TransformerException, XMLException {
-//		XMLBuilder builder = ConfManager.getConfXML("media.conf.xml");
-//		String validSecretKey = builder.valoreNodo("/root/secretKey/text()");	 
-//		return builder.getXML("ISO-8859-1");
-//	}
-	
-	
+
+	// @RequestMapping(value = "/springcontent", method = RequestMethod.GET, produces = {
+	// "application/xml", "application/json" })
+	// @ResponseStatus(HttpStatus.OK)
+	// public String getUser() throws UnsupportedEncodingException, TransformerException, XMLException {
+	// XMLBuilder builder = ConfManager.getConfXML("media.conf.xml");
+	// String validSecretKey = builder.valoreNodo("/root/secretKey/text()");
+	// return builder.getXML("ISO-8859-1");
+	// }
+
 	@RequestMapping(value = "/rest/{accountID}/{archive}/{secretKey}", method = RequestMethod.GET, produces = "text/xml")
 	public @ResponseBody
 	String restCall(@PathVariable String archive, @PathVariable String secretKey, @PathVariable String accountID, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		XMLBuilder builder = ConfManager.getConfXML("rest-conf/rest-conf.xml");
-		String validSecretKey = builder.valoreNodo("/root/secretKey/text()");
-		String alias = builder.valoreNodo("/root/secretKey/@alias");
+		String validSecretKey = builder.valoreNodo("/root/secretKey[@alias='" + archive + "']/text()");
+		String alias = builder.valoreNodo("/root/secretKey[@alias='" + archive + "']/@alias");
 		String xsltType = MyRequest.getParameter("xsltType", "", request);
 		StringBuilder outputBuilder = new StringBuilder();
 
@@ -84,7 +83,7 @@ public class xDamsRestController {
 
 		String xsltPath = "";
 		if (!xsltType.trim().equals("")) {
-			xsltPath = builder.valoreNodo("/root/xslt[@type='" + xsltType + "']/text()");
+			xsltPath = builder.valoreNodo("/root/xslt[@type='" + xsltType + "' and @alias='" + archive + "']/text()");
 		}
 		String xslt = "";
 		if (!xsltPath.trim().equals("")) {
@@ -144,7 +143,7 @@ public class xDamsRestController {
 				qr = xwconn.getQRFromHier(Integer.parseInt(physDoc), true);
 				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
 			} else {
-				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage,null);
+				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, null);
 				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 			}
 			String trasform = xwconn.XMLCommand(xwconn.connection, xwconn.getTheDb(), command);
@@ -182,11 +181,11 @@ public class xDamsRestController {
 		return outputBuilder.toString();
 	}
 
-	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage,String query) throws SQLException, XWException {
-		if(query==null){
-			 query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
+	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage, String query) throws SQLException, XWException {
+		if (query == null) {
+			query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
 		}
-		
+
 		QueryResult qr = new QueryResult();
 		QueryResult qrTemp = null;
 		qrTemp = xwConnection.getQRfromPhrase(query);
