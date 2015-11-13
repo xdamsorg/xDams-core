@@ -11,6 +11,7 @@
 <%@page import="org.xdams.workflow.bean.WorkFlowBean"%>
 <%@page import="org.xdams.user.bean.UserBean"%>
 <%@page import="org.xdams.conf.master.ConfBean"%>
+<%@page import="org.xdams.utility.ExpressionEvaluationUtils"%>
 <%@taglib uri="/WEB-INF/xDamsJSTL.tld" prefix="xDamsJSTL"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -108,7 +109,7 @@ try{
 			<div class="left_top2">elementi trovati <span class="bold"> <%=qRParser.getQrElements()%></span></div>
 			<%if(qRParser.getQrElements()>0){%>
 			<div class="paginazione"><!-- inizio paginazione -->
-				<span class="num_margin_sx"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye" title="<spring:message code="prima_pagina" text="prima pagina"/>"><img src="${frontUrl}/img/spacer.gif" class="prima" border="0" alt="<spring:message code="prima_pagina" text="prima pagina"/>" vspace="1" /></a></span>
+				<span class="num_margin_sx"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;primo=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="prima_pagina" text="prima pagina"/>"><img src="${frontUrl}/img/spacer.gif" class="prima" border="0" alt="<spring:message code="prima_pagina" text="prima pagina"/>" vspace="1" /></a></span>
 				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before10=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="precedenti" text="precedenti"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>"><img src="${frontUrl}/img/spacer.gif" class="prevPerPage" border="0" alt="<spring:message code="precedenti" text="precedenti"/> <%=perpage%> <spring:message code="risultati" text="risultati"/>" vspace="1" /></a></span>
 				<span class="num_margin"><a href="${contextPath}/search/<%=workFlowBean.getAlias() %>/title.html?perpage=<%=perpage%>&amp;pageToShow=<%=pageToShow%>&amp;before=0&amp;qrId=<%=qRParser.getIdQR()%>&amp;fromId=ye&amp;viewInputPreview=<%=MyRequest.getParameter("viewInputPreview",request)%>&amp;pageName=<%=request.getAttribute("pageName")%>" title="<spring:message code="pagina_precedente" text="pagina precedente"/>"><img src="${frontUrl}/img/spacer.gif" class="prev" border="0" alt="<spring:message code="pagina_precedente" text="pagina precedente"/>" vspace="1" /></a></span>
 				<%
@@ -250,7 +251,7 @@ if(skipNext){continue;}
 						imageViewer = true;
 					
 			%>
-			<li><img src="<%=theXMLconfMedia.valoreNodo("/root/media[@type='viewPreview']/@prefix")%><%=strImage%>" data-numDoc="<%=physDoc %>" border="0" ></li>
+			<li><img src="<%=ExpressionEvaluationUtils.evaluate(theXMLconfMedia.valoreNodo("/root/media[@type='viewPreview']/@prefix"), String.class, pageContext)%><%=strImage%>" data-numDoc="<%=physDoc %>" border="0" ></li>
  			<%
 					}
 				}
