@@ -26,10 +26,10 @@
    <element label="inserimento in xDams">ud(xpart:/xw/UserId/@DateIns/)</element>
   </sort>
  </query>
- <!--
+ 
  <queryAdm>
-  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Catalogatore" firstIdx="a" typology="one">XML,/mods/processinfo/list/item/persname</element>
-  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Data inserimento" firstIdx="0" typology="one">XML,/mods/processinfo/list/item/date</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Catalogatore" firstIdx="a" typology="one">XML,/mods/recordInfo/item/recordContentSource</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Data inserimento" firstIdx="0" typology="one">XML,/mods/recordInfo/item/recordChangeDate</element>
  </queryAdm>
- -->
+ 
 </root>
