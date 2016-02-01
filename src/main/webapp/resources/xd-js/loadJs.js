@@ -5,7 +5,7 @@ function loadScripts(scriptsMap) {
 		if (!globalScript[aScript]) {
 			jQuery.ajax({
 				async : false,
-				cache : true,
+				cache : false,
 				url : (scriptsMap.prefix ? scriptsMap.prefix : "") + scriptsMap.base + '/' + aScript + '.js?' + new Date().getMonth() + new Date().getDay(),
 				dataType : 'script',
 				error : function(error) {
