@@ -114,7 +114,9 @@ if(managingBean!=null){
 								iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/pdf.gif\" alt=\""+workFlowBean.getLocalizedString("allegato","allegato")+"\" class=\"treeIcon\" hspace=\"3\" />";
 							} else {
 								if(CommonUtils.checkExt(icoArray[ks].toLowerCase())){
+									if(!iconType.contains("generic.gif")){
 									iconType += "<img src=\""+request.getAttribute("frontUrl")+"/img/icons/generic.gif\" alt=\"allegato\" class=\"treeIcon\" hspace=\"3\" />";
+									}
 								}
 							}
 						}} 
