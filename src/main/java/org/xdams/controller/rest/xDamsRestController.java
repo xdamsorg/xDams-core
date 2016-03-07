@@ -103,6 +103,7 @@ public class xDamsRestController {
 		String physDoc = request.getParameter("physDoc");
 		String xwQuery = request.getParameter("xwQuery");
 		String valueQuery = request.getParameter("valueQuery");
+		String query = request.getParameter("query");
 
 		int perpage = 10;
 		int pageToShow = 1;
@@ -130,13 +131,17 @@ public class xDamsRestController {
 				result.add("1");
 				result.add(pageToShow + "");
 				result.add(pageToShow + "");
-			} else if (xwQuery != null && xwQuery.trim() != null) {
-				String queryFind = "";
-				if (valueQuery != null && valueQuery.trim() != null) {
-					queryFind = "[" + xwQuery + "]=" + valueQuery;
-				} else {
-					queryFind = "[" + xwQuery + "]=*";
-				}
+//			} else if (xwQuery != null && xwQuery.trim() != null) {
+//				String queryFind = "";
+//				if (valueQuery != null && valueQuery.trim() != null) {
+//					queryFind = "[" + xwQuery + "]=" + valueQuery;
+//				} else {
+//					queryFind = "[" + xwQuery + "]=*";
+//				}
+//				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+//				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
+			} else if (xwQuery != null && !xwQuery.trim().equals("")) {
+				String queryFind = xwQuery;
 				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
 				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 			} else if (physDoc != null) {
