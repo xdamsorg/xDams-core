@@ -12,6 +12,8 @@ public class UploadBean {
 
 	private String idRecord;
 
+	private int physDoc;
+
 	private String destField;
 
 	private String uploadName;
@@ -31,7 +33,7 @@ public class UploadBean {
 	private String associatePathDir;
 
 	private boolean overWrite = false;
-	
+
 	private boolean fileExist = false;
 
 	private List<UploadCommandLine> commandLine = new ArrayList<UploadCommandLine>();
@@ -214,6 +216,14 @@ public class UploadBean {
 
 	public void setFileExist(boolean fileExist) {
 		this.fileExist = fileExist;
+	}
+
+	public int getPhysDoc() {
+		return physDoc;
+	}
+
+	public void setPhysDoc(int physDoc) {
+		this.physDoc = physDoc;
 	}
 
 }
