@@ -66,7 +66,7 @@ function submitFormExport(id) {
 		document.vocabolarioForm['isExport'].value = 'true';
 		document.vocabolarioForm['vocabolario_maxresult'].value = 99999;
 		document.vocabolarioForm.submit();
-		self.close();
+		//self.close();
 	} else {
  
 	} 
