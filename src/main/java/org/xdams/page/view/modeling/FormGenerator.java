@@ -1823,11 +1823,7 @@ public class FormGenerator {
 		javascriptAction += aggiungiAzione + "\",\"Attenzione:\\nnon e stato possibile reperire le informazioni relative all\\\'utente: aprire nuovamente la maschera di modifica\")</script>";
 		out.println(generateInput("hidden", aggiungiAzione, "", "", "", theHTMLextra));
 		out.println(javascriptAction);
-		/*
-		 * out.println( "<script>setResponsabile('modifica','.c.processinfo.list.item[" + (theXML.contaNodi(prefix) + 1) + "].text()','.c.processinfo.list.item[" + (theXML.contaNodi(prefix) + 1) + "].date.text()','.c.processinfo.list.item[" + (theXML.contaNodi(prefix) + 1) +
-		 * "].persname.text()','Attenzione:\\nnon e stato possibile reperire le informazioni relative all\\\'utente: aprire nuovamente la maschera di modifica')</script>" );
-		 */
-		out.println("</td></tr>");
+ 		out.println("</td></tr>");
 	}
 
 	private void generateCustomDataMulti(JspWriter out, String nodoCorrente, boolean noHTML, String xpathCorrente, String theType, int indexVal) throws Exception {
