@@ -89,6 +89,15 @@ Release Note (by regesta.exe - simvox)
 ************************************************************************************************
 1) FIX - Chrome 48 javascript problem http://stackoverflow.com/questions/35139980/google-chrome-version-48-javascript-issue
 2) NEW ENTRY - API REST switch param query To xQuery, valueQuery deprecaded
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.0.6         
+*****   date:     10.06.2016   
+************************************************************************************************
+1) FIX - multilang properties
+2) API REST OPTIMIZATION
+
 
 
 

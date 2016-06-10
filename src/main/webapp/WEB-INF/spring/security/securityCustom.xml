@@ -9,6 +9,7 @@
   <intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
   <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
   <intercept-url pattern="/attach/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+  <intercept-url pattern="/rest/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
   <intercept-url pattern="/autologin/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
   <intercept-url pattern="/export/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER"/>
   <intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER"/>

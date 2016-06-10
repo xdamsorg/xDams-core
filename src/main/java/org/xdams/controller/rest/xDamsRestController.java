@@ -222,7 +222,7 @@ public class xDamsRestController {
 			}
 		}
 		xwConnection.addToQueryResult(xwConnection.connection, xwConnection.getTheDb(), qr, numDocs);
-		System.out.println("found: " + found + "; start: " + start + "; totPages: " + totPages);
+	//	System.out.println("found: " + found + "; start: " + start + "; totPages: " + totPages);
 		List<String> result = new ArrayList<String>();
 		result.add(qr.id);
 		result.add(found + "");
