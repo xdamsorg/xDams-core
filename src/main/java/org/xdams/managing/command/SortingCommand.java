@@ -41,6 +41,7 @@ public class SortingCommand {
 		confControl.add("titleManager");
 		confControl.add("docEdit");
 		try {
+			System.out.println("SortingCommand.execute() "+sortingCriteria);
 			UserBean userBean = (UserBean) modelMap.get("userBean");
 			confBean = (ConfBean) modelMap.get("confBean");
 			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
