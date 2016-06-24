@@ -53,7 +53,7 @@
   <elemento value="IT">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/@countrycode</elemento>
  </fixedValues>
  <param>
-  <elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='ISAD 3-1-2 title'].text()</elemento>
+  <elemento id="campi_obbligatori">.c.did.unittitle[@encodinganalog='ISAD 3-1-2 title'].text();.c.@level</elemento>
   <elemento id="codice_identificativo">/c/did/unitid[@encodinganalog='ISAD 3-1-1 reference code']/text()</elemento>
   <elemento id="riordina">
    <opzione value="/c/did/unitid">codice identificativo logico</opzione>
