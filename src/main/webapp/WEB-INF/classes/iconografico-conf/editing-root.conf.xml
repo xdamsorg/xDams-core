@@ -144,7 +144,7 @@
 		<elemento value="">/c/did/unitid/@repositorycode</elemento>
 	</fixedValues>
 	<param>
-		<!--elemento id="campi_obbligatori">.c.did.materialspec[@encodinganalog='OGTD'].emph.text()</elemento -->
+		<elemento id="campi_obbligatori">.c.did.materialspec[@encodinganalog='OGTD'].title[@encodinganalog='OGTN'].text();.c.@level</elemento>
 		<elemento id="codice_identificativo">/c/did/unitid/text()</elemento>
 		<!-- separati da ; -->
 		<elemento id="escludi_appunti">.c.processinfo</elemento>
