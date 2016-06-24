@@ -235,7 +235,7 @@
 	</hierValues>
 	<param>
 		<elemento id="codice_identificativo">/c/did/unitid/text()</elemento>
-		<elemento id="campi_obbligatori">.c.did.unittitle.title[@type='proper'].text()|.c.did.unittitle.text()</elemento>
+		<elemento id="campi_obbligatori">.c.did.unittitle.title[@type='proper'].text()|.c.did.unittitle.text();.c.@level</elemento>
 		<elemento id="escludi_appunti">.c.processinfo</elemento>
 		<elemento id="riordina">
 			<opzione value="/c/@id">/c/@id (codice identificativo)</opzione>
