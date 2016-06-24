@@ -109,7 +109,7 @@
  </fixedValues>
  <param>
   <!--elemento id="codice_identificativo">/mods/f14/text()</elemento -->
-  <elemento id="campi_obbligatori">.mods.titleInfo[@type='uniform'].title.text()</elemento>
+  <elemento id="campi_obbligatori">.mods.titleInfo[@type='uniform'].title.text();.mods.extension.level.text()</elemento>
   <!-- separati da ; -->
   <elemento id="escludi_appunti">.mods.recordInfo</elemento>
   <!-- separati da ; -->
