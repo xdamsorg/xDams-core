@@ -6,10 +6,8 @@
  */
 package org.xdams.save;
 
-import java.util.Enumeration;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
@@ -71,8 +69,12 @@ public class SaveDocumentCommand {
 			XMLBuilder builder = new XMLBuilder(thePne);
 			for (int i = 0; i < nomiRequest.length; i++) {
 				boolean isCDATA = false;
+
 				String ilNome = nomiRequest[i].replace('.', '/');
 				String ilValore = (request.getParameter(nomiRequest[i])).trim();
+
+				//System.out.println("record.put(\"" + ilNome + "\",\"" + ilValore + "\");");
+
 				if (ilNome.endsWith("/@cdata")) {
 					ilNome = StringUtils.chomp(ilNome, "/@cdata");
 					isCDATA = true;
@@ -81,10 +83,10 @@ public class SaveDocumentCommand {
 					ilNome = StringUtils.chomp(ilNome, "/@crypted");
 					if (!ilValore.equals("")) {
 						try {
-							if(!CommonUtils.isValidMD5(ilValore)){
+							if (!CommonUtils.isValidMD5(ilValore)) {
 								ilValore = new Md5PasswordEncoder().encodePassword(ilValore, null);
 							}
-							
+
 						} catch (Exception e) {
 
 						}
