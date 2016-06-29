@@ -1,9 +1,5 @@
 package org.xdams.security;
 
-import it.highwaytech.db.QueryResult;
-
-import java.util.Date;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +8,6 @@ import org.xdams.security.load.LoadUser;
 import org.xdams.security.load.LoadUserSpeedUp;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.resource.ConfManager;
-import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
