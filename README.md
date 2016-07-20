@@ -46,7 +46,7 @@ Ciò significa che per accedere al Workspace di xDams è necessario:
 ## Installazione
 
 Per la versione Windows, procedere al download dell'ultima versione di **xDams Open Source** scaricabile dal sito [http://www.xdams.org/download/] (http://www.xdams.org/download/)
-Scaricare poi l'ultima versione della piattaforma Extraway Open Platform dalla pagina di [source forge] (http://sourceforge.net/projects/extraway/files/eXtraWay%20OpenPlatform/1.0/), selezionando la versione corretta per il proprio sistema operativo.
+Scaricare poi l'ultima versione della piattaforma Extraway Open Platform alla pagina (http://www.xdams.org/download/extraway/), selezionando la versione corretta per il proprio sistema operativo.
 Verificare i requisiti client.
 
 Seguire le indicazioni riportate nel paragrafo Installazione su Server Windows del [documento di installazione] (https://github.com/downloads/xdamsorg/xDams-core/xDamsOSS_1.0.0_installation_guidelines.pdf)
