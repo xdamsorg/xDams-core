@@ -35,6 +35,7 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 import org.xdams.xw.exception.XWException;
+import org.xdams.xw.utility.Key;
 
 @Controller
 @SessionAttributes({ "userBean" })
@@ -104,7 +105,8 @@ public class xDamsRestController {
 		String xwQuery = request.getParameter("xwQuery");
 		String valueQuery = request.getParameter("valueQuery");
 		String query = request.getParameter("query");
-
+		String mode = request.getParameter("mode");
+		
 		int perpage = 10;
 		int pageToShow = 1;
 		try {
@@ -123,43 +125,58 @@ public class xDamsRestController {
 			String command = "";
 			QueryResult qr = null;
 			List<String> result = null;
-			if (id != null && id.trim() != null) {
-				qr = xwconn.getQRfromPhrase("[XML,/c/@id]=" + id);
-				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
-				result = new ArrayList<String>();
-				result.add(qr.id);
-				result.add("1");
-				result.add(pageToShow + "");
-				result.add(pageToShow + "");
-//			} else if (xwQuery != null && xwQuery.trim() != null) {
-//				String queryFind = "";
-//				if (valueQuery != null && valueQuery.trim() != null) {
-//					queryFind = "[" + xwQuery + "]=" + valueQuery;
-//				} else {
-//					queryFind = "[" + xwQuery + "]=*";
-//				}
-//				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
-//				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
-			} else if (xwQuery != null && !xwQuery.trim().equals("")) {
-				String queryFind = xwQuery;
-				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
-				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
-			} else if (physDoc != null) {
-				qr = xwconn.getQRFromHier(Integer.parseInt(physDoc), true);
-				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
-			} else {
-				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, null);
-				command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
-			}
-			String trasform = xwconn.XMLCommand(xwconn.connection, xwconn.getTheDb(), command);
-			trasform = XMLCleaner.clearXwFullXML(trasform, true);
-
-			if (result != null) {
-				trasform = trasform.replaceAll("(?i)<\\?xml version=\"1.0\" encoding=\"ISO-8859-1\"\\?>", "");
+			if (mode != null && mode.equals("vocabulary")) {
+				String searchAlias = request.getParameter("searchAlias");
+				String orientation = request.getParameter("orientation");
+				String startParam = request.getParameter("startParam");
+				int totResult = Integer.parseInt(request.getParameter("totResult"));
+				Vector<Key> keys = xwconn.getSingleKeys(searchAlias, totResult, orientation, startParam);
 				outputBuilder.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-				outputBuilder.append("<response found=\"" + result.get(1) + "\" page=\"" + result.get(2) + "\" totPages=\"" + result.get(3) + "\">\n");
-				outputBuilder.append(trasform);
+				outputBuilder.append("<response>\n");
+				for (int i = 0; i < keys.size(); i++) {
+					Key key = (Key) keys.elementAt(i);
+					outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString() + "</key>\n");
+				}
 				outputBuilder.append("</response>");
+			} else {
+				if (id != null && id.trim() != null) {
+					qr = xwconn.getQRfromPhrase("[XML,/c/@id]=" + id);
+					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
+					result = new ArrayList<String>();
+					result.add(qr.id);
+					result.add("1");
+					result.add(pageToShow + "");
+					result.add(pageToShow + "");
+					// } else if (xwQuery != null && xwQuery.trim() != null) {
+					// String queryFind = "";
+					// if (valueQuery != null && valueQuery.trim() != null) {
+					// queryFind = "[" + xwQuery + "]=" + valueQuery;
+					// } else {
+					// queryFind = "[" + xwQuery + "]=*";
+					// }
+					// result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+					// command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
+				} else if (xwQuery != null && !xwQuery.trim().equals("")) {
+					String queryFind = xwQuery;
+					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
+				} else if (physDoc != null) {
+					qr = xwconn.getQRFromHier(Integer.parseInt(physDoc), true);
+					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
+				} else {
+					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, null);
+					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
+				}
+				String trasform = xwconn.XMLCommand(xwconn.connection, xwconn.getTheDb(), command);
+				trasform = XMLCleaner.clearXwFullXML(trasform, true);
+
+				if (result != null) {
+					trasform = trasform.replaceAll("(?i)<\\?xml version=\"1.0\" encoding=\"ISO-8859-1\"\\?>", "");
+					outputBuilder.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+					outputBuilder.append("<response found=\"" + result.get(1) + "\" page=\"" + result.get(2) + "\" totPages=\"" + result.get(3) + "\">\n");
+					outputBuilder.append(trasform);
+					outputBuilder.append("</response>");
+				}
 			}
 
 		} catch (Exception e) {
@@ -222,7 +239,7 @@ public class xDamsRestController {
 			}
 		}
 		xwConnection.addToQueryResult(xwConnection.connection, xwConnection.getTheDb(), qr, numDocs);
-	//	System.out.println("found: " + found + "; start: " + start + "; totPages: " + totPages);
+		// System.out.println("found: " + found + "; start: " + start + "; totPages: " + totPages);
 		List<String> result = new ArrayList<String>();
 		result.add(qr.id);
 		result.add(found + "");

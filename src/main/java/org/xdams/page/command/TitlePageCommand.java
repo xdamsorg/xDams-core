@@ -78,6 +78,7 @@ public class TitlePageCommand {
 				try {
 					findDocumentCommand = new FindDocumentCommand(parameterMap, modelMap);
 					queryResult = findDocumentCommand.execute(workFlowBean, xwconn);
+					
 					// mi setto il selid per le operazioni di raffinamento
 					workFlowBean.getRequest().setAttribute("qrId", queryResult.id);
 					QueryBean queryBean = new QueryBean();
