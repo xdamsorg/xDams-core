@@ -135,7 +135,7 @@ public class xDamsRestController {
 				outputBuilder.append("<response>\n");
 				for (int i = 0; i < keys.size(); i++) {
 					Key key = (Key) keys.elementAt(i);
-					outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString() + "</key>\n");
+					outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString().trim() + "</key>\n");
 				}
 				outputBuilder.append("</response>");
 			} else {

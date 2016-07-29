@@ -17,11 +17,6 @@ import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
 
-/**
- * @author diego
- * 
- *         TODO To change the template for this generated type comment go to Window - Preferences - Java - Code Style - Code Templates
- */
 public class SaveDocumentCommand {
 
 	// private HttpServletRequest request = null;
