@@ -115,8 +115,19 @@
 												}
 											}
 											if(!valoreNodo.equals("")){
-												if(!(theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"")).equals("") && !fieldArchRef.equals("")){
-													%><a href="#nogo" onclick="return infoAuther('<%=theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"")%>','<%=fieldArchRef%>','<%=fieldQuery%>')" class="cerca_b"><spring:message code="info" text="info"/></a>&#160;&#160;&#160;<%
+												String ilCodice = "";
+												if(!fieldCode.contains("@")){
+													ilCodice = theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/@"+fieldCode,"");
+												}else{
+													if(!fieldCode.startsWith("/")){
+														fieldCode ="/"+fieldCode;
+													}
+													ilCodice = theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]"+fieldCode,"");
+												} 
+												 
+												//out.println("ilCodice: "+ilCodice);
+												if(!(ilCodice).equals("") && !fieldArchRef.equals("")){
+													%><a href="#nogo" onclick="return infoAuther('<%=ilCodice%>','<%=fieldArchRef%>','<%=fieldQuery%>')" class="cerca_b"><spring:message code="info" text="info"/></a>&#160;&#160;&#160;<%
 												}
 												if(!fieldAlternative.equals("")){
 													if(!theXML.valoreNodoHTML(fieldPrefix+"["+(a+1)+"]/"+fieldAlternative,"").equals("")){
