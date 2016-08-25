@@ -140,7 +140,7 @@ loadJsBusiness('multiMod','${frontUrl}');
  	<div class="cont_ul2">	
 		<ul class="bottoniMenu" >
 			<li><a title="<spring:message code="ESEGUI" text="ESEGUI"/>"  class="bottoneLink" onmouseover="window.status='<spring:message code="ESEGUI" text="ESEGUI"/>';return true" onmouseout="window.status=''" onclick="return proiettaModifica(false);"  href="#"><spring:message code="ESEGUI" text="ESEGUI"/></a></li>
- 			<li><a title="<spring:message code="CHIUDI" text="CHIUDI"/>" class="bottoneLink" onmouseover="window.status='<spring:message code="CHIUDI" text="CHIUDI"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="CHIUDI" text="CHIUDI"/></a></li>
+ 			<li><a title="<spring:message code="chiudi" text="CHIUDI"/>" class="bottoneLink" onmouseover="window.status='<spring:message code="chiudi" text="CHIUDI"/>';return true" onmouseout="window.status=''" onclick="chiudiThisWin()" href="#"><spring:message code="chiudi" text="CHIUDI"/></a></li>
 		</ul>
 	</div>
 	</div>
