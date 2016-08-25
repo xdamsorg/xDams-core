@@ -72,7 +72,7 @@ public class MultiEditingManager {
 				if (getTheXML() == null) {
 					throw new Exception("MultiEditingManager : xPath method");
 				}
-				pathTest = getTheXML().valoreNodo(ilMethodValue);
+				pathTest = getTheXML().valoreNodoNoHL(ilMethodValue);
 			} else if (ilMethod.equals("userBean")) {
 				Class c = userBean.getClass();
 				Method m = c.getMethod(ilMethodValue, null);
