@@ -111,5 +111,18 @@ Release Note (by regesta.exe - simvox)
 *****   date:     22.07.2016   
 ************************************************************************************************
 1) NEW ENTRY - API REST vocabulary mode
-1) NEW ENTRY - added release version in web.xml
+2) NEW ENTRY - added release version in web.xml
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.0.9    
+*****   date:     26.08.2016
+************************************************************************************************
+1) NEW ENTRY - xDamsLido configuration
+2) NEW ENTRY - extraway database (windows)
+3) FIX - INFO in shortTab
+4) FIX - MultiEditingManager valoreNodo to valoreNodoNoHL
+5) FIX - multilang exportMenu.jsp
+
+
 
