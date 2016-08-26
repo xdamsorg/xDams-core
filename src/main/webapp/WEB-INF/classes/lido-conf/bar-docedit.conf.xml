@@ -50,6 +50,7 @@
      <paramAnchor javaBean="editingBean" name="selid">getSelid</paramAnchor>
     </anchor>
    </element>
+   <!-- 
    <element value="FILL ALL FIELD" testClass="org.xdams.utility.testing.TestingEditingBean" testMethod="editingControl" userValue="1;2">
     <anchor value="#nogo"></anchor>
     <eventJavaScript value="onclick">
@@ -57,6 +58,7 @@
      </functionName>
     </eventJavaScript>
    </element>
+   -->
    <element value="&#160;">
     <anchor value="#nogo" target="_self"></anchor>
    </element>
