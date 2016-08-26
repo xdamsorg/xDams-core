@@ -8,8 +8,8 @@
   <query active="yes" label="visualizza scollegati" ajaxCheck="notinhier">notinhier:1</query>
  </access_method>
  <query>
+  <element activeIdx="no" position="center" label="Ricerca libera">@</element>
   <element label="Definizione dell'oggetto" position="sx" typology="select" value="document:/fotografico-conf/valoriControllati.xml" externalPath="/root/elemento[@name='OGTD']/opzione">XML,/c/did/materialspec</element>
-  <element activeIdx="no" position="center" label="Ricerca libera">XML,/*</element>
   <element activeIdx="yes" ajaxKey="yes" position="sx" label="Denominazione/Titolo attribuito" firstIdx=" a" typology="multi">XML,/c/did/unittitle</element>
   <element activeIdx="yes" ajaxKey="yes" position="sx" label="Titolo Proprio" firstIdx="a" typology="multi">XML,/c/did/unittitle/title/text()</element>
   <element activeIdx="yes" ajaxKey="yes" label="Fotografo (persona)" position="sx" firstIdx="a" typology="multi">XML,/c/did/origination/persname</element>
