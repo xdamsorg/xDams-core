@@ -18,7 +18,7 @@
      <functionName value="apriWinProtoGest">
       <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
       <paramFunction>'editXml'</paramFunction>
-      <paramFunction>'Modifica XML'</paramFunction>
+      <paramFunction>'Edit XML'</paramFunction>
       <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
       <paramFunction javaBean="viewBean">getSelid</paramFunction>
      </functionName>

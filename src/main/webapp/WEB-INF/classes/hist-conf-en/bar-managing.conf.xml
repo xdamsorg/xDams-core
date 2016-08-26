@@ -74,7 +74,7 @@
      <functionName value="parent.apriWinProtoGest">
       <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
       <paramFunction>'xml2pdf'</paramFunction>
-      <paramFunction>'Stampa PDF'</paramFunction>
+      <paramFunction>'Print PDF'</paramFunction>
       <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
       <paramFunction javaBean="viewBean">getSelid</paramFunction>
       <paramFunction>''</paramFunction>
