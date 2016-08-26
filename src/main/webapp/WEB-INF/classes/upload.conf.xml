@@ -25,5 +25,8 @@
   <upload value="xDamsBiblio">
    <file name="/biblio-conf/upload.conf.xml"/>
   </upload>
+  <upload value="xDamsLido">
+   <file name="/lido-conf/upload.conf.xml"/>
+  </upload>  
  </multiEditing>
 </root>

@@ -25,5 +25,8 @@
   <query value="xDamsBiblio">
    <file name="/biblio-conf/query.conf.xml"/>
   </query>
+  <query value="xDamsLido">
+   <file name="/lido-conf/query.conf.xml"/>
+  </query>
  </multiEditing>
 </root>

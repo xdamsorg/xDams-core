@@ -25,5 +25,8 @@
   <docEdit value="xDamsBiblio">
    <file name="/biblio-conf/editing.conf.xml"/>
   </docEdit>
+  <docEdit value="xDamsLido">
+   <file name="/lido-conf/editing.conf.xml"/>
+  </docEdit>  
  </multiEditing>
 </root>

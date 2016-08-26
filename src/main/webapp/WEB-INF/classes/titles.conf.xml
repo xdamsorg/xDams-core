@@ -25,5 +25,8 @@
   <titleManager value="xDamsBiblio">
    <file name="/biblio-conf/titles.conf.xml"/>
   </titleManager>
+  <titleManager value="xDamsLido">
+   <file name="/lido-conf/titles.conf.xml"/>
+  </titleManager>  
  </multiEditing>
 </root>

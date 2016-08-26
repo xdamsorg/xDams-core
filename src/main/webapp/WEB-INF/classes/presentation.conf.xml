@@ -25,5 +25,8 @@
   <presentation value="xDamsBiblio">
    <file name="/biblio-conf/presentation.conf.xml"/>
   </presentation>
+  <presentation value="xDamsLido">
+   <file name="/lido-conf/presentation.conf.xml"/>
+  </presentation>  
  </multiEditing>
 </root>

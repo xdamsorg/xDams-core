@@ -25,5 +25,8 @@
   <valoriControllati value="xDamsBiblio">
    <file name="/biblio-conf/valoriControllati.xml"/>
   </valoriControllati>
+  <valoriControllati value="xDamsLido">
+   <file name="/lido-conf/valoriControllati.xml"/>
+  </valoriControllati>
  </multiEditing>
 </root>

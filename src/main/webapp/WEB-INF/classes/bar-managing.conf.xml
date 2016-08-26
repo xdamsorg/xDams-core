@@ -25,5 +25,8 @@
   <managing value="xDamsBiblio">
    <file name="/biblio-conf/bar-managing.conf.xml"/>
   </managing>
+  <managing value="xDamsLido">
+   <file name="/lido-conf/bar-managing.conf.xml"/>
+  </managing>
  </multiEditing>
 </root>
