@@ -10,6 +10,7 @@
    <archive alias="xDamsPhoto" host="127.0.0.1" ico="fotografico.gif" pne="c" port="-1" type="xDamsPhoto">Archivio Fotografico</archive>
    <archive alias="xDamsOA" host="127.0.0.1" ico="disegni.gif" pne="c" port="-1" type="xDamsOA">Iconografia</archive>
    <archive alias="xDamsBiblio" host="127.0.0.1" ico="biblioteca.gif" pne="mods" port="-1" type="xDamsBiblio">Biblioteca</archive>
+   <archive alias="xDamsLido" host="127.0.0.1" ico="disegni.gif" pne="lido" port="-1" type="xDamsLido">Archivio Oggetti Museali</archive>
   </archiveGroup>
   <archiveGroup name="Authority">
    <archive alias="xDamsEACCPF" host="127.0.0.1" ico="authority.gif" pne="eac-cpf" port="-1" type="xDamsEACCPF">Authority Enti/Famiglie/Persone EAC-CPF</archive>
