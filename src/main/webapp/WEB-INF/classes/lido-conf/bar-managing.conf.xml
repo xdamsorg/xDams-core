@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="SELECT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="all">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxMultipleSelectionMode">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+     </functionName>
+     <functionName value="reloadLocation"></functionName>
+    </eventJavaScript>
+   </element>
+   <element value="MOVE" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'multiMove'</paramFunction>
+      <paramFunction>'Move items'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="REORDER" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaInferiore" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'sorting'</paramFunction>
+      <paramFunction>'Reorder items'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="DELETE" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="parent.apriWinProtoGest">
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>'erase'</paramFunction><!-- actionFlag servizio della servlet -->
+      <paramFunction>'Multiple delete'</paramFunction><!-- commento alla finestra -->
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction><!-- documento -->
+      <paramFunction javaBean="viewBean">getSelid</paramFunction><!-- documento -->
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="CUT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxSetSessionDocsToCut">
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction>'@@physDocToPaste@@'</paramFunction>
+      <paramFunction>'cut'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="COPY" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;2">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="ajaxSetSessionDocsToCut">
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction>'@@physDocToPaste@@'</paramFunction>
+      <paramFunction>'paste'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  </user>
+ </managing>
+</root>

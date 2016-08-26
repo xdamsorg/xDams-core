@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/lido/administrativeMetadata/recordWrap/recordType/term/text()">
+  <presentation value="">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="fonds">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="collection">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="event">
+   <file name="/lido-conf/presentation-event.conf.xml"/>
+  </presentation>
+  <presentation value="subfonds">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="series">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="subseries">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="file">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+  <presentation value="item">
+   <file name="/lido-conf/presentation-object.conf.xml"/>
+  </presentation>
+ </multiEditing>
+</root>

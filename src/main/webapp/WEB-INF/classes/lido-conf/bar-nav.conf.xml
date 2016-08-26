@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<managing>
+		<user>
+			<element value="PREVIOUS SIBLING" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaPredecente" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getDocUpperBrother</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="NEXT SIBLING" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaSuccessivo" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getDocLowerBrother</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="PARENT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaSuperiore" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getDocFather</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="CHILD" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaInferiore" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getDocSon</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="PREVIOUS" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaIndietro" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getPhysDocPrev</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="pos">getPosPrev</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+			<element value="NEXT" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="visualizzaAvanti" userValue="all">
+				<anchor value="${contextPath}/viewTab/${workFlowBean.archive.alias}/${viewBean.pageName}.html" target="_self">
+					<paramAnchor javaBean="viewBean" name="physDoc">getPhysDocNext</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="pos">getPosNext</paramAnchor>
+					<paramAnchor javaBean="viewBean" name="selid">getSelid</paramAnchor>
+				</anchor>
+			</element>
+		</user>
+	</managing>
+</root>

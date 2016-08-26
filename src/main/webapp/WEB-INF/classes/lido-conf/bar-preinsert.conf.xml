@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <managing>
+  <user>
+   <element value="SAVE AND CLOSE" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Save item and close'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="toIso">
+      <paramFunction>document.theForm</paramFunction>
+     </functionName>
+     <functionName value="return submitForm">
+      <paramFunction>document.theForm</paramFunction>
+      <paramFunction>document.theForm.campiObbligatori.value</paramFunction>
+      <paramFunction>'Save item and close?'</paramFunction>
+      <paramFunction>'_self'</paramFunction>
+      <paramFunction>'insertAndClose'</paramFunction><!-- go -->
+      <paramFunction>''</paramFunction><!-- goServlet -->
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="SAVE AND CONTINUE" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Save item and modify item'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="toIso">
+      <paramFunction>document.theForm</paramFunction>
+     </functionName>
+     <functionName value="return submitForm">
+      <paramFunction>document.theForm</paramFunction>
+      <paramFunction>document.theForm.campiObbligatori.value</paramFunction>
+      <paramFunction>'Save item and modify item?'</paramFunction>
+      <paramFunction>'_self'</paramFunction>
+      <paramFunction>'insertAndMod'</paramFunction>
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+   <element value="CLOSE" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1;5;2">
+    <anchor value="#nogo"></anchor>
+    <eventJavaScript value="onmouseover">
+     <functionName value="window.status=">
+      <paramFunction>'Close?'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onmouseout">
+     <functionName value="window.status=">
+      <paramFunction>''</paramFunction>
+     </functionName>
+    </eventJavaScript>
+    <eventJavaScript value="onclick">
+     <functionName value="return chiudiPagina">
+      <paramFunction>'Attention:\nclosing the current page changes made will be lost!'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  </user>
+ </managing>
+</root>

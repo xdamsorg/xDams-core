@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <preInsert excludeRel="none" suggestedRel="son">
+  <macroarea>
+   <sezione name="IDENTIFICATION" opened="yes">
+    <elemento name="RECORD CONTROL" opened="yes" type="group" prefix="/lido">
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='recordType']/opzione" name="record type">/lido/administrativeMetadata/recordWrap/recordType/term/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="OBJECT DESCRIPTION (if record type is not an event)" opened="yes">
+    <elemento input_type="select" class="ExtraLong" name="object work definition" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='objectWorkType']/opzione">/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term/text()</elemento>
+    <elemento name="title" type="group" prefix="/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet" inline="yes" opened="yes">
+     <elemento input_type="textarea" rows="2" cols="58" name="value">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="source appellation">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/sourceAppellation/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="EVENT DESCRIPTION (if record type is an event)" opened="yes">
+    <elemento name="type of event" input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='events']/opzione">/lido/descriptiveMetadata/eventWrap/eventSet/event/eventType/term/text()</elemento>
+    <elemento input_type="text" class="Middle" name="event name">/lido/descriptiveMetadata/eventWrap/eventSet/event/eventName/appellationValue/text()</elemento>
+   </sezione>
+  </macroarea>
+ </preInsert>
+ <docEdit>
+  <macroarea name="IDENTIFICATION" layer="IDENTIFICATION" label="IDENTIFICATION">
+   <sezione name="RECORD CONTROL" opened="yes">
+    <elemento input_type="liveText" class="ExtraLong" name="record ID" multiMod="true">/lido/lidoRecID[@type='local']/text()</elemento>
+    <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='recordType']/opzione" name="record type">/lido/administrativeMetadata/recordWrap/recordType/term/text()</elemento>
+    <elemento multiMod="true" input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='audience']/opzione" name="record rights/audience">/lido/administrativeMetadata/recordWrap/recordRights/rightsType/term/text()</elemento>
+    <elemento input_type="select" class="ExtraLong" name="object work definition" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='objectWorkType']/opzione">/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term/text()</elemento>
+   </sezione>
+   <sezione name="TITLE/SUBJECT" opened="yes">
+    <elemento input_type="select" name="type of title" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='titleType']/opzione">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/@type</elemento>
+    <elemento input_type="textarea" rows="2" cols="58" name="value">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue/text()</elemento>
+    <elemento multiMod="true" input_type="textarea" rows="2" cols="58" name="subject" opened="yes">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/displaySubject/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="source appellation">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/sourceAppellation/text()</elemento>
+   </sezione>
+   <sezione name="DATE(S)" opened="yes">
+    <elemento type="custom" showCentury="false" escapeSenzaData="true" id="data" format="gg.mm.aaaa" name="date(s) - dd mm yyyy" prefix="/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventDate/displayDate"/>
+    <elemento multiMod="true" input_type="text" class="Middle" name="period name">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/periodName/term/text()</elemento>
+   </sezione>
+   <sezione name="CREATOR(S)" opened="yes">
+    <elemento name="actor" type="multi_auther" prefix="/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor" inline="yes" opened="yes" input_type="text" class="Long" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/actor/nameActorSet/appellationValue/text()
+     <elemento input_type="text" class="Middle" name="source of name">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/actor/nameActorSet/sourceAppellation/text()</elemento>
+     <elemento input_type="select" class="Middle" name="role of actor" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='roleActorEN']/opzione">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/roleActor/term/text()</elemento>
+     <elemento input_type="select" name="attribution qualifier actor" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='attributionQualifierActor']/opzione">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/attributionQualifierActor/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='extentActor']/opzione" name="extent of participation">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/extentActor/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="PLACE(S)" opened="yes">
+    <elemento input_type="text" class="Long" name="place of creation" type="multi_auther" prefix="/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventPlace/place" arch_ref="xDamsHGeo" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">
+     /lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventPlace/place/namePlaceSet/appellationValue/text()
+     <elemento input_type="text" class="Middle" name="source of place name">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventPlace/place/namePlaceSet/sourceAppellation/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="REPOSITORY and LOCATION" opened="yes">
+    <elemento input_type="text" class="Long" name="legal body" type="auther" prefix="/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryName" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="legalBodyName/appellationValue/@authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryName/legalBodyName/appellationValue/text()</elemento>
+    <elemento input_type="text" class="Long" name="place" type="auther" prefix="/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation" arch_ref="xDamsHGeo" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="namePlaceSet/appellationValue/@authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;&#208;&quot; XML,/eac/eacheader/eacid" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac/condesc/identity/conhead/@normal]">/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/namePlaceSet/appellationValue/text()</elemento>
+    <elemento input_type="text" class="Middle" name="inventory number">/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/workID/text()</elemento>
+    <elemento input_type="text" class="Middle" name="physical location (type)">/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/partOfPlace/namePlaceSet/appellationValue/@label</elemento>
+    <elemento input_type="text" class="Middle" name="physical location (number)">/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/partOfPlace/namePlaceSet/appellationValue/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="DESCRIPTION" layer="DESCRIPTION" label="DESCRIPTION">
+   <sezione name="DESCRIPTION" opened="yes">
+    <elemento multiMod="true" rich="yes" cdata="true" input_type="textarea" rows="2" cols="58" name="free text description">/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/descriptiveNoteValue/text()</elemento>
+    <elemento multiMod="true" rich="yes" cdata="true" input_type="textarea" rows="2" cols="58" name="source description">/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/sourceDescriptiveNote/text()</elemento>
+   </sezione>
+   <sezione name="MATERIALS / TECHNIQUES " opened="yes">
+    <elemento name="display materials techniques used within the event" type="multi_group" prefix="/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='production']/eventMaterialsTech" inline="yes" opened="yes">
+     <elemento input_type="textarea" rows="2" cols="58" rich="yes" cdata="true" name="display materials techniques (free text)">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='production']/eventMaterialsTech/displayMaterialsTech/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="name materials / techniques">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='production']/eventMaterialsTech/materialsTech/termMaterialsTech/term/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="extent materials / techniques">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='production']/eventMaterialsTech/materialsTech/extentMaterialsTech/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="source materials / techniques">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='production']/eventMaterialsTech/materialsTech/sourceMaterialsTech/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="MEASUREMENTS" opened="yes">
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="free text measurements">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/displayObjectMeasurements/text()</elemento>
+    <elemento name="MEASUREMENT DATA" type="multi_group" prefix="/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements" inline="yes" opened="yes">
+     <elemento input_type="select" name="type" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='measurementType']/opzione">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/measurementsSet/measurementType/text()</elemento>
+     <elemento input_type="text" class="Middle" name="unit">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/measurementsSet/measurementUnit/text()</elemento>
+     <elemento input_type="text" class="Middle" name="value">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/measurementsSet/measurementValue/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='extentMeasurements']/opzione" name="extent">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/extentMeasurements/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='qualifierMeasurements']/opzione" name="qualifier">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/qualifierMeasurements/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='formatMeasurements']/opzione" name="format">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/formatMeasurements/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='shapeMeasurements']/opzione" name="shape">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/shapeMeasurements/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="scale">/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/objectMeasurements/scaleMeasurements/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="INSCRIPTIONS" opened="yes">
+    <elemento name="INSCRIPTION DATA" type="multi_group" prefix="/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions" inline="yes" opened="yes">
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='inscriptionTypeEN']/opzione">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/@type</elemento>
+     <elemento input_type="textarea" rows="2" cols="58" rich="yes" cdata="true" name="inscription transcription">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionTranscription/text()</elemento>
+     <elemento input_type="textarea" rows="2" cols="58" rich="yes" name="inscription description">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/descriptiveNoteValue/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="RELATIONS" layer="RELATIONS" label="RELATIONS">
+   <sezione name="RELATED SUBJECTS" opened="yes">
+    <elemento name="subject concepts" type="multi" prefix="/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectConcept" inline="yes" opened="yes" input_type="text" class="ExtraLong">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectConcept/term/text()</elemento>
+    <elemento name="subject actor" type="multi_auther" prefix="/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectActor/actor" inline="yes" opened="yes" input_type="text" class="Long" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac-cpf" extraQuery="" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">
+     /lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectActor/actor/nameActorSet/appellationValue/text()
+     <elemento input_type="text" class="Middle" name="source of name">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectActor/actor/nameActorSet/sourceAppellation/text()</elemento>
+    </elemento>
+    <elemento name="subject date(s)" opened="yes"/>
+    <elemento type="custom" showCentury="false" escapeSenzaData="true" id="data" format="gg.mm.aaaa" name="date(s) - dd mm yyyy" prefix="/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectDate/displayDate"/>
+   </sezione>
+   <sezione name="Subject PLACES" opened="yes">
+    <elemento input_type="text" class="Long" name="place" type="multi_auther" prefix="/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectPlace/place" arch_ref="xDamsHGeo" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac" extraQuery="" sort="XML(xpart:/eac/condesc/identity/conhead/@normal)" title_rule="XML,/eac/condesc/identity/conhead/@normal &quot;§&quot; XML,/eac/eacheader/eacid" title_format="descr:0-§code:§-" query="[XML,/eac/condesc/identity/conhead/@normal]">
+     /lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectPlace/place/namePlaceSet/appellationValue/text()
+     <elemento input_type="text" class="Middle" name="source of place name">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectPlace/place/namePlaceSet/sourceAppellation/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="Subject OBJECTS" opened="yes">
+    <elemento input_type="textarea" rows="2" cols="58" name="name of the object">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectObject/displayObject/text()</elemento>
+   </sezione>
+   <sezione name="RELATED WORKS" opened="yes">
+    <elemento input_type="textarea" rows="2" cols="58" name="name of the work (without lookup)">/lido/descriptiveMetadata/objectRelationWrap/relatedWorksWrap/relatedWorkSet/relatedWork/displayObject/text()</elemento>
+    <elemento name="name of the related work" input_type="text" class="Long" type="multi_auther" prefix="/lido/descriptiveMetadata/objectRelationWrap/relatedWorksWrap/relatedWorkSet" inline="yes" opened="yes" arch_ref="xDamsLido" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="relatedWork/@authfilenumber" ud_type="lido" extraQuery="" sort="XML(xpart:/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue)" title_rule="XML,/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue &quot;§&quot; XML,/lido/lidoRecID" title_format="descr:0-§code:§-" query="[XML,/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue]">
+     /lido/descriptiveMetadata/objectRelationWrap/relatedWorksWrap/relatedWorkSet/relatedWork/object/objectNote/text()
+     <elemento input_type="select" name="related work relationship type" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='relatedWorkRelType']/opzione">/lido/descriptiveMetadata/objectRelationWrap/relatedWorksWrap/relatedWorkSet/relatedWorkRelType/term/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="OBJECT REPRODUCTIONS" layer="OBJECT REPRODUCTIONS" label="OBJECT REPRODUCTIONS">
+   <sezione name="REPRODUCTIONS" opened="yes">
+    <elemento name="URL of reproduction" type="multi_group" prefix="/lido/administrativeMetadata/resourceWrap/resourceSet" inline="yes" opened="yes">
+     <elemento input_type="text" class="Middle" name="URL of reproduction" mode="uploadSimple" type="custom" externalPath="/lido/lidoRecID" id="upload" prefix="/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRepresentation/linkResource" originalFileNameXpath="resourceRepresentation/linkResource/@label">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRepresentation/linkResource/text()</elemento>
+     <elemento input_type="text" class="ExtraLong" name="source of the reproduction (agency, individual)">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRepresentation/resourceSource/text()</elemento>
+     <elemento input_type="text" class="Middle" name="value of measure">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRepresentation/resourceMeasurementsSet/measurementValue/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='resourceType']/opzione" name="type of reproduction">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceType/term/text()</elemento>
+     <elemento input_type="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='resourceRelType']/opzione" name="relation with the object">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRelType/term/text()</elemento>
+     <elemento input_type="text" class="Middle" name="perspective of reproduction">/lido/administrativeMetadata/resourceWrap/resourceSet/resourcePerspective/term/text()</elemento>
+     <elemento input_type="text" class="Middle" name="description of resource">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceDescription/text()</elemento>
+     <elemento input_type="text" class="Middle" name="date of reproduction">/lido/administrativeMetadata/resourceWrap/resourceSet/resourceDateTaken/displayDate/text()</elemento>
+    </elemento>
+   </sezione>
+   <sezione name="COPYRIGHT of the REPRODUCTION" opened="yes">
+    <elemento input_type="text" class="ExtraLong" name="type of copyright">/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsType/term/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="date of latest rights">/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsDate/latestDate/text()</elemento>
+    <elemento input_type="text" class="Long" name="name of the rights holder" type="auther" prefix="/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsHolder/legalBodyName/appellationValue" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsHolder/legalBodyName/appellationValue/text()</elemento>
+    <elemento input_type="text" class="ExtraLong" name="credits copyright (free text)">/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/creditLine/text()</elemento>
+   </sezione>
+  </macroarea>
+  <macroarea name="ADMINISTRATIVE METADATA" layer="ADMINISTRATIVE METADATA" label="ADMINISTRATIVE METADATA">
+   <sezione name="COPYRIGHT of the OBJECT" opened="yes">
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="type of copyright">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsType/term/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="date of earliest rights">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsDate/earliestDate/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="date of latest rights">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsDate/latestDate/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="Long" name="name of the rights holder" type="auther" prefix="/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/appellationValue" arch_ref="xDamsEACCPF" showcode="yes" extra="onchange=&quot;return invalidaElementoAuther(this)&quot;" code="authfilenumber" ud_type="eac-cpf" extraQuery="[XML,/eac-cpf/cpfDescription/identity/entityType]=&quot;corporateBody&quot;" sort="XML(xpart:/eac-cpf/cpfDescription/identity/nameEntry/part)" title_rule="XML,/eac-cpf/cpfDescription/identity/nameEntry/part &quot;&#208;&quot; XML,/eac-cpf/control/recordId" title_format="descr:0-&#208;code:&#208;-" query="[XML,/eac-cpf/cpfDescription/identity/nameEntry/part]">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/appellationValue/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="source of the name">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/sourceAppellation/text()</elemento>
+    <elemento multiMod="true" input_type="text" class="ExtraLong" name="credits copyright (free text)">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/creditLine/text()</elemento>
+   </sezione>
+   <sezione name="CATALOGUING AND PROCESSING INFORMATION" opened="yes">
+    <elemento name="" type="custom" id="processinfo" prefix="/lido/administrativeMetadata/recordWrap/recordInfoSet" inline="no" opened="yes">
+     <elemento input_type="liveText" name="type of action">/lido/administrativeMetadata/recordWrap/recordInfoSet/@type</elemento>
+     <elemento input_type="liveText" name="date of action">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordMetadataDate/text()</elemento>
+     <elemento input_type="liveText" name="actor">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordInfoID[@type='local']/text()</elemento>
+    </elemento>
+   </sezione>
+  </macroarea>
+  <sezione name="campiHidden">
+   <elemento>/lido/lidoRecID/@type</elemento>
+   <elemento>/lido/lidoRecID[@type='local']/text()</elemento>
+   <elemento>/lido/lidoRecID/@source</elemento>
+  </sezione>
+ </docEdit>
+ <fixedValues>
+  <elemento value=".">/lido/lidoRecID[@type='local']/text()</elemento>
+  <elemento value="">/lido/lidoRecID/@source</elemento>
+  <elemento value="inserimento">/lido/administrativeMetadata/recordWrap/recordInfoSet/@type</elemento>
+  <elemento value="@coluiCheInserisce@">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordInfoID[@type='local']/text()</elemento>
+  <elemento value="@quandoColuiInserisce@">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordMetadataDate/text()</elemento>
+ </fixedValues>
+ <param>
+  <elemento id="campi_obbligatori">.lido.administrativeMetadata.recordWrap.recordType.term.text()</elemento>
+  <elemento id="riordina">
+   <opzione value="/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue">title</opzione>
+   <opzione value="/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/workID">inventory number</opzione>
+  </elemento>
+  <elemento id="clona">
+   <opzione action="delete" value="">/lido/administrativeMetadata/recordWrap/recordInfoSet</opzione>
+   <opzione action="append" value="copied item">/lido/administrativeMetadata/recordWrap/recordInfoSet/@type</opzione>
+   <opzione action="append" value="systemdate">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordMetadataDate/text()</opzione>
+   <opzione action="append" value="username">/lido/administrativeMetadata/recordWrap/recordInfoSet/recordInfoID[@type='local']/text()</opzione>
+   <opzione action="append" value=" cloned ">/lido/clonato/text()</opzione>
+   <opzione action="replace" value=".">/lido/lidoRecID[@type='local']/text()</opzione>
+  </elemento>
+ </param>
+</root>

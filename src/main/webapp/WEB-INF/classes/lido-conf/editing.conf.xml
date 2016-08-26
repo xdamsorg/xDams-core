@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <multiEditing method="xPath:/lido/administrativeMetadata/recordWrap/recordType/term/text()">
+  <docEdit value="">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="fonds">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="collection">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="event">
+   <file name="/lido-conf/editing-event.conf.xml"/>
+  </docEdit>
+  <docEdit value="subfonds">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="series">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="subseries">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="file">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+  <docEdit value="item">
+   <file name="/lido-conf/editing-object.conf.xml"/>
+  </docEdit>
+ </multiEditing>
+</root>

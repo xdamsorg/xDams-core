@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<element multiMod="true" name="title">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue/text()</element>
+	<element multiMod="true" name="subject">/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/displaySubject/text()</element>
+	<element multiMod="true" name="source appellation of the title">/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/sourceAppellation/text()</element>
+	<element multiMod="true" name="source of name of creator">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventActor/actorInRole/actor/nameActorSet/sourceAppellation/text()</element>
+	<element multiMod="true" name="source of place of creation">/lido/descriptiveMetadata/eventWrap/eventSet/event[child::eventType/term/text()='creation']/eventPlace/place/namePlaceSet/sourceAppellation/text()</element>
+	<element multiMod="true" name="free text description about the object">/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/descriptiveNoteValue/text()</element>
+	<element multiMod="true" name="source description about the object">/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/sourceDescriptiveNote/text()</element>
+	<element multiMod="true" name="inscription transcription">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionTranscription/text()</element>
+	<element multiMod="true" name="inscription description">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/@type</element>
+	<element multiMod="true" name="note of inscription">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/descriptiveNoteValue/text()</element>
+	<element multiMod="true" name="source note of inscription">/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/sourceDescriptiveNote/text()</element>
+	<element multiMod="true" name="type of copyright">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsType/term/text()</element>
+	<element multiMod="true" name="date of earliest rights">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsDate/earliestDate/text()</element>
+	<element multiMod="true" name="date of latest rights">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsDate/latestDate/text()</element>
+	<element multiMod="true" name="source of the name">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/sourceAppellation/text()</element>
+	<element multiMod="true" name="credits copyright (free text)">/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/creditLine/text()</element>
+	<element multiMod="true" name="description of event (event record)">/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDescriptionSet/descriptiveNoteValue/text()</element>
+	<element multiMod="true" name="source of event description (event record)">/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDescriptionSet/sourceDescriptiveNote/text()</element>
+</root>

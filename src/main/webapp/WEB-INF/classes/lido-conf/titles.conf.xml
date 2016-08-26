@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <titleManager>
+  <sezione name="title">
+   <elemento mode="html" html="">
+    0-[@tipo@]
+    <substitutor>
+     <regex>creation</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>¢</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>production</regex>
+     <replacement/>
+    </substitutor>
+   </elemento>
+   <elemento mode="html" html="strong" format_before="&#160;">[@tipo@]-[@tit@]</elemento>
+   <elemento mode="html" html="" format_before=",&#160;">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="defaultTitle">
+   <elemento mode="html" html="">
+    0-[@tipo@]
+    <substitutor>
+     <regex>creation</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>¢</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>production</regex>
+     <replacement/>
+    </substitutor>
+   </elemento>
+   <elemento mode="html" html="strong" format_before="&#160;">[@tipo@]-[@tit@]</elemento>
+   <elemento mode="html" html="" format_before=",&#160;">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="hierBrowser">
+   <elemento mode="html" html="">
+    0-[@tipo@]
+    <substitutor>
+     <regex>creation</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>¢</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>production</regex>
+     <replacement/>
+    </substitutor>
+   </elemento>
+   <elemento mode="html" html="strong" format_before="&#160;">[@tipo@]-[@tit@]</elemento>
+   <elemento mode="html" html="" format_before=",&#160;">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="hierTitle">
+   <elemento mode="html" html="">
+    0-[@tipo@]
+    <substitutor>
+     <regex>creation</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>¢</regex>
+     <replacement/>
+    </substitutor>
+    <substitutor>
+     <regex>production</regex>
+     <replacement/>
+    </substitutor>
+   </elemento>
+   <elemento mode="html" html="strong" format_before="&#160;">[@tipo@]-[@tit@]</elemento>
+   <elemento mode="html" html="" format_before=",&#160;">[@tit@]-[@data@]</elemento>
+  </sezione>
+  <sezione name="titlePath">
+   <elemento mode="html" html="em" format_after="&#160;">||-Ð</elemento>
+  </sezione>
+  <sezione name="dataTitle">
+   <elemento>[@tit@]-[@data@]</elemento>
+  </sezione>
+ </titleManager>
+</root>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+ <access_method noElements="insert">
+  <clipboard disabled="true"/>
+  <query active="yes" label="List of all documents">[UD,/xw/@UdType/]="lido"</query>
+  <query active="yes" label="List of all object records">not([XML,/lido/administrativeMetadata/recordWrap/recordType/term]="event")</query>
+  <query active="yes" label="List of all event records">[XML,/lido/administrativeMetadata/recordWrap/recordType/term]="event"</query>
+  <hierbrowse active="yes" label="Enter archive">1</hierbrowse>
+  <query active="yes" label="Unlinked documents" ajaxCheck="notinhier">notinhier:1</query>
+ </access_method>
+ <query>
+  <element activeIdx="no" ajaxKey="no" position="center" label="Search">@</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Type of object" firstIdx=" a" typology="select" value="document:/lido-conf/valoriControllati.xml" externalPath="/root/elemento[@name='objectWorkType']/opzione">XML,/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Type of object (occurrences)" firstIdx="a" typology="double">XML,/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Title" firstIdx=" " typology="double">XML,/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Description of content" firstIdx="a" typology="multi">XML,/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/descriptiveNoteValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Inventory number" firstIdx="0" typology="one">XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/workID</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Physical location (type)" firstIdx=" " typology="multi">XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/partOfPlace/namePlaceSet/appellationValue/@label</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Physical location (number)" firstIdx="0" typology="multi">XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/partOfPlace/namePlaceSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="LIDO Local Identifier" firstIdx="0" typology="one">XML,/lido/lidoRecID</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Event Actor" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventActor/actorInRole/actor/nameActorSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Subject Actor" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectActor/actor/nameActorSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Event Place" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventPlace/place/namePlaceSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Subject Place" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectPlace/place/namePlaceSet/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Corporate body Repository" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryName/legalBodyName/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Rights Holder of the Object" firstIdx=" a" typology="double">XML,/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Rights Holder of the Reproduction" firstIdx=" a" typology="double">XML,/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsHolder/legalBodyName/appellationValue</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Subject concepts" firstIdx=" a" typology="double">XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectConcept/term</element>
+  <data>
+   <element ajaxKey="yes" label="Search by date (from - to):">XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDate/displayDate/@normal</element>
+  </data>
+  <sort>
+   <element label="None" checked="yes"/>
+   <element label="Date record created">UD(xpart:/xw/UserId/@DateIns/)</element>
+   <element label="Date record modified">UD(xpart:/xw/UserId/@DateMod/),UD(xpart:/xw/UserId/@TimeMod/)</element>
+   <element label="Inventory number">XML(xpart:/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/workID)</element>
+   <element label="Date">XML(xpart:/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDate/displayDate/@normal)</element>
+   <element label="Identifier">XML(xpart:/lido/lidoRecID)</element>
+  </sort>
+ </query>
+ <queryAdm>
+  <element activeIdx="yes" ajaxKey="yes" position="sx" label="Archivist" firstIdx=" a" typology="double">XML,/lido/administrativeMetadata/recordWrap/recordInfoSet/recordInfoID</element>
+  <element activeIdx="yes" ajaxKey="yes" position="dx" label="Date record created/modified" firstIdx="0" typology="one">XML,/lido/administrativeMetadata/recordWrap/recordInfoSet/recordMetadataDate</element>
+ </queryAdm>
+</root>
