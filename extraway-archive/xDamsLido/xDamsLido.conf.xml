@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+	<primary_node ud_name="lido" ud_container="dsc">
+		<unique_rule search_rule="[XML,/lido/lidoRecID]"/>
+		<key name="XML,/lido/lidoRecID" key_style="one" serial_id="num_id" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/descriptiveNoteValue" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/sourceDescriptiveNote" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionTranscription" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/descriptiveNoteValue" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/inscriptionsWrap/inscriptions/inscriptionDescription/sourceDescriptiveNote" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryName/legalBodyName/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/repositoryLocation/namePlaceSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/repositoryWrap/repositorySet/workID" key_style="one" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/objectDescriptionWrap/objectDescriptionSet/descriptiveNoteValue" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectIdentificationWrap/objectMeasurementsWrap/objectMeasurementsSet/displayObjectMeasurements" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventType/term" key_style="one" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventName/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/culture/term" key_style="double" key_also="XML,/lido/@ricercalibera" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDescriptionSet/descriptiveNoteValue" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDate/displayDate" attr_collate="#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDate/displayDate/@normal" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventActor/actorInRole/actor/nameActorSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventPlace/place/namePlaceSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventMaterialsTech/displayMaterialsTech" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/thingPresent/displayObject" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/thingPresent/object/objectNote" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/relatedEventSet/relatedEvent/displayEvent" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/displaySubject" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectConcept/term" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectActor/actor/nameActorSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectPlace/place/namePlaceSet/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/subjectWrap/subjectSet/subject/subjectObject/displayObject" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/descriptiveMetadata/objectRelationWrap/relatedWorksWrap/relatedWorkSet/relatedWork/displayObject" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsHolder/legalBodyName/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/rightsType/term" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/rightsWorkWrap/rightsWorkSet/creditLine" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/resourceWrap/resourceSet/resourceRepresentation/linkResource" key_style="one" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/rightsHolder/legalBodyName/appellationValue" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/resourceWrap/resourceSet/rightsResource/creditLine" key_style="multi" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/recordWrap/recordInfoSet/recordInfoID" key_style="double" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/recordWrap/recordInfoSet/recordMetadataDate" key_style="one" value_type="date" empty_key="yes"/>
+		<key name="XML,/lido/administrativeMetadata/recordWrap/recordInfoSet" instance="yes"/>
+	</primary_node>
+	<serials>
+		<serial id="num_id" mask="IT-xDams-LIDO01-######"/>
+	</serials>
+	<file_location mode="day"/>
+	<expert_system_extension active="false"/>
+	<profile type="title" value="XML,/lido/descriptiveMetadata/objectClassificationWrap/objectWorkTypeWrap/objectWorkType/term XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventType/term &quot;[@tipo@]&quot; XML,/lido/descriptiveMetadata/objectIdentificationWrap/titleWrap/titleSet/appellationValue XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventName/appellationValue &quot;[@tit@]&quot; XML,/lido/descriptiveMetadata/eventWrap/eventSet/event/eventDate/displayDate &quot;[@data@]&quot;"/>
+	<profile type="title.separ" value="¢"/>
+	<profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+	<profile type="catalog.strict" value="true"/>
+	<profile type="arc.allownonportable" value="true"/> 
+    	<profile type="arc.test_encoding" value="false"/> 
+</xway_cfg>
