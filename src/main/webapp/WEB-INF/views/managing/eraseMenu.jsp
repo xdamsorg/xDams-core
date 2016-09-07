@@ -85,13 +85,25 @@ function proiettaModifica(){
 	<div class="m10">
 	<div><spring:message code="elimina" text="elimina"/>:</div>
 	<div ><br />
-		<input type="radio" name="applyTo" value="hier" rel="<spring:message code="della_scheda_selezionata" text="della scheda selezionata"/><%if(managingBean.getNumElementiHier()>1){%> <spring:message code="edi_TUTTI_i" text="e di TUTTI i"/> <%=(managingBean.getNumElementiHier())-1%> <spring:message code="elementi_gerarchicamente_collegati" text="elementi gerarchicamente collegati"/><%} %>"> <strong><spring:message code="scheda_selezionata_e_tutto_il_ramo" text="scheda selezionata e tutto il ramo"/></strong> (<%=(managingBean.getNumElementiHier())%> <spring:message code="elementi" text="elementi"/>)<br /><br />
+		<%
+        if(managingBean.getPhysDoc() == 1 && managingBean.getNumElementiHier()>1){
+        %>
+             <strong><spring:message code="Attenzione_impossibile_cancellare_la_radice_dellarchivio" text="Attenzione, impossibile cancellare la radice dell'archivio!"/></strong><br/>
+        <%
+        }
+        else{
+        %>
+            <input type="radio" name="applyTo" value="hier" rel="<spring:message code="della_scheda_selezionata" text="della scheda selezionata"/><%if(managingBean.getNumElementiHier()>1){%> <spring:message code="edi_TUTTI_i" text="e di TUTTI i"/> <%=(managingBean.getNumElementiHier())-1%> <spring:message code="elementi_gerarchicamente_collegati" text="elementi gerarchicamente collegati"/><%} %>"> <strong><spring:message code="scheda_selezionata_e_tutto_il_ramo" text="scheda selezionata e tutto il ramo"/></strong> (<%=(managingBean.getNumElementiHier())%> <spring:message code="elementi" text="elementi"/>)<br /><br />
+        <%
+        }
+        %>
 		<%if((managingBean.getListPhysDoc())!=null && (managingBean.getListPhysDoc()).size()>0){ %><input type="radio" name="applyTo" value="selected" rel="<spring:message code="di" text="di"/> <%=(managingBean.getListPhysDoc()).size()%> <spring:message code="schede_selezionate_e_di_TUTTI_gli_elementi_gerarchicamente_collegati" text="schede selezionate e di TUTTI gli elementi gerarchicamente collegati"/>"> <strong><spring:message code="selezione_multipla" text="selezione multipla"/></strong> (<%=(managingBean.getListPhysDoc()).size()%>  <spring:message code="schede_e_tutti_gli_elementi_gerarchicamente_collegati" text="schede e tutti gli elementi gerarchicamente collegati"/>)<br /><%} %>
 		<%if((managingBean.getNumElementi())>0){ %><input type="radio" name="applyTo" value="selid" rel="<spring:message code="di" text="di"/> <%=( managingBean.getNumElementi())%> <spring:message code="schede_selezionate_e_di_TUTTI_gli_elementi_gerarchicamente_collegati" text="schede selezionate e di TUTTI gli elementi gerarchicamente collegati"/>"> <strong><spring:message code="ricerca_corrente" text="ricerca corrente"/></strong> (<%=( managingBean.getNumElementi())%> <spring:message code="schede_e_tutti_gli_elementi_gerarchicamente_collegati" text="schede e tutti gli elementi gerarchicamente collegati"/>)<br /><%} %>
 		<%if(false && (managingBean.getDocUpperBrother())>0){ %><input type="radio" name="applyTo" value="prevSibling"> <strong><spring:message code="fratelli_precedenti" text="fratelli precedenti"/></strong> <spring:message code="egli_elementi_gerarchicamente_collegati" text="e gli elementi gerarchicamente collegati"/><br /><%} %>
 		<%if(false && (managingBean.getDocLowerBrother())>0){ %><input type="radio" name="applyTo" value="nextSibling"> <strong><spring:message code="fratelli_successivi" text="fratelli successivi"/></strong> <spring:message code="egli_elementi_gerarchicamente_collegati" text="e gli elementi gerarchicamente collegati"/><br /><%} %>
 		<%if(false && (managingBean.getNumElementiHier())>1){ %><input type="radio" name="applyTo" value="hierfalse"> <strong><spring:message code="solo_le_schede_gerarchicamente_collegate" text="solo le schede gerarchicamente collegate"/></strong> (<%=(managingBean.getNumElementiHier()-1)%> <spring:message code="elementi" text="elementi"/>)<br /><%} %>
 		</div>
+
 	</div>
 </div>
  
