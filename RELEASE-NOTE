@@ -131,6 +131,14 @@ Release Note (by regesta.exe - simvox)
 ************************************************************************************************
 1) FIX - eraseMenu.jsp added control root element
 2) NEW ENTRY - added warning xdams_message_en
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.1.2  
+*****   date:     12.09.2016
+************************************************************************************************
+1) FIX - export XML nested processing extractor
+
 
 
 
