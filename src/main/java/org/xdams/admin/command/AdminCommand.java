@@ -12,14 +12,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.compress.archivers.ArchiveOutputStream;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
-import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.io.FileUtils;
 import org.springframework.ui.ModelMap;
@@ -29,8 +27,8 @@ import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.CommonUtils;
 import org.xdams.utility.ExtractDocument;
-import org.xdams.utility.SharpIncrementTool;
 import org.xdams.utility.TrasformXslt20;
+import org.xdams.utility.XMLCleaner;
 import org.xdams.utility.request.MyRequest;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.workflow.bean.WorkFlowBean;
@@ -137,6 +135,7 @@ public class AdminCommand {
 				}
 
 				String result = xwconn.XMLCommand(xwconn.connection, workFlowBean.getAlias(), exportCmd);
+				result = XMLCleaner.clearXwFullXML(result, true);
 				// System.out.println(result);
 				String realPath = (String) modelMap.get("realPath");
 				System.out.println("realPath: " + realPath);
