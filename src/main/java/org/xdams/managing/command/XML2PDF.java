@@ -363,36 +363,43 @@ public class XML2PDF {
 				files = FileUtils.listFiles(file, extensions, false);
 			}
 			if (!file.exists() || (files != null && files.size() == 0)) {
-				System.out.println("XML2PDF.findXSLPath() 222 : " + pathPdfPrint);
-				pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef())).replaceAll("\\\\", "/");
+				pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef() + "/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
 				file = new File(pathPdfPrint);
 				if (file.exists()) {
 					files = FileUtils.listFiles(file, extensions, false);
 				}
 				if (!file.exists() || (files != null && files.size() == 0)) {
-					System.out.println("XML2PDF.findXSLPath() 333 : " + pathPdfPrint);
-					pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
+					System.out.println("XML2PDF.findXSLPath() 222 : " + pathPdfPrint);
+					pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef())).replaceAll("\\\\", "/");
 					file = new File(pathPdfPrint);
 					if (file.exists()) {
 						files = FileUtils.listFiles(file, extensions, false);
 					}
 					if (!file.exists() || (files != null && files.size() == 0)) {
-						System.out.println("XML2PDF.findXSLPath() 444 : " + pathPdfPrint);
-						pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getType())).replaceAll("\\\\", "/");
+						System.out.println("XML2PDF.findXSLPath() 333 : " + pathPdfPrint);
+						pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
 						file = new File(pathPdfPrint);
 						if (file.exists()) {
 							files = FileUtils.listFiles(file, extensions, false);
 						}
 						if (!file.exists() || (files != null && files.size() == 0)) {
-							System.out.println("XML2PDF.findXSLPath() 555 : " + pathPdfPrint);
-							pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint")).replaceAll("\\\\", "/");
+							System.out.println("XML2PDF.findXSLPath() 444 : " + pathPdfPrint);
+							pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getType())).replaceAll("\\\\", "/");
 							file = new File(pathPdfPrint);
 							if (file.exists()) {
 								files = FileUtils.listFiles(file, extensions, false);
 							}
 							if (!file.exists() || (files != null && files.size() == 0)) {
-								System.out.println("XML2PDF.findXSLPath() 666 : " + pathPdfPrint);
-								pathPdfPrint = null;
+								System.out.println("XML2PDF.findXSLPath() 555 : " + pathPdfPrint);
+								pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint")).replaceAll("\\\\", "/");
+								file = new File(pathPdfPrint);
+								if (file.exists()) {
+									files = FileUtils.listFiles(file, extensions, false);
+								}
+								if (!file.exists() || (files != null && files.size() == 0)) {
+									System.out.println("XML2PDF.findXSLPath() 666 : " + pathPdfPrint);
+									pathPdfPrint = null;
+								}
 							}
 						}
 					}
@@ -535,7 +542,7 @@ public class XML2PDF {
 
 			xwconn.close();
 			result = ProblematicCharactersFilter.replaceCharacters(result);
-		//	System.out.println("QUI RESULT " + result + "QUI RESUTL");
+			// System.out.println("QUI RESULT " + result + "QUI RESUTL");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (XWException e) {
