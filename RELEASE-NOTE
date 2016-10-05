@@ -138,8 +138,14 @@ Release Note (by regesta.exe - simvox)
 *****   date:     12.09.2016
 ************************************************************************************************
 1) FIX - export XML nested processing extractor
-
-
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.1.3 
+*****   date:     05.10.2016
+************************************************************************************************
+1) FIX - findXSLPath
+2) FIX - workspace order
 
 
 
