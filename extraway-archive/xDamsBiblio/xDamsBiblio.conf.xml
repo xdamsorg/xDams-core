@@ -2,6 +2,7 @@
 <!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
 <xway_cfg>
  <primary_node ud_name="mods" ud_container="dsc">
+  <unique_rule search_rule="[XML,/mods/@ID]"/>
   <key name="XML,/mods/@ID" serial_id="num_id" key_style="one" empty_key="yes"/>
   <key name="XML,/mods/unittitle" key_style="double" empty_key="yes"/>
   <key name="XML,/mods/hierpath" key_style="one" empty_key="yes"/>
