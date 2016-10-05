@@ -167,8 +167,8 @@ public class xDamsController {
 
 	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
 	public String home(Model model, @ModelAttribute("userBean") UserBean userBean) throws Exception {
-		// Map<String, List<Archive>> usersArchives = new LinkedHashMap<String, List<Archive>>();
-		Map<String, List<Archive>> usersArchives = new TreeMap<String, List<Archive>>();
+		Map<String, List<Archive>> usersArchives = new LinkedHashMap<String, List<Archive>>();
+		// Map<String, List<Archive>> usersArchives = new TreeMap<String, List<Archive>>();
 		serviceUser.loadArchives(userBean, usersArchives);
 		model.addAttribute("usersArchives", usersArchives);
 		return "user/workspace";
