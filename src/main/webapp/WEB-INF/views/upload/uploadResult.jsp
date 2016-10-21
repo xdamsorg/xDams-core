@@ -33,9 +33,9 @@ loadJsBusiness('upload','${frontUrl}');
 <body>
   <%if(uploadResponse.getResultError().toString().equals("")){%>
 	<h1><spring:message code="Upload_eseguito_con_successo" text="Upload eseguito con successo"/></h1>
-	<%if(uploadResponse.isFileExist() && !uploadResponse.isOverWrite() ){ %>
+	<%if(false && uploadResponse.isFileExist() && !uploadResponse.isOverWrite() ){ %>
 		<p>file <%=uploadResponse.getName()%> <strong> <spring:message code="esiste_ma_non_e_stato_sovrascritto" text="esiste ma non è stato sovrascritto"/> </strong> </p>
-	<%} else if(uploadResponse.isFileExist() && uploadResponse.isOverWrite()) {%>
+	<%} else if(false && uploadResponse.isFileExist() && uploadResponse.isOverWrite()) {%>
 		<p>file <%=uploadResponse.getName()%> <strong> <spring:message code="esiste_ma_e_stato_sovrascritto" text="esiste ma è stato sovrascritto"/> </strong></p>
 	<% } %>
    	<script type="text/javascript">

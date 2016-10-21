@@ -4,20 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-import javax.xml.transform.TransformerException;
-
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.text.StrBuilder;
 import org.apache.commons.lang3.text.StrSubstitutor;
 import org.springframework.ui.ModelMap;
 import org.xdams.conf.master.ConfBean;
@@ -72,13 +67,14 @@ public class UploadCommand {
 					if (!(fileUploadTempPath.exists())) {
 						fileUploadTempPath.mkdirs();
 					}
+					String fileNameNew = CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + UUID.randomUUID().getMostSignificantBits();
 					File uploadFile = new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName()));
 
 					uploadFile.setReadable(true);
 					uploadBean.setFileExist(uploadFile.exists());
-					if (!uploadFile.exists() || uploadBean.isOverWrite()) {
+//					if (!uploadFile.exists() || uploadBean.isOverWrite()) {
 						uploadBean.getFiledata().transferTo(uploadFile);
-					}					
+//					}					
 
 				} catch (Exception e) {
 
