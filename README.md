@@ -59,7 +59,7 @@ Il sistema xDams è pronto per l'utilizzo! Seguire i seguenti passi per avviare 
 *	Riavviare il servizio extraway
 *	Riavviare Apache Tomcat
 *	Aprire un browser internet e digitare l'indirizzo: [http://localhost:8080/xDams/login.html] (http://localhost:8080/xDams/login.html)
-*	Nel campo "Nome utente" digitare admin e nel campo Password il valore xdams.org
+*	Nel campo "Nome utente" digitare admin e nel campo password il valore xdams.org
 
 
 ## Compilazione del sorgente 
