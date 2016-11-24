@@ -154,6 +154,14 @@ Release Note (by regesta.exe - simvox)
 *****   date:     19.10.2016
 ************************************************************************************************
 1) FIX - conf bar-docedit
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.1.5
+*****   date:     24.11.2016
+************************************************************************************************
+1) FIX - uploadfile removed overwrite param
+2) NEW ENTRY - print template xDamsBiblio
 
 
 
