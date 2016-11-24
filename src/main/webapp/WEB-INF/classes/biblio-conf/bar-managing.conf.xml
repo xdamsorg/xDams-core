@@ -78,7 +78,7 @@
       <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
       <paramFunction javaBean="viewBean">getSelid</paramFunction>
       <paramFunction>''</paramFunction>
-      <paramFunction>{idXpath:'/c/@id'}</paramFunction>
+      <paramFunction>{idXpath:'/mods/@ID'}</paramFunction>
      </functionName>
     </eventJavaScript>
    </element>
