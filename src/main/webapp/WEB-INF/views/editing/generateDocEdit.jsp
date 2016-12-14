@@ -113,10 +113,14 @@ if(numeroCampiHidden>0){
 	   for(int i = 0;i<numeroCampiHidden;i++){
 	        String nomeNodo = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/text()");
 	        String forceValue = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/@forceValue");
+	        String cryptedValue = theXMLconf.valoreNodo("/"+ilPath+"/sezione[@name='campiHidden']/elemento["+(i+1)+"]/@crypted");
 	        //out.println("forceValue: "+forceValue);
 	        String valoreNodo = theXML.valoreNodo(nomeNodo,"");
 	        if(valoreNodo.equals("")){
 	        	valoreNodo = forceValue;
+	        }
+	        if(cryptedValue.equals("true")){
+	           nomeNodo+="/@crypted";
 	        }
 	        %><input type="hidden" name="<%=nomeNodo.replace('/','.')%>" value="<%=valoreNodo%>" /><%
 	    }
