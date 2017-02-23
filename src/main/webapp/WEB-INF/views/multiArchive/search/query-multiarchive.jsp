@@ -235,10 +235,10 @@ Map<String, List<Archive>> usersArchives = (Map<String, List<Archive>>)request.g
 									/* creazione bean di ricerca */
 									boolean valorizzato = false;
 
-									if(session.getAttribute("arrQueryBean") != null){
-										ArrayList arrQueryBean = (ArrayList)session.getAttribute("arrQueryBean");
+									if(session.getAttribute(workFlowBean.getQueryBeanName()) != null){
+										ArrayList arrQueryBean = (ArrayList)session.getAttribute(workFlowBean.getQueryBeanName());
 										for(int i = 0; i< arrQueryBean.size();i++){
-											org.xdams.page.query.bean.QueryBean ilBean = (org.xdams.page.query.bean.QueryBean)arrQueryBean.get(i);
+											QueryBean ilBean = (QueryBean)arrQueryBean.get(i);
 											String ilDb = ilBean.getDb();
 											if(ilDb.equals(workFlowBean.getArchive().getAlias())){
 												valorizzato = true;
@@ -250,6 +250,7 @@ Map<String, List<Archive>> usersArchives = (Map<String, List<Archive>>)request.g
 											}
 										}
 									}
+									 
 									/* fine creazione bean di ricerca*/
 									if(valorizzato)
 										ultimeRicerche = "<option value=\"\">"+workFlowBean.getLocalizedString("scegli","scegli")+"...</option>"+ultimeRicerche;

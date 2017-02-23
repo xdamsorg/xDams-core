@@ -73,40 +73,37 @@ public class MultiTitlePageCommand {
 						queryResult = findDocumentCommand.execute(workFlowBean, xwconn);
 						QueryBean queryBean = new QueryBean();
 						queryBean.setDb(workFlowBean.getAlias());
-						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
-						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
+//						System.out.println("findDocumentCommand.getLaFrase() " + findDocumentCommand.getLaFrase());
 						queryBean.setQuery(findDocumentCommand.getLaFrase());
 						queryBean.setTot(String.valueOf(queryResult.elements));
 						multiArchiveBean.setArchive(ServiceUser.getArchive(userBean, multiArchivedbNames[i]));
 						multiArchiveBean.setRecordFound((queryResult.elements));
 						multiArchiveBeans.add(multiArchiveBean);
-						if (httpSession.getAttribute("arrQueryBean" + multiArchivedbNames[i]) == null) {
+						if (httpSession.getAttribute(workFlowBean.getQueryBeanName()) == null) {
 							ArrayList arrQueryBean = new ArrayList();
 							arrQueryBean.add(queryBean);
-							httpSession.setAttribute("arrQueryBean" + multiArchivedbNames[i], arrQueryBean);
+							httpSession.setAttribute(workFlowBean.getQueryBeanName(), arrQueryBean);
 						} else {
-							ArrayList arrQueryBean = (ArrayList) httpSession.getAttribute("arrQueryBean" + multiArchivedbNames[i]);
+							ArrayList arrQueryBean = (ArrayList) httpSession.getAttribute(workFlowBean.getQueryBeanName());
 							boolean insert = true;
 							int indexQr = 0;
-							for (int z = 0; z < arrQueryBean.size(); z++) {
-								QueryBean ilBean = (QueryBean) arrQueryBean.get(z);
-								System.out.println("ilBean " + ilBean);
-								System.out.println("queryBean " + queryBean);
+							for (int c = 0; c < arrQueryBean.size(); c++) {
+								QueryBean ilBean = (QueryBean) arrQueryBean.get(c);
 								if (ilBean.getQuery().equals(queryBean.getQuery())) {
 									insert = false;
-									arrQueryBean.remove(z);
+									arrQueryBean.remove(c);
 									arrQueryBean.add(queryBean);
 									break;
 								}
 							}
 							if (insert) {
 								arrQueryBean.add(queryBean);
-								httpSession.setAttribute("arrQueryBean" + multiArchivedbNames[i], arrQueryBean);
+								httpSession.setAttribute(workFlowBean.getQueryBeanName(), arrQueryBean);
 							}
-							System.out.println("arrQueryBean " + arrQueryBean);
 						}
 						System.out.println("queryResult.elements: " + queryResult.elements + " " + xwconn.getTheDb());
 					} catch (Exception e) {
