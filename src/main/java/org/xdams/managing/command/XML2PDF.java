@@ -255,7 +255,7 @@ public class XML2PDF {
 				}
 				// System.out.println("aaaaaaaaaaaaaaaaa 10 "+managingBean.getExportXML());
 				ManagingBean sessionMenaging = (ManagingBean) httpSession.getAttribute(workFlowBean.getManagingBeanName());
-				System.out.println("aaaaaaaaaaaaaaaaa 11");
+//				System.out.println("aaaaaaaaaaaaaaaaa 11");
 				// sessionMenaging.setListPhysDoc(new ArrayList()); // SVUOTO GLI ELEMENTI SELEZIONATI
 				if (managingBean.getExportXML() != null && !(managingBean.getExportXML()).equals("")) { // STAMPO PDF
 					// InputStream
@@ -351,9 +351,9 @@ public class XML2PDF {
 	private String findXSLPath(UserBean userBean, WorkFlowBean workFlowBean) {
 		String[] extensions = { "xsl", "xslt" };
 		String pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef() + "/" + workFlowBean.getArchive().getType() + "/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
-		System.out.println("XML2PDF.findXSLPath() 111 : " + pathPdfPrint);
+//		System.out.println("XML2PDF.findXSLPath() 111 : " + pathPdfPrint);
 		File file = new File(pathPdfPrint);
-		System.out.println("XML2PDF.findXSLPath() 111aaaa : " + file);
+//		System.out.println("XML2PDF.findXSLPath() 111aaaa : " + file);
 		Collection<File> files = null;
 		if (file.exists()) {
 			files = FileUtils.listFiles(file, extensions, false);
@@ -371,35 +371,35 @@ public class XML2PDF {
 					files = FileUtils.listFiles(file, extensions, false);
 				}
 				if (!file.exists() || (files != null && files.size() == 0)) {
-					System.out.println("XML2PDF.findXSLPath() 222 : " + pathPdfPrint);
+//					System.out.println("XML2PDF.findXSLPath() 222 : " + pathPdfPrint);
 					pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + userBean.getAccountRef())).replaceAll("\\\\", "/");
 					file = new File(pathPdfPrint);
 					if (file.exists()) {
 						files = FileUtils.listFiles(file, extensions, false);
 					}
 					if (!file.exists() || (files != null && files.size() == 0)) {
-						System.out.println("XML2PDF.findXSLPath() 333 : " + pathPdfPrint);
+//						System.out.println("XML2PDF.findXSLPath() 333 : " + pathPdfPrint);
 						pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getAlias())).replaceAll("\\\\", "/");
 						file = new File(pathPdfPrint);
 						if (file.exists()) {
 							files = FileUtils.listFiles(file, extensions, false);
 						}
 						if (!file.exists() || (files != null && files.size() == 0)) {
-							System.out.println("XML2PDF.findXSLPath() 444 : " + pathPdfPrint);
+//							System.out.println("XML2PDF.findXSLPath() 444 : " + pathPdfPrint);
 							pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint/" + workFlowBean.getArchive().getType())).replaceAll("\\\\", "/");
 							file = new File(pathPdfPrint);
 							if (file.exists()) {
 								files = FileUtils.listFiles(file, extensions, false);
 							}
 							if (!file.exists() || (files != null && files.size() == 0)) {
-								System.out.println("XML2PDF.findXSLPath() 555 : " + pathPdfPrint);
+//								System.out.println("XML2PDF.findXSLPath() 555 : " + pathPdfPrint);
 								pathPdfPrint = (workFlowBean.getRequest().getRealPath("/WEB-INF/classes/pdfPrint")).replaceAll("\\\\", "/");
 								file = new File(pathPdfPrint);
 								if (file.exists()) {
 									files = FileUtils.listFiles(file, extensions, false);
 								}
 								if (!file.exists() || (files != null && files.size() == 0)) {
-									System.out.println("XML2PDF.findXSLPath() 666 : " + pathPdfPrint);
+//									System.out.println("XML2PDF.findXSLPath() 666 : " + pathPdfPrint);
 									pathPdfPrint = null;
 								}
 							}
@@ -456,9 +456,9 @@ public class XML2PDF {
 		/* ON FLY */
 		// System.out.println("xdams - [INFO]  :::::::: pdf print started");
 
-		System.out.println("xdams - [INFO]  :::::::: PDFType " + PDFType);
-		System.out.println("xdams - [INFO]  :::::::: PDFPhrase " + PDFPhrase);
-		System.out.println("xdams - [INFO]  :::::::: PDFNdoc " + PDFNdoc);
+//		System.out.println("xdams - [INFO]  :::::::: PDFType " + PDFType);
+//		System.out.println("xdams - [INFO]  :::::::: PDFPhrase " + PDFPhrase);
+//		System.out.println("xdams - [INFO]  :::::::: PDFNdoc " + PDFNdoc);
 		String xmlString = "";
 		if (PDFPhrase != null) {
 			// System.out.println("aaaaaaaaaaaaaaaaa 20");
@@ -494,15 +494,15 @@ public class XML2PDF {
 		try {
 			String command = "";
 			if (PDFType.trim().equals("4")) {
-				System.out.println("CMD Esito ricerca");
+//				System.out.println("CMD Esito ricerca");
 				if (XWCMDOutputPath == null) {
 					command = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\"  sel=\"" + sel_num + "\" />";
 				} else {
 					command = "<cmd c=\"8\" bits=\"6\" fn=\"" + XWCMDOutputPath + "\\" + result + ".xml\" sel=\"" + sel_num + "\" />";
 				}
-				System.out.println("command: " + command);
+//				System.out.println("command: " + command);
 			} else if (PDFType.trim().equals("1")) {
-				System.out.println("CMD singola scheda");
+//				System.out.println("CMD singola scheda");
 				if (XWCMDOutputPath == null) {
 					command = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\"  num=\"" + sel_num + "\" num2=\"" + sel_num + "\" />";
 				} else {
@@ -515,14 +515,14 @@ public class XML2PDF {
 				ilPadre[0] = docFather;
 				xwconn.addToQueryResult(xwconn.connection, xwconn.getTheDb(), qr, ilPadre);
 				String selid = xwconn.addToQueryResult(qr, xwconn.getSonsFromNumDoc(Integer.parseInt(sel_num))).id;
-				System.out.println("CMD padre + figli primo livello");
+//				System.out.println("CMD padre + figli primo livello");
 				if (XWCMDOutputPath == null) {
 					command = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + selid + "\" />";
 				} else {
 					command = "<cmd c=\"8\" bits=\"6\" fn=\"" + XWCMDOutputPath + "/" + result + ".xml\" sel=\"" + selid + "\" />";
 				}
 			} else if (PDFType.trim().equals("3")) {
-				System.out.println("CMD tutta la gerarchia");
+//				System.out.println("CMD tutta la gerarchia");
 				if (XWCMDOutputPath == null) {
 					command = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export + XMLCommand.Export_Memory) + "\" num=\"" + sel_num + "\" num2=\"" + sel_num + "\"  />";
 				} else {
