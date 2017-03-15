@@ -275,6 +275,8 @@ public class XML2PDF {
 						XMLorigin = XMLorigin.replaceAll("&", "&amp;");
 						XMLorigin = XMLorigin.replaceAll("&amp;amp;", "&amp;");
 						XMLorigin = XMLorigin.replaceAll("&amp;#", "&#");
+						XMLorigin = XMLorigin.replaceAll("&lt;i&gt;", "<i>");
+						XMLorigin = XMLorigin.replaceAll("&lt;/i&gt;", "</i>");
 					}
 
 					xmlInputStream = new ByteArrayInputStream(XMLorigin.getBytes("iso-8859-1"));
