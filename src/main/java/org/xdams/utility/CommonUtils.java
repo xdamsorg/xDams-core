@@ -1,6 +1,7 @@
 package org.xdams.utility;
 
 import java.net.URLEncoder;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +41,41 @@ public class CommonUtils {
 	public static void main(String[] args) {
 
 		// System.out.println(CommonUtils.escapeJqueryName(".c.did.dao[@type='documenti grafici'][1].resource.text()"));
-		System.out.println(checkExt("<isattach>/alcorn/2.2_UA50.001.jpg¢/alcorn/2.2_UA50.002.jpg¢/alcorn/2.2_UA50.003.jpg¢/alcorn/2.2_UA50.004.jpg¢/alcorn/2.2_UA50.005.jpg¢/alcorn/2.2_UA50.006.jpg¢/alcorn/2.2_UA50.007.jpg¢/alcorn/2.2_UA50.008.jpg¢/alcorn/2.2_UA50.009.jpg¢/alcorn/2.2_UA50.010.jpg¢/alcorn/2.2_UA50.011.jpg¢/alcorn/2.2_UA50.012.jpg¢/alcorn/2.2_UA50.013.jpg¢/alcorn/2.2_UA50.014.jpg¢/alcorn/2.2_UA50.015.jpg¢/alcorn/2.2_UA50.016.jpg¢/alcorn/2.2_UA50.017.jpg¢/alcorn/2.2_UA50.018.jpg¢/alcorn/2.2_UA50.019.jpg¢/alcorn/2.2_UA50.020.jpg¢/alcorn/2.2_UA50.021.jpg¢/alcorn/2.2_UA50.022.jpg¢/alcorn/2.2_UA50.023.jpg¢/alcorn/2.2_UA50.024.jpg¢/alcorn/2.2_UA50.025.jpg¢/alcorn/2.2_UA50.026.jpg¢/alcorn/2.2_UA50.027.jpg¢/alcorn/2.2_UA50.028.jpg¢/alcorn/2.2_UA50.029.jpg¢/alcorn/2.2_UA50.030.jpg¢/alcorn/2.2_UA50.031.jpg¢/alcorn/2.2_UA50.032.jpg¢/alcorn/2.2_UA50.033.jpg¢/alcorn/2.2_UA50.034.jpg¢/alcorn/2.2_UA50.035.jpg¢/alcorn/2.2_UA50.036.jpg¢/alcorn/2.2_UA50.037.jpg¢/alcorn/2.2_UA50.038.jpg¢/alcorn/2.2_UA50.039.jpg¢/alcorn/2.2_UA50.040.jpg¢/alcorn/2.2_UA50.041.jpg¢/alcorn/2.2_UA50.042.jpg¢/alcorn/2.2_UA50.043.jpg¢/alcorn/2.2_UA50.044.jpg¢/alcorn/2.2_UA50.045.jpg¢/alcorn/2.2_UA50.046.jpg¢/alcorn/2.2_UA50.047.jpg¢/alcorn/2.2_UA50.048.jpg¢/alcorn/2.2_UA50.049.jpg¢/alcorn/2.2_UA50.050.jpg¢/alcorn/2.2_UA50.051.jpg¢/alcorn/2.2_UA50.052.jpg¢/alcorn/2.2_UA50.053.jpg¢/alcorn/2.2_UA50.054.jpg¢/alcorn/2.2_UA50.055.jpg¢/alcorn/2.2_UA50.056.jpg¢/alcorn/2.2_UA50.057.jpg¢/alcorn/2.2_UA50.058.jpg¢/alcorn/2.2_UA50.059.jpg¢/alcorn/2.2_UA50.060.jpg¢/alcorn/2.2_UA50.061.jpg¢/alcorn/2.2_UA50.062.jpg¢/alcorn/2.2_UA50.063.jpg¢/alcorn/2.2_UA50.064.jpg¢/alcorn/2.2_UA50.065.jpg¢/alcorn/2.2_UA50.066.jpg¢/alcorn/2.2_UA50.067.jpg¢/alcorn/2.2_UA50.068.jpg¢/alcorn/2.2_UA50.069.jpg¢/alcorn/2.2_UA50.070.jpg¢/alcorn/2.2_UA50.071.jpg¢/alcorn/2.2_UA50.072.jpg¢/alcorn/2.2_UA50.073.jpg¢/alcorn/2.2_UA50.074.jpg¢/alcorn/2.2_UA50.075.jpg¢/alcorn/2.2_UA50.076.jpg¢/alcorn/2.2_UA50.077.jpg¢/alcorn/2.2_UA50.078.jpg¢/alcorn/2.2_UA50.079.jpg¢/alcorn/2.2_UA50.080.jpg¢/alcorn/2.2_UA50.081.jpg¢/alcorn/2.2_UA50.082.jpg¢/alcorn/2.2_UA50.083.jpg¢/alcorn/2.2_UA50.084.jpg¢/alcorn/2.2_UA50.085.jpg¢/alcorn/2.2_UA50.086.jpg¢/alcorn/2.2_UA50.087.jpg¢/alcorn/2.2_UA50.088.jpg¢/alcorn/2.2_UA50.089.jpg¢/alcorn/2.2_UA50.090.jpg¢/alcorn/2.2_UA50.091.jpg¢/alcorn/2.2_UA50.092.jpg¢/alcorn/2.2_UA50.093.jpg¢/alcorn/2.2_UA50.094.jpg¢/alcorn/2.2_UA50.095.jpg¢/alcorn/2.2_UA50.096.jpg¢/alcorn/2.2_UA50.097.jpg¢/alcorn/2.2_UA50.098.jpg¢/alcorn/2.2_UA50.099.jpg¢/alcorn/2.2_UA50.100.jpg¢/alcorn/2.2_UA50.101.jpg¢/alcorn/2.2_UA50.102.jpg¢/alcorn/2.2_UA50.103.jpg¢/alcorn/2.2_UA50.104.jpg¢/alcorn/2.2_UA50.105.jpg¢/alcorn/2.2_UA50.106.jpg¢/alcorn/2.2_UA50.107.jpg¢/alcorn/2.2_UA50.108.jpg¢/alcorn/2.2_UA50.109.jpg¢/alcorn/2.2_UA50.110.jpg¢/alcorn/2.2_UA50.111.jpg¢/alcorn/2.2_UA50.112.jpg¢/alcorn/2.2_UA50.113 copia.jpg¢/alcorn/2.2_UA50.114 copia.jpg¢/alcorn/2.2_UA50.115 copia.jpg¢/alcorn/2.2_UA50.116 copia.jpg¢/alcorn/2.2_UA50.117 copia.jpg¢/alcorn/2.2_UA50.118 copia.jpg¢/alcorn/2.2_UA50.119 copia.jpg¢/alcorn/2.2_UA50.120 copia.jpg¢/alcorn/2.2_UA50.121 copia.jpg¢/alcorn/2.2_UA50.122 copia.jpg¢/alcorn/2.2_UA50.123 copia.jpg¢/alcorn/2.2_UA50.124 copia.jpg¢/alcorn/2.2_UA50.125 copia.jpg¢/alcorn/2.2_UA50.126 copia.jpg¢/alcorn/2.2_UA50.127 copia.jpg¢/alcorn/2.2_UA50.128 copia.jpg</isattach>"));
+		System.out
+				.println(checkExt("<isattach>/alcorn/2.2_UA50.001.jpg¢/alcorn/2.2_UA50.002.jpg¢/alcorn/2.2_UA50.003.jpg¢/alcorn/2.2_UA50.004.jpg¢/alcorn/2.2_UA50.005.jpg¢/alcorn/2.2_UA50.006.jpg¢/alcorn/2.2_UA50.007.jpg¢/alcorn/2.2_UA50.008.jpg¢/alcorn/2.2_UA50.009.jpg¢/alcorn/2.2_UA50.010.jpg¢/alcorn/2.2_UA50.011.jpg¢/alcorn/2.2_UA50.012.jpg¢/alcorn/2.2_UA50.013.jpg¢/alcorn/2.2_UA50.014.jpg¢/alcorn/2.2_UA50.015.jpg¢/alcorn/2.2_UA50.016.jpg¢/alcorn/2.2_UA50.017.jpg¢/alcorn/2.2_UA50.018.jpg¢/alcorn/2.2_UA50.019.jpg¢/alcorn/2.2_UA50.020.jpg¢/alcorn/2.2_UA50.021.jpg¢/alcorn/2.2_UA50.022.jpg¢/alcorn/2.2_UA50.023.jpg¢/alcorn/2.2_UA50.024.jpg¢/alcorn/2.2_UA50.025.jpg¢/alcorn/2.2_UA50.026.jpg¢/alcorn/2.2_UA50.027.jpg¢/alcorn/2.2_UA50.028.jpg¢/alcorn/2.2_UA50.029.jpg¢/alcorn/2.2_UA50.030.jpg¢/alcorn/2.2_UA50.031.jpg¢/alcorn/2.2_UA50.032.jpg¢/alcorn/2.2_UA50.033.jpg¢/alcorn/2.2_UA50.034.jpg¢/alcorn/2.2_UA50.035.jpg¢/alcorn/2.2_UA50.036.jpg¢/alcorn/2.2_UA50.037.jpg¢/alcorn/2.2_UA50.038.jpg¢/alcorn/2.2_UA50.039.jpg¢/alcorn/2.2_UA50.040.jpg¢/alcorn/2.2_UA50.041.jpg¢/alcorn/2.2_UA50.042.jpg¢/alcorn/2.2_UA50.043.jpg¢/alcorn/2.2_UA50.044.jpg¢/alcorn/2.2_UA50.045.jpg¢/alcorn/2.2_UA50.046.jpg¢/alcorn/2.2_UA50.047.jpg¢/alcorn/2.2_UA50.048.jpg¢/alcorn/2.2_UA50.049.jpg¢/alcorn/2.2_UA50.050.jpg¢/alcorn/2.2_UA50.051.jpg¢/alcorn/2.2_UA50.052.jpg¢/alcorn/2.2_UA50.053.jpg¢/alcorn/2.2_UA50.054.jpg¢/alcorn/2.2_UA50.055.jpg¢/alcorn/2.2_UA50.056.jpg¢/alcorn/2.2_UA50.057.jpg¢/alcorn/2.2_UA50.058.jpg¢/alcorn/2.2_UA50.059.jpg¢/alcorn/2.2_UA50.060.jpg¢/alcorn/2.2_UA50.061.jpg¢/alcorn/2.2_UA50.062.jpg¢/alcorn/2.2_UA50.063.jpg¢/alcorn/2.2_UA50.064.jpg¢/alcorn/2.2_UA50.065.jpg¢/alcorn/2.2_UA50.066.jpg¢/alcorn/2.2_UA50.067.jpg¢/alcorn/2.2_UA50.068.jpg¢/alcorn/2.2_UA50.069.jpg¢/alcorn/2.2_UA50.070.jpg¢/alcorn/2.2_UA50.071.jpg¢/alcorn/2.2_UA50.072.jpg¢/alcorn/2.2_UA50.073.jpg¢/alcorn/2.2_UA50.074.jpg¢/alcorn/2.2_UA50.075.jpg¢/alcorn/2.2_UA50.076.jpg¢/alcorn/2.2_UA50.077.jpg¢/alcorn/2.2_UA50.078.jpg¢/alcorn/2.2_UA50.079.jpg¢/alcorn/2.2_UA50.080.jpg¢/alcorn/2.2_UA50.081.jpg¢/alcorn/2.2_UA50.082.jpg¢/alcorn/2.2_UA50.083.jpg¢/alcorn/2.2_UA50.084.jpg¢/alcorn/2.2_UA50.085.jpg¢/alcorn/2.2_UA50.086.jpg¢/alcorn/2.2_UA50.087.jpg¢/alcorn/2.2_UA50.088.jpg¢/alcorn/2.2_UA50.089.jpg¢/alcorn/2.2_UA50.090.jpg¢/alcorn/2.2_UA50.091.jpg¢/alcorn/2.2_UA50.092.jpg¢/alcorn/2.2_UA50.093.jpg¢/alcorn/2.2_UA50.094.jpg¢/alcorn/2.2_UA50.095.jpg¢/alcorn/2.2_UA50.096.jpg¢/alcorn/2.2_UA50.097.jpg¢/alcorn/2.2_UA50.098.jpg¢/alcorn/2.2_UA50.099.jpg¢/alcorn/2.2_UA50.100.jpg¢/alcorn/2.2_UA50.101.jpg¢/alcorn/2.2_UA50.102.jpg¢/alcorn/2.2_UA50.103.jpg¢/alcorn/2.2_UA50.104.jpg¢/alcorn/2.2_UA50.105.jpg¢/alcorn/2.2_UA50.106.jpg¢/alcorn/2.2_UA50.107.jpg¢/alcorn/2.2_UA50.108.jpg¢/alcorn/2.2_UA50.109.jpg¢/alcorn/2.2_UA50.110.jpg¢/alcorn/2.2_UA50.111.jpg¢/alcorn/2.2_UA50.112.jpg¢/alcorn/2.2_UA50.113 copia.jpg¢/alcorn/2.2_UA50.114 copia.jpg¢/alcorn/2.2_UA50.115 copia.jpg¢/alcorn/2.2_UA50.116 copia.jpg¢/alcorn/2.2_UA50.117 copia.jpg¢/alcorn/2.2_UA50.118 copia.jpg¢/alcorn/2.2_UA50.119 copia.jpg¢/alcorn/2.2_UA50.120 copia.jpg¢/alcorn/2.2_UA50.121 copia.jpg¢/alcorn/2.2_UA50.122 copia.jpg¢/alcorn/2.2_UA50.123 copia.jpg¢/alcorn/2.2_UA50.124 copia.jpg¢/alcorn/2.2_UA50.125 copia.jpg¢/alcorn/2.2_UA50.126 copia.jpg¢/alcorn/2.2_UA50.127 copia.jpg¢/alcorn/2.2_UA50.128 copia.jpg</isattach>"));
+	}
+
+	public static String stripPunctuationAdv(String str, char separator) {
+		str = str.replaceAll("/text\\(\\)", "");
+		str = str.replaceAll("/", "_");
+		str = str.replaceAll("\\[", "_");
+		str = str.replaceAll("\\]", "_");
+		str = str.replaceAll("=", "_");
+		str = str.replaceAll("'", "");
+		str = str.replaceAll("@", "");
+		str = str.replaceAll("__*", "_");
+		if (str.startsWith("_")) {
+			str = str.substring(1);
+		}
+
+		StringBuilder sb = new StringBuilder();
+		char[] cs = str.toCharArray();
+		for (int i = 0; i < cs.length; i++) {
+			if (Character.isLetterOrDigit(cs[i]) || cs[i] == '.' || cs[i] == '_' || cs[i] == separator) {
+				sb.append(cs[i]);
+			} else {
+				if (sb.length() > 1 && sb.charAt(sb.length() - 1) != separator) {
+					if (Character.isSpaceChar(cs[i])) {
+						sb.append(separator);
+					}
+				}
+			}
+		}
+		return removeAccents(sb.toString().replaceAll("\\.", ""));
+	}
+
+	public static String removeAccents(String text) {
+		return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}
 
 	static public boolean checkExt(String fileName) {
