@@ -239,7 +239,7 @@ public class ConfigurationXMLReader {
 
 			String[] levels = deep.split("_");
 			String hierFather = "";
-			System.out.println("ConfigurationXMLReader.getElementFromDeep() deep " + deep);
+//			System.out.println("ConfigurationXMLReader.getElementFromDeep() deep " + deep);
 			int indexLimit = 1;
 			for (int i = 0; i < indexLimit; i++) {
 				String deepFather = levels[i];
@@ -248,15 +248,15 @@ public class ConfigurationXMLReader {
 				} else {
 					hierFather += "_" + deepFather;
 				}
-				System.out.println("ConfigurationXMLReader.getElementFromDeep() hierFather " + hierFather);
+//				System.out.println("ConfigurationXMLReader.getElementFromDeep() hierFather " + hierFather);
 				element = (Element) hashMapObj.get(hierFather);
-				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getName() " + element.getName());
-				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getPrefix() " + element.getPrefix());
-				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getText() " + element.getText());
-				System.out.println("ConfigurationXMLReader.getElementFromDeep() input_type " + element.getInput_type());
+//				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getName() " + element.getName());
+//				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getPrefix() " + element.getPrefix());
+//				System.out.println("ConfigurationXMLReader.getElementFromDeep() element.getText() " + element.getText());
+//				System.out.println("ConfigurationXMLReader.getElementFromDeep() input_type " + element.getInput_type());
 				if (element.getText() == null) {
 					if (element.getPrefix() == null) {
-						System.out.println("NON c'è il testo e prefix rilancio");
+//						System.out.println("NON c'è il testo e prefix rilancio");
 						indexLimit++;
 					}
 				}

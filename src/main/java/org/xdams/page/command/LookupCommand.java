@@ -54,9 +54,9 @@ public class LookupCommand {
 			QueryResult qr = null;
 			String startPage = "";
 			String keyCountQuery = MyRequest.getParameter("inputPerPage", "10", parameterMap);
-			System.out.println("keyCountQuery keyCountQuery " + keyCountQuery);
-			System.out.println("ENTRATO QUI " + (String) modelMap.get("selId"));
-			System.out.println("ENTRATO selId " + MyRequest.getParameter("selId", parameterMap));
+//			System.out.println("keyCountQuery keyCountQuery " + keyCountQuery);
+//			System.out.println("ENTRATO QUI " + (String) modelMap.get("selId"));
+//			System.out.println("ENTRATO selId " + MyRequest.getParameter("selId", parameterMap));
 
 			if (!(MyRequest.getParameter("selId", parameterMap).trim()).equals("")) {
 				qr = xwconn.getQRFromSelId(MyRequest.getParameter("selId", parameterMap));

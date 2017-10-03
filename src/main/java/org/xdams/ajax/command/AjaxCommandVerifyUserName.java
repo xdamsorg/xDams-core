@@ -66,7 +66,7 @@ public class AjaxCommandVerifyUserName {
 				ajaxBean.setStrXmlOutput("{\"result\":\"exist\"}");
 			}else{
 				String queryUser = "([XML,/user/@id]=\"" + username + "\") AND ([XML,/user/@account]=\"" + account + "\")";
-				System.out.println("AjaxCommandVerifyUserName.execute(): " + queryUser);
+//				System.out.println("AjaxCommandVerifyUserName.execute(): " + queryUser);
 				QueryResult queryResult = xwconn.getQRfromPhrase(queryUser);
 				if (queryResult.elements != 0) {
 					ajaxBean.setStrXmlOutput("{\"result\":\"exist\"}");

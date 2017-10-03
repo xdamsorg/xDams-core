@@ -149,7 +149,7 @@ public class xDamsAdminController {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(bundleMap);
 		String globalLangOption = "var globalOption = " + json;
-		System.out.println(json);
+//		System.out.println(json);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", MediaType.APPLICATION_JSON.toString());
 		return new ResponseEntity<String>(globalLangOption, responseHeaders, HttpStatus.CREATED);
@@ -166,7 +166,7 @@ public class xDamsAdminController {
 	public String messageLang(HttpServletRequest request) {
 		Locale locale = RequestContextUtils.getLocale(request);
 		ResourceBundle bundle = ResourceBundle.getBundle("xdams_messages", locale);
-		System.out.println(bundle);
+//		System.out.println(bundle);
 		return null;
 	}
 

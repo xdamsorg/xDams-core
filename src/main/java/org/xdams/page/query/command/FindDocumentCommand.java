@@ -69,7 +69,7 @@ public class FindDocumentCommand {
 						int intDoc = Integer.parseInt(StringUtils.substringAfter(MyRequest.getParameter("qlphrase", parameterMap).toLowerCase(), "notinhier:"));
 						QueryResult queryResult = xwconn.getQRFromHier(intDoc, true);
 						laFrase += " NOT ([?SEL]=" + queryResult.id + ") AND ([UD,/xw/@UdType/]=\"" + workFlowBean.getArchive().getPne() + "\")";
-						System.out.println("FindDocumentCommand.execute() laFrase laFrase laFrase " + laFrase);
+//						System.out.println("FindDocumentCommand.execute() laFrase laFrase laFrase " + laFrase);
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -119,11 +119,11 @@ public class FindDocumentCommand {
 				// System.out.println("FindDocumentCommand.execute() laFrase " + laFrase);
 				// qr = xwconn.getQRfromPhrase(laFrase, sorting);// find(xwconn.connection, theArch, laFrase, sorting, it.highwaytech.broker.ServerCommand.find_SORT, -2, 0, null);
 				// qr = xwconn.find(xwconn.connection,xwconn,laFrase,sorting,it.highwaytech.broker.ServerCommand.find_SORT,-3,0,null);
-				System.out.println("FindDocumentCommand.execute() laFrase " + laFrase);
-				System.out.println("FindDocumentCommand.execute() sorting " + sorting);
+//				System.out.println("FindDocumentCommand.execute() laFrase " + laFrase);
+//				System.out.println("FindDocumentCommand.execute() sorting " + sorting);
 				
 				qr = xwconn.selectQR(laFrase, sorting, it.highwaytech.broker.ServerCommand.find_SORT, -7);
-				System.out.println("FindDocumentCommand.execute() qr " + qr.id);
+//				System.out.println("FindDocumentCommand.execute() qr " + qr.id);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

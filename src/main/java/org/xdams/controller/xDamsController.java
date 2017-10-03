@@ -224,7 +224,7 @@ public class xDamsController {
 		common(confBean, userBean, archive, modelMap, request, response);
 		HierBrowserPageCommand hierBrowserPageCommand = new HierBrowserPageCommand(request.getParameterMap(), modelMap);
 		hierBrowserPageCommand.execute();
-		System.out.println("xDamsController.queryPage() pageName: " + pageName);
+//		System.out.println("xDamsController.queryPage() pageName: " + pageName);
 		// System.out.println("xDamsController.queryPage() workFlowBean: " + workFlowBean);
 		return "hier/" + pageName;
 	}

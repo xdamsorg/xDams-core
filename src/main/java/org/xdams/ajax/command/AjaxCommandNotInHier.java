@@ -63,7 +63,7 @@ public class AjaxCommandNotInHier {
 			confBean = editingManager.rewriteMultipleConf(confControl);
 			XMLBuilder xmlBuilder = confBean.getTheXMLConfQuery();
 			String qlphrase = xmlBuilder.valoreNodo("/root/access_method/query[@ajaxCheck='notinhier']/text()");
-			System.out.println("AjaxCommandNotInHier.execute() qlphrase " + qlphrase);
+//			System.out.println("AjaxCommandNotInHier.execute() qlphrase " + qlphrase);
 			if (!qlphrase.trim().equals("")) {
 				int intDoc = Integer.parseInt(StringUtils.substringAfter(qlphrase.toLowerCase(), "notinhier:"));
 				QueryResult queryResult = xwconn.getQRFromHier(intDoc, true);

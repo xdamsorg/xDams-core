@@ -124,13 +124,13 @@ public class AdvFindReplace {
 						String docXML = xwconn.getSingleXMLFromNumDoc(docCorrente);
 						XMLBuilder xmlBuilder = new XMLBuilder(docXML, "ISO-8859-1");
 						String findWhat = MyRequest.getParameter("findWhat", parameterMap);
-						System.out.println(".execute() findWhat " + findWhat);
+//						System.out.println(".execute() findWhat " + findWhat);
 						final String replaceWith = MyRequest.getParameter("replaceWith", parameterMap);
-						System.out.println(".execute() replaceWith " + replaceWith);
+//						System.out.println(".execute() replaceWith " + replaceWith);
 						final String caseSensitive = MyRequest.getParameter("caseSensitive", parameterMap);
-						System.out.println(".execute() caseSensitive " + caseSensitive);
+//						System.out.println(".execute() caseSensitive " + caseSensitive);
 						final String whole_word = MyRequest.getParameter("whole_word", parameterMap);
-						System.out.println(".execute() whole_word " + whole_word);
+//						System.out.println(".execute() whole_word " + whole_word);
 						String regexStr = MyRequest.getParameter("regexStr", parameterMap);
 						final Replacer replacer = new Replacer(findWhat);
 						if (("on").equals(whole_word)) {

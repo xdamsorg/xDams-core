@@ -71,7 +71,7 @@ public class ModifyAuther {
 			XMLBuilder theXMLconf = confBean.getTheXMLConfEditing();
 			if (!codeToFind.equals("") && makeAction.equals("")) {
 				Map<String, List<ElementToFindBean>> hashDbToFind = buildElementToFindBean.buildElementToFindBean(theXMLconf, workFlowBean.getAlias());
-				System.out.println("ModifyAuther.execute() (hashDbToFind) " + (hashDbToFind));
+//				System.out.println("ModifyAuther.execute() (hashDbToFind) " + (hashDbToFind));
 				int contaArchProc = 0;
 				String archivioCorrente = "";
 				QueryResult qr = null;
@@ -89,16 +89,16 @@ public class ModifyAuther {
 						for (int a = 0; a < arrElmToFind.size(); a++) {
 							ModifyAutherBean autherBean = new ModifyAutherBean();
 							ElementToFindBean elementToFindBean = (ElementToFindBean) arrElmToFind.get(a);
-							System.out.println("ModifyAuther.execute() elementToFindBean.getStrQuery()" + elementToFindBean.getStrQuery() + "AAAA");
+//							System.out.println("ModifyAuther.execute() elementToFindBean.getStrQuery()" + elementToFindBean.getStrQuery() + "AAAA");
 							if (elementToFindBean.getStrQuery() != null && !elementToFindBean.getStrQuery().equals("null")) {
 								String query = "(" + elementToFindBean.getStrQuery() + "=" + codeToFind + ")";
-								System.out.println("query " + query + "<br>");
-								System.out.println("archivioCorrente " + archivioCorrente + "<br>");
+//								System.out.println("query " + query + "<br>");
+//								System.out.println("archivioCorrente " + archivioCorrente + "<br>");
 								XWConnection xwconn = null;
 								try {
 									xwconn = connectionManager.getConnection(archiveBean);
 									qr = xwconn.getQRfromPhrase(query);
-									System.out.println("ModifyAuther.execute() qr " + qr.elements);
+//									System.out.println("ModifyAuther.execute() qr " + qr.elements);
 								} catch (Exception e) {
 									// throw new Exception("ERRORE NELLA CONNESSIONE CON IL DATABASE " + archiviBean.getTheArch());
 								} finally {

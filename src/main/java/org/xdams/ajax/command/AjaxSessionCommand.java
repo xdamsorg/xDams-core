@@ -57,11 +57,11 @@ public class AjaxSessionCommand {
 						managingBean.removePhysDoc(aReq.getParameter("physDoc"));
 					}
 				}
-				System.out.println("AjaxSessionCommand.execute()" + aReq.getParameter("action"));
-				System.out.println("AjaxSessionCommand.execute()" + managingBean.getMultipleChoise() + " managingBean.getMultipleChoise()");
+//				System.out.println("AjaxSessionCommand.execute()" + aReq.getParameter("action"));
+//				System.out.println("AjaxSessionCommand.execute()" + managingBean.getMultipleChoise() + " managingBean.getMultipleChoise()");
 				if (aReq.getParameter("action").equals("switch")) {
-					System.out.println("AjaxSessionCommand.execute()1" + aReq.getParameter("action"));
-					System.out.println("AjaxSessionCommand.execute()2" + managingBean.getMultipleChoise() + " managingBean.getMultipleChoise()");
+//					System.out.println("AjaxSessionCommand.execute()1" + aReq.getParameter("action"));
+//					System.out.println("AjaxSessionCommand.execute()2" + managingBean.getMultipleChoise() + " managingBean.getMultipleChoise()");
 					if ((managingBean.getMultipleChoise()).equals("")) {
 						managingBean.setMultipleChoise("none");
 					} else {

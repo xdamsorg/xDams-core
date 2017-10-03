@@ -92,7 +92,7 @@ public class AjaxCutPasteCopyCommand {
 				try {
 					managingBean.setCutPhysDoc(Integer.parseInt(physDoc));
 					String titoloDoc = xwconn.getTitleFromNumDoc(Integer.parseInt(physDoc));
-					System.out.println("AjaxCutPasteCopyCommand.execute() titoloDoc " + titoloDoc);
+//					System.out.println("AjaxCutPasteCopyCommand.execute() titoloDoc " + titoloDoc);
 					managingBean.setCutTitle(titoloDoc);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -221,7 +221,7 @@ public class AjaxCutPasteCopyCommand {
 				} catch (Exception e) {
 					toPaste = Integer.parseInt(physDoc);
 				}
-				System.out.println("AjaxCutPasteCopyCommand.execute() " + newXML);
+//				System.out.println("AjaxCutPasteCopyCommand.execute() " + newXML);
 				int esitoAzione = xwconn.docRelInsert(xwconn.connection, xwconn.getTheDb(), it.highwaytech.broker.ServerCommand.navigarel_MAGGIOREMINORE, recordNum, toPaste);
 				ajaxBean.setStrXmlOutput("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<succes>reloadLocation()</succes>");
 				// elemento in cui spostare il documento tagliato physDocToPaste

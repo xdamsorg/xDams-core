@@ -58,10 +58,10 @@ public class HierBrowserPageCommand {
 				confBean = editingManager.rewriteMultipleConf(confControl);
 			}
 			if (modelMap.get("pageName") != null && modelMap.get("pageName").equals("tree")) {
-				System.out.println("HierBrowserPageCommand.execute()");
+//				System.out.println("HierBrowserPageCommand.execute()");
 				XMLBuilder builder = confBean.getTheXMLConfTitle();
 				titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='hierBrowser']/titleRole/text()", false);
-				System.out.println("HierBrowserPageCommand.execute()" + titleRole);
+//				System.out.println("HierBrowserPageCommand.execute()" + titleRole);
 				try {
 					if (!titleRole.trim().equals("")) {
 						xwconn.setTitleRole(titleRole);
