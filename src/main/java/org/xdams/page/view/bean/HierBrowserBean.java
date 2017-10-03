@@ -1,5 +1,7 @@
 package org.xdams.page.view.bean;
 
+import java.util.Arrays;
+
 import it.highwaytech.db.HierPath;
 
 import org.xdams.xml.builder.XMLBuilder;
@@ -134,6 +136,12 @@ public class HierBrowserBean {
 
 	public void setLastChild(boolean lastChild) {
 		this.lastChild = lastChild;
+	}
+
+	@Override
+	public String toString() {
+		return "HierBrowserBean [hier=" + hier + ", docNumber=" + docNumber + ", depth=" + depth + ", hasSons=" + hasSons + ", firstDocNumber=" + firstDocNumber + ", lastDocNumber=" + lastDocNumber + ", opened=" + opened + ", title=" + title + ", lastChild=" + lastChild + ", fatherLastChild="
+				+ fatherLastChild + ", fathersLastChild=" + Arrays.toString(fathersLastChild) + ", hierPath=" + hierPath + ", xmlBuilder=" + xmlBuilder + "]";
 	}
 
 }

@@ -132,9 +132,7 @@ public class HierBrowserPageCommand {
 					// System.out.println("HierBrowserPageCommand.execute() title docNumber aa "+theTitle.docNumber(xwconn.getTheDb(),
 					// xwconn.getServerConnection(xwconn.connection),
 					// theTitle.depth()));
-					// System.out.println("HierBrowserPageCommand.execute() title docNumber bb "+theTitle.docNumber());
-					// System.out.println("HierBrowserPageCommand.execute() title "+title);
-					// System.out.println("HierBrowserPageCommand.execute() title "+titArch.getTitle());
+
 					String title = titArch.getTitle();
 					hierBrowserBean.setTitle(title);
 					boolean lastChild = theTitle.hasBrothers(theTitle.depth());
@@ -150,6 +148,11 @@ public class HierBrowserPageCommand {
 						}
 						hierBrowserBean.setFathersLastChild(fathers);
 					}
+					
+//					 System.out.println("HierBrowserPageCommand.execute() hierBrowserBean.getHier    "+hierBrowserBean.getHier());
+// 					 System.out.println("HierBrowserPageCommand.execute() hierBrowserBean.getTitle   "+hierBrowserBean.getTitle());
+					
+					
 					treeBean.getVectHierBrowserBean().addElement(hierBrowserBean);
 
 				}
