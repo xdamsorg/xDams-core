@@ -43,6 +43,7 @@ import org.xdams.security.UserDetails;
 import org.xdams.security.load.LoadUserManager;
 import org.xdams.user.access.ServiceUser;
 import org.xdams.user.bean.UserBean;
+import org.xdams.utility.CommonUtils;
 import org.xdams.workflow.bean.WorkFlowBean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -157,7 +158,7 @@ public class xDamsAdminController {
 	@RequestMapping(value = "/admin/createMessage", method = RequestMethod.GET, produces = "text/html")
 	public @ResponseBody
 	String createMessage(HttpServletRequest request) {
-		return stripPunctuation(request.getParameter("messageVal"), '_');
+		return CommonUtils.stripPunctuationAdv(request.getParameter("messageVal"), '_');
 	}
 
 	@RequestMapping(value = "/message_rest", method = RequestMethod.GET, produces = { "application/json" })
@@ -169,38 +170,7 @@ public class xDamsAdminController {
 		return null;
 	}
 
-	public String stripPunctuation(String str, char separator) {
-		str = str.replaceAll("/text\\(\\)", "");
-		str = str.replaceAll("/", "_");
-		str = str.replaceAll("\\[", "_");
-		str = str.replaceAll("\\]", "_");
-		str = str.replaceAll("=", "_");
-		str = str.replaceAll("'", "");
-		str = str.replaceAll("@", "");
-		str = str.replaceAll("__*", "_");
-		if (str.startsWith("_")) {
-			str = str.substring(1);
-		}
 
-		StringBuilder sb = new StringBuilder();
-		char[] cs = str.toCharArray();
-		for (int i = 0; i < cs.length; i++) {
-			if (Character.isLetterOrDigit(cs[i]) || cs[i] == '.' || cs[i] == '_' || cs[i] == separator) {
-				sb.append(cs[i]);
-			} else {
-				if (sb.length() > 1 && sb.charAt(sb.length() - 1) != separator) {
-					if (Character.isSpaceChar(cs[i])) {
-						sb.append(separator);
-					}
-				}
-			}
-		}
-		return removeAccents(sb.toString().replaceAll("\\.", ""));
-	}
-
-	public static String removeAccents(String text) {
-		return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-	}
 
 	@RequestMapping(value = "/admin/{archive}/exportMenu", method = RequestMethod.GET, produces = "text/html")
 	public String consoleMenu(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
