@@ -166,7 +166,7 @@
 								</fo:table-body>
 							</fo:table>
 							<!--         DESCRIZIONE            -->
-							<xsl:if test="./cpfDescription/description/*">
+							<xsl:if test="./cpfDescription/description/existDates/date or ./cpfDescription/description/existDates/dateRange or ./cpfDescription/description/biogHist/p or ./cpfDescription/description/places/place or ./cpfDescription/description/legalStatus or ./cpfDescription/description/functions/p or ./cpfDescription/description/mandates/p or ./cpfDescription/description/structureOrGenealogy/p or ./cpfDescription/description/generalContext/p">
 								<fo:block font-size="9pt" font-weight="bold" margin-top="20pt" text-align="center">DESCRIZIONE</fo:block>
 								<fo:table table-layout="fixed" width="18cm">
 									<fo:table-column column-width="6cm"/>
