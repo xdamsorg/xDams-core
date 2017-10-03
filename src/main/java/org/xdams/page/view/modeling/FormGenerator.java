@@ -1,9 +1,3 @@
-/*
- * Created on 30-mag-2005
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 package org.xdams.page.view.modeling;
 
 import java.io.IOException;
@@ -18,9 +12,6 @@ import javax.xml.transform.TransformerException;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.xdams.conf.master.ConfBean;
-import org.xdams.page.view.bean.EditingBean;
-import org.xdams.user.bean.UserBean;
 import org.xdams.utility.AdvancedUtility;
 import org.xdams.utility.resource.ConfManager;
 import org.xdams.utility.xw.query.NewPreparedXwQuery;
@@ -1823,7 +1814,7 @@ public class FormGenerator {
 		javascriptAction += aggiungiAzione + "\",\"Attenzione:\\nnon e stato possibile reperire le informazioni relative all\\\'utente: aprire nuovamente la maschera di modifica\")</script>";
 		out.println(generateInput("hidden", aggiungiAzione, "", "", "", theHTMLextra));
 		out.println(javascriptAction);
- 		out.println("</td></tr>");
+		out.println("</td></tr>");
 	}
 
 	private void generateCustomDataMulti(JspWriter out, String nodoCorrente, boolean noHTML, String xpathCorrente, String theType, int indexVal) throws Exception {
