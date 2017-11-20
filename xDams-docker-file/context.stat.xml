@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE context SYSTEM "http://www.3di.it/extraway/context_20030724.dtd">
+<context checksum="">
+  <object id="struct" name="3D Informatica" version="000.000" date="20150724"/>
+  <object id="classif" name="" version="001.000" date="20030724"/>
+  <object id="gestman" name="" version="001.000" date="20030724"/>
+  <object id="techref" name="ExtraWay Technical Reference" version="000.000.004" date="20030814"/>
+  <object id="namespace" name="http://www.3di.it/ns/xw-200303121136" version="" date="20020312"/>
+</context>

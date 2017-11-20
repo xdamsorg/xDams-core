@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+    
+<!-- 
+eXtraWay XML DB - DMS - Record Management and Information Retrieval System
+
+Original code by
+
+Bazzigotti Franco (franco.bazzigotti[at]gmail.com)
+Gelli Mauro (gellimauro[at]gmail.com)
+
+Copyright 2005-2012 by 3D Informatica
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Wherever third party code has been used, credit has been given in the code's
+comments.
+
+Please contact us for any question at:
+
+3D Informatica
+Via Speranza 35 
+40068, San Lazzaro di Savena (BOLOGNA)
+Italy
+
+Web Site http://www.3di.it
+
+Email to info[at]3di.it
+
+eXtraWay is released under the GPLv2
+-->
+  <web-app>
+    <display-name>Applicazioni eXtraWay</display-name>
+    <description>Applicazioni eXtraWay</description>
+
+	  <listener>
+	    <listener-class>it.highwaytech.broker.contextListener.ContextListener</listener-class>
+	  </listener>
+
+       <listener>
+        <listener-class>it.highwaytech.apps.generic.tomcat.listeners.ContextListener</listener-class>
+       </listener>
+       
+    <!-- protezione dei tools -->
+    <!--
+    <security-constraint>
+      <display-name>Extraway Tools - Area protetta</display-name>
+      <web-resource-collection>
+        <web-resource-name>Extraway tools</web-resource-name>
+        <url-pattern>/engine/*</url-pattern>
+      </web-resource-collection>
+      <web-resource-collection>
+        <web-resource-name>Viewer</web-resource-name> 
+        <url-pattern>/application/generic/engine/*</url-pattern> 
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>admin</role-name> 
+      </auth-constraint>
+    </security-constraint>
+     -->
+    <!-- Security roles referenced by this web application -->
+    <!--
+    <login-config>
+      <auth-method>BASIC</auth-method>
+      <realm-name>Extraway - Area protetta</realm-name>
+    </login-config>     
+    <security-role>
+      <description>Generico accesso amministrativo</description>
+      <role-name>admin</role-name>
+    </security-role>
+    -->
+    
+    
+    
+  </web-app>
+  
