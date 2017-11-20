@@ -182,7 +182,7 @@
 										String urlFoto = "";
 										if (ExpressionEvaluationUtils.isExpressionLanguage(prefixFoto)) {
 											urlFoto = ExpressionEvaluationUtils.evaluate(prefixFoto, String.class, pageContext)+strHrefFoto;
-										}else if(strHrefFoto.contains("http://")){
+										}else if(strHrefFoto.contains("https://") || strHrefFoto.contains("http://")){
 											urlFoto = strHrefFoto;	
 										}else{
 											urlFoto = prefixFoto+strHrefFoto;	 
