@@ -139,22 +139,29 @@ jQuery(document).ready(function(){
  	 			 	 			List<String> outputHourField = (List<String>)request.getAttribute("outputHourField");
  	 			 	 			List<String> outputDataField = (List<String>)request.getAttribute("outputDataField");
  	 			 	 			List<String> outputSortField = (List<String>)request.getAttribute("outputSortField");
+ 	 			 	 			
+	 			 	 			for (Entry<String, List<Map<String, String>>> entry : positionMap.entrySet()) {
+	 	 							String positionDiv = entry.getKey();
+	 	 							List<Map<String, String>> listOutput = entry.getValue();
+	 	 							if(positionDiv.equals("") || positionDiv.equals("center")){
+	 	 								for (int z = 0; z < listOutput.size() ; z++) {
+	 	 									Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
+	 	 									for (Entry<String, String> entryLabel : hashLabel.entrySet()) {
+	 	 										String attrLabel = entryLabel.getKey();
+	 	 										String outputField = entryLabel.getValue();
+				 	 							%>
+													<div class="ml20" ><label><%=attrLabel%></label></div>
+													<div class="ml20"><%=outputField%></div>
+												<%
+											}
+										}
+									}
+ 	 							} 
+ 	 			 	 			
  	 			 	 			for (Entry<String, List<Map<String, String>>> entry : positionMap.entrySet()) {
  	 							String positionDiv = entry.getKey();
  	 							List<Map<String, String>> listOutput = entry.getValue();
- 	 							if(positionDiv.equals("") || positionDiv.equals("center")){
- 	 								for (int z = 0; z < listOutput.size() ; z++) {
- 	 									Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
- 	 									for (Entry<String, String> entryLabel : hashLabel.entrySet()) {
- 	 										String attrLabel = entryLabel.getKey();
- 	 										String outputField = entryLabel.getValue();
- 	 			%>
-									<div class="ml20" ><label><%=attrLabel%></label></div>
-									<div class="ml20"><%=outputField%></div>
-								<%
-									}
-													}
-												}else if(positionDiv.equals("sx") || positionDiv.equals("left")){
+ 	 							if(positionDiv.equals("sx") || positionDiv.equals("left")){
 								%><div class="col_sx"  ><%
 									for (int z = 0; z < listOutput.size() ; z++) {
 														Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
@@ -185,7 +192,7 @@ jQuery(document).ready(function(){
 									}
 											}
 								%>
-				</div>
+				</div>				
 				<div class="fl">
 					<%
 						for (int z = 0; z < outputHourField.size() ; z++) {
