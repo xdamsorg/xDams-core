@@ -43,6 +43,12 @@ public class LoadUploadBean {
 						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
 						commandLine.setUploadPath(strSubstitutor.replace(commandLine.getUploadPath()));
 					}
+					if (commandLine.getUploadTempPath().toLowerCase().contains("webapp")) {
+						Map<String, String> valuesMap = new HashMap<String, String>();
+						valuesMap.put("webApp", (String) modelMap.get("realPath"));
+						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
+						commandLine.setUploadTempPath(strSubstitutor.replace(commandLine.getUploadTempPath()));
+					}
 					commandLine.setUploadNameDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command[" + (j + 1) + "]/uploadNameDir/text()"));
 					uploadBean.getCommandLine().add(commandLine);
 				}
