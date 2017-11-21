@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple jQuery image viewing plugin.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, jQuery plugin, image viewing, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Viewer</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/viewer.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <a href="#n" onclick="aprivisualizzatore()">apri</a>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-6">
+        <div class="docs-galley">
+          <ul class="docs-pictures clearfix">
+            <li class="nascosto"><img id="primo" data-original="assets/img/emma-watson-1.jpg" src="assets/img/thumbnails/emma-watson-1.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-2.jpg" src="assets/img/thumbnails/emma-watson-2.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-3.jpg" src="assets/img/thumbnails/emma-watson-3.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-4.jpg" src="assets/img/thumbnails/emma-watson-4.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-5.jpg" src="assets/img/thumbnails/emma-watson-5.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-6.jpg" src="assets/img/thumbnails/emma-watson-6.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-7.jpg" src="assets/img/thumbnails/emma-watson-7.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-8.jpg" src="assets/img/thumbnails/emma-watson-8.jpg"></li>
+            <li class="nascosto"><img data-original="assets/img/emma-watson-9.jpg" src="assets/img/thumbnails/emma-watson-9.jpg"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="dist/viewer.js"></script>
+  <script src="js/main.js"></script>
+<script>
+function aprivisualizzatore(){
+	$("#primo").click();
+}
+</script>
+</body>
+</html>
