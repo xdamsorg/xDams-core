@@ -85,6 +85,20 @@ try{
 	parent.evidenziaDocumento('<%=docNumber %>');
 }catch(e){}
 
+var counter = 0;
+$("div[class='campoFoto']").each(function(index) {
+	var resource = $(this).find("a").attr("href");
+	var resourceText = $(this).find("a").text();
+	if(resource.match(/\.(jpeg|jpg|gif|png)$/) != null){
+		$(this).find("a").remove();
+		$(this).append("<a target=\"same\" href=\"${contextPath}/custom/${workFlowBean.archive.alias}/page.html?physDoc=${viewBean.physDoc}&mediaToView="+counter+"&pageName=custom/viewImage&confControl=media\"><img width=\"170px\" src=\""+resource+"\"/></a>");
+		counter++;
+	}
+	else{
+		$(this).find("a").remove();
+		$(this).append("<a href="+resource+" class=\"v_menu\" target=\"_blank\">"+resourceText+"</a>");
+	}
+});
 
 });
 function evidenziaFromLeft(){
