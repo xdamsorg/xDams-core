@@ -3,7 +3,7 @@
 ## xDams Platform
 
 xDams è una piattaforma di gestione documentale XML interamente web-based che permette di conservare, organizzare, condividere e valorizzare i patrimoni archivistici attraverso l'applicazione di modelli dati elaborati sulla base di standard di descrizione archivistica nazionali ed internazionali. L'utilizzo del formato XML garantisce interoperabilità e condivisione delle risorse.
-E' attualmente disponbile nella versione server **3.1.6**
+E' attualmente disponbile nella versione server **3.1.7**
 
 
 ## Requisiti hardware minimi
