@@ -16,7 +16,7 @@
     <commandLine>
     </commandLine>
     <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
-    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <uploadTempPath>${webApp}attach/temp</uploadTempPath>
     <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
     <uploadMode>filesystem</uploadMode>
     <!-- <uploadPath> definisce il path della directory finale -->
@@ -28,7 +28,7 @@
     <!-- <commandLine> gestisce il comando esterno al server ImageMagic/IrfanView -->
     <commandLine>D:\Program Files (x86)\ImageMagick-6.7.6-Q16\convert -size 85x85 ${imgIn} -resize 85x85 +profile '*' ${imgOut}</commandLine>
     <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
-    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <uploadTempPath>${webApp}attach/temp</uploadTempPath>
     <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
     <uploadMode>filesystem</uploadMode>
     <!-- <uploadPath> definisce il path della directory finale -->
@@ -40,7 +40,7 @@
     <!-- <commandLine> gestisce il comando esterno al server ImageMagic/IrfanView -->
     <commandLine>D:\Program Files (x86)\ImageMagick-6.7.6-Q16\convert -size 150x150 ${imgIn} -resize 150x150 +profile '*' ${imgOut}</commandLine>
     <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
-    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <uploadTempPath>${webApp}attach/temp</uploadTempPath>
     <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
     <uploadMode>filesystem</uploadMode>
     <!-- <uploadPath> definisce il path della directory finale -->
@@ -62,7 +62,7 @@
   <commandList>
    <command>
     <!-- <uploadTempPath> definisce la directory di appoggio dove verrà fatto il primo upload, la dir verrà utilizzata da <commandLine> per eseguire il comando -->
-    <uploadTempPath>D:\_APPOGGIO_</uploadTempPath>
+    <uploadTempPath>${webApp}attach/temp</uploadTempPath>
     <!-- <uploadMode> definisce la tipologia di upload, se filesystem o ftp (TODO) -->
     <uploadMode>filesystem</uploadMode>
     <!-- <uploadPath> definisce il path della directory finale ${webApp} per inserirlo parallelo a resources -->
@@ -75,6 +75,6 @@
  <upload type="associate">
   <!-- dentro editing per attivare inserire mode="associateSimple" type="custom" id="associate" externalPath="/c/@id" -->
   <!-- associatePathDir root per la lettura -->
-  <associatePathDir>D:\_APPOGGIO_</associatePathDir>
+  <associatePathDir>${webApp}attach</associatePathDir>
  </upload>
 </root>
