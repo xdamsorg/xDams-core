@@ -2,12 +2,16 @@
 
 # CREA IMMAGINE
 # docker build -t="regesta/xdams" .
+
 # CREA CONTAINER
 # docker run -dt --name xdams -p 8080:8080 regesta/xdams
+
 # ACCEDI A CONTAINER
 # docker exec -it xdams bash
+
 # START CONTAINER
 # docker start xdams
+
 # STOP CONTAINER
 # docker stop xdams
 
@@ -75,6 +79,7 @@ RUN update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_15
 RUN wget http://it.apache.contactlab.it/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.zip
 RUN unzip apache-tomcat-8.5.23.zip
 RUN mv /apache-tomcat-8.5.23 /usr/local
+RUN echo "<meta http-equiv='refresh' content='0;URL=xDams'>" >> /usr/local/apache-tomcat-8.5.23/webapps/ROOT/index.html
 RUN mkdir /usr/local/apache-tomcat-8.5.23/conf/Catalina
 RUN mkdir /usr/local/apache-tomcat-8.5.23/conf/Catalina/localhost
 RUN echo "<Context path='/xDams' docBase='/home/tomcat/apps/xDams'/>" >> /usr/local/apache-tomcat-8.5.23/conf/Catalina/localhost/xDams.xml
