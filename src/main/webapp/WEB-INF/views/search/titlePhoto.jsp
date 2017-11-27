@@ -264,7 +264,8 @@ if(skipNext){continue;}
 	</ul> 	
 	 <ul class="btThumbOn">
 		<li><a href="${contextPath}/hier/${workFlowBean.archive.alias}/hierBrowser.html?docToggle=<%=physDoc %>&amp;docStart=<%=physDoc %>" title="<spring:message code="vedi_gerarchia" text="vedi gerarchia"/>"><img src="${frontUrl}/img/titlePhoto/btGerarchia.jpg" /></a></li>
-		<li><a href="#n" title="<spring:message code="apri_scheda_descrittiva" text="apri la scheda descrittiva"/>" onclick="return infoByNumDoc('<%=physDoc %>','${workFlowBean.alias}')"><img src="${frontUrl}/img/titlePhoto/btScheda.jpg" /></a></li>
+		<!--<li><a href="#n" title="<spring:message code="apri_scheda_descrittiva" text="apri la scheda descrittiva"/>" onclick="return infoByNumDoc('<%=physDoc %>','${workFlowBean.alias}')"><img src="${frontUrl}/img/titlePhoto/btScheda.jpg" /></a></li>-->
+		<li><a href="${contextPath}/editing/${workFlowBean.alias}/docEdit.html?physDoc=<%=physDoc%>&amp;thePne=${workFlowBean.archive.pne}&amp;pos=<%=pos%>&amp;selid=<%=qRParser.getIdQR()%>" title="<spring:message code="apri_scheda_descrittiva" text="apri la scheda di modifica"/>" target="_new${workFlowBean.alias}"><img src="${frontUrl}/img/titlePhoto/btScheda.jpg" /></a></li>
 		<%
 		if(imageViewer){
 		%>
