@@ -187,4 +187,15 @@ Release Note (by regesta.exe - simvox)
 ************************************************************************************************
 1) add image viewer
 2) minor fix
-
+***** xDams Open Source Platform  *****
+*****   by simvox https://twitter.com/simvox
+*****   www.xdams.org https://twitter.com/xdams_platform      
+*****   version:  3.2.0
+*****   date:     21.12.2017
+************************************************************************************************
+1) NEW ENTRY - change user policy
+2) NEW ENTRY - database xDamsUsers, preset user and account loadUserType=xDams-xway
+3) NEW ENTRY - database creation from xDams interface
+4) NEW ENTRY - bootstrap v3.3.7
+5) UPDATE - Dockerfile
+6) UPDATE - edit button in titlePhoto.jsp 
