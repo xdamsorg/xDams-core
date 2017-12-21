@@ -22,8 +22,8 @@
   <b:property name="loadUserSpeedUp" value="true"/>
   <b:property name="allowAutoLogin" value="false"/> <!-- true attiva l'autologin per il solo utente guest/guest che deve essere opportunamente configurato nella visualizzazione degli archivi -->
   <!-- <b:property name="loadUserType" value="xDams-basic"/> --> <!-- xDams-basic e xDams-xway -->
-  <!-- <b:property name="loadUserType" value="xDams-xway"/> --> <!-- xDams-basic e xDams-xway -->
-  <!-- <b:property name="archiveXWAY" ref="archiveXWAY"/> --> <!-- xDams-basic e xDams-xway -->
+  <b:property name="loadUserType" value="xDams-xway"/>  <!-- xDams-basic e xDams-xway -->
+  <b:property name="archiveXWAY" ref="archiveXWAY"/>  <!-- xDams-basic e xDams-xway -->
  </b:bean>
  <b:bean id="archiveXWAY" class="org.xdams.user.bean.Archive">
   <b:property name="alias" value="xDamsUsers"/>
