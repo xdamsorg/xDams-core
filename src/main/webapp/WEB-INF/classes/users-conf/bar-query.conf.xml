@@ -12,6 +12,10 @@
      <paramAnchor name="thePne">user</paramAnchor>
     </anchor>
    </element>
+   <element value="CREA ARCHIVI" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="${contextPath}/admin/${userBean.accountRef}/createArchiveMenu.html" target="_new${workFlowBean.alias}">
+    </anchor>
+   </element>
   </user>
  </managing>
 </root>

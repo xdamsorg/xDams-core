@@ -12,10 +12,12 @@
  <elemento name="ico">
   <opzione value=""></opzione>
   <opzione value="user.gif">user</opzione>
-  <opzione value="storico.gif">storico</opzione>
-  <opzione value="video.gif">video</opzione>
-  <opzione value="fotografico.gif">fotografico</opzione>
-  <opzione value="authority.gif">authority</opzione>
+  <opzione value="storico.gif">Archivio Storico</opzione>
+  <opzione value="video.gif">Archivio AudioVideo</opzione>
+  <opzione value="fotografico.gif">Archivio Fotografico</opzione>
+  <opzione value="authority.gif">Authority</opzione>
+  <opzione value="disegni.gif">Iconografia / Archivio Oggetti Museali</opzione>
+  <opzione value="biblioteca.gif">Biblioteca</opzione>
  </elemento>
  <elemento name="ROLE_ACCOUNT">
   <opzione value=""></opzione>
