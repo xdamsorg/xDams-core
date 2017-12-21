@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+ <primary_node ud_name="c" ud_container="dsc" >
+	<unique_rule search_rule="[XML,/c/@id]"/>
+	<key name="XML,/c/@id" key_style="one" serial_id="num_id"/>
+ 	<key name="XML,/c/did/unittitle/title" key_style="double"/>
+	<key name="XML,/c/did/unittitle" key_style="double"/>
+	<key name="XML,/c/did/abstract" key_style="multi"/>
+	<key name="XML,/c/scopecontent/list/item" key_style="multi"/>
+
+	<key name="XML,/c/controlaccess/persname/" key_style="double" stop_list="null"/>
+	<key name="XML,/c/controlaccess/persname/@authfilenumber" key_style="one"/>
+	<key name="XML,/c/controlaccess/geogname/" key_style="double" stop_list="null"/>
+	<key name="XML,/c/controlaccess/geogname/@authfilenumber" key_style="one"/>
+	<key name="XML,/c/controlaccess/subject/" key_style="double"  stop_list="null"/>
+	<key name="XML,/c/controlaccess/subject/@authfilenumber" key_style="double"  stop_list="null"/>
+	<key name="XML,/c/controlaccess/corpname/" key_style="double"  stop_list="null"/>
+	<key name="XML,/c/controlaccess/corpname/@authfilenumber" key_style="double"  stop_list="null"/>
+	
+	<key name="XML,/c/controlaccess/list/item/persname/" key_style="double" stop_list="null"/>
+	<key name="XML,/c/did/origination/persname/" key_style="double" stop_list="null"/>
+	<key name="XML,/c/controlaccess/list/item/corpname/" key_style="double" stop_list="null"/>
+	<key name="XML,/c/did/origination/corpname/" key_style="double" stop_list="null"/>
+ 	
+	<key name="XML,/c/did/unittitle/unitdate/@normal" key_style="multi" />
+	<key name="XML,/c/scopecontent/p/date/@normal" key_style="multi"/>
+	<key name="XML,/c/did/unittitle/unitdate" key_style="multi" />
+	<key name="XML,/c/scopecontent/p/date" key_style="multi"/>
+
+	<key name="XML,/c/did/unittitle/bibseries" key_style="double" />
+	<key name="XML,/c/did/unittitle/bibseries/num" key_style="double"/>
+
+	<key name="XML,/c/did/physdesc/physfacet" key_style="one">
+		<k_choose>
+			<k_when test="@type = 'colore'" mode="alias"  key="XML,/c/did/physdesc/physfacet/@colore"/>
+			<k_when test="@type = 'sonoro'" mode="alias"  key="XML,/c/did/physdesc/physfacet/@sonoro"/>
+		</k_choose>
+	</key>
+	<!-- CHIAVI DA NON INDICIZZARE -->
+ 	<key name="XML,/c/did/repository" key_style="skip" path_style="container"/>
+	<!-- SPECIFICHE INFO AMMINISTRATIVE -->
+	<key name="XML,/c/processinfo/list/item" instance="yes"/>
+	<key name="XML,/c/processinfo/list/item/persname/" key_style="double"  empty_key="yes" />
+	<key name="XML,/c/processinfo/list/item/date/"  key_style="one" value_type="date"   empty_key="yes" />
+ </primary_node>
+
+  <serials>
+    <serial id="num_id" mask="IT-xDams-AVMASKNUM-######"/>
+  </serials>
+
+  <hw_fields>
+		<search_alias search_name="TITOLO-PROPRIO"  search_key="XML,/c/did/unittitle"/>
+		<search_alias search_name="TITOLO-ATTRIBUITO"  search_key="XML,/c/did/unittitle/title"/>
+	  	<search_alias search_name="LEMMA-NOMI" 	search_key="XML,/c/controlaccess/persname/"/>
+	  	<search_alias search_name="LEMMA-NOMI-ID" 	search_key="XML,/c/controlaccess/persname/@authfilenumber"/>
+	  	<search_alias search_name="LEMMA-GEO" 	search_key="XML,/c/controlaccess/geogname/"/>
+	  	<search_alias search_name="LEMMA-GEO-ID" 	search_key="XML,/c/controlaccess/geogname/@authfilenumber"/>
+	    	<search_alias search_name="LEMMA-TEMI" 	search_key="XML,/c/controlaccess/subject/"/>
+ </hw_fields>
+ <file_location mode="day"/>
+ <expert_system_extension active="false"/>
+ <profile type="title" value="XML,/c/did/unittitle &quot;[@titProp@]&quot; XML,/c/did/unittitle/title XML,/c/did/unittitle/num &quot;[@data@]&quot; XML,/c/did/unittitle/unitdate &quot;[@aut@]&quot; XML,/c/did/origination/persname &quot;[@lev@]&quot; XML,/c/@level &quot;[@all@]&quot; XML,/c/did/physdesc/extptr/@href"/>
+ <profile type="title.separ" value="¢"/>
+ <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+ <profile type="catalog.strict" value="true"/>
+ <profile type="arc.allownonportable" value="true"/>
+ <profile type="arc.test_encoding" value="false"/> 
+</xway_cfg>
+

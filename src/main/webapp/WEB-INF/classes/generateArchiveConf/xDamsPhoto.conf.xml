@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+ <primary_node ud_name="c" ud_container="dsc">
+  <unique_rule search_rule="[XML,/c/@id]"/>
+  <key name="XML,/c/@id" key_style="one" serial_id="num_id"/>
+  <key name="XML,/c/did/unitid" key_style="one" empty_key="yes"/>
+  <!-- TITOLO DOCUMENTARI -->
+  <key name="XML,/c/did/unittitle/title" key_also="XML,/c/titolo_full" key_style="multi" empty_key="yes"/>
+  <key name="XML,/c/did/unittitle" key_also="XML,/c/titoloFoto" key_style="multi" empty_key="yes"/>
+  <key name="XML,/c/did/unittitle/emph/" key_also="XML,/c/titolo_full"/>
+  <key name="XML,/c/controlaccess/name/chronlist/chronitem/event" key_style="double" stop_list="null" empty_key="yes"/>
+  <!-- DESCRIZIONE -->
+  <key name="XML,/c/did/physdesc/extptr/@title" key_also="XML,/c/titoloFoto" key_style="multi" empty_key="yes"/>
+  <key name="XML,/c/scopecontent/p" key_also="XML,/c/titoloFoto" key_style="multi" empty_key="yes"/>
+  <!-- DIZIONARI -->
+  <key name="XML,/c/controlaccess/persname/" key_style="double" stop_list="null" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/persname/@authfilenumber" key_style="one" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/corpname/" key_style="double" stop_list="null" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/corpname/@authfilenumber" key_style="one" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/geogname/" key_style="double" stop_list="null" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/geogname/@authfilenumber" key_style="one" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/subject/" key_style="double" stop_list="null" empty_key="yes"/>
+  <key name="XML,/c/controlaccess/subject/@authfilenumber" key_style="one" empty_key="yes"/>
+  <!-- SPECIFICHE DELLA DATA -->
+  <key name="XML,/c/did/unittitle/unitdate" attr_collate="#toyear:$@normal|p9-4,fn-4@$#fromyear:$@normal|p0-4,fn-4@$#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$"/>
+  <key name="XML,/c/did/unittitle/unitdate/@normal" key_style="multi"/>
+  <key name="XML,/c/controlaccess/name/chronlist/chronitem/date" key_style="one" value_type="date" empty_key="yes"/>
+  <!-- FOTOGRAFO -->
+  <key name="XML,/c/did/origination/persname/" key_style="double" empty_key="yes" key_also="XML,/c/fotografoPrincipale"/>
+  <key name="XML,/c/did/origination/persname/@authfilenumber" key_style="one" empty_key="yes" key_also="XML,/c/fotografoPrincipale/@authfilenumber"/>
+  <key name="XML,/c/did/origination/corpname/" key_style="double" empty_key="yes" key_also="XML,/c/fotografoPrincipale"/>
+  <key name="XML,/c/did/origination/corpname/@authfilenumber" key_style="one" empty_key="yes" key_also="XML,/c/fotografoPrincipale/@authfilenumber"/>
+  <!-- SPECIFICHE FISICHE -->
+  <key name="XML,/c/did/physdesc/physfacet" key_style="one" empty_key="yes"/>
+  <!-- ALLEGATI DIGITALI -->
+  <key name="XML,/c/did/physdesc/extptr/@href" key_style="one" empty_key="yes"/>
+  <!-- CHIAVI DA NON INDICIZZARE -->
+  <key name="XML,/c/did/repository" key_style="skip" path_style="container"/>
+  <!-- SPECIFICHE INFO AMMINISTRATIVE -->
+  <key name="XML,/c/processinfo/list/item" instance="yes"/>
+  <key name="XML,/c/processinfo/list/item/persname/" key_style="double" empty_key="yes"/>
+  <key name="XML,/c/processinfo/list/item/date/" key_style="one" value_type="date" empty_key="yes"/>
+  <key name="XML,/c/fotografoPrincipale" key_style="double"/>
+  <key name="XML,/c/titoloFoto" key_style="multi"/>
+  <key name="XML,/c/titolo_full" key_style="multi"/>
+ </primary_node>
+ <serials>
+  <serial id="num_id" mask="IT-xDams-FTMASKNUM-######"/>
+ </serials>
+ <hw_fields>
+  <!-- SPECIFICHE DEI DIZIONARI -->
+  <!-- SPECIFICHE AREA DELL'IDENTIFICAZIONE -->
+  <search_alias search_name="NCTN" search_key="XML,/c/did/unitid/"/>
+  <search_alias search_name="OGTD" search_key="XML,/c/did/unittitle/"/>
+  <search_alias search_name="SGTD" search_key="XML,/c/descgrp/scopecontent/p/"/>
+  <search_alias search_name="SG" search_key="XML,/c/titoloFoto/"/>
+  <search_alias search_name="AUF" search_key="XML,/c/fotografoPrincipale/"/>
+  <search_alias search_name="DESCRIZIONE" search_key="XML,/c/odd/odd/p/"/>
+  <search_alias search_name="INTEGRAZIONE" search_key="XML,/c/did/unittitle/emph/"/>
+  <!-- SPECIFICHE DEI DIZIONARI -->
+  <search_alias search_name="LEMMA-NOMI" search_key="XML,/c/controlaccess/persname/"/>
+  <search_alias search_name="LEMMA-NOMI-ID" search_key="XML,/c/controlaccess/persname/@authfilenumber"/>
+  <search_alias search_name="LEMMA-GEO" search_key="XML,/c/controlaccess/geogname/"/>
+  <search_alias search_name="LEMMA-GEO-ID" search_key="XML,/c/controlaccess/geogname/@authfilenumber"/>
+  <search_alias search_name="LEMMA-EVENTI" search_key="XML,/c/controlaccess/name/chronlist/chronitem/event"/>
+  <search_alias search_name="LEMMA-EVENTI-DATA" search_key="XML,/c/controlaccess/name/chronlist/chronitem/date"/>
+  <search_alias search_name="LEMMA-EVENTI-ID" search_key="XML,/c/controlaccess/name/chronlist/chronitem/event/@id"/>
+  <search_alias search_name="LEMMA-ENTI" search_key="XML,/c/controlaccess/corpname/"/>
+  <search_alias search_name="LEMMA-ENTI-ID" search_key="XML,/c/controlaccess/corpname/@authfilenumber"/>
+  <!-- SPECIFICHE DATA -->
+  <search_alias search_name="data_normale" search_key="XML,/c/did/unittitle/unitdate/@normal"/>
+  <search_alias search_name="data_from" search_key="XML,/c/did/unittitle/unitdate/#from"/>
+  <search_alias search_name="data_to" search_key="XML,/c/did/unittitle/unitdate/#to"/>
+  <search_alias search_name="anno_from" search_key="XML,/c/did/unittitle/unitdate/#fromyear"/>
+  <search_alias search_name="anno_to" search_key="XML,/c/did/unittitle/unitdate/#toyear"/>
+  <!-- SPECIFICHE INFO AMMINISTRATIVE -->
+  <search_alias search_name="CATALOGATORE" search_key="XML,/c/processinfo/list/item/persname"/>
+  <search_alias search_name="CATALOGATORE-DATA" search_key="XML,/c/processinfo/list/item/date"/>
+  <search_alias search_name="CATALOGATORE-AZIONE" search_key="XML,/c/processinfo/list/item"/>
+ </hw_fields>
+ <file_location mode="day"/>
+ <!--prunable_branch element_name="XML,/c/processinfo" list="yes" / -->
+ <expert_system_extension active="false"/>
+ <profile type="title" value="XML,/c/did/unittitle &quot;[@tit@]&quot; XML,/c/did/unittitle/title &quot;[@aut@]&quot; XML,/c/did/unittitle/unitdate &quot;[@date@]&quot; XML,/c/did/origination/persname &quot;[@lev@]&quot; XML,/c/@level &quot;[@all@]&quot; XML,/c/did/physdesc/extptr/@href"/>
+ <profile type="title.separ" value="¢"/>
+ <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+ <profile type="catalog.strict" value="true"/>
+ <profile type="arc.allownonportable" value="true"/>
+ <profile type="arc.test_encoding" value="false"/>
+</xway_cfg>

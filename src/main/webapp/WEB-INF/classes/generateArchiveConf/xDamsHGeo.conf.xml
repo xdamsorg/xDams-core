@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE xway_cfg SYSTEM "http://www.3di.it/extraway/xway_20030211.dtd">
+<xway_cfg>
+<primary_node ud_name="eac" ud_container="listof_eac">
+  <unique_rule search_rule="[XML,/eac/eacheader/eacid]"/>
+  <key name="XML,/eac/eacheader/eacid" key_style="one" serial_id="num_id"/>
+  <key name="XML,/eac/@type" key_style="one" />
+  <key name="XML,/eac/eacheader/@status" key_style="one"/>
+  <key name="XML,/eac/eacheader/mainhist/mainevent/@maintype" key_style="one"/>
+  <key name="XML,/eac/eacheader/mainhist/mainevent/name" key_style="one"/>
+  <key name="XML,/eac/condesc/eacrels/eacrel/@reltype" key_style="one"/>
+  <key name="XML,/eac/condesc/eacrels/eacrel/@id"  key_style="one" empty_key="yes"/>
+  <key name="XML,/eac/condesc/eacrels/eacrel/name" key_style="double"/>
+  <key name="XML,/eac/condesc/identity/conhead/@normal" key_style="double"/>
+  <key name="XML,/eac/condesc/identity/namehead/@type" key_style="one"/>
+  <key name="XML,/eac/condesc/eacrels/descnote" key_style="double"/>
+  <key name="XML,/eac/condesc/desc/ocd" key_style="multi"/>
+  <key name="XML,/eac/condesc/identity/namehead/part" key_style="double"/>
+ </primary_node>
+  <serials>
+    <serial id="num_id" mask="IT-xDams-GEOMASKNUM-######"/>
+  </serials>
+  <hw_fields>
+	  <search_alias search_name="LEMMA" search_key="XML,/eac/condesc/identity/namehead/part"/>
+	  <search_alias search_name="TIPOLOGIA" search_key="XML,/eac/@type"/>
+	  <search_alias search_name="STATUS" search_key="XML,/eac/eacheader/@status"/>
+	  <search_alias search_name="DIZIONARIO" search_key="XML,/eac/condesc/eacrels/descnote"/>
+  </hw_fields>
+  <file_location mode="day"/>
+  <expert_system_extension active="false"/>
+  <profile type="title" value="XML,/eac/condesc/identity/conhead/@normal &quot;@[#]@&quot; XML,/eac/eacheader/eacid  &quot;@[§]@&quot;"/>
+	<profile type="title.separ" value="¢"/>
+	<profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
+	<profile type="catalog.strict" value="true"/>
+	<profile type="arc.allownonportable" value="true"/> 
+    <profile type="arc.test_encoding" value="false"/>  
+</xway_cfg> 
