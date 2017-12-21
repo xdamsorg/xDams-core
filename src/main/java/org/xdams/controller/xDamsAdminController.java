@@ -1,17 +1,21 @@
 package org.xdams.controller;
 
-import java.text.Normalizer;
+import it.highwaytech.db.QueryResult;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.StrSubstitutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,16 +39,25 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.util.WebUtils;
+import org.xdams.admin.bean.CreateArchiveResultBean;
 import org.xdams.admin.command.AdminCommand;
+import org.xdams.admin.command.CreateArchive;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.security.AuthenticationType;
 import org.xdams.security.UserDetails;
 import org.xdams.security.load.LoadUserManager;
+import org.xdams.security.load.LoadUserSpeedUp;
+import org.xdams.user.access.ServiceAccount;
 import org.xdams.user.access.ServiceUser;
+import org.xdams.user.bean.Account;
+import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.CommonUtils;
+import org.xdams.utility.request.MyRequest;
 import org.xdams.workflow.bean.WorkFlowBean;
+import org.xdams.xmlengine.connection.manager.ConnectionManager;
+import org.xdams.xw.XWConnection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -72,7 +85,9 @@ public class xDamsAdminController {
 
 	@Autowired
 	ApplicationContext applicationContext;
-
+	
+	@Autowired
+	CreateArchive createArchive;
 	@ModelAttribute
 	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
@@ -178,6 +193,107 @@ public class xDamsAdminController {
 		AdminCommand adminCommand = new AdminCommand(request.getParameterMap(), modelMap);
 		ManagingBean managingBean = adminCommand.execute();
  		return "admin/"+managingBean.getDispatchView();
+	}
+	
+	
+	@RequestMapping(value = "/admin/generateArchive", method = RequestMethod.GET)
+	public String createArchive(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String xDamsType = MyRequest.getParameter("xDamsType", request.getParameterMap());
+		CreateArchiveResultBean createArchiveResultBean = createArchive.execute(xDamsType);
+		modelMap.put("opExit", createArchiveResultBean);
+		return "admin/createArchiveResult";
+	}
+
+	@RequestMapping(value = "/admin/{account}/executeCreateArchive")
+	public String executeCreateArchive(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @PathVariable String account, Archive archive) throws Exception {
+		try {
+			XWConnection xwconn = null;
+			ConnectionManager connectionManager = new ConnectionManager();
+			try {
+				xwconn = connectionManager.getConnection(authenticationType.getArchiveXWAY());
+
+				QueryResult queryResult = xwconn.getQRfromPhrase("([XML,/account/@id]=\"" + account + "\")");
+				int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
+				String xmlArchives = xwconn.getSingleXMLFromNumDoc(numDoc).replaceAll("(?s)<!--.*?-->", "");
+				Account accountBean = new Account();
+				Pattern patternArchiveGroup = Pattern.compile("((?i)<archiveGroup\\s*name=\"([^>]+)\">(.+?)</archiveGroup>)", Pattern.DOTALL);
+				Matcher matcherArchiveGroup = patternArchiveGroup.matcher(xmlArchives);
+				String templateArchive = "<archive alias=\"${alias}\" host=\"${hostname}\" ico=\"${ico}\" pne=\"${pne}\" port=\"${port}\" type=\"${type}\">${descr}</archive>";
+				Map<String, String> valuesMap = new HashMap<String, String>();
+				valuesMap.put("descr", archive.getArchiveDescr());
+				valuesMap.put("type", archive.getType());
+				valuesMap.put("ico", archive.getIco());
+				valuesMap.put("hostname", archive.getHost());
+				valuesMap.put("pne", archive.getPne());
+				valuesMap.put("port", archive.getPort());
+				
+				if(request.getParameter("dbDir")==null || request.getParameter("dbDir").equals("")){
+					return createArchiveMenu(modelMap, request, response, account);
+				}else{
+					createArchive.setDbDir(request.getParameter("dbDir"));
+				}
+				
+				CreateArchiveResultBean createArchiveResultBean = createArchive.execute(archive.getType());
+				if (createArchiveResultBean.isCreated()) {
+					valuesMap.put("alias", createArchiveResultBean.getAlias());
+					archive.setAlias(createArchiveResultBean.getAlias());
+					while (matcherArchiveGroup.find()) {
+						String accountStr = matcherArchiveGroup.group(2);
+						if (accountStr.equalsIgnoreCase(archive.getGroupName())) {
+							StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
+							String resolvedString = strSubstitutor.replace(templateArchive);
+							String temp = matcherArchiveGroup.group(1).replaceAll("</archiveGroup>", resolvedString + "</archiveGroup>");
+							xmlArchives = StringUtils.replace(xmlArchives, matcherArchiveGroup.group(1), temp);
+						}
+					}
+				}
+				xwconn.executeUpdateByDocNumber(xmlArchives, numDoc);
+				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
+				ServiceAccount serviceAccount = new ServiceAccount();
+				modelMap.put("archiveByGroup", serviceAccount.getArchiveByGroup(archivesMap));
+				modelMap.put("archivesMap", archivesMap);
+				modelMap.put("msgSuccess", "ok");
+				modelMap.put("createArchiveResultBean", createArchiveResultBean);
+			} catch (Exception e) {
+				e.printStackTrace();
+				modelMap.put("msgSuccess", "notOk");
+			} finally {
+				connectionManager.closeConnection(xwconn);
+			}
+		} catch (Exception e) {
+			modelMap.put("msgSuccess", "notOk");
+		}
+
+		return "admin/createArchiveResult";
+	}
+
+	@RequestMapping(value = "/admin/{account}/createArchiveMenu", method = RequestMethod.GET)
+	public String createArchiveMenu(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @PathVariable String account) throws Exception {
+
+			XWConnection xwconn = null;
+			ConnectionManager connectionManager = new ConnectionManager();
+			try {
+				xwconn = connectionManager.getConnection(authenticationType.getArchiveXWAY());
+				QueryResult queryResult = xwconn.getQRfromPhrase("([XML,/account/@id]=\"" + account + "\")");
+				int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
+				String xmlArchives = xwconn.getSingleXMLFromNumDoc(numDoc).replaceAll("(?s)<!--.*?-->", "");
+				Account accountBean = new Account();
+//				System.out.println(xmlArchives);
+				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
+				ServiceAccount serviceAccount = new ServiceAccount();
+				modelMap.put("archiveByGroup", serviceAccount.getArchiveByGroup(archivesMap));
+				modelMap.put("archivesMap", archivesMap);
+				modelMap.put("account", account);
+				modelMap.put("dbDir", createArchive.getDbDir());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			} finally {
+				connectionManager.closeConnection(xwconn);
+			}
+	
+
+		return "admin/createArchiveMenu";
 	}
 
 }
