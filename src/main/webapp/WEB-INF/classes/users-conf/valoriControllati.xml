@@ -6,6 +6,7 @@
   <opzione value="eac">EAC standard "eac"</opzione>
   <opzione value="eac-cpf">EAC standard "eac-cpf"</opzione>
   <opzione value="lido">Lido standard "lido"</opzione>
+  <opzione value="mods">Biblioteca "mods"</opzione>
   <opzione value="user">Users "user"</opzione>
   <opzione value="account">Account "account"</opzione>
  </elemento>
