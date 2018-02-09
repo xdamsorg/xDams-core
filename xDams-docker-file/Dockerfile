@@ -1,4 +1,4 @@
-# xDams DOCKERFILE 1.1
+# xDams DOCKERFILE 1.2
 
 # CREA IMMAGINE
 # docker build -t="regesta/xdams" .
@@ -70,33 +70,33 @@ RUN echo "/opt/it-3di/extra/init-files/extraway \"\$1\"" >> /etc/init.d/extraway
 RUN chmod +x /etc/init.d/extraway
 
 # JAVA
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64.tar.gz
-RUN tar -zxvf jdk-8u152-linux-x64.tar.gz
-RUN mv /jdk1.8.0_152 /usr/local
-RUN update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_152/bin/java" 1
+RUN wget http://media.regesta.com/dm_0/REGESTA/docker/jdk-8u162-linux-x64.tar.gz
+RUN tar -zxvf jdk-8u162-linux-x64.tar.gz
+RUN mv /jdk1.8.0_162 /usr/local
+RUN update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_162/bin/java" 1
 
 # TOMCAT
-RUN wget http://it.apache.contactlab.it/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.zip
-RUN unzip apache-tomcat-8.5.24.zip
-RUN mv /apache-tomcat-8.5.24 /usr/local
-RUN echo "<meta http-equiv='refresh' content='0;URL=xDams'>" >> /usr/local/apache-tomcat-8.5.24/webapps/ROOT/index.html
-RUN mkdir /usr/local/apache-tomcat-8.5.24/conf/Catalina
-RUN mkdir /usr/local/apache-tomcat-8.5.24/conf/Catalina/localhost
-RUN echo "<Context path='/xDams' docBase='/opt/apps/xDams'/>" >> /usr/local/apache-tomcat-8.5.24/conf/Catalina/localhost/xDams.xml
-RUN echo "<Context path='/xway' docBase='/opt/apps/xway'/>" >> /usr/local/apache-tomcat-8.5.24/conf/Catalina/localhost/xway.xml
-RUN chmod -R 755 /usr/local/apache-tomcat-8.5.24
-RUN chown -R tomcat:tomcat /usr/local/apache-tomcat-8.5.24
+RUN wget http://media.regesta.com/dm_0/REGESTA/docker/apache-tomcat-8.5.27.zip
+RUN unzip apache-tomcat-8.5.27.zip
+RUN mv /apache-tomcat-8.5.27 /usr/local
+RUN echo "<meta http-equiv='refresh' content='0;URL=xDams'>" >> /usr/local/apache-tomcat-8.5.27/webapps/ROOT/index.html
+RUN mkdir /usr/local/apache-tomcat-8.5.27/conf/Catalina
+RUN mkdir /usr/local/apache-tomcat-8.5.27/conf/Catalina/localhost
+RUN echo "<Context path='/xDams' docBase='/opt/apps/xDams'/>" >> /usr/local/apache-tomcat-8.5.27/conf/Catalina/localhost/xDams.xml
+RUN echo "<Context path='/xway' docBase='/opt/apps/xway'/>" >> /usr/local/apache-tomcat-8.5.27/conf/Catalina/localhost/xway.xml
+RUN chmod -R 755 /usr/local/apache-tomcat-8.5.27
+RUN chown -R tomcat:tomcat /usr/local/apache-tomcat-8.5.27
 RUN touch velocity.log
 RUN chown tomcat:tomcat velocity.log
 RUN echo "#!/bin/bash" >> /etc/init.d/tomcat
 RUN echo "# description: Tomcat Start Stop Restart" >> /etc/init.d/tomcat
 RUN echo "# processname: tomcat" >> /etc/init.d/tomcat
 RUN echo "# chkconfig: 234 20 80" >> /etc/init.d/tomcat
-RUN echo "JAVA_HOME=/usr/local/jdk1.8.0_152" >> /etc/init.d/tomcat
+RUN echo "JAVA_HOME=/usr/local/jdk1.8.0_162" >> /etc/init.d/tomcat
 RUN echo "export JAVA_HOME" >> /etc/init.d/tomcat
 RUN echo "PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/init.d/tomcat
 RUN echo "export PATH" >> /etc/init.d/tomcat
-RUN echo "CATALINA_HOME=/usr/local/apache-tomcat-8.5.24/bin" >> /etc/init.d/tomcat
+RUN echo "CATALINA_HOME=/usr/local/apache-tomcat-8.5.27/bin" >> /etc/init.d/tomcat
 RUN echo "case \$1 in" >> /etc/init.d/tomcat
 RUN echo "start)" >> /etc/init.d/tomcat
 RUN echo "/bin/su tomcat \$CATALINA_HOME/startup.sh" >> /etc/init.d/tomcat
