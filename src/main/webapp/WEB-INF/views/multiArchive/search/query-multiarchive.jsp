@@ -329,23 +329,27 @@ jQuery(document).ready(function(){
 					<div class="cont_div"><div class="divisorio"><img src="${frontUrl}/img/spacer.gif" width="100" height="1" alt="" /></div></div>
 					<div class="mt30">
 					<%
-
+					for (Entry<String, List<Map<String, String>>> entry : positionMap.entrySet()) {
+					String positionDiv = entry.getKey();
+					List<Map<String, String>> listOutput = entry.getValue();
+					if(positionDiv.equals("") || positionDiv.equals("center")){
+						for (int z = 0; z < listOutput.size() ; z++) {
+							Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
+							for (Entry<String, String> entryLabel : hashLabel.entrySet()) {
+								String attrLabel = entryLabel.getKey();
+								String outputField = entryLabel.getValue();
+					%>
+						<div class="ml20" ><label><%=attrLabel%></label></div>
+						<div class="ml20"><%=outputField%></div>
+					<%
+						}
+										}
+									} 
+								}
 									for (Entry<String, List<Map<String, String>>> entry : positionMap.entrySet()) {
 									String positionDiv = entry.getKey();
 									List<Map<String, String>> listOutput = entry.getValue();
-									if(positionDiv.equals("") || positionDiv.equals("center")){
-										for (int z = 0; z < listOutput.size() ; z++) {
-											Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
-											for (Entry<String, String> entryLabel : hashLabel.entrySet()) {
-												String attrLabel = entryLabel.getKey();
-												String outputField = entryLabel.getValue();
-					%>
-										<div class="ml20" ><label><%=attrLabel%></label></div>
-										<div class="ml20"><%=outputField%></div>
-									<%
-										}
-														}
-													}else if(positionDiv.equals("sx") || positionDiv.equals("left")){
+									if(positionDiv.equals("sx") || positionDiv.equals("left")){
 									%><div class="col_sx"  ><%
 										for (int z = 0; z < listOutput.size() ; z++) {
 															Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
@@ -429,22 +433,27 @@ jQuery(document).ready(function(){
 					<div class="cont_div">
 						<%if(!positionAdminMap.isEmpty()){%><div class="ml20mt30"><spring:message code="Informazioni_sulla_descrizione_archivistica" text="Informazioni sulla descrizione archivistica"/>:</div><%}%>
 
-		<%
+		<% 
+							for (Entry<String, List<Map<String, String>>> entry : positionAdminMap.entrySet()) {	
+								String positionDiv = entry.getKey();
+								List<Map<String, String>> listOutput = entry.getValue();
+								if(positionDiv.equals("") || positionDiv.equals("center")){
+									for (int z = 0; z < listOutput.size() ; z++) {
+										Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
+										for (Entry<String, String> entryLabel : hashLabel.entrySet()) {		
+											String attrLabel = entryLabel.getKey();
+											String outputField = entryLabel.getKey();
+											%>
+											<div class="ml20"><%=attrLabel%></div>
+											<div class="ml20"><%=outputField%></div>
+										<%}
+									}
+								} 
+							}
 						for (Entry<String, List<Map<String, String>>> entry : positionAdminMap.entrySet()) {	
 							String positionDiv = entry.getKey();
 							List<Map<String, String>> listOutput = entry.getValue();
-							if(positionDiv.equals("") || positionDiv.equals("center")){
-								for (int z = 0; z < listOutput.size() ; z++) {
-									Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);
-									for (Entry<String, String> entryLabel : hashLabel.entrySet()) {		
-										String attrLabel = entryLabel.getKey();
-										String outputField = entryLabel.getKey();
-										%>
-										<div class="ml20"><%=attrLabel%></div>
-										<div class="ml20"><%=outputField%></div>
-									<%}
-								}
-							}else if(positionDiv.equals("sx") || positionDiv.equals("left")){
+							if(positionDiv.equals("sx") || positionDiv.equals("left")){
 							%><div class="col_sx"><%
 								for (int z = 0; z < listOutput.size() ; z++) {
 									Map<String, String> hashLabel = (Map<String, String>)listOutput.get(z);	

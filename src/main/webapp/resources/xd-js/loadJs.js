@@ -21,7 +21,7 @@ function loadScripts(scriptsMap) {
 
 function loadJsBusiness(target, prefix) {
 	var base = '/xd-js';
-	if (target === 'workspace') {
+	if (target === 'workspace') { 
 		loadScripts({
 			'base' : base + "/jquery",
 			'prefix' : prefix,
@@ -41,7 +41,7 @@ function loadJsBusiness(target, prefix) {
 		loadScripts({
 			'base' : base,
 			'prefix' : prefix,
-			'scripts' : [ 'xdams_jquery', 'xdams_query', 'xdams_ajax', 'xdams_document', 'xdams_help', 'xdams_new_gestione', 'xdams_info' ]
+			'scripts' : [ 'xdams_jquery', 'xdams_query', 'xdams_ajax', 'xdams_document', 'xdams_help', 'xdams_new_gestione', 'xdams_info','xdams_onload' ]
 		});
 	} else if (target === 'hierBrowser') {
 		loadScripts({
