@@ -45,7 +45,11 @@
   <beans:property name="archive" ref="archiveXWAY" />
   <beans:property name="numberOfFill" value="3"></beans:property>
   <beans:property name="dbDir" value="C:/xDams-framework/db/xw/db/"></beans:property>
-  <beans:property name="nameXWPrefix" value=""></beans:property>
+  <!-- PER INSTALLAZIONE DI EXTRAWAY CON PIU DI 1000 ARCHVI IMPOSTARE nameFromXWINI e il PATH di INSTALLAZIONE DI EXTRAWAY-->
+  <beans:property name="nameFromXWINI" value="true"></beans:property>
+  <beans:property name="extrawayDir" value="C:/xDams-framework/db/xw/"></beans:property>
+  <!-- PER INSTALLAZIONE DI EXTRAWAY CON PIU DI 1000 ARCHVI -->
+  <beans:property name="nameXWPrefix" value=""></beans:property> 
  </beans:bean>
  <interceptors>
   <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
