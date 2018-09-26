@@ -106,7 +106,7 @@ public class xDamsRestController {
 		String valueQuery = request.getParameter("valueQuery");
 		String query = request.getParameter("query");
 		String mode = request.getParameter("mode");
-		
+
 		int perpage = 10;
 		int pageToShow = 1;
 		try {
@@ -138,6 +138,33 @@ public class xDamsRestController {
 					outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString().trim() + "</key>\n");
 				}
 				outputBuilder.append("</response>");
+			} else if (mode != null && mode.equals("hier")) {
+				String queryFind = xwQuery;
+				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+				// for (int i = 0; i < keys.size(); i++) {
+				// Key key = (Key) keys.elementAt(i);
+				// outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString().trim() + "</key>\n");
+				// }
+				// for (int i = 0; i < result.length; i++) {
+				//
+				// }
+
+				if (result != null) {
+					outputBuilder.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+					outputBuilder.append("<response found=\"" + result.get(1) + "\" page=\"" + result.get(2) + "\" totPages=\"" + result.get(3) + "\">\n");
+					qr = xwconn.getQRfromPhrase("[?SEL]=" + result.get(0));
+					for (int i = 0; i < qr.elements; i++) {
+						outputBuilder.append("<" + xwconn.getPne() + ">");
+						outputBuilder.append("<hier>");
+						outputBuilder.append(xwconn.getHierPath(xwconn.getNumDocFromQRElement(qr, i)).getHier("||"));
+						outputBuilder.append("</hier>");
+						outputBuilder.append("</" + xwconn.getPne() + ">\n");
+					}
+					outputBuilder.append("</response>");
+				}
+
+				// outputBuilder.append(result.get(0));
+				// outputBuilder.append("</response>");
 			} else {
 				if (id != null && id.trim() != null) {
 					qr = xwconn.getQRfromPhrase("[XML,/c/@id]=" + id);
