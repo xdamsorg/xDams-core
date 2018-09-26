@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
+ <infoDoc>
+  <element type="normalDatePath">/c/did/unitdate</element>
+ </infoDoc>
  <access_method noElements="insert">
   <clipboard disabled="true"/>
   <hierbrowse active="yes" label="accedi all'archivio">1</hierbrowse>

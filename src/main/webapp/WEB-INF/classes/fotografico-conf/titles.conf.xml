@@ -28,5 +28,8 @@
    <elemento mode="html" html="em" format_after="&lt;br/&gt;" titleSepar="¢">[@tit@]-[@aut@]</elemento>
    <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
   </sezione>
+  <sezione name="dataTitle">
+   <elemento mode="html" html="" format_after="&lt;br/&gt;" titleSepar="¢">[@aut@]-[@date@]</elemento>
+  </sezione>  
  </titleManager>
 </root>
