@@ -22,7 +22,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.xpath.XPathAPI;
 import org.dom4j.io.DOMReader;
 import org.dom4j.io.OutputFormat;
@@ -248,7 +247,7 @@ public class XMLBuilder {
 	public static void main(String[] args) throws UnsupportedEncodingException, TransformerException {
 
 		try {
- 
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1004,7 +1003,7 @@ public class XMLBuilder {
 						ilValore = "";
 					}
 				} catch (Exception e) {
-					System.err.println("XMLBuilder.getValore().1 error: " + e.getMessage());
+					System.err.println("XMLBuilder.getValore().1 error: " + e.getMessage() + " xPath: " + xPath);
 				}
 			}
 			if (ilValore.equals(null)) {
