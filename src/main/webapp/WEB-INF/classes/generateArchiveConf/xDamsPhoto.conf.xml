@@ -25,6 +25,8 @@
   <!-- SPECIFICHE DELLA DATA -->
   <key name="XML,/c/did/unittitle/unitdate" attr_collate="#toyear:$@normal|p9-4,fn-4@$#fromyear:$@normal|p0-4,fn-4@$#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$"/>
   <key name="XML,/c/did/unittitle/unitdate/@normal" key_style="multi"/>
+  <key name="XML,/c/did/unitdate" attr_collate="#toyear:$@normal|p9-4,fn-4@$#fromyear:$@normal|p0-4,fn-4@$#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$"/>
+  <key name="XML,/c/did/unitdate/@normal" key_style="multi"/>
   <key name="XML,/c/controlaccess/name/chronlist/chronitem/date" key_style="one" value_type="date" empty_key="yes"/>
   <!-- FOTOGRAFO -->
   <key name="XML,/c/did/origination/persname/" key_style="double" empty_key="yes" key_also="XML,/c/fotografoPrincipale"/>
