@@ -29,7 +29,7 @@ public class LoadUploadBean {
 				uploadBean.setCompositionRuleDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionRuleDir/text()"));
 				uploadBean.setCompositionReplaceName(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/compositionReplaceName/text()"));
 				uploadBean.setAssociatePathDir(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/associatePathDir/text()"));
-				
+				uploadBean.setSkipAccountName(theXMLConfUpload.valoreNodo(prefixUpload + "[" + (i + 1) + "]" + "/skipAccountName/text()"));
 				int countCommand = theXMLConfUpload.contaNodi(prefixUpload + "[" + (i + 1) + "]" + "/commandList/command");
 				for (int j = 0; j < countCommand; j++) {
 					UploadCommandLine commandLine = new UploadCommandLine();

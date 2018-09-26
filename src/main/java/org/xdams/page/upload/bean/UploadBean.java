@@ -35,6 +35,8 @@ public class UploadBean {
 	private boolean overWrite = false;
 
 	private boolean fileExist = false;
+	
+	private String skipAccountName;
 
 	private List<UploadCommandLine> commandLine = new ArrayList<UploadCommandLine>();
 
@@ -225,5 +227,15 @@ public class UploadBean {
 	public void setPhysDoc(int physDoc) {
 		this.physDoc = physDoc;
 	}
+
+	public String getSkipAccountName() {
+		return skipAccountName;
+	}
+
+	public void setSkipAccountName(String skipAccountName) {
+		this.skipAccountName = skipAccountName;
+	}
+
+ 
 
 }

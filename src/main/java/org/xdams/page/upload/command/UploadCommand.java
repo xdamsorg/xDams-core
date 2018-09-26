@@ -59,7 +59,12 @@ public class UploadCommand {
 			System.out.println(uploadBean);
 			// da prendere dentro workflowBean
 			String archiveName = workFlowBean.getAlias();
+
 			String domainName = userBean.getAccountRef();
+			if (uploadBean.getSkipAccountName().equalsIgnoreCase("true")) {
+				domainName = "";
+			}
+
 			for (int i = 0; i < uploadBean.getCommandLine().size(); i++) {
 				UploadCommandLine uploadCommandLine = uploadBean.getCommandLine().get(i);
 				try {
@@ -72,9 +77,15 @@ public class UploadCommand {
 
 					uploadFile.setReadable(true);
 					uploadBean.setFileExist(uploadFile.exists());
-//					if (!uploadFile.exists() || uploadBean.isOverWrite()) {
+					// if (!uploadFile.exists() || uploadBean.isOverWrite()) {
+					try {
+						// se gia trasferito
 						uploadBean.getFiledata().transferTo(uploadFile);
-//					}					
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
+					// }
 
 				} catch (Exception e) {
 
