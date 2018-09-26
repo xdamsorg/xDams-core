@@ -1,7 +1,5 @@
 package org.xdams.page.command;
 
-import it.highwaytech.db.QueryResult;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

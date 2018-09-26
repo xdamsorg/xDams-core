@@ -35,6 +35,7 @@ public class PreInsertPageCommand {
 		ConfBean confBean = null;
 		PreInsertBean preInsertBean = null;
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("docEdit");
 		confControl.add("valoriControllati");
 		confControl.add("titleManager");
@@ -59,10 +60,23 @@ public class PreInsertPageCommand {
 				XMLBuilder theXMLDoc = new XMLBuilder(preInsertBean.getDocXmlSelected(), "ISO-8859-1");
 				preInsertBean.setXmlBuilderSelected(theXMLDoc);
 				preInsertBean.setDepthSelected(hierPath.depth());
-				preInsertBean.setTitleSelected((xwconn.getTitle(xwconn.connection, xwconn.getTheDb(), Integer.parseInt(physDoc))).getTitle());
 				MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 				editingManager.setTheXML(theXMLDoc);
 				confBean = editingManager.rewriteMultipleConf(confControl);
+				
+				XMLBuilder builder = confBean.getTheXMLConfTitle();
+				titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+	 			try {
+					if (!titleRole.trim().equals("")) {
+						xwconn.setTitleRole(titleRole);
+					}
+				} catch (Exception e) {
+					System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+					xwconn.restoreTitleRole();
+				}				
+	 			
+				preInsertBean.setTitleSelected((xwconn.getTitle(xwconn.connection, xwconn.getTheDb(), Integer.parseInt(physDoc))).getTitle());
+
 				// System.out.println("PreInsertPageCommand.execute() FINE CARICAMENTO DOCUMENTO SELEZIONATO");
 				// prendo il documento padre ma controllo che non sono il padre stesso...
 				String ilPath = "/hierValues";
@@ -126,6 +140,7 @@ public class PreInsertPageCommand {
 			modelMap.put("preInsertBean", preInsertBean);
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 	}
