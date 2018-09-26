@@ -85,24 +85,24 @@ public class xDamsAdminController {
 
 	@Autowired
 	ApplicationContext applicationContext;
-	
+
 	@Autowired
 	CreateArchive createArchive;
+
 	@ModelAttribute
 	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
 	}
 
-	//@ModelAttribute
+	// @ModelAttribute
 	public void userLoad(ModelMap model) {
-//		System.out.println("xDamsController.userLoad() model.containsAttribute(\"userBean\"): " + model.containsAttribute("userBean"));
+		// System.out.println("xDamsController.userLoad() model.containsAttribute(\"userBean\"): " + model.containsAttribute("userBean"));
 		if (!model.containsAttribute("userBean")) {
 			UserDetails userDetails = null;
 			try {
 				userDetails = (UserDetails) ((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
 				UserBean userBean = LoadUserManager.executeLoad(userDetails, authenticationType);
 				model.addAttribute("userBean", userBean);
-				
 
 			} catch (Exception e) {
 			}
@@ -114,13 +114,13 @@ public class xDamsAdminController {
 		// model.addAttribute("frontUrl", request.getContextPath() + "/resources");
 		userLoad(model);
 		model.addAttribute("frontUrl", request.getContextPath() + "/resources");
-//		System.out.println("xDamsController.frontUrl() multiAccount: " + multiAccount);
-//		System.out.println("xDamsController.frontUrl() model.get(\"userBean\"): " + model.get("userBean"));
+		// System.out.println("xDamsController.frontUrl() multiAccount: " + multiAccount);
+		// System.out.println("xDamsController.frontUrl() model.get(\"userBean\"): " + model.get("userBean"));
 		if (multiAccount && model.get("userBean") != null) {
 			model.addAttribute("frontUrl", request.getContextPath() + "/resources/" + ((UserBean) model.get("userBean")).getAccountRef());
 		}
 
-//		System.out.println("xDamsController.frontUrl() model.get(\"frontUrl\"): " + model.get("frontUrl"));
+		// System.out.println("xDamsController.frontUrl() model.get(\"frontUrl\"): " + model.get("frontUrl"));
 		model.addAttribute("contextPath", request.getContextPath());
 		String userAgent = ((HttpServletRequest) request).getHeader("User-Agent");
 		if (userAgent.toLowerCase().contains("msie")) {
@@ -164,7 +164,7 @@ public class xDamsAdminController {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(bundleMap);
 		String globalLangOption = "var globalOption = " + json;
-//		System.out.println(json);
+		// System.out.println(json);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", MediaType.APPLICATION_JSON.toString());
 		return new ResponseEntity<String>(globalLangOption, responseHeaders, HttpStatus.CREATED);
@@ -181,21 +181,18 @@ public class xDamsAdminController {
 	public String messageLang(HttpServletRequest request) {
 		Locale locale = RequestContextUtils.getLocale(request);
 		ResourceBundle bundle = ResourceBundle.getBundle("xdams_messages", locale);
-//		System.out.println(bundle);
+		// System.out.println(bundle);
 		return null;
 	}
-
-
 
 	@RequestMapping(value = "/admin/{archive}/exportMenu", method = RequestMethod.GET, produces = "text/html")
 	public String consoleMenu(@ModelAttribute("userBean") UserBean userBean, @ModelAttribute("confBean") ConfBean confBean, @PathVariable String archive, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		common(confBean, userBean, archive, modelMap, request, response);
 		AdminCommand adminCommand = new AdminCommand(request.getParameterMap(), modelMap);
 		ManagingBean managingBean = adminCommand.execute();
- 		return "admin/"+managingBean.getDispatchView();
+		return "admin/" + managingBean.getDispatchView();
 	}
-	
-	
+
 	@RequestMapping(value = "/admin/generateArchive", method = RequestMethod.GET)
 	public String createArchive(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String xDamsType = MyRequest.getParameter("xDamsType", request.getParameterMap());
@@ -226,17 +223,18 @@ public class xDamsAdminController {
 				valuesMap.put("hostname", archive.getHost());
 				valuesMap.put("pne", archive.getPne());
 				valuesMap.put("port", archive.getPort());
-				
-				if(request.getParameter("dbDir")==null || request.getParameter("dbDir").equals("")){
+
+				if (request.getParameter("dbDir") == null || request.getParameter("dbDir").equals("")) {
 					return createArchiveMenu(modelMap, request, response, account);
-				}else{
+				} else {
 					createArchive.setDbDir(request.getParameter("dbDir"));
 				}
-				
+
 				CreateArchiveResultBean createArchiveResultBean = createArchive.execute(archive.getType());
 				if (createArchiveResultBean.isCreated()) {
 					valuesMap.put("alias", createArchiveResultBean.getAlias());
 					archive.setAlias(createArchiveResultBean.getAlias());
+					boolean isNewGroup = true;
 					while (matcherArchiveGroup.find()) {
 						String accountStr = matcherArchiveGroup.group(2);
 						if (accountStr.equalsIgnoreCase(archive.getGroupName())) {
@@ -244,9 +242,19 @@ public class xDamsAdminController {
 							String resolvedString = strSubstitutor.replace(templateArchive);
 							String temp = matcherArchiveGroup.group(1).replaceAll("</archiveGroup>", resolvedString + "</archiveGroup>");
 							xmlArchives = StringUtils.replace(xmlArchives, matcherArchiveGroup.group(1), temp);
+							isNewGroup = false;
 						}
 					}
+
+					if (isNewGroup) {
+						StrSubstitutor strSubstitutor = new StrSubstitutor(valuesMap);
+						String resolvedString = strSubstitutor.replace(templateArchive);
+						String grpNew = "<archiveGroup name=\"" + archive.getGroupName() + "\">" + resolvedString + "</archiveGroup>";
+						xmlArchives = xmlArchives.replaceAll("</account>", grpNew + "</account>");
+					}
+
 				}
+
 				xwconn.executeUpdateByDocNumber(xmlArchives, numDoc);
 				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
 				ServiceAccount serviceAccount = new ServiceAccount();
@@ -270,28 +278,27 @@ public class xDamsAdminController {
 	@RequestMapping(value = "/admin/{account}/createArchiveMenu", method = RequestMethod.GET)
 	public String createArchiveMenu(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @PathVariable String account) throws Exception {
 
-			XWConnection xwconn = null;
-			ConnectionManager connectionManager = new ConnectionManager();
-			try {
-				xwconn = connectionManager.getConnection(authenticationType.getArchiveXWAY());
-				QueryResult queryResult = xwconn.getQRfromPhrase("([XML,/account/@id]=\"" + account + "\")");
-				int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
-				String xmlArchives = xwconn.getSingleXMLFromNumDoc(numDoc).replaceAll("(?s)<!--.*?-->", "");
-				Account accountBean = new Account();
-//				System.out.println(xmlArchives);
-				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
-				ServiceAccount serviceAccount = new ServiceAccount();
-				modelMap.put("archiveByGroup", serviceAccount.getArchiveByGroup(archivesMap));
-				modelMap.put("archivesMap", archivesMap);
-				modelMap.put("account", account);
-				modelMap.put("dbDir", createArchive.getDbDir());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			} finally {
-				connectionManager.closeConnection(xwconn);
-			}
-	
+		XWConnection xwconn = null;
+		ConnectionManager connectionManager = new ConnectionManager();
+		try {
+			xwconn = connectionManager.getConnection(authenticationType.getArchiveXWAY());
+			QueryResult queryResult = xwconn.getQRfromPhrase("([XML,/account/@id]=\"" + account + "\")");
+			int numDoc = xwconn.getNumDocFromQRElement(queryResult, 0);
+			String xmlArchives = xwconn.getSingleXMLFromNumDoc(numDoc).replaceAll("(?s)<!--.*?-->", "");
+			Account accountBean = new Account();
+			// System.out.println(xmlArchives);
+			Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
+			ServiceAccount serviceAccount = new ServiceAccount();
+			modelMap.put("archiveByGroup", serviceAccount.getArchiveByGroup(archivesMap));
+			modelMap.put("archivesMap", archivesMap);
+			modelMap.put("account", account);
+			modelMap.put("dbDir", createArchive.getDbDir());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			connectionManager.closeConnection(xwconn);
+		}
 
 		return "admin/createArchiveMenu";
 	}
