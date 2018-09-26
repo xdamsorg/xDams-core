@@ -48,6 +48,7 @@ public class ManageXML {
 		ConfBean confBean = null;
 		ManagingBean managingBean = null;
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		try {
 			managingBean = new ManagingBean();
@@ -57,9 +58,23 @@ public class ManageXML {
 			UserBean userBean = (UserBean) modelMap.get("userBean");
 			confBean = (ConfBean) modelMap.get("confBean");
 			WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
+			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+			
 			if (!physDoc.equals("") && makeAction.equals("")) {
-				xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 				managingBean.setPhysDoc(Integer.parseInt(physDoc));
+				MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
+				editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(managingBean.getPhysDoc()), "ISO-8859-1"));
+				confBean = editingManager.rewriteMultipleConf(confControl);
+				XMLBuilder builder = confBean.getTheXMLConfTitle();
+				titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+	 			try {
+					if (!titleRole.trim().equals("")) {
+						xwconn.setTitleRole(titleRole);
+					}
+				} catch (Exception e) {
+					System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+					xwconn.restoreTitleRole();
+				}	
 				managingBean.setTitle((xwconn.getTitle(xwconn.connection, xwconn.getTheDb(), Integer.parseInt(physDoc))).getTitle());
 				String docXmlToSet = xwconn.getSingleXMLFromNumDoc(managingBean.getPhysDoc());
 				docXmlToSet = XMLCleaner.clearXwXML(docXmlToSet, true);
@@ -103,8 +118,21 @@ public class ManageXML {
 				managingBean.setDispatchView("xmlMenu");
 
 			} else if (!physDoc.equals("") && makeAction.equals("true")) { // DO
-				xwconn = connectionManager.getConnection(workFlowBean.getArchive());
+//				xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 				managingBean.setPhysDoc(Integer.parseInt(physDoc));
+				MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
+				editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(managingBean.getPhysDoc()), "ISO-8859-1"));
+				confBean = editingManager.rewriteMultipleConf(confControl);
+				XMLBuilder builder = confBean.getTheXMLConfTitle();
+				titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+	 			try {
+					if (!titleRole.trim().equals("")) {
+						xwconn.setTitleRole(titleRole);
+					}
+				} catch (Exception e) {
+					System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+					xwconn.restoreTitleRole();
+				}					
 				managingBean.setDispatchView("xmlResult");
 				int processati = 0;
 				int errori = 0;
@@ -129,9 +157,7 @@ public class ManageXML {
 				managingBean.setDocErrori(errori);
 			}
 
-			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
-			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(managingBean.getPhysDoc()), "ISO-8859-1"));
-			confBean = editingManager.rewriteMultipleConf(confControl);
+
 
 			modelMap.put("confBean", confBean);
 			modelMap.put("managingBean", managingBean);
@@ -141,6 +167,7 @@ public class ManageXML {
 			modelMap.put("managingBean", managingBean);
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 

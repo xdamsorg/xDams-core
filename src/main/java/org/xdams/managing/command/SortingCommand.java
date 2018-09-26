@@ -38,6 +38,7 @@ public class SortingCommand {
 		String sortingCriteria = MyRequest.getParameter("sortingCriteria", parameterMap);
  		
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		confControl.add("docEdit");
 		try {
@@ -49,6 +50,19 @@ public class SortingCommand {
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));			
 			confBean = editingManager.rewriteMultipleConf(confControl);
+			
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+ 			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}		
+			
+			
 			managingBean = new ManagingBean();
 			if (!physDoc.equals("") && makeAction.equals("")) {
 				it.highwaytech.db.QueryResult qr = xwconn.getSonsFromNumDoc(Integer.parseInt(physDoc));
@@ -91,6 +105,7 @@ public class SortingCommand {
 			modelMap.put("managingBean", managingBean);		
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 

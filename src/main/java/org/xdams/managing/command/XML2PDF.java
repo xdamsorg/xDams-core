@@ -91,6 +91,7 @@ public class XML2PDF {
 		// 2 FIGLI DI PRIMO LIVELLO
 		// 3 TUTTA LA GERARCHIA
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		confControl.add("upload");
 		confControl.add("media");
@@ -118,6 +119,16 @@ public class XML2PDF {
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 			editingManager.setTheXML(theXMLDoc);
 			confBean = editingManager.rewriteMultipleConf(confControl);
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+ 			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}	
 			XSLDir = findXSLPath(userBean, workFlowBean);
 			if (XSLDir != null) {
 				modelMap.put("XSLBeanArrayList", XSLLoader.loadXSL(XSLDir));
@@ -342,7 +353,7 @@ public class XML2PDF {
 			if (xmlInputStream != null) {
 				xmlInputStream.close();
 			}
-
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 		return managingBean;

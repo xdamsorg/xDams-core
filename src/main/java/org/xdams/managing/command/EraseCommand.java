@@ -2,18 +2,13 @@ package org.xdams.managing.command;
 
 import it.highwaytech.db.QueryResult;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.ModelMap;
-import org.springframework.web.util.WebUtils;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.view.bean.ManagingBean;
@@ -59,6 +54,7 @@ public class EraseCommand {
 	
 		HttpSession httpSession = null; 
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		confControl.add("valoriControllati");
 		confControl.add("managing");
@@ -77,6 +73,19 @@ public class EraseCommand {
 				managingBean.setPhysDoc(Integer.parseInt(physDoc));
 				editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(managingBean.getPhysDoc()), "ISO-8859-1"));
 				confBean = editingManager.rewriteMultipleConf(confControl);
+				
+				
+				XMLBuilder builder = confBean.getTheXMLConfTitle();
+				titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+	 			try {
+					if (!titleRole.trim().equals("")) {
+						xwconn.setTitleRole(titleRole);
+					}
+				} catch (Exception e) {
+					System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+					xwconn.restoreTitleRole();
+				}				
+				
 				managingBean.setDocLowerBrother(xwconn.getNumDocNextBrother(managingBean.getPhysDoc()));
 				managingBean.setDocUpperBrother(xwconn.getNumDocPreviousBrother(managingBean.getPhysDoc()));
 
@@ -202,6 +211,7 @@ public class EraseCommand {
 			modelMap.put("managingBean", null);			
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 

@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.ui.ModelMap;
 import org.xdams.adv.configuration.Element;
+import org.xdams.adv.utility.GenericInterface;
 import org.xdams.adv.utility.MappingAdv;
 import org.xdams.conf.master.ConfBean;
 import org.xdams.manager.conf.MultiEditingManager;
@@ -26,7 +27,6 @@ import org.xdams.workflow.bean.WorkFlowBean;
 import org.xdams.xml.builder.XMLBuilder;
 import org.xdams.xmlengine.connection.manager.ConnectionManager;
 import org.xdams.xw.XWConnection;
-import org.xdams.adv.utility.GenericInterface;
 
 public class ModifyAuther {
 

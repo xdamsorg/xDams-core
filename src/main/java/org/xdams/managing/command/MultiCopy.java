@@ -41,6 +41,7 @@ public class MultiCopy {
 		boolean menuFlag = true;
 		HttpSession httpSession = null;
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		confControl.add("valoriControllati");
 		confControl.add("docEdit");
@@ -53,7 +54,17 @@ public class MultiCopy {
 			MultiEditingManager editingManager = new MultiEditingManager(parameterMap, confBean, userBean, workFlowBean);
 			editingManager.setTheXML(new XMLBuilder(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(physDoc)), "ISO-8859-1"));
 			confBean = editingManager.rewriteMultipleConf(confControl);
-
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+ 			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}
+ 			
 			if (httpSession.getAttribute(workFlowBean.getManagingBeanName()) != null) {
 				managingBean = ((ManagingBean) httpSession.getAttribute(workFlowBean.getManagingBeanName()));
 			} else {
@@ -175,6 +186,7 @@ public class MultiCopy {
 			modelMap.put("managingBean", managingBean);
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 		return managingBean;

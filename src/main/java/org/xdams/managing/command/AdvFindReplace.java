@@ -1,14 +1,14 @@
 package org.xdams.managing.command;
 
+import static org.xdams.utility.text.findreplace.Options.CASE_INSENSITIVE;
+import static org.xdams.utility.text.findreplace.Options.WHOLE_WORD;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
-
-import static org.xdams.utility.text.findreplace.Options.CASE_INSENSITIVE;
-import static org.xdams.utility.text.findreplace.Options.WHOLE_WORD;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.ui.ModelMap;
@@ -21,7 +21,6 @@ import org.xdams.manager.conf.MultiEditingManager;
 import org.xdams.page.view.bean.ManagingBean;
 import org.xdams.user.bean.UserBean;
 import org.xdams.utility.ExtractDocument;
-import org.xdams.utility.XMLCopy;
 import org.xdams.utility.request.MyRequest;
 import org.xdams.utility.text.findreplace.Replacer;
 import org.xdams.workflow.bean.WorkFlowBean;
@@ -52,6 +51,7 @@ public class AdvFindReplace {
 
 		HttpSession httpSession = null;
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		confControl.add("docEdit");
 		confControl.add("valoriControllati");
@@ -72,6 +72,16 @@ public class AdvFindReplace {
 				managingBean = new ManagingBean();
 			}
 			managingBean.setSelid(selid);
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+ 			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}
 
 			if (!physDoc.equals("") && makeAction.equals("") && action.equals("")) {
 
@@ -190,6 +200,7 @@ public class AdvFindReplace {
 			modelMap.put("managingBean", managingBean);
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 		return managingBean;
