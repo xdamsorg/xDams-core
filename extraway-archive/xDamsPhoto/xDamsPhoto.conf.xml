@@ -25,6 +25,8 @@
   <!-- SPECIFICHE DELLA DATA -->
   <key name="XML,/c/did/unittitle/unitdate" attr_collate="#toyear:$@normal|p9-4,fn-4@$#fromyear:$@normal|p0-4,fn-4@$#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$"/>
   <key name="XML,/c/did/unittitle/unitdate/@normal" key_style="multi"/>
+  <key name="XML,/c/did/unitdate" attr_collate="#toyear:$@normal|p9-4,fn-4@$#fromyear:$@normal|p0-4,fn-4@$#from:$@normal|p0-8,fn-8,d@$#to:$@normal|p9-8,fn-8,d@$"/>
+  <key name="XML,/c/did/unitdate/@normal" key_style="multi"/>  
   <key name="XML,/c/controlaccess/name/chronlist/chronitem/date" key_style="one" value_type="date" empty_key="yes"/>
   <!-- FOTOGRAFO -->
   <key name="XML,/c/did/origination/persname/" key_style="double" empty_key="yes" key_also="XML,/c/fotografoPrincipale"/>
@@ -82,7 +84,7 @@
  <file_location mode="day"/>
  <!--prunable_branch element_name="XML,/c/processinfo" list="yes" / -->
  <expert_system_extension active="false"/>
- <profile type="title" value="XML,/c/did/unittitle &quot;[@tit@]&quot; XML,/c/did/unittitle/title &quot;[@aut@]&quot; XML,/c/did/unittitle/unitdate &quot;[@date@]&quot; XML,/c/did/origination/persname &quot;[@lev@]&quot; XML,/c/@level &quot;[@all@]&quot; XML,/c/did/physdesc/extptr/@href"/>
+ <profile type="title" value="XML,/c/did/unittitle &quot;[@tit@]&quot; XML,/c/did/unittitle/title &quot;[@aut@]&quot; XML,/c/did/unitdate &quot;[@date@]&quot; XML,/c/did/origination/persname &quot;[@lev@]&quot; XML,/c/@level &quot;[@all@]&quot; XML,/c/did/physdesc/extptr/@href"/>
  <profile type="title.separ" value="¢"/>
  <profile type="separs.default" value="1-47 58-63 91-96 123-160 163-191 247 254"/>
  <profile type="catalog.strict" value="true"/>
