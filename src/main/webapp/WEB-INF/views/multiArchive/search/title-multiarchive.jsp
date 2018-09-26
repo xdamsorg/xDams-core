@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="org.xdams.user.bean.Archive"%>
 <%@page import="org.xdams.page.multiarchive.bean.MultiArchiveBean"%>
 <%@page import="org.springframework.web.util.WebUtils"%>
@@ -99,7 +100,7 @@ loadJsBusiness('title','${frontUrl}');
 										Enumeration enumeration = request.getParameterNames();
 										while (enumeration.hasMoreElements()) {
 											String paramName = (String) enumeration.nextElement();
-											%><input type="hidden" name="<%=paramName%>" value="<%=request.getParameter(paramName)%>"/><%
+											%><input type="hidden" name="<%=paramName%>" value="<%=StringEscapeUtils.escapeHtml4(request.getParameter(paramName)) %>"/><%
 											//out.println(paramName+"<br />");
 										}
 										%>
