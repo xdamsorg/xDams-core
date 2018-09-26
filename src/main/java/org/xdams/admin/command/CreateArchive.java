@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +38,10 @@ public class CreateArchive {
 
 	private int numberOfFill;
 
+	private boolean nameFromXWINI = false;
+
+	private String extrawayDir = "";
+
 	public CreateArchive() throws Exception {
 
 	}
@@ -60,14 +65,21 @@ public class CreateArchive {
 			return createArchiveResultBean;
 		}
 
-		String newArchivID = generateName(xDamsType);
+		String newArchivID = null;
+		if (nameFromXWINI) {
+			newArchivID = generateNameFromINI(xDamsType);
+		} else {
+			newArchivID = generateName(xDamsType);
+		}
+		System.out.println("newArchivID: " + newArchivID);
+
 		if (newArchivID == null) {
 			createArchiveResultBean.setCreated(false);
 			createArchiveResultBean.setxDamsType(xDamsType);
 			createArchiveResultBean.setMsg("Impossibile creare archivio - error 1001 - ");
 			return createArchiveResultBean;
 		}
-		System.out.println("newArchivID: " + newArchivID);
+
 		boolean verifyIfPresent = verifyIfPresent(newArchivID);
 
 		if (verifyIfPresent) {
@@ -112,6 +124,78 @@ public class CreateArchive {
 		return true;
 	}
 
+	public String generateNameFromINI(String xDamsType) throws Exception {
+		// ConnectionManager connectionManager = new ConnectionManager();
+		// XWConnection xwConnection = null;
+		String newArchivID = nameXWPrefix + xDamsType;
+		// System.out.println("archive: " + archive);
+		try {
+
+			// xwConnection = connectionManager.getConnection(archive);
+			// devo leggere xw.ini
+			// String xmlCommand = "<?xml version=\"1.0\"?>\n";
+			// xmlCommand += "<cmd c=\"4\" bits=\"7\">\n";
+			// xmlCommand += "</cmd>\n";
+			// String result = xwConnection.XMLCommand(xwConnection.connection, archive.getAlias(), xmlCommand);
+			// Pattern patternUser = Pattern.compile("<dtl dtype=\"info\" dval=\"([^>]+)\"/>", Pattern.DOTALL);
+			// Matcher matcherUser = patternUser.matcher(result);
+			// System.out.println("result: " + result);
+			String result = FileUtils.readFileToString(new File(extrawayDir + "conf/xw.ini"));
+			Scanner scanner = new Scanner(result);
+			List<Integer> list = new ArrayList<Integer>();
+			while (scanner.hasNextLine()) {
+				String idArch = scanner.nextLine();
+				if (idArch.contains("=")) {
+					idArch = StringUtils.substringBefore(idArch, "=");
+//					System.out.println("CreateArchive.generateName() idArch: " + idArch);
+					if (idArch.startsWith(nameXWPrefix + xDamsType)) {
+						try {
+							Integer integer = Integer.parseInt(idArch.replaceAll(nameXWPrefix + xDamsType, ""));
+							// System.out.println("CreateArchive.generateName() integer: " + integer);
+							list.add(integer);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+					}
+				}
+			}
+			scanner.close();
+
+			// while (matcherUser.find()) {
+			// String idArch = matcherUser.group(1);
+			// // System.out.println("nameXWPrefix + xDamsType: " + nameXWPrefix + xDamsType);
+			// if (idArch.startsWith(nameXWPrefix + xDamsType)) {
+			// // System.out.println("CreateArchive.generateName() idArch: " + idArch);
+			// try {
+			// Integer integer = Integer.parseInt(idArch.replaceAll(nameXWPrefix + xDamsType, ""));
+			// // System.out.println("CreateArchive.generateName() integer: " + integer);
+			// list.add(integer);
+			// } catch (Exception e) {
+			// // TODO: handle exception
+			// }
+			// }
+			// }
+
+			// System.out.println("CreateArchive.generateName() listPrima: " + list);
+			Integer[] integers = (Integer[]) list.toArray(new Integer[0]);
+			Arrays.sort(integers);
+			// System.out.println("CreateArchive.generateName() listDOPO: " + integers);
+			if (integers.length == 0) {
+				newArchivID += StringUtils.leftPad(String.valueOf(1), numberOfFill, '0');
+			} else {
+				newArchivID += StringUtils.leftPad(String.valueOf(integers[integers.length - 1] + 1), numberOfFill, '0');
+			}
+			// System.out.println("ULTIMO: " + list.get(list.size() - 1));
+			// System.out.println("newArchivID: " + newArchivID);
+		} catch (Exception e) {
+			e.printStackTrace();
+			newArchivID = null;
+		} finally {
+			// connectionManager.closeConnection(xwConnection);
+		}
+		return newArchivID;
+	}
+
 	public String generateName(String xDamsType) throws Exception {
 		ConnectionManager connectionManager = new ConnectionManager();
 		XWConnection xwConnection = null;
@@ -127,7 +211,7 @@ public class CreateArchive {
 			String result = xwConnection.XMLCommand(xwConnection.connection, archive.getAlias(), xmlCommand);
 			Pattern patternUser = Pattern.compile("<dtl dtype=\"info\" dval=\"([^>]+)\"/>", Pattern.DOTALL);
 			Matcher matcherUser = patternUser.matcher(result);
-			// System.out.println("result: " + result);
+			System.out.println("result: " + result);
 
 			List<Integer> list = new ArrayList<Integer>();
 			while (matcherUser.find()) {
@@ -190,15 +274,15 @@ public class CreateArchive {
 
 				System.out.println("CreateArchive.createArchive() PRIMA DI CREARE LA DIRECTORY : " + (getDbDir() + File.separator + dbName));
 				boolean dirCreated = new File(getDbDir() + File.separator + dbName + File.separator).mkdirs();
-				if(!CommonUtils.isWindows()){
+				if (!CommonUtils.isWindows()) {
 					Files.setPosixFilePermissions(new File(getDbDir() + File.separator + dbName + File.separator).toPath(), perms);
 				}
 				System.out.println("CreateArchive.createArchive() DOPO AVER CREATO LA DIRECTORY : " + (getDbDir() + File.separator + dbName));
 				System.out.println("CreateArchive.createArchive() dirCreated : " + dirCreated);
 
 				FileUtils.writeStringToFile(new File(fileConfWriteTo), confArchive.replaceAll("MASKNUM", mask), "ISO-8859-1");
-				if(!CommonUtils.isWindows()){
-				Files.setPosixFilePermissions(new File(fileConfWriteTo).toPath(), perms);
+				if (!CommonUtils.isWindows()) {
+					Files.setPosixFilePermissions(new File(fileConfWriteTo).toPath(), perms);
 				}
 				xwConnection = connectionManager.getConnection(archive);
 				xwConnection.createDb(xwConnection.connection, sDb, dbName, true);
@@ -263,5 +347,21 @@ public class CreateArchive {
 
 	public void setNumberOfFill(int numberOfFill) {
 		this.numberOfFill = numberOfFill;
+	}
+
+	public boolean isNameFromXWINI() {
+		return nameFromXWINI;
+	}
+
+	public void setNameFromXWINI(boolean nameFromXWINI) {
+		this.nameFromXWINI = nameFromXWINI;
+	}
+
+	public String getExtrawayDir() {
+		return extrawayDir;
+	}
+
+	public void setExtrawayDir(String extrawayDir) {
+		this.extrawayDir = extrawayDir;
 	}
 }

@@ -61,6 +61,7 @@ public class AdminCommand {
 
 		HttpSession httpSession = null;
 		List<String> confControl = new ArrayList<String>();
+		String titleRole = "";
 		confControl.add("titleManager");
 		try {
 			managingBean = new ManagingBean();
@@ -76,6 +77,18 @@ public class AdminCommand {
 				editingManager.setTheXML(new XMLBuilder("root"));
 			}
 			confBean = editingManager.rewriteMultipleConf(confControl);
+
+			XMLBuilder builder = confBean.getTheXMLConfTitle();
+			titleRole = builder.valoreNodo("/root/titleManager/sezione[@name='defaultTitle']/titleRole/text()", false);
+			try {
+				if (!titleRole.trim().equals("")) {
+					xwconn.setTitleRole(titleRole);
+				}
+			} catch (Exception e) {
+				System.out.println(" ---- ERROR ---- QueryParserCommand (xwconn.setTitleRole(titleRole)), title to parse: " + titleRole);
+				xwconn.restoreTitleRole();
+			}
+
 			managingBean.setSelid(selid);
 			if (!physDoc.equals("") && makeAction.equals("")) {
 				managingBean.setPhysDoc(Integer.parseInt(physDoc));
@@ -172,6 +185,7 @@ public class AdminCommand {
 			modelMap.put("managingBean", managingBean);
 			throw new Exception(e.toString());
 		} finally {
+			xwconn.restoreTitleRole();
 			connectionManager.closeConnection(xwconn);
 		}
 
