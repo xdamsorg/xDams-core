@@ -85,9 +85,11 @@ public class ManageXML {
 					docXmlToSet = docXmlToSet.replaceAll(">", "&#62;");
 					docXmlToSet = docXmlToSet.replaceAll("\t", "&#160;&#160;&#160;");
 					docXmlToSet = docXmlToSet.replaceAll("\n", "<br>");
+					docXmlToSet = docXmlToSet.replaceAll("(?m)^\\s*\n" , "");
 				} else {
 					XMLBuilder parsedBuilder = new XMLBuilder(docXmlToSet, "ISO-8859-1");
 					docXmlToSet = parsedBuilder.getXML("ISO-8859-1");
+					docXmlToSet = docXmlToSet.replaceAll("(?m)^\\s*\n" , "");
 				}
 				managingBean.setDocXML(docXmlToSet);
 				managingBean.setDocLowerBrother(xwconn.getNumDocNextBrother(managingBean.getPhysDoc()));
@@ -139,6 +141,7 @@ public class ManageXML {
 				try {
 					docXML = docXML.replaceAll("&", "&amp;");
 					docXML = docXML.replaceAll("&amp;#", "&#");
+					docXML = docXML.replaceAll("(?m)^\\s*\n" , "");
 					XMLBuilder xmlBuilder = new XMLBuilder(docXML, "ISO-8859-1");
 					OutputFormat outputFormat = new OutputFormat();
 					outputFormat.setEncoding("ISO-8859-1");
