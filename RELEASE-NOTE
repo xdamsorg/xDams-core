@@ -210,10 +210,15 @@ Release Note (by regesta.exe - simvox)
 2) FIX - multiarchive with tomcat8/java8/9 
 ***** xDams Open Source Platform  *****
 *****   by simvox https://twitter.com/simvox
+*****   contribution Manuel Carassai 
 *****   www.xdams.org https://twitter.com/xdams_platform      
 *****   version:  3.2.2
 *****   date:     25.09.2018
 ************************************************************************************************
-1) UPDATE and FIX 
+1) NEW ENTRY Hier in api rest
+2) NEW ENTRY multiarchive view
+3) FIX upload originale same name
+4) FIX edit xml, removed space
+
 
 
