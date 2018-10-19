@@ -234,7 +234,7 @@ public class xDamsRestController {
 		if (query == null) {
 			query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
 		}
-
+		xwConnection.setAdjacency(-9);
 		QueryResult qr = new QueryResult();
 		QueryResult qrTemp = null;
 		qrTemp = xwConnection.getQRfromPhrase(query);
