@@ -17,7 +17,7 @@
 				|| this.searchVersion(navigator.appVersion)
 				|| "an unknown version";
 			this.OS = this.searchString(this.dataOS) || "an unknown OS";
-		},
+		}, 
 		searchString: function (data) {
 			for (var i=0;i<data.length;i++)	{
 				var dataString = data[i].string;

@@ -2,14 +2,16 @@ var globalScript = {};
 function loadScripts(scriptsMap) {
 	for ( var a = 0; a < scriptsMap.scripts.length; a++) {
 		aScript = scriptsMap.scripts[a];
+		 
 		if (!globalScript[aScript]) {
-			jQuery.ajax({
+  			jQuery.ajax({
 				async : false,
 				cache : false,
 				url : (scriptsMap.prefix ? scriptsMap.prefix : "") + scriptsMap.base + '/' + aScript + '.js?' + new Date().getMonth() + new Date().getDay(),
 				dataType : 'script',
 				error : function(error) {
-					alert('error loading ' + aScript);
+					console.log(error);
+					//alert(error+' error loading ' + aScript);
 				},
 				success : function() {
 					globalScript[aScript] = 'loaded';
