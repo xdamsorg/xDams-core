@@ -49,6 +49,7 @@ public class LookupCommand {
  			workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 			lookupBean = (LookupBean) modelMap.get("lookupBean");
 			xwconn = connectionManager.getConnection(workFlowBean.getArchiveLookup());
+
 			QueryResult qr = null;
 			String startPage = "";
 			String keyCountQuery = MyRequest.getParameter("inputPerPage", "10", parameterMap);
@@ -96,7 +97,7 @@ public class LookupCommand {
 				lookupBean.setInputTitleRule("");
 				int totElements = qr.elements;
 				// setQrSelId(qr.id);
-				System.out.println("PIPPETTO " + qr.elements + " FINE");
+//				System.out.println("PIPPETTO " + qr.elements + " FINE");
 				if (!MyRequest.getParameter("startPage", parameterMap).equals("")) {
 					startPage = MyRequest.getParameter("startPage", parameterMap);
 				}
@@ -184,7 +185,7 @@ public class LookupCommand {
 			if (!lookupBean.getInputExtraQuery().trim().equals("")) {
 				finalQuery += " AND " + lookupBean.getInputExtraQuery();
 			}
-			qr = xwconn.find(xwconn.connection, xwconn.getTheDb(), finalQuery, lookupBean.getInputSort(), it.highwaytech.broker.ServerCommand.find_SORT, -3, 0);
+			qr = xwconn.find(xwconn.connection, xwconn.getTheDb(), finalQuery, lookupBean.getInputSort(), it.highwaytech.broker.ServerCommand.find_SORT, -7, 0);
 			// System.out.println("qr.elements " + qr.elements + " FINE");
 			if (qr.elements == 0 && !tipoQuery.equals("fine")) {
 				// System.out.println("ENTRATO IF ");
