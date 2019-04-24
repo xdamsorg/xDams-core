@@ -106,7 +106,8 @@ public class xDamsRestController {
 		String valueQuery = request.getParameter("valueQuery");
 		String query = request.getParameter("query");
 		String mode = request.getParameter("mode");
-
+		String xSort = request.getParameter("sort");
+		System.out.println("xDamsRestController.restCall() xSort: " + xSort);
 		int perpage = 10;
 		int pageToShow = 1;
 		try {
@@ -140,7 +141,7 @@ public class xDamsRestController {
 				outputBuilder.append("</response>");
 			} else if (mode != null && mode.equals("hier")) {
 				String queryFind = xwQuery;
-				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+				result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind, xSort);
 				// for (int i = 0; i < keys.size(); i++) {
 				// Key key = (Key) keys.elementAt(i);
 				// outputBuilder.append("<key freq=\"" + key.frequence + "\">" + key.key.toString().trim() + "</key>\n");
@@ -185,13 +186,13 @@ public class xDamsRestController {
 					// command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 				} else if (xwQuery != null && !xwQuery.trim().equals("")) {
 					String queryFind = xwQuery;
-					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind);
+					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, queryFind, xSort);
 					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 				} else if (physDoc != null) {
 					qr = xwconn.getQRFromHier(Integer.parseInt(physDoc), true);
 					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + qr.id + "\">" + xslt + "</cmd>";
 				} else {
-					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, null);
+					result = findAll(xwconn, archiveAllMap.get(archive), pageToShow, perpage, null, xSort);
 					command = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Full + XMLCommand.Export_Memory) + "\" sel=\"" + result.get(0) + "\">" + xslt + "</cmd>";
 				}
 				String trasform = xwconn.XMLCommand(xwconn.connection, xwconn.getTheDb(), command);
@@ -230,14 +231,19 @@ public class xDamsRestController {
 		return outputBuilder.toString();
 	}
 
-	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage, String query) throws SQLException, XWException {
+	private static List<String> findAll(XWConnection xwConnection, Archive archive, int pageToShow, int perpage, String query, String xSort) throws SQLException, XWException {
 		if (query == null) {
 			query = "([UD,/xw/@UdType]=\"" + archive.getPne() + "\")";
 		}
 		xwConnection.setAdjacency(-9);
 		QueryResult qr = new QueryResult();
 		QueryResult qrTemp = null;
-		qrTemp = xwConnection.getQRfromPhrase(query);
+		if (xSort != null && !xSort.equals("")) {
+			qrTemp = xwConnection.getQRfromPhrase(query, xSort);
+		} else {
+			qrTemp = xwConnection.getQRfromPhrase(query);
+		}
+
 		int found = qrTemp.elements;
 
 		// controllo sulle variabili
