@@ -176,7 +176,12 @@ public class UploadCommand {
 							lsOut.close();
 							System.out.println(uploadBean.getResultError());
 						} else {
-							String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
+							String fileExt = FilenameUtils.getExtension(uploadPath.toString());
+//							System.out.println("UploadCommand.execute() fileExt_ "+fileExt);
+//							System.out.println("UploadCommand.execute() uploadPath.toString() "+uploadPath.toString());
+							String fileNameNoExt = FilenameUtils.removeExtension(uploadPath.toString());
+							String resultName = StringUtils.remove(fileNameNoExt, uploadCommandLine.getUploadPath());
+//							System.out.println("UploadCommand.execute() resultName "+resultName);
 							resultName = StringUtils.remove(resultName, archiveName);
 							// resultName = StringUtils.remove(resultName, domainName);
 							resultName = StringUtils.replaceOnce(resultName, domainName, "");
@@ -190,6 +195,7 @@ public class UploadCommand {
 									uploadBean.getResultError().append(e.getMessage());
 								}
 							}
+							resultName += "."+fileExt;
 							uploadBean.setResult(new StringBuilder(resultName));
 							System.out.println("uploadPath resize: " + resultName);
 						}
@@ -201,7 +207,13 @@ public class UploadCommand {
 						FileUtils.copyFile(new File(uploadCommandLine.getUploadTempPath() + System.getProperty("file.separator") + CommonUtils.stripPunctuation(FilenameUtils.getBaseName(uploadBean.getName()), '-') + "." + FilenameUtils.getExtension(uploadBean.getName())),
 								new File(uploadPath.toString()));
 						System.out.println("uploadPath.toString() " + uploadPath.toString());
-						String resultName = StringUtils.remove(uploadPath.toString(), uploadCommandLine.getUploadPath());
+						String fileExt = FilenameUtils.getExtension(uploadPath.toString());
+//						System.out.println("UploadCommand.execute() fileExt_ "+fileExt);
+//						System.out.println("UploadCommand.execute() uploadPath.toString() "+uploadPath.toString());
+						String fileNameNoExt = FilenameUtils.removeExtension(uploadPath.toString());
+						
+						
+						String resultName = StringUtils.remove(fileNameNoExt, uploadCommandLine.getUploadPath());
 						resultName = StringUtils.remove(resultName, archiveName);
 						// resultName = StringUtils.remove(resultName, domainName);
 						resultName = StringUtils.replaceOnce(resultName, domainName, "");
@@ -215,6 +227,7 @@ public class UploadCommand {
 								uploadBean.getResultError().append(e.getMessage());
 							}
 						}
+						resultName += "."+fileExt;
 						uploadBean.setResult(new StringBuilder(resultName));
 						System.out.println("uploadPath simple: " + resultName);
 					} catch (Exception e) {
