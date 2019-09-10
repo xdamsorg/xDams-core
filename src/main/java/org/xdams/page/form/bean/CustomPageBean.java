@@ -3,9 +3,15 @@ package org.xdams.page.form.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.xdams.xml.builder.XMLBuilder;
 
 public class CustomPageBean {
+	
+	private CommonsMultipartFile filedata;
+	
+	private List<CommonsMultipartFile> multipleFiledata;
+	
 	String physDoc = "";
 
 	String selid = "";
@@ -80,4 +86,21 @@ public class CustomPageBean {
 	public void setXmlBuilder(XMLBuilder xmlBuilder) {
 		this.xmlBuilder = xmlBuilder;
 	}
+
+	public CommonsMultipartFile getFiledata() {
+		return filedata;
+	}
+
+	public void setFiledata(CommonsMultipartFile filedata) {
+		this.filedata = filedata;
+	}
+
+	public List<CommonsMultipartFile> getMultipleFiledata() {
+		return multipleFiledata;
+	}
+
+	public void setMultipleFiledata(List<CommonsMultipartFile> multipleFiledata) {
+		this.multipleFiledata = multipleFiledata;
+	}
+ 
 }

@@ -42,7 +42,7 @@ $(document).ready(function(){
       var file = $('input[type="file"]').val();
       <%
       if(request.getParameter("uploadType")!=null && request.getParameter("uploadType").equals("resize")){
-    	  %>var exts = ['jpg','tif','tiff','jpeg','gif','png'];<%
+    	  %>var exts = ['jpg','tif','tiff','jpeg','gif','png','jp2'];<%
       }else if(request.getParameter("uploadType")!=null && request.getParameter("uploadType").equals("simple")){
     	  %>//var exts = ['doc','docx','rtf','odt'];<%
       }else{
@@ -53,7 +53,7 @@ $(document).ready(function(){
     	  if(exts){
     	        var get_ext = file.split('.');
     	        get_ext = get_ext.reverse();  
-    	        if($.inArray(get_ext[0].toLowerCase(), exts)){
+    	        if($.inArray(get_ext[0].toLowerCase(), exts) > -1){
     	            $("span").text("<spring:message code="File_non_valido" text="File non valido"/>!").show().fadeOut(2000);
     	            return false;
     	        }    		  

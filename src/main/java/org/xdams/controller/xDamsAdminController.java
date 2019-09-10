@@ -218,7 +218,12 @@ public class xDamsAdminController {
 				String templateArchive = "<archive alias=\"${alias}\" host=\"${hostname}\" ico=\"${ico}\" pne=\"${pne}\" port=\"${port}\" type=\"${type}\">${descr}</archive>";
 				Map<String, String> valuesMap = new HashMap<String, String>();
 				valuesMap.put("descr", archive.getArchiveDescr());
-				valuesMap.put("type", archive.getType());
+				if(request.getParameter("extraType")!=null && !request.getParameter("extraType").equals("")){
+					valuesMap.put("type", request.getParameter("extraType"));
+				}else{
+					valuesMap.put("type", archive.getType());	
+				}
+				
 				valuesMap.put("ico", archive.getIco());
 				valuesMap.put("hostname", archive.getHost());
 				valuesMap.put("pne", archive.getPne());
@@ -255,7 +260,7 @@ public class xDamsAdminController {
 
 				}
 
-				xwconn.executeUpdateByDocNumber(xmlArchives, numDoc);
+				xwconn.executeUpdateByDocNumber(xmlArchives.replaceAll("(?m)^\\s*\n" , ""), numDoc);
 				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
 				ServiceAccount serviceAccount = new ServiceAccount();
 				modelMap.put("archiveByGroup", serviceAccount.getArchiveByGroup(archivesMap));

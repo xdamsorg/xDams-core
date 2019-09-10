@@ -29,6 +29,8 @@ import org.xdams.xw.XWConnection;
 public class CreateArchive {
 
 	private String dbDir = "";
+	
+	private String dbInitCatDir = "";
 
 	private String dbDirWriteConf = "";
 
@@ -256,6 +258,10 @@ public class CreateArchive {
 		try {
 			String sDb = getDbDir() + File.separator + dbName + File.separator + xDamsType;
 			String fileConfWriteTo = getDbDir() + File.separator + dbName + File.separator + xDamsType + ".conf.xml";
+			//mi serve per definire se la cartella di inizializzazione archivi e' diversa da quella di creazione, vedi casi di cartelle remote
+			if(getDbInitCatDir()!=null && !getDbInitCatDir().equals("")){
+				sDb = getDbInitCatDir() + File.separator + dbName + File.separator + xDamsType;
+			}
 			System.out.println("sDb: " + sDb);
 			System.out.println("fileConfWriteTo: " + fileConfWriteTo);
 			try {
@@ -363,5 +369,13 @@ public class CreateArchive {
 
 	public void setExtrawayDir(String extrawayDir) {
 		this.extrawayDir = extrawayDir;
+	}
+
+	public String getDbInitCatDir() {
+		return dbInitCatDir;
+	}
+
+	public void setDbInitCatDir(String dbInitCatDir) {
+		this.dbInitCatDir = dbInitCatDir;
 	}
 }

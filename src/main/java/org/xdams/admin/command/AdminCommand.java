@@ -149,7 +149,7 @@ public class AdminCommand {
 
 				String result = xwconn.XMLCommand(xwconn.connection, workFlowBean.getAlias(), exportCmd);
 				result = XMLCleaner.clearXwFullXML(result, true);
-				// System.out.println(result);
+//				  System.out.println(result);
 				String realPath = (String) modelMap.get("realPath");
 				System.out.println("realPath: " + realPath);
 				System.out.println("flagAudience: " + flagAudience);
@@ -160,8 +160,14 @@ public class AdminCommand {
 					result = TrasformXslt20.xslt(result, xsltFiltra);
 				}
 
-				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_");
-				FileUtils.writeStringToFile(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"), result, "ISO-8859-1");
+				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-');
+				System.out.println("fileNameExport: "+fileNameExport);
+				try {
+					FileUtils.writeStringToFile(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"), result, "ISO-8859-1");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 				try {
 					OutputStream zip_output = new FileOutputStream(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".zip"));
 					ArchiveOutputStream logical_zip = new ArchiveStreamFactory().createArchiveOutputStream(ArchiveStreamFactory.ZIP, zip_output);
