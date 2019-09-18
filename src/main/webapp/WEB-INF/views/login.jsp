@@ -140,15 +140,15 @@
 	    <form name="f" action="<c:url value='j_spring_security_check'/>" method="POST">
 			<div class="righeLogin">
 				<label class="loginlabel"><spring:message code="Nome_utente" text="User Name"/></label>
-				<input type='text' id="filterinput" name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>'/>
+				<input type='text' id="filterinput" name='j_username' value='<c:if test="${not empty param.login_error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></c:if>' autocomplete="off"/>
 			</div>
 			<div class="righeLogin">
 				<label class="loginlabel">Password</label>
-				<input type='password' id="filterinput" name='j_password' value="">
+				<input type='password' id="filterinput" name='j_password' value="" autocomplete="off">
 			</div>		
 			<div class="righeLogin">
 				<label class="loginlabel">Account</label>
-				<input type="text" id="filterinput" readonly="readonly" name="j_company" value="xdams.org" />
+				<input type="text" id="filterinput" readonly="readonly" name="j_company" value="xdams.org" autocomplete="off" />
 			</div>
 			<!-- 
 			<div class="righeLogin">
