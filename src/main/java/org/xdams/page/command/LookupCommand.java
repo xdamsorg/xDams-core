@@ -185,17 +185,25 @@ public class LookupCommand {
 			if (!lookupBean.getInputExtraQuery().trim().equals("")) {
 				finalQuery += " AND " + lookupBean.getInputExtraQuery();
 			}
-			qr = xwconn.find(xwconn.connection, xwconn.getTheDb(), finalQuery, lookupBean.getInputSort(), it.highwaytech.broker.ServerCommand.find_SORT, -7, 0);
-			// System.out.println("qr.elements " + qr.elements + " FINE");
-			if (qr.elements == 0 && !tipoQuery.equals("fine")) {
-				// System.out.println("ENTRATO IF ");
-				// System.out.println("aaaaaaaaaa " + tipoQuery);
-				// if (!tipoQuery.equals("fine")) {
-				// System.out.println("QUI " + qr.elements + " FINE");
-				find(xwconn, flagQuery, keyCountQuery, lookupBean);
+			
+			
+			try {
+				qr = xwconn.find(xwconn.connection, xwconn.getTheDb(), finalQuery, lookupBean.getInputSort(), it.highwaytech.broker.ServerCommand.find_SORT, -7, 0);
+				// System.out.println("qr.elements " + qr.elements + " FINE");
+				if (qr.elements == 0 && !tipoQuery.equals("fine")) {
+					// System.out.println("ENTRATO IF "); 
+					// System.out.println("aaaaaaaaaa " + tipoQuery);
+					// if (!tipoQuery.equals("fine")) {
+					// System.out.println("QUI " + qr.elements + " FINE");
+					find(xwconn, flagQuery, keyCountQuery, lookupBean);
+					tipoQuery = "fine";
+					// }
+				}
+			} catch (Exception e) {
+//				find(xwconn, flagQuery, keyCountQuery, lookupBean);
 				tipoQuery = "fine";
-				// }
 			}
+		
 
 		} catch (Exception e) {
 			contaQuery++;
