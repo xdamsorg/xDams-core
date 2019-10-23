@@ -5,4 +5,5 @@
        se non si dispone di thumb si deve impostare l'upload resize 
    -->
     <!-- <media type="viewPreview" prefix="${contextPath}/attach/${userBean.accountRef}/${workFlowBean.alias}/high"></media> -->
+    <!-- <media type="slides" iiifSlashReplacer=";" iiifPrefix="{prefixIIIF};${workFlowBean.alias}" iiifSuffix="/full/!170,170/0/default.jpg"></media>-->
 </root>

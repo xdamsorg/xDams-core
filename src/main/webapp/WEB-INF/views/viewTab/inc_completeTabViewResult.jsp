@@ -172,6 +172,9 @@
 										String strTitleFoto = theXML.valoreNodoHTML(mediaBean.getXPathPrefix()+"["+(w+1)+"]"+suffixTitle,"<br />","&nbsp;");
 										String strHrefFoto = theXML.valoreNodoNoHL(mediaBean.getXPathPrefix()+"["+(w+1)+"]"+suffixHref);
 										String prefixFoto = theXMLConfMedia.valoreNodo("/root/media[@type='"+mediaBean.getMediaType()+"']/@prefix");
+										String iiifSlashReplacer = theXMLConfMedia.valoreNodo("/root/media[@type='"+mediaBean.getMediaType()+"']/@iiifSlashReplacer");
+										String iiifSuffix = theXMLConfMedia.valoreNodo("/root/media[@type='"+mediaBean.getMediaType()+"']/@iiifSuffix");
+										String iiifPrefix = theXMLConfMedia.valoreNodo("/root/media[@type='"+mediaBean.getMediaType()+"']/@iiifPrefix");
 										if(mediaBean.getMediaType().indexOf("Alternative")!=-1){
 											int countAlternative = theXMLConfMedia.contaNodi("/root/media[@type='"+mediaBean.getMediaType()+"']/media");
 											for(int kk = 0; kk < countAlternative; kk++){
@@ -179,15 +182,19 @@
 												 
 											}
 										}
+									 
 										String urlFoto = "";
 										if (ExpressionEvaluationUtils.isExpressionLanguage(prefixFoto)) {
 											urlFoto = ExpressionEvaluationUtils.evaluate(prefixFoto, String.class, pageContext)+strHrefFoto;
 										}else if(strHrefFoto.contains("https://") || strHrefFoto.contains("http://")){
 											urlFoto = strHrefFoto;	
 										}else{
-											urlFoto = prefixFoto+strHrefFoto;	 
-										}
-										
+											if(prefixFoto.equals("") && (!iiifSuffix.equals("") || !iiifPrefix.equals(""))){
+												urlFoto = ExpressionEvaluationUtils.evaluate(iiifPrefix, String.class, pageContext)+strHrefFoto.replaceAll("/",iiifSlashReplacer)+ExpressionEvaluationUtils.evaluate(iiifSuffix, String.class, pageContext);
+											}else{
+											urlFoto = prefixFoto+strHrefFoto;		
+											}
+										}										
 										%>
 										<div class="box_sch_breFoto" title="<%=strTitleFoto%>">	
 										<%
