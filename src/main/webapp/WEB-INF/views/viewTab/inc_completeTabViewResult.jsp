@@ -189,12 +189,16 @@
 										}else if(strHrefFoto.contains("https://") || strHrefFoto.contains("http://")){
 											urlFoto = strHrefFoto;	
 										}else{
-											if(prefixFoto.equals("") && (!iiifSuffix.equals("") || !iiifPrefix.equals(""))){
-												urlFoto = ExpressionEvaluationUtils.evaluate(iiifPrefix, String.class, pageContext)+strHrefFoto.replaceAll("/",iiifSlashReplacer)+ExpressionEvaluationUtils.evaluate(iiifSuffix, String.class, pageContext);
+											if(strHrefFoto.toLowerCase().endsWith(".jpg") || strHrefFoto.toLowerCase().endsWith(".png") || strHrefFoto.toLowerCase().endsWith(".gif") || strHrefFoto.toLowerCase().endsWith(".jpeg") || strHrefFoto.toLowerCase().endsWith(".tif") || strHrefFoto.toLowerCase().endsWith(".jp2") || strHrefFoto.toLowerCase().endsWith(".j2k") || strHrefFoto.toLowerCase().endsWith(".jpf") || strHrefFoto.toLowerCase().endsWith(".jpx") || strHrefFoto.toLowerCase().endsWith(".jpm") || strHrefFoto.toLowerCase().endsWith(".mj2")){
+												if((!iiifSuffix.equals("") || !iiifPrefix.equals(""))){
+													urlFoto = ExpressionEvaluationUtils.evaluate(iiifPrefix, String.class, pageContext)+strHrefFoto.replaceAll("/",iiifSlashReplacer)+ExpressionEvaluationUtils.evaluate(iiifSuffix, String.class, pageContext);
+												}else{
+													urlFoto = prefixFoto+strHrefFoto;		
+												}
 											}else{
-											urlFoto = prefixFoto+strHrefFoto;		
+												urlFoto = prefixFoto+strHrefFoto;	
 											}
-										}										
+										}											
 										%>
 										<div class="box_sch_breFoto" title="<%=strTitleFoto%>">	
 										<%
@@ -820,7 +824,7 @@
 												%><%=elementoPathGroupFormat[0]%><%
 												if(extraFunction.equals("")){
 													 if(!theXML.valoreNodoHTML(elementoPath,"<br />","&nbsp;").equals("")){
-													 %><%=elementoPathGroupBefore[0]%><%=theXML.valoreNodoHTML(elementoPath,"<br />","&nbsp;")%><%=elementoPathGroupAfter[0]%><br /><%
+													 %><%=elementoPathGroupBefore[0]%><%=theXML.valoreNodoHTML(elementoPath,"<br />","&nbsp;").replaceAll("&quot;","\"")%><%=elementoPathGroupAfter[0]%><br /><%
 													 }
 													 }else{
 														if(extraFunction.startsWith("substring")){
