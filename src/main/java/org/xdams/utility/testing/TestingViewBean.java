@@ -8,7 +8,7 @@ public class TestingViewBean extends TestingGeneric {
 
 	public TestingViewBean() {
 
-	}
+	} 
 
 	public boolean visualizzaPredecente(Object viewBean, Object workFlowBean, String[] userLevel) {
 		boolean ritorno = false;

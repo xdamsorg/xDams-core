@@ -125,7 +125,7 @@ public class AdminCommand {
 				System.out.println("exportType: " + exportType);
 				System.out.println("applyTo: " + applyTo);
 				if (exportType.equals("hier")) {
-					exportCmd = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export) + "\"  num2=\"" + managingBean.getPhysDoc() + "\" num=\"" + managingBean.getPhysDoc() + "\"></cmd>";
+					exportCmd = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export) + "\"  num2=\"" + managingBean.getPhysDoc() + "\" num=\"" + managingBean.getPhysDoc() + "\"></cmd>";
 
 				} else if (exportType.equals("flat")) {
 					it.highwaytech.db.QueryResult queryResult = null;
@@ -143,13 +143,18 @@ public class AdminCommand {
 						}
 						queryResult = queryResultColl;
 
+					} else if (applyTo.toLowerCase().equals("xquery")) {
+						String xwQu = MyRequest.getParameter("query", parameterMap);
+						System.out.println("AdminCommand.execute() xwQu: "+xwQu);
+						queryResult = xwconn.getQRfromPhrase(xwQu);
+						System.out.println("AdminCommand.execute() queryResult: "+queryResult.elements);
 					}
-					exportCmd = "<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export_Full) + "\" sel=\"" + queryResult.id + "\"></cmd>";
+					exportCmd = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export_Full) + "\" sel=\"" + queryResult.id + "\"></cmd>";
 				}
 
 				String result = xwconn.XMLCommand(xwconn.connection, workFlowBean.getAlias(), exportCmd);
 				result = XMLCleaner.clearXwFullXML(result, true);
-//				  System.out.println(result);
+				// System.out.println(result);
 				String realPath = (String) modelMap.get("realPath");
 				System.out.println("realPath: " + realPath);
 				System.out.println("flagAudience: " + flagAudience);
@@ -161,7 +166,7 @@ public class AdminCommand {
 				}
 
 				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-');
-				System.out.println("fileNameExport: "+fileNameExport);
+				System.out.println("fileNameExport: " + fileNameExport);
 				try {
 					FileUtils.writeStringToFile(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"), result, "ISO-8859-1");
 				} catch (Exception e) {

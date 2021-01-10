@@ -49,6 +49,11 @@ public class MultiEditingManager {
 		velocityContext.put("parameterMap", this.parameterMap);
 		velocityContext.put("confBean", this.confBean);
 		velocityContext.put("workFlowBean", this.workFlowBean);
+		if (workFlowBean.getRequest().getAttribute("viewBean") != null) {
+			System.out.println("workFlowBean.getRequest().getAttribute(\"viewBean\"): " + workFlowBean.getRequest().getAttribute("viewBean"));
+			velocityContext.put("viewBeanAA", workFlowBean.getRequest().getAttribute("viewBean"));
+		}
+		
 		velocityContext.put("userBean", this.userBean);
 
 	}

@@ -215,12 +215,12 @@ public class ModifyAuther {
 														newXpathCode = newXPathToChange.substring(0, newXPathToChange.lastIndexOf("/") + 1) + strCode;
 													} else {
 //														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode.indexOf(strPrefix)!=-1 " + strPrefix.contains(strCode));
-//														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strPrefix " + strPrefix);
-//														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode " + strCode);
+														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strPrefix " + strPrefix);
+														System.out.println("ModifyAuther.execute() CI SONO UN PREFIX strCode " + strCode);
 														if (strCode.indexOf(strPrefix) != -1) {
-//															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI");
+															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI");
 															newXpathCode = strPrefix + "[" + (x + 1) + "]" + StringUtils.difference(strPrefix, strCode);
-//															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI" + newXpathCode);
+															System.out.println("ModifyAuther.execute() CI SONO UN PREFIX DIDIDIDIDI" + newXpathCode);
 															// newXpathCode = newXPathToChange.substring(0, newXPathToChange.lastIndexOf("/") + 1) + "@" + strCode;
 														} else {
 															if (strCode.indexOf("@") != -1) {
@@ -232,15 +232,27 @@ public class ModifyAuther {
 														}
 
 													}
+													
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX newXpathCode " + newXpathCode);
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX newXPathToChange " + newXPathToChange);
+													
 													String ilValoreCode = builder.valoreNodo(newXpathCode);
 													String ilValoreText = builder.valoreNodo(newXPathToChange);
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX ilValoreCode " + ilValoreCode);
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX ilValoreText " + ilValoreText);
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX nameToChange " + nameToChange);
+													System.out.println("ModifyAuther.execute() CI SONO UN PREFIX codeToFind " + codeToFind);
 													if (ilValoreCode.indexOf(codeToFind) != -1 && !ilValoreText.equals(nameToChange)) {
+														System.out.println("ModifyAuther.execute() MODIFICO");
 														modificato = true;
 														builder.insertValueAt(newXPathToChange, nameToChange);
 														modificatiXPathToChange++;
 													}
 												}
 												if (modificato) {
+													
+													System.out.println("ModifyAuther.execute() salvo il record");
+
 													// String rootElement = (builder.getDomDocument().getDocumentElement()).getNodeName();
 													// // out.println("rootElement "+rootElement+"<br>");
 													// if (rootElement.equals("c")) {

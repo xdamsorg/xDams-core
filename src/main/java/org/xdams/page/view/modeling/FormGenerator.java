@@ -1270,6 +1270,7 @@ public class FormGenerator {
 
 	private void generaRichTextAreaBasicInPage(String xpathCorrente, String xpathCorrenteDot, String nodoCorrente, String extraExtra, String theHTMLextra, javax.servlet.jsp.JspWriter out) throws TransformerException, IOException {
 		String theValue = (theXML.valoreNodo(xpathCorrente)).trim();
+//SBAGLIATO		theValue = theValue.replaceAll("\n", "<br />");
 		String extra = "rows=\"" + theXMLconf.valoreNodo(nodoCorrente + "/@rows") + "\" cols=\"" + theXMLconf.valoreNodo(nodoCorrente + "/@cols") + "\"";
 		extra += " " + extraExtra;
 		if (!xpathCorrenteDot.endsWith(".@cdata")) {
