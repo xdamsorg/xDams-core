@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -145,9 +146,9 @@ public class AdminCommand {
 
 					} else if (applyTo.toLowerCase().equals("xquery")) {
 						String xwQu = MyRequest.getParameter("query", parameterMap);
-						System.out.println("AdminCommand.execute() xwQu: "+xwQu);
+						System.out.println("AdminCommand.execute() xwQu: " + xwQu);
 						queryResult = xwconn.getQRfromPhrase(xwQu);
-						System.out.println("AdminCommand.execute() queryResult: "+queryResult.elements);
+						System.out.println("AdminCommand.execute() queryResult: " + queryResult.elements);
 					}
 					exportCmd = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<cmd c=\"8\" bits=\"" + (XMLCommand.Export_Memory + XMLCommand.Export_Full) + "\" sel=\"" + queryResult.id + "\"></cmd>";
 				}
@@ -165,7 +166,8 @@ public class AdminCommand {
 					result = TrasformXslt20.xslt(result, xsltFiltra);
 				}
 
-				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-');
+				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-') + "_"
+						+ UUID.randomUUID().toString();
 				System.out.println("fileNameExport: " + fileNameExport);
 				try {
 					FileUtils.writeStringToFile(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"), result, "ISO-8859-1");
@@ -185,7 +187,12 @@ public class AdminCommand {
 				} catch (Exception e) {
 					modelMap.put("fileNameExport", fileNameExport + ".xml");
 				}
-
+				try {
+					//PROVO A CANCELLARE IL FILE XML
+					FileUtils.forceDelete(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 
 			modelMap.put("confBean", confBean);
