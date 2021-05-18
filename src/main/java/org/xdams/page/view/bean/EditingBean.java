@@ -1,5 +1,7 @@
 package org.xdams.page.view.bean;
 
+import it.highwaytech.db.HierPath;
+
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,9 +36,9 @@ public class EditingBean {
 	private int docLowerBrother = 0;
 
 	private XMLBuilder xmlBuilder = null;
-	
+
 	private XMLBuilder xmlBuilderQuickEdit = null;
-	
+
 	private int physDocNext = -1;
 
 	private int physDocPrev = -1;
@@ -46,6 +48,8 @@ public class EditingBean {
 	private int posPrev = -1;
 
 	private HttpServletRequest httpServletRequest = null;
+
+	private HierPath hierPath = null;
 
 	public int getPhysDoc() {
 		return physDoc;
@@ -201,5 +205,13 @@ public class EditingBean {
 
 	public void setXmlBuilderQuickEdit(XMLBuilder xmlBuilderQuickEdit) {
 		this.xmlBuilderQuickEdit = xmlBuilderQuickEdit;
+	}
+
+	public HierPath getHierPath() {
+		return hierPath;
+	}
+
+	public void setHierPath(HierPath hierPath) {
+		this.hierPath = hierPath;
 	}
 }
