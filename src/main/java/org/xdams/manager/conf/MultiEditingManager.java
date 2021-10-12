@@ -4,6 +4,7 @@ import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -261,7 +262,14 @@ public class MultiEditingManager {
 	public XMLBuilder evaluateBuilder(String xmlDoc) throws Exception {
 		try {
 			StringWriter w = new StringWriter();
-			boolean isEvaluate = new VelocityEngine().evaluate(velocityContext, w, "mystring", xmlDoc);
+			VelocityEngine velocityEngine = new VelocityEngine();
+
+			Properties props = new Properties();
+			props.put("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.SimpleLog4JLogSystem");
+			props.put("runtime.log.logsystem.log4j.category", "velocity");
+			props.put("runtime.log.logsystem.log4j.logger", "velocity");
+			velocityEngine.init(props);
+			boolean isEvaluate = velocityEngine.evaluate(velocityContext, w, "mystring", xmlDoc);
 			return new XMLBuilder(w.toString(), false);
 		} catch (Exception e) {
 			e.printStackTrace();

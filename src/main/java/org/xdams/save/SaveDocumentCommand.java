@@ -54,7 +54,7 @@ public class SaveDocumentCommand {
 			}
 			String[] nomiRequest = MyRequest.ordinaRequest(request, "." + thePne + ".");
 			xwconn = connectionManager.getConnection(workFlowBean.getArchive());
-			System.out.println("SaveDocumentCommand.execute() thePne: " + thePne);
+//			System.out.println("SaveDocumentCommand.execute() thePne: " + thePne);
 			XMLBuilder builder = new XMLBuilder(thePne);
 			for (int i = 0; i < nomiRequest.length; i++) {
 				boolean isCDATA = false;
@@ -90,9 +90,9 @@ public class SaveDocumentCommand {
 				}
 			}
 			String theXML = builder.getXML("ISO-8859-1", false);
-			System.out.println("SaveDocumentCommand.execute() "+theXML);
-			System.out.println("SaveDocumentCommand.execute()");
-			System.out.println("SaveDocumentCommand.execute()"+XMLCleaner.clearXwXML(theXML, false));
+//			System.out.println("SaveDocumentCommand.execute() "+theXML);
+//			System.out.println("SaveDocumentCommand.execute()");
+//			System.out.println("SaveDocumentCommand.execute()"+XMLCleaner.clearXwXML(theXML, false));
 			xwconn.executeUpdateByDocNumber(XMLCleaner.clearXwXML(theXML, false), Integer.parseInt(request.getParameter("physDoc")));
 		} catch (Throwable e) {
 			e.printStackTrace();

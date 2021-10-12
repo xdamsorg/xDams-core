@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.xdams.user.bean.Archive;
 import org.xdams.user.bean.UserBean;
