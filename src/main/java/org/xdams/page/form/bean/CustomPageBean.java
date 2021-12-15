@@ -1,5 +1,7 @@
 package org.xdams.page.form.bean;
 
+import it.highwaytech.db.HierPath;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class CustomPageBean {
 	List<String> confControl = new ArrayList<String>();
 	
 	XMLBuilder xmlBuilder = null;
+	
+	private HierPath hierPath = null;
 
 	public String getPhysDoc() {
 		return physDoc;
@@ -101,6 +105,14 @@ public class CustomPageBean {
 
 	public void setMultipleFiledata(List<CommonsMultipartFile> multipleFiledata) {
 		this.multipleFiledata = multipleFiledata;
+	}
+
+	public HierPath getHierPath() {
+		return hierPath;
+	}
+
+	public void setHierPath(HierPath hierPath) {
+		this.hierPath = hierPath;
 	}
  
 }

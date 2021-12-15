@@ -36,6 +36,24 @@
      </functionName>
     </eventJavaScript>
    </element>
+ 
+   <element value="IMPORT CSV" testClass="org.xdams.utility.testing.TestingViewBean" testMethod="editingControl" userValue="1">
+    <anchor value="#"></anchor>
+    <eventJavaScript value="onclick">
+     <functionName value="top.newWinProtoGest">
+      <paramFunction>'${contextPath}/custom/${workFlowBean.alias}/page.html?physDoc=${viewBean.physDoc}&amp;thePne=${viewBean.rootElement}&amp;pos=${viewBean.pos}&amp;selid=${viewBean.selid}&amp;pageName=importCSV/uploadCSVMain'</paramFunction>
+      <paramFunction javaBean="workFlowBean">getAlias</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>'IMPORT CSV'</paramFunction>
+      <paramFunction javaBean="viewBean">getPhysDoc</paramFunction>
+      <paramFunction javaBean="viewBean">getSelid</paramFunction>
+      <paramFunction javaBean="viewBean">getPos</paramFunction>
+      <paramFunction>''</paramFunction>
+      <paramFunction>'{width:600,height:500}'</paramFunction>
+     </functionName>
+    </eventJavaScript>
+   </element>
+  
   </user>
  </managing>
 </root>

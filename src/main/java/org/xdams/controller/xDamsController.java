@@ -467,12 +467,19 @@ public class xDamsController {
 		ConnectionManager connectionManager = new ConnectionManager();
 		WorkFlowBean workFlowBean = (WorkFlowBean) modelMap.get("workFlowBean");
 		List<String> confControl = customPageBean.getConfControl();
+		confControl.add("docEdit");
+		confControl.add("valoriControllati");
 		try {
 			MultiEditingManager editingManager = new MultiEditingManager(request.getParameterMap(), confBean, userBean, workFlowBean);
 			if (customPageBean.getPhysDoc() != null && !customPageBean.getPhysDoc().equals("")) {
 				xwconn = connectionManager.getConnection(workFlowBean.getArchive());
 				customPageBean.setXmlBuilder(new XMLBuilder(XMLCleaner.clearXwXML(xwconn.getSingleXMLFromNumDoc(Integer.parseInt(customPageBean.getPhysDoc())), true), "ISO-8859-1"));
 				editingManager.setTheXML(customPageBean.getXmlBuilder());
+				try {
+					customPageBean.setHierPath(xwconn.getHierPath(Integer.parseInt(customPageBean.getPhysDoc())));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			} else {
 				editingManager.setTheXML(new XMLBuilder("root"));
 			}
