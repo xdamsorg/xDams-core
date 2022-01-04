@@ -66,7 +66,7 @@
 		String ilNodoCorrente = theXMLconf.valoreNodo("/root/fixedValues/elemento[" + (a + 1) + "]/text()");
 		String ilValoreCorrente = theXMLconf.valoreNodo("/root/fixedValues/elemento[" + (a + 1) + "]/@value");
 		%>
-		<input type="text" name="extraCVSXML_<%=ilNodoCorrente.replaceAll("/",".")%>" value="<%=ilValoreCorrente.replaceAll("@coluiCheInserisce@", nomeCompilatoreCMPN).replaceAll("@quandoColuiInserisce@", dataCompilatoreCMPN)%>" />
+		<input type="hidden" name="extraCVSXML_<%=ilNodoCorrente.replaceAll("/",".")%>" value="<%=ilValoreCorrente.replaceAll("@coluiCheInserisce@", nomeCompilatoreCMPN).replaceAll("@quandoColuiInserisce@", dataCompilatoreCMPN)%>" />
 		<%
 	}
 	%>

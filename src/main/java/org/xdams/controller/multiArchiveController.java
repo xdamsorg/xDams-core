@@ -62,7 +62,7 @@ public class multiArchiveController {
 	@ModelAttribute
 	public void workFlowBean(Model model) {
 		model.addAttribute("workFlowBean", new WorkFlowBean());
-	}
+	} 
 
 	// @ModelAttribute
 	public void userLoad(ModelMap model) {
