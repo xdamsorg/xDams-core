@@ -170,6 +170,8 @@ public class AdminCommand {
 						+ UUID.randomUUID().toString();
 				System.out.println("fileNameExport: " + fileNameExport);
 				try {
+					File writeTo = new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml");
+					System.out.println("writeTo: " + writeTo);
 					FileUtils.writeStringToFile(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"), result, "ISO-8859-1");
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -188,7 +190,7 @@ public class AdminCommand {
 					modelMap.put("fileNameExport", fileNameExport + ".xml");
 				}
 				try {
-					//PROVO A CANCELLARE IL FILE XML
+					// PROVO A CANCELLARE IL FILE XML
 					FileUtils.forceDelete(new File(realPath + "export" + System.getProperty("file.separator") + fileNameExport + ".xml"));
 				} catch (Exception e) {
 					// TODO: handle exception
