@@ -38,8 +38,8 @@ public class LoadUserManager {
 						xmlArchives = recordsXML[i];
 					}
 				}
-				String xmlrole = ConfManager.getConfString(userDetails.getAccount() + "-security/role.xml");
-				return LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, xmlrole, userDetails.getId(), userDetails.getAccount());
+//				String xmlrole = ConfManager.getConfString(userDetails.getAccount() + "-security/role.xml");
+				return LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, "", userDetails.getId(), userDetails.getAccount());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
