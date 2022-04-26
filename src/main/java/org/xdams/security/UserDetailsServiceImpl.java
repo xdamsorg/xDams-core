@@ -69,8 +69,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 								xmlArchives = recordsXML[i];
 							}
 						}
-						String xmlrole = ConfManager.getConfString(account + "-security/role.xml");
-						userBean = LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, xmlrole, username, account);
+//						String xmlrole = ConfManager.getConfString(account + "-security/role.xml");
+						userBean = LoadUserSpeedUp.loadUserByString(xmlUsers, xmlArchives, "", username, account);
 					} catch (Exception e) {
 						e.printStackTrace();
 						throw new UsernameNotFoundException("user not found");
