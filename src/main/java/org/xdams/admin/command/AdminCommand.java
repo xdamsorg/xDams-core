@@ -166,7 +166,7 @@ public class AdminCommand {
 					result = TrasformXslt20.xslt(result, xsltFiltra);
 				}
 
-				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(workFlowBean.getArchive().getArchiveDescr(), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-') + "_"
+				String fileNameExport = "export" + "_" + CommonUtils.stripPunctuation(CommonUtils.removeAccents(workFlowBean.getArchive().getArchiveDescr()), '-') + "_" + CommonUtils.stripPunctuation(SimpleDateFormat.getInstance().format(new Date()).replaceAll(" ", "_").replaceAll("/", "_").replaceAll("\\.", "_"), '-') + "_"
 						+ UUID.randomUUID().toString();
 				System.out.println("fileNameExport: " + fileNameExport);
 				try {

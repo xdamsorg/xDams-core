@@ -155,6 +155,7 @@ public class CommonUtils {
 			// System.out.println("4 "+urlStr);
 			urlStr = stripPunctuation(urlStr, '-');
 			// System.out.println("5 "+urlStr);
+			urlStr = removeAccents(urlStr);
 			return URLEncoder.encode(String.valueOf(urlStr), encodeType);
 		} catch (Exception uee) {
 			return "";

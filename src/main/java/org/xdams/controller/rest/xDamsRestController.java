@@ -107,7 +107,7 @@ public class xDamsRestController {
 		String query = request.getParameter("query");
 		String mode = request.getParameter("mode");
 		String xSort = request.getParameter("sort");
-		System.out.println("xDamsRestController.restCall() xSort: " + xSort);
+//		System.out.println("xDamsRestController.restCall() xSort: " + xSort);
 		int perpage = 10;
 		int pageToShow = 1;
 		try {
@@ -131,7 +131,13 @@ public class xDamsRestController {
 				String orientation = request.getParameter("orientation");
 				String startParam = request.getParameter("startParam");
 				int totResult = Integer.parseInt(request.getParameter("totResult"));
-				Vector<Key> keys = xwconn.getSingleKeys(searchAlias, totResult, orientation, startParam);
+				Vector<Key> keys = new Vector<Key>();
+				if(xwQuery!=null && !xwQuery.equals("")){
+					keys = xwconn.getFilteredKeys(xwQuery, searchAlias, totResult, orientation, startParam,"frequenze|spettrale");
+				}else{
+					keys = xwconn.getSingleKeys(searchAlias, totResult, orientation, startParam);
+				}
+				
 				outputBuilder.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 				outputBuilder.append("<response>\n");
 				for (int i = 0; i < keys.size(); i++) {
