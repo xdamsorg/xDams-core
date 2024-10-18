@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.StrSubstitutor;
 import org.slf4j.Logger;
@@ -259,7 +259,8 @@ public class xDamsAdminController {
 					}
 
 				}
-
+//				System.out.println("xDamsAdminController.executeCreateArchive() numDoc: "+numDoc);
+//				System.out.println("xDamsAdminController.executeCreateArchive() xmlArchives: "+xmlArchives);
 				xwconn.executeUpdateByDocNumber(xmlArchives.replaceAll("(?m)^\\s*\n" , ""), numDoc);
 				Map<String, Archive> archivesMap = LoadUserSpeedUp.extractArchiveList(account, xmlArchives, accountBean);
 				ServiceAccount serviceAccount = new ServiceAccount();
