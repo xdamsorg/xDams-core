@@ -502,6 +502,57 @@ public class XML2PDF {
 	}
 
 	public String XWCommandSender(XWConnection xwconn, String PDFXMLArchive, String XWCMDOutputPath, String PDFType, String sel_num) throws XWException {
+		
+		
+		
+		// INIZIO STAMPA GERARCHIA
+		String output = "";
+		String PDFXSLType = MyRequest.getParameter("PDFXSLType", parameterMap);
+		try {
+
+//			System.out.println("PDFXSLType: " + PDFXSLType);
+//			System.out.println("titoli gerarchia per stampa...");
+//			System.out.println("titoli gerarchia per stampa...");
+//			System.out.println("titoli gerarchia per stampa...");
+
+			String titleRole = "XML,/c/did/unittitle";
+			if (PDFXSLType.contains("xDamsBiblio")) {
+				titleRole = "XML,/mods/titleInfo/title";
+			} else if (PDFXSLType.contains("xDamsOA")) {
+				titleRole = "XML,/c/did/materialspec/title";
+			}
+			System.out.println("titleRole: " + titleRole);
+
+			QueryResult qr = xwconn.getQRFromSelId(sel_num);
+			int found = qr.elements;
+			xwconn.setTitleRole(titleRole);
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<rsp>\n<dsc>\n");
+			for (int i = 0; i < found; i++) {
+				int numDoc = xwconn.getNumDocFromQRElement(qr, i);
+				String gerarchia = xwconn.getHierPath(numDoc).getHier("@@@@@@@");
+				gerarchia = StringUtils.substringBeforeLast(gerarchia, "@@@@@@@");
+				gerarchia = gerarchia.replaceAll("@@@@@@@", " &#x27a4; ");
+				gerarchia = gerarchia.replaceAll("¢", " ");
+				String out = xwconn.getSingleXMLFromNumDoc(numDoc);
+				out = out.replaceAll("</c>", "<gerarchia>" + gerarchia + "</gerarchia>\n</c>");
+				out = out.replaceAll("</mods>", "<gerarchia>" + gerarchia + "</gerarchia>\n</mods>");
+				buffer.append(out);
+			}
+			buffer.append("</dsc>\n</rsp>");
+			output = buffer.toString();
+			output = ProblematicCharactersFilter.replaceCharacters(output);
+			xwconn.restoreTitleRole();
+
+//			System.out.println(output);
+//			System.out.println("titoli gerarchia per stampa...");
+//			System.out.println("titoli gerarchia per stampa...");
+//			System.out.println("titoli gerarchia per stampa...");
+		} catch (Exception e) {
+		}
+		// FINE STAMPA GERARCHIA
+
+		
 		String result = String.valueOf(new Date().getTime());
 		try {
 			String command = "";
@@ -565,6 +616,9 @@ public class XML2PDF {
 			if (xwconn != null && !xwconn.isClosed()) {
 				xwconn.close();
 			}
+		}
+		if (!output.equals("")) {
+			return output;
 		}
 		return result;
 	}
