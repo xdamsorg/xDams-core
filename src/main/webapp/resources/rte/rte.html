@@ -3,6 +3,9 @@
 <head>
 <title>xDams - Rich Text Editor</title>
 <link rel="stylesheet" href="../css/edit.css" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <script type="text/javascript" src="jscripts/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 	tinyMCE.init({
@@ -38,12 +41,36 @@
 	}
 	
 	function getMyContent(){
-		tinyMCE.execCommand('mceSetContent',false,window.opener.getRichTextAreaValue());
+//		console.log("AAA :"+window.opener.getRichTextAreaValue());
+//		console.log("BBBC :"+escapeNonHtmlTags(window.opener.getRichTextAreaValue()));
+		tinyMCE.execCommand('mceSetContent',false, escapeNonHtmlTags(window.opener.getRichTextAreaValue()));
 	}
 	function myCustomSaveContent(){
 		window.opener.returnRichTextArea(tinyMCE.get('elm1').getContent());
 	}
-	
+function escapeNonHtmlTags(input) {
+    // Lista di tag HTML validi
+    const validHtmlTags = new Set([
+        "p", "div", "span", "b", "i", "u", "strong", "em", "ul", "ol", "li",
+        "a", "img", "br", "hr", "h1", "h2", "h3", "h4", "h5", "h6", "table",
+        "tr", "td", "th", "thead", "tbody", "tfoot", "pre", "code", "blockquote",
+        "form", "input", "button", "textarea", "select", "option", "label"
+    ]);
+
+    return input.replace(/<([^>]+)>/g, (match, content) => {
+        const trimmedContent = content.trim();
+
+        // Controlla se è un tag HTML valido
+        const isValidTag = trimmedContent.match(/^\/?([a-zA-Z][\w-]*)$/);
+        if (isValidTag && validHtmlTags.has(isValidTag[1])) {
+            return match; // Mantieni il tag valido
+        }
+
+        // Escapa se non è un tag HTML valido
+        return `&lt;${content}&gt;`;
+    });
+}
+
 	
 </script>
 </head>
