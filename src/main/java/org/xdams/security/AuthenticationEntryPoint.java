@@ -17,7 +17,7 @@ public class AuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
 
 	@Override
 	public void commence(HttpServletRequest arg0, HttpServletResponse arg1, AuthenticationException arg2) throws IOException, ServletException {
-		System.out.println("AuthenticationEntryPoint.commence() arg0.getServletPath arg0:" + arg0 + " arg1:" + arg1 + " arg2" + arg2);
+//		System.out.println("AuthenticationEntryPoint.commence() arg0.getServletPath arg0:" + arg0 + " arg1:" + arg1 + " arg2" + arg2);
 		super.commence(arg0, arg1, arg2);
 	}
 }

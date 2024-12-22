@@ -21,7 +21,7 @@ public class AuthenticationSSOProvider extends AbstractUserDetailsAuthentication
 	@Override
 	protected UserDetails retrieveUser(String arg0,UsernamePasswordAuthenticationToken arg1)throws AuthenticationException {
 		//AuthenticationToken authenticationToken = (AuthenticationToken) arg1;
-		System.out.println("AuthenticationSSOProvider.retrieveUser()>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//		System.out.println("AuthenticationSSOProvider.retrieveUser()>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ((UserDetailsServiceImpl) userDetailsService).loadUserFromSSO(arg0);
 	}
 	public void setUserDetailsService(UserDetailsService userDetailsService) {

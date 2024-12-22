@@ -1,11 +1,8 @@
 package org.xdams.security;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,140 +13,86 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.TextEscapeUtils;
-import org.xdams.utility.StringsUtils;
-
 
 public class AuthenticationSSOFilter extends UsernamePasswordAuthenticationFilter {
-	private String SSO_verificaToken_URL = "";
-	private String SSO_verificaToken_URL_params = "";
-	private String SSO_regSession_URL = "";
-	private String SSO_regSession_URL_params = "";
-	private String SSO_userInfo_URL = "";
-	private String SSO_userInfo_URL_params = "";
-	private String SSO_userParam = "";
+
+	public static final String SQLXDAMS_SECURITY_FORM_COMPANY_KEY = "j_company";
+
+	private String companyParameter = SQLXDAMS_SECURITY_FORM_COMPANY_KEY;
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest arg0, HttpServletResponse arg1) throws AuthenticationException {
-		String username = arg0.getHeader(SSO_userParam);
-		String errorMsg = "";
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><username = " + username);
+		if (!arg0.getMethod().equals("POST")) {
+			throw new AuthenticationServiceException("Authentication method not supported: " + arg0.getMethod());
+		}
+		String username = obtainUsername(arg0);
+		String password = obtainPassword(arg0);
+		//		String company = obtainCompany(arg0);
+
+		//		System.out.println("AuthenticationFilter.attemptAuthentication() username: "+username);
+		//		System.out.println("AuthenticationFilter.attemptAuthentication() password: " + password);
+		//		System.out.println("AuthenticationFilter.attemptAuthentication() company: "+company);
+
 		if (username == null) {
-			errorMsg = "A Utente disconnesso. <a href=\"javascript:self.close()\">[CHIUDERE]</a> la finestra per tornare al Portale.";
-			throw new AuthenticationServiceException(errorMsg);
+			username = "";
 		}
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 1");
+		if (password == null) {
+			password = "";
+		}
+
 		username = username.trim();
-		String key = arg0.getParameter("key");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><key = " + key);
-		if (key == null) {
-			errorMsg = "B Utente disconnesso. <a href=\"javascript:self.close()\">[CHIUDERE]</a> la finestra per tornare al Portale.";
-			throw new AuthenticationServiceException(errorMsg);
-		}
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 2");
-		String verificaUrl;
-		try {
-			verificaUrl = StringsUtils.postForString(new URL(SSO_verificaToken_URL), "key=" + key + "&" + SSO_verificaToken_URL_params);
-			if (verificaUrl.indexOf("KO") != -1) {
-				errorMsg = "Si è verificato un errore nella verifica dell'utente (keytest)";
-				throw new AuthenticationServiceException(errorMsg);
-			}
-			arg0.getSession().setAttribute("alfresco_token", key);
-			System.out.println("keykeykeykeykeykeykeykeykeykey "+key);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 3");
-		try {
-			String regSessUrl = StringsUtils.postForString(new URL(SSO_regSession_URL), "key=" + key + "&SESSIONAPL=" + URLEncoder.encode("JSESSIONID=", "utf-8") + arg0.getSession().getId() + "&" + SSO_regSession_URL_params);
-			if (regSessUrl.indexOf("KO") != -1) {
-				errorMsg = "Si è verificato un errore nella verifica dell'utente (regsess)";
-				throw new AuthenticationServiceException(errorMsg);
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 4");
-		AuthenticationSSOToken authenticationSSOToken = new AuthenticationSSOToken(username, "");
+
+		AuthenticationToken authenticationToken = new AuthenticationToken(username, password);
 		HttpSession session = arg0.getSession(false);
 		if (session != null || getAllowSessionCreation()) {
-			arg0.getSession().setAttribute(SPRING_SECURITY_LAST_USERNAME_KEY, TextEscapeUtils.escapeEntities(username));
+			arg0.getSession().setAttribute(SPRING_SECURITY_FORM_USERNAME_KEY, TextEscapeUtils.escapeEntities(username));
 		}
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 5");
-		setDetails(arg0, authenticationSSOToken);
-		System.out.println("AuthenticationSSOFilter.attemptAuthentication() 6");
-		return this.getAuthenticationManager().authenticate(authenticationSSOToken);
+		setDetails(arg0, authenticationToken);
+		return this.getAuthenticationManager().authenticate(authenticationToken);
+	}
+
+	public Authentication attemptAuthentication(HttpServletRequest arg0, String username, String password) throws AuthenticationException {
+
+		username = username.trim();
+		AuthenticationToken authenticationToken = new AuthenticationToken(username, password);
+		HttpSession session = arg0.getSession(false);
+		if (session != null || getAllowSessionCreation()) {
+			arg0.getSession().setAttribute(SPRING_SECURITY_FORM_USERNAME_KEY, TextEscapeUtils.escapeEntities(username));
+		}
+		setDetails(arg0, authenticationToken);
+		return this.getAuthenticationManager().authenticate(authenticationToken);
 	}
 
 	@Override
-	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, Authentication authResult) throws IOException, ServletException {
-		super.successfulAuthentication(request, response, authResult);
+	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+//		System.out.println("AuthenticationFilter.successfulAuthentication()");
+//		System.out.println("AuthenticationFilter.successfulAuthentication()");
+//		System.out.println("AuthenticationFilter.successfulAuthentication()" + messages);
+//		System.out.println("AuthenticationFilter.successfulAuthentication()");
+//		System.out.println("AuthenticationFilter.successfulAuthentication()");
+//		System.out.println("AuthenticationFilter.successfulAuthentication()");
+
+		super.successfulAuthentication(request, response, chain, authResult);
 
 	}
 
 	@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()");
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()");
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()");
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()" + failed);
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()" + request.getRemoteAddr());
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()" + request.getParameter("username"));
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()");
+//		System.out.println("AuthenticationFilter.unsuccessfulAuthentication()");
+
+		//        String username = (String) event.getAuthentication().getPrincipal();
 		super.unsuccessfulAuthentication(request, response, failed);
 	}
 
-	public String getSSO_verificaToken_URL() {
-		return SSO_verificaToken_URL;
+	protected String obtainCompany(HttpServletRequest request) {
+		return request.getParameter(companyParameter);
 	}
 
-	public String getSSO_verificaToken_URL_params() {
-		return SSO_verificaToken_URL_params;
-	}
-
-	public String getSSO_regSession_URL() {
-		return SSO_regSession_URL;
-	}
-
-	public String getSSO_regSession_URL_params() {
-		return SSO_regSession_URL_params;
-	}
-
-	public String getSSO_userInfo_URL() {
-		return SSO_userInfo_URL;
-	}
-
-	public String getSSO_userInfo_URL_params() {
-		return SSO_userInfo_URL_params;
-	}
-
-	public void setSSO_verificaToken_URL(String sSOVerificaTokenURL) {
-		SSO_verificaToken_URL = sSOVerificaTokenURL;
-	}
-
-	public void setSSO_verificaToken_URL_params(String sSOVerificaTokenURLParams) {
-		SSO_verificaToken_URL_params = sSOVerificaTokenURLParams;
-	}
-
-	public void setSSO_regSession_URL(String sSORegSessionURL) {
-		SSO_regSession_URL = sSORegSessionURL;
-	}
-
-	public void setSSO_regSession_URL_params(String sSORegSessionURLParams) {
-		SSO_regSession_URL_params = sSORegSessionURLParams;
-	}
-
-	public void setSSO_userInfo_URL(String sSOUserInfoURL) {
-		SSO_userInfo_URL = sSOUserInfoURL;
-	}
-
-	public void setSSO_userInfo_URL_params(String sSOUserInfoURLParams) {
-		SSO_userInfo_URL_params = sSOUserInfoURLParams;
-	}
-
-	public String getSSO_userParam() {
-		return SSO_userParam;
-	}
-
-	public void setSSO_userParam(String sSOUserParam) {
-		SSO_userParam = sSOUserParam;
-	}
 }

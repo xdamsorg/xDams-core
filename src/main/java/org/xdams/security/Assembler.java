@@ -2,9 +2,9 @@ package org.xdams.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
- 
+
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.xdams.user.bean.UserBean;
 
@@ -22,7 +22,7 @@ public class Assembler {
 		 * for (UserRoles role : user.getUserRoleses()) { authorities.add(new GrantedAuthorityImpl(role.getRoles().getRoleName())); }
 		 */
 		// authorities.add(new GrantedAuthorityImpl("ROLE_GOD"));
-		authorities.add(new GrantedAuthorityImpl(user.getRole()));
+		authorities.add(new SimpleGrantedAuthority(user.getRole()));
 		UserDetails userS = new UserDetails(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		userS.setName(user.getName());
 		userS.setLastname(user.getLastName());

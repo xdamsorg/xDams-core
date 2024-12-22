@@ -1,19 +1,20 @@
 package org.xdams.security;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.authentication.dao.SaltSource;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.Assert;
 
 public class AuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
-	private PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	private SaltSource saltSource;
 
@@ -25,20 +26,21 @@ public class AuthenticationProvider extends AbstractUserDetailsAuthenticationPro
 
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-		Object salt = null;
-		if (this.saltSource != null) {
-			salt = this.saltSource.getSalt(userDetails);
-		}
+
 		if (authentication.getCredentials() == null) {
-			throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Bad credentials"), includeDetailsObject ? userDetails : null);
+			throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Bad credentials"));
 		}
 		String presentedPassword = authentication.getCredentials().toString();
-		if (!passwordEncoder.isPasswordValid(userDetails.getPassword(), presentedPassword, salt)) {
-			throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Bad credentials"), includeDetailsObject ? userDetails : null);
+//		System.out.println("AuthenticationProvider.retrieveUser()1111111111111111 sha256Hex: " + DigestUtils.sha256Hex(presentedPassword));
+//		System.out.println("AuthenticationProvider.retrieveUser()1111111111111111    md5Hex: " + DigestUtils.md5Hex(presentedPassword));
+		;
+		//		if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
+		//		throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Invalid Password"));
+		//	}
+
+		if (!DigestUtils.md5Hex(presentedPassword).equals(userDetails.getPassword())) {
+			throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Bad credentials"));
 		}
-		String company = ((AuthenticationToken) authentication).getCompany().toString();
-		if (company == null || company.equals(""))
-			throw new BadCredentialsException(messages.getMessage("CustomAuthenticationProvider.badCredentials", "Bad credentials"), includeDetailsObject ? userDetails : null);
 
 	}
 
