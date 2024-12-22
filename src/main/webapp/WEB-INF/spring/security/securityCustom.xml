@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:beans xmlns="http://www.springframework.org/schema/security" xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
- <global-method-security secured-annotations="enabled">
- </global-method-security>
- <http pattern="/favicon.ico" security="none"/>
- <http auto-config="false" entry-point-ref="loginUrlAuthenticationEntryPoint" create-session="always">
-  <!-- <intercept-url pattern="/pdf/printPdf.html" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
-  <intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-  <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-  <intercept-url pattern="/attach/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-  <intercept-url pattern="/rest/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-  <intercept-url pattern="/autologin/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-  <intercept-url pattern="/export/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER"/>
-  <intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER"/>
-  <http-basic/>
-  <logout logout-success-url="/login.html" invalidate-session="true"/>
-  <custom-filter ref="formLoginFilter" position="FORM_LOGIN_FILTER"/>
-  <remember-me/>
- </http>
- <b:bean id="authenticationType" class="org.xdams.security.AuthenticationType">
-  <b:property name="loadUserSpeedUp" value="true"/>
-  <b:property name="allowAutoLogin" value="false"/> <!-- true attiva l'autologin per il solo utente guest/guest che deve essere opportunamente configurato nella visualizzazione degli archivi -->
-  <!-- <b:property name="loadUserType" value="xDams-basic"/> --> <!-- xDams-basic e xDams-xway -->
-  <b:property name="loadUserType" value="xDams-xway"/>  <!-- xDams-basic e xDams-xway -->
-  <b:property name="archiveXWAY" ref="archiveXWAY"/>  <!-- xDams-basic e xDams-xway -->
- </b:bean>
- <b:bean id="archiveXWAY" class="org.xdams.user.bean.Archive">
-  <b:property name="alias" value="xDamsUsers"/>
-  <b:property name="host" value="127.0.0.1"/>
-  <b:property name="pne" value="user"/>
-  <b:property name="port" value="-1"/>
- </b:bean>
- <b:bean id="authenticationProvider" class="org.xdams.security.AuthenticationProvider">
-  <b:property name="userDetailsService" ref="userDetailsService"/>
-  <b:property name="authenticationType" ref="authenticationType"/>
- </b:bean>
- <b:bean id="userDetailsService" class="org.xdams.security.UserDetailsServiceImpl">
-  <b:property name="assembler" ref="assembler"/>
- </b:bean>
- <b:bean id="assembler" class="org.xdams.security.Assembler"/>
- <b:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
-  <!-- <b:property name="providers"> <b:list> <b:ref local="authenticationProvider"/> </b:list> </b:property> -->
-  <b:constructor-arg>
-   <b:ref local="authenticationProvider"/>
-  </b:constructor-arg>
- </b:bean>
- <b:bean id="formLoginFilter" class="org.xdams.security.AuthenticationFilter">
-  <b:property name="authenticationManager" ref="authenticationManager"/>
-  <b:property name="authenticationFailureHandler" ref="failureHandler"/>
-  <b:property name="authenticationSuccessHandler" ref="successHandler"/>
-  <b:property name="filterProcessesUrl" value="/j_spring_security_check"/>
- </b:bean>
- <b:bean id="loginUrlAuthenticationEntryPoint" class="org.xdams.security.AuthenticationEntryPoint">
-  <!-- <b:property name="loginFormUrl" value="/login.html"/> -->
-  <b:constructor-arg>
-   <b:value>/login.html</b:value>
-  </b:constructor-arg>
- </b:bean>
- <b:bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-  <b:property name="defaultTargetUrl" value="/home.html"/>
- </b:bean>
- <b:bean id="failureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-  <b:property name="defaultFailureUrl" value="/login.html?login_error=1"/>
- </b:bean>
- <authentication-manager>
-  <authentication-provider user-service-ref="userDetailsService">
-   <password-encoder hash="md5"/>
-  </authentication-provider>
- </authentication-manager>
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+		<global-method-security secured-annotations="enabled">
+		</global-method-security>
+		<http pattern="/favicon.ico" security="none" />
+		<http auto-config="false" use-expressions="false" entry-point-ref="loginUrlAuthenticationEntryPoint" create-session="always">
+				<!-- <intercept-url pattern="/pdf/printPdf.html" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
+				<csrf disabled="true" />
+				<intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<intercept-url pattern="/attach/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<intercept-url pattern="/rest/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<intercept-url pattern="/autologin/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<intercept-url pattern="/export/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER" />
+				<intercept-url pattern="/**" access="ROLE_ADMIN,ROLE_USER,ROLE_READER" />
+				<logout logout-success-url="/login.html" invalidate-session="true" logout-url="/j_spring_security_logout" />
+				<custom-filter ref="formLoginFilter" position="FORM_LOGIN_FILTER" />
+				<remember-me />
+				<headers>
+						<frame-options policy="SAMEORIGIN" />
+				</headers>
+		</http>
+		<b:bean id="authenticationType" class="org.xdams.security.AuthenticationType">
+				<b:property name="loadUserSpeedUp" value="true" />
+				<b:property name="allowAutoLogin" value="false" /> <!-- true attiva l'autologin per il solo utente guest/guest che deve essere opportunamente configurato nella visualizzazione degli archivi -->
+				<!-- <b:property name="loadUserType" value="xDams-basic"/> --> <!-- xDams-basic e xDams-xway -->
+				<b:property name="loadUserType" value="xDams-xway" />  <!-- xDams-basic e xDams-xway -->
+				<b:property name="archiveXWAY" ref="archiveXWAY" />  <!-- xDams-basic e xDams-xway -->
+		</b:bean>
+		<b:bean id="archiveXWAY" class="org.xdams.user.bean.Archive">
+				<b:property name="alias" value="xDamsUsers" />
+				<b:property name="host" value="127.0.0.1" />
+				<b:property name="pne" value="user" />
+				<b:property name="port" value="-1" />
+		</b:bean>
+		<b:bean id="authenticationProvider" class="org.xdams.security.AuthenticationProvider">
+				<b:property name="userDetailsService" ref="userDetailsService" />
+				<b:property name="authenticationType" ref="authenticationType" />
+		</b:bean>
+		<b:bean id="userDetailsService" class="org.xdams.security.UserDetailsServiceImpl">
+				<b:property name="assembler" ref="assembler" />
+		</b:bean>
+		<b:bean id="assembler" class="org.xdams.security.Assembler" />
+		<b:bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+				<!-- <b:property name="providers"> <b:list> <b:ref local="authenticationProvider"/> </b:list> </b:property> -->
+				<b:constructor-arg>
+						<b:ref bean="authenticationProvider" />
+				</b:constructor-arg>
+		</b:bean>
+		<b:bean id="formLoginFilter" class="org.xdams.security.AuthenticationFilter">
+				<b:property name="authenticationManager" ref="authenticationManager" />
+				<b:property name="authenticationFailureHandler" ref="failureHandler" />
+				<b:property name="authenticationSuccessHandler" ref="successHandler" />
+				<b:property name="filterProcessesUrl" value="/j_spring_security_check" />
+		</b:bean>
+		<b:bean id="loginUrlAuthenticationEntryPoint" class="org.xdams.security.AuthenticationEntryPoint">
+				<!-- <b:property name="loginFormUrl" value="/login.html"/> -->
+				<b:constructor-arg>
+						<b:value>/login.html</b:value>
+				</b:constructor-arg>
+		</b:bean>
+		<b:bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+				<b:property name="defaultTargetUrl" value="/home.html" />
+		</b:bean>
+		<b:bean id="failureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+				<b:property name="defaultFailureUrl" value="/login.html?login_error=1" />
+		</b:bean>
+		<b:bean id="passwordEncoder256" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+				<b:constructor-arg value="256" />
+		</b:bean>
+		<b:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder">
+		</b:bean>
+		<authentication-manager>
+				<authentication-provider user-service-ref="userDetailsService">
+						<password-encoder hash="md5" />
+				</authentication-provider>
+		</authentication-manager>
 </b:beans>
