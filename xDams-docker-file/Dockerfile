@@ -15,8 +15,9 @@
 # STOP CONTAINER
 # docker stop xdams
 
-from centos:latest
-MAINTAINER regesta "info@xdams.org"
+FROM almalinux:8
+LABEL maintainer="regesta <info@xdams.org>"
+
 RUN yum -y -q update
 RUN yum install unzip zip wget nano -y
 RUN yum install libxslt.i686 -y
@@ -133,12 +134,14 @@ RUN chmod -R 775 /opt/db
 RUN chown -R tomcat:tomcat /opt/apps
 RUN usermod -a -G tomcat extraway
 
+RUN echo "#!/bin/bash" > /etc/init.d/start
 RUN echo "/etc/init.d/extraway stop" >> /etc/init.d/start
 RUN echo "/etc/init.d/tomcat stop" >> /etc/init.d/start
 RUN echo "/etc/init.d/extraway start" >> /etc/init.d/start
 RUN echo "/etc/init.d/tomcat start" >> /etc/init.d/start
+RUN echo "tail -f /dev/null" >> /etc/init.d/start
 RUN chmod +x /etc/init.d/start
 
-ENTRYPOINT /etc/init.d/start && bash
+ENTRYPOINT ["/etc/init.d/start"]
 
 EXPOSE 8080
